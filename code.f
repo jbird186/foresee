@@ -1,5 +1,6 @@
-#++ ++ 438_999_392
-#kfjds jkkddd 339 ('f' (333_289 '\0')
-'\n' dfjhafja
-#kjfdksljfds 389)
-"fdsdfs" "test" / #fdsdf
+#+(_OP_ADD)
+#.(_OP_OUTI)
+#.c(_OP_OUTC)
+#exit(_OP_EXIT)
+
+123 13 + . '\n'.c 0 exit

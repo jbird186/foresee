@@ -1,93 +1,29 @@
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "lexer.h"
+#include "lex.h"
 
-void str_new(String *str, int init_capacity) {
-    if (init_capacity < 1) {
-        fprintf(stderr, "Error: Invalid String capacity at %s:%d\n", __FILE__, __LINE__);
-        exit(1);
-    }
-    str->ptr = calloc(init_capacity, sizeof(char));
-    if (!str->ptr) {
-        fprintf(stderr, "Error: malloc failed at %s:%d\n", __FILE__, __LINE__);
-        exit(1);
-    }
-    str->ptr[0] = '\0';
-    str->length = 0;
-    str->capacity = init_capacity;
-}
-
-void str_push(String *str, char new) {
-    if (str->length + 1 == str->capacity) {
-        str->capacity *= 2;
-        str->ptr = realloc(str->ptr, str->capacity * sizeof(char));
-        if (!str->ptr) {
-            fprintf(stderr, "Error: realloc failed at %s:%d\n", __FILE__, __LINE__);
-            exit(1);
-        }
-    }
-    str->ptr[str->length++] = new;
-    str->ptr[str->length] = '\0';
-}
-
-void str_clear(String *str) {
-    str->ptr[0] = '\0';
-    str->length = 0;
-}
-
-void str_free(String *str) {
-    free(str->ptr);
-    str->ptr = NULL;
-}
+void tok_arr_free(TokenArray *arr);
 
 void tok_free(Token *tok) {
     switch (tok->kind) {
-        case TOK_IDENT:
+        case TOK_WORD:
         case TOK_STR:
             str_free(&tok->data.t_str);
+            break;
+        case TOK_TREE:
+            tok_arr_free(&tok->data.t_tree);
             break;
         default:
             break;
     }
 }
 
-void tok_arr_new(TokenArray *arr, int init_capacity) {
-    if (init_capacity < 1) {
-        fprintf(stderr, "Error: Invalid TokenArray capacity at %s:%d\n", __FILE__, __LINE__);
-        exit(1);
-    }
-    arr->ptr = calloc(init_capacity, sizeof(Token));
-    if (!arr->ptr) {
-        fprintf(stderr, "Error: malloc failed at %s:%d\n", __FILE__, __LINE__);
-        exit(1);
-    }
-    arr->length = 0;
-    arr->capacity = init_capacity;
-}
+DEFINE_ARRAY_C(Token, tok)
 
-void tok_arr_push(TokenArray *arr, Token new) {
-    if (arr->length == arr->capacity) {
-        arr->capacity *= 2;
-        arr->ptr = realloc(arr->ptr, arr->capacity * sizeof(Token));
-        if (!arr->ptr) {
-            fprintf(stderr, "Error: realloc failed at %s:%d\n", __FILE__, __LINE__);
-            exit(1);
-        }
-    }
-    arr->ptr[arr->length++] = new;
-}
-
-void tok_arr_free(TokenArray *arr) {
-    for (int i = 0; i < arr->length; i++) {
-        tok_free(&arr->ptr[i]);
-    }
-    free(arr->ptr);
-    arr->ptr = NULL;
-}
-
-void parse_escape_char(char *dest, char c, FILE *fptr) {
+void match_escape_char(char *dest, char c, FILE *fptr) {
     switch (c) {
         case '0':  // null
             *dest = '\0';
@@ -117,7 +53,7 @@ void parse_escape_char(char *dest, char c, FILE *fptr) {
     }
 }
 
-void lex_int(char *c, TokenArray *toks, FILE *fptr) {
+void lex_int(TokenArray *toks, FILE *fptr, char *c) {
     uint64_t total = *c - '0';
     while ((*c = fgetc(fptr)) != EOF) {
         if (isdigit(*c)) {
@@ -138,7 +74,7 @@ void lex_int(char *c, TokenArray *toks, FILE *fptr) {
     tok_arr_push(toks, tok);
 }
 
-void lex_char(char *c, TokenArray *toks, FILE *fptr) {
+void lex_char(TokenArray *toks, FILE *fptr, char *c) {
     char c2, c3;
     if (((c2 = fgetc(fptr)) == EOF) || ((c3 = fgetc(fptr)) == EOF)) {
         fprintf(stderr, "Error: invalid char literal\n");
@@ -151,13 +87,13 @@ void lex_char(char *c, TokenArray *toks, FILE *fptr) {
     if ((c2 == '\\') && (c4 != EOF) && (c4 == '\'')) {
         tok = (Token){ .kind = TOK_CHAR };
         char esc;
-        parse_escape_char(&esc, c3, fptr);
-        tok.data.t_int = esc;
+        match_escape_char(&esc, c3, fptr);
+        tok.data.t_char = esc;
         *c = fgetc(fptr);
     } else if (c3 == '\'') {
         tok = (Token){
             .kind = TOK_CHAR,
-            .data.t_int = c2,
+            .data.t_char = c2,
         };
         *c = c4;
     } else {
@@ -168,7 +104,7 @@ void lex_char(char *c, TokenArray *toks, FILE *fptr) {
     tok_arr_push(toks, tok);
 }
 
-void lex_str(char *c, TokenArray *toks, FILE *fptr) {
+void lex_str(TokenArray *toks, FILE *fptr, char *c) {
     *c = fgetc(fptr);
     String str;
     str_new(&str, 20);
@@ -181,12 +117,9 @@ void lex_str(char *c, TokenArray *toks, FILE *fptr) {
                 fclose(fptr);
                 exit(1);
             }
-            char esc;
-            parse_escape_char(&esc, *c, fptr);
-            str_push(&str, esc);
-        } else {
-            str_push(&str, *c);
+            match_escape_char(c, *c, fptr);
         }
+        str_push(&str, *c);
         *c = fgetc(fptr);
     }
     *c = fgetc(fptr);
@@ -197,25 +130,24 @@ void lex_str(char *c, TokenArray *toks, FILE *fptr) {
     tok_arr_push(toks, tok);
 }
 
-void lex_word(char *c, TokenArray *toks, FILE *fptr) {
+void lex_word(TokenArray *toks, FILE *fptr, char *c) {
     String word;
     str_new(&word, 16);
     str_push(&word, *c);
     while ((*c = fgetc(fptr)) != EOF) {
-        if ((*c == '(') || isspace(*c)) {
+        if ((*c == '(') || (*c == ')') || isspace(*c)) {
             break;
         }
         str_push(&word, *c);
     }
     Token tok = {
-        .kind = TOK_IDENT,
+        .kind = TOK_WORD,
         .data.t_str = word,
     };
     tok_arr_push(toks, tok);
 }
 
-void lex_file(TokenArray *toks, FILE *fptr) {
-    tok_arr_new(toks, 256);
+void _lex_file(TokenArray *toks, FILE *fptr, bool is_delim) {
     char c = fgetc(fptr);
     while (c != EOF) {
         // skip whitespace
@@ -224,15 +156,20 @@ void lex_file(TokenArray *toks, FILE *fptr) {
         }
         // literal integer
         if (isdigit(c)) {
-            lex_int(&c, toks, fptr);
+            lex_int(toks, fptr, &c);
         }
         // literal char
         else if (c == '\'') {
-            lex_char(&c, toks, fptr);
+            lex_char(toks, fptr, &c);
         }
         // literal string
         else if (c == '\"') {
-            lex_str(&c, toks, fptr);
+            lex_str(toks, fptr, &c);
+        }
+        // colon
+        else if (c == ':') {
+            c = fgetc(fptr);
+            tok_arr_push(toks, (Token){ .kind = TOK_COLON });
         }
         // pound sign
         else if (c == '#') {
@@ -241,17 +178,44 @@ void lex_file(TokenArray *toks, FILE *fptr) {
         }
         // left paren
         else if (c == '(') {
+            // we use malloc so that this value is not on the stack
+            TokenArray tree;
+            tok_arr_new(&tree, 256);
+            _lex_file(&tree, fptr, true);
+            Token tok = {
+                .kind = TOK_TREE,
+                .data.t_tree = tree,
+            };
             c = fgetc(fptr);
-            tok_arr_push(toks, (Token){ .kind = TOK_LPAREN });
+            tok_arr_push(toks, tok);
         }
-        // right paren
-        else if (c == ')') {
+        // right paren (searching for delim)
+        else if ((c == ')') && is_delim) {
             c = fgetc(fptr);
-            tok_arr_push(toks, (Token){ .kind = TOK_RPAREN });
+            return;
+        }
+        // right paren (not searching for delim)
+        else if ((c == ')') && !is_delim) {
+            fprintf(stderr, "Error: unexpected delimiter ')'\n");
+            fclose(fptr);
+            exit(1);
         }
         // word
         else {
-            lex_word(&c, toks, fptr);
+            lex_word(toks, fptr, &c);
         }
     }
+    if (is_delim) {
+        fprintf(stderr, "Error: expected delimiter ')'\n");
+        fclose(fptr);
+        exit(1);
+    }
+}
+
+void lex_file_delim(TokenArray *toks, FILE *fptr) {
+    _lex_file(toks, fptr, true);
+}
+
+void lex_file(TokenArray *toks, FILE *fptr) {
+    _lex_file(toks, fptr, false);
 }
