@@ -14,5 +14,5 @@ void str_push(String *str, char new);
 void str_clear(String *str);
 void str_free(String *str);
 
-DEFINE_ARRAY_TYPE(String, str)
+DEFINE_ARRAY_TYPE(String)
 DEFINE_ARRAY_H(String, str)

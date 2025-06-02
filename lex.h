@@ -8,21 +8,19 @@ typedef enum {
     TOK_INT,
     TOK_CHAR,
     TOK_STR,
+    TOK_IDENT,
     TOK_WORD,
     TOK_COLON,
     TOK_POUND,
+    TOK_DOLLAR,
+    TOK_AMPERSAND,
     TOK_TREE,
 } TokenKind;
 
 typedef struct Token Token;
 
-typedef struct {
-    Token *ptr;
-    size_t length;
-    size_t capacity;
-} TokenArray;
-void tok_arr_new(TokenArray *arr, int init_capacity);
-void tok_arr_free(TokenArray *arr);
+DEFINE_ARRAY_TYPE(Token)
+DEFINE_ARRAY_H(Token, tok)
 
 typedef union {
     uint64_t t_int;

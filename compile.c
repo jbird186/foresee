@@ -3,7 +3,7 @@
 #include "program.h"
 #include "compile.h"
 
-char *asm_prefix =
+char *text_prefix =
     "BITS 64\n"
     "global _start\n"
     "section .text\n"
@@ -92,9 +92,19 @@ void compile_op(FILE* fptr, OpCode op) {
                 "    push \trbx\n",
             fptr);
             break;
-        case OP_PUSH:
-            fputs("    ; OP_PUSH\n", fptr);
-            fprintf(fptr, "    push \t%ld\n", op.data.t_int);
+        case OP_PUSHINT:
+            fprintf(fptr,
+                "    ; OP_PUSHINT\n"
+                "    push \t%ld\n",
+                op.data.t_int
+            );
+            break;
+        case OP_PUSHBUF:
+            fprintf(fptr,
+                "    ; OP_PUSHBUF\n"
+                "    push \t%s\n",
+                op.data.t_buf_name.ptr
+            );
             break;
         case OP_ADD:
             COMPILE_BASIC_BINOP(fptr, OP_ADD, add);
@@ -123,30 +133,51 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_SAR:
             COMPILE_BASIC_BINOP(fptr, OP_SAR, sar);
             break;
-        case OP_OUTI:
+        case OP_OUTINT:
             fputs(
-                "    ; OP_OUTI\n"
+                "    ; OP_OUTINT\n"
                 "    pop \trdi\n"
                 "    call \touti\n",
             fptr);
             break;
-        case OP_OUTC:
+        case OP_OUTCHAR:
             fputs(
-                "    ; OP_OUTC\n"
+                "    ; OP_OUTCHAR\n"
                 "    pop \trdi\n"
                 "    call \toutc\n",
             fptr);
             break;
         default:
-            printf("ERROR: INVALID OPCODE '%d'\n", op.kind);
+            fprintf(stderr, "Error: invalid opcode '%d'\n", op.kind);
             fclose(fptr);
             exit(1);
     }
 }
 
+char *bss_prefix =
+    "section .bss\n";
+
+void compile_buf(FILE* fptr, Buffer buf) {
+    fprintf(fptr,
+        "    ; $%s %ld\n"
+        "    %s resb %ld\n",
+        buf.name.ptr, buf.size, buf.name.ptr, buf.size
+    );
+}
+
 void compile_program(FILE* fptr, Program *program) {
-    fputs(asm_prefix, fptr);
+    fputs(text_prefix, fptr);
     for (int i = 0; i < program->ops.length; i++) {
         compile_op(fptr, program->ops.ptr[i]);
+    }
+    fputs(
+        "    ; EXIT\n"
+        "    mov \trdi, 0\n"
+        "    mov \teax, 60\n"
+        "    syscall\n",
+    fptr);
+    fputs(bss_prefix, fptr);
+    for (int i = 0; i < program->buffers.length; i++) {
+        compile_buf(fptr, program->buffers.ptr[i]);
     }
 }

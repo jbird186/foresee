@@ -1,6 +1,6 @@
 #pragma once
 
-#define DEFINE_ARRAY_TYPE(type, lower) \
+#define DEFINE_ARRAY_TYPE(type) \
     typedef struct { \
         type *ptr; \
         size_t length; \

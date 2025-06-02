@@ -23,7 +23,7 @@ int main() {
     printf("Parsing...\n");
     Program program;
     program_new(&program);
-    parse_tokens(&program, &toks);
+    parse_program(&program, &toks);
 
     printf("Opening file 'fifth.asm'...\n");
     FILE* wptr = fopen("fifth.asm", "w");

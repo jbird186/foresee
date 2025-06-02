@@ -13,7 +13,8 @@ typedef enum {
     OP_DROP,
     OP_DUP,
     OP_PICK,
-    OP_PUSH,
+    OP_PUSHINT,
+    OP_PUSHBUF,
     // Binary Operations
     OP_ADD,
     OP_SUB,
@@ -25,35 +26,39 @@ typedef enum {
     OP_SHR,
     OP_SAR,
     // I/O
-    OP_OUTI,
+    OP_OUTINT,
     // Temporary (TODO: Remove)
-    OP_OUTC, // Easy to display newline charcters
+    OP_OUTCHAR, // Easy to display newline charcters
 } OpKind;
 
 typedef union {
     uint64_t t_int;
-    char t_reg[3];
+    String t_buf_name;
 } OpData;
 
 typedef struct {
     OpKind kind;
     OpData data;
 } OpCode;
-
-DEFINE_ARRAY_TYPE(OpCode, op)
+DEFINE_ARRAY_TYPE(OpCode)
 
 typedef struct {
     String name;
     OpCodeArray ops;
 } Macro;
-
-DEFINE_ARRAY_TYPE(Macro, macro)
+DEFINE_ARRAY_TYPE(Macro)
 
 typedef struct {
-    OpCodeArray ops;
+    String name;
+    uint64_t size;
+} Buffer;
+DEFINE_ARRAY_TYPE(Buffer)
+
+typedef struct {
     MacroArray macros;
+    OpCodeArray ops;
+    BufferArray buffers;
 } Program;
 void program_new(Program *program);
 void program_free(Program *program);
-
-void parse_tokens(Program *program, TokenArray *toks);
+void parse_program(Program *program, TokenArray *toks);

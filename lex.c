@@ -130,6 +130,21 @@ void lex_str(TokenArray *toks, FILE *fptr, char *c) {
     tok_arr_push(toks, tok);
 }
 
+void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
+    String word;
+    str_new(&word, 16);
+    str_push(&word, *c);
+    while ((*c = fgetc(fptr)) != EOF) {
+        if (!isalnum(*c)) break;
+        str_push(&word, *c);
+    }
+    Token tok = {
+        .kind = TOK_IDENT,
+        .data.t_str = word,
+    };
+    tok_arr_push(toks, tok);
+}
+
 void lex_word(TokenArray *toks, FILE *fptr, char *c) {
     String word;
     str_new(&word, 16);
@@ -176,6 +191,16 @@ void _lex_file(TokenArray *toks, FILE *fptr, bool is_delim) {
             c = fgetc(fptr);
             tok_arr_push(toks, (Token){ .kind = TOK_POUND });
         }
+        // dollar sign
+        else if (c == '$') {
+            c = fgetc(fptr);
+            tok_arr_push(toks, (Token){ .kind = TOK_DOLLAR });
+        }
+        // ampersand
+        else if (c == '&') {
+            c = fgetc(fptr);
+            tok_arr_push(toks, (Token){ .kind = TOK_AMPERSAND });
+        }
         // left paren
         else if (c == '(') {
             // we use malloc so that this value is not on the stack
@@ -199,6 +224,10 @@ void _lex_file(TokenArray *toks, FILE *fptr, bool is_delim) {
             fprintf(stderr, "Error: unexpected delimiter ')'\n");
             fclose(fptr);
             exit(1);
+        }
+        // ident
+        else if (isalnum(c)) {
+            lex_ident(toks, fptr, &c);
         }
         // word
         else {

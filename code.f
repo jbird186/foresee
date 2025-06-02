@@ -1,6 +1,11 @@
 #+(_OP_ADD)
-#.(_OP_OUTI)
-#.c(_OP_OUTC)
+#-(_OP_SUB)
+#.(_OP_OUTINT)
+#.c(_OP_OUTCHAR)
 #exit(_OP_EXIT)
+#cr('\n'.c)
 
-123 13 + . '\n'.c 0 exit
+$buf 64
+
+123 13 + 70 - . cr
+&buf . cr

@@ -12,6 +12,11 @@ void macro_free(Macro *macro) {
 }
 DEFINE_ARRAY_C(Macro, macro)
 
+void buf_free(Buffer *buf) {
+    str_free(&buf->name);
+}
+DEFINE_ARRAY_C(Buffer, buf)
+
 #define PUSH_INTRINSIC_OPCODE(arr, opcode) { \
     String name; \
     str_new_from(&name, "_" #opcode); \
@@ -32,7 +37,8 @@ void macro_arr_push_intrinsics(MacroArray *arr) {
     PUSH_INTRINSIC_OPCODE(arr, OP_DROP)
     PUSH_INTRINSIC_OPCODE(arr, OP_DUP)
     PUSH_INTRINSIC_OPCODE(arr, OP_PICK)
-    PUSH_INTRINSIC_OPCODE(arr, OP_PUSH)
+    PUSH_INTRINSIC_OPCODE(arr, OP_PUSHINT)
+    PUSH_INTRINSIC_OPCODE(arr, OP_PUSHBUF)
     // Binary Operations
     PUSH_INTRINSIC_OPCODE(arr, OP_ADD)
     PUSH_INTRINSIC_OPCODE(arr, OP_SUB)
@@ -44,9 +50,9 @@ void macro_arr_push_intrinsics(MacroArray *arr) {
     PUSH_INTRINSIC_OPCODE(arr, OP_SHR)
     PUSH_INTRINSIC_OPCODE(arr, OP_SAR)
     // I/O
-    PUSH_INTRINSIC_OPCODE(arr, OP_OUTI)
+    PUSH_INTRINSIC_OPCODE(arr, OP_OUTINT)
     // Temporary (TODO: Remove)
-    PUSH_INTRINSIC_OPCODE(arr, OP_OUTC)
+    PUSH_INTRINSIC_OPCODE(arr, OP_OUTCHAR)
 
 }
 
@@ -54,11 +60,13 @@ void program_new(Program *program) {
     macro_arr_new(&program->macros, 256);
     macro_arr_push_intrinsics(&program->macros);
     op_arr_new(&program->ops, 256);
+    buf_arr_new(&program->buffers, 256);
 }
 
 void program_free(Program *program) {
-    op_arr_free(&program->ops);
     macro_arr_free(&program->macros);
+    op_arr_free(&program->ops);
+    buf_arr_free(&program->buffers);
 }
 
 void parse_tokens(Program *program, TokenArray *toks);
@@ -69,9 +77,9 @@ void parse_string(Program *program, TokenArray *toks, int *idx) {
     exit(1);
 }
 
-// TODO: better search algorithm
 void parse_word(Program *program, TokenArray *toks, int *idx) {
     String name = toks->ptr[*idx].data.t_str;
+    // TODO: better search algorithm
     for (int i = 0; i < program->macros.length; i++) {
         if (!strcmp(program->macros.ptr[i].name.ptr, name.ptr)) {
             for (int j = 0; j < program->macros.ptr[i].ops.length; j++) {
@@ -81,7 +89,7 @@ void parse_word(Program *program, TokenArray *toks, int *idx) {
             return;
         }
     }
-    fprintf(stderr, "Error: macro '%s' not found\n", name.ptr);
+    fprintf(stderr, "Error: macro '%s' not defined\n", name.ptr);
     exit(1);
 }
 
@@ -93,8 +101,12 @@ void parse_colon(Program *program, TokenArray *toks, int *idx) {
 
 void parse_pound(Program *program, TokenArray *toks, int *idx) {
     Token name = toks->ptr[*idx + 1];
+    if ((name.kind != TOK_IDENT) && (name.kind != TOK_WORD)) {
+        fprintf(stderr, "Error: invalid definition for macro\n");
+        exit(1);
+    }
     Token tree = toks->ptr[*idx + 2];
-    if ((name.kind != TOK_WORD) || (tree.kind != TOK_TREE)) {
+    if (tree.kind != TOK_TREE) {
         fprintf(stderr, "Error: invalid definition for macro '%s'\n", name.data.t_str.ptr);
         exit(1);
     }
@@ -114,12 +126,57 @@ void parse_pound(Program *program, TokenArray *toks, int *idx) {
 
     String name_copy;
     str_new_from(&name_copy, name.data.t_str.ptr);
-    Macro macro = {
+    macro_arr_push(&program->macros, (Macro){
         .name = name_copy,
         .ops = macro_program.ops
-    };
+    });
     *idx += 3;
-    macro_arr_push(&program->macros, macro);
+}
+
+void parse_dollar(Program *program, TokenArray *toks, int *idx) {
+    Token name = toks->ptr[*idx + 1];
+    if (name.kind != TOK_IDENT) {
+        fprintf(stderr, "Error: invalid definition for buffer\n");
+        exit(1);
+    }
+    Token size = toks->ptr[*idx + 2];
+    if (size.kind != TOK_INT) {
+        fprintf(stderr, "Error: invalid definition for buffer '%s'\n", name.data.t_str.ptr);
+        exit(1);
+    }
+
+    String name_copy;
+    str_new_from(&name_copy, name.data.t_str.ptr);
+    buf_arr_push(&program->buffers, (Buffer) {
+        .name = name_copy,
+        .size = size.data.t_int
+    });
+    *idx += 3;
+}
+
+void parse_ampersand(Program *program, TokenArray *toks, int *idx) {
+    Token name = toks->ptr[*idx + 1];
+    if (name.kind != TOK_IDENT) {
+        fprintf(stderr, "Error: invalid reference name\n");
+        exit(1);
+    }
+
+    // TODO: better search algorithm
+    for (int i = 0; i < program->buffers.length; i++) {
+        if (!strcmp(program->buffers.ptr[i].name.ptr, name.data.t_str.ptr)) {
+            String buf_name;
+            str_new_from(&buf_name, name.data.t_str.ptr);
+            op_arr_push(&program->ops, (OpCode){
+                .kind = OP_PUSHBUF,
+                .data.t_buf_name = buf_name,
+            });
+            *idx += 2;
+            return;
+        }
+    }
+
+    fprintf(stderr, "Error: buffer '%s' not defined\n", name.data.t_str.ptr);
+    exit(1);
 }
 
 // TODO
@@ -134,14 +191,14 @@ void parse_tokens(Program *program, TokenArray *toks) {
         switch (toks->ptr[idx].kind) {
             case TOK_INT:
                 op_arr_push(&program->ops, (OpCode){
-                    .kind = OP_PUSH,
+                    .kind = OP_PUSHINT,
                     .data.t_int = toks->ptr[idx].data.t_int
                 });
                 idx += 1;
                 break;
             case TOK_CHAR:
                 op_arr_push(&program->ops, (OpCode){
-                    .kind = OP_PUSH,
+                    .kind = OP_PUSHINT,
                     .data.t_int = toks->ptr[idx].data.t_char
                 });
                 idx += 1;
@@ -149,6 +206,7 @@ void parse_tokens(Program *program, TokenArray *toks) {
             case TOK_STR:
                 parse_string(program, toks, &idx);
                 break;
+            case TOK_IDENT:
             case TOK_WORD:
                 parse_word(program, toks, &idx);
                 break;
@@ -158,9 +216,22 @@ void parse_tokens(Program *program, TokenArray *toks) {
             case TOK_POUND:
                 parse_pound(program, toks, &idx);
                 break;
+            case TOK_DOLLAR:
+                parse_dollar(program, toks, &idx);
+                break;
+            case TOK_AMPERSAND:
+                parse_ampersand(program, toks, &idx);
+                break;
             case TOK_TREE:
                 parse_tree(program, toks, &idx);
                 break;
+            default:
+                fprintf(stderr, "Error: unexpected token of type #%d\n", toks->ptr[idx].kind);
+                exit(1);
         }
     }
+}
+
+void parse_program(Program *program, TokenArray *toks) {
+    parse_tokens(program, toks);
 }
