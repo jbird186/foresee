@@ -3,6 +3,11 @@
 #include "program.h"
 #include "compile.h"
 
+char scratch_regs[8][3] = {
+    "rcx", "rdx", "rsi", "rdi",
+    "r8", "r9", "r10", "r11",
+};
+
 char *text_prefix =
     "BITS 64\n"
     "global _start\n"
@@ -54,10 +59,10 @@ char *text_prefix =
 #define COMPILE_BASIC_BINOP(fptr, name, inst, b_reg) \
     fputs( \
         "    ; " #name "\n" \
-        "    pop \trcx\n" \
-        "    pop \trax\n" \
+        "    pop     rcx\n" \
+        "    pop     rax\n" \
         "    " #inst " \trax, " #b_reg "\n" \
-        "    push \trax\n", \
+        "    push    rax\n", \
     fptr)
 
 void compile_op(FILE* fptr, OpCode op) {
@@ -66,60 +71,66 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_EXIT:
             fputs(
                 "    ; OP_EXIT\n"
-                "    pop \trdi\n"
-                "    mov \teax, 60\n"
+                "    pop     rdi\n"
+                "    mov     eax, 60\n"
                 "    syscall\n",
             fptr);
             break;
         case OP_DROP:
             fputs(
                 "    ; OP_DROP\n"
-                "    pop \trax\n",
+                "    pop     rax\n",
             fptr);
             break;
         case OP_DUP:
             fputs(
                 "    ; OP_DUP\n"
-                "    pop \trax\n"
-                "    push \trax\n"
-                "    push \trax\n",
+                "    pop     rax\n"
+                "    push    rax\n"
+                "    push    rax\n",
             fptr);
             break;
         case OP_PICK:
             fputs(
                 "    ; OP_PICK\n"
-                "    pop \trax\n"
-                "    mov \trcx, [rsp + rax*8]\n"
-                "    push \trcx\n",
+                "    pop     rax\n"
+                "    mov     rcx, [rsp + rax*8]\n"
+                "    push    rcx\n",
             fptr);
+            break;
+        case OP_PERM: // TODO
+            fputs("    ; OP_PERM\n", fptr);
+            fprintf(stderr, "TODO: implement opcode OP_PERM");
+            fclose(fptr);
+            exit(1);
             break;
         case OP_PUSH_INT:
             fprintf(fptr,
                 "    ; OP_PUSH_INT\n"
-                "    push \t%ld\n",
+                "    push    %ld\n",
                 op.data.t_int
             );
             break;
         case OP_PUSH_BUF:
             fprintf(fptr,
                 "    ; OP_PUSH_BUF\n"
-                "    push \t%s\n",
+                "    push    %s\n",
                 op.data.t_buf_name.ptr
             );
             break;
         case OP_STORE:
             fputs(
                 "    ; OP_STORE\n"
-                "    pop \trax\n"
-                "    pop \trcx\n"
-                "    mov \t[rax], rcx\n",
+                "    pop     rax\n"
+                "    pop     rcx\n"
+                "    mov     [rax], rcx\n",
             fptr);
             break;
         case OP_LOAD:
             fputs(
                 "    ; OP_LOAD\n"
-                "    pop \trax\n"
-                "    push \tqword [rax]\n",
+                "    pop     rax\n"
+                "    push    qword [rax]\n",
             fptr);
             break;
         case OP_ADD:
@@ -152,15 +163,15 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_OUT_INT:
             fputs(
                 "    ; OP_OUT_INT\n"
-                "    pop \trdi\n"
-                "    call \touti\n",
+                "    pop     rdi\n"
+                "    call    outi\n",
             fptr);
             break;
         case OP_OUT_CHAR:
             fputs(
                 "    ; OP_OUT_CHAR\n"
-                "    pop \trdi\n"
-                "    call \toutc\n",
+                "    pop     rdi\n"
+                "    call    outc\n",
             fptr);
             break;
         default:

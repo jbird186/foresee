@@ -45,6 +45,7 @@ void macro_arr_push_intrinsics(MacroArray *arr) {
     PUSH_INTRINSIC_OPCODE(arr, OP_DROP, "drop")
     PUSH_INTRINSIC_OPCODE(arr, OP_DUP, "dup")
     PUSH_INTRINSIC_OPCODE(arr, OP_PICK, "pick")
+    PUSH_INTRINSIC_OPCODE(arr, OP_PERM, "perm")
     // Reference Primitives
     PUSH_INTRINSIC_OPCODE(arr, OP_STORE, "store")
     PUSH_INTRINSIC_OPCODE(arr, OP_LOAD, "load")
@@ -114,8 +115,16 @@ void parse_pound(Program *program, TokenArray *toks, int *idx) {
         fprintf(stderr, "Error: invalid definition for macro\n");
         exit(1);
     }
+
+    // TODO:
+    // arguments (optional)
+    // int n_args = 0;
+    // if (toks->ptr[*idx + 2].kind == TOK_PAREN_TREE) {
+    //     *idx += 1;
+    // }
+
     Token tree = toks->ptr[*idx + 2];
-    if (tree.kind != TOK_TREE) {
+    if (tree.kind != TOK_BRACE_TREE) {
         fprintf(stderr, "Error: invalid definition for macro '%s'\n", name.data.t_str.ptr);
         exit(1);
     }
@@ -231,7 +240,7 @@ void parse_tokens(Program *program, TokenArray *toks) {
             case TOK_REF:
                 parse_ref(program, toks, &idx);
                 break;
-            case TOK_TREE:
+            case TOK_PAREN_TREE:
                 parse_tree(program, toks, &idx);
                 break;
             default:

@@ -14,7 +14,8 @@ typedef enum {
     TOK_POUND,
     TOK_DOLLAR,
     TOK_REF,
-    TOK_TREE,
+    TOK_PAREN_TREE,
+    TOK_BRACE_TREE,
 } TokenKind;
 
 typedef struct Token Token;

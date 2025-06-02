@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include "lex.h"
 
+void _lex_file(TokenArray *toks, FILE *fptr, char delim);
 void tok_arr_free(TokenArray *arr);
 
 void tok_free(Token *tok) {
@@ -14,7 +15,8 @@ void tok_free(Token *tok) {
         case TOK_WORD:
             str_free(&tok->data.t_str);
             break;
-        case TOK_TREE:
+        case TOK_PAREN_TREE:
+        case TOK_BRACE_TREE:
             tok_arr_free(&tok->data.t_tree);
             break;
         default:
@@ -68,11 +70,10 @@ void lex_int(TokenArray *toks, FILE *fptr, char *c) {
             break;
         }
     }
-    Token tok = {
+    tok_arr_push(toks, (Token) {
         .kind = TOK_INT,
         .data.t_int = total,
-    };
-    tok_arr_push(toks, tok);
+    });
 }
 
 void lex_char(TokenArray *toks, FILE *fptr, char *c) {
@@ -83,19 +84,14 @@ void lex_char(TokenArray *toks, FILE *fptr, char *c) {
         exit(1);
     }
 
-    char c4 = fgetc(fptr);
     Token tok;
+    tok.kind = TOK_CHAR;
+    char c4 = fgetc(fptr);
     if ((c2 == '\\') && (c4 != EOF) && (c4 == '\'')) {
-        tok = (Token){ .kind = TOK_CHAR };
-        char esc;
-        match_escape_char(&esc, c3, fptr);
-        tok.data.t_char = esc;
+        match_escape_char(&tok.data.t_char, c3, fptr);
         *c = fgetc(fptr);
     } else if (c3 == '\'') {
-        tok = (Token){
-            .kind = TOK_CHAR,
-            .data.t_char = c2,
-        };
+        tok.data.t_char = c2;
         *c = c4;
     } else {
         fprintf(stderr, "Error: invalid char literal\n");
@@ -123,12 +119,39 @@ void lex_str(TokenArray *toks, FILE *fptr, char *c) {
         str_push(&str, *c);
         *c = fgetc(fptr);
     }
-    *c = fgetc(fptr);
-    Token tok = {
+    tok_arr_push(toks, (Token) {
         .kind = TOK_STR,
         .data.t_str = str,
-    };
-    tok_arr_push(toks, tok);
+    });
+    *c = fgetc(fptr);
+}
+
+void lex_ampersand(TokenArray *toks, FILE *fptr, char *c) {
+    char next_c = fgetc(fptr);
+    // reference
+    if ((next_c != EOF) && isalpha(next_c)) {
+        tok_arr_push(toks, (Token){ .kind = TOK_REF });
+    // word
+    } else {
+        String word;
+        str_new_from(&word, "&");
+        tok_arr_push(toks, (Token){
+            .kind = TOK_WORD,
+            .data.t_str = word
+        });
+    }
+    *c = next_c;
+}
+
+void lex_tree(TokenArray *toks, FILE *fptr, char *c, TokenKind kind, char delim) {
+    TokenArray tree;
+    tok_arr_new(&tree, 256);
+    _lex_file(&tree, fptr, delim);
+    tok_arr_push(toks, (Token){
+        .kind = kind,
+        .data.t_tree = tree,
+    });
+    *c = fgetc(fptr);
 }
 
 void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
@@ -139,11 +162,10 @@ void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
         if (!isalnum(*c)) break;
         str_push(&word, *c);
     }
-    Token tok = {
+    tok_arr_push(toks, (Token) {
         .kind = TOK_IDENT,
         .data.t_str = word,
-    };
-    tok_arr_push(toks, tok);
+    });
 }
 
 void lex_word(TokenArray *toks, FILE *fptr, char *c) {
@@ -151,19 +173,18 @@ void lex_word(TokenArray *toks, FILE *fptr, char *c) {
     str_new(&word, 16);
     str_push(&word, *c);
     while ((*c = fgetc(fptr)) != EOF) {
-        if ((*c == '(') || (*c == ')') || isspace(*c)) {
+        if ((*c == '(') || (*c == ')') || (*c == '{') || (*c == '}') || isspace(*c)) {
             break;
         }
         str_push(&word, *c);
     }
-    Token tok = {
+    tok_arr_push(toks, (Token) {
         .kind = TOK_WORD,
         .data.t_str = word,
-    };
-    tok_arr_push(toks, tok);
+    });
 }
 
-void _lex_file(TokenArray *toks, FILE *fptr, bool is_delim) {
+void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
     char c = fgetc(fptr);
     while (c != EOF) {
         // skip whitespace
@@ -184,57 +205,39 @@ void _lex_file(TokenArray *toks, FILE *fptr, bool is_delim) {
         }
         // colon
         else if (c == ':') {
-            c = fgetc(fptr);
             tok_arr_push(toks, (Token){ .kind = TOK_COLON });
+            c = fgetc(fptr);
         }
         // pound sign
         else if (c == '#') {
-            c = fgetc(fptr);
             tok_arr_push(toks, (Token){ .kind = TOK_POUND });
+            c = fgetc(fptr);
         }
         // dollar sign
         else if (c == '$') {
-            c = fgetc(fptr);
             tok_arr_push(toks, (Token){ .kind = TOK_DOLLAR });
+            c = fgetc(fptr);
         }
         // ampersand
         else if (c == '&') {
-            char next_c = fgetc(fptr);
-            // reference
-            if ((next_c != EOF) && isalpha(next_c)) {
-                tok_arr_push(toks, (Token){ .kind = TOK_REF });
-            // word
-            } else {
-                String word;
-                str_new_from(&word, "&");
-                tok_arr_push(toks, (Token){
-                    .kind = TOK_WORD,
-                    .data.t_str = word
-                });
-            }
-            c = next_c;
+            lex_ampersand(toks, fptr, &c);
         }
         // left paren
         else if (c == '(') {
-            // we use malloc so that this value is not on the stack
-            TokenArray tree;
-            tok_arr_new(&tree, 256);
-            _lex_file(&tree, fptr, true);
-            Token tok = {
-                .kind = TOK_TREE,
-                .data.t_tree = tree,
-            };
-            c = fgetc(fptr);
-            tok_arr_push(toks, tok);
+            lex_tree(toks, fptr, &c, TOK_PAREN_TREE, ')');
         }
-        // right paren (searching for delim)
-        else if ((c == ')') && is_delim) {
+        // left brace
+        else if (c == '{') {
+            lex_tree(toks, fptr, &c, TOK_BRACE_TREE, '}');
+        }
+        // right delim (searching for delim)
+        else if (delim && (c == delim)) {
             c = fgetc(fptr);
             return;
         }
-        // right paren (not searching for delim)
-        else if ((c == ')') && !is_delim) {
-            fprintf(stderr, "Error: unexpected delimiter ')'\n");
+        // right delim (not searching for delim)
+        else if ((c == ')') || (c == '}')) {
+            fprintf(stderr, "Error: unexpected delimiter '%c'\n", c);
             fclose(fptr);
             exit(1);
         }
@@ -247,17 +250,13 @@ void _lex_file(TokenArray *toks, FILE *fptr, bool is_delim) {
             lex_word(toks, fptr, &c);
         }
     }
-    if (is_delim) {
-        fprintf(stderr, "Error: expected delimiter ')'\n");
+    if (delim) {
+        fprintf(stderr, "Error: expected delimiter '%c'\n", delim);
         fclose(fptr);
         exit(1);
     }
 }
 
-void lex_file_delim(TokenArray *toks, FILE *fptr) {
-    _lex_file(toks, fptr, true);
-}
-
 void lex_file(TokenArray *toks, FILE *fptr) {
-    _lex_file(toks, fptr, false);
+    _lex_file(toks, fptr, 0);
 }
