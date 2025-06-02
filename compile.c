@@ -51,18 +51,18 @@ char *text_prefix =
     "    ret\n"
     "_start:\n";
 
-#define COMPILE_BASIC_BINOP(fptr, name, inst) \
+#define COMPILE_BASIC_BINOP(fptr, name, inst, b_reg) \
     fputs( \
         "    ; " #name "\n" \
-        "    pop \trbx\n" \
+        "    pop \trcx\n" \
         "    pop \trax\n" \
-        "    " #inst " \trax, rbx\n" \
+        "    " #inst " \trax, " #b_reg "\n" \
         "    push \trax\n", \
     fptr)
 
 void compile_op(FILE* fptr, OpCode op) {
     switch (op.kind) {
-        case OP_NOP: break;
+        case OP_NOOP: break;
         case OP_EXIT:
             fputs(
                 "    ; OP_EXIT\n"
@@ -80,7 +80,8 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_DUP:
             fputs(
                 "    ; OP_DUP\n"
-                "    mov \trax, [rsp]\n"
+                "    pop \trax\n"
+                "    push \trax\n"
                 "    push \trax\n",
             fptr);
             break;
@@ -88,61 +89,76 @@ void compile_op(FILE* fptr, OpCode op) {
             fputs(
                 "    ; OP_PICK\n"
                 "    pop \trax\n"
-                "    mov \trbx, [rsp + rax*8]\n"
-                "    push \trbx\n",
+                "    mov \trcx, [rsp + rax*8]\n"
+                "    push \trcx\n",
             fptr);
             break;
-        case OP_PUSHINT:
+        case OP_PUSH_INT:
             fprintf(fptr,
-                "    ; OP_PUSHINT\n"
+                "    ; OP_PUSH_INT\n"
                 "    push \t%ld\n",
                 op.data.t_int
             );
             break;
-        case OP_PUSHBUF:
+        case OP_PUSH_BUF:
             fprintf(fptr,
-                "    ; OP_PUSHBUF\n"
+                "    ; OP_PUSH_BUF\n"
                 "    push \t%s\n",
                 op.data.t_buf_name.ptr
             );
             break;
+        case OP_STORE:
+            fputs(
+                "    ; OP_STORE\n"
+                "    pop \trax\n"
+                "    pop \trcx\n"
+                "    mov \t[rax], rcx\n",
+            fptr);
+            break;
+        case OP_LOAD:
+            fputs(
+                "    ; OP_LOAD\n"
+                "    pop \trax\n"
+                "    push \tqword [rax]\n",
+            fptr);
+            break;
         case OP_ADD:
-            COMPILE_BASIC_BINOP(fptr, OP_ADD, add);
+            COMPILE_BASIC_BINOP(fptr, OP_ADD, add, rcx);
             break;
         case OP_SUB:
-            COMPILE_BASIC_BINOP(fptr, OP_SUB, sub);
+            COMPILE_BASIC_BINOP(fptr, OP_SUB, sub, rcx);
             break;
         case OP_MUL:
-            COMPILE_BASIC_BINOP(fptr, OP_MUL, imul);
+            COMPILE_BASIC_BINOP(fptr, OP_MUL, imul, rcx);
             break;
         case OP_AND:
-            COMPILE_BASIC_BINOP(fptr, OP_AND, and);
+            COMPILE_BASIC_BINOP(fptr, OP_AND, and, rcx);
             break;
         case OP_OR:
-            COMPILE_BASIC_BINOP(fptr, OP_OR, or);
+            COMPILE_BASIC_BINOP(fptr, OP_OR, or, rcx);
             break;
         case OP_XOR:
-            COMPILE_BASIC_BINOP(fptr, OP_XOR, xor);
+            COMPILE_BASIC_BINOP(fptr, OP_XOR, xor, rcx);
             break;
         case OP_SHL:
-            COMPILE_BASIC_BINOP(fptr, OP_SHL, shl);
+            COMPILE_BASIC_BINOP(fptr, OP_SHL, shl, cl);
             break;
         case OP_SHR:
-            COMPILE_BASIC_BINOP(fptr, OP_SHR, shr);
+            COMPILE_BASIC_BINOP(fptr, OP_SHR, shr, cl);
             break;
         case OP_SAR:
-            COMPILE_BASIC_BINOP(fptr, OP_SAR, sar);
+            COMPILE_BASIC_BINOP(fptr, OP_SAR, sar, cl);
             break;
-        case OP_OUTINT:
+        case OP_OUT_INT:
             fputs(
-                "    ; OP_OUTINT\n"
+                "    ; OP_OUT_INT\n"
                 "    pop \trdi\n"
                 "    call \touti\n",
             fptr);
             break;
-        case OP_OUTCHAR:
+        case OP_OUT_CHAR:
             fputs(
-                "    ; OP_OUTCHAR\n"
+                "    ; OP_OUT_CHAR\n"
                 "    pop \trdi\n"
                 "    call \toutc\n",
             fptr);

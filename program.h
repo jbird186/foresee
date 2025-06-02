@@ -7,14 +7,17 @@
 
 typedef enum {
     // Misc / Special
-    OP_NOP,
+    OP_NOOP,
     OP_EXIT,
     // Stack Primitives
     OP_DROP,
     OP_DUP,
     OP_PICK,
-    OP_PUSHINT,
-    OP_PUSHBUF,
+    OP_PUSH_INT,
+    // Reference Primitives
+    OP_PUSH_BUF,
+    OP_STORE,
+    OP_LOAD,
     // Binary Operations
     OP_ADD,
     OP_SUB,
@@ -26,9 +29,9 @@ typedef enum {
     OP_SHR,
     OP_SAR,
     // I/O
-    OP_OUTINT,
+    OP_OUT_INT,
     // Temporary (TODO: Remove)
-    OP_OUTCHAR, // Easy to display newline charcters
+    OP_OUT_CHAR, // Easy to display newline charcters
 } OpKind;
 
 typedef union {

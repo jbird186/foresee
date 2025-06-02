@@ -13,7 +13,7 @@ typedef enum {
     TOK_COLON,
     TOK_POUND,
     TOK_DOLLAR,
-    TOK_AMPERSAND,
+    TOK_REF,
     TOK_TREE,
 } TokenKind;
 

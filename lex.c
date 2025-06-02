@@ -9,8 +9,9 @@ void tok_arr_free(TokenArray *arr);
 
 void tok_free(Token *tok) {
     switch (tok->kind) {
-        case TOK_WORD:
         case TOK_STR:
+        case TOK_IDENT:
+        case TOK_WORD:
             str_free(&tok->data.t_str);
             break;
         case TOK_TREE:
@@ -198,8 +199,20 @@ void _lex_file(TokenArray *toks, FILE *fptr, bool is_delim) {
         }
         // ampersand
         else if (c == '&') {
-            c = fgetc(fptr);
-            tok_arr_push(toks, (Token){ .kind = TOK_AMPERSAND });
+            char next_c = fgetc(fptr);
+            // reference
+            if ((next_c != EOF) && isalpha(next_c)) {
+                tok_arr_push(toks, (Token){ .kind = TOK_REF });
+            // word
+            } else {
+                String word;
+                str_new_from(&word, "&");
+                tok_arr_push(toks, (Token){
+                    .kind = TOK_WORD,
+                    .data.t_str = word
+                });
+            }
+            c = next_c;
         }
         // left paren
         else if (c == '(') {
@@ -226,7 +239,7 @@ void _lex_file(TokenArray *toks, FILE *fptr, bool is_delim) {
             exit(1);
         }
         // ident
-        else if (isalnum(c)) {
+        else if (isalpha(c)) {
             lex_ident(toks, fptr, &c);
         }
         // word
