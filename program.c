@@ -3,72 +3,19 @@
 #include "lex.h"
 #include "program.h"
 
-void op_free(OpCode *op) {
-    switch (op->kind) {
-        case OP_PUSH_BUF:
-            str_free(&op->data.t_buf_name);
-            break;
-        default:
-            break;
-    };
-}
+void op_free(OpCode *op) {}
 DEFINE_ARRAY_C(OpCode, op)
 
 void macro_free(Macro *macro) {
-    str_free(&macro->name);
-    op_arr_free(&macro->ops);
+    free(macro->args.ptr);
 }
 DEFINE_ARRAY_C(Macro, macro)
 
-void buf_free(Buffer *buf) {
-    str_free(&buf->name);
-}
+void buf_free(Buffer *buf) {}
 DEFINE_ARRAY_C(Buffer, buf)
-
-#define PUSH_INTRINSIC_OPCODE(arr, opcode, alias) { \
-    String name; \
-    str_new_from(&name, alias); \
-    OpCodeArray ops; \
-    op_arr_new(&ops, 1); \
-    op_arr_push(&ops, (OpCode){.kind = opcode}); \
-    macro_arr_push(arr, (Macro) { \
-        .name = name, \
-        .ops = ops \
-    }); \
-}
-
-void macro_arr_push_intrinsics(MacroArray *arr) {
-    // Misc / Special
-    PUSH_INTRINSIC_OPCODE(arr, OP_NOOP, "noop")
-    PUSH_INTRINSIC_OPCODE(arr, OP_EXIT, "exit")
-    // Stack Primitives
-    PUSH_INTRINSIC_OPCODE(arr, OP_DROP, "drop")
-    PUSH_INTRINSIC_OPCODE(arr, OP_DUP, "dup")
-    PUSH_INTRINSIC_OPCODE(arr, OP_PICK, "pick")
-    PUSH_INTRINSIC_OPCODE(arr, OP_PERM, "perm")
-    // Reference Primitives
-    PUSH_INTRINSIC_OPCODE(arr, OP_STORE, "store")
-    PUSH_INTRINSIC_OPCODE(arr, OP_LOAD, "load")
-    // Binary Operations
-    PUSH_INTRINSIC_OPCODE(arr, OP_ADD, "+")
-    PUSH_INTRINSIC_OPCODE(arr, OP_SUB, "-")
-    PUSH_INTRINSIC_OPCODE(arr, OP_MUL, "*")
-    PUSH_INTRINSIC_OPCODE(arr, OP_AND, "&")
-    PUSH_INTRINSIC_OPCODE(arr, OP_OR, "|")
-    PUSH_INTRINSIC_OPCODE(arr, OP_XOR, "^")
-    PUSH_INTRINSIC_OPCODE(arr, OP_SHL, "<<")
-    PUSH_INTRINSIC_OPCODE(arr, OP_SHR, ">>")
-    PUSH_INTRINSIC_OPCODE(arr, OP_SAR, ">>a")
-    // I/O
-    PUSH_INTRINSIC_OPCODE(arr, OP_OUT_INT, ".")
-    // Temporary (TODO: Remove)
-    PUSH_INTRINSIC_OPCODE(arr, OP_OUT_CHAR, ".c")
-
-}
 
 void program_new(Program *program) {
     macro_arr_new(&program->macros, 256);
-    macro_arr_push_intrinsics(&program->macros);
     op_arr_new(&program->ops, 256);
     buf_arr_new(&program->buffers, 256);
 }
@@ -87,20 +34,107 @@ void parse_string(Program *program, TokenArray *toks, int *idx) {
     exit(1);
 }
 
+#define CHECK_INTRINSIC_OPCODE(program, toks, idx, opcode, alias) \
+    if (!strcmp(toks->ptr[idx].data.t_str.ptr, alias)) { \
+        op_arr_push(&program->ops, (OpCode){.kind = opcode}); \
+        idx += 1; \
+        return; \
+    }
+
 void parse_word(Program *program, TokenArray *toks, int *idx) {
-    String name = toks->ptr[*idx].data.t_str;
-    // TODO: better search algorithm
+    ////////// Intrinsics //////////
+    // Binary Operations
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_ADD, "+")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_SUB, "-")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_MUL, "*")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_AND, "&")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_OR, "|")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_XOR, "^")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_SHL, "<<")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_SHR, ">>")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_SAR, ">>a")
+    // I/O
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_OUT_INT, ".")
+    // Temporary (TODO: Remove)
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_OUT_CHAR, ".c")
+
+    ////////// Misc //////////
+    String word = toks->ptr[*idx].data.t_str;
+
+    // TODO: Better search algorithm
     for (int i = 0; i < program->macros.length; i++) {
-        if (!strcmp(program->macros.ptr[i].name.ptr, name.ptr)) {
-            for (int j = 0; j < program->macros.ptr[i].ops.length; j++) {
-                op_arr_push(&program->ops, program->macros.ptr[i].ops.ptr[j]);
+        Macro macro = program->macros.ptr[i];
+        if (!strcmp(macro.name.ptr, word.ptr)) {
+            // Arguments (optional)
+            int n_args = 0;
+            Token next_tok = toks->ptr[*idx + 1];
+            if (next_tok.kind == TOK_PAREN_TREE) {
+                TokenArray args_tree = next_tok.data.t_tree;
+                if (macro.args.length != args_tree.length) {
+                    fprintf(stderr, "Error: invalid number of arguments for macro '%s'\n", word.ptr);
+                    exit(1);
+                }
+
+                // Iterate over the arguments
+                for (n_args = 0; n_args < macro.args.length; n_args++) {
+                    // TODO: ensure that the argument name is not already taken by a macro
+                    Token arg = args_tree.ptr[n_args];
+                    if (arg.kind != TOK_BRACE_TREE) {
+                        fprintf(stderr, "Error: arguments for macro '%s' must be enclosed in braces\n", word.ptr);
+                        exit(1);
+                    }
+
+                    // Define each argument as a macro
+                    StringArray inner_args;
+                    str_arr_new(&inner_args, 0);
+                    macro_arr_push(&program->macros, (Macro){
+                        .name = macro.args.ptr[n_args],
+                        .args = inner_args,
+                        .toks = arg.data.t_tree
+                    });
+                }
+                *idx += 1;
             }
+
+            // Ensure that the number of macros does not increase
+            int n_macros = program->macros.length;
+            parse_tokens(program, &macro.toks);
+            if (n_macros != program->macros.length) {
+                fprintf(stderr, "Error: macro '%s' cannot define internal macros\n", word.ptr);
+                exit(1);
+            }
+
+            // Since the arguments are themselves just macros,
+            // we still need to free their 0-sized argument array
+            for (int i = program->macros.length - n_args; i < program->macros.length; i++) {
+                str_arr_free(&program->macros.ptr[i].args);
+            }
+            program->macros.length -= n_args;
+
             *idx += 1;
             return;
         }
     }
-    fprintf(stderr, "Error: macro '%s' not defined\n", name.ptr);
+    fprintf(stderr, "Error: macro '%s' not defined\n", word.ptr);
     exit(1);
+}
+
+void parse_ident(Program *program, TokenArray *toks, int *idx) {
+    ////////// Intrinsics //////////
+    // Misc / Special
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_NOOP, "noop")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_EXIT, "exit")
+    // Stack Primitives
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_DROP, "drop")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_DUP, "dup")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_PICK, "pick")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_PERM, "perm")
+    // Reference Primitives
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_STORE, "store")
+    CHECK_INTRINSIC_OPCODE(program, toks, *idx, OP_LOAD, "load")
+
+    ////////// Misc //////////
+    parse_word(program, toks, idx);
 }
 
 // TODO
@@ -116,12 +150,24 @@ void parse_pound(Program *program, TokenArray *toks, int *idx) {
         exit(1);
     }
 
-    // TODO:
-    // arguments (optional)
-    // int n_args = 0;
-    // if (toks->ptr[*idx + 2].kind == TOK_PAREN_TREE) {
-    //     *idx += 1;
-    // }
+    // Arguments (optional)
+    StringArray args;
+    str_arr_new(&args, 0);
+    int n_args;
+    if (toks->ptr[*idx + 2].kind == TOK_PAREN_TREE) {
+        for (n_args = 0; n_args < toks->ptr[*idx + 2].data.t_tree.length; n_args++) {
+            Token arg = toks->ptr[*idx + 2].data.t_tree.ptr[n_args];
+            if (arg.kind != TOK_IDENT) {
+                fprintf(stderr,
+                    "Error: invalid argument name for macro '%s': '%s'\n",
+                    name.data.t_str.ptr, arg.data.t_str.ptr
+                );
+                exit(1);
+            }
+            str_arr_push(&args, arg.data.t_str);
+        }
+        *idx += 1;
+    }
 
     Token tree = toks->ptr[*idx + 2];
     if (tree.kind != TOK_BRACE_TREE) {
@@ -136,17 +182,10 @@ void parse_pound(Program *program, TokenArray *toks, int *idx) {
         }
     }
 
-    OpCodeArray macro_ops;
-    op_arr_new(&macro_ops, 256);
-    Program macro_program = *program;
-    macro_program.ops = macro_ops;
-    parse_tokens(&macro_program, &tree.data.t_tree);
-
-    String name_copy;
-    str_new_from(&name_copy, name.data.t_str.ptr);
     macro_arr_push(&program->macros, (Macro){
-        .name = name_copy,
-        .ops = macro_program.ops
+        .name = name.data.t_str,
+        .args = args,
+        .toks = tree.data.t_tree
     });
     *idx += 3;
 }
@@ -163,10 +202,8 @@ void parse_dollar(Program *program, TokenArray *toks, int *idx) {
         exit(1);
     }
 
-    String name_copy;
-    str_new_from(&name_copy, name.data.t_str.ptr);
     buf_arr_push(&program->buffers, (Buffer) {
-        .name = name_copy,
+        .name = name.data.t_str,
         .size = size.data.t_int
     });
     *idx += 3;
@@ -182,11 +219,9 @@ void parse_ref(Program *program, TokenArray *toks, int *idx) {
     // TODO: better search algorithm
     for (int i = 0; i < program->buffers.length; i++) {
         if (!strcmp(program->buffers.ptr[i].name.ptr, name.data.t_str.ptr)) {
-            String buf_name;
-            str_new_from(&buf_name, name.data.t_str.ptr);
             op_arr_push(&program->ops, (OpCode){
                 .kind = OP_PUSH_BUF,
-                .data.t_buf_name = buf_name,
+                .data.t_buf_name = name.data.t_str,
             });
             *idx += 2;
             return;
@@ -224,9 +259,11 @@ void parse_tokens(Program *program, TokenArray *toks) {
             case TOK_STR:
                 parse_string(program, toks, &idx);
                 break;
-            case TOK_IDENT:
             case TOK_WORD:
                 parse_word(program, toks, &idx);
+                break;
+            case TOK_IDENT:
+                parse_ident(program, toks, &idx);
                 break;
             case TOK_COLON:
                 parse_colon(program, toks, &idx);

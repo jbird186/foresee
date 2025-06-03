@@ -232,7 +232,6 @@ void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
         }
         // right delim (searching for delim)
         else if (delim && (c == delim)) {
-            c = fgetc(fptr);
             return;
         }
         // right delim (not searching for delim)

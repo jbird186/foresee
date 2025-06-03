@@ -48,7 +48,8 @@ DEFINE_ARRAY_TYPE(OpCode)
 
 typedef struct {
     String name;
-    OpCodeArray ops;
+    StringArray args;
+    TokenArray toks;
 } Macro;
 DEFINE_ARRAY_TYPE(Macro)
 
