@@ -79,9 +79,13 @@ void parse_word(Program *program, TokenArray *toks, int *idx) {
                 for (n_args = 0; n_args < macro.args.length; n_args++) {
                     // TODO: ensure that the argument name is not already taken by a macro
                     Token arg = args_tree.ptr[n_args];
-                    if (arg.kind != TOK_BRACE_TREE) {
-                        fprintf(stderr, "Error: arguments for macro '%s' must be enclosed in braces\n", word.ptr);
-                        exit(1);
+
+                    TokenArray arg_toks;
+                    if (arg.kind == TOK_BRACE_TREE) {
+                        arg_toks = arg.data.t_tree;
+                    } else {
+                        tok_arr_new(&arg_toks, 1);
+                        tok_arr_push(&arg_toks, arg);
                     }
 
                     // Define each argument as a macro
@@ -90,7 +94,7 @@ void parse_word(Program *program, TokenArray *toks, int *idx) {
                     macro_arr_push(&program->macros, (Macro){
                         .name = macro.args.ptr[n_args],
                         .args = inner_args,
-                        .toks = arg.data.t_tree
+                        .toks = arg_toks
                     });
                 }
                 *idx += 1;
