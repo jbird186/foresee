@@ -162,36 +162,28 @@ void compile_op(FILE* fptr, OpCode op) {
             COMPILE_BASIC_BINOP(fptr, OP_SAR, sar, cl);
             break;
         case OP_IF:
-            char *jump_name = op.data.t_cond.is_last ? "endif" : "else";
             fprintf(fptr,
-                "    ; OP_IF\n"
+                "    ; OP_IF (start)\n"
                 "    pop     rax\n"
                 "    test    rax, rax\n"
-                "    jz     .%s_%ld\n",
-                jump_name, op.data.t_cond.ref
+                "    jz     .if_jmp_%ld_%ld\n",
+                op.data.t_if.ref_id, op.data.t_if.ref_idx
             );
-            compile_ops(fptr, &op.data.t_cond.ops);
-            if (op.data.t_cond.is_last) {
-                fprintf(fptr,
-                    ".endif_%ld:\n",
-                    op.data.t_cond.ref
-                );
-            }
-            break;
-        case OP_ELSE:
+            compile_ops(fptr, &op.data.t_if.ops);
             fprintf(fptr,
-                "    ; OP_ELSE\n"
-                "    jmp     .endif_%ld\n"
-                ".else_%ld:\n",
-                op.data.t_cond.ref, op.data.t_cond.ref
+                "    ; OP_IF (end)\n"
+                "    jmp     .if_jmp_%ld_end\n"
+                ".if_jmp_%ld_%ld:\n",
+                op.data.t_if.ref_id,
+                op.data.t_if.ref_id, op.data.t_if.ref_idx
             );
-            compile_ops(fptr, &op.data.t_cond.ops);
-            if (op.data.t_cond.is_last) {
-                fprintf(fptr,
-                    ".endif_%ld:\n",
-                    op.data.t_cond.ref
-                );
-            }
+            break;
+        case OP_ENDIF:
+            fprintf(fptr,
+                "    ; OP_ENDIF\n"
+                ".if_jmp_%ld_end:\n",
+                op.data.t_int
+            );
             break;
         case OP_OUT_INT:
             fputs(

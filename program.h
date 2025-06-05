@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stdbool.h>
 #include <stdint.h>
 #include "arr.h"
 #include "str.h"
@@ -32,7 +31,7 @@ typedef enum {
     OP_SAR,
     // Branching
     OP_IF,
-    OP_ELSE,
+    OP_ENDIF,
     // I/O
     OP_OUT_INT,
     // Temporary (TODO: Remove)
@@ -44,14 +43,14 @@ DEFINE_ARRAY_TYPE(OpCode)
 
 typedef struct {
     OpCodeArray ops;
-    uint64_t ref;
-    bool is_last;
-} ConditionalData;
+    uint64_t ref_id;
+    uint64_t ref_idx;
+} IfData;
 
 typedef union {
     uint64_t t_int;
     String t_name;
-    ConditionalData t_cond;
+    IfData t_if;
 } OpData;
 
 struct OpCode {

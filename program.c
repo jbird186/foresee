@@ -7,8 +7,7 @@ void op_arr_free(OpCodeArray *arr);
 void op_free(OpCode *op) {
     switch (op->kind) {
         case OP_IF:
-        case OP_ELSE:
-            op_arr_free(&op->data.t_cond.ops);
+            op_arr_free(&op->data.t_if.ops);
     }
 }
 DEFINE_ARRAY_C(OpCode, op)
@@ -157,7 +156,14 @@ void parse_colon(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     exit(1);
 }
 
-void _parse_question_with_id(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx, uint64_t ref_id) {
+void _parse_question_with_id(
+    OpCodeArray *ops,
+    Program *program,
+    TokenArray *toks,
+    int *idx,
+    uint64_t ref_id,
+    uint64_t ref_idx
+) {
     Token if_tree = toks->ptr[*idx + 1];
     if (if_tree.kind != TOK_BRACE_TREE) {
         fprintf(stderr, "Error: invalid 'if' condition\n");
@@ -169,48 +175,47 @@ void _parse_question_with_id(OpCodeArray *ops, Program *program, TokenArray *tok
     parse_tokens_with(&if_ops, program, &if_tree.data.t_tree);
     OpCode if_op = {
         .kind = OP_IF,
-        .data.t_cond = (ConditionalData) {
+        .data.t_if = (IfData) {
             .ops = if_ops,
-            .ref = ref_id,
+            .ref_id = ref_id,
+            .ref_idx = ref_idx++,
         },
     };
+
+    op_arr_push(ops, if_op);
     *idx += 2;
 
     // No else condition
     if (toks->ptr[*idx].kind != TOK_COLON) {
-        if_op.data.t_cond.is_last = true;
-        op_arr_push(ops, if_op);
+        op_arr_push(ops, (OpCode){.kind = OP_ENDIF, .data.t_int = ref_id});
         return;
     }
-    if_op.data.t_cond.is_last = false;
-    op_arr_push(ops, if_op);
     *idx += 1;
 
     // Else condition
     Token next_tok = toks->ptr[*idx];
     if (next_tok.kind == TOK_BRACE_TREE) {
-        OpCodeArray else_ops;
-        op_arr_new(&else_ops, next_tok.data.t_tree.length);
-        parse_tokens_with(&else_ops, program, &next_tok.data.t_tree);
+        parse_tokens_with(ops, program, &next_tok.data.t_tree);
         op_arr_push(ops, (OpCode){
-            .kind = OP_ELSE,
-            .data.t_cond = (ConditionalData) {
-                .ops = else_ops,
-                .ref = ref_id,
-                .is_last = true,
-            },
+            .kind = OP_ENDIF,
+            .data.t_int = ref_id,
         });
+        *idx += 1;
     } else {
-        // TODO
-        fprintf(stderr, "Error: invalid definition for if-else condition\n");
-        exit(1);
-        while (next_tok.kind != TOK_QUESTION) {}
+        TokenArray if_condition;
+        tok_arr_new(&if_condition, 16);
+        while (toks->ptr[*idx].kind != TOK_QUESTION) {
+            tok_arr_push(&if_condition, toks->ptr[*idx]);
+            *idx += 1;
+        }
+        parse_tokens(program, &if_condition);
+        free(if_condition.ptr);
+        _parse_question_with_id(ops, program, toks, idx, ref_id, ref_idx);
     }
-    *idx += 1;
 }
 
 void parse_question(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
-    _parse_question_with_id(ops, program, toks, idx, ASM_REF_ID++);
+    _parse_question_with_id(ops, program, toks, idx, ASM_REF_ID++, 0);
 }
 
 void parse_pound(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
