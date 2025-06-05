@@ -1,10 +1,4 @@
 // Print a newline
 #cr{'\n'.c}
 
-0 ?{
-    'a'
-}: 1 ?{
-    'b'
-}: {
-    'c'
-}.c cr
+$buf "32"

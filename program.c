@@ -265,44 +265,36 @@ void parse_dollar(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx
         fprintf(stderr, "Error: invalid definition for buffer\n");
         exit(1);
     }
-
-    String init = {
-        .ptr = NULL,
-        .length = 0
-    };
     *idx += 2;
 
-    // Initialize to string (optional)
-    if (toks->ptr[*idx].kind == TOK_STR) {
-        init = toks->ptr[*idx].data.t_str;
-        *idx += 1;
-    }
+    Buffer buf = {.name = name.data.t_str};
 
-    // Specify size (optional if not initialized to string)
-    uint64_t size = init.length;
+    // Specify size
     if (toks->ptr[*idx].kind == TOK_INT) {
-        size = toks->ptr[*idx].data.t_int;
+        buf.size = toks->ptr[*idx].data.t_int;
         *idx += 1;
-    } else if (init.ptr == NULL) {
+        // Initialize to String (optional)
+        if (toks->ptr[*idx].kind == TOK_STR) {
+            buf.init = toks->ptr[*idx].data.t_str;
+            *idx += 1;
+        }
+        // Specified size is too small
+        if ((buf.init.ptr != NULL) && (buf.size < buf.init.length)) {
+            fprintf(stderr, "Error: invalid size for buffer '%s'\n", name.data.t_str.ptr);
+            exit(1);
+        }
+    }
+    // Initialize to String
+    else if (toks->ptr[*idx].kind == TOK_STR) {
+        buf.init = toks->ptr[*idx].data.t_str;
+        buf.size = buf.init.length;
+        *idx += 1;
+    } else {
         fprintf(stderr, "Error: invalid definition for buffer '%s'\n", name.data.t_str.ptr);
         exit(1);
     }
 
-    if ((init.ptr != NULL) && (size < init.length)) {
-        fprintf(stderr, "Error: invalid size for buffer '%s'\n", name.data.t_str.ptr);
-        exit(1);
-    }
-
-    if (toks->ptr[*idx].kind != TOK_SEMICOLON) {
-        fprintf(stderr, "Error: missing semicolon for buffer '%s'\n", name.data.t_str.ptr);
-        exit(1);
-    }
-
-    buf_arr_push(&program->buffers, (Buffer) {
-        .name = name.data.t_str,
-        .init = init,
-        .size = size
-    });
+    buf_arr_push(&program->buffers, buf);
     *idx += 1;
 }
 
