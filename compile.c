@@ -65,6 +65,7 @@ char *text_prefix =
         "    push    rax\n", \
     fptr)
 
+void compile_ops(FILE* fptr, OpCodeArray *ops);
 void compile_op(FILE* fptr, OpCode op) {
     switch (op.kind) {
         case OP_NOOP: break;
@@ -115,7 +116,7 @@ void compile_op(FILE* fptr, OpCode op) {
             fprintf(fptr,
                 "    ; OP_PUSH_BUF\n"
                 "    push    %s\n",
-                op.data.t_buf_name.ptr
+                op.data.t_name.ptr
             );
             break;
         case OP_STORE:
@@ -160,6 +161,38 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_SAR:
             COMPILE_BASIC_BINOP(fptr, OP_SAR, sar, cl);
             break;
+        case OP_IF:
+            char *jump_name = op.data.t_cond.is_last ? "endif" : "else";
+            fprintf(fptr,
+                "    ; OP_IF\n"
+                "    pop     rax\n"
+                "    test    rax, rax\n"
+                "    jz     .%s_%ld\n",
+                jump_name, op.data.t_cond.ref
+            );
+            compile_ops(fptr, &op.data.t_cond.ops);
+            if (op.data.t_cond.is_last) {
+                fprintf(fptr,
+                    ".endif_%ld:\n",
+                    op.data.t_cond.ref
+                );
+            }
+            break;
+        case OP_ELSE:
+            fprintf(fptr,
+                "    ; OP_ELSE\n"
+                "    jmp     .endif_%ld\n"
+                ".else_%ld:\n",
+                op.data.t_cond.ref, op.data.t_cond.ref
+            );
+            compile_ops(fptr, &op.data.t_cond.ops);
+            if (op.data.t_cond.is_last) {
+                fprintf(fptr,
+                    ".endif_%ld:\n",
+                    op.data.t_cond.ref
+                );
+            }
+            break;
         case OP_OUT_INT:
             fputs(
                 "    ; OP_OUT_INT\n"
@@ -178,6 +211,12 @@ void compile_op(FILE* fptr, OpCode op) {
             fprintf(stderr, "Error: invalid opcode '%d'\n", op.kind);
             fclose(fptr);
             exit(1);
+    }
+}
+
+void compile_ops(FILE* fptr, OpCodeArray *ops) {
+    for (int i = 0; i < ops->length; i++) {
+        compile_op(fptr, ops->ptr[i]);
     }
 }
 
@@ -220,9 +259,7 @@ void compile_buf_bss(FILE* fptr, Buffer buf) {
 
 void compile_program(FILE* fptr, Program *program) {
     fputs(text_prefix, fptr);
-    for (int i = 0; i < program->ops.length; i++) {
-        compile_op(fptr, program->ops.ptr[i]);
-    }
+    compile_ops(fptr, &program->ops);
     fputs(
         "    ; EXIT\n"
         "    mov \trdi, 0\n"

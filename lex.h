@@ -12,6 +12,7 @@ typedef enum {
     TOK_WORD,
     TOK_SEMICOLON,
     TOK_COLON,
+    TOK_QUESTION,
     TOK_POUND,
     TOK_DOLLAR,
     TOK_REF,

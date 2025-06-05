@@ -77,8 +77,9 @@ void lex_int(TokenArray *toks, FILE *fptr, char *c) {
 }
 
 void lex_char(TokenArray *toks, FILE *fptr, char *c) {
-    char c2, c3;
-    if (((c2 = fgetc(fptr)) == EOF) || ((c3 = fgetc(fptr)) == EOF)) {
+    char c2 = fgetc(fptr);
+    char c3 = fgetc(fptr);
+    if ((c2 == EOF) || (c3 == EOF)) {
         fprintf(stderr, "Error: invalid char literal\n");
         fclose(fptr);
         exit(1);
@@ -145,7 +146,7 @@ void lex_ampersand(TokenArray *toks, FILE *fptr, char *c) {
 
 void lex_tree(TokenArray *toks, FILE *fptr, char *c, TokenKind kind, char delim) {
     TokenArray tree;
-    tok_arr_new(&tree, 256);
+    tok_arr_new(&tree, 32);
     _lex_file(&tree, fptr, delim);
     tok_arr_push(toks, (Token){
         .kind = kind,
@@ -156,7 +157,7 @@ void lex_tree(TokenArray *toks, FILE *fptr, char *c, TokenKind kind, char delim)
 
 void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
     String word;
-    str_new(&word, 16);
+    str_new(&word, 8);
     str_push(&word, *c);
     while ((*c = fgetc(fptr)) != EOF) {
         if (!isalnum(*c)) break;
@@ -170,7 +171,7 @@ void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
 
 void lex_word(TokenArray *toks, FILE *fptr, char *c) {
     String word;
-    str_new(&word, 16);
+    str_new(&word, 8);
     Token tok = {.kind = TOK_WORD};
 
     char prev_c = *c;
@@ -195,7 +196,6 @@ void lex_word(TokenArray *toks, FILE *fptr, char *c) {
         if ((*c == '(') || (*c == ')') || (*c == '{') || (*c == '}') || isspace(*c)) {
             break;
         }
-
         prev_c = *c;
     }
 
@@ -230,6 +230,11 @@ void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
         // colon
         else if (c == ':') {
             tok_arr_push(toks, (Token){ .kind = TOK_COLON });
+            c = fgetc(fptr);
+        }
+        // question mark
+        else if (c == '?') {
+            tok_arr_push(toks, (Token){ .kind = TOK_QUESTION });
             c = fgetc(fptr);
         }
         // pound sign

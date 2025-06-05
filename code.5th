@@ -1,12 +1,4 @@
 // Print a newline
 #cr{'\n'.c}
 
-#abc(aaa){4 aaa +}
-
-$buf "test\nwow\0";
-$buf2 123;
-
-9 dup . cr
-&buf store &buf load . cr
-
-abc(3). cr
+144 ? { 1. } : { 0. }
