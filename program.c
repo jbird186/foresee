@@ -276,11 +276,11 @@ void parse_dollar(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx
         // Initialize to String (optional)
         if (toks->ptr[*idx].kind == TOK_STR) {
             buf.init = toks->ptr[*idx].data.t_str;
-        }
-        // Specified size is too small
-        if ((buf.init.ptr != NULL) && (buf.size < buf.init.length)) {
-            fprintf(stderr, "Error: invalid size for buffer '%s'\n", name.data.t_str.ptr);
-            exit(1);
+            // Specified size is too small
+            if (buf.size < buf.init.length) {
+                fprintf(stderr, "Error: invalid size for buffer '%s'\n", name.data.t_str.ptr);
+                exit(1);
+            }
         }
     }
     // Initialize to String
