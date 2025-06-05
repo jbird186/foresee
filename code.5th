@@ -1,10 +1,4 @@
 // Print a newline
 #cr{'\n'.c}
 
-1 ?{
-    'a'
-}: 1 ?{
-    'b'
-}: {
-    'c'
-}.c cr
+3. cr

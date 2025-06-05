@@ -1,8 +1,9 @@
+#include <ctype.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
+#include "string.h"
 #include "lex.h"
 
 void _lex_file(TokenArray *toks, FILE *fptr, char delim);
@@ -175,32 +176,29 @@ void lex_word(TokenArray *toks, FILE *fptr, char *c) {
     Token tok = {.kind = TOK_WORD};
 
     char prev_c = *c;
-    while ((*c = fgetc(fptr)) != EOF) {
+    while (1) {
+        *c = fgetc(fptr);
+
         // Skip parsing of comments
         if ((prev_c == '/') && (*c == '/')) {
-            // move to end of line
-            while ((*c = fgetc(fptr)) != '\n');
+            // Move to end of line
+            while (((*c = fgetc(fptr)) != '\n') && (*c != EOF));
+            if (word.length != 0) break;
 
-            // if the word is only a comment, do nothing
-            if (word.length == 0) {
-                str_free(&word);
-            } else {
-                tok.data.t_str = word;
-                tok_arr_push(toks, tok);
-            }
-
+            // If the word is only a comment, do nothing
+            str_free(&word);
             return;
         }
 
         str_push(&word, prev_c);
-        if ((*c == '(') || (*c == ')') || (*c == '{') || (*c == '}') || isspace(*c)) {
+        if ((*c == EOF) || isspace(*c) || strchr("(){}", *c)) {
             break;
         }
         prev_c = *c;
     }
 
     tok.data.t_str = word;
-    tok_arr_push(toks,tok);
+    tok_arr_push(toks, tok);
 }
 
 void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
@@ -210,8 +208,10 @@ void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
         while ((c != EOF) && isspace(c)) {
             c = fgetc(fptr);
         }
+        if (c == EOF) return;
+
         // literal integer
-        if (isdigit(c)) {
+        else if (isdigit(c)) {
             lex_int(toks, fptr, &c);
         }
         // literal char

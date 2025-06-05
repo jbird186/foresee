@@ -19,6 +19,9 @@ int main() {
     tok_arr_new(&toks, 256);
     lex_file(&toks, rptr);
     fclose(rptr);
+    for (int i = 0; i < toks.length; i++) {
+        printf("type: %d\n", toks.ptr[i].kind);
+    }
 
     printf("Parsing...\n");
     Program program;
