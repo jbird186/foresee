@@ -161,17 +161,18 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_SAR:
             COMPILE_BASIC_BINOP(fptr, OP_SAR, sar, cl);
             break;
-        case OP_IF:
+        case OP_IF_PREFIX:
             fprintf(fptr,
-                "    ; OP_IF (start)\n"
+                "    ; OP_IF_PREFIX\n"
                 "    pop     rax\n"
                 "    test    rax, rax\n"
                 "    jz     .if_jmp_%ld_%ld\n",
                 op.data.t_if.ref_id, op.data.t_if.ref_idx
             );
-            compile_ops(fptr, &op.data.t_if.ops);
+            break;
+        case OP_IF_POSTFIX:
             fprintf(fptr,
-                "    ; OP_IF (end)\n"
+                "    ; OP_IF_POSTFIX\n"
                 "    jmp     .if_jmp_%ld_end\n"
                 ".if_jmp_%ld_%ld:\n",
                 op.data.t_if.ref_id,

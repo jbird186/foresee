@@ -4,12 +4,7 @@
 #include "program.h"
 
 void op_arr_free(OpCodeArray *arr);
-void op_free(OpCode *op) {
-    switch (op->kind) {
-        case OP_IF:
-            op_arr_free(&op->data.t_if.ops);
-    }
-}
+void op_free(OpCode *op) {}
 DEFINE_ARRAY_C(OpCode, op)
 
 void macro_free(Macro *macro) {
@@ -170,19 +165,18 @@ void _parse_question_with_id(
         exit(1);
     }
 
-    OpCodeArray if_ops;
-    op_arr_new(&if_ops, if_tree.data.t_tree.length);
-    parse_tokens_with(&if_ops, program, &if_tree.data.t_tree);
-    OpCode if_op = {
-        .kind = OP_IF,
-        .data.t_if = (IfData) {
-            .ops = if_ops,
-            .ref_id = ref_id,
-            .ref_idx = ref_idx++,
-        },
-    };
+    op_arr_push(ops, (OpCode){
+        .kind = OP_IF_PREFIX,
+        .data.t_if.ref_id = ref_id,
+        .data.t_if.ref_idx = ref_idx
+    });
+    parse_tokens_with(ops, program, &if_tree.data.t_tree);
+    op_arr_push(ops, (OpCode){
+        .kind = OP_IF_POSTFIX,
+        .data.t_if.ref_id = ref_id,
+        .data.t_if.ref_idx = ref_idx
+    });
 
-    op_arr_push(ops, if_op);
     *idx += 2;
 
     // No else condition
@@ -210,7 +204,7 @@ void _parse_question_with_id(
         }
         parse_tokens(program, &if_condition);
         free(if_condition.ptr);
-        _parse_question_with_id(ops, program, toks, idx, ref_id, ref_idx);
+        _parse_question_with_id(ops, program, toks, idx, ref_id, ++ref_idx);
     }
 }
 

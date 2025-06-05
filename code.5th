@@ -1,4 +1,10 @@
 // Print a newline
 #cr{'\n'.c}
 
-3. cr
+0 ?{
+    'a'
+}: 1 ?{
+    'b'
+}: {
+    'c'
+}.c cr

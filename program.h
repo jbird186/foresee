@@ -30,7 +30,8 @@ typedef enum {
     OP_SHR,
     OP_SAR,
     // Branching
-    OP_IF,
+    OP_IF_PREFIX,
+    OP_IF_POSTFIX,
     OP_ENDIF,
     // I/O
     OP_OUT_INT,
@@ -42,7 +43,6 @@ typedef struct OpCode OpCode;
 DEFINE_ARRAY_TYPE(OpCode)
 
 typedef struct {
-    OpCodeArray ops;
     uint64_t ref_id;
     uint64_t ref_idx;
 } IfData;
