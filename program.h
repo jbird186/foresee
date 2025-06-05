@@ -55,6 +55,7 @@ DEFINE_ARRAY_TYPE(Macro)
 
 typedef struct {
     String name;
+    String init;
     uint64_t size;
 } Buffer;
 DEFINE_ARRAY_TYPE(Buffer)

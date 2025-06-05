@@ -7,10 +7,10 @@
 #include "compile.h"
 
 int main() {
-    printf("Opening file 'code.f'...\n");
-    FILE* rptr = fopen("code.f", "r");
+    printf("Opening file 'code.5th'...\n");
+    FILE* rptr = fopen("code.5th", "r");
     if (!rptr) {
-        fprintf(stderr, "Error: failed to read '%s' at %s:%d\n", "code.f", __FILE__, __LINE__);
+        fprintf(stderr, "Error: failed to read '%s' at %s:%d\n", "code.5th", __FILE__, __LINE__);
         exit(1);
     }
 

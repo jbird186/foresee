@@ -200,17 +200,45 @@ void parse_dollar(Program *program, TokenArray *toks, int *idx) {
         fprintf(stderr, "Error: invalid definition for buffer\n");
         exit(1);
     }
-    Token size = toks->ptr[*idx + 2];
-    if (size.kind != TOK_INT) {
+
+    String init = {
+        .ptr = NULL,
+        .length = 0
+    };
+    *idx += 2;
+
+    // Initialize to string (optional)
+    if (toks->ptr[*idx].kind == TOK_STR) {
+        init = toks->ptr[*idx].data.t_str;
+        *idx += 1;
+    }
+
+    // Specify size (optional if not initialized to string)
+    uint64_t size = init.length;
+    if (toks->ptr[*idx].kind == TOK_INT) {
+        size = toks->ptr[*idx].data.t_int;
+        *idx += 1;
+    } else if (init.ptr == NULL) {
         fprintf(stderr, "Error: invalid definition for buffer '%s'\n", name.data.t_str.ptr);
+        exit(1);
+    }
+
+    if ((init.ptr != NULL) && (size < init.length)) {
+        fprintf(stderr, "Error: invalid size for buffer '%s'\n", name.data.t_str.ptr);
+        exit(1);
+    }
+
+    if (toks->ptr[*idx].kind != TOK_SEMICOLON) {
+        fprintf(stderr, "Error: missing semicolon for buffer '%s'\n", name.data.t_str.ptr);
         exit(1);
     }
 
     buf_arr_push(&program->buffers, (Buffer) {
         .name = name.data.t_str,
-        .size = size.data.t_int
+        .init = init,
+        .size = size
     });
-    *idx += 3;
+    *idx += 1;
 }
 
 void parse_ref(Program *program, TokenArray *toks, int *idx) {

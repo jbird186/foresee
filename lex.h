@@ -10,6 +10,7 @@ typedef enum {
     TOK_STR,
     TOK_IDENT,
     TOK_WORD,
+    TOK_SEMICOLON,
     TOK_COLON,
     TOK_POUND,
     TOK_DOLLAR,

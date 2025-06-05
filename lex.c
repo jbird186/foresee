@@ -171,17 +171,36 @@ void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
 void lex_word(TokenArray *toks, FILE *fptr, char *c) {
     String word;
     str_new(&word, 16);
-    str_push(&word, *c);
+    Token tok = {.kind = TOK_WORD};
+
+    char prev_c = *c;
     while ((*c = fgetc(fptr)) != EOF) {
+        // Skip parsing of comments
+        if ((prev_c == '/') && (*c == '/')) {
+            // move to end of line
+            while ((*c = fgetc(fptr)) != '\n');
+
+            // if the word is only a comment, do nothing
+            if (word.length == 0) {
+                str_free(&word);
+            } else {
+                tok.data.t_str = word;
+                tok_arr_push(toks, tok);
+            }
+
+            return;
+        }
+
+        str_push(&word, prev_c);
         if ((*c == '(') || (*c == ')') || (*c == '{') || (*c == '}') || isspace(*c)) {
             break;
         }
-        str_push(&word, *c);
+
+        prev_c = *c;
     }
-    tok_arr_push(toks, (Token) {
-        .kind = TOK_WORD,
-        .data.t_str = word,
-    });
+
+    tok.data.t_str = word;
+    tok_arr_push(toks,tok);
 }
 
 void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
@@ -202,6 +221,11 @@ void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
         // literal string
         else if (c == '\"') {
             lex_str(toks, fptr, &c);
+        }
+        // semicolon
+        else if (c == ';') {
+            tok_arr_push(toks, (Token){ .kind = TOK_SEMICOLON });
+            c = fgetc(fptr);
         }
         // colon
         else if (c == ':') {

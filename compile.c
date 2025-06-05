@@ -181,10 +181,36 @@ void compile_op(FILE* fptr, OpCode op) {
     }
 }
 
+char *data_prefix =
+    "section .data\n";
+
+// TODO: display original string in comment
+void compile_buf_data(FILE* fptr, Buffer buf) {
+    fprintf(fptr,
+        "    ; $%s %ld\n"
+        "    %s db ",
+        buf.name.ptr, buf.size,
+        buf.name.ptr
+    );
+    for (int i = 0; i < buf.init.length; i++) {
+        fprintf(fptr, "%d", buf.init.ptr[i]);
+        if (i + 1 < buf.init.length) {
+            fputc(',', fptr);
+        }
+    }
+    fputc('\n', fptr);
+    if (buf.size != buf.init.length) {
+        fprintf(fptr,
+            "        times %ld - ($ - %s) db 0\n",
+            buf.size, buf.name.ptr
+        );
+    }
+}
+
 char *bss_prefix =
     "section .bss\n";
 
-void compile_buf(FILE* fptr, Buffer buf) {
+void compile_buf_bss(FILE* fptr, Buffer buf) {
     fprintf(fptr,
         "    ; $%s %ld\n"
         "    %s resb %ld\n",
@@ -203,8 +229,18 @@ void compile_program(FILE* fptr, Program *program) {
         "    mov \teax, 60\n"
         "    syscall\n",
     fptr);
+
+    fputs(data_prefix, fptr);
+    for (int i = 0; i < program->buffers.length; i++) {
+        if (program->buffers.ptr[i].init.length != 0) {
+            compile_buf_data(fptr, program->buffers.ptr[i]);
+        }
+    }
+
     fputs(bss_prefix, fptr);
     for (int i = 0; i < program->buffers.length; i++) {
-        compile_buf(fptr, program->buffers.ptr[i]);
+        if (program->buffers.ptr[i].init.length == 0) {
+            compile_buf_bss(fptr, program->buffers.ptr[i]);
+        }
     }
 }
