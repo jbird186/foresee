@@ -276,7 +276,6 @@ void parse_dollar(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx
         // Initialize to String (optional)
         if (toks->ptr[*idx].kind == TOK_STR) {
             buf.init = toks->ptr[*idx].data.t_str;
-            *idx += 1;
         }
         // Specified size is too small
         if ((buf.init.ptr != NULL) && (buf.size < buf.init.length)) {
@@ -288,14 +287,13 @@ void parse_dollar(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx
     else if (toks->ptr[*idx].kind == TOK_STR) {
         buf.init = toks->ptr[*idx].data.t_str;
         buf.size = buf.init.length;
-        *idx += 1;
     } else {
         fprintf(stderr, "Error: invalid definition for buffer '%s'\n", name.data.t_str.ptr);
         exit(1);
     }
+    *idx += 1;
 
     buf_arr_push(&program->buffers, buf);
-    *idx += 1;
 }
 
 void parse_ref(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
