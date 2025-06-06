@@ -12,7 +12,7 @@ char *text_prefix =
     "BITS 64\n"
     "global _start\n"
     "section .text\n"
-    "outi:\n"
+    "out_int:\n"
     "    mov     r8, -3689348814741910323\n"
     "    sub     rsp, 40\n"
     "    lea     rcx, [rsp+19]\n"
@@ -44,7 +44,7 @@ char *text_prefix =
     "    syscall\n"
     "    add     rsp, 40\n"
     "    ret\n"
-    "outc:\n"
+    "out_char:\n"
     "    sub     rsp, 8\n"
     "    mov     [rsp], dil\n"
     "    mov     edi, 1\n"
@@ -167,6 +167,39 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_SAR:
             COMPILE_BASIC_BINOP(fptr, OP_SAR, sar, cl);
             break;
+        case OP_EQ:
+            fputs(
+                "    ; OP_EQ\n"
+                "    pop     rbx\n"
+                "    pop     rax\n"
+                "    cmp     rax, rbx\n"
+                "    sete    al\n"
+                "    movzx   rax, al\n"
+                "    push    rax\n",
+            fptr);
+            break;
+        case OP_GT:
+            fputs(
+                "    ; OP_GT\n"
+                "    pop     rbx\n"
+                "    pop     rax\n"
+                "    cmp     rax, rbx\n"
+                "    setg    al\n"
+                "    movzx   rax, al\n"
+                "    push    rax\n",
+            fptr);
+            break;
+        case OP_LT:
+            fputs(
+                "    ; OP_LT\n"
+                "    pop     rbx\n"
+                "    pop     rax\n"
+                "    cmp     rax, rbx\n"
+                "    setl    al\n"
+                "    movzx   rax, al\n"
+                "    push    rax\n",
+            fptr);
+            break;
         case OP_LABEL:
             fprintf(fptr,
                 "    ; OP_LABEL\n"
@@ -194,14 +227,14 @@ void compile_op(FILE* fptr, OpCode op) {
             fputs(
                 "    ; OP_OUT_INT\n"
                 "    pop     rdi\n"
-                "    call    outi\n",
+                "    call    out_int\n",
             fptr);
             break;
         case OP_OUT_CHAR:
             fputs(
                 "    ; OP_OUT_CHAR\n"
                 "    pop     rdi\n"
-                "    call    outc\n",
+                "    call    out_char\n",
             fptr);
             break;
         default:

@@ -30,6 +30,9 @@ typedef enum {
     OP_SHL,
     OP_SHR,
     OP_SAR,
+    OP_EQ,
+    OP_GT,
+    OP_LT,
     // Branching
     OP_LABEL,
     OP_JMP,

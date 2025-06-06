@@ -167,7 +167,7 @@ void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
     str_new(&word, 8);
     str_push(&word, *c);
     while ((*c = fgetc(fptr)) != EOF) {
-        if (!isalnum(*c)) break;
+        if (!isalnum(*c) && *c != '_') break;
         str_push(&word, *c);
     }
 
@@ -266,7 +266,7 @@ void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
             exit(1);
         }
         // ident
-        else if (isalpha(c)) {
+        else if (isalpha(c) || (c == '_')) {
             lex_ident(toks, fptr, &c);
         }
         // word

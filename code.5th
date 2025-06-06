@@ -1,2 +1,27 @@
+#false{1}
+#true{1}
+#!={== 1 ^}
+
 // Print a newline
 #cr{'\n'.c}
+
+#over{1 pick}
+
+#dowhile(__ops __cond) {
+    __ops
+    while __cond {
+        __ops
+    }
+}
+
+#for(__init __cond __iter __ops) {
+    __init
+    while __cond {
+        __ops
+        __iter
+    }
+}
+
+for({0} {dup 10 <} {1 +} {
+    dup dup * . cr
+})
