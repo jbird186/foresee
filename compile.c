@@ -69,6 +69,12 @@ void compile_ops(FILE* fptr, OpCodeArray *ops);
 void compile_op(FILE* fptr, OpCode op) {
     switch (op.kind) {
         case OP_NOOP: break;
+        case OP_RET:
+            fputs(
+                "    ; OP_RET\n"
+                "    ret\n",
+            fptr);
+            break;
         case OP_EXIT:
             fputs(
                 "    ; OP_EXIT\n"
@@ -127,9 +133,9 @@ void compile_op(FILE* fptr, OpCode op) {
                 "    mov     [rax], rcx\n",
             fptr);
             break;
-        case OP_LOAD:
+        case OP_FETCH:
             fputs(
-                "    ; OP_LOAD\n"
+                "    ; OP_FETCH\n"
                 "    pop     rax\n"
                 "    push    qword [rax]\n",
             fptr);
@@ -161,28 +167,26 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_SAR:
             COMPILE_BASIC_BINOP(fptr, OP_SAR, sar, cl);
             break;
-        case OP_IF_PREFIX:
+        case OP_LABEL:
             fprintf(fptr,
-                "    ; OP_IF_PREFIX\n"
+                "    ; OP_LABEL\n"
+                ".label_%ld:\n",
+                op.data.t_int
+            );
+            break;
+        case OP_JMP:
+            fprintf(fptr,
+                "    ; OP_JMP\n"
+                "    jmp     .label_%ld\n",
+                op.data.t_int
+            );
+            break;
+        case OP_JZ:
+            fprintf(fptr,
+                "    ; OP_JZ\n"
                 "    pop     rax\n"
                 "    test    rax, rax\n"
-                "    jz     .if_jmp_%ld_%ld\n",
-                op.data.t_if.ref_id, op.data.t_if.ref_idx
-            );
-            break;
-        case OP_IF_POSTFIX:
-            fprintf(fptr,
-                "    ; OP_IF_POSTFIX\n"
-                "    jmp     .if_jmp_%ld_end\n"
-                ".if_jmp_%ld_%ld:\n",
-                op.data.t_if.ref_id,
-                op.data.t_if.ref_id, op.data.t_if.ref_idx
-            );
-            break;
-        case OP_ENDIF:
-            fprintf(fptr,
-                "    ; OP_ENDIF\n"
-                ".if_jmp_%ld_end:\n",
+                "    jz     .label_%ld\n",
                 op.data.t_int
             );
             break;

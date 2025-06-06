@@ -1,4 +1,2 @@
 // Print a newline
 #cr{'\n'.c}
-
-$buf "32"

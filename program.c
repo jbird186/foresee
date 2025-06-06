@@ -131,6 +131,7 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     ////////// Intrinsics //////////
     // Misc / Special
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_NOOP, "noop")
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_RET, "return")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_EXIT, "exit")
     // Stack Primitives
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_DROP, "drop")
@@ -139,7 +140,7 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_PERM, "perm")
     // Reference Primitives
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_STORE, "store")
-    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_LOAD, "load")
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_FETCH, "fetch")
 
     ////////// Misc //////////
     parse_word(ops, program, toks, idx);
@@ -151,65 +152,75 @@ void parse_colon(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     exit(1);
 }
 
-void _parse_question_with_id(
+void _parse_question_with_ref(
     OpCodeArray *ops,
     Program *program,
     TokenArray *toks,
     int *idx,
-    uint64_t ref_id,
-    uint64_t ref_idx
+    uint64_t end_ref
 ) {
     Token if_tree = toks->ptr[*idx + 1];
     if (if_tree.kind != TOK_BRACE_TREE) {
         fprintf(stderr, "Error: invalid 'if' condition\n");
         exit(1);
     }
-
-    op_arr_push(ops, (OpCode){
-        .kind = OP_IF_PREFIX,
-        .data.t_if.ref_id = ref_id,
-        .data.t_if.ref_idx = ref_idx
-    });
-    parse_tokens_with(ops, program, &if_tree.data.t_tree);
-    op_arr_push(ops, (OpCode){
-        .kind = OP_IF_POSTFIX,
-        .data.t_if.ref_id = ref_id,
-        .data.t_if.ref_idx = ref_idx
-    });
-
     *idx += 2;
 
+    op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = ASM_REF_ID });
+    parse_tokens_with(ops, program, &if_tree.data.t_tree);
+    op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_int = end_ref });
+    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = ASM_REF_ID++ });
+
     // No else condition
-    if (toks->ptr[*idx].kind != TOK_COLON) {
-        op_arr_push(ops, (OpCode){.kind = OP_ENDIF, .data.t_int = ref_id});
-        return;
-    }
+    if (toks->ptr[*idx].kind != TOK_ELSE) return;
     *idx += 1;
 
     // Else condition
     Token next_tok = toks->ptr[*idx];
     if (next_tok.kind == TOK_BRACE_TREE) {
         parse_tokens_with(ops, program, &next_tok.data.t_tree);
-        op_arr_push(ops, (OpCode){
-            .kind = OP_ENDIF,
-            .data.t_int = ref_id,
-        });
         *idx += 1;
     } else {
         TokenArray if_condition;
         tok_arr_new(&if_condition, 16);
-        while (toks->ptr[*idx].kind != TOK_QUESTION) {
+        while (toks->ptr[*idx].kind != TOK_IF) {
             tok_arr_push(&if_condition, toks->ptr[*idx]);
             *idx += 1;
         }
         parse_tokens(program, &if_condition);
         free(if_condition.ptr);
-        _parse_question_with_id(ops, program, toks, idx, ref_id, ++ref_idx);
+        _parse_question_with_ref(ops, program, toks, idx, end_ref);
     }
 }
 
-void parse_question(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
-    _parse_question_with_id(ops, program, toks, idx, ASM_REF_ID++, 0);
+void parse_if(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
+    uint64_t end_ref = ASM_REF_ID++;
+    _parse_question_with_ref(ops, program, toks, idx, end_ref);
+    op_arr_push(ops, (OpCode){.kind = OP_LABEL, .data.t_int = end_ref});
+}
+
+void parse_while(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
+    uint64_t start_ref = ASM_REF_ID++;
+    uint64_t end_ref = ASM_REF_ID++;
+    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = start_ref });
+
+    // Condition
+    *idx += 1;
+    TokenArray cond_toks;
+    tok_arr_new(&cond_toks, 8);
+    while (toks->ptr[*idx].kind != TOK_BRACE_TREE) {
+        tok_arr_push(&cond_toks, toks->ptr[*idx]);
+        *idx += 1;
+    }
+    parse_tokens(program, &cond_toks);
+    free(cond_toks.ptr);
+    op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = end_ref });
+
+    parse_tokens(program, &toks->ptr[*idx].data.t_tree);
+    *idx += 1;
+
+    op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_int = start_ref });
+    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = end_ref });
 }
 
 void parse_pound(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
@@ -352,11 +363,11 @@ void parse_tokens_with(OpCodeArray *ops, Program *program, TokenArray *toks) {
             case TOK_IDENT:
                 parse_ident(ops, program, toks, &idx);
                 break;
-            case TOK_COLON:
-                parse_colon(ops, program, toks, &idx);
+            case TOK_IF:
+                parse_if(ops, program, toks, &idx);
                 break;
-            case TOK_QUESTION:
-                parse_question(ops, program, toks, &idx);
+            case TOK_WHILE:
+                parse_while(ops, program, toks, &idx);
                 break;
             case TOK_POUND:
                 parse_pound(ops, program, toks, &idx);

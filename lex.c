@@ -156,6 +156,12 @@ void lex_tree(TokenArray *toks, FILE *fptr, char *c, TokenKind kind, char delim)
     *c = fgetc(fptr);
 }
 
+#define CHECK_KEYWORD(toks, word, tok, name) \
+    if (!strcmp(word.ptr, name)) { \
+        tok_arr_push(toks, (Token) {.kind = tok}); \
+        return; \
+    }
+
 void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
     String word;
     str_new(&word, 8);
@@ -164,6 +170,11 @@ void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
         if (!isalnum(*c)) break;
         str_push(&word, *c);
     }
+
+    CHECK_KEYWORD(toks, word, TOK_IF, "if")
+    CHECK_KEYWORD(toks, word, TOK_ELSE, "else")
+    CHECK_KEYWORD(toks, word, TOK_WHILE, "while")
+
     tok_arr_push(toks, (Token) {
         .kind = TOK_IDENT,
         .data.t_str = word,
@@ -221,21 +232,6 @@ void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
         // literal string
         else if (c == '\"') {
             lex_str(toks, fptr, &c);
-        }
-        // semicolon
-        else if (c == ';') {
-            tok_arr_push(toks, (Token){ .kind = TOK_SEMICOLON });
-            c = fgetc(fptr);
-        }
-        // colon
-        else if (c == ':') {
-            tok_arr_push(toks, (Token){ .kind = TOK_COLON });
-            c = fgetc(fptr);
-        }
-        // question mark
-        else if (c == '?') {
-            tok_arr_push(toks, (Token){ .kind = TOK_QUESTION });
-            c = fgetc(fptr);
         }
         // pound sign
         else if (c == '#') {

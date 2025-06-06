@@ -8,6 +8,7 @@
 typedef enum {
     // Misc / Special
     OP_NOOP,
+    OP_RET,
     OP_EXIT,
     // Stack Primitives
     OP_DROP,
@@ -18,7 +19,7 @@ typedef enum {
     // Reference Primitives
     OP_PUSH_BUF,
     OP_STORE,
-    OP_LOAD,
+    OP_FETCH,
     // Binary Operations
     OP_ADD,
     OP_SUB,
@@ -30,9 +31,9 @@ typedef enum {
     OP_SHR,
     OP_SAR,
     // Branching
-    OP_IF_PREFIX,
-    OP_IF_POSTFIX,
-    OP_ENDIF,
+    OP_LABEL,
+    OP_JMP,
+    OP_JZ,
     // I/O
     OP_OUT_INT,
     // Temporary (TODO: Remove)
