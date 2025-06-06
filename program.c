@@ -7,6 +7,11 @@ void op_arr_free(OpCodeArray *arr);
 void op_free(OpCode *op) {}
 DEFINE_ARRAY_C(OpCode, op)
 
+void fn_free(Function *function) {
+    free(function->ops.ptr);
+}
+DEFINE_ARRAY_C(Function, fn)
+
 void macro_free(Macro *macro) {
     free(macro->args.ptr);
 }
@@ -17,12 +22,14 @@ DEFINE_ARRAY_C(Buffer, buf)
 
 void program_new(Program *program) {
     macro_arr_new(&program->macros, 32);
+    fn_arr_new(&program->functions, 32);
     op_arr_new(&program->ops, 256);
     buf_arr_new(&program->buffers, 32);
 }
 
 void program_free(Program *program) {
     macro_arr_free(&program->macros);
+    fn_arr_free(&program->functions);
     op_arr_free(&program->ops);
     buf_arr_free(&program->buffers);
 }
@@ -109,7 +116,7 @@ void parse_word(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) 
 
             // Ensure that the number of macros does not increase
             int n_macros = program->macros.length;
-            parse_tokens(program, &macro.toks);
+            parse_tokens_with(ops, program, &macro.toks);
             if (n_macros != program->macros.length) {
                 fprintf(stderr, "Error: macro '%s' cannot define internal macros\n", word.ptr);
                 exit(1);
@@ -134,8 +141,9 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     ////////// Intrinsics //////////
     // Misc / Special
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_NOOP, "noop")
-    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_RET, "return")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_EXIT, "exit")
+    // Functions
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_RET, "return")
     // Stack Primitives
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_DROP, "drop")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_SWAP, "swap")
@@ -145,14 +153,21 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_STORE, "store")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_FETCH, "fetch")
 
+    ////////// Functions //////////
+    String ident = toks->ptr[*idx].data.t_str;
+
+    // TODO: Better search algorithm
+    for (int i = 0; i < program->functions.length; i++) {
+        Function function = program->functions.ptr[i];
+        if (!strcmp(function.name.ptr, ident.ptr)) {
+            op_arr_push(ops, (OpCode){.kind = OP_CALL, .data.t_name = function.name});
+            *idx += 1;
+            return;
+        }
+    }
+
     ////////// Misc //////////
     parse_word(ops, program, toks, idx);
-}
-
-// TODO
-void parse_colon(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
-    fprintf(stderr, "Error: functions not implemented yet\n");
-    exit(1);
 }
 
 void _parse_question_with_ref(
@@ -190,7 +205,7 @@ void _parse_question_with_ref(
             tok_arr_push(&if_condition, toks->ptr[*idx]);
             *idx += 1;
         }
-        parse_tokens(program, &if_condition);
+        parse_tokens_with(ops, program, &if_condition);
         free(if_condition.ptr);
         _parse_question_with_ref(ops, program, toks, idx, end_ref);
     }
@@ -215,21 +230,51 @@ void parse_while(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
         tok_arr_push(&cond_toks, toks->ptr[*idx]);
         *idx += 1;
     }
-    parse_tokens(program, &cond_toks);
+    parse_tokens_with(ops, program, &cond_toks);
     free(cond_toks.ptr);
     op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = end_ref });
 
-    parse_tokens(program, &toks->ptr[*idx].data.t_tree);
+    parse_tokens_with(ops, program, &toks->ptr[*idx].data.t_tree);
     *idx += 1;
 
     op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_int = start_ref });
     op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = end_ref });
 }
 
+void parse_colon(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
+    Token name = toks->ptr[*idx + 1];
+    if (name.kind != TOK_IDENT) {
+        fprintf(stderr, "Error: invalid name for function\n");
+        exit(1);
+    }
+
+    Token tree = toks->ptr[*idx + 2];
+    if (tree.kind != TOK_BRACE_TREE) {
+        fprintf(stderr, "Error: invalid definition for function '%s'\n", name.data.t_str.ptr);
+        exit(1);
+    }
+
+    for (int i = 0; i < program->functions.length; i++) {
+        if (!strcmp(name.data.t_str.ptr, program->functions.ptr[i].name.ptr)) {
+            fprintf(stderr, "Error: function '%s' already defined\n", name.data.t_str.ptr);
+            exit(1);
+        }
+    }
+
+    OpCodeArray fn_ops;
+    op_arr_new(&fn_ops, tree.data.t_tree.length);
+    parse_tokens_with(&fn_ops, program, &tree.data.t_tree);
+    fn_arr_push(&program->functions, (Function){
+        .name = name.data.t_str,
+        .ops = fn_ops
+    });
+    *idx += 3;
+}
+
 void parse_pound(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
     Token name = toks->ptr[*idx + 1];
     if ((name.kind != TOK_IDENT) && (name.kind != TOK_WORD)) {
-        fprintf(stderr, "Error: invalid definition for macro\n");
+        fprintf(stderr, "Error: invalid name for macro\n");
         exit(1);
     }
 
@@ -371,6 +416,9 @@ void parse_tokens_with(OpCodeArray *ops, Program *program, TokenArray *toks) {
                 break;
             case TOK_WHILE:
                 parse_while(ops, program, toks, &idx);
+                break;
+            case TOK_COLON:
+                parse_colon(ops, program, toks, &idx);
                 break;
             case TOK_POUND:
                 parse_pound(ops, program, toks, &idx);

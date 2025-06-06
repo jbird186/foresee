@@ -25,8 +25,14 @@
     }
 }
 
-1 showln
-1 showln
-while dup 1000 < {
-    swap over + showln
+:fib {
+    1 showln
+    1 showln
+    while dup 1000 < {
+        swap over + showln
+    }
+    drop drop
+    return
 }
+
+fib

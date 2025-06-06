@@ -3,12 +3,15 @@
 #include "program.h"
 #include "compile.h"
 
+void compile_ops(FILE* fptr, OpCodeArray *ops);
+
+// TODO: unused
 char scratch_regs[8][3] = {
     "rcx", "rdx", "rsi", "rdi",
     "r8", "r9", "r10", "r11",
 };
 
-char *text_prefix =
+char *global_prefix =
     "BITS 64\n"
     "global _start\n"
     "section .text\n"
@@ -53,7 +56,24 @@ char *text_prefix =
     "    mov     eax, 1\n"
     "    syscall\n"
     "    add     rsp, 8\n"
-    "    ret\n"
+    "    ret\n";
+
+void compile_function(FILE* fptr, Function function) {
+    fprintf(fptr,
+        "    ; %s\n"
+        "%s:\n",
+        function.name.ptr, function.name.ptr
+    );
+    compile_ops(fptr, &function.ops);
+}
+
+void compile_functions(FILE* fptr, FunctionArray *functions) {
+    for (int i = 0; i < functions->length; i++) {
+        compile_function(fptr, functions->ptr[i]);
+    }
+}
+
+char *text_prefix =
     "_start:\n";
 
 #define COMPILE_BASIC_BINOP(fptr, name, inst, b_reg) \
@@ -65,22 +85,28 @@ char *text_prefix =
         "    push    rax\n", \
     fptr)
 
-void compile_ops(FILE* fptr, OpCodeArray *ops);
 void compile_op(FILE* fptr, OpCode op) {
     switch (op.kind) {
         case OP_NOOP: break;
-        case OP_RET:
-            fputs(
-                "    ; OP_RET\n"
-                "    ret\n",
-            fptr);
-            break;
         case OP_EXIT:
             fputs(
                 "    ; OP_EXIT\n"
                 "    pop     rdi\n"
                 "    mov     eax, 60\n"
                 "    syscall\n",
+            fptr);
+            break;
+        case OP_CALL:
+            fprintf(fptr,
+                "    ; OP_CALL\n"
+                "    call %s\n",
+                op.data.t_name.ptr
+            );
+            break;
+        case OP_RET:
+            fputs(
+                "    ; OP_RET\n"
+                "    ret\n",
             fptr);
             break;
         case OP_DROP:
@@ -289,6 +315,9 @@ void compile_buf_bss(FILE* fptr, Buffer buf) {
 }
 
 void compile_program(FILE* fptr, Program *program) {
+    fputs(global_prefix, fptr);
+    compile_functions(fptr, &program->functions);
+
     fputs(text_prefix, fptr);
     compile_ops(fptr, &program->ops);
     fputs(

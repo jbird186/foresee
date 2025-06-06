@@ -8,8 +8,10 @@
 typedef enum {
     // Misc / Special
     OP_NOOP,
-    OP_RET,
     OP_EXIT,
+    // Functions
+    OP_CALL,
+    OP_RET,
     // Stack Primitives
     OP_DROP,
     OP_SWAP,
@@ -64,6 +66,12 @@ struct OpCode {
 
 typedef struct {
     String name;
+    OpCodeArray ops;
+} Function;
+DEFINE_ARRAY_TYPE(Function)
+
+typedef struct {
+    String name;
     StringArray args;
     TokenArray toks;
 } Macro;
@@ -78,6 +86,7 @@ DEFINE_ARRAY_TYPE(Buffer)
 
 typedef struct {
     MacroArray macros;
+    FunctionArray functions;
     OpCodeArray ops;
     BufferArray buffers;
 } Program;

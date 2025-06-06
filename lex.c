@@ -24,7 +24,6 @@ void tok_free(Token *tok) {
             break;
     }
 }
-
 DEFINE_ARRAY_C(Token, tok)
 
 void match_escape_char(char *dest, char c, FILE *fptr) {
@@ -159,6 +158,7 @@ void lex_tree(TokenArray *toks, FILE *fptr, char *c, TokenKind kind, char delim)
 #define CHECK_KEYWORD(toks, word, tok, name) \
     if (!strcmp(word.ptr, name)) { \
         tok_arr_push(toks, (Token) {.kind = tok}); \
+        str_free(&word); \
         return; \
     }
 
@@ -232,6 +232,11 @@ void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
         // literal string
         else if (c == '\"') {
             lex_str(toks, fptr, &c);
+        }
+        // colon
+        else if (c == ':') {
+            tok_arr_push(toks, (Token){ .kind = TOK_COLON });
+            c = fgetc(fptr);
         }
         // pound sign
         else if (c == '#') {

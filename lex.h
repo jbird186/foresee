@@ -13,6 +13,7 @@ typedef enum {
     TOK_IF,
     TOK_ELSE,
     TOK_WHILE,
+    TOK_COLON,
     TOK_POUND,
     TOK_DOLLAR,
     TOK_REF,
