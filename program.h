@@ -12,7 +12,7 @@ typedef enum {
     OP_EXIT,
     // Stack Primitives
     OP_DROP,
-    OP_DUP,
+    OP_SWAP,
     OP_PICK,
     OP_PERM,
     OP_PUSH_INT,

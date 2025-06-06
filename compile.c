@@ -89,12 +89,13 @@ void compile_op(FILE* fptr, OpCode op) {
                 "    pop     rax\n",
             fptr);
             break;
-        case OP_DUP:
+        case OP_SWAP:
             fputs(
-                "    ; OP_DUP\n"
+                "    ; OP_SWAP\n"
                 "    pop     rax\n"
+                "    pop     rbx\n"
                 "    push    rax\n"
-                "    push    rax\n",
+                "    push    rbx\n",
             fptr);
             break;
         case OP_PICK:

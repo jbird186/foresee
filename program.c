@@ -138,7 +138,7 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_EXIT, "exit")
     // Stack Primitives
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_DROP, "drop")
-    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_DUP, "dup")
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_SWAP, "swap")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_PICK, "pick")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_PERM, "perm")
     // Reference Primitives

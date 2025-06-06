@@ -4,7 +4,10 @@
 
 // Print a newline
 #cr{'\n'.c}
+#show{dup .}
+#showln{dup . cr}
 
+#dup{0 pick}
 #over{1 pick}
 
 #dowhile(__ops __cond) {
@@ -22,6 +25,8 @@
     }
 }
 
-for({0} {dup 10 <} {1 +} {
-    dup dup * . cr
-})
+1 showln
+1 showln
+while dup 1000 < {
+    swap over + showln
+}
