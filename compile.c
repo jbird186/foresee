@@ -74,15 +74,26 @@ void compile_functions(FILE* fptr, FunctionArray *functions) {
 }
 
 char *text_prefix =
-    "_start:\n";
+    "_start:\n"
+    "    lea     r12, [__stack_ptr + 1024]";
+
+#define STACK_POINTER "r12"
+
+#define PUSH_INSTRUCTION(item) \
+    "    sub     " STACK_POINTER ", 8\n" \
+    "    mov     qword [" STACK_POINTER "], " item "\n"
+
+#define POP_INSTRUCTION(item) \
+    "    mov     " item ", qword [" STACK_POINTER "]\n" \
+    "    add     " STACK_POINTER ", 8\n"
 
 #define COMPILE_BASIC_BINOP(fptr, name, inst, b_reg) \
     fputs( \
         "    ; " #name "\n" \
-        "    pop     rcx\n" \
-        "    pop     rax\n" \
+        POP_INSTRUCTION("rcx") \
+        POP_INSTRUCTION("rax") \
         "    " #inst " \trax, " #b_reg "\n" \
-        "    push    rax\n", \
+        PUSH_INSTRUCTION("rax"), \
     fptr)
 
 void compile_op(FILE* fptr, OpCode op) {
@@ -91,7 +102,7 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_EXIT:
             fputs(
                 "    ; OP_EXIT\n"
-                "    pop     rdi\n"
+                POP_INSTRUCTION("rdi")
                 "    mov     eax, 60\n"
                 "    syscall\n",
             fptr);
@@ -112,24 +123,24 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_DROP:
             fputs(
                 "    ; OP_DROP\n"
-                "    pop     rax\n",
+                POP_INSTRUCTION("rax"),
             fptr);
             break;
         case OP_SWAP:
             fputs(
                 "    ; OP_SWAP\n"
-                "    pop     rax\n"
-                "    pop     rbx\n"
-                "    push    rax\n"
-                "    push    rbx\n",
+                POP_INSTRUCTION("rax")
+                POP_INSTRUCTION("rbx")
+                PUSH_INSTRUCTION("rax")
+                PUSH_INSTRUCTION("rbx"),
             fptr);
             break;
         case OP_PICK:
             fputs(
                 "    ; OP_PICK\n"
-                "    pop     rax\n"
-                "    mov     rcx, [rsp + rax*8]\n"
-                "    push    rcx\n",
+                POP_INSTRUCTION("rax")
+                "    mov     rcx, [" STACK_POINTER " + rax*8]\n"
+                PUSH_INSTRUCTION("rcx"),
             fptr);
             break;
         case OP_PERM: // TODO
@@ -141,30 +152,30 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_PUSH_INT:
             fprintf(fptr,
                 "    ; OP_PUSH_INT\n"
-                "    push    %ld\n",
+                PUSH_INSTRUCTION("%ld"),
                 op.data.t_int
             );
             break;
         case OP_PUSH_BUF:
             fprintf(fptr,
                 "    ; OP_PUSH_BUF\n"
-                "    push    %s\n",
+                PUSH_INSTRUCTION("%s\n"),
                 op.data.t_name.ptr
             );
             break;
         case OP_STORE:
             fputs(
                 "    ; OP_STORE\n"
-                "    pop     rax\n"
-                "    pop     rcx\n"
+                POP_INSTRUCTION("rax")
+                POP_INSTRUCTION("rcx")
                 "    mov     [rax], rcx\n",
             fptr);
             break;
         case OP_FETCH:
             fputs(
                 "    ; OP_FETCH\n"
-                "    pop     rax\n"
-                "    push    qword [rax]\n",
+                POP_INSTRUCTION("rax")
+                PUSH_INSTRUCTION("qword [rax]"),
             fptr);
             break;
         case OP_ADD:
@@ -197,34 +208,34 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_EQ:
             fputs(
                 "    ; OP_EQ\n"
-                "    pop     rbx\n"
-                "    pop     rax\n"
+                POP_INSTRUCTION("rbx")
+                POP_INSTRUCTION("rax")
                 "    cmp     rax, rbx\n"
                 "    sete    al\n"
                 "    movzx   rax, al\n"
-                "    push    rax\n",
+                PUSH_INSTRUCTION("rax"),
             fptr);
             break;
         case OP_GT:
             fputs(
                 "    ; OP_GT\n"
-                "    pop     rbx\n"
-                "    pop     rax\n"
+                POP_INSTRUCTION("rbx")
+                POP_INSTRUCTION("rax")
                 "    cmp     rax, rbx\n"
                 "    setg    al\n"
                 "    movzx   rax, al\n"
-                "    push    rax\n",
+                PUSH_INSTRUCTION("rax"),
             fptr);
             break;
         case OP_LT:
             fputs(
                 "    ; OP_LT\n"
-                "    pop     rbx\n"
-                "    pop     rax\n"
+                POP_INSTRUCTION("rbx")
+                POP_INSTRUCTION("rax")
                 "    cmp     rax, rbx\n"
                 "    setl    al\n"
                 "    movzx   rax, al\n"
-                "    push    rax\n",
+                PUSH_INSTRUCTION("rax"),
             fptr);
             break;
         case OP_LABEL:
@@ -244,7 +255,7 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_JZ:
             fprintf(fptr,
                 "    ; OP_JZ\n"
-                "    pop     rax\n"
+                POP_INSTRUCTION("rax")
                 "    test    rax, rax\n"
                 "    jz     .label_%ld\n",
                 op.data.t_int
@@ -253,14 +264,14 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_OUT_INT:
             fputs(
                 "    ; OP_OUT_INT\n"
-                "    pop     rdi\n"
+                POP_INSTRUCTION("rdi")
                 "    call    out_int\n",
             fptr);
             break;
         case OP_OUT_CHAR:
             fputs(
                 "    ; OP_OUT_CHAR\n"
-                "    pop     rdi\n"
+                POP_INSTRUCTION("rdi")
                 "    call    out_char\n",
             fptr);
             break;
@@ -304,7 +315,8 @@ void compile_buf_data(FILE* fptr, Buffer buf) {
 }
 
 char *bss_prefix =
-    "section .bss\n";
+    "section .bss\n"
+    "    __stack_ptr: resb 1024\n";
 
 void compile_buf_bss(FILE* fptr, Buffer buf) {
     fprintf(fptr,

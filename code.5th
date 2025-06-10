@@ -31,7 +31,6 @@
     while dup 1000 < {
         swap over + showln
     }
-    drop drop
     return
 }
 
