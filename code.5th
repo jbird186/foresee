@@ -28,7 +28,7 @@
 :fib {
     1 showln
     1 showln
-    while dup 1000 < {
+    while dup 1_000_000 < {
         swap over + showln
     }
     return

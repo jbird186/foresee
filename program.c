@@ -39,6 +39,17 @@ static uint64_t ASM_REF_ID = 0;
 void parse_tokens_with(OpCodeArray *ops, Program *program, TokenArray *toks);
 void parse_tokens(Program *program, TokenArray *toks);
 
+void parse_until(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx, TokenKind kind) {
+    TokenArray inner_toks;
+    tok_arr_new(&inner_toks, 16);
+    while ((*idx < toks->length) && (toks->ptr[*idx].kind != kind)) {
+        tok_arr_push(&inner_toks, toks->ptr[*idx]);
+        *idx += 1;
+    }
+    parse_tokens_with(ops, program, &inner_toks);
+    free(inner_toks.ptr);
+}
+
 // TODO
 void parse_string(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
     fprintf(stderr, "Error: strings not implemented yet\n");
@@ -177,15 +188,16 @@ void _parse_question_with_ref(
     int *idx,
     uint64_t end_ref
 ) {
-    Token if_tree = toks->ptr[*idx + 1];
-    if (if_tree.kind != TOK_BRACE_TREE) {
-        fprintf(stderr, "Error: invalid 'if' condition\n");
-        exit(1);
-    }
-    *idx += 2;
+    *idx += 1;
 
+    // Condition
+    parse_until(ops, program, toks, idx, TOK_BRACE_TREE);
     op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = ASM_REF_ID });
-    parse_tokens_with(ops, program, &if_tree.data.t_tree);
+
+    // Operations
+    parse_tokens_with(ops, program, &toks->ptr[*idx].data.t_tree);
+    *idx += 1;
+
     op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_int = end_ref });
     op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = ASM_REF_ID++ });
 
@@ -193,21 +205,18 @@ void _parse_question_with_ref(
     if (toks->ptr[*idx].kind != TOK_ELSE) return;
     *idx += 1;
 
-    // Else condition
     Token next_tok = toks->ptr[*idx];
+    // Else condition
     if (next_tok.kind == TOK_BRACE_TREE) {
         parse_tokens_with(ops, program, &next_tok.data.t_tree);
         *idx += 1;
-    } else {
-        TokenArray if_condition;
-        tok_arr_new(&if_condition, 16);
-        while (toks->ptr[*idx].kind != TOK_IF) {
-            tok_arr_push(&if_condition, toks->ptr[*idx]);
-            *idx += 1;
-        }
-        parse_tokens_with(ops, program, &if_condition);
-        free(if_condition.ptr);
+    // Else-if condition
+    } else if (next_tok.kind == TOK_IF) {
         _parse_question_with_ref(ops, program, toks, idx, end_ref);
+    // Invalid
+    } else {
+        fprintf(stderr, "Error: invalid 'if' condition\n");
+        exit(1);
     }
 }
 
@@ -224,14 +233,7 @@ void parse_while(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
 
     // Condition
     *idx += 1;
-    TokenArray cond_toks;
-    tok_arr_new(&cond_toks, 8);
-    while (toks->ptr[*idx].kind != TOK_BRACE_TREE) {
-        tok_arr_push(&cond_toks, toks->ptr[*idx]);
-        *idx += 1;
-    }
-    parse_tokens_with(ops, program, &cond_toks);
-    free(cond_toks.ptr);
+    parse_until(ops, program, toks, idx, TOK_BRACE_TREE);
     op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = end_ref });
 
     parse_tokens_with(ops, program, &toks->ptr[*idx].data.t_tree);
