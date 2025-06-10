@@ -1,14 +1,24 @@
+#%{over over / * -}
+
 #false{1}
 #true{1}
 #!={== 1 ^}
+
+#dup{0 pick}
+#over{1 pick}
 
 // Print a newline
 #cr{'\n'.c}
 #show{dup .}
 #showln{dup . cr}
-
-#dup{0 pick}
-#over{1 pick}
+:out_str{
+    while dup fetch 256 % 0 != {
+        dup fetch .c
+        1 +
+    } drop
+    return
+}
+#.s{out_str}
 
 #dowhile(__ops __cond) {
     __ops
@@ -22,16 +32,18 @@
     while __cond {
         __ops
         __iter
-    }
+    } drop
 }
 
 :fib {
     1 showln
     1 showln
-    while dup 1_000_000 < {
+    while (dup 1_000_000 <) {
         swap over + showln
     }
     return
 }
 
 fib
+
+"Hello World!\n".s

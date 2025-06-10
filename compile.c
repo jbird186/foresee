@@ -75,7 +75,7 @@ void compile_functions(FILE* fptr, FunctionArray *functions) {
 
 char *text_prefix =
     "_start:\n"
-    "    lea     r12, [__stack_ptr + 1024]";
+    "    lea     r12, [__stack_ptr + 1024]\n";
 
 #define STACK_POINTER "r12"
 
@@ -159,7 +159,7 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_PUSH_BUF:
             fprintf(fptr,
                 "    ; OP_PUSH_BUF\n"
-                PUSH_INSTRUCTION("%s\n"),
+                PUSH_INSTRUCTION("%s"),
                 op.data.t_name.ptr
             );
             break;
@@ -175,7 +175,8 @@ void compile_op(FILE* fptr, OpCode op) {
             fputs(
                 "    ; OP_FETCH\n"
                 POP_INSTRUCTION("rax")
-                PUSH_INSTRUCTION("qword [rax]"),
+                "    mov     rbx, qword [rax]\n"
+                PUSH_INSTRUCTION("rbx"),
             fptr);
             break;
         case OP_ADD:
@@ -186,6 +187,16 @@ void compile_op(FILE* fptr, OpCode op) {
             break;
         case OP_MUL:
             COMPILE_BASIC_BINOP(fptr, OP_MUL, imul, rcx);
+            break;
+        case OP_DIV:
+            fputs(
+                "    ; OP_DIV\n"
+                POP_INSTRUCTION("rbx")
+                POP_INSTRUCTION("rax")
+                "    cqo\n"
+                "    idiv    rbx\n"
+                PUSH_INSTRUCTION("rax"),
+            fptr);
             break;
         case OP_AND:
             COMPILE_BASIC_BINOP(fptr, OP_AND, and, rcx);
@@ -288,6 +299,12 @@ void compile_ops(FILE* fptr, OpCodeArray *ops) {
     }
 }
 
+char *text_postfix =
+    "    ; EXIT\n"
+    "    mov \trdi, 0\n"
+    "    mov \teax, 60\n"
+    "    syscall\n";
+
 char *data_prefix =
     "section .data\n";
 
@@ -299,9 +316,9 @@ void compile_buf_data(FILE* fptr, Buffer buf) {
         buf.name.ptr, buf.size,
         buf.name.ptr
     );
-    for (int i = 0; i < buf.init.length; i++) {
+    for (int i = 0; i <= buf.init.length; i++) {
         fprintf(fptr, "%d", buf.init.ptr[i]);
-        if (i + 1 < buf.init.length) {
+        if (i + 1 <= buf.init.length) {
             fputc(',', fptr);
         }
     }
@@ -332,12 +349,7 @@ void compile_program(FILE* fptr, Program *program) {
 
     fputs(text_prefix, fptr);
     compile_ops(fptr, &program->ops);
-    fputs(
-        "    ; EXIT\n"
-        "    mov \trdi, 0\n"
-        "    mov \teax, 60\n"
-        "    syscall\n",
-    fptr);
+    fputs(text_postfix, fptr);
 
     fputs(data_prefix, fptr);
     for (int i = 0; i < program->buffers.length; i++) {

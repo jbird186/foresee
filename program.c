@@ -34,7 +34,8 @@ void program_free(Program *program) {
     buf_arr_free(&program->buffers);
 }
 
-static uint64_t ASM_REF_ID = 0;
+static uint64_t ASM_INLINE_BUF_ID = 0;
+static uint64_t ASM_LABEL_ID = 0;
 
 void parse_tokens_with(OpCodeArray *ops, Program *program, TokenArray *toks);
 void parse_tokens(Program *program, TokenArray *toks);
@@ -50,10 +51,24 @@ void parse_until(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx,
     free(inner_toks.ptr);
 }
 
-// TODO
 void parse_string(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
-    fprintf(stderr, "Error: strings not implemented yet\n");
-    exit(1);
+    char id_str[40];
+    sprintf(id_str, "__inline_buf_%ld", ASM_INLINE_BUF_ID++);
+    String name;
+    str_new_from(&name, id_str);
+
+    buf_arr_push(&program->buffers, (Buffer){
+        .init = toks->ptr[*idx].data.t_str,
+        .name = name,
+        .size = toks->ptr[*idx].data.t_str.length
+    });
+
+    op_arr_push(ops, (OpCode){
+        .kind = OP_PUSH_BUF,
+        .data.t_name = name
+    });
+
+    *idx += 1;
 }
 
 #define CHECK_INTRINSIC_OPCODE(ops, toks, idx, opcode, alias) \
@@ -69,6 +84,7 @@ void parse_word(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) 
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_ADD, "+")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_SUB, "-")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_MUL, "*")
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_DIV, "/")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_AND, "&")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_OR, "|")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_XOR, "^")
@@ -192,14 +208,14 @@ void _parse_question_with_ref(
 
     // Condition
     parse_until(ops, program, toks, idx, TOK_BRACE_TREE);
-    op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = ASM_REF_ID });
+    op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = ASM_LABEL_ID });
 
     // Operations
     parse_tokens_with(ops, program, &toks->ptr[*idx].data.t_tree);
     *idx += 1;
 
     op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_int = end_ref });
-    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = ASM_REF_ID++ });
+    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = ASM_LABEL_ID++ });
 
     // No else condition
     if (toks->ptr[*idx].kind != TOK_ELSE) return;
@@ -221,14 +237,14 @@ void _parse_question_with_ref(
 }
 
 void parse_if(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
-    uint64_t end_ref = ASM_REF_ID++;
+    uint64_t end_ref = ASM_LABEL_ID++;
     _parse_question_with_ref(ops, program, toks, idx, end_ref);
     op_arr_push(ops, (OpCode){.kind = OP_LABEL, .data.t_int = end_ref});
 }
 
 void parse_while(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
-    uint64_t start_ref = ASM_REF_ID++;
-    uint64_t end_ref = ASM_REF_ID++;
+    uint64_t start_ref = ASM_LABEL_ID++;
+    uint64_t end_ref = ASM_LABEL_ID++;
     op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = start_ref });
 
     // Condition
@@ -382,8 +398,8 @@ void parse_ref(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
 
 // TODO
 void parse_tree(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
-    fprintf(stderr, "Error: token trees not implemented yet\n");
-    exit(1);
+    parse_tokens_with(ops, program, &toks->ptr[*idx].data.t_tree);
+    *idx += 1;
 }
 
 void parse_tokens_with(OpCodeArray *ops, Program *program, TokenArray *toks) {
