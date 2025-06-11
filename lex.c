@@ -130,7 +130,7 @@ void lex_str(TokenArray *toks, FILE *fptr, char *c) {
 void lex_ampersand(TokenArray *toks, FILE *fptr, char *c) {
     char next_c = fgetc(fptr);
     // reference
-    if ((next_c != EOF) && isalpha(next_c)) {
+    if ((next_c != EOF) && (isalpha(next_c) || next_c == '_')) {
         tok_arr_push(toks, (Token){ .kind = TOK_REF });
     // word
     } else {

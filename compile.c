@@ -3,64 +3,21 @@
 #include "program.h"
 #include "compile.h"
 
+#define STACK_POINTER "r12"
+
+#define PUSH_INSTRUCTION(item) \
+    "    sub     " STACK_POINTER ", 8\n" \
+    "    mov     qword [" STACK_POINTER "], " item "\n"
+
+#define POP_INSTRUCTION(item) \
+    "    mov     " item ", qword [" STACK_POINTER "]\n" \
+    "    add     " STACK_POINTER ", 8\n"
+
 void compile_ops(FILE* fptr, OpCodeArray *ops);
-
-// TODO: unused
-char scratch_regs[8][3] = {
-    "rcx", "rdx", "rsi", "rdi",
-    "r8", "r9", "r10", "r11",
-};
-
-char *global_prefix =
-    "BITS 64\n"
-    "global _start\n"
-    "section .text\n"
-    "out_int:\n"
-    "    mov     r8, -3689348814741910323\n"
-    "    sub     rsp, 40\n"
-    "    lea     rcx, [rsp+19]\n"
-    ".L2:\n"
-    "    mov     rax, rdi\n"
-    "    mul     r8\n"
-    "    mov     rax, rdi\n"
-    "    shr     rdx, 3\n"
-    "    lea     rsi, [rdx+rdx*4]\n"
-    "    add     rsi, rsi\n"
-    "    sub     rax, rsi\n"
-    "    add     eax, 48\n"
-    "    mov     BYTE [rcx], al\n"
-    "    mov     rax, rdi\n"
-    "    mov     rdi, rdx\n"
-    "    mov     rdx, rcx\n"
-    "    sub     rcx, 1\n"
-    "    cmp     rax, 9\n"
-    "    ja      .L2\n"
-    "    lea     ecx, [rsp+20]\n"
-    "    mov     eax, 20\n"
-    "    mov     edi, 1\n"
-    "    sub     ecx, edx\n"
-    "    sub     eax, ecx\n"
-    "    movsx   rdx, ecx\n"
-    "    cdqe\n"
-    "    lea     rsi, [rsp+rax]\n"
-    "    mov     rax, 1\n"
-    "    syscall\n"
-    "    add     rsp, 40\n"
-    "    ret\n"
-    "out_char:\n"
-    "    sub     rsp, 8\n"
-    "    mov     [rsp], dil\n"
-    "    mov     edi, 1\n"
-    "    mov     rsi, rsp\n"
-    "    mov     edx, 1\n"
-    "    mov     eax, 1\n"
-    "    syscall\n"
-    "    add     rsp, 8\n"
-    "    ret\n";
 
 void compile_function(FILE* fptr, Function function) {
     fprintf(fptr,
-        "    ; %s\n"
+        "; %s\n"
         "%s:\n",
         function.name.ptr, function.name.ptr
     );
@@ -72,20 +29,6 @@ void compile_functions(FILE* fptr, FunctionArray *functions) {
         compile_function(fptr, functions->ptr[i]);
     }
 }
-
-char *text_prefix =
-    "_start:\n"
-    "    lea     r12, [__stack_ptr + 1024]\n";
-
-#define STACK_POINTER "r12"
-
-#define PUSH_INSTRUCTION(item) \
-    "    sub     " STACK_POINTER ", 8\n" \
-    "    mov     qword [" STACK_POINTER "], " item "\n"
-
-#define POP_INSTRUCTION(item) \
-    "    mov     " item ", qword [" STACK_POINTER "]\n" \
-    "    add     " STACK_POINTER ", 8\n"
 
 #define COMPILE_BASIC_BINOP(fptr, name, inst, b_reg) \
     fputs( \
@@ -126,15 +69,6 @@ void compile_op(FILE* fptr, OpCode op) {
                 POP_INSTRUCTION("rax"),
             fptr);
             break;
-        case OP_SWAP:
-            fputs(
-                "    ; OP_SWAP\n"
-                POP_INSTRUCTION("rax")
-                POP_INSTRUCTION("rbx")
-                PUSH_INSTRUCTION("rax")
-                PUSH_INSTRUCTION("rbx"),
-            fptr);
-            break;
         case OP_PICK:
             fputs(
                 "    ; OP_PICK\n"
@@ -142,6 +76,25 @@ void compile_op(FILE* fptr, OpCode op) {
                 "    mov     rcx, [" STACK_POINTER " + rax*8]\n"
                 PUSH_INSTRUCTION("rcx"),
             fptr);
+            break;
+        case OP_ROLL:
+            uint64_t label = op.data.t_int;
+            fprintf(fptr,
+                "    ; OP_ROLL\n"
+                POP_INSTRUCTION("rax")
+                "    mov     rcx, [" STACK_POINTER " + rax*8]\n"
+                "    lea     rbx, [" STACK_POINTER " + rax*8]\n"
+                ".label_%ld:\n"
+                "    cmp     rbx, " STACK_POINTER "\n"
+                "    je      .label_%ld\n"
+                "    mov     rdx, [rbx - 8]\n"
+                "    mov     [rbx], rdx\n"
+                "    sub     rbx, 8\n"
+                "    jmp     .label_%ld\n"
+                ".label_%ld:\n"
+                "    mov     [" STACK_POINTER "], rcx\n",
+                label, label + 1, label, label + 1
+            );
             break;
         case OP_PERM: // TODO
             fputs("    ; OP_PERM\n", fptr);
@@ -216,6 +169,14 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_SAR:
             COMPILE_BASIC_BINOP(fptr, OP_SAR, sar, cl);
             break;
+        case OP_NOT:
+            fputs(
+                "    ; OP_NOT\n"
+                POP_INSTRUCTION("rax")
+                "    not     rax\n"
+                PUSH_INSTRUCTION("rax"),
+                fptr);
+            break;
         case OP_EQ:
             fputs(
                 "    ; OP_EQ\n"
@@ -250,11 +211,7 @@ void compile_op(FILE* fptr, OpCode op) {
             fptr);
             break;
         case OP_LABEL:
-            fprintf(fptr,
-                "    ; OP_LABEL\n"
-                ".label_%ld:\n",
-                op.data.t_int
-            );
+            fprintf(fptr, ".label_%ld:\n", op.data.t_int);
             break;
         case OP_JMP:
             fprintf(fptr,
@@ -272,18 +229,14 @@ void compile_op(FILE* fptr, OpCode op) {
                 op.data.t_int
             );
             break;
-        case OP_OUT_INT:
+        case OP_STDOUT:
             fputs(
-                "    ; OP_OUT_INT\n"
-                POP_INSTRUCTION("rdi")
-                "    call    out_int\n",
-            fptr);
-            break;
-        case OP_OUT_CHAR:
-            fputs(
-                "    ; OP_OUT_CHAR\n"
-                POP_INSTRUCTION("rdi")
-                "    call    out_char\n",
+                "    ; OP_STDOUT\n"
+                "    mov     rax, 1\n"
+                "    mov     rdi, 1\n"
+                POP_INSTRUCTION("rdx")
+                POP_INSTRUCTION("rsi")
+                "    syscall\n",
             fptr);
             break;
         default:
@@ -298,15 +251,6 @@ void compile_ops(FILE* fptr, OpCodeArray *ops) {
         compile_op(fptr, ops->ptr[i]);
     }
 }
-
-char *text_postfix =
-    "    ; EXIT\n"
-    "    mov \trdi, 0\n"
-    "    mov \teax, 60\n"
-    "    syscall\n";
-
-char *data_prefix =
-    "section .data\n";
 
 // TODO: display original string in comment
 void compile_buf_data(FILE* fptr, Buffer buf) {
@@ -331,10 +275,6 @@ void compile_buf_data(FILE* fptr, Buffer buf) {
     }
 }
 
-char *bss_prefix =
-    "section .bss\n"
-    "    __stack_ptr: resb 1024\n";
-
 void compile_buf_bss(FILE* fptr, Buffer buf) {
     fprintf(fptr,
         "    ; $%s %ld\n"
@@ -344,24 +284,34 @@ void compile_buf_bss(FILE* fptr, Buffer buf) {
 }
 
 void compile_program(FILE* fptr, Program *program) {
-    fputs(global_prefix, fptr);
+    fputs(
+        "BITS 64\n"
+        "global _start\n"
+        "section .text\n",
+    fptr);
     compile_functions(fptr, &program->functions);
 
-    fputs(text_prefix, fptr);
+    fputs(
+        "_start:\n"
+        "    lea     r12, [__stack_ptr + 8192]\n",
+    fptr);
     compile_ops(fptr, &program->ops);
-    fputs(text_postfix, fptr);
 
-    fputs(data_prefix, fptr);
+    fputs("section .data\n", fptr);
     for (int i = 0; i < program->buffers.length; i++) {
         if (program->buffers.ptr[i].init.length != 0) {
             compile_buf_data(fptr, program->buffers.ptr[i]);
         }
     }
 
-    fputs(bss_prefix, fptr);
+    fputs("section .bss\n", fptr);
     for (int i = 0; i < program->buffers.length; i++) {
         if (program->buffers.ptr[i].init.length == 0) {
             compile_buf_bss(fptr, program->buffers.ptr[i]);
         }
     }
+    fputs(
+        "    ; Stack Pointer\n"
+        "    __stack_ptr: resb 8192\n",
+    fptr);
 }

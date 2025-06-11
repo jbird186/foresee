@@ -93,13 +93,10 @@ void parse_word(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) 
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_SHL, "<<")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_SHR, ">>")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_SAR, ">>a")
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_NOT, "~")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_EQ, "==")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_GT, ">")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_LT, "<")
-    // I/O
-    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_OUT_INT, ".")
-    // Temporary (TODO: Remove)
-    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_OUT_CHAR, ".c")
 
     ////////// Misc //////////
     String word = toks->ptr[*idx].data.t_str;
@@ -175,12 +172,22 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_RET, "return")
     // Stack Primitives
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_DROP, "drop")
-    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_SWAP, "swap")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_PICK, "pick")
+    if (!strcmp(toks->ptr[*idx].data.t_str.ptr, "roll")) {
+        op_arr_push(ops, (OpCode){
+            .kind = OP_ROLL,
+            .data.t_int = ASM_LABEL_ID
+        });
+        ASM_LABEL_ID += 2;
+        *idx += 1;
+        return;
+    }
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_PERM, "perm")
     // Reference Primitives
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_STORE, "store")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_FETCH, "fetch")
+    // I/O
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_STDOUT, "stdout")
 
     ////////// Functions //////////
     String ident = toks->ptr[*idx].data.t_str;
@@ -289,7 +296,7 @@ void parse_colon(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     parse_tokens_with(&fn_ops, program, &tree.data.t_tree);
 
     // Automatically return from functions if needed
-    if ((fn_ops.length > 0) && (fn_ops.ptr[fn_ops.length - 1].kind != OP_RET)) {
+    if ((fn_ops.length == 0) || (fn_ops.ptr[fn_ops.length - 1].kind != OP_RET)) {
         op_arr_push(&fn_ops, (OpCode){.kind = OP_RET});
     }
 
@@ -363,9 +370,12 @@ void parse_dollar(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx
     if (toks->ptr[*idx].kind == TOK_INT) {
         buf.size = toks->ptr[*idx].data.t_int;
         *idx += 1;
+
         // Initialize to String (optional)
-        if (toks->ptr[*idx].kind == TOK_STR) {
-            buf.init = toks->ptr[*idx].data.t_str;
+        if ((toks->ptr[*idx].kind == TOK_COLON) && (toks->ptr[*idx + 1].kind == TOK_STR)) {
+            buf.init = toks->ptr[*idx + 1].data.t_str;
+            *idx += 2;
+
             // Specified size is too small
             if (buf.size < buf.init.length) {
                 fprintf(stderr, "Error: invalid size for buffer '%s'\n", name.data.t_str.ptr);
@@ -374,14 +384,14 @@ void parse_dollar(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx
         }
     }
     // Initialize to String
-    else if (toks->ptr[*idx].kind == TOK_STR) {
-        buf.init = toks->ptr[*idx].data.t_str;
+    else if ((toks->ptr[*idx].kind == TOK_COLON) && (toks->ptr[*idx + 1].kind == TOK_STR)) {
+        buf.init = toks->ptr[*idx + 1].data.t_str;
         buf.size = buf.init.length;
+        *idx += 2;
     } else {
         fprintf(stderr, "Error: invalid definition for buffer '%s'\n", name.data.t_str.ptr);
         exit(1);
     }
-    *idx += 1;
 
     buf_arr_push(&program->buffers, buf);
 }
@@ -476,4 +486,13 @@ void parse_tokens(Program *program, TokenArray *toks) {
 
 void parse_program(Program *program, TokenArray *toks) {
     parse_tokens(program, toks);
+    if ((program->ops.length == 0) || (program->ops.ptr[program->ops.length - 1].kind != OP_EXIT)) {
+        op_arr_push(&program->ops, (OpCode){
+            .kind = OP_PUSH_INT,
+            .data.t_int = 0
+        });
+        op_arr_push(&program->ops, (OpCode){
+            .kind = OP_EXIT
+        });
+    }
 }

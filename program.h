@@ -14,8 +14,8 @@ typedef enum {
     OP_RET,
     // Stack Primitives
     OP_DROP,
-    OP_SWAP,
     OP_PICK,
+    OP_ROLL,
     OP_PERM,
     OP_PUSH_INT,
     // Reference Primitives
@@ -33,6 +33,7 @@ typedef enum {
     OP_SHL,
     OP_SHR,
     OP_SAR,
+    OP_NOT,
     OP_EQ,
     OP_GT,
     OP_LT,
@@ -41,9 +42,7 @@ typedef enum {
     OP_JMP,
     OP_JZ,
     // I/O
-    OP_OUT_INT,
-    // Temporary (TODO: Remove)
-    OP_OUT_CHAR, // Easy to display newline charcters
+    OP_STDOUT,
 } OpKind;
 
 typedef struct OpCode OpCode;
