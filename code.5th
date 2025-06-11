@@ -1,6 +1,6 @@
 #%{over over / * -}
 
-#false{1}
+#false{0}
 #true{1}
 #!={== 1 ^}
 
@@ -16,7 +16,6 @@
         dup fetch .c
         1 +
     } drop
-    return
 }
 #.s{out_str}
 
@@ -35,15 +34,14 @@
     } drop
 }
 
+"Hello World!\n".s
+
 :fib {
     1 showln
     1 showln
     while (dup 1_000_000 <) {
         swap over + showln
-    }
-    return
+    } drop drop
 }
 
 fib
-
-"Hello World!\n".s

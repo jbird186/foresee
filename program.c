@@ -17,7 +17,9 @@ void macro_free(Macro *macro) {
 }
 DEFINE_ARRAY_C(Macro, macro)
 
-void buf_free(Buffer *buf) {}
+void buf_free(Buffer *buf) {
+    str_free(&buf->name);
+}
 DEFINE_ARRAY_C(Buffer, buf)
 
 void program_new(Program *program) {
@@ -187,7 +189,10 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     for (int i = 0; i < program->functions.length; i++) {
         Function function = program->functions.ptr[i];
         if (!strcmp(function.name.ptr, ident.ptr)) {
-            op_arr_push(ops, (OpCode){.kind = OP_CALL, .data.t_name = function.name});
+            op_arr_push(ops, (OpCode){
+                .kind = OP_CALL,
+                .data.t_name = function.name
+            });
             *idx += 1;
             return;
         }
@@ -282,6 +287,12 @@ void parse_colon(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     OpCodeArray fn_ops;
     op_arr_new(&fn_ops, tree.data.t_tree.length);
     parse_tokens_with(&fn_ops, program, &tree.data.t_tree);
+
+    // Automatically return from functions if needed
+    if ((fn_ops.length > 0) && (fn_ops.ptr[fn_ops.length - 1].kind != OP_RET)) {
+        op_arr_push(&fn_ops, (OpCode){.kind = OP_RET});
+    }
+
     fn_arr_push(&program->functions, (Function){
         .name = name.data.t_str,
         .ops = fn_ops
@@ -344,7 +355,9 @@ void parse_dollar(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx
     }
     *idx += 2;
 
-    Buffer buf = {.name = name.data.t_str};
+    String name_copy;
+    str_new_from(&name_copy, name.data.t_str.ptr);
+    Buffer buf = {.name = name_copy};
 
     // Specify size
     if (toks->ptr[*idx].kind == TOK_INT) {
