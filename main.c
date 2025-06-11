@@ -6,11 +6,14 @@
 #include "lex.h"
 #include "compile.h"
 
+char *source = "code.5th";
+char *output = "./target/fifth.asm";
+
 int main() {
-    printf("Opening file 'code.5th'...\n");
-    FILE* rptr = fopen("code.5th", "r");
+    printf("Opening file '%s'...\n", source);
+    FILE* rptr = fopen(source, "r");
     if (!rptr) {
-        fprintf(stderr, "Error: failed to read '%s' at %s:%d\n", "code.5th", __FILE__, __LINE__);
+        fprintf(stderr, "Error: failed to read '%s' at %s:%d\n", source, __FILE__, __LINE__);
         exit(1);
     }
 
@@ -23,12 +26,18 @@ int main() {
     printf("Parsing...\n");
     Program program;
     program_new(&program);
-    parse_program(&program, &toks);
+    String file_name;
+    str_new_from(&file_name, source);
+    lf_arr_push(&program.files, (LexedFile){
+        .name = file_name,
+        .toks = toks
+    });
+    parse_program(&program);
 
-    printf("Opening file 'fifth.asm'...\n");
-    FILE* wptr = fopen("fifth.asm", "w");
+    printf("Opening file '%s'...\n", output);
+    FILE* wptr = fopen(output, "w");
     if (!wptr) {
-        fprintf(stderr, "Error: failed to write to '%s' at %s:%d\n", "fifth.asm", __FILE__, __LINE__);
+        fprintf(stderr, "Error: failed to write to '%s' at %s:%d\n", output, __FILE__, __LINE__);
         exit(1);
     }
 
@@ -36,6 +45,5 @@ int main() {
     compile_program(wptr, &program);
     fclose(wptr);
 
-    tok_arr_free(&toks);
     program_free(&program);
 }

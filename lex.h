@@ -13,6 +13,7 @@ typedef enum {
     TOK_IF,
     TOK_ELSE,
     TOK_WHILE,
+    TOK_INCLUDE,
     TOK_COLON,
     TOK_POUND,
     TOK_DOLLAR,
@@ -39,3 +40,11 @@ struct Token {
 };
 
 void lex_file(TokenArray *toks, FILE *fptr);
+
+typedef struct {
+    String name;
+    TokenArray toks;
+} LexedFile;
+
+DEFINE_ARRAY_TYPE(LexedFile)
+DEFINE_ARRAY_H(LexedFile, lf)

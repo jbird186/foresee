@@ -3,26 +3,38 @@
 #include "lex.h"
 #include "program.h"
 
-void op_arr_free(OpCodeArray *arr);
-void op_free(OpCode *op) {}
+void op_free(OpCode *op) {
+    // switch (op->kind) {
+    //     case OP_PUSH_BUF:
+    //     case OP_CALL:
+    //         str_free(&op->data.t_name);
+    //         break;
+    // }
+}
 DEFINE_ARRAY_C(OpCode, op)
 
 void fn_free(Function *function) {
-    free(function->ops.ptr);
+    // str_free(&function->name);
+    op_arr_free(&function->ops);
 }
 DEFINE_ARRAY_C(Function, fn)
 
 void macro_free(Macro *macro) {
+    // str_free(&macro->name);
     free(macro->args.ptr);
+    // str_arr_free(&macro->args);
+    // tok_arr_free(&macro->toks);
 }
 DEFINE_ARRAY_C(Macro, macro)
 
 void buf_free(Buffer *buf) {
     str_free(&buf->name);
+    // str_free(&buf->init);
 }
 DEFINE_ARRAY_C(Buffer, buf)
 
 void program_new(Program *program) {
+    lf_arr_new(&program->files, 8);
     macro_arr_new(&program->macros, 32);
     fn_arr_new(&program->functions, 32);
     op_arr_new(&program->ops, 256);
@@ -30,6 +42,7 @@ void program_new(Program *program) {
 }
 
 void program_free(Program *program) {
+    lf_arr_free(&program->files);
     macro_arr_free(&program->macros);
     fn_arr_free(&program->functions);
     op_arr_free(&program->ops);
@@ -39,8 +52,7 @@ void program_free(Program *program) {
 static uint64_t ASM_INLINE_BUF_ID = 0;
 static uint64_t ASM_LABEL_ID = 0;
 
-void parse_tokens_with(OpCodeArray *ops, Program *program, TokenArray *toks);
-void parse_tokens(Program *program, TokenArray *toks);
+void parse_tokens(OpCodeArray *ops, Program *program, TokenArray *toks);
 
 void parse_until(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx, TokenKind kind) {
     TokenArray inner_toks;
@@ -49,7 +61,7 @@ void parse_until(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx,
         tok_arr_push(&inner_toks, toks->ptr[*idx]);
         *idx += 1;
     }
-    parse_tokens_with(ops, program, &inner_toks);
+    parse_tokens(ops, program, &inner_toks);
     free(inner_toks.ptr);
 }
 
@@ -142,7 +154,7 @@ void parse_word(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) 
 
             // Ensure that the number of macros does not increase
             int n_macros = program->macros.length;
-            parse_tokens_with(ops, program, &macro.toks);
+            parse_tokens(ops, program, &macro.toks);
             if (n_macros != program->macros.length) {
                 fprintf(stderr, "Error: macro '%s' cannot define internal macros\n", word.ptr);
                 exit(1);
@@ -223,7 +235,7 @@ void _parse_question_with_ref(
     op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = ASM_LABEL_ID });
 
     // Operations
-    parse_tokens_with(ops, program, &toks->ptr[*idx].data.t_tree);
+    parse_tokens(ops, program, &toks->ptr[*idx].data.t_tree);
     *idx += 1;
 
     op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_int = end_ref });
@@ -236,7 +248,7 @@ void _parse_question_with_ref(
     Token next_tok = toks->ptr[*idx];
     // Else condition
     if (next_tok.kind == TOK_BRACE_TREE) {
-        parse_tokens_with(ops, program, &next_tok.data.t_tree);
+        parse_tokens(ops, program, &next_tok.data.t_tree);
         *idx += 1;
     // Else-if condition
     } else if (next_tok.kind == TOK_IF) {
@@ -264,11 +276,48 @@ void parse_while(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     parse_until(ops, program, toks, idx, TOK_BRACE_TREE);
     op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = end_ref });
 
-    parse_tokens_with(ops, program, &toks->ptr[*idx].data.t_tree);
+    parse_tokens(ops, program, &toks->ptr[*idx].data.t_tree);
     *idx += 1;
 
     op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_int = start_ref });
     op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = end_ref });
+}
+
+void parse_include(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
+    *idx += 1;
+
+    String file_path;
+    if (toks->ptr[*idx].kind != TOK_STR) {
+        fprintf(stderr, "Error: invalid 'include' directive\n");
+        exit(1);
+    }
+    file_path = toks->ptr[*idx].data.t_str;
+    *idx += 1;
+
+    for (int i = 0; i < program->files.length; i++) {
+        if (!strcmp(program->files.ptr[i].name.ptr, file_path.ptr)) {
+            return;
+        }
+    }
+
+    FILE* fptr = fopen(file_path.ptr, "r");
+    if (!fptr) {
+        fprintf(stderr, "Error: failed to read '%s' at %s:%d\n", file_path.ptr, __FILE__, __LINE__);
+        exit(1);
+    }
+
+    TokenArray file_toks;
+    tok_arr_new(&file_toks, 256);
+    lex_file(&file_toks, fptr);
+    fclose(fptr);
+    parse_tokens(ops, program, &file_toks);
+
+    String file_path_copy;
+    str_new_from(&file_path_copy, file_path.ptr);
+    lf_arr_push(&program->files, (LexedFile){
+        .name = file_path_copy,
+        .toks = file_toks
+    });
 }
 
 void parse_colon(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
@@ -293,7 +342,7 @@ void parse_colon(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
 
     OpCodeArray fn_ops;
     op_arr_new(&fn_ops, tree.data.t_tree.length);
-    parse_tokens_with(&fn_ops, program, &tree.data.t_tree);
+    parse_tokens(&fn_ops, program, &tree.data.t_tree);
 
     // Automatically return from functions if needed
     if ((fn_ops.length == 0) || (fn_ops.ptr[fn_ops.length - 1].kind != OP_RET)) {
@@ -419,13 +468,12 @@ void parse_ref(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
     exit(1);
 }
 
-// TODO
 void parse_tree(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
-    parse_tokens_with(ops, program, &toks->ptr[*idx].data.t_tree);
+    parse_tokens(ops, program, &toks->ptr[*idx].data.t_tree);
     *idx += 1;
 }
 
-void parse_tokens_with(OpCodeArray *ops, Program *program, TokenArray *toks) {
+void parse_tokens(OpCodeArray *ops, Program *program, TokenArray *toks) {
     int idx = 0;
     while (idx < toks->length) {
         switch (toks->ptr[idx].kind) {
@@ -458,6 +506,9 @@ void parse_tokens_with(OpCodeArray *ops, Program *program, TokenArray *toks) {
             case TOK_WHILE:
                 parse_while(ops, program, toks, &idx);
                 break;
+            case TOK_INCLUDE:
+                parse_include(ops, program, toks, &idx);
+                break;
             case TOK_COLON:
                 parse_colon(ops, program, toks, &idx);
                 break;
@@ -480,18 +531,15 @@ void parse_tokens_with(OpCodeArray *ops, Program *program, TokenArray *toks) {
     }
 }
 
-void parse_tokens(Program *program, TokenArray *toks) {
-    return parse_tokens_with(&program->ops, program, toks);
-}
-
-void parse_program(Program *program, TokenArray *toks) {
-    parse_tokens(program, toks);
-    if ((program->ops.length == 0) || (program->ops.ptr[program->ops.length - 1].kind != OP_EXIT)) {
-        op_arr_push(&program->ops, (OpCode){
+void parse_program(Program *program) {
+    OpCodeArray *ops = &program->ops;
+    parse_tokens(ops, program, &program->files.ptr[0].toks);
+    if ((ops->length == 0) || (ops->ptr[ops->length - 1].kind != OP_EXIT)) {
+        op_arr_push(ops, (OpCode){
             .kind = OP_PUSH_INT,
             .data.t_int = 0
         });
-        op_arr_push(&program->ops, (OpCode){
+        op_arr_push(ops, (OpCode){
             .kind = OP_EXIT
         });
     }

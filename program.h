@@ -85,6 +85,7 @@ typedef struct {
 DEFINE_ARRAY_TYPE(Buffer)
 
 typedef struct {
+    LexedFileArray files;
     MacroArray macros;
     FunctionArray functions;
     OpCodeArray ops;
@@ -92,4 +93,4 @@ typedef struct {
 } Program;
 void program_new(Program *program);
 void program_free(Program *program);
-void parse_program(Program *program, TokenArray *toks);
+void parse_program(Program *program);

@@ -44,11 +44,6 @@ void str_push(String *str, char new) {
     str->ptr[str->length] = '\0';
 }
 
-void str_clear(String *str) {
-    str->ptr[0] = '\0';
-    str->length = 0;
-}
-
 void str_free(String *str) {
     free(str->ptr);
     str->ptr = NULL;

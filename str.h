@@ -11,7 +11,6 @@ typedef struct {
 void str_new(String *str, int init_capacity);
 void str_new_from(String *str, char *src);
 void str_push(String *str, char new);
-void str_clear(String *str);
 void str_free(String *str);
 
 DEFINE_ARRAY_TYPE(String)

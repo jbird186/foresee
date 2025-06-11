@@ -1,6 +1,3 @@
 .vscode
+target
 cmd.txt
-out
-fifth.asm
-fifth.o
-fifth

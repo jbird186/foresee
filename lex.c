@@ -26,6 +26,12 @@ void tok_free(Token *tok) {
 }
 DEFINE_ARRAY_C(Token, tok)
 
+void lf_free(LexedFile *lf) {
+    str_free(&lf->name);
+    tok_arr_free(&lf->toks);
+}
+DEFINE_ARRAY_C(LexedFile, lf)
+
 void match_escape_char(char *dest, char c, FILE *fptr) {
     switch (c) {
         case '0':  // null
@@ -174,6 +180,7 @@ void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
     CHECK_KEYWORD(toks, word, TOK_IF, "if")
     CHECK_KEYWORD(toks, word, TOK_ELSE, "else")
     CHECK_KEYWORD(toks, word, TOK_WHILE, "while")
+    CHECK_KEYWORD(toks, word, TOK_INCLUDE, "include")
 
     tok_arr_push(toks, (Token) {
         .kind = TOK_IDENT,

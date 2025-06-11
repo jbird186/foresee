@@ -1,0 +1,25 @@
+#%{over over / * -}
+
+#false{0}
+#true{1}
+#!={== 1 ^}
+
+#dup{0 pick}
+#over{1 pick}
+#swap{1 roll}
+#rot{2 roll}
+
+#dowhile(__ops __cond) {
+    __ops
+    while __cond {
+        __ops
+    }
+}
+
+#for(__init __cond __iter __ops) {
+    __init
+    while __cond {
+        __ops
+        __iter
+    }
+}
