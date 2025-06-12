@@ -200,6 +200,7 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_FETCH, "fetch")
     // I/O
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_STDOUT, "stdout")
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_STDIN, "stdin")
 
     ////////// Functions //////////
     String ident = toks->ptr[*idx].data.t_str;

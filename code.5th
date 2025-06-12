@@ -8,5 +8,11 @@ include "src/stdio.5th"
     } drop drop
 }
 
-"Hello World!\n".s
+"Enter your name: ".s
+
+$name 32
+&name 32 stdin
+&name + 1 - 0 swap storec
+
+"Hello ".s &name.s "!\n".s
 fib

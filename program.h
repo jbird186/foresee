@@ -43,6 +43,7 @@ typedef enum {
     OP_JZ,
     // I/O
     OP_STDOUT,
+    OP_STDIN,
 } OpKind;
 
 typedef struct OpCode OpCode;

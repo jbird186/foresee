@@ -242,6 +242,17 @@ void compile_op(FILE* fptr, OpCode op) {
                 "    syscall\n",
             fptr);
             break;
+        case OP_STDIN:
+            fputs(
+                "    ; OP_STDIN\n"
+                "    mov     rax, 0\n"
+                "    mov     rdi, 0\n"
+                POP_INSTRUCTION("rdx")
+                POP_INSTRUCTION("rsi")
+                "    syscall\n"
+                PUSH_INSTRUCTION("rax"),
+                fptr);
+            break;
         default:
             fprintf(stderr, "Error: invalid opcode '%d'\n", op.kind);
             fclose(fptr);
