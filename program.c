@@ -194,7 +194,7 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
         *idx += 1;
         return;
     }
-    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_PERM, "perm")
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_DEPTH, "depth")
     // Reference Primitives
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_STORE, "store")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_FETCH, "fetch")

@@ -96,11 +96,14 @@ void compile_op(FILE* fptr, OpCode op) {
                 label, label + 1, label, label + 1
             );
             break;
-        case OP_PERM: // TODO
-            fputs("    ; OP_PERM\n", fptr);
-            fprintf(stderr, "TODO: implement opcode OP_PERM");
-            fclose(fptr);
-            exit(1);
+        case OP_DEPTH:
+            fputs(
+                "    ; OP_DEPTH\n"
+                "    mov     rax, __stack_ptr + 8192\n"
+                "    sub     rax, " STACK_POINTER "\n"
+                "    shr     rax, 3\n"
+                PUSH_INSTRUCTION("rax"),
+                fptr);
             break;
         case OP_PUSH_INT:
             fprintf(fptr,

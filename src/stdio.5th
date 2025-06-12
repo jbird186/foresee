@@ -1,20 +1,16 @@
 include "src/core.5th"
-
-:storec {
-    dup fetch 255 ~ &
-    rot |
-    swap store
-}
-:fetchc {
-    fetch 256 %
-}
+include "src/stdref.5th"
 
 $__stdout_buf 20
+
 :out_char {
     &__stdout_buf store
     &__stdout_buf 1 stdout
 }
 #.c{out_char}
+#showc{dup .c}
+#showcln{dup .c cr}
+
 :out_int {
     0 dowhile({
         &__stdout_buf 19 + over -
@@ -27,6 +23,9 @@ $__stdout_buf 20
     stdout drop
 }
 #.{out_int}
+#show{dup .}
+#showln{dup . cr}
+
 :out_str{
     while dup fetchc {
         dup fetch .c
@@ -34,6 +33,7 @@ $__stdout_buf 20
     } drop
 }
 #.s{out_str}
+#shows{dup .s}
+#showsln{dup .s cr}
+
 #cr{'\n'.c}
-#show{dup .}
-#showln{dup . cr}

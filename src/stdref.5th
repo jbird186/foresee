@@ -1,0 +1,11 @@
+include "src/core.5th"
+
+:storec {
+    dup fetch 255 ~ &
+    rot |
+    swap store
+}
+
+:fetchc {
+    fetch 256 %
+}

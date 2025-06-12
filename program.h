@@ -16,7 +16,7 @@ typedef enum {
     OP_DROP,
     OP_PICK,
     OP_ROLL,
-    OP_PERM,
+    OP_DEPTH,
     OP_PUSH_INT,
     // Reference Primitives
     OP_PUSH_BUF,
