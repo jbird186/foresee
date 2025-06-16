@@ -1,18 +1,17 @@
-include "src/stdio.5th"
+include "std/stdio.5th"
 
 :fib {
-    1 showln
-    1 showln
-    while dup 1000 < {
-        swap over + showln
-    } drop drop
+    0 1 while dup 3 pick <= {
+        show cr swap over +
+    } drop drop drop
 }
 
+$name 80
+
 "Enter your name: ".s
-
-$name 32
-&name 32 stdin
-&name + 1 - 0 swap storec
-
+&name 80 stdinln drop
 "Hello ".s &name.s "!\n".s
+
+"Enter a limit: ".s ,
+"Fibonacci numbers up to ".s show ":\n".s
 fib

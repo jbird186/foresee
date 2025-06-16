@@ -45,6 +45,7 @@ void str_push(String *str, char new) {
 }
 
 void str_free(String *str) {
+    if (!str->ptr) return;
     free(str->ptr);
     str->ptr = NULL;
 }

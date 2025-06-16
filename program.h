@@ -4,6 +4,7 @@
 #include "arr.h"
 #include "str.h"
 #include "lex.h"
+#include "preprocess.h"
 
 typedef enum {
     // Misc / Special
@@ -73,25 +74,16 @@ DEFINE_ARRAY_TYPE(Function)
 
 typedef struct {
     String name;
-    StringArray args;
-    TokenArray toks;
-} Macro;
-DEFINE_ARRAY_TYPE(Macro)
-
-typedef struct {
-    String name;
     String init;
     uint64_t size;
 } Buffer;
 DEFINE_ARRAY_TYPE(Buffer)
 
 typedef struct {
-    LexedFileArray files;
-    MacroArray macros;
     FunctionArray functions;
     OpCodeArray ops;
     BufferArray buffers;
 } Program;
 void program_new(Program *program);
 void program_free(Program *program);
-void parse_program(Program *program);
+void parse_program(Program *program, TokenArray *ptoks);

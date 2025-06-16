@@ -2,8 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "program.h"
 #include "lex.h"
+#include "preprocess.h"
+#include "program.h"
 #include "compile.h"
 
 char *source = "code.5th";
@@ -23,16 +24,23 @@ int main() {
     lex_file(&toks, rptr);
     fclose(rptr);
 
-    printf("Parsing...\n");
-    Program program;
-    program_new(&program);
+    printf("Preprocessing...\n");
+    PreprocessContext context;
+    context_new(&context);
     String file_name;
     str_new_from(&file_name, source);
-    lf_arr_push(&program.files, (LexedFile){
+    lf_arr_push(&context.files, (LexedFile){
         .name = file_name,
         .toks = toks
     });
-    parse_program(&program);
+    TokenArray ptoks;
+    tok_arr_new(&ptoks, toks.length);
+    preprocess(&context, &ptoks, &toks);
+
+    printf("Parsing...\n");
+    Program program;
+    program_new(&program);
+    parse_program(&program, &ptoks);
 
     printf("Opening file '%s'...\n", output);
     FILE* wptr = fopen(output, "w");
@@ -45,5 +53,7 @@ int main() {
     compile_program(wptr, &program);
     fclose(wptr);
 
+    context_free(&context);
     program_free(&program);
+    tok_arr_free(&ptoks);
 }

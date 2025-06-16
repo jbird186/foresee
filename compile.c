@@ -274,7 +274,7 @@ void compile_buf_data(FILE* fptr, Buffer buf) {
         buf.name.ptr, buf.size,
         buf.name.ptr
     );
-    for (int i = 0; i <= buf.init.length; i++) {
+    for (int i = 0; i < buf.init.length; i++) {
         fprintf(fptr, "%d", buf.init.ptr[i]);
         if (i + 1 <= buf.init.length) {
             fputc(',', fptr);

@@ -7,8 +7,8 @@
 #include "lex.h"
 
 void _lex_file(TokenArray *toks, FILE *fptr, char delim);
-void tok_arr_free(TokenArray *arr);
 
+void tok_arr_free(TokenArray *arr);
 void tok_free(Token *tok) {
     switch (tok->kind) {
         case TOK_STR:
@@ -19,8 +19,6 @@ void tok_free(Token *tok) {
         case TOK_PAREN_TREE:
         case TOK_BRACE_TREE:
             tok_arr_free(&tok->data.t_tree);
-            break;
-        default:
             break;
     }
 }
@@ -169,22 +167,22 @@ void lex_tree(TokenArray *toks, FILE *fptr, char *c, TokenKind kind, char delim)
     }
 
 void lex_ident(TokenArray *toks, FILE *fptr, char *c) {
-    String word;
-    str_new(&word, 8);
-    str_push(&word, *c);
+    String ident;
+    str_new(&ident, 8);
+    str_push(&ident, *c);
     while ((*c = fgetc(fptr)) != EOF) {
         if (!isalnum(*c) && *c != '_') break;
-        str_push(&word, *c);
+        str_push(&ident, *c);
     }
 
-    CHECK_KEYWORD(toks, word, TOK_IF, "if")
-    CHECK_KEYWORD(toks, word, TOK_ELSE, "else")
-    CHECK_KEYWORD(toks, word, TOK_WHILE, "while")
-    CHECK_KEYWORD(toks, word, TOK_INCLUDE, "include")
+    CHECK_KEYWORD(toks, ident, TOK_IF, "if")
+    CHECK_KEYWORD(toks, ident, TOK_ELSE, "else")
+    CHECK_KEYWORD(toks, ident, TOK_WHILE, "while")
+    CHECK_KEYWORD(toks, ident, TOK_INCLUDE, "include")
 
     tok_arr_push(toks, (Token) {
         .kind = TOK_IDENT,
-        .data.t_str = word,
+        .data.t_str = ident,
     });
 }
 

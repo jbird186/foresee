@@ -1,22 +1,21 @@
-include "src/core.5th"
-include "src/stdref.5th"
+include "std/core.5th"
+include "std/stdref.5th"
 
 $__stdio_buf 20
 
 :out_char {
-    &__stdio_buf store
+    &__stdio_buf@
     &__stdio_buf 1 stdout
 }
 #.c{out_char}
 #showc{dup .c}
-#showcln{dup .c cr}
 #cr{'\n'.c}
 
 :out_int {
     0 dowhile({
         &__stdio_buf 19 + over -
         rot dup 10 % '0' +
-        rot storec
+        rot @c
         10 /
         swap 1 +
     } {over})
@@ -25,30 +24,35 @@ $__stdio_buf 20
 }
 #.{out_int}
 #show{dup .}
-#showln{dup . cr}
 
 :out_str{
-    while dup fetchc dup {
+    while dup!c dup {
         .c 1 +
     } drop drop
 }
 #.s{out_str}
 #shows{dup .s}
-#showsln{dup .s cr}
 
 :in_char {
     &__stdio_buf 1 stdin
-    &__stdio_buf fetchc
+    &__stdio_buf!c
 }
 #,c{in_char}
 
 :in_int {
     &__stdio_buf 20 stdin drop
     0 &__stdio_buf
-    while dup fetchc dup '\n' != {
+    while dup!c dup '\n' != {
         '0' -
         rot 10 * +
         swap 1 +
     } drop drop
 }
 #,{in_int}
+
+:stdinln {
+    over swap stdin
+    1 -
+    dup rot +
+    0 swap @c
+}
