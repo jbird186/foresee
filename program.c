@@ -31,6 +31,7 @@ void program_free(Program *program) {
 
 static uint64_t ASM_INLINE_BUF_ID = 0;
 static uint64_t ASM_LABEL_ID = 0;
+static uint64_t ASM_ROLL_ID = 0;
 
 void parse_tokens(OpCodeArray *ops, Program *program, TokenArray *toks);
 
@@ -108,9 +109,9 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     if (!strcmp(toks->ptr[*idx].data.t_str.ptr, "roll")) {
         op_arr_push(ops, (OpCode){
             .kind = OP_ROLL,
-            .data.t_int = ASM_LABEL_ID
+            .data.t_int = ASM_ROLL_ID
         });
-        ASM_LABEL_ID += 2;
+        ASM_ROLL_ID += 2;
         *idx += 1;
         return;
     }

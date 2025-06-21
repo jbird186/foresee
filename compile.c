@@ -84,14 +84,14 @@ void compile_op(FILE* fptr, OpCode op) {
                 POP_INSTRUCTION("rax")
                 "    mov     rcx, [" STACK_POINTER " + rax*8]\n"
                 "    lea     rbx, [" STACK_POINTER " + rax*8]\n"
-                ".label_%ld:\n"
+                "   .rl_%ld:\n"
                 "    cmp     rbx, " STACK_POINTER "\n"
-                "    je      .label_%ld\n"
+                "    je      .rl_%ld\n"
                 "    mov     rdx, [rbx - 8]\n"
                 "    mov     [rbx], rdx\n"
                 "    sub     rbx, 8\n"
-                "    jmp     .label_%ld\n"
-                ".label_%ld:\n"
+                "    jmp     .rl_%ld\n"
+                "   .rl_%ld:\n"
                 "    mov     [" STACK_POINTER "], rcx\n",
                 label, label + 1, label, label + 1
             );
@@ -214,12 +214,12 @@ void compile_op(FILE* fptr, OpCode op) {
             fptr);
             break;
         case OP_LABEL:
-            fprintf(fptr, ".label_%ld:\n", op.data.t_int);
+            fprintf(fptr, ".l_%ld:\n", op.data.t_int);
             break;
         case OP_JMP:
             fprintf(fptr,
                 "    ; OP_JMP\n"
-                "    jmp     .label_%ld\n",
+                "    jmp     .l_%ld\n",
                 op.data.t_int
             );
             break;
@@ -228,7 +228,7 @@ void compile_op(FILE* fptr, OpCode op) {
                 "    ; OP_JZ\n"
                 POP_INSTRUCTION("rax")
                 "    test    rax, rax\n"
-                "    jz     .label_%ld\n",
+                "    jz     .l_%ld\n",
                 op.data.t_int
             );
             break;
@@ -276,7 +276,7 @@ void compile_buf_data(FILE* fptr, Buffer buf) {
     );
     for (int i = 0; i < buf.init.length; i++) {
         fprintf(fptr, "%d", buf.init.ptr[i]);
-        if (i + 1 <= buf.init.length) {
+        if (i + 1 < buf.init.length) {
             fputc(',', fptr);
         }
     }

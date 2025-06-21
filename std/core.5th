@@ -2,10 +2,11 @@
 
 #false{0}
 #true{1}
-#not{1 ^}
-#!={== not}
-#<={> not}
-#>={< not}
+#bool{(if {true} else {false})}
+#not{(if {false} else {true})}
+#!={== 1 ^}
+#<={> 1 ^}
+#>={< 1 ^}
 
 #dup{0 pick}
 #over{1 pick}
