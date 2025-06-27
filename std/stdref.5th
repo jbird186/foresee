@@ -1,4 +1,4 @@
-include "std/core.5th"
+#include "std/core.5th"
 
 #@{store}
 :storec {

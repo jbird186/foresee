@@ -1,0 +1,22 @@
+#include "std/stdio.5th"
+
+$filename: ".gitignore"
+$file 8
+
+&filename 0 fopen
+
+if dup is_success {
+    "Successfully read file '".s &filename.s "'!\n".s
+    &file@
+
+    $buf 256
+    &buf 256 &file! fread
+    "Read ".s . " bytes:\n".s
+    &buf.s cr
+
+    &file! fclose
+} else {
+    drop
+    "Failed to read file '".s &filename.s "'!\n".s
+    0 exit
+}

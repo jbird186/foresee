@@ -6,6 +6,7 @@
 #include "string.h"
 #include "lex.h"
 
+void lex_word(TokenArray *toks, FILE *fptr, char *c);
 void _lex_file(TokenArray *toks, FILE *fptr, char delim);
 
 void tok_arr_free(TokenArray *arr);
@@ -61,7 +62,7 @@ void match_escape_char(char *dest, char c, FILE *fptr) {
 }
 
 void lex_int(TokenArray *toks, FILE *fptr, char *c) {
-    uint64_t total = *c - '0';
+    int64_t total = *c - '0';
     while ((*c = fgetc(fptr)) != EOF) {
         if (isdigit(*c)) {
             total *= 10;
@@ -78,6 +79,20 @@ void lex_int(TokenArray *toks, FILE *fptr, char *c) {
         .kind = TOK_INT,
         .data.t_int = total,
     });
+}
+
+void lex_minus(TokenArray *toks, FILE *fptr, char *c) {
+    char next_c = fgetc(fptr);
+    // int
+    if ((next_c != EOF) && isdigit(next_c)) {
+        *c = next_c;
+        lex_int(toks, fptr, c);
+        toks->ptr[toks->length - 1].data.t_int *= -1;
+    // word
+    } else {
+        ungetc(next_c, fptr);
+        lex_word(toks, fptr, c);
+    }
 }
 
 void lex_char(TokenArray *toks, FILE *fptr, char *c) {
@@ -229,6 +244,10 @@ void _lex_file(TokenArray *toks, FILE *fptr, char delim) {
         // literal integer
         else if (isdigit(c)) {
             lex_int(toks, fptr, &c);
+        }
+        // minus
+        else if (c == '-') {
+            lex_minus(toks, fptr, &c);
         }
         // literal char
         else if (c == '\'') {

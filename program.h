@@ -9,20 +9,20 @@
 typedef enum {
     // Misc / Special
     OP_NOOP,
-    OP_EXIT,
+    OP_EXIT,    // exit_code ---
     // Functions
     OP_CALL,
     OP_RET,
     // Stack Primitives
-    OP_DROP,
-    OP_PICK,
-    OP_ROLL,
-    OP_DEPTH,
+    OP_DROP,    // item ---
+    OP_PICK,    // n --- item
+    OP_ROLL,    // n --- item
+    OP_DEPTH,   // --- depth
     OP_PUSH_INT,
     // Reference Primitives
     OP_PUSH_BUF,
-    OP_STORE,
-    OP_FETCH,
+    OP_STORE,   // item ptr ---
+    OP_FETCH,   // ptr --- item
     // Binary Operations
     OP_ADD,
     OP_SUB,
@@ -41,10 +41,12 @@ typedef enum {
     // Branching
     OP_LABEL,
     OP_JMP,
-    OP_JZ,
+    OP_JZ,      // bool ---
     // I/O
-    OP_STDOUT,
-    OP_STDIN,
+    OP_FOPEN,   // filename_ptr [0=read, 1=write, 2=append] --- [fd, -1]
+    OP_FREAD,   // ptr len fd --- [bytes_read, -1]
+    OP_FWRITE,  // ptr len fd --- [bytes_written, -1]
+    OP_FCLOSE,  // fd --- [0, -1]
 } OpKind;
 
 typedef struct OpCode OpCode;
@@ -56,7 +58,8 @@ typedef struct {
 } IfData;
 
 typedef union {
-    uint64_t t_int;
+    int64_t t_int;
+    uint64_t t_u64;
     String t_name;
     IfData t_if;
 } OpData;

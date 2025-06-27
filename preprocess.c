@@ -127,20 +127,21 @@ void process_include(PreprocessContext *context, TokenArray *ptoks, TokenArray *
     });
 }
 
-void process_pound(PreprocessContext *context, TokenArray *ptoks, TokenArray *toks, int *idx) {
-    Token name = toks->ptr[*idx + 1];
+void process_macro_def(PreprocessContext *context, TokenArray *ptoks, TokenArray *toks, int *idx) {
+    Token name = toks->ptr[*idx];
     if ((name.kind != TOK_IDENT) && (name.kind != TOK_WORD)) {
         fprintf(stderr, "Error: invalid name for macro\n");
         exit(1);
     }
+    *idx += 1;
 
     // Arguments (optional)
     StringArray args;
     str_arr_new(&args, 0);
     int n_args;
-    if (toks->ptr[*idx + 2].kind == TOK_PAREN_TREE) {
-        for (n_args = 0; n_args < toks->ptr[*idx + 2].data.t_tree.length; n_args++) {
-            Token arg = toks->ptr[*idx + 2].data.t_tree.ptr[n_args];
+    if (toks->ptr[*idx].kind == TOK_PAREN_TREE) {
+        for (n_args = 0; n_args < toks->ptr[*idx].data.t_tree.length; n_args++) {
+            Token arg = toks->ptr[*idx].data.t_tree.ptr[n_args];
             if (arg.kind != TOK_IDENT) {
                 fprintf(stderr,
                     "Error: invalid argument name for macro '%s': '%s'\n",
@@ -153,7 +154,7 @@ void process_pound(PreprocessContext *context, TokenArray *ptoks, TokenArray *to
         *idx += 1;
     }
 
-    Token tree = toks->ptr[*idx + 2];
+    Token tree = toks->ptr[*idx];
     if (tree.kind != TOK_BRACE_TREE) {
         fprintf(stderr, "Error: invalid definition for macro '%s'\n", name.data.t_str.ptr);
         exit(1);
@@ -171,7 +172,20 @@ void process_pound(PreprocessContext *context, TokenArray *ptoks, TokenArray *to
         .args = args,
         .toks = tree.data.t_tree
     });
-    *idx += 3;
+    *idx += 1;
+}
+
+void process_pound(PreprocessContext *context, TokenArray *ptoks, TokenArray *toks, int *idx) {
+    *idx += 1;
+    TokenKind tok_kind = toks->ptr[*idx].kind;
+    if (tok_kind == TOK_INCLUDE) {
+        process_include(context, ptoks, toks, idx);
+    } else if ((tok_kind == TOK_IDENT) || (tok_kind == TOK_WORD)) {
+        process_macro_def(context, ptoks, toks, idx);
+    } else {
+        fprintf(stderr, "Error: invalid preprocessor directive\n");
+        exit(1);
+    }
 }
 
 void process_tree(PreprocessContext *context, TokenArray *ptoks, TokenArray *toks, int *idx) {
@@ -193,9 +207,6 @@ void preprocess(PreprocessContext *context, TokenArray *ptoks, TokenArray *toks)
             case TOK_IDENT:
             case TOK_WORD:
                 process_word(context, ptoks, toks, &idx);
-                break;
-            case TOK_INCLUDE:
-                process_include(context, ptoks, toks, &idx);
                 break;
             case TOK_POUND:
                 process_pound(context, ptoks, toks, &idx);

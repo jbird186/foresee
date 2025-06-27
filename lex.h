@@ -28,7 +28,8 @@ DEFINE_ARRAY_TYPE(Token)
 DEFINE_ARRAY_H(Token, tok)
 
 typedef union {
-    uint64_t t_int;
+    int64_t t_int;
+    uint64_t t_u64;
     char t_char;
     String t_str;
     TokenArray t_tree;

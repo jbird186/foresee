@@ -1,0 +1,3 @@
+#stdin{0 fread}
+#stdout{1 fwrite drop}
+#stderr{2 fwrite drop}

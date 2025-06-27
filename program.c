@@ -32,6 +32,7 @@ void program_free(Program *program) {
 static uint64_t ASM_INLINE_BUF_ID = 0;
 static uint64_t ASM_LABEL_ID = 0;
 static uint64_t ASM_ROLL_ID = 0;
+static uint64_t ASM_FOPEN_ID = 0;
 
 void parse_tokens(OpCodeArray *ops, Program *program, TokenArray *toks);
 
@@ -109,7 +110,7 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     if (!strcmp(toks->ptr[*idx].data.t_str.ptr, "roll")) {
         op_arr_push(ops, (OpCode){
             .kind = OP_ROLL,
-            .data.t_int = ASM_ROLL_ID
+            .data.t_u64 = ASM_ROLL_ID
         });
         ASM_ROLL_ID += 2;
         *idx += 1;
@@ -120,8 +121,17 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_STORE, "store")
     CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_FETCH, "fetch")
     // I/O
-    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_STDOUT, "stdout")
-    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_STDIN, "stdin")
+    if (!strcmp(toks->ptr[*idx].data.t_str.ptr, "fopen")) {
+        op_arr_push(ops, (OpCode){
+            .kind = OP_FOPEN,
+            .data.t_u64 = ASM_FOPEN_ID++
+        });
+        *idx += 1;
+        return;
+    }
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_FREAD, "fread")
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_FWRITE, "fwrite")
+    CHECK_INTRINSIC_OPCODE(ops, toks, *idx, OP_FCLOSE, "fclose")
 
     ////////// Functions //////////
     String ident = toks->ptr[*idx].data.t_str;
@@ -154,14 +164,14 @@ void _parse_question_with_ref(
 
     // Condition
     parse_until(ops, program, toks, idx, TOK_BRACE_TREE);
-    op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = ASM_LABEL_ID });
+    op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_u64 = ASM_LABEL_ID });
 
     // Operations
     parse_tokens(ops, program, &toks->ptr[*idx].data.t_tree);
     *idx += 1;
 
-    op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_int = end_ref });
-    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = ASM_LABEL_ID++ });
+    op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_u64 = end_ref });
+    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_u64 = ASM_LABEL_ID++ });
 
     // No else condition
     if (toks->ptr[*idx].kind != TOK_ELSE) return;
@@ -185,24 +195,24 @@ void _parse_question_with_ref(
 void parse_if(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
     uint64_t end_ref = ASM_LABEL_ID++;
     _parse_question_with_ref(ops, program, toks, idx, end_ref);
-    op_arr_push(ops, (OpCode){.kind = OP_LABEL, .data.t_int = end_ref});
+    op_arr_push(ops, (OpCode){.kind = OP_LABEL, .data.t_u64 = end_ref});
 }
 
 void parse_while(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
     uint64_t start_ref = ASM_LABEL_ID++;
     uint64_t end_ref = ASM_LABEL_ID++;
-    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = start_ref });
+    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_u64 = start_ref });
 
     // Condition
     *idx += 1;
     parse_until(ops, program, toks, idx, TOK_BRACE_TREE);
-    op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_int = end_ref });
+    op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_u64 = end_ref });
 
     parse_tokens(ops, program, &toks->ptr[*idx].data.t_tree);
     *idx += 1;
 
-    op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_int = start_ref });
-    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_int = end_ref });
+    op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_u64 = start_ref });
+    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_u64 = end_ref });
 }
 
 void parse_colon(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
@@ -260,7 +270,7 @@ void parse_dollar(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx
 
     // Specify size
     if (toks->ptr[*idx].kind == TOK_INT) {
-        buf.size = toks->ptr[*idx].data.t_int;
+        buf.size = toks->ptr[*idx].data.t_u64;
         *idx += 1;
 
         // Initialize to String (optional)
@@ -377,7 +387,7 @@ void parse_program(Program *program, TokenArray *ptoks) {
     if ((ops->length == 0) || (ops->ptr[ops->length - 1].kind != OP_EXIT)) {
         op_arr_push(ops, (OpCode){
             .kind = OP_PUSH_INT,
-            .data.t_int = 0
+            .data.t_u64 = 0
         });
         op_arr_push(ops, (OpCode){
             .kind = OP_EXIT

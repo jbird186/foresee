@@ -78,7 +78,7 @@ void compile_op(FILE* fptr, OpCode op) {
             fptr);
             break;
         case OP_ROLL:
-            uint64_t label = op.data.t_int;
+            uint64_t label = op.data.t_u64;
             fprintf(fptr,
                 "    ; OP_ROLL\n"
                 POP_INSTRUCTION("rax")
@@ -214,13 +214,13 @@ void compile_op(FILE* fptr, OpCode op) {
             fptr);
             break;
         case OP_LABEL:
-            fprintf(fptr, ".l_%ld:\n", op.data.t_int);
+            fprintf(fptr, ".l_%ld:\n", op.data.t_u64);
             break;
         case OP_JMP:
             fprintf(fptr,
                 "    ; OP_JMP\n"
                 "    jmp     .l_%ld\n",
-                op.data.t_int
+                op.data.t_u64
             );
             break;
         case OP_JZ:
@@ -229,28 +229,74 @@ void compile_op(FILE* fptr, OpCode op) {
                 POP_INSTRUCTION("rax")
                 "    test    rax, rax\n"
                 "    jz     .l_%ld\n",
-                op.data.t_int
+                op.data.t_u64
             );
             break;
-        case OP_STDOUT:
-            fputs(
-                "    ; OP_STDOUT\n"
-                "    mov     rax, 1\n"
-                "    mov     rdi, 1\n"
-                POP_INSTRUCTION("rdx")
-                POP_INSTRUCTION("rsi")
-                "    syscall\n",
-            fptr);
-            break;
-        case OP_STDIN:
-            fputs(
-                "    ; OP_STDIN\n"
-                "    mov     rax, 0\n"
-                "    mov     rdi, 0\n"
-                POP_INSTRUCTION("rdx")
-                POP_INSTRUCTION("rsi")
+        case OP_FOPEN:
+            uint64_t ref = op.data.t_u64;
+            fprintf(fptr,
+                "    ; OP_FOPEN\n"
+                POP_INSTRUCTION("rsi")         // mode (0 = read, 1 = write, etc.)
+                POP_INSTRUCTION("rdi")         // filename pointer
+                "    mov     rax, 2\n"
+                "    cmp     rsi, 0\n"
+                "    je      .frl_%ld\n"
+                "    cmp     rsi, 1\n"
+                "    je      .fwl_%ld\n"
+                "    cmp     rsi, 2\n"
+                "    je      .fal_%ld\n"
+                "    jmp     .ffl_%ld\n"
+                "    .frl_%ld:\n"
+                "    mov     rsi, 0\n"
+                "    jmp     .fdl_%ld\n"
+                "    .fwl_%ld:\n"
+                "    mov     rsi, 577\n"
+                "    jmp     .fdl_%ld\n"
+                "    .fal_%ld:\n"
+                "    mov     rsi, 1025\n"
+                "    jmp     .fdl_%ld\n"
+                "    .fdl_%ld:\n"
+                "    mov     rdx, 420\n"
                 "    syscall\n"
-                PUSH_INSTRUCTION("rax"),
+                PUSH_INSTRUCTION("rax")        // push FD (or -1 on error)
+                "    jmp     .fel_%ld\n"
+                "    .ffl_%ld:\n"
+                "    mov     rax, -1\n"
+                PUSH_INSTRUCTION("rax")
+                "    .fel_%ld:\n",
+                ref, ref, ref, ref, ref, ref, ref,
+                ref, ref, ref, ref, ref, ref, ref
+            );
+            break;
+        case OP_FREAD:
+            fputs(
+                "    ; OP_FREAD\n"
+                POP_INSTRUCTION("rdi")      // file descriptor
+                POP_INSTRUCTION("rdx")      // length
+                POP_INSTRUCTION("rsi")      // buffer pointer
+                "    mov     rax, 0\n"        // sys_read\n
+                "    syscall\n"
+                PUSH_INSTRUCTION("rax"),     // bytes read or -1
+                fptr);
+            break;
+        case OP_FWRITE:
+            fputs(
+                "    ; OP_FWRITE\n"
+                POP_INSTRUCTION("rdi")      // file descriptor
+                POP_INSTRUCTION("rdx")      // length
+                POP_INSTRUCTION("rsi")      // buffer pointer
+                "    mov     rax, 1\n"        // sys_write\n
+                "    syscall\n"
+                PUSH_INSTRUCTION("rax"),     // bytes written or -1
+                fptr);
+            break;
+        case OP_FCLOSE:
+            fputs(
+                "    ; OP_FCLOSE\n"
+                POP_INSTRUCTION("rdi")      // file descriptor
+                "    mov     rax, 3\n"      // sys_close\n
+                "    syscall\n"
+                PUSH_INSTRUCTION("rax"),    // return 0 or -1
                 fptr);
             break;
         default:

@@ -1,7 +1,7 @@
-include "std/core.5th"
-include "std/stdref.5th"
+#include "std/core.5th"
+#include "std/stdref.5th"
 
-$__stdio_buf 20
+$__stdio_buf 24
 
 :out_char {
     &__stdio_buf@
@@ -12,20 +12,25 @@ $__stdio_buf 20
 #cr{'\n'.c}
 
 :out_int {
+    if dup 0 < {
+        -1 *
+        '-'.c
+    }
+
     0 dowhile({
-        &__stdio_buf 19 + over -
+        &__stdio_buf 23 + over -
         rot dup 10 % '0' +
         rot @c
         10 /
         swap 1 +
     } {over})
-    &__stdio_buf 20 + over - swap
+    &__stdio_buf 24 + over - swap
     stdout drop
 }
 #.{out_int}
 #show{dup .}
 
-:out_str{
+:out_str {
     while dup!c dup {
         .c 1 +
     } drop drop
