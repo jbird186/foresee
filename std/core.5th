@@ -1,5 +1,7 @@
 #include "std/linux.5th"
 
+#INT{8}
+
 #%{over over / * -}
 
 #false{0}
@@ -10,7 +12,7 @@
 #<={> 1 ^}
 #>={< 1 ^}
 #is_success{-2 !=}
-#is_fail{-2 ==}
+#is_failure{-2 ==}
 
 #dup{0 pick}
 #over{1 pick}

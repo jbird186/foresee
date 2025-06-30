@@ -41,7 +41,7 @@ typedef enum {
     // Branching
     OP_LABEL,
     OP_JMP,
-    OP_JZ,      // bool ---
+    OP_JZ,      // value ---
     // I/O
     OP_FOPEN,   // filename_ptr [0=read, 1=write, 2=append] --- [fd, -1]
     OP_FREAD,   // ptr len fd --- [bytes_read, -1]

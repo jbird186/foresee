@@ -1,9 +1,19 @@
 #include "std/stdio.5th"
+#include "std/stdarray.5th"
 
-#tok_int{0}
+$src: "42384242"
+$idx INT: ""
 
-$sptr 8: ""
+$ints 8192: ""
 
-:lex_int {
+55 &ints push
+43 &ints push
+44 &ints push
+65 &ints push
+12 &ints push
 
-}
+"Number of elements: ".s &ints len . cr
+0 while dup &ints len < {
+    dup &ints get . cr
+    1 +
+} drop

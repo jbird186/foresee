@@ -1,24 +1,15 @@
 #include "std/core.5th"
 
-#@{store}
+#!{store}
 :storec {
     dup fetch 255 ~ &
     rot |
     swap store
 }
-#@c{storec}
+#!c{storec}
 
-#!{fetch}
+#@{fetch}
 :fetchc {
     fetch 256 %
 }
-#!c{fetchc}
-
-#@=(__ops){
-    dup! __ops swap @
-}
-
-#create(__name __size __ops) {
-    $__name __size
-    &__name __ops
-}
+#@c{fetchc}

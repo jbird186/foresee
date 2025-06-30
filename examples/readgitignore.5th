@@ -7,14 +7,14 @@ $file 8
 
 if dup is_success {
     "Successfully read file '".s &filename.s "'!\n".s
-    &file@
+    &file!
 
     $buf 256
-    &buf 256 &file! fread
+    &buf 256 &file@ fread
     "Read ".s . " bytes:\n".s
     &buf.s cr
 
-    &file! fclose
+    &file@ fclose
 } else {
     drop
     "Failed to read file '".s &filename.s "'!\n".s

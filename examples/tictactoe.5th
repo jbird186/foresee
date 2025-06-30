@@ -7,16 +7,16 @@ $current_player 1
 // Given `a b c`,
 // Returns board[a] == board[b] == board[c]
 :line_eq {
-    &board+ !c
+    &board+ @c
     swap
-    &board+ !c
+    &board+ @c
     over
     if != {
         drop drop
         false return
     }
     swap
-    &board+ !c
+    &board+ @c
     == return
 }
 
@@ -24,7 +24,7 @@ $current_player 1
 // Returns the character of the winner ('X'/'O'), 0 if neither
 :line_winner {
     if 2 pick line_eq {
-        &board+ !c return
+        &board+ @c return
     } else {
         drop 0 return
     }
@@ -51,14 +51,14 @@ $current_player 1
         drop false return
     }
 
-    &board+ !c
+    &board+ @c
     not return
 }
 
 // Given `a`,
 // Returns the appropriate character to display for board[a]
 :square_char {
-    &board+ !c
+    &board+ @c
     if dup not {
         drop ' '
     }
@@ -85,25 +85,25 @@ $current_player 1
 
 // Switches the current player
 :switch_player {
-    if &current_player!c 'X' == {
+    if &current_player@c 'X' == {
         'O'
     } else {
         'X'
     }
-    &current_player@c
+    &current_player!c
 }
 
 :main {
-    'X' &current_player@c
+    'X' &current_player!c
     while game_winner 0 == {
         cr show_board
-        &current_player!c .c " to move.\n".s
+        &current_player@c .c " to move.\n".s
 
         "Enter an empty board position (1-9): ".s
         , 1-
 
         if dup is_open {
-            &board+ &current_player!c swap @c
+            &board+ &current_player@c swap !c
             switch_player
         } else {
             drop

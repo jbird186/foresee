@@ -1,0 +1,24 @@
+#include "std/stdref.5th"
+
+// ref -- len
+#len { @ }
+
+// value ref --
+:push {
+    dup@ 1+
+    dup 2 pick !
+    8* + !
+}
+
+// idx ref -- element
+:get { 8+ swap 8* + @ }
+
+// value ref --
+:pushc {
+    dup@ 1+
+    dup 2 pick !
+    7+ + !c
+}
+
+// idx ref -- element
+:getc { 8+ + @c }

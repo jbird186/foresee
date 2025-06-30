@@ -4,7 +4,7 @@
 $__stdio_buf 24
 
 :out_char {
-    &__stdio_buf@
+    &__stdio_buf!
     &__stdio_buf 1 stdout
 }
 #.c{out_char}
@@ -20,7 +20,7 @@ $__stdio_buf 24
     0 dowhile({
         &__stdio_buf 23 + over -
         rot dup 10 % '0' +
-        rot @c
+        rot !c
         10 /
         swap 1 +
     } {over})
@@ -31,7 +31,7 @@ $__stdio_buf 24
 #show{dup .}
 
 :out_str {
-    while dup!c dup {
+    while dup@c dup {
         .c 1 +
     } drop drop
 }
@@ -40,14 +40,14 @@ $__stdio_buf 24
 
 :in_char {
     &__stdio_buf 1 stdin
-    &__stdio_buf!c
+    &__stdio_buf@c
 }
 #,c{in_char}
 
 :in_int {
     &__stdio_buf 20 stdin drop
     0 &__stdio_buf
-    while dup!c dup '\n' != {
+    while dup@c dup '\n' != {
         '0' -
         rot 10 * +
         swap 1 +
@@ -59,5 +59,5 @@ $__stdio_buf 24
     over swap stdin
     1 -
     dup rot +
-    0 swap @c
+    0 swap !c
 }
