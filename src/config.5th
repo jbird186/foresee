@@ -1,1 +1,1 @@
-#STR_MEM_SIZE { 65536 }
+$str_mem 65536

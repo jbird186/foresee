@@ -1,7 +1,7 @@
 #include "std/stdio.5th"
 #include "std/stdchar.5th"
 #include "std/stdarray.5th"
-#include "src/strmem.5th"
+#include "src/config.5th"
 
 // src_ptr --- src_ptr char
 :viewc { dup @c }
