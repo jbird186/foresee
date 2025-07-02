@@ -1,6 +1,6 @@
 #include "std/stdio.5th"
 #include "std/stdchar.5th"
-#include "std/stdarray.5th"
+#include "std/stdarr.5th"
 #include "src/config.5th"
 
 // src_ptr --- src_ptr char
@@ -44,7 +44,7 @@
     // backslash
     else if viewc '\\' == { '\\' }
     else {
-        "ERROR: Invalid escape character '\\".s viewc .c "'\n".s
+        "ERROR: Invalid escape character '\\".s viewc.c "'\n".s
         1 exit
     }
 }

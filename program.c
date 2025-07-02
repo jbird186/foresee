@@ -153,7 +153,7 @@ void parse_ident(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
     parse_word(ops, program, toks, idx);
 }
 
-void _parse_question_with_ref(
+void _parse_if_with_ref(
     OpCodeArray *ops,
     Program *program,
     TokenArray *toks,
@@ -162,16 +162,18 @@ void _parse_question_with_ref(
 ) {
     *idx += 1;
 
+    uint64_t else_ref = ASM_LABEL_ID++;
+
     // Condition
     parse_until(ops, program, toks, idx, TOK_BRACE_TREE);
-    op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_u64 = ASM_LABEL_ID });
+    op_arr_push(ops, (OpCode){ .kind = OP_JZ, .data.t_u64 = else_ref });
 
     // Operations
     parse_tokens(ops, program, &toks->ptr[*idx].data.t_tree);
     *idx += 1;
 
     op_arr_push(ops, (OpCode){ .kind = OP_JMP, .data.t_u64 = end_ref });
-    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_u64 = ASM_LABEL_ID++ });
+    op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_u64 = else_ref });
 
     // No else condition
     if (toks->ptr[*idx].kind != TOK_ELSE) return;
@@ -184,7 +186,7 @@ void _parse_question_with_ref(
         *idx += 1;
     // Else-if condition
     } else if (next_tok.kind == TOK_IF) {
-        _parse_question_with_ref(ops, program, toks, idx, end_ref);
+        _parse_if_with_ref(ops, program, toks, idx, end_ref);
     // Invalid
     } else {
         fprintf(stderr, "Error: invalid 'if' condition\n");
@@ -194,7 +196,7 @@ void _parse_question_with_ref(
 
 void parse_if(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx) {
     uint64_t end_ref = ASM_LABEL_ID++;
-    _parse_question_with_ref(ops, program, toks, idx, end_ref);
+    _parse_if_with_ref(ops, program, toks, idx, end_ref);
     op_arr_push(ops, (OpCode){.kind = OP_LABEL, .data.t_u64 = end_ref});
 }
 

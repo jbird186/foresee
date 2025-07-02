@@ -3,6 +3,7 @@
 #include "program.h"
 #include "compile.h"
 
+#define STACK_SIZE "8192"
 #define STACK_POINTER "r12"
 
 #define PUSH_INSTRUCTION(item) \
@@ -99,7 +100,7 @@ void compile_op(FILE* fptr, OpCode op) {
         case OP_DEPTH:
             fputs(
                 "    ; OP_DEPTH\n"
-                "    mov     rax, __stack_ptr + 8192\n"
+                "    mov     rax, __stack_ptr + " STACK_SIZE "\n"
                 "    sub     rax, " STACK_POINTER "\n"
                 "    shr     rax, 3\n"
                 PUSH_INSTRUCTION("rax"),
@@ -353,7 +354,7 @@ void compile_program(FILE* fptr, Program *program) {
 
     fputs(
         "_start:\n"
-        "    lea     r12, [__stack_ptr + 8192]\n",
+        "    lea     r12, [__stack_ptr + " STACK_SIZE "]\n",
     fptr);
     compile_ops(fptr, &program->ops);
 
@@ -372,6 +373,6 @@ void compile_program(FILE* fptr, Program *program) {
     }
     fputs(
         "    ; Stack Pointer\n"
-        "    __stack_ptr: resb 8192\n",
+        "    __stack_ptr: resb " STACK_SIZE "\n",
     fptr);
 }
