@@ -1,23 +1,23 @@
 #include "std/core.5th"
 
 :is_digit {
-    dup '0' >= swap '9' <= &
+    dup ('0' >=) swap ('9' <=) &
 }
 
 :is_upper {
-    dup 'A' >= swap 'Z' <= &
+    dup ('A' >=) swap ('Z' <=) &
 }
 
 :is_lower {
-    dup 'a' >= swap 'z' <= &
+    dup ('a' >=) swap ('z' <=) &
 }
 
 :is_alpha {
-    dup is_upper swap is_lower &
+    dup is_upper swap is_lower |
 }
 
 :is_alnum {
-    dup is_alpha swap is_digit &
+    dup is_alpha swap is_digit |
 }
 
 :is_space {
