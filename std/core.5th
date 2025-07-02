@@ -14,22 +14,18 @@
 #is_success{-2 !=}
 #is_failure{-2 ==}
 
+// a --- a a
 #dup{0 pick}
+// a b --- a b a
 #over{1 pick}
+// a b --- b a
 #swap{1 roll}
+// a b c --- b c a
 #rot{2 roll}
 
 #dowhile(__ops __cond) {
     __ops
     while __cond {
         __ops
-    }
-}
-
-#for(__init __cond __iter __ops) {
-    __init
-    while __cond {
-        __ops
-        __iter
     }
 }

@@ -1,0 +1,130 @@
+#include "std/stdio.5th"
+#include "std/stdchar.5th"
+#include "std/stdarray.5th"
+#include "src/strmem.5th"
+
+// src_ptr --- src_ptr char
+:viewc { dup @c }
+
+// src_ptr --- new_src_ptr int
+:view_int {
+    $lex_int_total 24
+
+    viewc '0' - &lex_int_total!
+    while viewc {
+        1+
+        if viewc is_digit {
+            viewc '0' -
+            &lex_int_total@ 10 * + &lex_int_total!
+        } else if viewc '_' != {
+            &lex_int_total@
+            return
+        }
+    }
+}
+
+// src_ptr --- src_ptr char
+:match_escape_char {
+    // null
+    if viewc '0' == { '\0' }
+    // newline
+    else if viewc 'n' == { '\n' }
+    // tab
+    else if viewc 't' == { '\t' }
+    // vertical tab
+    else if viewc 'v' == { '\v' }
+    // form feed
+    else if viewc 'f' == { '\f' }
+    // return
+    else if viewc 'r' == { '\r' }
+    // single quote
+    else if viewc '\'' == { '\'' }
+    // double quote
+    else if viewc '\"' == { '\"' }
+    // backslash
+    else if viewc '\\' == { '\\' }
+    else {
+        "ERROR: Invalid escape character '\\".s viewc .c "'\n".s
+        1 exit
+    }
+}
+
+// src_ptr --- src_ptr char
+:match_char {
+    if viewc '\\' == {
+        1+
+        match_escape_char
+    } else { viewc }
+}
+
+// src_ptr --- new_src_ptr char
+:view_char {
+    1+
+    match_char
+    swap 1+
+
+    if viewc '\'' != {
+        "ERROR: Expected endquote after valid character '".s swap .c "'\n".s
+        1 exit
+    }
+
+    1+ swap
+    return
+}
+
+// src_ptr --- new_src_ptr ref
+:view_str {
+    &str_mem headc swap
+    1+
+    while viewc '\"' != {
+        match_char &str_mem pushc
+        1+
+    }
+    1+
+    0 &str_mem pushc
+    swap
+}
+
+:lex_src {
+    while viewc {
+        while viewc is_space { 1+ }
+        if viewc not {
+            return
+        } else if viewc is_digit {
+            view_int "TOK_INT: ".s . cr
+        } else if viewc '\'' == {
+            view_char "TOK_CHAR: ".s . cr
+        } else if viewc '\"' == {
+            view_str "TOK_STR: \"".s .s "\"\n".s
+        } else if viewc ':' == {
+            "TOK_COLON\n".s
+            1+
+        } else if viewc '#' == {
+            "TOK_POUND\n".s
+            1+
+        } else if viewc '$' == {
+            "TOK_DOLLAR\n".s
+            1+
+        }
+    }
+}
+
+:main {
+    $src_file_name: "src/testsrc.txt"
+
+    $src_file 8
+    &src_file_name 0 fopen &src_file!
+
+    if &src_file@ is_failure {
+        "ERROR: File '".s &src_file_name.s "' not found!\n".s
+        1 exit
+    }
+
+    $src 8192
+    &src 8192 &src_file@ fread
+    &src_file@ fclose
+
+    &src lex_src
+}
+
+main

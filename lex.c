@@ -31,36 +31,6 @@ void lf_free(LexedFile *lf) {
 }
 DEFINE_ARRAY_C(LexedFile, lf)
 
-void match_escape_char(char *dest, char c, FILE *fptr) {
-    switch (c) {
-        case '0':  // null
-            *dest = '\0';
-            break;
-        case 'n':  // newline
-            *dest = '\n';
-            break;
-        case 't':  // tab
-            *dest = '\t';
-            break;
-        case 'r':  // return
-            *dest = '\r';
-            break;
-        case '\'':  // single quote
-            *dest = '\'';
-            break;
-        case '\"':  // double quote
-            *dest = '\"';
-            break;
-        case '\\':  // backslash
-            *dest = '\\';
-            break;
-        default:
-            fprintf(stderr, "Error: invalid control char '\\%c'\n", c);
-            fclose(fptr);
-            exit(1);
-    }
-}
-
 void lex_int(TokenArray *toks, FILE *fptr, char *c) {
     int64_t total = *c - '0';
     while ((*c = fgetc(fptr)) != EOF) {
@@ -92,6 +62,42 @@ void lex_minus(TokenArray *toks, FILE *fptr, char *c) {
     } else {
         ungetc(next_c, fptr);
         lex_word(toks, fptr, c);
+    }
+}
+
+void match_escape_char(char *dest, char c, FILE *fptr) {
+    switch (c) {
+        case '0':  // null
+            *dest = '\0';
+            break;
+        case 'n':  // newline
+            *dest = '\n';
+            break;
+        case 't':  // tab
+            *dest = '\t';
+            break;
+        case 'v':  // vertical tab
+            *dest = '\v';
+            break;
+        case 'f':  // form feed
+            *dest = '\f';
+            break;
+        case 'r':  // return
+            *dest = '\r';
+            break;
+        case '\'':  // single quote
+            *dest = '\'';
+            break;
+        case '\"':  // double quote
+            *dest = '\"';
+            break;
+        case '\\':  // backslash
+            *dest = '\\';
+            break;
+        default:
+            fprintf(stderr, "Error: invalid control char '\\%c'\n", c);
+            fclose(fptr);
+            exit(1);
     }
 }
 

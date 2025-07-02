@@ -7,7 +7,7 @@
 #include "program.h"
 #include "compile.h"
 
-char *source = "code.5th";
+char *source = "./src/main.5th";
 char *output = "./target/fifth.asm";
 
 int main() {

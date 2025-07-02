@@ -1,0 +1,45 @@
+#include "std/core.5th"
+
+:is_digit {
+    dup '0' >= swap '9' <= &
+}
+
+:is_upper {
+    dup 'A' >= swap 'Z' <= &
+}
+
+:is_lower {
+    dup 'a' >= swap 'z' <= &
+}
+
+:is_alpha {
+    dup is_upper swap is_lower &
+}
+
+:is_alnum {
+    dup is_alpha swap is_digit &
+}
+
+:is_space {
+    dup ' ' == swap
+    dup '\t' == swap
+    dup '\n' == swap
+    dup '\r' == swap
+    dup '\v' == swap
+    '\f' ==
+    | | | | |
+}
+
+:to_lower {
+    if dup is_upper {
+        // TODO: optimize this?
+        'a' 'A' - +
+    }
+}
+
+:to_upper {
+    if dup is_lower {
+        // TODO: optimize this?
+        'a' 'A' - -
+    }
+}

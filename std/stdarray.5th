@@ -3,6 +3,9 @@
 // ref -- len
 #len { @ }
 
+// ref -- head_ptr
+#head { dup len 8* + 8+ }
+
 // value ref --
 :push {
     dup@ 1+
@@ -12,6 +15,9 @@
 
 // idx ref -- element
 :get { 8+ swap 8* + @ }
+
+// ref -- head_ptr
+#headc { dup len + 8+ }
 
 // value ref --
 :pushc {

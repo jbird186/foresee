@@ -1,7 +1,7 @@
 #include "std/stdref.5th"
 #include "std/stdio.5th"
 
-$board 9: ""
+$board 9
 $current_player 1
 
 // Given `a b c`,
