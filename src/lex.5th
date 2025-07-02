@@ -1,6 +1,7 @@
 #include "std/stdio.5th"
 #include "std/stdchar.5th"
 #include "std/stdarr.5th"
+#include "std/stdstr.5th"
 #include "src/config.5th"
 
 // src_ptr --- src_ptr char
@@ -8,8 +9,13 @@
 
 // src_ptr --- new_src_ptr int
 :view_int {
-    $lex_int_total 24
+    if viewc '-' == {
+        -1 swap 1+
+    } else {
+        1 swap
+    }
 
+    $lex_int_total INT
     viewc '0' - &lex_int_total!
     while viewc {
         1+
@@ -18,9 +24,11 @@
             &lex_int_total@ 10 * + &lex_int_total!
         } else if viewc '_' != {
             &lex_int_total@
+            rot *
             return
         }
     }
+    rot *
 }
 
 // src_ptr --- src_ptr char
@@ -96,12 +104,9 @@
 // src_ptr --- new_src_ptr ref
 :view_word {
     &str_mem headc swap
-    viewc &str_mem pushc
-    while 1+ viewc {
-        if viewc dup (is_alnum not) swap ('_' !=) & {
-            swap return
-        }
+    while ("(){}" over@c str_char not) (over@c is_space not) & (over@c bool) & {
         viewc &str_mem pushc
+        1+
     }
     swap
 }
@@ -112,7 +117,7 @@
         while viewc is_space { 1+ }
         if viewc not {
             return
-        } else if viewc is_digit {
+        } else if ((viewc '-' ==) (over 1+ @c is_digit) &) (over@c is_digit) | {
             view_int "TOK_INT: ".s . cr
         } else if viewc '\'' == {
             view_char "TOK_CHAR: ".s . cr
@@ -127,7 +132,12 @@
         } else if viewc '$' == {
             "TOK_DOLLAR\n".s
             1+
-        } else if viewc dup is_alpha swap ('_' !=) | {
+        } else if (viewc '&' ==) (over 1+ @c is_alpha) & {
+            "TOK_REF\n".s
+            1+
+        } else if (viewc '/' ==) (over 1+ @c '/' ==) & {
+            while viewc '\n' != { 1+ }
+        } else if viewc dup is_alpha swap ('_' ==) | {
             view_ident "TOK_IDENT: \"".s .s "\"\n".s
         } else {
             view_word "TOK_WORD: \"".s .s "\"\n".s
