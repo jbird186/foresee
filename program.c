@@ -264,6 +264,10 @@ void parse_dollar(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx
         fprintf(stderr, "Error: invalid definition for buffer\n");
         exit(1);
     }
+    if (*idx + 2 >= toks->length) {
+        fprintf(stderr, "Error: invalid size for buffer '%s'\n", name.data.t_str.ptr);
+        exit(1);
+    }
     *idx += 2;
 
     String name_copy;
@@ -271,8 +275,20 @@ void parse_dollar(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx
     Buffer buf = {.name = name_copy};
 
     // Specify size
-    if (toks->ptr[*idx].kind == TOK_INT) {
-        buf.size = toks->ptr[*idx].data.t_u64;
+    if ((toks->ptr[*idx].kind == TOK_INT) || (toks->ptr[*idx].kind == TOK_PAREN_TREE)) {
+        if (toks->ptr[*idx].kind == TOK_INT) {
+            buf.size = toks->ptr[*idx].data.t_u64;
+        } else {
+            TokenArray tree = toks->ptr[*idx].data.t_tree;
+            buf.size = 1;
+            for (int i = 0; i < tree.length; i++) {
+                if (tree.ptr[i].kind != TOK_INT) {
+                    fprintf(stderr, "Error: invalid size for buffer '%s'\n", name.data.t_str.ptr);
+                    exit(1);
+                }
+                buf.size *= tree.ptr[i].data.t_u64;
+            }
+        }
         *idx += 1;
 
         // Initialize to String (optional)

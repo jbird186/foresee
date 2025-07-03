@@ -1,6 +1,8 @@
 #include "std/linux.5th"
 
+#CHAR{1}
 #INT{8}
+#REF{8}
 
 #%{over over / * -}
 

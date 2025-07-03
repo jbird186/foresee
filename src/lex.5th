@@ -147,7 +147,7 @@
             0 TOK_REF &toks_mem toks_push
             1+
         } else if (viewc '/' ==) (over 1+ @c '/' ==) & {
-            while viewc '\n' != { 1+ }
+            while viewc dup ('\n' !=) swap (bool) & { 1+ }
         } else if viewc dup is_alpha swap ('_' ==) | {
             view_ident TOK_IDENT &toks_mem toks_push
         } else {
