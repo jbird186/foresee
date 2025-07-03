@@ -1,1 +1,2 @@
-$str_mem 65536
+$strs_mem 65536
+$toks_mem 65536

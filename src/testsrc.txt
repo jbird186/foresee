@@ -1,8 +1,0 @@
-:func
-#macro !=
-"Hello, World!\n"
-&&&
-1234 &
-'\n' 'a' -20 '8'
-.c 789
-&buffer

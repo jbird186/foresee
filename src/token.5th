@@ -1,0 +1,37 @@
+#include "std/stdref.5th"
+#include "src/config.5th"
+
+#TOK_NULL { 0 }
+#TOK_INT { 1 }
+#TOK_CHAR { 2 }
+#TOK_STR { 3 }
+#TOK_IDENT { 4 }
+#TOK_WORD { 5 }
+#TOK_IF { 6 }
+#TOK_ELSE { 7 }
+#TOK_WHILE { 8 }
+#TOK_INCLUDE { 9 }
+#TOK_COLON { 10 }
+#TOK_POUND { 11 }
+#TOK_DOLLAR { 12 }
+#TOK_REF { 13 }
+#TOK_PAREN_START { 14 }
+#TOK_PAREN_END { 15 }
+#TOK_BRACE_START { 16 }
+#TOK_BRACE_END { 17 }
+
+// ref -- head_ptr
+#toks_head { dup len 9* + 8+ }
+
+// data type ref --
+:toks_push {
+    dup@ 1+
+    dup 2 pick !
+    9* 1- +
+    swap over !c 1+ !
+}
+
+:toks_get { 8+ swap 9* + }
+
+:tok_kind { @c }
+:tok_data { 1+ @ }
