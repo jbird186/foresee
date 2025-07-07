@@ -1,0 +1,79 @@
+#include "std/stdref.5th"
+#include "std/stdstr.5th"
+#include "src/config.5th"
+
+// str_ref --- hash
+:hash {
+    5381
+    while over@c {
+        dup 5 << + over@c +
+        swap 1+ swap
+    }
+    swap drop
+}
+
+// key map_ref ---
+:set_insert {
+    // key map_ref idx
+    over hash MAP_SIZE %
+    // key map_ref idx ref slat_value
+    while dup 8* 2 pick + dup @ {
+        drop
+        1+ MAP_SIZE %
+    }
+    // map_ref idx
+    3 roll swap !
+    drop drop
+}
+
+// key map_ref --- [ref, 0]
+:set_contains {
+    // key map_ref idx
+    over hash MAP_SIZE %
+    // key map_ref idx slot_value slot_value
+    while dup 8* 2 pick + @ dup {
+        // key map_ref idx
+        if 3 pick str_eq {
+            drop drop drop
+            true return
+        }
+        1+ MAP_SIZE %
+    }
+    drop drop drop drop
+    false
+}
+
+// key value map_ref ---
+:map_insert {
+    // key value map_ref idx
+    2 pick hash MAP_SIZE %
+    // key value map_ref idx ref slat_value
+    while dup 16* 2 pick + dup @ {
+        drop
+        1+ MAP_SIZE %
+    }
+    // value map_ref idx ref
+    4 roll over !
+    // map_ref idx
+    3 roll swap 8+ !
+    drop drop
+}
+
+// key map_ref --- [ref, 0]
+:map_get {
+    // key map_ref idx
+    over hash MAP_SIZE %
+    // key map_ref idx ref slot_value
+    while dup 16* 2 pick + @ dup {
+        // key map_ref idx
+        if 3 pick str_eq {
+            // key value
+            16* 8+ + @
+            swap drop
+            return
+        }
+        1+ MAP_SIZE %
+    }
+    drop drop drop drop
+    0
+}

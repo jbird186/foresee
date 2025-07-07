@@ -158,21 +158,18 @@
 }
 
 :main {
-    $src_file_name: "src/lex.5th"
+    $src_fd REF
+    &src_file_name 0 fopen &src_fd!
 
-    $src_file 8
-    &src_file_name 0 fopen &src_file!
-
-    if &src_file@ is_failure {
+    if &src_fd@ is_failure {
         "ERROR: File '".s &src_file_name.s "' not found!\n".s
         1 exit
     }
 
-    $src 8192
-    &src 8192 &src_file@ fread drop
-    &src_file@ fclose drop
+    &src_str SRC_STR_SIZE &src_fd@ fread drop
+    &src_fd@ fclose drop
 
-    &src lex_src
+    &src_str lex_src
 
     0 while dup &toks_mem len < {
         show ": ".s
