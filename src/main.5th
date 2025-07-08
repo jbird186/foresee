@@ -1,12 +1,1 @@
-// #include "src/lex.5th"
-#include "src/map.5th"
-#include "std/stdio.5th"
-
-$hashmap (REF 2 MAP_SIZE)
-"key" "bus" &hashmap map_insert
-if "key" &hashmap map_get dup {
-    "Found: ".s .s cr
-} else {
-    "Not found!\n".s
-    drop
-}
+#include "src/lex.5th"
