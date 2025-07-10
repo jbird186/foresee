@@ -1,13 +1,14 @@
 #include "std/core.5th"
 
 $src_file_name: "src/lex.5th"
-#SRC_STR_SIZE{ 8192 }
-$src_str SRC_STR_SIZE
+#SRC_STR_SIZE{ 65536 }
+$src_str (CHAR SRC_STR_SIZE)
 
 $strs_mem (CHAR 65536)
-$toks_mem (9 8192)
+$toks_mem (9 65536)
 
 #MAP_SIZE{ 8191 }
 $macros_map (REF 2 MAP_SIZE)
-$funcs_map (REF MAP_SIZE)
-$bufs_map (REF MAP_SIZE)
+$funcs_set (REF MAP_SIZE)
+$bufs_set (REF MAP_SIZE)
+$files_set (REF MAP_SIZE)

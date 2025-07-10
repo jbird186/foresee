@@ -54,7 +54,6 @@ DEFINE_ARRAY_TYPE(OpCode)
 
 typedef struct {
     uint64_t ref_id;
-    uint64_t ref_idx;
 } IfData;
 
 typedef union {

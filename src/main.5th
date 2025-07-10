@@ -1,1 +1,37 @@
 #include "src/lex.5th"
+#include "src/preprocess.5th"
+
+:main {
+    $src_fd REF
+    &src_file_name 0 fopen &src_fd!
+
+    if &src_fd@ is_failure {
+        "ERROR: File '".s &src_file_name.s "' not found\n".s
+        1 exit
+    }
+
+    &src_str SRC_STR_SIZE &src_fd@ fread drop
+    &src_fd@ fclose drop
+
+    &src_str lex_src
+    &toks_mem preprocess_src
+
+    0 while dup &toks_mem len < {
+        show ": ".s
+        dup &toks_mem toks_get
+        dup tok_kind. ": ".s
+        dup tok_data.
+        if dup tok_kind TOK_STR == {
+            " (\"".s tok_data.s "\")".s cr
+        } else if dup tok_kind TOK_WORD == {
+            " (\"".s tok_data.s "\")".s cr
+        } else if dup tok_kind TOK_IDENT == {
+            " (\"".s tok_data.s "\")".s cr
+        } else {
+            drop cr
+        }
+        1+
+    } drop
+}
+
+main

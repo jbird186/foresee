@@ -26,7 +26,7 @@
     drop drop
 }
 
-// key map_ref --- [ref, 0]
+// key map_ref --- bool
 :set_contains {
     // key map_ref idx
     over hash MAP_SIZE %
@@ -43,12 +43,29 @@
     false
 }
 
+// key value map_ref idx --- key value map_ref idx ref bool
+:map_insert_skip_slot {
+    // key value map_ref idx ref
+    dup 16* 2 pick +
+
+    // Not occupied
+    if dup@ not {
+        false
+    // Occupied (same name)
+    } else if dup@ 5 pick str_eq {
+        false
+    // Occupied (different name)
+    } else {
+        true
+    }
+}
+
 // key value map_ref ---
 :map_insert {
     // key value map_ref idx
     2 pick hash MAP_SIZE %
-    // key value map_ref idx ref slat_value
-    while dup 16* 2 pick + dup @ {
+    // key value map_ref idx ref
+    while map_insert_skip_slot {
         drop
         1+ MAP_SIZE %
     }

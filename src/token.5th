@@ -1,7 +1,6 @@
 #include "std/stdref.5th"
-#include "src/config.5th"
 
-#TOK_NULL { 0 }
+#TOK_EOF { 0 }
 #TOK_INT { 1 }
 #TOK_CHAR { 2 }
 #TOK_STR { 3 }
@@ -21,7 +20,7 @@
 #TOK_BRACE_END { 17 }
 
 // ref -- head_ptr
-#toks_head { dup len 9* + 8+ }
+:toks_head { dup len 9* + 8+ }
 
 // data type ref --
 :toks_push {
@@ -32,6 +31,11 @@
 }
 
 :toks_get { 8+ swap 9* + }
+:tok_first { 8+ }
+:tok_next { 9+ }
 
 :tok_kind { @c }
 :tok_data { 1+ @ }
+
+:viewtk { dup tok_kind }
+:viewtd { dup tok_data }

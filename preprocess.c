@@ -29,8 +29,8 @@ void process_word(PreprocessContext *context, TokenArray *ptoks, TokenArray *tok
         if (!strcmp(macro.name.ptr, word.ptr)) {
             // Arguments (optional)
             int n_args = 0;
-            Token next_tok = toks->ptr[*idx + 1];
-            if ((macro.args.length > 0) && (next_tok.kind == TOK_PAREN_TREE)) {
+            if ((macro.args.length > 0) && (*idx + 1 < toks->length) && (toks->ptr[*idx + 1].kind == TOK_PAREN_TREE)) {
+                Token next_tok = toks->ptr[*idx + 1];
                 TokenArray args_tree = next_tok.data.t_tree;
                 if (macro.args.length != args_tree.length) {
                     fprintf(stderr, "Error: invalid number of arguments for macro '%s'\n", word.ptr);

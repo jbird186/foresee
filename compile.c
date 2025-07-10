@@ -27,6 +27,7 @@ void compile_function(FILE* fptr, Function function) {
 
 void compile_functions(FILE* fptr, FunctionArray *functions) {
     for (int i = 0; i < functions->length; i++) {
+        if (!functions->ptr[i].ops.ptr) continue;
         compile_function(fptr, functions->ptr[i]);
     }
 }

@@ -8,7 +8,9 @@ void op_free(OpCode *op) {}
 DEFINE_ARRAY_C(OpCode, op)
 
 void fn_free(Function *function) {
-    op_arr_free(&function->ops);
+    if (function->ops.ptr) {
+        op_arr_free(&function->ops);
+    }
 }
 DEFINE_ARRAY_C(Function, fn)
 
@@ -161,7 +163,6 @@ void _parse_if_with_ref(
     uint64_t end_ref
 ) {
     *idx += 1;
-
     uint64_t else_ref = ASM_LABEL_ID++;
 
     // Condition
@@ -176,7 +177,7 @@ void _parse_if_with_ref(
     op_arr_push(ops, (OpCode){ .kind = OP_LABEL, .data.t_u64 = else_ref });
 
     // No else condition
-    if (toks->ptr[*idx].kind != TOK_ELSE) return;
+    if ((*idx + 1 >= toks->length) || (toks->ptr[*idx].kind != TOK_ELSE)) return;
     *idx += 1;
 
     Token next_tok = toks->ptr[*idx];
@@ -226,12 +227,17 @@ void parse_colon(OpCodeArray *ops, Program *program, TokenArray *toks, int *idx)
 
     Token tree = toks->ptr[*idx + 2];
     if (tree.kind != TOK_BRACE_TREE) {
-        fprintf(stderr, "Error: invalid definition for function '%s'\n", name.data.t_str.ptr);
-        exit(1);
+        fn_arr_push(&program->functions, (Function){
+            .name = name.data.t_str,
+            .ops.ptr = NULL
+        });
+        *idx += 2;
+        return;
     }
 
     for (int i = 0; i < program->functions.length; i++) {
-        if (!strcmp(name.data.t_str.ptr, program->functions.ptr[i].name.ptr)) {
+        Function func = program->functions.ptr[i];
+        if (!strcmp(name.data.t_str.ptr, func.name.ptr) && (func.ops.ptr)) {
             fprintf(stderr, "Error: function '%s' already defined\n", name.data.t_str.ptr);
             exit(1);
         }

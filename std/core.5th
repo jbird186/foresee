@@ -6,6 +6,8 @@
 
 #%{over over / * -}
 
+#NULL{0}
+
 #false{0}
 #true{1}
 #bool{(if {true} else {false})}
@@ -13,8 +15,8 @@
 #!={== 1 ^}
 #<={> 1 ^}
 #>={< 1 ^}
-#is_success{-2 !=}
-#is_failure{-2 ==}
+#is_success{0 >}
+#is_failure{0 <}
 
 // a --- a a
 :dup{0 pick}

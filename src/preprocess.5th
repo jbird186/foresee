@@ -1,2 +1,202 @@
 #include "src/config.5th"
 #include "src/token.5th"
+#include "src/map.5th"
+
+// tok_ptr --- new_tok_ptr
+:preprocess_token
+
+// tok_ptr ---
+:preprocess {
+    while viewtk { preprocess_token }
+    0 TOK_EOF &toks_mem toks_push
+    drop
+}
+
+// tok_ptr --- new_tok_ptr
+:skip_braces {
+    // depth tok_ptr
+    1 swap while tok_next over {
+        if viewtk TOK_BRACE_START == {
+            swap 1+ swap
+        } else if viewtk TOK_BRACE_END == {
+            swap 1- swap
+        }
+    }
+    // tok_ptr
+    swap drop
+}
+
+// tok_ptr ---
+:preprocess_block {
+    // depth tok_ptr
+    1 swap while tok_next over {
+        if viewtk TOK_BRACE_START == {
+            swap 1+ swap
+        } else if viewtk TOK_BRACE_END == {
+            swap 1- swap
+        }
+        if over not {
+            preprocess_token
+        }
+    }
+    drop drop
+}
+
+// tok_ptr --- new_tok_ptr
+:preprocess_word {
+    // name tok_ptr
+    viewtd swap tok_next
+    // name tok_ptr def_tok_ptr
+    if over &macros_map map_get dup {
+        // Arguments (optional)
+        if viewtk TOK_PAREN_START == {
+            // name def_tok_ptr tok_ptr
+            swap
+            if viewtk TOK_PAREN_START != {
+                "ERROR: Expected arguments for macro '".s 2 pick.s "'\n".s
+                1 exit
+            }
+            tok_next
+
+            // name tok_ptr def_tok_ptr
+            while swap tok_next viewtk TOK_PAREN_END != {
+                // name tok_ptr def_tok_ptr
+                // TODO: prevent name collision between macros and macro arguments
+                viewtd 2 pick &macros_map map_insert
+
+                // name def_tok_ptr tok_ptr
+                swap
+                if viewtk TOK_BRACE_START == {
+                    skip_braces
+                } else if viewtk TOK_PAREN_END == {
+                    "ERROR: Invalid number of arguments supplied to macro '".s 2 pick.s "'\n".s
+                    1 exit
+                } else {
+                    tok_next
+                }
+            }
+            // name def_tok_ptr tok_ptr
+            tok_next swap
+            if viewtk TOK_PAREN_END != {
+                "ERROR: Invalid number of arguments supplied to macro '".s 2 pick.s "'\n".s
+                1 exit
+            }
+            // name tok_ptr def_tok_ptr
+            tok_next swap
+        }
+        // tok_ptr def_tok_ptr
+        rot drop
+        if viewtk TOK_BRACE_START == {
+            preprocess_block
+        } else {
+            preprocess_token
+        }
+    } else {
+        // tok_ptr
+        drop swap drop
+        viewtk swap viewtd rot &toks_mem toks_push
+        tok_next
+    }
+}
+
+// tok_ptr --- new_tok_ptr
+:preprocess_include {
+    tok_next
+    if viewtk TOK_STR != {
+        "ERROR: Expected file name after 'include' directive\n".s
+        1 exit
+    }
+
+    if viewtd &files_set set_contains {
+        tok_next
+        return
+    }
+    viewtd &files_set set_insert
+
+    // tok_ptr fd
+    if viewtd 0 fopen dup is_failure {
+        "ERROR: 'include' directive failed to open file '".s swap viewtd.s "'\n".s
+        1 exit
+    }
+    // tok_ptr fd bytes_read
+    if &src_str SRC_STR_SIZE 2 pick fread dup is_failure {
+        "ERROR: 'include' directive failed to read file '".s swap viewtd.s "'\n".s
+        1 exit
+    }
+    // tok_ptr fd
+    &src_str + 0 swap !c
+
+    // tok_ptr
+    if fclose is_failure {
+        "ERROR: 'include' directive failed to close file '".s swap viewtd.s "'\n".s
+        1 exit
+    }
+
+    &toks_mem toks_head
+    // tok_ptr include_tok_ptr
+    &src_str lex_src
+
+    preprocess
+    tok_next
+}
+
+// tok_ptr --- new_tok_ptr
+:preprocess_macro_def {
+    if viewtd &macros_map map_get {
+        "ERROR: Macro '".s viewtd.s "' already defined\n".s
+        1 exit
+    }
+    // name tok_ptr
+    viewtd swap tok_next
+    over over &macros_map map_insert
+
+    // Arguments (optional)
+    // name tok_ptr
+    if viewtk TOK_PAREN_START == {
+        while tok_next viewtk TOK_PAREN_END != {
+            if viewtk dup (TOK_IDENT ==) swap (TOK_WORD ==) | not {
+                "ERROR: Invalid parameter in definition for macro '".s over.s "'\n".s
+                1 exit
+            }
+        }
+        tok_next
+    }
+
+    if viewtk TOK_BRACE_START != {
+        "ERROR: Invalid body for macro'".s over.s "'\n".s
+        1 exit
+    }
+    // tok_ptr
+    swap drop
+    skip_braces
+}
+
+// tok_ptr --- new_tok_ptr
+:preprocess_pound {
+    tok_next
+    if viewtk TOK_INCLUDE == {
+        preprocess_include
+    } else if viewtk dup (TOK_IDENT ==) swap (TOK_WORD ==) | {
+        preprocess_macro_def
+    } else {
+        "ERROR: Unexpected preprocessor directive\n".s
+        1 exit
+    }
+}
+
+// tok_ptr --- new_tok_ptr
+:preprocess_token {
+    if viewtk dup (TOK_IDENT ==) swap (TOK_WORD ==) | {
+        preprocess_word
+    } else if viewtk TOK_POUND == {
+        preprocess_pound
+    } else {
+        viewtk swap viewtd rot &toks_mem toks_push
+        tok_next
+    }
+}
+
+// toks_mem ---
+:preprocess_src {
+    tok_first preprocess
+}
