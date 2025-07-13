@@ -14,11 +14,11 @@
     &src_fd@ fclose drop
 
     &src_str lex_src
-    &toks_mem preprocess_src
+    preprocess_src
 
-    0 while dup &toks_mem len < {
+    0 while dup &out_toks_mem len < {
         show ": ".s
-        dup &toks_mem toks_get
+        dup &out_toks_mem toks_get
         dup tok_kind. ": ".s
         dup tok_data.
         if dup tok_kind TOK_STR == {
@@ -32,6 +32,10 @@
         }
         1+
     } drop
+
+    "strs_mem: ".s &strs_mem len . cr
+    "toks_mem: ".s &toks_mem len . cr
+    "out_toks_mem: ".s &out_toks_mem len . cr
 }
 
 main

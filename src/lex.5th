@@ -156,6 +156,7 @@
     while viewc {
         while viewc is_space { 1+ }
         if viewc not {
+            drop
             0 TOK_EOF &toks_mem toks_push
             return
         } else if ((viewc '-' ==) (over 1+ @c is_digit) &) (over@c is_digit) | {

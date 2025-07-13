@@ -10,6 +10,7 @@ $__stdio_buf 24
 #.c{out_char}
 #showc{dup .c}
 #cr{'\n'.c}
+#sp{' '.c}
 
 :out_int {
     if dup 0 < {
