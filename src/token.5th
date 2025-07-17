@@ -79,6 +79,7 @@
 :toks_get { 8+ swap 9* + }
 :tok_first { 8+ }
 :tok_next { 9+ }
+:tok_prev { 9- }
 
 :tok_kind { @c }
 :tok_data { 1+ @ }

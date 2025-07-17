@@ -92,7 +92,6 @@ $ASM_FOPEN_ID INT
     // if_id else_id ops_dest tok_ptr
     3 roll 3 roll
     tok_next
-
     // Condition
     _parse_until(TOK_BRACE_START)
     // if_id else_id ops_dest tok_ptr
@@ -142,7 +141,6 @@ $ASM_FOPEN_ID INT
 }
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_while {
-
     tok_next
 
     // ops_dest tok_ptr start_id end_id
@@ -173,7 +171,7 @@ $ASM_FOPEN_ID INT
         "ERROR: Invalid function name\n".s
         1 exit
     }
-    if viewtd &fns_map map_get {
+    if viewtd &fns_map map_get dup (-1 !=) swap (0 !=) & {
         "ERROR: Function '".s viewtd.s "' already defined\n".s
         1 exit
     }
@@ -187,17 +185,18 @@ $ASM_FOPEN_ID INT
     }
 
     // name tok_ptr
-    viewtd swap
+    viewtd swap tok_next
+    // Function prototype
+    if viewtk TOK_BRACE_START != {
+        // tok_ptr
+        swap -1 &fns_map map_insert
+        return
+    }
+
     // name tok_ptr fn_ptr
     &fn_ops_mem toks_head
     // tok_ptr
-    rot "ADDING FN ".s shows cr swap &fns_map map_insert
-
-    tok_next
-    if viewtk TOK_BRACE_START != {
-        "ERROR: Invalid definition for function '".s over.s "'\n".s
-        1 exit
-    }
+    rot swap &fns_map map_insert
     tok_next
 
     while viewtk TOK_BRACE_END != {
@@ -293,14 +292,6 @@ $ASM_FOPEN_ID INT
 
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_tok {
-    depth. sp show sp viewtk. sp
-    if viewtk TOK_IDENT == {
-        viewtd.s
-    }
-    if viewtk TOK_WORD == {
-        viewtd.s
-    }
-    cr
     if viewtk dup (TOK_INT ==) swap (TOK_CHAR ==) | {
         viewtd OP_PUSH_INT 3 roll toks_push
         tok_next
@@ -312,6 +303,7 @@ $ASM_FOPEN_ID INT
     else if viewtk TOK_PAREN_START == {
         tok_next
         _parse_until(TOK_PAREN_END)
+        swap drop
     }
     parse_with(TOK_STR parse_string)
     parse_with(TOK_WORD parse_word)
