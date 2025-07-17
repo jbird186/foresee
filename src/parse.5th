@@ -1,0 +1,337 @@
+#include "std/stdstr.5th"
+#include "src/config.5th"
+#include "src/token.5th"
+
+$ASM_LABEL_ID INT
+$ASM_ROLL_ID INT
+$ASM_FOPEN_ID INT
+
+:parse_tok
+
+// ops_dest tok_ptr --- ops_dest tok_ptr
+#_parse_until(until_tok_kind) {
+    while viewtk until_tok_kind != {
+        over swap parse_tok
+    }
+    tok_next
+}
+
+// ops_dest tok_ptr --- new_tok_ptr
+:parse_string {
+    viewtd dup str_len &inline_bufs_set map_insert
+    // tok_ptr
+    viewtd OP_PUSH_BUF 3 roll toks_push
+    tok_next
+}
+#define_intrinsic_opcode(data op_code alias) {
+    if viewtd alias str_eq {
+        // tok_ptr
+        (data) op_code 3 roll toks_push
+        tok_next
+        return
+    }
+}
+// ops_dest tok_ptr --- new_tok_ptr
+:parse_word {
+    // Binary Operations
+    define_intrinsic_opcode(0 OP_ADD "+")
+    define_intrinsic_opcode(0 OP_SUB "-")
+    define_intrinsic_opcode(0 OP_MUL "*")
+    define_intrinsic_opcode(0 OP_DIV "/")
+    define_intrinsic_opcode(0 OP_AND "&")
+    define_intrinsic_opcode(0 OP_OR "|")
+    define_intrinsic_opcode(0 OP_XOR "^")
+    define_intrinsic_opcode(0 OP_SHL "<<")
+    define_intrinsic_opcode(0 OP_SHR ">>")
+    define_intrinsic_opcode(0 OP_SAR ">>a")
+    define_intrinsic_opcode(0 OP_NOT "~")
+    define_intrinsic_opcode(0 OP_EQ "==")
+    define_intrinsic_opcode(0 OP_GT ">")
+    define_intrinsic_opcode(0 OP_LT "<")
+
+    "ERROR: Macro '".s viewtd.s "' not defined\n".s
+    1 exit
+}
+// ops_dest tok_ptr --- new_tok_ptr
+:parse_ident {
+    ////////// Intrinsics //////////
+    // Misc / Special
+    define_intrinsic_opcode(0 OP_NOOP "noop")
+    define_intrinsic_opcode(0 OP_EXIT "exit")
+    // Functions
+    define_intrinsic_opcode(0 OP_RET "return")
+    // Stack Primitives
+    define_intrinsic_opcode(0 OP_DROP "drop")
+    define_intrinsic_opcode(0 OP_PICK "pick")
+    define_intrinsic_opcode({&ASM_ROLL_ID@ dup 2+ &ASM_ROLL_ID!} OP_ROLL "roll")
+    define_intrinsic_opcode(0 OP_DEPTH "depth")
+    // Reference Primitives
+    define_intrinsic_opcode(0 OP_STORE "store")
+    define_intrinsic_opcode(0 OP_FETCH "fetch")
+    // I/O
+    define_intrinsic_opcode({&ASM_FOPEN_ID@++} OP_FETCH "fopen")
+    define_intrinsic_opcode(0 OP_FREAD "fread")
+    define_intrinsic_opcode(0 OP_FWRITE "fwrite")
+    define_intrinsic_opcode(0 OP_FCLOSE "fclose")
+
+    ////////// Functions //////////
+    // ops_dest tok_ptr
+    if viewtd &fns_map map_get not {
+        "ERROR: Function '".s viewtd.s "' not defined\n".s
+        1 exit
+    }
+    // tok_ptr
+    viewtd OP_CALL 3 roll toks_push
+    tok_next
+}
+// ops_dest tok_ptr if_id --- new_tok_ptr
+:_parse_if_with_id
+:_parse_if_with_id {
+    // ops_dest tok_ptr if_id else_id
+    &ASM_LABEL_ID@++
+    // if_id else_id ops_dest tok_ptr
+    3 roll 3 roll
+    tok_next
+
+    // Condition
+    _parse_until(TOK_BRACE_START)
+    // if_id else_id ops_dest tok_ptr
+    2 pick OP_JZ 3 pick toks_push
+
+    // Operations
+    _parse_until(TOK_BRACE_END)
+
+    // if_id else_id ops_dest tok_ptr
+    3 pick OP_JMP 3 pick toks_push
+    2 pick OP_LABEL 3 pick toks_push
+    // if_id ops_dest tok_ptr
+    rot drop
+
+    // No else condition
+    if viewtk TOK_ELSE != {
+        swap drop
+        // tok_ptr
+        swap drop
+        return
+    }
+    tok_next
+
+    // Else condition
+    // if_id ops_dest tok_ptr
+    if viewtk TOK_BRACE_START == {
+        tok_next
+        _parse_until(TOK_BRACE_END)
+        swap drop
+        swap drop
+    } else if viewtk TOK_IF == {
+        // tok_ptr
+        rot _parse_if_with_id
+    } else {
+        "ERROR: Invalid 'if' condition\n".s
+        1 exit
+    }
+}
+// ops_dest tok_ptr --- new_tok_ptr
+:parse_if {
+    // ops_dest if_id tok_ptr
+    &ASM_LABEL_ID@++ swap
+    // ops_dest if_id tok_ptr
+    2 pick swap 2 pick _parse_if_with_id
+    // tok_ptr
+    swap OP_LABEL 3 roll toks_push
+}
+// ops_dest tok_ptr --- new_tok_ptr
+:parse_while {
+
+    tok_next
+
+    // ops_dest tok_ptr start_id end_id
+    &ASM_LABEL_ID@++ &ASM_LABEL_ID@++
+    // start_id end_id ops_dest tok_ptr
+    3 roll 3 roll
+    // start_id end_id ops_dest tok_ptr
+    3 pick OP_LABEL 3 pick toks_push
+
+    // Condition
+    _parse_until(TOK_BRACE_START)
+    2 pick OP_JZ 3 pick toks_push
+
+    // Operations
+    _parse_until(TOK_BRACE_END)
+
+    // end_id ops_dest tok_ptr
+    3 roll OP_JMP 3 pick toks_push
+    // tok_ptr
+    rot OP_LABEL 3 roll toks_push
+
+}
+// ops_dest tok_ptr --- new_tok_ptr
+:parse_colon {
+    tok_next
+
+    if viewtk TOK_IDENT != {
+        "ERROR: Invalid function name\n".s
+        1 exit
+    }
+    if viewtd &fns_map map_get {
+        "ERROR: Function '".s viewtd.s "' already defined\n".s
+        1 exit
+    }
+
+    // tok_ptr ops_dest
+    swap
+    // tok_ptr
+    if &ops_mem != {
+        "ERROR: Function '".s viewtd.s "' must not define internal functions\n".s
+        1 exit
+    }
+
+    // name tok_ptr
+    viewtd swap
+    // name tok_ptr fn_ptr
+    &fn_ops_mem toks_head
+    // tok_ptr
+    rot "ADDING FN ".s shows cr swap &fns_map map_insert
+
+    tok_next
+    if viewtk TOK_BRACE_START != {
+        "ERROR: Invalid definition for function '".s over.s "'\n".s
+        1 exit
+    }
+    tok_next
+
+    while viewtk TOK_BRACE_END != {
+        &fn_ops_mem swap parse_tok
+    }
+    tok_next
+
+    0 OP_EOF &fn_ops_mem toks_push
+}
+// ops_dest tok_ptr --- new_tok_ptr
+:parse_dollar {
+    // tok_ptr
+    swap drop
+
+    tok_next
+    if viewtk TOK_IDENT != {
+        "ERROR: Invalid buffer name\n".s
+        1 exit
+    }
+
+    // Specify size
+    // name tok_ptr
+    viewtd swap tok_next
+    if viewtk dup (TOK_INT ==) swap (TOK_PAREN_START ==) | {
+        if viewtk TOK_INT == {
+            // name size tok_ptr
+            viewtd swap tok_next
+        } else {
+            // name size tok_ptr
+            1 swap while tok_next viewtk TOK_INT == {
+                viewtd rot * swap
+            }
+            if viewtk TOK_PAREN_END != {
+                "ERROR: Invalid buffer size\n".s
+                1 exit
+            }
+            tok_next
+        }
+        // Initialize to String (optional)
+        // name size tok_ptr
+        if dup (viewtk TOK_COLON ==) swap (tok_next tok_kind TOK_STR ==) & {
+            tok_next
+            if viewtd str_len 2 pick > {
+                "ERROR: Invalid buffer size\n".s
+                1 exit
+            }
+            // name size init tok_ptr
+            viewtd swap
+        } else {
+            // name size init tok_ptr
+            NULL swap
+        }
+    }
+    // Initialize to String
+    else if viewtk TOK_COLON == {
+        tok_next
+        if viewtk TOK_STR == {
+            // name size tok_ptr
+            viewtd str_len swap
+            // name size init tok_ptr
+            viewtd swap
+        } else {
+            "ERROR: Invalid buffer initialization value\n".s
+            1 exit
+        }
+    }
+    // name size tok_ptr
+    3 pick rot &bufs_init_map map_insert
+    // tok_ptr
+    rot rot &bufs_size_map map_insert
+}
+// ops_dest tok_ptr --- new_tok_ptr
+:parse_ref {
+    tok_next
+    if viewtk TOK_IDENT != {
+        "ERROR: Invalid reference name\n".s
+        1 exit
+    }
+    if viewtd &bufs_size_map map_get {
+        viewtd OP_PUSH_BUF 3 roll toks_push
+        tok_next
+    } else {
+        "ERROR: Buffer '".s viewtd.s "' not defined\n".s
+        1 exit
+    }
+}
+
+#parse_with(parse_kind parse_function) {
+    else if viewtk parse_kind == {
+        parse_function
+    }
+}
+
+// ops_dest tok_ptr --- new_tok_ptr
+:parse_tok {
+    depth. sp show sp viewtk. sp
+    if viewtk TOK_IDENT == {
+        viewtd.s
+    }
+    if viewtk TOK_WORD == {
+        viewtd.s
+    }
+    cr
+    if viewtk dup (TOK_INT ==) swap (TOK_CHAR ==) | {
+        viewtd OP_PUSH_INT 3 roll toks_push
+        tok_next
+    }
+    else if viewtk TOK_POUND == {
+        "ERROR: Unexpected preprocessing directive\n".s
+        1 exit
+    }
+    else if viewtk TOK_PAREN_START == {
+        tok_next
+        _parse_until(TOK_PAREN_END)
+    }
+    parse_with(TOK_STR parse_string)
+    parse_with(TOK_WORD parse_word)
+    parse_with(TOK_IDENT parse_ident)
+    parse_with(TOK_IF parse_if)
+    parse_with(TOK_WHILE parse_while)
+    parse_with(TOK_COLON parse_colon)
+    parse_with(TOK_DOLLAR parse_dollar)
+    parse_with(TOK_REF parse_ref)
+    else {
+        "ERROR: Unexpected token of type ".s viewtk. cr
+        1 exit
+    }
+}
+
+:parse_out_toks {
+    // tok_ptr
+    &out_toks_mem tok_first
+    while viewtk TOK_EOF != {
+        &ops_mem swap parse_tok
+    }
+    drop
+}

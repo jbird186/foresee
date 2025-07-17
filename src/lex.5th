@@ -91,7 +91,7 @@
 
 // char -- bool
 :is_ident_char {
-    dup (is_alpha) swap ('_' ==) |
+    dup (is_alnum) swap ('_' ==) |
 }
 
 // src_ptr --- new_src_ptr ref
@@ -121,8 +121,6 @@
         0 TOK_ELSE &toks_mem toks_push
     } else if dup "while" str_eq {
         0 TOK_WHILE &toks_mem toks_push
-    } else if dup "include" str_eq {
-        0 TOK_INCLUDE &toks_mem toks_push
     } else {
         TOK_IDENT &toks_mem toks_push
         return
@@ -136,7 +134,7 @@
 // src_ptr --- new_src_ptr ref
 :view_word {
     &strs_mem headc swap
-    while ("(){}" over@c str_char not) (over@c is_space not) & (over@c bool) & {
+    while ("(){}[]" over@c str_char not) (over@c is_space not) & (over@c bool) & {
         viewc &strs_mem pushc
         1+
     }
@@ -173,6 +171,8 @@
         lex_trivial(')' TOK_PAREN_END)
         lex_trivial('{' TOK_BRACE_START)
         lex_trivial('}' TOK_BRACE_END)
+        lex_trivial('[' TOK_BRACKET_START)
+        lex_trivial(']' TOK_BRACKET_END)
         else if (viewc '&' ==) (over 1+ @c is_ident_char) & {
             0 TOK_REF &toks_mem toks_push
             1+

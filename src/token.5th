@@ -1,5 +1,6 @@
 #include "std/stdref.5th"
 
+////////// Token Kinds //////////
 #TOK_EOF { 0 }
 #TOK_INT { 1 }
 #TOK_CHAR { 2 }
@@ -9,20 +10,65 @@
 #TOK_IF { 6 }
 #TOK_ELSE { 7 }
 #TOK_WHILE { 8 }
-#TOK_INCLUDE { 9 }
-#TOK_COLON { 10 }
-#TOK_POUND { 11 }
-#TOK_DOLLAR { 12 }
-#TOK_REF { 13 }
-#TOK_PAREN_START { 14 }
-#TOK_PAREN_END { 15 }
-#TOK_BRACE_START { 16 }
-#TOK_BRACE_END { 17 }
+#TOK_COLON { 9 }
+#TOK_POUND { 10 }
+#TOK_DOLLAR { 11 }
+#TOK_REF { 12 }
+#TOK_PAREN_START { 13 }
+#TOK_PAREN_END { 14 }
+#TOK_BRACE_START { 15 }
+#TOK_BRACE_END { 16 }
+#TOK_BRACKET_START { 17 }
+#TOK_BRACKET_END { 18 }
 
-// ref -- head_ptr
+////////// Operation Kinds //////////
+// Misc / Special
+#OP_EOF{ 0 }
+#OP_NOOP{ 1 }
+#OP_EXIT{ 2 }    // exit_code ---
+// Functions
+#OP_CALL{ 3 }
+#OP_RET{ 4 }
+// Stack Primitives
+#OP_DROP{ 5 }    // item ---
+#OP_PICK{ 6 }    // n --- item
+#OP_ROLL{ 7 }    // n --- item
+#OP_DEPTH{ 8 }   // --- depth
+#OP_PUSH_INT{ 9 }
+// Reference Primitives
+#OP_PUSH_BUF{ 10 }
+#OP_STORE{ 11 }   // item ptr ---
+#OP_FETCH{ 12 }   // ptr --- item
+// Binary Operations
+#OP_ADD{ 13 }
+#OP_SUB{ 14 }
+#OP_MUL{ 15 }
+#OP_DIV{ 16 }
+#OP_AND{ 17 }
+#OP_OR{ 18 }
+#OP_XOR{ 19 }
+#OP_SHL{ 20 }
+#OP_SHR{ 21 }
+#OP_SAR{ 22 }
+#OP_NOT{ 23 }
+#OP_EQ{ 24 }
+#OP_GT{ 25 }
+#OP_LT{ 26 }
+// Branching
+#OP_LABEL{ 27 }
+#OP_JMP{ 28 }
+#OP_JZ{ 29 }      // value ---
+// I/O
+#OP_FOPEN{ 30 }   // filename_ptr [0=read, 1=write, 2=append] --- [fd, -1]
+#OP_FREAD{ 31 }   // ptr len fd --- [bytes_read, -1]
+#OP_FWRITE{ 32 }  // ptr len fd --- [bytes_written, -1]
+#OP_FCLOSE{ 33 }  // fd --- [0, -1]
+
+////////// Functions //////////
+// ref --- head_ptr
 :toks_head { dup len 9* + 8+ }
 
-// data type ref --
+// data type ref ---
 :toks_push {
     dup@ 1+
     dup 2 pick !
@@ -39,3 +85,12 @@
 
 :viewtk { dup tok_kind }
 :viewtd { dup tok_data }
+
+// tok_ptr --- tok_ptr bool
+:check_include {
+    if viewtk TOK_IDENT == {
+        viewtd "include" str_eq
+    } else {
+        false
+    }
+}

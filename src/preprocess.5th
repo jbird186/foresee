@@ -167,7 +167,7 @@
     }
 
     if viewtk TOK_BRACE_START != {
-        "ERROR: Invalid body for macro'".s over.s "'\n".s
+        "ERROR: Invalid body for macro '".s over.s "'\n".s
         1 exit
     }
     // tok_ptr
@@ -178,7 +178,7 @@
 // tok_ptr --- new_tok_ptr
 :preprocess_pound {
     tok_next
-    if viewtk TOK_INCLUDE == {
+    if check_include {
         preprocess_include
     } else if viewtk dup (TOK_IDENT ==) swap (TOK_WORD ==) | {
         preprocess_macro_def

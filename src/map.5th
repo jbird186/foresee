@@ -10,13 +10,17 @@
         swap 1+ swap
     }
     swap drop
+
+    if dup 0 < {
+        -1 *
+    }
 }
 
 // key map_ref ---
 :set_insert {
     // key map_ref idx
     over hash MAP_SIZE %
-    // key map_ref idx ref slat_value
+    // key map_ref idx ref
     while dup 8* 2 pick + dup @ {
         drop
         1+ MAP_SIZE %
@@ -26,21 +30,27 @@
     drop drop
 }
 
-// key map_ref --- bool
-:set_contains {
+// key map_ref --- [idx, -1]
+:set_key_idx {
     // key map_ref idx
     over hash MAP_SIZE %
-    // key map_ref idx slot_value slot_value
+    // key map_ref idx slot_value
     while dup 8* 2 pick + @ dup {
         // key map_ref idx
         if 3 pick str_eq {
-            drop drop drop
-            true return
+            swap drop
+            swap drop
+            return
         }
         1+ MAP_SIZE %
     }
     drop drop drop drop
-    false
+    -1
+}
+
+// key map_ref --- bool
+:set_contains {
+    set_key_idx is_success
 }
 
 // key value map_ref idx --- key value map_ref idx ref bool
@@ -76,21 +86,38 @@
     drop drop
 }
 
-// key map_ref --- [ref, 0]
-:map_get {
+// key map_ref --- [idx, -1]
+:map_key_idx {
     // key map_ref idx
     over hash MAP_SIZE %
-    // key map_ref idx ref slot_value
+    // key map_ref idx slot_value
     while dup 16* 2 pick + @ dup {
         // key map_ref idx
         if 3 pick str_eq {
-            // key value
-            16* 8+ + @
+            swap drop
             swap drop
             return
         }
         1+ MAP_SIZE %
     }
     drop drop drop drop
-    0
+    -1
+}
+
+// idx map_ref --- value
+:map_get_idx {
+    swap 16* 8+ + @
+}
+
+// key map_ref --- [value, 0]
+:map_get {
+    // map_ref key map_ref
+    swap over
+    // map_ref idx
+    if map_key_idx dup is_success {
+        16* 8+ + @
+    } else {
+        drop drop
+        0
+    }
 }

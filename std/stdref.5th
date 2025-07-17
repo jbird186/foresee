@@ -13,3 +13,8 @@
     fetch 255 &
 }
 #@c{fetchc}
+
+#@++{dup@ dup 1+ rot!}
+#++@{dup@ 1+ dup rot!}
+#@c++{dup@c dup 1+ rot!c}
+#++@c{dup@c 1+ dup rot!c}
