@@ -48,11 +48,10 @@ $out_fd REF
 :compile_functions {
     // idx
     0 while dup MAP_SIZE < {
-        // idx fn_ptr
-        dup &fns_map map_get_idx
-        if dup {
-            compile_ops
-        } else { drop }
+        // idx fn_name
+        dup &fns_map map_get_idx_key
+        if dup { compile_function }
+        else { drop }
         1+
     } drop
 }
@@ -122,12 +121,12 @@ $out_fd REF
     else if viewtk OP_PUSH_BUF == {
         "    ; OP_PUSH_BUF\n".coms
         // op_ptr buf_idx
-        if viewtd &bufs_size_map map_key_idx dup is_success {
-            compile_push_generic({"b_".coms .com})
-        } else {
-            drop
-            viewtd compile_push_generic({"ib_".coms .com})
-        }
+        viewtd &bufs_size_map map_key_idx
+        compile_push_generic({"b_".coms .com})
+    }
+    else if viewtk OP_PUSH_IBUF == {
+        "    ; OP_PUSH_IBUF\n".coms
+        viewtd compile_push_generic({"ib_".coms .com})
     }
     else if viewtk OP_STORE == {
         "    ; OP_STORE\n".coms
@@ -156,7 +155,7 @@ $out_fd REF
         "rax" compile_pop
         "    cqo\n".coms
         "    idiv    rbx\n".coms
-        "rax" compile_pop
+        "rax" compile_push
     }
     else if viewtk OP_AND == {
         "rcx" "and" "OP_AND" compile_basic_binop
@@ -210,7 +209,7 @@ $out_fd REF
         "rax" compile_push
     }
     else if viewtk OP_LABEL == {
-        ".l_".coms viewtd.com "\n".coms
+        ".l_".coms viewtd.com ":\n".coms
     }
     else if viewtk OP_JMP == {
         "    ; OP_JMP\n".coms
@@ -285,9 +284,10 @@ $out_fd REF
     tok_next
 }
 
-// op_ptr
+// op_ptr ---
 :compile_ops {
     while viewtk { compile_op }
+    drop
 }
 
 :compile_inline_bufs {
@@ -300,10 +300,9 @@ $out_fd REF
         while dup@c {
             dup@c .com
             1+
-            if dup@c {
-                ",".coms
-            }
+            ",".coms
         }
+        "0".coms
         // idx
         drop "\n".coms
         1+
@@ -317,15 +316,12 @@ $out_fd REF
 
     // name init
     dup &bufs_init_map map_get
-    if dup {
-        while dup@c {
-            dup@c .com
-            1+
-            if dup@c {
-                ",".coms
-            }
-        }
+    while dup@c {
+        dup@c .com
+        1+
+        ",".coms
     }
+    "0".coms
     // name
     drop "\n".coms
     // name
@@ -343,8 +339,6 @@ $out_fd REF
 :compile_buf_bss {
     "    ; $".coms
     dup.coms
-    " ".coms
-    dup &bufs_size_map map_get.com
     "\n".coms
 
     "    b_".coms
@@ -364,7 +358,7 @@ $out_fd REF
     "    lea     r12, [__stack_ptr + ".coms &stack_sz_ptr.coms "]\n".coms
     &ops_mem tok_first compile_ops
 
-    "section .data:\n".coms
+    "section .data\n".coms
     // idx
     0 while dup MAP_SIZE < {
         // idx key
@@ -378,7 +372,7 @@ $out_fd REF
     } drop
     compile_inline_bufs
 
-    "section .bss:\n".coms
+    "section .bss\n".coms
     // idx
     0 while dup MAP_SIZE < {
         // idx key

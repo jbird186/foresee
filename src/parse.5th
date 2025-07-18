@@ -20,7 +20,7 @@ $ASM_FOPEN_ID INT
 :parse_string {
     viewtd &inline_bufs push
     // tok_ptr
-    &inline_bufs len 1- OP_PUSH_BUF 3 roll toks_push
+    &inline_bufs len 1- OP_PUSH_IBUF 3 roll toks_push
     tok_next
 }
 #define_intrinsic_opcode(data op_code alias) {
@@ -69,7 +69,7 @@ $ASM_FOPEN_ID INT
     define_intrinsic_opcode(0 OP_STORE "store")
     define_intrinsic_opcode(0 OP_FETCH "fetch")
     // I/O
-    define_intrinsic_opcode({&ASM_FOPEN_ID@++} OP_FETCH "fopen")
+    define_intrinsic_opcode({&ASM_FOPEN_ID@++} OP_FOPEN "fopen")
     define_intrinsic_opcode(0 OP_FREAD "fread")
     define_intrinsic_opcode(0 OP_FWRITE "fwrite")
     define_intrinsic_opcode(0 OP_FCLOSE "fclose")
@@ -203,6 +203,10 @@ $ASM_FOPEN_ID INT
         &fn_ops_mem swap parse_tok
     }
     tok_next
+
+    if &fn_ops_mem toks_head tok_prev tok_kind OP_RET != {
+        0 OP_RET &fn_ops_mem toks_push
+    }
 
     0 OP_EOF &fn_ops_mem toks_push
 }

@@ -104,6 +104,7 @@
 
 // tok_ptr --- new_tok_ptr
 :preprocess_include {
+
     tok_next
     if viewtk TOK_STR != {
         "ERROR: Expected file name after 'include' directive\n".s

@@ -19,12 +19,6 @@
     preprocess_src
     parse_out_toks
 
-    "strs_mem: ".s &strs_mem len . cr
-    "toks_mem: ".s &toks_mem len . cr
-    "out_toks_mem: ".s &out_toks_mem len . cr
-    "ops_mem: ".s &ops_mem len . cr
-    "fn_ops_mem: ".s &fn_ops_mem len . cr
-
     &out_file_name 1 fopen &out_fd!
     compile_program
     &out_fd@ fclose drop

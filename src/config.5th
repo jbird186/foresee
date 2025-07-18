@@ -1,7 +1,7 @@
 #include "std/core.5th"
 
 $src_file_name: "src/main.5th"
-$out_file_name: "target/selfcomp.asm"
+$out_file_name: "compiler/compiler.asm"
 #SRC_STR_SIZE{ 65536 }
 $src_str (CHAR SRC_STR_SIZE)
 

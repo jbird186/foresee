@@ -1,3 +1,4 @@
 .vscode
-target
-cmd.txt
+compiler/*
+!compiler/bootstrap.asm
+target/*

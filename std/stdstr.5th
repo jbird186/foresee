@@ -24,7 +24,7 @@
 
 // s1 s2 --- diff
 :str_cmp {
-    while dup@c {
+    while over@c over@c | {
         if over@c over@c - dup {
             rot rot drop drop
             return
