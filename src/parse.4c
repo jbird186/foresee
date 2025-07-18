@@ -1,6 +1,6 @@
-#include "std/stdstr.5th"
-#include "src/config.5th"
-#include "src/token.5th"
+#include "std/stdstr.4c"
+#include "src/config.4c"
+#include "src/token.4c"
 
 $ASM_LABEL_ID INT
 $ASM_ROLL_ID INT

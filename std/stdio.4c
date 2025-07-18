@@ -1,5 +1,5 @@
-#include "std/core.5th"
-#include "std/stdref.5th"
+#include "std/core.4c"
+#include "std/stdref.4c"
 
 $__stdio_buf 24
 

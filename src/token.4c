@@ -1,4 +1,4 @@
-#include "std/stdref.5th"
+#include "std/stdref.4c"
 
 ////////// Token Kinds //////////
 #TOK_EOF { 0 }

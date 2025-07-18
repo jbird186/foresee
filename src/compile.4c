@@ -1,6 +1,6 @@
-#include "std/stdstr.5th"
-#include "src/config.5th"
-#include "src/map.5th"
+#include "std/stdstr.4c"
+#include "src/config.4c"
+#include "src/map.4c"
 
 $out_fd REF
 

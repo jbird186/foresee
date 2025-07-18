@@ -1,4 +1,4 @@
-#include "std/linux.5th"
+#include "std/linux.4c"
 
 #CHAR{1}
 #INT{8}

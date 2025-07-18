@@ -1,6 +1,6 @@
-#include "std/stdref.5th"
-#include "std/stdstr.5th"
-#include "src/config.5th"
+#include "std/stdref.4c"
+#include "std/stdstr.4c"
+#include "src/config.4c"
 
 // str_ref --- hash
 :hash {

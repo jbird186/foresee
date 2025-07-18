@@ -1,7 +1,7 @@
-#include "src/lex.5th"
-#include "src/preprocess.5th"
-#include "src/parse.5th"
-#include "src/compile.5th"
+#include "src/lex.4c"
+#include "src/preprocess.4c"
+#include "src/parse.4c"
+#include "src/compile.4c"
 
 :main {
     $src_fd REF

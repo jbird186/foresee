@@ -1,4 +1,4 @@
-#include "std/stdio.5th"
+#include "std/stdio.4c"
 
 $filename: ".gitignore"
 $file 8
