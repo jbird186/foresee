@@ -18,9 +18,9 @@ $ASM_FOPEN_ID INT
 
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_string {
-    viewtd dup str_len &inline_bufs_set map_insert
+    viewtd &inline_bufs push
     // tok_ptr
-    viewtd OP_PUSH_BUF 3 roll toks_push
+    &inline_bufs len 1- OP_PUSH_BUF 3 roll toks_push
     tok_next
 }
 #define_intrinsic_opcode(data op_code alias) {
@@ -258,6 +258,7 @@ $ASM_FOPEN_ID INT
             viewtd str_len swap
             // name size init tok_ptr
             viewtd swap
+            tok_next
         } else {
             "ERROR: Invalid buffer initialization value\n".s
             1 exit
@@ -326,4 +327,8 @@ $ASM_FOPEN_ID INT
         &ops_mem swap parse_tok
     }
     drop
+
+    0 OP_PUSH_INT &ops_mem toks_push
+    0 OP_EXIT &ops_mem toks_push
+    0 OP_EOF &ops_mem toks_push
 }

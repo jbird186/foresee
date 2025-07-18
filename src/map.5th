@@ -48,7 +48,12 @@
     -1
 }
 
-// key map_ref --- bool
+// idx set_ref --- value
+:set_get_idx {
+    swap 8* + @
+}
+
+// key set_ref --- bool
 :set_contains {
     set_key_idx is_success
 }
@@ -102,6 +107,11 @@
     }
     drop drop drop drop
     -1
+}
+
+// idx map_ref --- value
+:map_get_idx_key {
+    swap 16* + @
 }
 
 // idx map_ref --- value

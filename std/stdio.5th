@@ -12,47 +12,79 @@ $__stdio_buf 24
 #cr{'\n'.c}
 #sp{' '.c}
 
-:out_int {
-    if dup 0 < {
-        -1 *
-        '-'.c
-    }
+// int --- ptr len
+:__write_int_to_temp {
+    0 &__stdio_buf 16+ !
 
+    // is_neg int
+    dup 0 < swap
+    if over { -1* }
+
+    // is_neg int len
     0 dowhile({
-        &__stdio_buf 23 + over -
+        &__stdio_buf 23+ over -
         rot dup 10 % '0' +
         rot !c
         10 /
         swap 1 +
     } {over})
-    &__stdio_buf 24 + over - swap
-    stdout drop
+
+    // int len
+    if 2 roll {
+        '-' &__stdio_buf 23+ 2 pick - !c
+        1+
+    }
+
+    // int ptr len
+    &__stdio_buf 24+ over - swap
+    rot drop
 }
+
+// int fd --- [bytes_written, -1]
+:fwrite_int { swap __write_int_to_temp rot fwrite }
+// int ---
+:out_int {__write_int_to_temp stdout}
 #.{out_int}
 #show{dup .}
 
 :out_str {
     while dup@c dup {
-        .c 1 +
+        .c 1+
     } drop drop
 }
 #.s{out_str}
 #shows{dup .s}
 
+// --- char
 :in_char {
-    &__stdio_buf 1 stdin
+    &__stdio_buf 1 stdin drop
     &__stdio_buf@c
 }
 #,c{in_char}
 
+// --- int
 :in_int {
-    &__stdio_buf 20 stdin drop
-    0 &__stdio_buf
+    &__stdio_buf 24 stdin drop
+
+    // buf
+    &__stdio_buf
+    // is_neg buf
+    dup@c '-' == swap
+    if over { 1+ }
+
+    // is_neg total buf
+    0 swap
+
+    // is_neg total buf c
     while dup@c dup '\n' != {
         '0' -
-        rot 10 * +
-        swap 1 +
-    } drop drop
+        rot 10* +
+        swap 1+
+    }
+    // is_neg total
+    drop drop
+
+    if swap { -1* }
 }
 #,{in_int}
 

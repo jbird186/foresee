@@ -1,10 +1,12 @@
 #include "std/core.5th"
 
 $src_file_name: "src/main.5th"
+$out_file_name: "target/selfcomp.asm"
 #SRC_STR_SIZE{ 65536 }
 $src_str (CHAR SRC_STR_SIZE)
 
 $strs_mem (CHAR 65536)
+$inline_bufs (REF 8192)
 $toks_mem (9 16384)
 $out_toks_mem (9 16384)
 $ops_mem (9 16384)
@@ -14,6 +16,8 @@ $fn_ops_mem (9 65536)
 $macros_map (REF 2 MAP_SIZE)
 $bufs_size_map (REF 2 MAP_SIZE)
 $bufs_init_map (REF 2 MAP_SIZE)
-$inline_bufs_set (REF MAP_SIZE)
 $fns_map (REF 2 MAP_SIZE)
 $files_set (REF MAP_SIZE)
+
+$stack_sz_ptr: "8192"
+$stack_ptr_str: "r12"

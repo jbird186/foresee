@@ -276,9 +276,9 @@ void compile_op(FILE* fptr, OpCode op) {
                 POP_INSTRUCTION("rdi")      // file descriptor
                 POP_INSTRUCTION("rdx")      // length
                 POP_INSTRUCTION("rsi")      // buffer pointer
-                "    mov     rax, 0\n"        // sys_read\n
+                "    mov     rax, 0\n"      // sys_read
                 "    syscall\n"
-                PUSH_INSTRUCTION("rax"),     // bytes read or -1
+                PUSH_INSTRUCTION("rax"),    // bytes read or -1
                 fptr);
             break;
         case OP_FWRITE:
@@ -287,16 +287,16 @@ void compile_op(FILE* fptr, OpCode op) {
                 POP_INSTRUCTION("rdi")      // file descriptor
                 POP_INSTRUCTION("rdx")      // length
                 POP_INSTRUCTION("rsi")      // buffer pointer
-                "    mov     rax, 1\n"        // sys_write\n
+                "    mov     rax, 1\n"      // sys_write
                 "    syscall\n"
-                PUSH_INSTRUCTION("rax"),     // bytes written or -1
+                PUSH_INSTRUCTION("rax"),    // bytes written or -1
                 fptr);
             break;
         case OP_FCLOSE:
             fputs(
                 "    ; OP_FCLOSE\n"
                 POP_INSTRUCTION("rdi")      // file descriptor
-                "    mov     rax, 3\n"      // sys_close\n
+                "    mov     rax, 3\n"      // sys_close
                 "    syscall\n"
                 PUSH_INSTRUCTION("rax"),    // return 0 or -1
                 fptr);

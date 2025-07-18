@@ -1,6 +1,7 @@
 #include "src/lex.5th"
 #include "src/preprocess.5th"
 #include "src/parse.5th"
+#include "src/compile.5th"
 
 :main {
     $src_fd REF
@@ -23,6 +24,10 @@
     "out_toks_mem: ".s &out_toks_mem len . cr
     "ops_mem: ".s &ops_mem len . cr
     "fn_ops_mem: ".s &fn_ops_mem len . cr
+
+    &out_file_name 1 fopen &out_fd!
+    compile_program
+    &out_fd@ fclose drop
 }
 
 main
