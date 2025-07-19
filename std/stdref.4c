@@ -18,3 +18,7 @@
 #++@{dup@ 1+ dup rot!}
 #@c++{dup@c dup 1+ rot!c}
 #++@c{dup@c 1+ dup rot!c}
+#@--{dup@ dup 1- rot!}
+#--@{dup@ 1- dup rot!}
+#@c--{dup@c dup 1- rot!c}
+#--@c{dup@c 1- dup rot!c}

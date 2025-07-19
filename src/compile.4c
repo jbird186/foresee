@@ -27,9 +27,9 @@ $out_fd REF
     "    mov     qword [".coms &stack_ptr_str.coms "], ".coms com_type "\n".coms
 }
 // item ---
-:compile_push { compile_push_generic({.coms}) }
+:compile_push { compile_push_generic(.coms) }
 // item ---
-:compile_push_int { compile_push_generic({.com}) }
+:compile_push_int { compile_push_generic(.com) }
 // ---
 :compile_stack_shrink {
     "    add     ".coms &stack_ptr_str.coms ", 8\n".coms
@@ -307,43 +307,31 @@ $out_fd REF
     } drop
 }
 
-// name ---
+// idx ---
 :compile_buf_data {
-    "    ; $".coms dup.coms " ".coms dup &bufs_size_map map_get.com "\n".coms
-    "    b_".coms dup &bufs_size_map map_key_idx.com " db ".coms
+    "    ; $".coms dup bmap_idx_name.coms " ".coms dup bmap_idx_size.com "\n".coms
+    "    b_".coms dup.com " db ".coms
 
-    // name init
-    dup &bufs_init_map map_get
+    // idx init
+    dup bmap_idx_init
     while dup@c {
         dup@c .com
         1+
         ",".coms
-    }
-    "0".coms
-    // name
-    drop "\n".coms
-    // name
-    if dup dup (&bufs_size_map map_get) swap (&bufs_init_map map_get str_len 1+) > {
-        "        times ".coms
-        dup &bufs_size_map map_get.com
-        " - ($ - b_".coms
-        dup &bufs_size_map map_key_idx.com
-        ") db 0\n".coms
+    } drop // idx
+    "0\n".coms
+
+    // idx
+    if dup dup (bmap_idx_size) swap (bmap_idx_init str_len 1+) > {
+        "        times ".coms dup bmap_idx_size.com " - ($ - b_".coms dup.com ") db 0\n".coms
     }
     drop
 }
 
-// name ---
+// idx ---
 :compile_buf_bss {
-    "    ; $".coms
-    dup.coms
-    "\n".coms
-
-    "    b_".coms
-    dup &bufs_size_map map_key_idx.com
-    " resb ".coms
-    &bufs_size_map map_get.com
-    "\n".coms
+    "    ; $".coms dup bmap_idx_name.coms "\n".coms
+    "    b_".coms dup.com " resb ".coms bmap_idx_size.com "\n".coms
 }
 
 :compile_program {
@@ -359,13 +347,9 @@ $out_fd REF
     "section .data\n".coms
     // idx
     0 while dup MAP_SIZE < {
-        // idx key
-        dup &bufs_size_map map_get_idx_key
-        if dup {
-            if dup &bufs_init_map map_get {
-                compile_buf_data
-            } else { drop }
-        } else { drop }
+        if dup dup (bmap_idx_name bool) swap (bmap_idx_init bool) & {
+            dup compile_buf_data
+        }
         1+
     } drop
     compile_inline_bufs
@@ -373,13 +357,9 @@ $out_fd REF
     "section .bss\n".coms
     // idx
     0 while dup MAP_SIZE < {
-        // idx key
-        dup &bufs_size_map map_get_idx_key
-        if dup {
-            if dup &bufs_init_map map_get not {
-                compile_buf_bss
-            } else { drop }
-        } else { drop }
+        if dup dup (bmap_idx_name bool) swap (bmap_idx_init not) & {
+            dup compile_buf_bss
+        }
         1+
     } drop
 

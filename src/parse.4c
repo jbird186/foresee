@@ -95,7 +95,9 @@ $ASM_FOPEN_ID INT
     2 pick OP_JZ 3 pick toks_push
 
     // Operations
+    dup &scope_stack push
     _parse_until(TOK_BRACE_END)
+    &scope_stack shrink
 
     // if_id else_id ops_dest tok_ptr
     3 pick OP_JMP 3 pick toks_push
@@ -154,7 +156,9 @@ $ASM_FOPEN_ID INT
     2 pick OP_JZ 3 pick toks_push
 
     // Operations
+    dup &scope_stack push
     _parse_until(TOK_BRACE_END)
+    &scope_stack shrink
 
     // end_id ops_dest tok_ptr
     3 roll OP_JMP 3 pick toks_push
@@ -190,6 +194,7 @@ $ASM_FOPEN_ID INT
         swap -1 &fns_map map_insert
         return
     }
+    dup &scope_stack push
 
     // name tok_ptr fn_ptr
     &fn_ops_mem toks_head
@@ -207,6 +212,7 @@ $ASM_FOPEN_ID INT
     }
 
     0 OP_EOF &fn_ops_mem toks_push
+    &scope_stack shrink
 }
 
 // ops_dest tok_ptr --- new_tok_ptr
@@ -217,6 +223,11 @@ $ASM_FOPEN_ID INT
     tok_next
     if viewtk TOK_IDENT != {
         "ERROR: Invalid buffer name\n".s
+        1 exit
+    }
+
+    if viewtd &scope_stack last bmap_get_idx is_success {
+        "ERROR: Buffer '".s viewtd.s "' already defined\n".s
         1 exit
     }
 
@@ -287,22 +298,30 @@ $ASM_FOPEN_ID INT
         "ERROR: Invalid definition for buffer '".s over.s "'\n".s
         1 exit
     }
-    // name size tok_ptr
-    3 pick rot &bufs_init_map map_insert
     // tok_ptr
-    rot rot &bufs_size_map map_insert
+    swap rot 3 roll &scope_stack last bmap_insert
 }
 
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_ref {
-    // ops_dest tok_ptr buf_id
-    if viewtd &bufs_size_map map_key_idx dup is_success {
-        OP_PUSH_BUF 3 roll toks_push
-        tok_next
-    } else {
-        "ERROR: Buffer '".s viewtd.s "' not defined\n".s
-        1 exit
-    }
+    // ops_dest tok_ptr name
+    viewtd
+    // ops_dest tok_ptr name scope_idx
+    &scope_stack len 1- while dup 0 >= {
+        // ops_dest tok_ptr name scope_idx idx
+        if over over &scope_stack get bmap_get_idx dup is_success {
+            // tok_ptr name scope_idx
+            OP_PUSH_BUF 5 roll toks_push
+            // tok_ptr
+            drop drop
+            tok_next
+            return
+        } drop
+        1-
+    } drop
+
+    "ERROR: Buffer '".s .s "' not defined in this scope\n".s
+    1 exit
 }
 
 #parse_with(parse_kind parse_function) {

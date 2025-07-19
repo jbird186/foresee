@@ -59,7 +59,7 @@
 }
 
 // key value map_ref idx --- key value map_ref idx ref bool
-:map_insert_skip_slot {
+:_map_insert_skip_slot {
     // key value map_ref idx ref
     dup 16* 2 pick +
 
@@ -80,7 +80,7 @@
     // key value map_ref idx
     2 pick hash MAP_SIZE %
     // key value map_ref idx ref
-    while map_insert_skip_slot {
+    while _map_insert_skip_slot {
         drop
         1+ MAP_SIZE %
     }
@@ -130,4 +130,88 @@
         drop drop
         0
     }
+}
+
+
+
+// key scope idx --- key scope idx ref bool
+:_bmap_insert_skip_slot {
+    // key scope idx ref
+    dup 32* &bufs_map +
+
+    // Not occupied
+    if dup@ not {
+        false
+    // Occupied (same name)
+    } else if dup@ 4 pick str_eq {
+        // Same scope
+        if dup 8+ @ 3 pick == {
+            false
+        // Different scope
+        } else {
+            true
+        }
+    // Occupied (different name)
+    } else {
+        true
+    }
+}
+
+// init size key scope ---
+:bmap_insert {
+    // init size key scope idx
+    over hash MAP_SIZE %
+    // init size key scope idx ref
+    while _bmap_insert_skip_slot {
+        drop
+        1+ MAP_SIZE %
+    }
+    // init size key scope ref
+    swap drop
+
+    // init size scope ref
+    rot over!
+    // init size ref
+    swap over 8+ !
+    // init ref
+    swap over 16+ !
+    24+ !
+}
+
+// key scope --- [idx, -1]
+:bmap_get_idx {
+    // key scope idx
+    over hash MAP_SIZE %
+    // key scope idx ref
+    while dup 32* &bufs_map + dup @ {
+        // key scope idx ref
+        if dup@ 4 pick str_eq {
+            // key scope idx
+            if 8+ @ 2 pick == {
+                swap drop
+                swap drop
+                return
+            }
+        } else { drop }
+        1+ MAP_SIZE %
+    }
+    drop drop drop drop
+    -1
+}
+
+// idx --- name
+:bmap_idx_name {
+    32* &bufs_map + @
+}
+// idx --- scope
+:bmap_idx_scope {
+    32* &bufs_map + 8+ @
+}
+// idx --- size
+:bmap_idx_size {
+    32* &bufs_map + 16+ @
+}
+// idx --- init
+:bmap_idx_init {
+    32* &bufs_map + 24+ @
 }

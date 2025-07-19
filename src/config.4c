@@ -16,10 +16,10 @@ $fn_ops_mem[1024][32][OP]
 
 #MAP_SIZE{ 8191 }
 $macros_map[MAP_SIZE][REF REF]
-$bufs_size_map[MAP_SIZE][REF REF]
-$bufs_init_map[MAP_SIZE][REF REF]
 $fns_map[MAP_SIZE][REF REF]
 $files_set[MAP_SIZE][REF]
+$bufs_map[MAP_SIZE][4][REF]
+$scope_stack[1024][REF]
 
 $start_ops_mem[4][OP]
 $stack_sz_ptr: "16384"
