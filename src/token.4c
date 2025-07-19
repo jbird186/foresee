@@ -37,33 +37,32 @@
 #OP_PUSH_INT{ 9 }
 // Reference Primitives
 #OP_PUSH_BUF{ 10 }
-#OP_PUSH_IBUF{ 11 }
-#OP_STORE{ 12 }   // item ptr ---
-#OP_FETCH{ 13 }   // ptr --- item
+#OP_STORE{ 11 }   // item ptr ---
+#OP_FETCH{ 12 }   // ptr --- item
 // Binary Operations
-#OP_ADD{ 14 }
-#OP_SUB{ 15 }
-#OP_MUL{ 16 }
-#OP_DIV{ 17 }
-#OP_AND{ 18 }
-#OP_OR{ 19 }
-#OP_XOR{ 20 }
-#OP_SHL{ 21 }
-#OP_SHR{ 22 }
-#OP_SAR{ 23 }
-#OP_NOT{ 24 }
-#OP_EQ{ 25 }
-#OP_GT{ 26 }
-#OP_LT{ 27 }
+#OP_ADD{ 13 }
+#OP_SUB{ 14 }
+#OP_MUL{ 15 }
+#OP_DIV{ 16 }
+#OP_AND{ 17 }
+#OP_OR{ 18 }
+#OP_XOR{ 19 }
+#OP_SHL{ 20 }
+#OP_SHR{ 21 }
+#OP_SAR{ 22 }
+#OP_NOT{ 23 }
+#OP_EQ{ 24 }
+#OP_GT{ 25 }
+#OP_LT{ 26 }
 // Branching
-#OP_LABEL{ 28 }
-#OP_JMP{ 29 }
-#OP_JZ{ 30 }      // value ---
+#OP_LABEL{ 27 }
+#OP_JMP{ 28 }
+#OP_JZ{ 29 }      // value ---
 // I/O
-#OP_FOPEN{ 31 }   // filename_ptr [0=read, 1=write, 2=append] --- [fd, -1]
-#OP_FREAD{ 32 }   // ptr len fd --- [bytes_read, -1]
-#OP_FWRITE{ 33 }  // ptr len fd --- [bytes_written, -1]
-#OP_FCLOSE{ 34 }  // fd --- [0, -1]
+#OP_FOPEN{ 30 }   // filename_ptr [0=read, 1=write, 2=append] --- [fd, -1]
+#OP_FREAD{ 31 }   // ptr len fd --- [bytes_read, -1]
+#OP_FWRITE{ 32 }  // ptr len fd --- [bytes_written, -1]
+#OP_FCLOSE{ 33 }  // fd --- [0, -1]
 
 ////////// Functions //////////
 // ref --- head_ptr

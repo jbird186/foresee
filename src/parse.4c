@@ -20,9 +20,10 @@ $ASM_FOPEN_ID INT
 :parse_string {
     viewtd &inline_bufs push
     // tok_ptr
-    &inline_bufs len 1- OP_PUSH_IBUF 3 roll toks_push
+    &inline_bufs len 1- MAP_SIZE+ OP_PUSH_BUF 3 roll toks_push
     tok_next
 }
+
 #define_intrinsic_opcode(data op_code alias) {
     if viewtd alias str_eq {
         // tok_ptr
@@ -31,6 +32,7 @@ $ASM_FOPEN_ID INT
         return
     }
 }
+
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_ident {
     ////////// Intrinsics //////////
@@ -75,9 +77,10 @@ $ASM_FOPEN_ID INT
         1 exit
     }
     // tok_ptr
-    viewtd OP_CALL 3 roll toks_push
+    viewtd &fns_map map_key_idx OP_CALL 3 roll toks_push
     tok_next
 }
+
 // ops_dest tok_ptr if_id --- new_tok_ptr
 :_parse_if_with_id
 :_parse_if_with_id {
@@ -124,6 +127,7 @@ $ASM_FOPEN_ID INT
         1 exit
     }
 }
+
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_if {
     // ops_dest if_id tok_ptr
@@ -133,6 +137,7 @@ $ASM_FOPEN_ID INT
     // tok_ptr
     swap OP_LABEL 3 roll toks_push
 }
+
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_while {
     tok_next
@@ -157,6 +162,7 @@ $ASM_FOPEN_ID INT
     rot OP_LABEL 3 roll toks_push
 
 }
+
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_colon {
     tok_next
@@ -202,6 +208,7 @@ $ASM_FOPEN_ID INT
 
     0 OP_EOF &fn_ops_mem toks_push
 }
+
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_dollar {
     // tok_ptr
@@ -267,7 +274,7 @@ $ASM_FOPEN_ID INT
         tok_next
         if viewtk TOK_STR == {
             // name size tok_ptr
-            viewtd str_len swap
+            viewtd str_len 1+ swap
             // name size init tok_ptr
             viewtd swap
             tok_next
@@ -285,15 +292,12 @@ $ASM_FOPEN_ID INT
     // tok_ptr
     rot rot &bufs_size_map map_insert
 }
+
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_ref {
-    tok_next
-    if viewtk TOK_IDENT != {
-        "ERROR: Invalid reference name\n".s
-        1 exit
-    }
-    if viewtd &bufs_size_map map_get {
-        viewtd OP_PUSH_BUF 3 roll toks_push
+    // ops_dest tok_ptr buf_id
+    if viewtd &bufs_size_map map_key_idx dup is_success {
+        OP_PUSH_BUF 3 roll toks_push
         tok_next
     } else {
         "ERROR: Buffer '".s viewtd.s "' not defined\n".s
@@ -351,12 +355,13 @@ $ASM_FOPEN_ID INT
     }
     drop
 
-    if "main" &fns_map map_key_idx is_failure {
+    // main_fn_ptr
+    if "main" &fns_map map_key_idx dup is_failure {
         "ERROR: Function 'main' not defined\n".s
         1 exit
     }
 
-    "main" OP_CALL &start_ops_mem toks_push
+    OP_CALL &start_ops_mem toks_push
     0 OP_PUSH_INT &start_ops_mem toks_push
     0 OP_EXIT &start_ops_mem toks_push
     0 OP_EOF &start_ops_mem toks_push

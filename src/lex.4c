@@ -227,8 +227,8 @@
         lex_trivial('[' TOK_BRACKET_START)
         lex_trivial(']' TOK_BRACKET_END)
         else if (viewc '&' ==) (over 1+ @c is_ident_char) & {
-            0 TOK_REF &toks_mem toks_push
             1+
+            view_ident TOK_REF &toks_mem toks_push
         } else if (viewc '/' ==) (over 1+ @c '/' ==) & {
             while viewc dup ('\n' !=) swap (bool) & { 1+ }
         } else if viewc is_ident_char {

@@ -30,10 +30,14 @@ $out_fd REF
 :compile_push { compile_push_generic({.coms}) }
 // item ---
 :compile_push_int { compile_push_generic({.com}) }
+// ---
+:compile_stack_shrink {
+    "    add     ".coms &stack_ptr_str.coms ", 8\n".coms
+}
 // item ---
 :compile_pop {
     "    mov     ".coms .coms ", qword [".coms &stack_ptr_str.coms "]\n".coms
-    "    add     ".coms &stack_ptr_str.coms ", 8\n".coms
+    compile_stack_shrink
 }
 
 :compile_ops
@@ -76,7 +80,7 @@ $out_fd REF
     }
     else if viewtk OP_CALL == {
         "    ; OP_CALL\n".coms
-        "    call f_".coms viewtd &fns_map map_key_idx.com "\n".coms
+        "    call f_".coms viewtd.com "\n".coms
     }
     else if viewtk OP_RET == {
         "    ; OP_RET\n".coms
@@ -84,7 +88,7 @@ $out_fd REF
     }
     else if viewtk OP_DROP == {
         "    ; OP_DROP\n".coms
-        "rax" compile_pop
+        compile_stack_shrink
     }
     else if viewtk OP_PICK == {
         "    ; OP_PICK\n".coms
@@ -120,13 +124,7 @@ $out_fd REF
     }
     else if viewtk OP_PUSH_BUF == {
         "    ; OP_PUSH_BUF\n".coms
-        // op_ptr buf_idx
-        viewtd &bufs_size_map map_key_idx
-        compile_push_generic({"b_".coms .com})
-    }
-    else if viewtk OP_PUSH_IBUF == {
-        "    ; OP_PUSH_IBUF\n".coms
-        viewtd compile_push_generic({"ib_".coms .com})
+        viewtd compile_push_generic({"b_".coms .com})
     }
     else if viewtk OP_STORE == {
         "    ; OP_STORE\n".coms
@@ -294,7 +292,7 @@ $out_fd REF
     "    ; Inline Buffers\n".coms
     // idx
     0 while dup &inline_bufs len < {
-        "    ib_".coms dup.com " db ".coms
+        "    b_".coms dup MAP_SIZE+ .com " db ".coms
         // idx init
         dup &inline_bufs get
         while dup@c {
@@ -325,7 +323,7 @@ $out_fd REF
     // name
     drop "\n".coms
     // name
-    if dup dup (&bufs_size_map map_get) swap (&bufs_init_map map_get str_len) > {
+    if dup dup (&bufs_size_map map_get) swap (&bufs_init_map map_get str_len 1+) > {
         "        times ".coms
         dup &bufs_size_map map_get.com
         " - ($ - b_".coms
@@ -355,7 +353,7 @@ $out_fd REF
     compile_functions
 
     "_start:\n".coms
-    "    lea     r12, [__stack_ptr + ".coms &stack_sz_ptr.coms "]\n".coms
+    "    lea     ".coms &stack_ptr_str.coms ", [__stack_ptr + ".coms &stack_sz_ptr.coms "]\n".coms
     &start_ops_mem tok_first compile_ops
 
     "section .data\n".coms
