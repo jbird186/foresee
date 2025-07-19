@@ -356,7 +356,7 @@ $out_fd REF
 
     "_start:\n".coms
     "    lea     r12, [__stack_ptr + ".coms &stack_sz_ptr.coms "]\n".coms
-    &ops_mem tok_first compile_ops
+    &start_ops_mem tok_first compile_ops
 
     "section .data\n".coms
     // idx

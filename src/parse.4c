@@ -170,10 +170,8 @@ $ASM_FOPEN_ID INT
         1 exit
     }
 
-    // tok_ptr ops_dest
-    swap
     // tok_ptr
-    if &ops_mem != {
+    if swap {
         "ERROR: Function '".s viewtd.s "' must not define internal functions\n".s
         1 exit
     }
@@ -218,20 +216,35 @@ $ASM_FOPEN_ID INT
     // Specify size
     // name tok_ptr
     viewtd swap tok_next
-    if viewtk dup (TOK_INT ==) swap (TOK_PAREN_START ==) | {
+    if viewtk dup (TOK_INT ==) swap (TOK_BRACKET_START ==) | {
         if viewtk TOK_INT == {
             // name size tok_ptr
             viewtd swap tok_next
         } else {
             // name size tok_ptr
-            1 swap while tok_next viewtk TOK_INT == {
-                viewtd rot * swap
+            1 swap while viewtk TOK_BRACKET_START == {
+                tok_next
+                // name size sum tok_ptr
+                0 swap while viewtk TOK_INT == {
+                    // name size sum tok_ptr
+                    viewtd rot + swap
+                    tok_next
+                }
+                if viewtk TOK_BRACKET_END != {
+                    "ERROR: Invalid definition for buffer '".s 3 pick.s "'\n".s
+                    1 exit
+                }
+                tok_next
+
+                // name size tok_ptr sum
+                swap
+                if dup not {
+                    "ERROR: Invalid definition for buffer '".s 3 pick.s "'\n".s
+                    1 exit
+                }
+                // name size tok_ptr
+                rot * swap
             }
-            if viewtk TOK_PAREN_END != {
-                "ERROR: Invalid buffer size\n".s
-                1 exit
-            }
-            tok_next
         }
         // Initialize to String (optional)
         // name size tok_ptr
@@ -329,7 +342,7 @@ $ASM_FOPEN_ID INT
             "ERROR: Unexpected token of type ".s viewtk. " outside of 'main'\n".s
             1 exit
         }
-        &ops_mem swap parse_tok
+        0 swap parse_tok
     }
     drop
 
@@ -338,8 +351,8 @@ $ASM_FOPEN_ID INT
         1 exit
     }
 
-    "main" OP_CALL &ops_mem toks_push
-    0 OP_PUSH_INT &ops_mem toks_push
-    0 OP_EXIT &ops_mem toks_push
-    0 OP_EOF &ops_mem toks_push
+    "main" OP_CALL &start_ops_mem toks_push
+    0 OP_PUSH_INT &start_ops_mem toks_push
+    0 OP_EXIT &start_ops_mem toks_push
+    0 OP_EOF &start_ops_mem toks_push
 }

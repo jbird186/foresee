@@ -1,23 +1,26 @@
 #include "std/core.4c"
 
+#TOK { 9 }
+#OP { 9 }
+
 $src_file_name: "src/main.4c"
 $out_file_name: "compiler/compiler.asm"
 #SRC_STR_SIZE{ 65536 }
-$src_str (CHAR SRC_STR_SIZE)
+$src_str[SRC_STR_SIZE][CHAR]
 
-$strs_mem (CHAR 65536)
-$inline_bufs (REF 8192)
-$toks_mem (9 16384)
-$out_toks_mem (9 16384)
-$ops_mem (9 16384)
-$fn_ops_mem (9 65536)
+$strs_mem[65536][CHAR]
+$inline_bufs[8192][REF]
+$toks_mem[16384][TOK]
+$out_toks_mem[16384][TOK]
+$start_ops_mem[4][OP]
+$fn_ops_mem[65536][OP]
 
 #MAP_SIZE{ 8191 }
-$macros_map (REF 2 MAP_SIZE)
-$bufs_size_map (REF 2 MAP_SIZE)
-$bufs_init_map (REF 2 MAP_SIZE)
-$fns_map (REF 2 MAP_SIZE)
-$files_set (REF MAP_SIZE)
+$macros_map[MAP_SIZE][REF REF]
+$bufs_size_map[MAP_SIZE][REF REF]
+$bufs_init_map[MAP_SIZE][REF REF]
+$fns_map[MAP_SIZE][REF REF]
+$files_set[MAP_SIZE][REF]
 
-$stack_sz_ptr: "8192"
+$stack_sz_ptr: "16384"
 $stack_ptr_str: "r12"
