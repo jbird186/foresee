@@ -251,11 +251,12 @@ $ASM_FOPEN_ID INT
         if dup (viewtk TOK_COLON ==) swap (tok_next tok_kind TOK_STR ==) & {
             tok_next
             if viewtd str_len 2 pick > {
-                "ERROR: Invalid buffer size\n".s
+                "ERROR: Invalid size for buffer '".s 2 pick.s "'\n".s
                 1 exit
             }
             // name size init tok_ptr
             viewtd swap
+            tok_next
         } else {
             // name size init tok_ptr
             NULL swap
@@ -271,9 +272,13 @@ $ASM_FOPEN_ID INT
             viewtd swap
             tok_next
         } else {
-            "ERROR: Invalid buffer initialization value\n".s
+            "ERROR: Invalid initialization value for buffer '".s over.s "'\n".s
             1 exit
         }
+    }
+    else {
+        "ERROR: Invalid definition for buffer '".s over.s "'\n".s
+        1 exit
     }
     // name size tok_ptr
     3 pick rot &bufs_init_map map_insert
