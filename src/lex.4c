@@ -9,26 +9,79 @@
 :viewc { dup @c }
 
 // src_ptr --- new_src_ptr int
+:view_binary_int {
+    // total src_ptr
+    0 swap
+    2+
+    while viewc {
+        if viewc dup ('0' ==) swap ('1' ==) | {
+            viewc '0' -
+            rot 2* + swap
+        } else if viewc is_alnum {
+            "ERROR: Invalid binary integer literal\n".s
+            1 exit
+        } else if viewc '_' != {
+            swap return
+        }
+        1+
+    }
+    swap
+}
+// src_ptr --- new_src_ptr int
+:view_hex_int {
+    // total src_ptr
+    0 swap
+    2+
+    while viewc {
+        if viewc is_digit {
+            viewc '0' -
+            rot 16* + swap
+        } else if viewc dup ('a' >=) swap ('f' <=) & {
+            viewc 'a' - 10 +
+            rot 16* + swap
+        } else if viewc is_alpha {
+            "ERROR: Invalid hexadecimal integer literal\n".s
+            1 exit
+        } else if viewc '_' != {
+            swap return
+        }
+        1+
+    }
+    swap
+}
+// src_ptr --- new_src_ptr int
+:view_decimal_int {
+    // total src_ptr
+    0 swap
+    while viewc {
+        if viewc is_digit {
+            viewc '0' -
+            rot 10* + swap
+        } else if viewc is_alpha {
+            "ERROR: Invalid integer literal\n".s
+            1 exit
+        } else if viewc '_' != {
+            swap return
+        }
+        1+
+    }
+    swap
+}
+// src_ptr --- new_src_ptr int
 :view_int {
     if viewc '-' == {
         -1 swap 1+
     } else {
         1 swap
-    }
+    } // scalar src_ptr
 
-    $lex_int_total INT
-    viewc '0' - &lex_int_total!
-    while viewc {
-        1+
-        if viewc is_digit {
-            viewc '0' -
-            &lex_int_total@ 10 * + &lex_int_total!
-        } else if viewc '_' != {
-            &lex_int_total@
-            rot *
-            return
-        }
-    }
+    if (viewc '0' ==) (over 1+ @c 'b' ==) & {
+        view_binary_int
+    } else if (viewc '0' ==) (over 1+ @c 'x' ==) & {
+        view_hex_int
+    } else {
+        view_decimal_int
+    } // scalar src_ptr int
     rot *
 }
 
