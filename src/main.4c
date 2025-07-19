@@ -23,5 +23,3 @@
     compile_program
     &out_fd@ fclose drop
 }
-
-main

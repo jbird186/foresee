@@ -32,47 +32,41 @@ $ASM_FOPEN_ID INT
     }
 }
 // ops_dest tok_ptr --- new_tok_ptr
-:parse_word {
-    // Binary Operations
-    define_intrinsic_opcode(0 OP_ADD "+")
-    define_intrinsic_opcode(0 OP_SUB "-")
-    define_intrinsic_opcode(0 OP_MUL "*")
-    define_intrinsic_opcode(0 OP_DIV "/")
-    define_intrinsic_opcode(0 OP_AND "&")
-    define_intrinsic_opcode(0 OP_OR "|")
-    define_intrinsic_opcode(0 OP_XOR "^")
-    define_intrinsic_opcode(0 OP_SHL "<<")
-    define_intrinsic_opcode(0 OP_SHR ">>")
-    define_intrinsic_opcode(0 OP_SAR ">>a")
-    define_intrinsic_opcode(0 OP_NOT "~")
-    define_intrinsic_opcode(0 OP_EQ "==")
-    define_intrinsic_opcode(0 OP_GT ">")
-    define_intrinsic_opcode(0 OP_LT "<")
-
-    "ERROR: Macro '".s viewtd.s "' not defined\n".s
-    1 exit
-}
-// ops_dest tok_ptr --- new_tok_ptr
 :parse_ident {
     ////////// Intrinsics //////////
     // Misc / Special
-    define_intrinsic_opcode(0 OP_NOOP "noop")
-    define_intrinsic_opcode(0 OP_EXIT "exit")
+    define_intrinsic_opcode(0 OP_NOOP "__OP_NOOP")
+    define_intrinsic_opcode(0 OP_EXIT "__OP_EXIT")
     // Functions
-    define_intrinsic_opcode(0 OP_RET "return")
+    define_intrinsic_opcode(0 OP_RET "__OP_RET")
     // Stack Primitives
-    define_intrinsic_opcode(0 OP_DROP "drop")
-    define_intrinsic_opcode(0 OP_PICK "pick")
-    define_intrinsic_opcode({&ASM_ROLL_ID@ dup 2+ &ASM_ROLL_ID!} OP_ROLL "roll")
-    define_intrinsic_opcode(0 OP_DEPTH "depth")
+    define_intrinsic_opcode(0 OP_DROP "__OP_DROP")
+    define_intrinsic_opcode(0 OP_PICK "__OP_PICK")
+    define_intrinsic_opcode({&ASM_ROLL_ID@ dup 2+ &ASM_ROLL_ID!} OP_ROLL "__OP_ROLL")
+    define_intrinsic_opcode(0 OP_DEPTH "__OP_DEPTH")
     // Reference Primitives
-    define_intrinsic_opcode(0 OP_STORE "store")
-    define_intrinsic_opcode(0 OP_FETCH "fetch")
+    define_intrinsic_opcode(0 OP_STORE "__OP_STORE")
+    define_intrinsic_opcode(0 OP_FETCH "__OP_FETCH")
+    // Binary Operations
+    define_intrinsic_opcode(0 OP_ADD "__OP_ADD")
+    define_intrinsic_opcode(0 OP_SUB "__OP_SUB")
+    define_intrinsic_opcode(0 OP_MUL "__OP_MUL")
+    define_intrinsic_opcode(0 OP_DIV "__OP_DIV")
+    define_intrinsic_opcode(0 OP_AND "__OP_AND")
+    define_intrinsic_opcode(0 OP_OR "__OP_OR")
+    define_intrinsic_opcode(0 OP_XOR "__OP_XOR")
+    define_intrinsic_opcode(0 OP_SHL "__OP_SHL")
+    define_intrinsic_opcode(0 OP_SHR "__OP_SHR")
+    define_intrinsic_opcode(0 OP_SAR "__OP_SAR")
+    define_intrinsic_opcode(0 OP_NOT "__OP_NOT")
+    define_intrinsic_opcode(0 OP_EQ "__OP_EQ")
+    define_intrinsic_opcode(0 OP_GT "__OP_GT")
+    define_intrinsic_opcode(0 OP_LT "__OP_LT")
     // I/O
-    define_intrinsic_opcode({&ASM_FOPEN_ID@++} OP_FOPEN "fopen")
-    define_intrinsic_opcode(0 OP_FREAD "fread")
-    define_intrinsic_opcode(0 OP_FWRITE "fwrite")
-    define_intrinsic_opcode(0 OP_FCLOSE "fclose")
+    define_intrinsic_opcode({&ASM_FOPEN_ID@++} OP_FOPEN "__OP_FOPEN")
+    define_intrinsic_opcode(0 OP_FREAD "__OP_FREAD")
+    define_intrinsic_opcode(0 OP_FWRITE "__OP_FWRITE")
+    define_intrinsic_opcode(0 OP_FCLOSE "__OP_FCLOSE")
 
     ////////// Functions //////////
     // ops_dest tok_ptr
@@ -297,13 +291,17 @@ $ASM_FOPEN_ID INT
 
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_tok {
-    if viewtk dup (TOK_INT ==) swap (TOK_CHAR ==) | {
-        viewtd OP_PUSH_INT 3 roll toks_push
-        tok_next
-    }
-    else if viewtk TOK_POUND == {
+    if viewtk TOK_POUND == {
         "ERROR: Unexpected preprocessing directive\n".s
         1 exit
+    }
+    else if viewtk TOK_WORD == {
+        "ERROR: Macro '".s viewtd.s "' not defined\n".s
+        1 exit
+    }
+    else if viewtk dup (TOK_INT ==) swap (TOK_CHAR ==) | {
+        viewtd OP_PUSH_INT 3 roll toks_push
+        tok_next
     }
     else if viewtk TOK_PAREN_START == {
         tok_next
@@ -311,7 +309,6 @@ $ASM_FOPEN_ID INT
         swap drop
     }
     parse_with(TOK_STR parse_string)
-    parse_with(TOK_WORD parse_word)
     parse_with(TOK_IDENT parse_ident)
     parse_with(TOK_IF parse_if)
     parse_with(TOK_WHILE parse_while)
@@ -328,10 +325,20 @@ $ASM_FOPEN_ID INT
     // tok_ptr
     &out_toks_mem tok_first
     while viewtk TOK_EOF != {
+        if viewtk dup (TOK_COLON !=) swap (TOK_DOLLAR !=) & {
+            "ERROR: Unexpected token of type ".s viewtk. " outside of 'main'\n".s
+            1 exit
+        }
         &ops_mem swap parse_tok
     }
     drop
 
+    if "main" &fns_map map_key_idx is_failure {
+        "ERROR: Function 'main' not defined\n".s
+        1 exit
+    }
+
+    "main" OP_CALL &ops_mem toks_push
     0 OP_PUSH_INT &ops_mem toks_push
     0 OP_EXIT &ops_mem toks_push
     0 OP_EOF &ops_mem toks_push

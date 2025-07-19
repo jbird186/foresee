@@ -1,4 +1,5 @@
-#include "std/linux.4c"
+#include "std/core/intrinsics.4c"
+#include "std/core/linux.4c"
 
 #CHAR{1}
 #INT{8}
