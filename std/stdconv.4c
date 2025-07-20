@@ -1,6 +1,6 @@
 #include "std/stdref.4c"
 
-$__std_buf 24
+$static __std_buf 24
 
 // int --- ptr len
 :__write_int_to_temp {

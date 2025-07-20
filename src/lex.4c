@@ -174,6 +174,8 @@
         0 TOK_ELSE &toks_mem toks_push
     } else if dup "while" str_eq {
         0 TOK_WHILE &toks_mem toks_push
+    } else if dup "static" str_eq {
+        0 TOK_STATIC &toks_mem toks_push
     } else {
         TOK_IDENT &toks_mem toks_push
         return

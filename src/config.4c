@@ -3,24 +3,22 @@
 #TOK { 9 }
 #OP { 9 }
 
-$src_file_name = "src/main.4c"
-$out_file_name = "compiler/compiler.asm"
 #SRC_STR_SIZE { 65536 }
-$src_str[SRC_STR_SIZE][CHAR]
+$static src_str[SRC_STR_SIZE][CHAR]
 
-$strs_mem[1024][128][CHAR]
-$inline_bufs[1024][8][REF]
-$toks_mem[1024][32][TOK]
-$out_toks_mem[1024][32][TOK]
-$fn_ops_mem[1024][32][OP]
+$static strs_mem[1024][128][CHAR]
+$static inline_bufs[1024][8][REF]
+$static toks_mem[1024][32][TOK]
+$static out_toks_mem[1024][32][TOK]
+$static fn_ops_mem[1024][32][OP]
 
 #MAP_SIZE { 8191 }
-$macros_map[MAP_SIZE][REF REF]
-$fns_map[MAP_SIZE][REF REF]
-$files_set[MAP_SIZE][REF]
-$bufs_map[MAP_SIZE][4][REF]
-$scope_stack[1024][REF]
+$static macros_map[MAP_SIZE][REF REF]
+$static fns_map[MAP_SIZE][REF REF]
+$static files_set[MAP_SIZE][REF]
+$static bufs_map[MAP_SIZE][4][REF]
+$static scope_stack[1024][REF]
 
-$start_ops_mem[4][OP]
-$stack_sz_ptr = "16384"
-$stack_ptr_str = "r12"
+$static start_ops_mem[4][OP]
+$static stack_sz_ptr = "16384"
+$static stack_ptr_str = "r12"

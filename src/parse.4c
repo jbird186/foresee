@@ -2,9 +2,9 @@
 #include "src/config.4c"
 #include "src/token.4c"
 
-$ASM_LABEL_ID INT
-$ASM_ROLL_ID INT
-$ASM_FOPEN_ID INT
+$static ASM_LABEL_ID INT
+$static ASM_ROLL_ID INT
+$static ASM_FOPEN_ID INT
 
 :parse_tok
 
@@ -223,6 +223,16 @@ $ASM_FOPEN_ID INT
 :parse_dollar {
     // tok_ptr
     swap drop
+
+    tok_next
+    if viewtk TOK_STATIC != {
+        if viewtk TOK_IDENT == {
+            "ERROR: Buffer '".s viewtd.s "' must be static\n".s
+        } else {
+            "ERROR: Invalid buffer name\n".s
+        }
+        1 exit
+    }
 
     tok_next
     if viewtk TOK_IDENT != {

@@ -3,14 +3,33 @@
 #include "src/parse.4c"
 #include "src/compile.4c"
 
+$static argc INT
+$static argv REF
+
+// idx --- ptr
+:get_argv {
+    8* &argv@ + @
+}
+
 :main {
+    &argc! &argv!
+
+    if &argc@ 3 != {
+        "Usage: ".s 0 get_argv.s " <source_file> <output_file>\n".s
+        1 exit
+    }
+    $static out_file_name REF
+    $static src_file_name REF
+    1 get_argv &src_file_name!
+    2 get_argv &out_file_name!
+
     0 &scope_stack stack_push
 
-    $src_fd REF
-    &src_file_name 0 fopen &src_fd!
+    $static src_fd REF
+    &src_file_name@ 0 fopen &src_fd!
 
     if &src_fd@ is_failure {
-        "ERROR: File '".s &src_file_name.s "' not found\n".s
+        "ERROR: File '".s &src_file_name@ .s "' not found\n".s
         1 exit
     }
 
@@ -21,7 +40,7 @@
     preprocess_src
     parse_out_toks
 
-    &out_file_name 1 fopen &out_fd!
+    &out_file_name@ 1 fopen &out_fd!
     compile_program
     &out_fd@ fclose drop
 }

@@ -1,8 +1,8 @@
 #include "std/stdref.4c"
 #include "std/stdio.4c"
 
-$board 9
-$current_player 1
+$static board 9
+$static current_player 1
 
 // Given `a b c`,
 // Returns board[a] == board[b] == board[c]
@@ -113,5 +113,3 @@ $current_player 1
     cr show_board
     "Player ".s game_winner.c " wins!\n".s
 }
-
-main
