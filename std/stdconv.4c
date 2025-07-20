@@ -1,0 +1,45 @@
+#include "std/stdref.4c"
+
+$__std_buf 24
+
+// int --- ptr len
+:__write_int_to_temp {
+    0 &__std_buf 16+ !
+
+    // is_neg int
+    dup 0 < swap
+    if over { -1* }
+
+    // is_neg int len
+    0 dowhile({
+        &__std_buf 22+ over -
+        rot dup 10 % '0' +
+        rot !c
+        10 /
+        swap 1 +
+    } {over})
+
+    // int len
+    if rot {
+        '-' &__std_buf 22+ 2 pick - !c
+        1+
+    }
+
+    // int ptr len
+    &__std_buf 23+ over - swap
+    rot drop
+}
+
+// int ref ---
+:itoa {
+    // ref ptr len
+    swap __write_int_to_temp
+    // len ptr ref
+    swap rot
+    while 2 pick {
+        over@c over!
+        1+ rot 1- rot 1+ rot
+    }
+    0 swap !c
+    drop drop
+}

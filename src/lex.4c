@@ -216,6 +216,9 @@
             view_char TOK_CHAR &toks_mem toks_push
         } else if viewc '\"' == {
             view_str TOK_STR &toks_mem toks_push
+        } else if (viewc '=' ==) (over 1+ @c '=' !=) & {
+            0 TOK_EQ &toks_mem toks_push
+            1+
         }
         lex_trivial(':' TOK_COLON)
         lex_trivial('#' TOK_POUND)

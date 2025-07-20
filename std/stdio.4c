@@ -1,44 +1,14 @@
-#include "std/core.4c"
 #include "std/stdref.4c"
-
-$__stdio_buf 24
+#include "std/stdconv.4c"
 
 :out_char {
-    &__stdio_buf!
-    &__stdio_buf 1 stdout
+    &__std_buf!
+    &__std_buf 1 stdout
 }
 #.c{out_char}
 #showc{dup .c}
 #cr{'\n'.c}
 #sp{' '.c}
-
-// int --- ptr len
-:__write_int_to_temp {
-    0 &__stdio_buf 16+ !
-
-    // is_neg int
-    dup 0 < swap
-    if over { -1* }
-
-    // is_neg int len
-    0 dowhile({
-        &__stdio_buf 23+ over -
-        rot dup 10 % '0' +
-        rot !c
-        10 /
-        swap 1 +
-    } {over})
-
-    // int len
-    if 2 roll {
-        '-' &__stdio_buf 23+ 2 pick - !c
-        1+
-    }
-
-    // int ptr len
-    &__stdio_buf 24+ over - swap
-    rot drop
-}
 
 // int fd --- [bytes_written, -1]
 :fwrite_int { swap __write_int_to_temp rot fwrite }
@@ -57,17 +27,17 @@ $__stdio_buf 24
 
 // --- char
 :in_char {
-    &__stdio_buf 1 stdin drop
-    &__stdio_buf@c
+    &__std_buf 1 stdin drop
+    &__std_buf@c
 }
 #,c{in_char}
 
 // --- int
 :in_int {
-    &__stdio_buf 24 stdin drop
+    &__std_buf 24 stdin drop
 
     // buf
-    &__stdio_buf
+    &__std_buf
     // is_neg buf
     dup@c '-' == swap
     if over { 1+ }
