@@ -67,7 +67,7 @@
 
 ////////// Functions //////////
 // ref --- head_ptr
-:toks_head { dup len 9* + 8+ }
+:toks_top { dup stack_len 9* + 8+ }
 
 // data type ref ---
 :toks_push {
@@ -77,7 +77,6 @@
     swap over !c 1+ !
 }
 
-:toks_get { 8+ swap 9* + }
 :tok_first { 8+ }
 :tok_next { 9+ }
 :tok_prev { 9- }

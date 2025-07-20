@@ -291,10 +291,10 @@ $out_fd REF
 :compile_inline_bufs {
     "    ; Inline Buffers\n".coms
     // idx
-    0 while dup &inline_bufs len < {
+    0 while dup &inline_bufs stack_len < {
         "    b_".coms dup MAP_SIZE+ .com " db ".coms
         // idx init
-        dup &inline_bufs get
+        dup &inline_bufs stack_get
         while dup@c {
             dup@c .com
             1+

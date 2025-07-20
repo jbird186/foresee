@@ -4,7 +4,7 @@
 #include "src/compile.4c"
 
 :main {
-    0 &scope_stack push
+    0 &scope_stack stack_push
 
     $src_fd REF
     &src_file_name 0 fopen &src_fd!

@@ -1,32 +1,32 @@
 #include "std/stdref.4c"
 
 // ref --- len
-#len { @ }
-
+#stack_len { @ }
 // ref ---
-#shrink { @-- drop }
+#stack_shrink { @-- drop }
+
 // ref --- head_ptr
-#head { dup len 8* + 8+ }
+:stack_top { dup stack_len 8* + 8+ }
 // ref --- last_element
-#last { dup len 8* + @ }
+:stack_last { dup stack_len 8* + @ }
 // value ref ---
-:push {
+:stack_push {
     dup@ 1+
     dup 2 pick !
     8* + !
 }
 // idx ref --- element
-:get { 8+ swap 8* + @ }
+:stack_get { 8+ swap 8* + @ }
 
 // ref --- head_ptr
-#headc { dup len + 8+ }
+:stack_topc { dup stack_len + 8+ }
 // ref --- last_element
-#lastc { dup len + 7+ @c }
+:stack_lastc { dup stack_len + 7+ @c }
 // value ref ---
-:pushc {
+:stack_pushc {
     dup@ 1+
     dup 2 pick !
     7+ + !c
 }
 // idx ref --- element
-:getc { 8+ + @c }
+:stack_getc { 8+ + @c }

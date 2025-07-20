@@ -27,9 +27,9 @@ $ASM_FOPEN_ID INT
 
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_string {
-    viewtd &inline_bufs push
+    viewtd &inline_bufs stack_push
     // tok_ptr
-    &inline_bufs len 1- MAP_SIZE+ OP_PUSH_BUF 3 roll toks_push
+    &inline_bufs stack_len 1- MAP_SIZE+ OP_PUSH_BUF 3 roll toks_push
     tok_next
 }
 
@@ -95,9 +95,9 @@ $ASM_FOPEN_ID INT
     2 pick OP_JZ 3 pick toks_push
 
     // Operations
-    dup &scope_stack push
+    dup &scope_stack stack_push
     _parse_until(TOK_BRACE_END)
-    &scope_stack shrink
+    &scope_stack stack_shrink
 
     // if_id else_id ops_dest tok_ptr
     3 pick OP_JMP 3 pick toks_push
@@ -119,9 +119,9 @@ $ASM_FOPEN_ID INT
     if viewtk TOK_BRACE_START == {
         tok_next
 
-        dup &scope_stack push
+        dup &scope_stack stack_push
         _parse_until(TOK_BRACE_END)
-        &scope_stack shrink
+        &scope_stack stack_shrink
 
         swap drop
         swap drop
@@ -160,9 +160,9 @@ $ASM_FOPEN_ID INT
     2 pick OP_JZ 3 pick toks_push
 
     // Operations
-    dup &scope_stack push
+    dup &scope_stack stack_push
     _parse_until(TOK_BRACE_END)
-    &scope_stack shrink
+    &scope_stack stack_shrink
 
     // end_id ops_dest tok_ptr
     3 roll OP_JMP 3 pick toks_push
@@ -198,10 +198,10 @@ $ASM_FOPEN_ID INT
         swap -1 &fns_map map_insert
         return
     }
-    dup &scope_stack push
+    dup &scope_stack stack_push
 
     // name tok_ptr fn_ptr
-    &fn_ops_mem toks_head
+    &fn_ops_mem toks_top
     // tok_ptr
     rot swap &fns_map map_insert
     tok_next
@@ -211,12 +211,12 @@ $ASM_FOPEN_ID INT
     }
     tok_next
 
-    if &fn_ops_mem toks_head tok_prev tok_kind OP_RET != {
+    if &fn_ops_mem toks_top tok_prev tok_kind OP_RET != {
         0 OP_RET &fn_ops_mem toks_push
     }
 
     0 OP_EOF &fn_ops_mem toks_push
-    &scope_stack shrink
+    &scope_stack stack_shrink
 }
 
 // ops_dest tok_ptr --- new_tok_ptr
@@ -230,7 +230,7 @@ $ASM_FOPEN_ID INT
         1 exit
     }
 
-    if viewtd &scope_stack last bmap_get_idx is_success {
+    if viewtd &scope_stack stack_last bmap_get_idx is_success {
         "ERROR: Buffer '".s viewtd.s "' already defined\n".s
         1 exit
     }
@@ -337,7 +337,7 @@ $ASM_FOPEN_ID INT
         1 exit
     }
     // tok_ptr
-    swap rot 3 roll &scope_stack last bmap_insert
+    swap rot 3 roll &scope_stack stack_last bmap_insert
 }
 
 // ops_dest tok_ptr --- new_tok_ptr
@@ -345,9 +345,9 @@ $ASM_FOPEN_ID INT
     // ops_dest tok_ptr name
     viewtd
     // ops_dest tok_ptr name scope_idx
-    &scope_stack len 1- while dup 0 >= {
+    &scope_stack stack_len 1- while dup 0 >= {
         // ops_dest tok_ptr name scope_idx idx
-        if over over &scope_stack get bmap_get_idx dup is_success {
+        if over over &scope_stack stack_get bmap_get_idx dup is_success {
             // tok_ptr name scope_idx
             OP_PUSH_BUF 5 roll toks_push
             // tok_ptr

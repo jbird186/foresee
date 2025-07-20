@@ -138,7 +138,7 @@
     }
 
     // tok_ptr include_tok_ptr
-    &toks_mem toks_head
+    &toks_mem toks_top
     &src_str lex_src
 
     preprocess

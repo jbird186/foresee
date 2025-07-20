@@ -1,8 +1,8 @@
 #include "std/stdio.4c"
 #include "std/stdchar.4c"
-#include "std/stdarr.4c"
 #include "std/stdstr.4c"
 #include "src/config.4c"
+#include "src/stack.4c"
 #include "src/token.4c"
 
 // src_ptr --- src_ptr char
@@ -131,14 +131,14 @@
 
 // src_ptr --- new_src_ptr ref
 :view_str {
-    &strs_mem headc swap
+    &strs_mem stack_topc swap
     1+
     while viewc '\"' != {
-        match_char &strs_mem pushc
+        match_char &strs_mem stack_pushc
         1+
     }
     1+
-    0 &strs_mem pushc
+    0 &strs_mem stack_pushc
     swap
 }
 
@@ -149,17 +149,17 @@
 
 // src_ptr --- new_src_ptr ref
 :view_ident {
-    &strs_mem headc swap
-    viewc &strs_mem pushc
+    &strs_mem stack_topc swap
+    viewc &strs_mem stack_pushc
     while 1+ viewc {
         if viewc is_ident_char not {
-            0 &strs_mem pushc
+            0 &strs_mem stack_pushc
             swap
             return
         }
-        viewc &strs_mem pushc
+        viewc &strs_mem stack_pushc
     }
-    0 &strs_mem pushc
+    0 &strs_mem stack_pushc
     swap
 }
 
@@ -180,18 +180,18 @@
     }
 
     // new_src_ptr n_chars
-    &strs_mem headc swap -
-    &strs_mem len swap - &strs_mem!
+    &strs_mem stack_topc swap -
+    &strs_mem stack_len swap - &strs_mem!
 }
 
 // src_ptr --- new_src_ptr ref
 :view_word {
-    &strs_mem headc swap
+    &strs_mem stack_topc swap
     while ("(){}[]" over@c str_char not) (over@c is_space not) & (over@c bool) & {
-        viewc &strs_mem pushc
+        viewc &strs_mem stack_pushc
         1+
     }
-    0 &strs_mem pushc
+    0 &strs_mem stack_pushc
     swap
 }
 
