@@ -118,7 +118,11 @@ $ASM_FOPEN_ID INT
     // if_id ops_dest tok_ptr
     if viewtk TOK_BRACE_START == {
         tok_next
+
+        dup &scope_stack push
         _parse_until(TOK_BRACE_END)
+        &scope_stack shrink
+
         swap drop
         swap drop
     } else if viewtk TOK_IF == {
@@ -270,17 +274,32 @@ $ASM_FOPEN_ID INT
             1 exit
         }
 
-        // Initialize to String (optional)
+        // Initialize (optional)
         // name size tok_ptr
         if viewtk TOK_EQ == {
             tok_next
-            if tok_kind TOK_STR == {
+            if viewtk TOK_STR == {
                 // name size init tok_ptr
                 viewtd swap
                 if over str_len 3 pick > {
                     "ERROR: Invalid size for buffer '".s 2 pick.s "'\n".s
                     1 exit
                 }
+            } else if viewtk dup (TOK_INT ==) swap (TOK_CHAR ==) | {
+                if (viewtk TOK_INT ==) (2 pick 8 ==) & {}
+                else if (viewtk TOK_INT ==) (2 pick 1 ==) &
+                    (over tok_data dup (0 >=) swap (0xff <=) &) & {}
+                else if (viewtk TOK_CHAR ==) (2 pick 8 ==) & {}
+                else if (viewtk TOK_CHAR ==) (2 pick 1 ==) & {}
+                else {
+                    "ERROR: Invalid size for buffer '".s 2 pick.s "'\n".s
+                    1 exit
+                }
+
+                // Negative size value signals integer
+                swap -1 * swap
+                // name size init tok_ptr
+                viewtd swap
             } else {
                 "ERROR: Invalid initialization value for buffer '".s over.s "'\n".s
                 1 exit
@@ -291,7 +310,7 @@ $ASM_FOPEN_ID INT
             NULL swap
         }
     }
-    // Initialize to String
+    // Initialize
     // name tok_ptr
     else if viewtk TOK_EQ == {
         tok_next
@@ -300,11 +319,18 @@ $ASM_FOPEN_ID INT
             viewtd str_len 1+ swap
             // name size init tok_ptr
             viewtd swap
-            tok_next
+        } else if viewtk TOK_INT == {
+            // Negative size value signals integer
+            // name size init tok_ptr
+            viewtd -8 swap rot
+        } else if viewtk TOK_CHAR == {
+            // name size init tok_ptr
+            viewtd -1 swap rot
         } else {
             "ERROR: Invalid initialization value for buffer '".s over.s "'\n".s
             1 exit
         }
+        tok_next
     }
     else {
         "ERROR: Invalid definition for buffer '".s over.s "'\n".s
