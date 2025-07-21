@@ -36,7 +36,7 @@
         if viewc is_digit {
             viewc '0' -
             rot 16* + swap
-        } else if viewc dup ('a' >=) swap ('f' <=) & {
+        } else if viewc to_lower dup ('a' >=) swap ('f' <=) & {
             viewc 'a' - 10 +
             rot 16* + swap
         } else if viewc is_alpha {

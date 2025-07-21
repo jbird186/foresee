@@ -17,8 +17,10 @@ $static REF[2][MAP_SIZE] macros_map
 $static REF[2][MAP_SIZE] fns_map
 $static REF[MAP_SIZE] files_set
 $static REF[4][MAP_SIZE] bufs_map
-$static REF[1024] scope_stack
 
+$static REF[1024] scope_stack
 $static OP[4] start_ops_mem
-$static stack_sz_ptr: "16384"
-$static stack_ptr_str: "r12"
+$static stack_size_str: "16384"
+$static stack_reg_str: "r12"
+
+#USE_ASM_STRINGS { true }

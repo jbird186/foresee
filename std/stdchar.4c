@@ -30,16 +30,14 @@
     | | | | |
 }
 
+:is_print {
+    dup (0x20 >=) swap (0x7e <=) &
+}
+
 :to_lower {
-    if dup is_upper {
-        // TODO: optimize this?
-        'a' 'A' - +
-    }
+    if dup is_upper { 32+ }
 }
 
 :to_upper {
-    if dup is_lower {
-        // TODO: optimize this?
-        'a' 'A' - -
-    }
+    if dup is_lower { 32- }
 }

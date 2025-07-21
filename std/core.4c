@@ -2,6 +2,7 @@
 #include "std/core/linux.4c"
 
 #CHAR{1}
+#BOOL{1}
 #INT{8}
 #REF{8}
 
