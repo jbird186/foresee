@@ -25,6 +25,20 @@ $static INT ASM_FOPEN_ID
     }
 }
 
+// name --- name [idx, -1]
+:scoped_buf_idx {
+    $static INT scope_idx
+    &scope_stack stack_len =scope_idx
+
+    while &scope_idx@-- {
+        // name idx
+        dup scope_idx &scope_stack stack_get bmap_get_idx
+        if dup is_success { return }
+        drop
+    }
+    -1
+}
+
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_string {
     viewtd &inline_bufs stack_push
@@ -72,17 +86,29 @@ $static INT ASM_FOPEN_ID
 
     ////////// Functions //////////
     // ops_dest tok_ptr
-    if viewtd &fns_map map_get not {
+    if viewtd &fns_map map_get {
+        // tok_ptr
+        viewtd &fns_map map_key_idx OP_CALL 3 roll toks_push
+    // ops_dest tok_ptr name idx
+    } else if viewtd scoped_buf_idx dup is_success {
+        if dup bmap_idx_size 8 != {
+            "ERROR: Buffer '".s over.s "' cannot be automatically read from\n".s
+            1 exit
+        }
+        // ops_dest tok_ptr name
+        OP_PUSH_BUF 4 pick toks_push
+        // tok_ptr name
+        0 OP_FETCH 4 roll toks_push
+        // tok_ptr
+        drop
+    } else {
         "ERROR: Function '".s viewtd.s "' not defined\n".s
         1 exit
     }
-    // tok_ptr
-    viewtd &fns_map map_key_idx OP_CALL 3 roll toks_push
     tok_next
 }
 
 // ops_dest tok_ptr if_id --- new_tok_ptr
-:_parse_if_with_id
 :_parse_if_with_id {
     // ops_dest tok_ptr if_id else_id
     &ASM_LABEL_ID@++
@@ -272,6 +298,8 @@ $static INT ASM_FOPEN_ID
     if viewtk TOK_STATIC != {
         if viewtk TOK_IDENT == {
             "ERROR: Buffer '".s viewtd.s "' must be static\n".s
+        } else if tok_next viewtk TOK_IDENT == {
+            "ERROR: Buffer '".s viewtd.s "' must be static\n".s
         } else {
             "ERROR: Invalid buffer name\n".s
         }
@@ -281,20 +309,20 @@ $static INT ASM_FOPEN_ID
     tok_next
     $static INT size
     if viewtk TOK_INT == {
-        view_buf_size &size!
+        view_buf_size =size
     } else {
-        -1 &size!
+        -1 =size
     }
 
     $static REF name
     if viewtk TOK_IDENT != {
-        viewtk. " ERROR: Invalid buffer name\n".s
+        "ERROR: Invalid buffer name\n".s
         1 exit
     } else if viewtd &scope_stack stack_last bmap_get_idx is_success {
         "ERROR: Buffer '".s viewtd.s "' already defined\n".s
         1 exit
     }
-    viewtd &name!
+    viewtd =name
     tok_next
 
     $static REF init
@@ -303,75 +331,88 @@ $static INT ASM_FOPEN_ID
         if viewtk TOK_STR == {
             // tok_ptr str_size
             viewtd str_len 1+
-            if &size@ 0 < {
-                &size!
+            if size 0 < {
+                =size
             } else {
-                if &size@ > {
-                    "ERROR: Invalid size for buffer '".s &name@ .s "'\n".s
+                if size > {
+                    "ERROR: Invalid size for buffer '".s name .s "'\n".s
                     1 exit
                 }
             }
         } else if viewtk TOK_INT == {
-            if &size@ 0 < {
-                -8 &size!
+            if size 0 < {
+                -8 =size
             } else {
-                if (&size@ 8 ==) {}
-                else if (viewtd dup (0xff <=) swap (0 >=) &) (&size@ 1 ==) & {}
+                if (size 8 ==) {}
+                else if (viewtd dup (0xff <=) swap (0 >=) &) (size 1 ==) & {}
                 else {
-                    "ERROR: Invalid size for buffer '".s &name@ .s "'\n".s
+                    "ERROR: Invalid size for buffer '".s name .s "'\n".s
                     1 exit
                 }
                 // Negative values signal integer initialization
-                &size@ -1 * &size!
+                size -1 * =size
             }
         } else if viewtk TOK_CHAR == {
-            if &size@ 0 < {
-                -1 &size!
+            if size 0 < {
+                -1 =size
             } else {
-                if (&size@ 8 !=) (&size@ 1 !=) & {
-                    "ERROR: Invalid size for buffer '".s &name@ .s "'\n".s
+                if (size 8 !=) (size 1 !=) & {
+                    "ERROR: Invalid size for buffer '".s name .s "'\n".s
                     1 exit
                 }
                 // Negative values signal integer initialization
-                &size@ -1 * &size!
+                size -1 * =size
             }
         } else {
-            "ERROR: Invalid initialization value for buffer '".s &name@ .s "'\n".s
+            "ERROR: Invalid initialization value for buffer '".s name .s "'\n".s
             1 exit
         }
-        viewtd &init!
+        viewtd =init
         tok_next
     } else {
-        0 &init!
-        if &size@ 0 < {
-            viewtk. " ERROR: Invalid definition for buffer '".s &name@ .s "'\n".s
+        0 =init
+        if size 0 < {
+            "ERROR: Invalid definition for buffer '".s name .s "'\n".s
             1 exit
         }
     }
 
-    &init@ &size@ &name@ &scope_stack stack_last bmap_insert
+    init size name &scope_stack stack_last bmap_insert
 }
 
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_ref {
-    // ops_dest tok_ptr name
-    viewtd
-    // ops_dest tok_ptr name scope_idx
-    &scope_stack stack_len 1- while dup 0 >= {
-        // ops_dest tok_ptr name scope_idx idx
-        if over over &scope_stack stack_get bmap_get_idx dup is_success {
-            // tok_ptr name scope_idx
-            OP_PUSH_BUF 5 roll toks_push
-            // tok_ptr
-            drop drop
-            tok_next
-            return
-        } drop
-        1-
-    } drop
+    // ops_dest tok_ptr name idx
+    viewtd scoped_buf_idx
+    if dup is_success {
+        // tok_ptr name
+        OP_PUSH_BUF 4 roll toks_push
+        drop tok_next
+    } else {
+        "ERROR: Buffer '".s over.s "' not defined in this scope\n".s
+        1 exit
+    }
+}
 
-    "ERROR: Buffer '".s .s "' not defined in this scope\n".s
-    1 exit
+// ops_dest tok_ptr --- new_tok_ptr
+:parse_eq {
+    // ops_dest tok_ptr name idx
+    viewtd scoped_buf_idx
+    if dup is_success {
+        if dup bmap_idx_size 8 != {
+            "ERROR: Buffer '".s over.s "' cannot be automatically assigned to\n".s
+            1 exit
+        }
+        // ops_dest tok_ptr name
+        OP_PUSH_BUF 4 pick toks_push
+        // tok_ptr name
+        0 OP_STORE 4 roll toks_push
+        // tok_ptr
+        drop tok_next
+    } else {
+        "ERROR: Buffer '".s over.s "' not defined in this scope\n".s
+        1 exit
+    }
 }
 
 #parse_with(parse_kind parse_function) {
@@ -406,6 +447,7 @@ $static INT ASM_FOPEN_ID
     parse_with(TOK_FN parse_fn)
     parse_with(TOK_DOLLAR parse_dollar)
     parse_with(TOK_REF parse_ref)
+    parse_with(TOK_EQ parse_eq)
     else {
         "ERROR: Unexpected token of type ".s viewtk. cr
         1 exit

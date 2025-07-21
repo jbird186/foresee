@@ -1,4 +1,3 @@
-#include "std/stdref.4c"
 #include "std/stdstr.4c"
 #include "src/config.4c"
 

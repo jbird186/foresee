@@ -310,15 +310,15 @@ $static REF out_fd
 // idx ---
 :compile_buf_data {
     $static INT buf_size
-    dup bmap_idx_size if dup 0 < { -1* } &buf_size!
+    dup bmap_idx_size if dup 0 < { -1* } =buf_size
 
-    "    ; $".coms dup bmap_idx_name.coms " ".coms &buf_size@ .com "\n".coms
+    "    ; $".coms dup bmap_idx_name.coms " ".coms buf_size .com "\n".coms
     "    b_".coms dup.com
 
     if dup bmap_idx_size 0 < {
-        if &buf_size@ 1 == {
+        if buf_size 1 == {
             " db ".coms bmap_idx_init.com "\n".coms
-        } else if &buf_size@ 8 == {
+        } else if buf_size 8 == {
             " dq ".coms bmap_idx_init.com "\n".coms
         }
     } else {
@@ -333,8 +333,8 @@ $static REF out_fd
         } drop // idx
         "0\n".coms
 
-        if (dup bmap_idx_init str_len 1+) (&buf_size@) < {
-            "        times ".coms &buf_size@ .com " - ($ - b_".coms dup.com ") db 0\n".coms
+        if (dup bmap_idx_init str_len 1+) (buf_size) < {
+            "        times ".coms buf_size .com " - ($ - b_".coms dup.com ") db 0\n".coms
         }
         drop
     }
