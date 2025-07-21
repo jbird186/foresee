@@ -4,21 +4,21 @@
 #OP { 9 }
 
 #SRC_STR_SIZE { 65536 }
-$static src_str[SRC_STR_SIZE][CHAR]
+$static CHAR[SRC_STR_SIZE] src_str
 
-$static strs_mem[1024][128][CHAR]
-$static inline_bufs[1024][8][REF]
-$static toks_mem[1024][32][TOK]
-$static out_toks_mem[1024][32][TOK]
-$static fn_ops_mem[1024][32][OP]
+$static CHAR[1024][128] strs_mem
+$static REF[1024][8] inline_bufs
+$static TOK[1024][32] toks_mem
+$static TOK[1024][32] out_toks_mem
+$static OP[1024][32] fn_ops_mem
 
 #MAP_SIZE { 8191 }
-$static macros_map[MAP_SIZE][REF REF]
-$static fns_map[MAP_SIZE][REF REF]
-$static files_set[MAP_SIZE][REF]
-$static bufs_map[MAP_SIZE][4][REF]
-$static scope_stack[1024][REF]
+$static REF[2][MAP_SIZE] macros_map
+$static REF[2][MAP_SIZE] fns_map
+$static REF[MAP_SIZE] files_set
+$static REF[4][MAP_SIZE] bufs_map
+$static REF[1024] scope_stack
 
-$static start_ops_mem[4][OP]
-$static stack_sz_ptr = "16384"
-$static stack_ptr_str = "r12"
+$static OP[4] start_ops_mem
+$static stack_sz_ptr: "16384"
+$static stack_ptr_str: "r12"

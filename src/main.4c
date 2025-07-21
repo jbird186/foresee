@@ -3,8 +3,8 @@
 #include "src/parse.4c"
 #include "src/compile.4c"
 
-$static argc INT
-$static argv REF
+$static INT argc
+$static REF argv
 
 // idx --- ptr
 :get_argv {
@@ -18,14 +18,14 @@ $static argv REF
         "Usage: ".s 0 get_argv.s " <source_file> <output_file>\n".s
         1 exit
     }
-    $static out_file_name REF
-    $static src_file_name REF
+    $static REF out_file_name
+    $static REF src_file_name
     1 get_argv &src_file_name!
     2 get_argv &out_file_name!
 
     0 &scope_stack stack_push
 
-    $static src_fd REF
+    $static REF src_fd
     &src_file_name@ 0 fopen &src_fd!
 
     if &src_fd@ is_failure {

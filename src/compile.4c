@@ -2,7 +2,7 @@
 #include "src/config.4c"
 #include "src/map.4c"
 
-$static out_fd REF
+$static REF out_fd
 
 // ptr ---
 :compile_str {
@@ -309,7 +309,7 @@ $static out_fd REF
 
 // idx ---
 :compile_buf_data {
-    $static buf_size INT
+    $static INT buf_size
     dup bmap_idx_size if dup 0 < { -1* } &buf_size!
 
     "    ; $".coms dup bmap_idx_name.coms " ".coms &buf_size@ .com "\n".coms

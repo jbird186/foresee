@@ -1,27 +1,28 @@
 #include "std/stdref.4c"
 
 ////////// Token Kinds //////////
-#TOK_EOF { 0 }
-#TOK_INT { 1 }
-#TOK_CHAR { 2 }
-#TOK_STR { 3 }
-#TOK_IDENT { 4 }
-#TOK_WORD { 5 }
-#TOK_STATIC { 6 }
-#TOK_IF { 7 }
-#TOK_ELSE { 8 }
-#TOK_WHILE { 9 }
-#TOK_COLON { 10 }
-#TOK_POUND { 11 }
-#TOK_DOLLAR { 12 }
-#TOK_EQ { 13 }
-#TOK_REF { 14 }
-#TOK_PAREN_START { 15 }
-#TOK_PAREN_END { 16 }
-#TOK_BRACE_START { 17 }
-#TOK_BRACE_END { 18 }
-#TOK_BRACKET_START { 19 }
-#TOK_BRACKET_END { 20 }
+#TOK_EOF{ 0 }
+#TOK_INT{ 1 }
+#TOK_CHAR{ 2 }
+#TOK_STR{ 3 }
+#TOK_IDENT{ 4 }
+#TOK_WORD{ 5 }
+#TOK_FN{ 6 }
+#TOK_STATIC{ 7 }
+#TOK_IF{ 8 }
+#TOK_ELSE{ 9 }
+#TOK_WHILE{ 10 }
+#TOK_COLON{ 11 }
+#TOK_POUND{ 12 }
+#TOK_DOLLAR{ 13 }
+#TOK_REF{ 14 }
+#TOK_EQ{ 15 }
+#TOK_PAREN_START{ 16 }
+#TOK_PAREN_END{ 17 }
+#TOK_BRACE_START{ 18 }
+#TOK_BRACE_END{ 19 }
+#TOK_BRACKET_START{ 20 }
+#TOK_BRACKET_END{ 21 }
 
 ////////// Operation Kinds //////////
 // Misc / Special

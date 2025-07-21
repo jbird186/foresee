@@ -2,9 +2,9 @@
 #include "src/config.4c"
 #include "src/token.4c"
 
-$static ASM_LABEL_ID INT
-$static ASM_ROLL_ID INT
-$static ASM_FOPEN_ID INT
+$static INT ASM_LABEL_ID
+$static INT ASM_ROLL_ID
+$static INT ASM_FOPEN_ID
 
 :parse_tok
 
@@ -172,13 +172,7 @@ $static ASM_FOPEN_ID INT
 }
 
 // ops_dest tok_ptr --- new_tok_ptr
-:parse_colon {
-    tok_next
-
-    if viewtk TOK_IDENT != {
-        "ERROR: Invalid function name\n".s
-        1 exit
-    }
+:parse_fn {
     if viewtd &fns_map map_get dup (-1 !=) swap (0 !=) & {
         "ERROR: Function '".s viewtd.s "' already defined\n".s
         1 exit
@@ -219,6 +213,56 @@ $static ASM_FOPEN_ID INT
     &scope_stack stack_shrink
 }
 
+:view_buf_size
+
+// tok_ptr --- new_tok_ptr int
+:view_buf_size_int {
+    if viewtk TOK_INT == {
+        // base tok_ptr
+        viewtd swap tok_next
+        while viewtk TOK_BRACKET_START == {
+            // total tok_ptr scalar
+            tok_next view_buf_size
+            // total tok_ptr
+            rot * swap
+            if viewtk TOK_BRACKET_END != {
+                "ERROR: Invalid buffer size\n".s
+                1 exit
+            }
+            tok_next
+        }
+    } else {
+        // value tok_ptr
+        tok_next view_buf_size swap
+        if viewtk TOK_BRACKET_END != {
+            "ERROR: Invalid buffer size\n".s
+            1 exit
+        }
+        tok_next
+    }
+    swap
+    if dup 0 < {
+		"ERROR: Invalid buffer size\n".s
+		1 exit
+	}
+}
+
+// tok_ptr --- new_tok_ptr size
+:view_buf_size {
+	// sum tok_ptr
+	0 swap while viewtk TOK_INT == {
+        // sum tok_ptr
+		view_buf_size_int rot + swap
+	}
+    swap
+
+	if dup 0 < {
+		"ERROR: Invalid buffer size\n".s
+		1 exit
+	}
+}
+
+
 // ops_dest tok_ptr --- new_tok_ptr
 :parse_dollar {
     // tok_ptr
@@ -235,119 +279,77 @@ $static ASM_FOPEN_ID INT
     }
 
     tok_next
-    if viewtk TOK_IDENT != {
-        "ERROR: Invalid buffer name\n".s
-        1 exit
+    $static INT size
+    if viewtk TOK_INT == {
+        view_buf_size &size!
+    } else {
+        -1 &size!
     }
 
-    if viewtd &scope_stack stack_last bmap_get_idx is_success {
+    $static REF name
+    if viewtk TOK_IDENT != {
+        viewtk. " ERROR: Invalid buffer name\n".s
+        1 exit
+    } else if viewtd &scope_stack stack_last bmap_get_idx is_success {
         "ERROR: Buffer '".s viewtd.s "' already defined\n".s
         1 exit
     }
+    viewtd &name!
+    tok_next
 
-    // Specify size
-    // name tok_ptr
-    viewtd swap tok_next
-    if viewtk dup (TOK_INT ==) swap (TOK_BRACKET_START ==) | {
-        if viewtk TOK_INT == {
-            // name size tok_ptr
-            viewtd swap tok_next
-        } else {
-            // name size tok_ptr
-            1 swap while viewtk TOK_BRACKET_START == {
-                tok_next
-                // name size sum tok_ptr
-                0 swap while viewtk TOK_INT == {
-                    // name size sum tok_ptr
-                    viewtd rot + swap
-                    tok_next
-                }
-                if viewtk TOK_BRACKET_END != {
-                    "ERROR: Invalid definition for buffer '".s 3 pick.s "'\n".s
-                    1 exit
-                }
-                tok_next
-
-                // name size tok_ptr sum
-                swap
-                if dup not {
-                    "ERROR: Invalid definition for buffer '".s 3 pick.s "'\n".s
-                    1 exit
-                }
-                // name size tok_ptr
-                rot * swap
-            }
-        }
-
-        if over 0 < {
-            "ERROR: Invalid size for buffer '".s 2 pick.s "'\n".s
-            1 exit
-        }
-
-        // Initialize (optional)
-        // name size tok_ptr
-        if viewtk TOK_EQ == {
-            tok_next
-            if viewtk TOK_STR == {
-                // name size init tok_ptr
-                viewtd swap
-                if over str_len 3 pick > {
-                    "ERROR: Invalid size for buffer '".s 2 pick.s "'\n".s
-                    1 exit
-                }
-            } else if viewtk dup (TOK_INT ==) swap (TOK_CHAR ==) | {
-                if (viewtk TOK_INT ==) (2 pick 8 ==) & {}
-                else if (viewtk TOK_INT ==) (2 pick 1 ==) &
-                    (over tok_data dup (0 >=) swap (0xff <=) &) & {}
-                else if (viewtk TOK_CHAR ==) (2 pick 8 ==) & {}
-                else if (viewtk TOK_CHAR ==) (2 pick 1 ==) & {}
-                else {
-                    "ERROR: Invalid size for buffer '".s 2 pick.s "'\n".s
-                    1 exit
-                }
-
-                // Negative size value signals integer
-                swap -1 * swap
-                // name size init tok_ptr
-                viewtd swap
-            } else {
-                "ERROR: Invalid initialization value for buffer '".s over.s "'\n".s
-                1 exit
-            }
-            tok_next
-        } else {
-            // name size init tok_ptr
-            NULL swap
-        }
-    }
-    // Initialize
-    // name tok_ptr
-    else if viewtk TOK_EQ == {
+    $static REF init
+    if viewtk TOK_COLON == {
         tok_next
         if viewtk TOK_STR == {
-            // name size tok_ptr
-            viewtd str_len 1+ swap
-            // name size init tok_ptr
-            viewtd swap
+            // tok_ptr str_size
+            viewtd str_len 1+
+            if &size@ 0 < {
+                &size!
+            } else {
+                if &size@ > {
+                    "ERROR: Invalid size for buffer '".s &name@ .s "'\n".s
+                    1 exit
+                }
+            }
         } else if viewtk TOK_INT == {
-            // Negative size value signals integer
-            // name size init tok_ptr
-            viewtd -8 swap rot
+            if &size@ 0 < {
+                -8 &size!
+            } else {
+                if (&size@ 8 ==) {}
+                else if (viewtd dup (0xff <=) swap (0 >=) &) (&size@ 1 ==) & {}
+                else {
+                    "ERROR: Invalid size for buffer '".s &name@ .s "'\n".s
+                    1 exit
+                }
+                // Negative values signal integer initialization
+                &size@ -1 * &size!
+            }
         } else if viewtk TOK_CHAR == {
-            // name size init tok_ptr
-            viewtd -1 swap rot
+            if &size@ 0 < {
+                -1 &size!
+            } else {
+                if (&size@ 8 !=) (&size@ 1 !=) & {
+                    "ERROR: Invalid size for buffer '".s &name@ .s "'\n".s
+                    1 exit
+                }
+                // Negative values signal integer initialization
+                &size@ -1 * &size!
+            }
         } else {
-            "ERROR: Invalid initialization value for buffer '".s over.s "'\n".s
+            "ERROR: Invalid initialization value for buffer '".s &name@ .s "'\n".s
             1 exit
         }
+        viewtd &init!
         tok_next
+    } else {
+        0 &init!
+        if &size@ 0 < {
+            viewtk. " ERROR: Invalid definition for buffer '".s &name@ .s "'\n".s
+            1 exit
+        }
     }
-    else {
-        "ERROR: Invalid definition for buffer '".s over.s "'\n".s
-        1 exit
-    }
-    // tok_ptr
-    swap rot 3 roll &scope_stack stack_last bmap_insert
+
+    &init@ &size@ &name@ &scope_stack stack_last bmap_insert
 }
 
 // ops_dest tok_ptr --- new_tok_ptr
@@ -401,7 +403,7 @@ $static ASM_FOPEN_ID INT
     parse_with(TOK_IDENT parse_ident)
     parse_with(TOK_IF parse_if)
     parse_with(TOK_WHILE parse_while)
-    parse_with(TOK_COLON parse_colon)
+    parse_with(TOK_FN parse_fn)
     parse_with(TOK_DOLLAR parse_dollar)
     parse_with(TOK_REF parse_ref)
     else {
@@ -414,7 +416,7 @@ $static ASM_FOPEN_ID INT
     // tok_ptr
     &out_toks_mem tok_first
     while viewtk TOK_EOF != {
-        if viewtk dup (TOK_COLON !=) swap (TOK_DOLLAR !=) & {
+        if viewtk dup (TOK_FN !=) swap (TOK_DOLLAR !=) & {
             "ERROR: Unexpected token of type ".s viewtk. " outside of 'main'\n".s
             1 exit
         }
