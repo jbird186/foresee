@@ -68,18 +68,18 @@ $static current_player 1
 // Given `a b c`,
 // Displays the current state for row "c | b | a"
 :show_board_row {
-    " ".s square_char.c
-    " | ".s square_char.c
-    " | ".s square_char.c
+    " " puts square_char putc
+    " | " puts square_char putc
+    " | " puts square_char putc
     cr
 }
 
 // Displays the current board state
 :show_board {
     2 1 0 show_board_row
-    "-----------\n".s
+    "-----------\n" puts
     5 4 3 show_board_row
-    "-----------\n".s
+    "-----------\n" puts
     8 7 6 show_board_row
 }
 
@@ -97,9 +97,9 @@ $static current_player 1
     'X' &current_player!c
     while game_winner 0 == {
         cr show_board
-        &current_player@c .c " to move.\n".s
+        &current_player@c putc " to move.\n" puts
 
-        "Enter an empty board position (1-9): ".s
+        "Enter an empty board position (1-9): " puts
         , 1-
 
         if dup is_open {
@@ -107,9 +107,9 @@ $static current_player 1
             switch_player
         } else {
             drop
-            "Invalid move!\n".s
+            "Invalid move!\n" puts
         }
     }
     cr show_board
-    "Player ".s game_winner.c " wins!\n".s
+    "Player " puts game_winner putc " wins!\n" puts
 }

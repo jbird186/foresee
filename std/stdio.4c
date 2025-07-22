@@ -1,39 +1,35 @@
 #include "std/core.4c"
 #include "std/stdconv.4c"
 
-:out_char {
+:putc {
     &__std_buf!
     &__std_buf 1 stdout
 }
-#.c{out_char}
-#showc{dup .c}
-#cr{'\n'.c}
-#sp{' '.c}
+#showc{dup putc}
+#cr{'\n' putc}
+#sp{' ' putc}
 
 // int fd -- [bytes_written, -1]
 :fwrite_int { swap __write_int_to_temp rot fwrite }
 // int --
-:out_int { __write_int_to_temp stdout }
-#.{out_int}
-#show{dup .}
+:put { __write_int_to_temp stdout }
+#show{dup put}
 
-:out_str {
+:puts {
     while dup@c dup {
-        .c 1+
+        putc 1+
     } drop drop
 }
-#.s{out_str}
-#shows{dup .s}
+#shows{dup puts}
 
 // -- char
-:in_char {
+:readc {
     &__std_buf 1 stdin drop
     &__std_buf@c
 }
-#,c{in_char}
 
 // -- int
-:in_int {
+:read {
     &__std_buf 24 stdin drop
 
     // -- buf
@@ -56,7 +52,6 @@
 
     if swap { -1* }
 }
-#,{in_int}
 
 :stdinln {
     over swap stdin

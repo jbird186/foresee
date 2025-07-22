@@ -6,48 +6,45 @@
 $static REF out_fd
 
 // ptr --
-:compile_str {
+:coms {
     if dup str_len out_fd fwrite is_failure {
-        "ERROR: Failed to write string to output file\n".s
+        "ERROR: Failed to write string to output file\n" puts
         1 exit
     }
 }
-#.coms{compile_str}
 // int --
-:compile_int {
+:com {
     if out_fd fwrite_int is_failure {
-        "ERROR: Failed to write integer to output file\n".s
+        "ERROR: Failed to write integer to output file\n" puts
         1 exit
     }
 }
-#.com{compile_int}
 // char --
-:compile_char {
+:comc {
     $static CHAR buf
     &buf!c
     if &buf 1 out_fd fwrite is_failure {
-        "ERROR: Failed to write character to output file\n".s
+        "ERROR: Failed to write character to output file\n" puts
         1 exit
     }
 }
-#.comc{compile_char}
 
 // item --
 #compile_push_generic(com_type) {
-    "    sub     ".coms &stack_reg_str.coms ", 8\n".coms
-    "    mov     qword [".coms &stack_reg_str.coms "], ".coms com_type "\n".coms
+    "    sub     " coms &stack_reg_str coms ", 8\n" coms
+    "    mov     qword [" coms &stack_reg_str coms "], " coms com_type "\n" coms
 }
 // item --
-:compile_push { compile_push_generic(.coms) }
+:compile_push { compile_push_generic(coms) }
 // item --
-:compile_push_int { compile_push_generic(.com) }
+:compile_push_int { compile_push_generic(com) }
 // --
 :compile_stack_shrink {
-    "    add     ".coms &stack_reg_str.coms ", 8\n".coms
+    "    add     " coms &stack_reg_str coms ", 8\n" coms
 }
 // item --
 :compile_pop {
-    "    mov     ".coms .coms ", qword [".coms &stack_reg_str.coms "]\n".coms
+    "    mov     " coms coms ", qword [" coms &stack_reg_str coms "]\n" coms
     compile_stack_shrink
 }
 
@@ -55,8 +52,8 @@ $static REF out_fd
 
 // name --
 :compile_function {
-    "; ".coms dup.coms "\n".coms
-    "f_".coms dup &fns_map map_key_idx.com ":\n".coms
+    "; " coms dup coms "\n" coms
+    "f_" coms dup &fns_map map_key_idx com ":\n" coms
     &fns_map map_get compile_ops
 }
 
@@ -73,10 +70,10 @@ $static REF out_fd
 
 // b_register instruction name --
 :compile_basic_binop {
-    "    ; ".coms .coms "\n".coms
+    "    ; " coms coms "\n" coms
     "rcx" compile_pop
     "rax" compile_pop
-    "    ".coms .coms " \trax, ".coms .coms "\n".coms
+    "    " coms coms " \trax, " coms coms "\n" coms
     "rax" compile_push
 }
 
@@ -84,69 +81,69 @@ $static REF out_fd
 :compile_op {
     if viewtk OP_NOOP == {}
     else if viewtk OP_EXIT == {
-        "    ; OP_EXIT\n".coms
+        "    ; OP_EXIT\n" coms
         "rdi" compile_pop
-        "    mov     eax, 60\n".coms
-        "    syscall\n".coms
+        "    mov     eax, 60\n" coms
+        "    syscall\n" coms
     }
     else if viewtk OP_CALL == {
-        "    ; OP_CALL\n".coms
-        "    call f_".coms viewtd.com "\n".coms
+        "    ; OP_CALL\n" coms
+        "    call f_" coms viewtd com "\n" coms
     }
     else if viewtk OP_RET == {
-        "    ; OP_RET\n".coms
-        "    ret\n".coms
+        "    ; OP_RET\n" coms
+        "    ret\n" coms
     }
     else if viewtk OP_DROP == {
-        "    ; OP_DROP\n".coms
+        "    ; OP_DROP\n" coms
         compile_stack_shrink
     }
     else if viewtk OP_PICK == {
-        "    ; OP_PICK\n".coms
+        "    ; OP_PICK\n" coms
         "rax" compile_pop
-        "    mov     rcx, [".coms &stack_reg_str.coms " + rax*8]\n".coms
+        "    mov     rcx, [" coms &stack_reg_str coms " + rax*8]\n" coms
         "rcx" compile_push
     }
     else if viewtk OP_ROLL == {
-        "    ; OP_ROLL\n".coms
+        "    ; OP_ROLL\n" coms
         "rax" compile_pop
-        "    mov     rcx, [".coms &stack_reg_str.coms " + rax*8]\n".coms
-        "    lea     rbx, [".coms &stack_reg_str.coms " + rax*8]\n".coms
-        "   .rl_".coms viewtd.com ":\n".coms
-        "    cmp     rbx, ".coms &stack_reg_str.coms "\n".coms
-        "    je      .rl_".coms viewtd 1+ .com "\n".coms
-        "    mov     rdx, [rbx - 8]\n".coms
-        "    mov     [rbx], rdx\n".coms
-        "    sub     rbx, 8\n".coms
-        "    jmp     .rl_".coms viewtd.com "\n".coms
-        "   .rl_".coms viewtd 1+ .com ":\n".coms
-        "    mov     [".coms &stack_reg_str.coms "], rcx\n".coms
+        "    mov     rcx, [" coms &stack_reg_str coms " + rax*8]\n" coms
+        "    lea     rbx, [" coms &stack_reg_str coms " + rax*8]\n" coms
+        "   .rl_" coms viewtd com ":\n" coms
+        "    cmp     rbx, " coms &stack_reg_str coms "\n" coms
+        "    je      .rl_" coms viewtd 1+ com "\n" coms
+        "    mov     rdx, [rbx - 8]\n" coms
+        "    mov     [rbx], rdx\n" coms
+        "    sub     rbx, 8\n" coms
+        "    jmp     .rl_" coms viewtd com "\n" coms
+        "   .rl_" coms viewtd 1+ com ":\n" coms
+        "    mov     [" coms &stack_reg_str coms "], rcx\n" coms
     }
     else if viewtk OP_DEPTH == {
-        "    ; OP_DEPTH\n".coms
-        "    mov     rax, b_stack + ".coms &stack_size_str.coms "\n".coms
-        "    sub     rax, ".coms &stack_reg_str.coms "\n".coms
-        "    shr     rax, 3\n".coms
+        "    ; OP_DEPTH\n" coms
+        "    mov     rax, b_stack + " coms &stack_size_str coms "\n" coms
+        "    sub     rax, " coms &stack_reg_str coms "\n" coms
+        "    shr     rax, 3\n" coms
         "rax" compile_push
     }
     else if viewtk OP_PUSH_INT == {
-        "    ; OP_PUSH_INT\n".coms
+        "    ; OP_PUSH_INT\n" coms
         viewtd compile_push_int
     }
     else if viewtk OP_PUSH_BUF == {
-        "    ; OP_PUSH_BUF\n".coms
-        viewtd compile_push_generic({"b_".coms .com})
+        "    ; OP_PUSH_BUF\n" coms
+        viewtd compile_push_generic({"b_" coms com})
     }
     else if viewtk OP_STORE == {
-        "    ; OP_STORE\n".coms
+        "    ; OP_STORE\n" coms
         "rax" compile_pop
         "rcx" compile_pop
-        "    mov     [rax], rcx\n".coms
+        "    mov     [rax], rcx\n" coms
     }
     else if viewtk OP_FETCH == {
-        "    ; OP_FETCH\n".coms
+        "    ; OP_FETCH\n" coms
         "rax" compile_pop
-        "    mov     rbx, qword [rax]\n".coms
+        "    mov     rbx, qword [rax]\n" coms
         "rbx" compile_push
     }
     else if viewtk OP_ADD == {
@@ -159,11 +156,11 @@ $static REF out_fd
         "rcx" "imul" "OP_MUL" compile_basic_binop
     }
     else if viewtk OP_DIV == {
-        "    ; OP_DIV\n".coms
+        "    ; OP_DIV\n" coms
         "rbx" compile_pop
         "rax" compile_pop
-        "    cqo\n".coms
-        "    idiv    rbx\n".coms
+        "    cqo\n" coms
+        "    idiv    rbx\n" coms
         "rax" compile_push
     }
     else if viewtk OP_AND == {
@@ -185,109 +182,109 @@ $static REF out_fd
         "cl" "sar" "OP_SAR" compile_basic_binop
     }
     else if viewtk OP_NOT == {
-        "    ; OP_NOT\n".coms
+        "    ; OP_NOT\n" coms
         "rax" compile_pop
-        "    not     rax\n".coms
+        "    not     rax\n" coms
         "rax" compile_push
     }
     else if viewtk OP_EQ == {
-        "    ; OP_EQ\n".coms
+        "    ; OP_EQ\n" coms
         "rbx" compile_pop
         "rax" compile_pop
-        "    cmp     rax, rbx\n".coms
-        "    sete    al\n".coms
-        "    movzx   rax, al\n".coms
+        "    cmp     rax, rbx\n" coms
+        "    sete    al\n" coms
+        "    movzx   rax, al\n" coms
         "rax" compile_push
     }
     else if viewtk OP_GT == {
-        "    ; OP_GT\n".coms
+        "    ; OP_GT\n" coms
         "rbx" compile_pop
         "rax" compile_pop
-        "    cmp     rax, rbx\n".coms
-        "    setg    al\n".coms
-        "    movzx   rax, al\n".coms
+        "    cmp     rax, rbx\n" coms
+        "    setg    al\n" coms
+        "    movzx   rax, al\n" coms
         "rax" compile_push
     }
     else if viewtk OP_LT == {
-        "    ; OP_LT\n".coms
+        "    ; OP_LT\n" coms
         "rbx" compile_pop
         "rax" compile_pop
-        "    cmp     rax, rbx\n".coms
-        "    setl    al\n".coms
-        "    movzx   rax, al\n".coms
+        "    cmp     rax, rbx\n" coms
+        "    setl    al\n" coms
+        "    movzx   rax, al\n" coms
         "rax" compile_push
     }
     else if viewtk OP_LABEL == {
-        ".l_".coms viewtd.com ":\n".coms
+        ".l_" coms viewtd com ":\n" coms
     }
     else if viewtk OP_JMP == {
-        "    ; OP_JMP\n".coms
-        "    jmp     .l_".coms viewtd.com "\n".coms
+        "    ; OP_JMP\n" coms
+        "    jmp     .l_" coms viewtd com "\n" coms
     }
     else if viewtk OP_JZ == {
-        "    ; OP_JZ\n".coms
+        "    ; OP_JZ\n" coms
         "rax" compile_pop
-        "    test    rax, rax\n".coms
-        "    jz     .l_".coms viewtd.com "\n".coms
+        "    test    rax, rax\n" coms
+        "    jz     .l_" coms viewtd com "\n" coms
     }
     else if viewtk OP_FOPEN == {
-        "    ; OP_FOPEN\n".coms
+        "    ; OP_FOPEN\n" coms
         "rsi" compile_pop         // mode (0 = read, 1 = write, etc.)
         "rdi" compile_pop         // filename pointer
-        "    mov     rax, 2\n".coms
-        "    cmp     rsi, 0\n".coms
-        "    je      .frl_".coms viewtd.com "\n".coms
-        "    cmp     rsi, 1\n".coms
-        "    je      .fwl_".coms viewtd.com "\n".coms
-        "    cmp     rsi, 2\n".coms
-        "    je      .fal_".coms viewtd.com "\n".coms
-        "    jmp     .ffl_".coms viewtd.com "\n".coms
-        "    .frl_".coms viewtd.com ":\n".coms
-        "    mov     rsi, 0\n".coms
-        "    jmp     .fdl_".coms viewtd.com "\n".coms
-        "    .fwl_".coms viewtd.com ":\n".coms
-        "    mov     rsi, 577\n".coms
-        "    jmp     .fdl_".coms viewtd.com "\n".coms
-        "    .fal_".coms viewtd.com ":\n".coms
-        "    mov     rsi, 1025\n".coms
-        "    jmp     .fdl_".coms viewtd.com "\n".coms
-        "    .fdl_".coms viewtd.com ":\n".coms
-        "    mov     rdx, 420\n".coms
-        "    syscall\n".coms
+        "    mov     rax, 2\n" coms
+        "    cmp     rsi, 0\n" coms
+        "    je      .frl_" coms viewtd com "\n" coms
+        "    cmp     rsi, 1\n" coms
+        "    je      .fwl_" coms viewtd com "\n" coms
+        "    cmp     rsi, 2\n" coms
+        "    je      .fal_" coms viewtd com "\n" coms
+        "    jmp     .ffl_" coms viewtd com "\n" coms
+        "    .frl_" coms viewtd com ":\n" coms
+        "    mov     rsi, 0\n" coms
+        "    jmp     .fdl_" coms viewtd com "\n" coms
+        "    .fwl_" coms viewtd com ":\n" coms
+        "    mov     rsi, 577\n" coms
+        "    jmp     .fdl_" coms viewtd com "\n" coms
+        "    .fal_" coms viewtd com ":\n" coms
+        "    mov     rsi, 1025\n" coms
+        "    jmp     .fdl_" coms viewtd com "\n" coms
+        "    .fdl_" coms viewtd com ":\n" coms
+        "    mov     rdx, 420\n" coms
+        "    syscall\n" coms
         "rax" compile_push        // push FD (or -1 on error)
-        "    jmp     .fel_".coms viewtd.com "\n".coms
-        "    .ffl_".coms viewtd.com ":\n".coms
-        "    mov     rax, -1\n".coms
+        "    jmp     .fel_" coms viewtd com "\n" coms
+        "    .ffl_" coms viewtd com ":\n" coms
+        "    mov     rax, -1\n" coms
         "rax" compile_push
-        "    .fel_".coms viewtd.com ":\n".coms
+        "    .fel_" coms viewtd com ":\n" coms
     }
     else if viewtk OP_FREAD == {
-        "    ; OP_FREAD\n".coms
+        "    ; OP_FREAD\n" coms
         "rdi" compile_pop           // file descriptor
         "rdx" compile_pop           // length
         "rsi" compile_pop           // buffer pointer
-        "    mov     rax, 0\n".coms // sys_read
-        "    syscall\n".coms
+        "    mov     rax, 0\n" coms // sys_read
+        "    syscall\n" coms
         "rax" compile_push          // bytes read or -1
     }
     else if viewtk OP_FWRITE == {
-        "    ; OP_FWRITE\n".coms
+        "    ; OP_FWRITE\n" coms
         "rdi" compile_pop           // file descriptor
         "rdx" compile_pop           // length
         "rsi" compile_pop           // buffer pointer
-        "    mov     rax, 1\n".coms // sys_write
-        "    syscall\n".coms
+        "    mov     rax, 1\n" coms // sys_write
+        "    syscall\n" coms
         "rax" compile_push          // bytes written or -1
     }
     else if viewtk OP_FCLOSE == {
-        "    ; OP_FCLOSE\n".coms
+        "    ; OP_FCLOSE\n" coms
         "rdi" compile_pop           // file descriptor
-        "    mov     rax, 3\n".coms // sys_close
-        "    syscall\n".coms
+        "    mov     rax, 3\n" coms // sys_close
+        "    syscall\n" coms
         "rax" compile_push          // return 0 or -1
     }
     else {
-        "ERROR: Invalid opcode of type ".s viewtk. cr
+        "ERROR: Invalid opcode of type " puts viewtk put cr
         1 exit
     }
     tok_next
@@ -314,32 +311,32 @@ $static REF out_fd
     while dup@c {
         if dup@c should_print_char {
             if is_quote not {
-                '"'.comc
+                '"' comc
                 true =is_quote
             }
-            dup@c .comc
+            dup@c comc
         } else {
             if is_quote {
-                "\",".coms
+                "\"," coms
                 false =is_quote
             }
-            dup@c .com
-            ",".coms
+            dup@c com
+            "," coms
         }
         1+
     } drop
 
     if is_quote {
-        "\",".coms
+        "\"," coms
     }
-    "0\n".coms
+    "0\n" coms
 }
 
 :compile_inline_bufs {
-    "    ; Inline Buffers\n".coms
+    "    ; Inline Buffers\n" coms
     // -- idx
     0 while dup &inline_bufs stack_len < {
-        "    b_".coms dup MAP_SIZE+ .com " db ".coms
+        "    b_" coms dup MAP_SIZE+ com " db " coms
         dup &inline_bufs stack_get compile_buf_str
         1+
     } drop
@@ -350,20 +347,20 @@ $static REF out_fd
     $static INT buf_size
     dup bmap_idx_size if dup 0 < { -1* } =buf_size
 
-    "    ; ".coms dup bmap_idx_name.coms "\n".coms
-    "    b_".coms dup.com
+    "    ; " coms dup bmap_idx_name coms "\n" coms
+    "    b_" coms dup com
 
     if dup bmap_idx_size 0 < {
         if buf_size 1 == {
-            " db ".coms bmap_idx_init.com "\n".coms
+            " db " coms bmap_idx_init com "\n" coms
         } else if buf_size 8 == {
-            " dq ".coms bmap_idx_init.com "\n".coms
+            " dq " coms bmap_idx_init com "\n" coms
         }
     } else {
-        " db ".coms
+        " db " coms
         dup bmap_idx_init compile_buf_str
         if (dup bmap_idx_init str_len 1+) (buf_size) < {
-            "        times ".coms buf_size .com " - ($ - b_".coms dup.com ") db 0\n".coms
+            "        times " coms buf_size com " - ($ - b_" coms dup com ") db 0\n" coms
         }
         drop
     }
@@ -371,8 +368,8 @@ $static REF out_fd
 
 // idx --
 :compile_buf_bss {
-    "    b_".coms dup.com " resb ".coms bmap_idx_size.com
-    " ; ".coms dup bmap_idx_name.coms "\n".coms
+    "    b_" coms dup com " resb " coms bmap_idx_size com
+    " ; " coms dup bmap_idx_name coms "\n" coms
 }
 
 // idx -- bool
@@ -381,21 +378,21 @@ $static REF out_fd
 }
 
 :compile_program {
-    "BITS 64\n".coms
-    "global _start\n".coms
-    "section .text\n".coms
+    "BITS 64\n" coms
+    "global _start\n" coms
+    "section .text\n" coms
     compile_functions
 
-    "; start\n".coms
-    "_start:\n".coms
-    "    lea     ".coms &stack_reg_str.coms ", [b_stack + ".coms &stack_size_str.coms "]\n".coms
-    "    lea     rdi, [rsp + 8]\n".coms
+    "; start\n" coms
+    "_start:\n" coms
+    "    lea     " coms &stack_reg_str coms ", [b_stack + " coms &stack_size_str coms "]\n" coms
+    "    lea     rdi, [rsp + 8]\n" coms
     "rdi" compile_push
-    "    mov     rdi, [rsp]\n".coms
+    "    mov     rdi, [rsp]\n" coms
     "rdi" compile_push
     &start_ops_mem tok_first compile_ops
 
-    "section .data\n".coms
+    "section .data\n" coms
     // -- idx
     0 while dup MAP_SIZE < {
         if dup dup (bmap_idx_name bool) swap (use_section_data) & {
@@ -405,7 +402,7 @@ $static REF out_fd
     } drop
     compile_inline_bufs
 
-    "section .bss\n".coms
+    "section .bss\n" coms
     // -- idx
     0 while dup MAP_SIZE < {
         if dup dup (bmap_idx_name bool) swap (use_section_data not) & {
@@ -413,5 +410,5 @@ $static REF out_fd
         }
         1+
     } drop
-    "    b_stack: resb ".coms &stack_size_str.coms " ; Stack Pointer\n".coms
+    "    b_stack: resb " coms &stack_size_str coms " ; Stack Pointer\n" coms
 }

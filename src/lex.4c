@@ -18,7 +18,7 @@
             viewc '0' -
             rot 2* + swap
         } else if viewc is_alnum {
-            "ERROR: Invalid binary integer literal\n".s
+            "ERROR: Invalid binary integer literal\n" puts
             1 exit
         } else if viewc '_' != {
             swap return
@@ -40,7 +40,7 @@
             viewc 'a' - 10 +
             rot 16* + swap
         } else if viewc is_alpha {
-            "ERROR: Invalid hexadecimal integer literal\n".s
+            "ERROR: Invalid hexadecimal integer literal\n" puts
             1 exit
         } else if viewc '_' != {
             swap return
@@ -58,7 +58,7 @@
             viewc '0' -
             rot 10* + swap
         } else if viewc is_alpha {
-            "ERROR: Invalid integer literal\n".s
+            "ERROR: Invalid integer literal\n" puts
             1 exit
         } else if viewc '_' != {
             swap return
@@ -108,7 +108,7 @@
         // backslash
         else if viewc '\\' == { '\\' }
         else {
-            "ERROR: Invalid escape character '\\".s viewc.c "'\n".s
+            "ERROR: Invalid escape character '\\" puts viewc putc "'\n" puts
             1 exit
         }
     } else { viewc }
@@ -121,7 +121,7 @@
     swap 1+
 
     if viewc '\'' != {
-        "ERROR: Expected endquote after valid character '".s swap .c "'\n".s
+        "ERROR: Expected endquote after valid character '" puts swap putc "'\n" puts
         1 exit
     }
 

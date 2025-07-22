@@ -102,16 +102,16 @@ $static INT ASM_FOPEN_ID
             drop drop
             // -- ops_dest tok_ptr storec_fn_ptr
             if "fetchc" &fns_map map_key_idx dup is_failure {
-                "ERROR: Function 'fetchc' not defined\n".s
+                "ERROR: Function 'fetchc' not defined\n" puts
                 1 exit
             }
             OP_CALL 3 roll toks_push
         } else {
-            "ERROR: Buffer '".s over.s "' cannot be automatically read from\n".s
+            "ERROR: Buffer '" puts over puts "' cannot be automatically read from\n" puts
             1 exit
         }
     } else {
-        "ERROR: Function '".s drop.s "' not defined\n".s
+        "ERROR: Function '" puts drop puts "' not defined\n" puts
         1 exit
     }
     tok_next
@@ -164,7 +164,7 @@ $static INT ASM_FOPEN_ID
         // -- tok_ptr
         rot _parse_if_with_id
     } else {
-        "ERROR: Invalid 'if' condition\n".s
+        "ERROR: Invalid 'if' condition\n" puts
         1 exit
     }
 }
@@ -209,13 +209,13 @@ $static INT ASM_FOPEN_ID
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_fn {
     if viewtd &fns_map map_get dup (-1 !=) swap (0 !=) & {
-        "ERROR: Function '".s viewtd.s "' already defined\n".s
+        "ERROR: Function '" puts viewtd puts "' already defined\n" puts
         1 exit
     }
 
     // -- tok_ptr
     if swap {
-        "ERROR: Function '".s viewtd.s "' must not define internal functions\n".s
+        "ERROR: Function '" puts viewtd puts "' must not define internal functions\n" puts
         1 exit
     }
 
@@ -261,7 +261,7 @@ $static INT ASM_FOPEN_ID
             // -- total tok_ptr
             rot * swap
             if viewtk TOK_BRACKET_END != {
-                "ERROR: Invalid buffer size\n".s
+                "ERROR: Invalid buffer size\n" puts
                 1 exit
             }
             tok_next
@@ -270,14 +270,14 @@ $static INT ASM_FOPEN_ID
         // -- value tok_ptr
         tok_next view_buf_size swap
         if viewtk TOK_BRACKET_END != {
-            "ERROR: Invalid buffer size\n".s
+            "ERROR: Invalid buffer size\n" puts
             1 exit
         }
         tok_next
     }
     swap
     if dup 0 < {
-		"ERROR: Invalid buffer size\n".s
+		"ERROR: Invalid buffer size\n" puts
 		1 exit
 	}
 }
@@ -292,7 +292,7 @@ $static INT ASM_FOPEN_ID
     swap
 
 	if dup 0 < {
-		"ERROR: Invalid buffer size\n".s
+		"ERROR: Invalid buffer size\n" puts
 		1 exit
 	}
 }
@@ -306,11 +306,11 @@ $static INT ASM_FOPEN_ID
     tok_next
     if viewtk TOK_STATIC != {
         if viewtk TOK_IDENT == {
-            "ERROR: Buffer '".s viewtd.s "' must be static\n".s
+            "ERROR: Buffer '" puts viewtd puts "' must be static\n" puts
         } else if tok_next viewtk TOK_IDENT == {
-            "ERROR: Buffer '".s viewtd.s "' must be static\n".s
+            "ERROR: Buffer '" puts viewtd puts "' must be static\n" puts
         } else {
-            "ERROR: Invalid buffer name\n".s
+            "ERROR: Invalid buffer name\n" puts
         }
         1 exit
     }
@@ -325,10 +325,10 @@ $static INT ASM_FOPEN_ID
 
     $static REF name
     if viewtk TOK_IDENT != {
-        "ERROR: Invalid buffer name\n".s
+        "ERROR: Invalid buffer name\n" puts
         1 exit
     } else if viewtd &scope_stack stack_last bmap_get_idx is_success {
-        "ERROR: Buffer '".s viewtd.s "' already defined\n".s
+        "ERROR: Buffer '" puts viewtd puts "' already defined\n" puts
         1 exit
     }
     viewtd =name
@@ -344,7 +344,7 @@ $static INT ASM_FOPEN_ID
                 =size
             } else {
                 if size > {
-                    "ERROR: Invalid size for buffer '".s name .s "'\n".s
+                    "ERROR: Invalid size for buffer '" puts name  puts "'\n" puts
                     1 exit
                 }
             }
@@ -355,7 +355,7 @@ $static INT ASM_FOPEN_ID
                 if (size 8 ==) {}
                 else if (viewtd dup (0xff <=) swap (0 >=) &) (size 1 ==) & {}
                 else {
-                    "ERROR: Invalid size for buffer '".s name .s "'\n".s
+                    "ERROR: Invalid size for buffer '" puts name  puts "'\n" puts
                     1 exit
                 }
                 // Negative values signal integer initialization
@@ -366,14 +366,14 @@ $static INT ASM_FOPEN_ID
                 -1 =size
             } else {
                 if (size 8 !=) (size 1 !=) & {
-                    "ERROR: Invalid size for buffer '".s name .s "'\n".s
+                    "ERROR: Invalid size for buffer '" puts name  puts "'\n" puts
                     1 exit
                 }
                 // Negative values signal integer initialization
                 size -1 * =size
             }
         } else {
-            "ERROR: Invalid initialization value for buffer '".s name .s "'\n".s
+            "ERROR: Invalid initialization value for buffer '" puts name  puts "'\n" puts
             1 exit
         }
         viewtd =init
@@ -381,13 +381,13 @@ $static INT ASM_FOPEN_ID
     } else {
         0 =init
         if size 0 < {
-            "ERROR: Invalid definition for buffer '".s name .s "'\n".s
+            "ERROR: Invalid definition for buffer '" puts name  puts "'\n" puts
             1 exit
         }
     }
 
     if size BUFFER_SIZE_LIMIT > {
-        "ERROR: Buffer '".s name .s "' too cannot exceed ".s BUFFER_SIZE_LIMIT. " bytes\n".
+        "ERROR: Buffer '" puts name  puts "' too cannot exceed " puts BUFFER_SIZE_LIMIT put " bytes\n" puts
         1 exit
     }
 
@@ -403,7 +403,7 @@ $static INT ASM_FOPEN_ID
         OP_PUSH_BUF 4 roll toks_push
         drop tok_next
     } else {
-        "ERROR: Buffer '".s over.s "' not defined in this scope\n".s
+        "ERROR: Buffer '" puts over puts "' not defined in this scope\n" puts
         1 exit
     }
 }
@@ -424,18 +424,18 @@ $static INT ASM_FOPEN_ID
             drop drop
             // -- ops_dest tok_ptr storec_fn_ptr
             if "storec" &fns_map map_key_idx dup is_failure {
-                "ERROR: Function 'storec' not defined\n".s
+                "ERROR: Function 'storec' not defined\n" puts
                 1 exit
             }
             OP_CALL 3 roll toks_push
         } else {
-            "ERROR: Buffer '".s over.s "' cannot be automatically assigned to\n".s
+            "ERROR: Buffer '" puts over puts "' cannot be automatically assigned to\n" puts
             1 exit
         }
         // -- tok_ptr
         tok_next
     } else {
-        "ERROR: Buffer '".s over.s "' not defined in this scope\n".s
+        "ERROR: Buffer '" puts over puts "' not defined in this scope\n" puts
         1 exit
     }
 }
@@ -449,11 +449,11 @@ $static INT ASM_FOPEN_ID
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_tok {
     if viewtk TOK_POUND == {
-        "ERROR: Unexpected preprocessing directive\n".s
+        "ERROR: Unexpected preprocessing directive\n" puts
         1 exit
     }
     else if viewtk TOK_WORD == {
-        "ERROR: Macro '".s viewtd.s "' not defined\n".s
+        "ERROR: Macro '" puts viewtd puts "' not defined\n" puts
         1 exit
     }
     else if viewtk dup (TOK_INT ==) swap (TOK_CHAR ==) | {
@@ -474,7 +474,7 @@ $static INT ASM_FOPEN_ID
     parse_with(TOK_REF parse_ref)
     parse_with(TOK_EQ parse_eq)
     else {
-        "ERROR: Unexpected token of type ".s viewtk. cr
+        "ERROR: Unexpected token of type " puts viewtk put cr
         1 exit
     }
 }
@@ -484,7 +484,7 @@ $static INT ASM_FOPEN_ID
     &out_toks_mem tok_first
     while viewtk TOK_EOF != {
         if viewtk dup (TOK_FN !=) swap (TOK_DOLLAR !=) & {
-            "ERROR: Unexpected token of type ".s viewtk. " outside of 'main'\n".s
+            "ERROR: Unexpected token of type " puts viewtk put " outside of 'main'\n" puts
             1 exit
         }
         0 swap parse_tok
@@ -493,7 +493,7 @@ $static INT ASM_FOPEN_ID
 
     // -- main_fn_ptr
     if "main" &fns_map map_key_idx dup is_failure {
-        "ERROR: Function 'main' not defined\n".s
+        "ERROR: Function 'main' not defined\n" puts
         1 exit
     }
     OP_CALL &start_ops_mem toks_push
