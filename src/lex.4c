@@ -5,12 +5,12 @@
 #include "src/stack.4c"
 #include "src/token.4c"
 
-// src_ptr --- src_ptr char
+// src_ptr -- src_ptr char
 :viewc { dup @c }
 
-// src_ptr --- new_src_ptr int
+// src_ptr -- new_src_ptr int
 :view_binary_int {
-    // total src_ptr
+    // -- total src_ptr
     0 swap
     2+
     while viewc {
@@ -27,9 +27,9 @@
     }
     swap
 }
-// src_ptr --- new_src_ptr int
+// src_ptr -- new_src_ptr int
 :view_hex_int {
-    // total src_ptr
+    // -- total src_ptr
     0 swap
     2+
     while viewc {
@@ -49,9 +49,9 @@
     }
     swap
 }
-// src_ptr --- new_src_ptr int
+// src_ptr -- new_src_ptr int
 :view_decimal_int {
-    // total src_ptr
+    // -- total src_ptr
     0 swap
     while viewc {
         if viewc is_digit {
@@ -67,13 +67,13 @@
     }
     swap
 }
-// src_ptr --- new_src_ptr int
+// src_ptr -- new_src_ptr int
 :view_int {
     if viewc '-' == {
         -1 swap 1+
     } else {
         1 swap
-    } // scalar src_ptr
+    } // -- scalar src_ptr
 
     if (viewc '0' ==) (over 1+ @c 'b' ==) & {
         view_binary_int
@@ -81,11 +81,11 @@
         view_hex_int
     } else {
         view_decimal_int
-    } // scalar src_ptr int
+    } // -- scalar src_ptr int
     rot *
 }
 
-// src_ptr --- src_ptr char
+// src_ptr -- src_ptr char
 :match_char {
     if viewc '\\' == {
         1+
@@ -114,7 +114,7 @@
     } else { viewc }
 }
 
-// src_ptr --- new_src_ptr char
+// src_ptr -- new_src_ptr char
 :view_char {
     1+
     match_char
@@ -129,7 +129,7 @@
     return
 }
 
-// src_ptr --- new_src_ptr ref
+// src_ptr -- new_src_ptr ref
 :view_str {
     &strs_mem stack_topc swap
     1+
@@ -147,7 +147,7 @@
     dup (is_alnum) swap ('_' ==) |
 }
 
-// src_ptr --- new_src_ptr ref
+// src_ptr -- new_src_ptr ref
 :view_ident {
     &strs_mem stack_topc swap
     viewc &strs_mem stack_pushc
@@ -163,11 +163,11 @@
     swap
 }
 
-// src_ptr --- new_src_ptr
+// src_ptr -- new_src_ptr
 :lex_ident {
     view_ident
 
-    // new_src_ptr ref
+    // -- new_src_ptr ref
     if dup "if" str_eq {
         0 TOK_IF &toks_mem toks_push
     } else if dup "else" str_eq {
@@ -181,12 +181,12 @@
         return
     }
 
-    // new_src_ptr n_chars
+    // -- new_src_ptr n_chars
     &strs_mem stack_topc swap -
     &strs_mem stack_len swap - &strs_mem!
 }
 
-// src_ptr --- new_src_ptr ref
+// src_ptr -- new_src_ptr ref
 :view_word {
     &strs_mem stack_topc swap
     while ("(){}[]" over@c str_char not) (over@c is_space not) & (over@c bool) & {
@@ -204,7 +204,7 @@
     }
 }
 
-// src_ptr ---
+// src_ptr --
 :lex_src {
     while viewc {
         while viewc is_space { 1+ }

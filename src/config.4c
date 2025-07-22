@@ -7,20 +7,21 @@
 $static CHAR[SRC_STR_SIZE] src_str
 
 $static INT CHAR[1024][128] strs_mem
-$static INT REF[1024][8] inline_bufs
 $static INT TOK[1024][32] toks_mem
 $static INT TOK[1024][32] out_toks_mem
 $static INT OP[1024][32] fn_ops_mem
+$static INT OP[16] start_ops_mem
+$static INT REF[1024][8] inline_bufs
+$static INT REF[1024] scope_stack
 
 #MAP_SIZE { 8191 }
+$static REF[MAP_SIZE] files_set
 $static REF[2][MAP_SIZE] macros_map
 $static REF[2][MAP_SIZE] fns_map
 $static REF[4][MAP_SIZE] bufs_map
-$static REF[MAP_SIZE] files_set
 
-$static INT REF[1024] scope_stack
-$static INT OP[16] start_ops_mem
 $static stack_size_str: "16384"
 $static stack_reg_str: "r12"
 
 #USE_ASM_STRINGS { true }
+#BUFFER_SIZE_LIMIT { 16777216 }

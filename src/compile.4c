@@ -5,7 +5,7 @@
 
 $static REF out_fd
 
-// ptr ---
+// ptr --
 :compile_str {
     if dup str_len out_fd fwrite is_failure {
         "ERROR: Failed to write string to output file\n".s
@@ -13,7 +13,7 @@ $static REF out_fd
     }
 }
 #.coms{compile_str}
-// int ---
+// int --
 :compile_int {
     if out_fd fwrite_int is_failure {
         "ERROR: Failed to write integer to output file\n".s
@@ -21,7 +21,7 @@ $static REF out_fd
     }
 }
 #.com{compile_int}
-// char ---
+// char --
 :compile_char {
     $static CHAR buf
     &buf!c
@@ -32,20 +32,20 @@ $static REF out_fd
 }
 #.comc{compile_char}
 
-// item ---
+// item --
 #compile_push_generic(com_type) {
     "    sub     ".coms &stack_reg_str.coms ", 8\n".coms
     "    mov     qword [".coms &stack_reg_str.coms "], ".coms com_type "\n".coms
 }
-// item ---
+// item --
 :compile_push { compile_push_generic(.coms) }
-// item ---
+// item --
 :compile_push_int { compile_push_generic(.com) }
-// ---
+// --
 :compile_stack_shrink {
     "    add     ".coms &stack_reg_str.coms ", 8\n".coms
 }
-// item ---
+// item --
 :compile_pop {
     "    mov     ".coms .coms ", qword [".coms &stack_reg_str.coms "]\n".coms
     compile_stack_shrink
@@ -53,7 +53,7 @@ $static REF out_fd
 
 :compile_ops
 
-// name ---
+// name --
 :compile_function {
     "; ".coms dup.coms "\n".coms
     "f_".coms dup &fns_map map_key_idx.com ":\n".coms
@@ -61,9 +61,9 @@ $static REF out_fd
 }
 
 :compile_functions {
-    // idx
+    // -- idx
     0 while dup MAP_SIZE < {
-        // idx fn_name
+        // -- idx fn_name
         dup &fns_map map_get_idx_key
         if dup { compile_function }
         else { drop }
@@ -71,7 +71,7 @@ $static REF out_fd
     } drop
 }
 
-// b_register instruction name ---
+// b_register instruction name --
 :compile_basic_binop {
     "    ; ".coms .coms "\n".coms
     "rcx" compile_pop
@@ -80,7 +80,7 @@ $static REF out_fd
     "rax" compile_push
 }
 
-// op_ptr --- new_op_ptr
+// op_ptr -- new_op_ptr
 :compile_op {
     if viewtk OP_NOOP == {}
     else if viewtk OP_EXIT == {
@@ -293,20 +293,20 @@ $static REF out_fd
     tok_next
 }
 
-// op_ptr ---
+// op_ptr --
 :compile_ops {
     while viewtk { compile_op }
     drop
 }
 
-// char --- bool
+// char -- bool
 :should_print_char {
     dup is_print
     swap (dup ('\\' !=) swap ('"' !=) &) &
     USE_ASM_STRINGS &
 }
 
-// init ---
+// init --
 :compile_buf_str {
     $static BOOL is_quote
     false =is_quote
@@ -337,7 +337,7 @@ $static REF out_fd
 
 :compile_inline_bufs {
     "    ; Inline Buffers\n".coms
-    // idx
+    // -- idx
     0 while dup &inline_bufs stack_len < {
         "    b_".coms dup MAP_SIZE+ .com " db ".coms
         dup &inline_bufs stack_get compile_buf_str
@@ -345,7 +345,7 @@ $static REF out_fd
     } drop
 }
 
-// idx ---
+// idx --
 :compile_buf_data {
     $static INT buf_size
     dup bmap_idx_size if dup 0 < { -1* } =buf_size
@@ -369,13 +369,13 @@ $static REF out_fd
     }
 }
 
-// idx ---
+// idx --
 :compile_buf_bss {
     "    b_".coms dup.com " resb ".coms bmap_idx_size.com
     " ; ".coms dup bmap_idx_name.coms "\n".coms
 }
 
-// idx --- bool
+// idx -- bool
 :use_section_data {
     dup (bmap_idx_init bool) swap (bmap_idx_size 0 <) |
 }
@@ -396,7 +396,7 @@ $static REF out_fd
     &start_ops_mem tok_first compile_ops
 
     "section .data\n".coms
-    // idx
+    // -- idx
     0 while dup MAP_SIZE < {
         if dup dup (bmap_idx_name bool) swap (use_section_data) & {
             dup compile_buf_data
@@ -406,7 +406,7 @@ $static REF out_fd
     compile_inline_bufs
 
     "section .bss\n".coms
-    // idx
+    // -- idx
     0 while dup MAP_SIZE < {
         if dup dup (bmap_idx_name bool) swap (use_section_data not) & {
             dup compile_buf_bss

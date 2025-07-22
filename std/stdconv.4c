@@ -2,15 +2,15 @@
 
 $static CHAR[24] __std_buf
 
-// int --- ptr len
+// int -- ptr len
 :__write_int_to_temp {
     0 &__std_buf 16+ !
 
-    // is_neg int
+    // -- is_neg int
     dup 0 < swap
     if over { -1* }
 
-    // is_neg int len
+    // -- is_neg int len
     0 dowhile({
         &__std_buf 22+ over -
         rot dup 10 % '0' +
@@ -19,22 +19,22 @@ $static CHAR[24] __std_buf
         swap 1 +
     } {over})
 
-    // int len
+    // -- int len
     if rot {
         '-' &__std_buf 22+ 2 pick - !c
         1+
     }
 
-    // int ptr len
+    // -- int ptr len
     &__std_buf 23+ over - swap
     rot drop
 }
 
-// int ref ---
+// int buf --
 :itoa {
-    // ref ptr len
+    // -- buf ptr len
     swap __write_int_to_temp
-    // len ptr ref
+    // -- len ptr buf
     swap rot
     while 2 pick {
         over@c over!

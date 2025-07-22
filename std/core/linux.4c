@@ -1,3 +1,6 @@
-#stdin{0 fread}
-#stdout{1 fwrite drop}
-#stderr{2 fwrite drop}
+// buf len -- bytes_read
+:stdin{0 fread}
+// ptr len --
+:stdout{1 fwrite drop}
+// ptr len --
+:stderr{2 fwrite drop}

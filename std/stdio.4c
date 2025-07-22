@@ -10,10 +10,10 @@
 #cr{'\n'.c}
 #sp{' '.c}
 
-// int fd --- [bytes_written, -1]
+// int fd -- [bytes_written, -1]
 :fwrite_int { swap __write_int_to_temp rot fwrite }
-// int ---
-:out_int {__write_int_to_temp stdout}
+// int --
+:out_int { __write_int_to_temp stdout }
 #.{out_int}
 #show{dup .}
 
@@ -25,33 +25,33 @@
 #.s{out_str}
 #shows{dup .s}
 
-// --- char
+// -- char
 :in_char {
     &__std_buf 1 stdin drop
     &__std_buf@c
 }
 #,c{in_char}
 
-// --- int
+// -- int
 :in_int {
     &__std_buf 24 stdin drop
 
-    // buf
+    // -- buf
     &__std_buf
-    // is_neg buf
+    // -- is_neg buf
     dup@c '-' == swap
     if over { 1+ }
 
-    // is_neg total buf
+    // -- is_neg total buf
     0 swap
 
-    // is_neg total buf c
+    // -- is_neg total buf c
     while dup@c dup '\n' != {
         '0' -
         rot 10* +
         swap 1+
     }
-    // is_neg total
+    // -- is_neg total
     drop drop
 
     if swap { -1* }

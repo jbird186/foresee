@@ -28,20 +28,20 @@
 // Misc / Special
 #OP_EOF{ 0 }
 #OP_NOOP{ 1 }
-#OP_EXIT{ 2 }    // exit_code ---
+#OP_EXIT{ 2 }    // exit_code --
 // Functions
 #OP_CALL{ 3 }
 #OP_RET{ 4 }
 // Stack Primitives
-#OP_DROP{ 5 }    // item ---
-#OP_PICK{ 6 }    // n --- item
-#OP_ROLL{ 7 }    // n --- item
-#OP_DEPTH{ 8 }   // --- depth
+#OP_DROP{ 5 }    // item --
+#OP_PICK{ 6 }    // n -- item
+#OP_ROLL{ 7 }    // n -- item
+#OP_DEPTH{ 8 }   // -- depth
 #OP_PUSH_INT{ 9 }
 // Reference Primitives
 #OP_PUSH_BUF{ 10 }
-#OP_STORE{ 11 }   // item ptr ---
-#OP_FETCH{ 12 }   // ptr --- item
+#OP_STORE{ 11 }   // item ptr --
+#OP_FETCH{ 12 }   // ptr -- item
 // Binary Operations
 #OP_ADD{ 13 }
 #OP_SUB{ 14 }
@@ -60,18 +60,18 @@
 // Branching
 #OP_LABEL{ 27 }
 #OP_JMP{ 28 }
-#OP_JZ{ 29 }      // value ---
+#OP_JZ{ 29 }      // value --
 // I/O
-#OP_FOPEN{ 30 }   // filename_ptr [0=read, 1=write, 2=append] --- [fd, -1]
-#OP_FREAD{ 31 }   // ptr len fd --- [bytes_read, -1]
-#OP_FWRITE{ 32 }  // ptr len fd --- [bytes_written, -1]
-#OP_FCLOSE{ 33 }  // fd --- [0, -1]
+#OP_FOPEN{ 30 }   // filename_ptr [0=read, 1=write, 2=append] -- [fd, -1]
+#OP_FREAD{ 31 }   // ptr len fd -- [bytes_read, -1]
+#OP_FWRITE{ 32 }  // ptr len fd -- [bytes_written, -1]
+#OP_FCLOSE{ 33 }  // fd -- [0, -1]
 
 ////////// Functions //////////
-// ref --- head_ptr
+// ref -- head_ptr
 :toks_top { dup stack_len 9* + 8+ }
 
-// data type ref ---
+// data type ref --
 :toks_push {
     dup@ 1+
     dup 2 pick !
@@ -89,7 +89,7 @@
 :viewtk { dup tok_kind }
 :viewtd { dup tok_data }
 
-// tok_ptr --- tok_ptr bool
+// tok_ptr -- tok_ptr bool
 :check_include {
     if viewtk TOK_IDENT == {
         viewtd "include" str_eq

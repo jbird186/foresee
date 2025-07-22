@@ -1,13 +1,13 @@
 #include "std/core.4c"
 
-// ptr --- len
+// ptr -- len
 :str_len {
     dup
     while dup@c { 1+ }
     swap -
 }
 
-// src dest ---
+// src dest --
 :str_copy {
     while over@c dup {
         over!c
@@ -17,13 +17,13 @@
     drop
 }
 
-// src dest ---
+// src dest --
 :str_cat {
     dup str_len +
     str_copy
 }
 
-// s1 s2 --- diff
+// s1 s2 -- diff
 :str_cmp {
     while over@c over@c | {
         if over@c over@c - dup {
@@ -36,10 +36,10 @@
     0
 }
 
-// s1 s2 --- is_eq
+// s1 s2 -- is_eq
 :str_eq { str_cmp not }
 
-// str char --- [ptr, 0]
+// str char -- [ptr, 0]
 :str_char {
     while over@c dup {
         if over == {

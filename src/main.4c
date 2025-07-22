@@ -6,20 +6,21 @@
 $static INT argc
 $static REF argv
 
-// idx --- ptr
+// idx -- ptr
 :get_argv {
     8* argv + @
 }
 
+// argv argc --
 :main {
     =argc =argv
-
     if argc 3 != {
         "Usage: ".s 0 get_argv.s " <source_file> <output_file>\n".s
         1 exit
     }
-    $static REF out_file_name
+
     $static REF src_file_name
+    $static REF out_file_name
     1 get_argv =src_file_name
     2 get_argv =out_file_name
 

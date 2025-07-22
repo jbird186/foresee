@@ -1,32 +1,32 @@
 #include "std/core.4c"
 
-// ref --- len
+// ref -- len
 #stack_len { @ }
-// ref ---
-#stack_shrink { @-- drop }
+// ref --
+:stack_shrink { @-- drop }
 
-// ref --- head_ptr
+// ref -- head_ptr
 :stack_top { dup stack_len 8* + 8+ }
-// ref --- last_element
+// ref -- last_element
 :stack_last { dup stack_len 8* + @ }
-// value ref ---
+// value ref --
 :stack_push {
     dup@ 1+
     dup 2 pick !
     8* + !
 }
-// idx ref --- element
+// idx ref -- element
 :stack_get { 8+ swap 8* + @ }
 
-// ref --- head_ptr
+// ref -- head_ptr
 :stack_topc { dup stack_len + 8+ }
-// ref --- last_element
+// ref -- last_element
 :stack_lastc { dup stack_len + 7+ @c }
-// value ref ---
+// value ref --
 :stack_pushc {
     dup@ 1+
     dup 2 pick !
     7+ + !c
 }
-// idx ref --- element
+// idx ref -- element
 :stack_getc { 8+ + @c }
