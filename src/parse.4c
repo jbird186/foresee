@@ -58,7 +58,7 @@ $static INT ASM_FOPEN_ID
     // Stack Primitives
     define_intrinsic_opcode(0 OP_DROP "__OP_DROP")
     define_intrinsic_opcode(0 OP_PICK "__OP_PICK")
-    define_intrinsic_opcode({&ASM_ROLL_ID@ dup 2+ &ASM_ROLL_ID!} OP_ROLL "__OP_ROLL")
+    define_intrinsic_opcode({ASM_ROLL_ID dup 2+ &ASM_ROLL_ID!} OP_ROLL "__OP_ROLL")
     define_intrinsic_opcode(0 OP_DEPTH "__OP_DEPTH")
     // Reference Primitives
     define_intrinsic_opcode(0 OP_STORE "__OP_STORE")
@@ -91,18 +91,27 @@ $static INT ASM_FOPEN_ID
         viewtd &fns_map map_key_idx OP_CALL 3 roll toks_push
     // ops_dest tok_ptr name idx
     } else if viewtd scoped_buf_idx dup is_success {
-        if dup bmap_idx_size 8 != {
+        // ops_dest tok_ptr name idx
+        dup OP_PUSH_BUF 5 pick toks_push
+        if dup bmap_idx_size 8 == {
+            // ops_dest tok_ptr
+            drop drop
+            0 OP_FETCH 3 roll toks_push
+        } else if dup bmap_idx_size 1 == {
+            // ops_dest tok_ptr
+            drop drop
+            // ops_dest tok_ptr storec_fn_ptr
+            if "fetchc" &fns_map map_key_idx dup is_failure {
+                "ERROR: Function 'fetchc' not defined\n".s
+                1 exit
+            }
+            OP_CALL 3 roll toks_push
+        } else {
             "ERROR: Buffer '".s over.s "' cannot be automatically read from\n".s
             1 exit
         }
-        // ops_dest tok_ptr name
-        OP_PUSH_BUF 4 pick toks_push
-        // tok_ptr name
-        0 OP_FETCH 4 roll toks_push
-        // tok_ptr
-        drop
     } else {
-        "ERROR: Function '".s viewtd.s "' not defined\n".s
+        "ERROR: Function '".s drop.s "' not defined\n".s
         1 exit
     }
     tok_next
@@ -399,16 +408,27 @@ $static INT ASM_FOPEN_ID
     // ops_dest tok_ptr name idx
     viewtd scoped_buf_idx
     if dup is_success {
-        if dup bmap_idx_size 8 != {
+        // ops_dest tok_ptr name idx
+        dup OP_PUSH_BUF 5 pick toks_push
+        if dup bmap_idx_size 8 == {
+            // ops_dest tok_ptr
+            drop drop
+            0 OP_STORE 3 roll toks_push
+        } else if dup bmap_idx_size 1 == {
+            // ops_dest tok_ptr
+            drop drop
+            // ops_dest tok_ptr storec_fn_ptr
+            if "storec" &fns_map map_key_idx dup is_failure {
+                "ERROR: Function 'storec' not defined\n".s
+                1 exit
+            }
+            OP_CALL 3 roll toks_push
+        } else {
             "ERROR: Buffer '".s over.s "' cannot be automatically assigned to\n".s
             1 exit
         }
-        // ops_dest tok_ptr name
-        OP_PUSH_BUF 4 pick toks_push
-        // tok_ptr name
-        0 OP_STORE 4 roll toks_push
         // tok_ptr
-        drop tok_next
+        tok_next
     } else {
         "ERROR: Buffer '".s over.s "' not defined in this scope\n".s
         1 exit
@@ -471,7 +491,6 @@ $static INT ASM_FOPEN_ID
         "ERROR: Function 'main' not defined\n".s
         1 exit
     }
-
     OP_CALL &start_ops_mem toks_push
     0 OP_PUSH_INT &start_ops_mem toks_push
     0 OP_EXIT &start_ops_mem toks_push

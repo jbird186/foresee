@@ -7,7 +7,7 @@ $static REF out_fd
 
 // ptr ---
 :compile_str {
-    if dup str_len &out_fd@ fwrite is_failure {
+    if dup str_len out_fd fwrite is_failure {
         "ERROR: Failed to write string to output file\n".s
         1 exit
     }
@@ -15,7 +15,7 @@ $static REF out_fd
 #.coms{compile_str}
 // int ---
 :compile_int {
-    if &out_fd@ fwrite_int is_failure {
+    if out_fd fwrite_int is_failure {
         "ERROR: Failed to write integer to output file\n".s
         1 exit
     }
@@ -25,7 +25,7 @@ $static REF out_fd
 :compile_char {
     $static CHAR buf
     &buf!c
-    if &buf 1 &out_fd@ fwrite is_failure {
+    if &buf 1 out_fd fwrite is_failure {
         "ERROR: Failed to write character to output file\n".s
         1 exit
     }
@@ -309,19 +309,19 @@ $static REF out_fd
 // init ---
 :compile_buf_str {
     $static BOOL is_quote
-    false &is_quote!c
+    false =is_quote
 
     while dup@c {
         if dup@c should_print_char {
-            if &is_quote@c not {
+            if is_quote not {
                 '"'.comc
-                true &is_quote!c
+                true =is_quote
             }
             dup@c .comc
         } else {
-            if &is_quote@c {
+            if is_quote {
                 "\",".coms
-                false &is_quote!c
+                false =is_quote
             }
             dup@c .com
             ",".coms
@@ -329,7 +329,7 @@ $static REF out_fd
         1+
     } drop
 
-    if &is_quote@c {
+    if is_quote {
         "\",".coms
     }
     "0\n".coms

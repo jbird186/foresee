@@ -37,13 +37,13 @@
 #--@{dup@ 1- dup rot!}
 
 :storec {
-    dup fetch 255 ~ &
-    rot |
+    dup fetch 0xff ~ &
+    rot 0xff & |
     swap store
 }
 #!c{storec}
 :fetchc {
-    fetch 255 &
+    fetch 0xff &
 }
 #@c{fetchc}
 #@c++{dup@c dup 1+ rot!c}
