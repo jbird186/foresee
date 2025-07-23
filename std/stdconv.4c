@@ -1,6 +1,6 @@
 #include "std/core.4c"
 
-$static CHAR[24] __std_buf
+$static char[24] __std_buf
 
 // int -- ptr len
 :__write_int_to_temp {

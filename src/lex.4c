@@ -142,8 +142,10 @@
     swap
 }
 
-// char -- bool
-:is_ident_char {
+:is_ident_first_char {
+    dup (is_alpha) swap ('_' ==) |
+}
+:is_ident_any_char {
     dup (is_alnum) swap ('_' ==) |
 }
 
@@ -152,7 +154,7 @@
     &strs_mem stack_topc swap
     viewc &strs_mem stack_pushc
     while 1+ viewc {
-        if viewc is_ident_char not {
+        if viewc is_ident_any_char not {
             0 &strs_mem stack_pushc
             swap
             return
@@ -163,33 +165,32 @@
     swap
 }
 
+#match_ident_token(token_str token_id) {
+    if dup token_str str_eq {
+        0 token_id &toks_mem toks_push
+        // -- new_src_ptr n_chars
+        &strs_mem stack_topc swap -
+        &strs_mem stack_len swap - &strs_mem!
+        return
+    }
+}
+
 // src_ptr -- new_src_ptr
 :lex_ident {
     view_ident
-
-    // -- new_src_ptr ref
-    if dup "if" str_eq {
-        0 TOK_IF &toks_mem toks_push
-    } else if dup "else" str_eq {
-        0 TOK_ELSE &toks_mem toks_push
-    } else if dup "while" str_eq {
-        0 TOK_WHILE &toks_mem toks_push
-    } else if dup "static" str_eq {
-        0 TOK_STATIC &toks_mem toks_push
-    } else {
-        TOK_IDENT &toks_mem toks_push
-        return
-    }
-
-    // -- new_src_ptr n_chars
-    &strs_mem stack_topc swap -
-    &strs_mem stack_len swap - &strs_mem!
+    match_ident_token("if" TOK_IF)
+    match_ident_token("else" TOK_ELSE)
+    match_ident_token("while" TOK_WHILE)
+    match_ident_token("static" TOK_STATIC)
+    match_ident_token("struct" TOK_STRUCT)
+    TOK_IDENT &toks_mem toks_push
+    return
 }
 
 // src_ptr -- new_src_ptr ref
 :view_word {
     &strs_mem stack_topc swap
-    while ("(){}[]" over@c str_char not) (over@c is_space not) & (over@c bool) & {
+    while ("(){}[]" over@c str_char not) (over@c is_space not) & (over@c flag) & {
         viewc &strs_mem stack_pushc
         1+
     }
@@ -197,10 +198,17 @@
     swap
 }
 
-#lex_trivial(trivial_char trivial_tok) {
-    else if viewc trivial_char == {
-        0 trivial_tok &toks_mem toks_push
+#lex_tagged_ident(tag_char token_id) {
+    else if (viewc tag_char ==) (over 1+ @c is_ident_first_char) & {
         1+
+        view_ident token_id &toks_mem toks_push
+    }
+}
+
+#lex_single(token_char token_id) {
+    else if viewc token_char == {
+        1+
+        0 token_id &toks_mem toks_push
     }
 }
 
@@ -218,28 +226,27 @@
             view_char TOK_CHAR &toks_mem toks_push
         } else if viewc '\"' == {
             view_str TOK_STR &toks_mem toks_push
-        } else if (viewc '&' ==) (over 1+ @c is_ident_char) & {
-            1+
-            view_ident TOK_REF &toks_mem toks_push
-        } else if (viewc ':' ==) (over 1+ @c is_ident_char) & {
-            1+
-            view_ident TOK_FN &toks_mem toks_push
-        } else if (viewc '=' ==) (over 1+ @c is_ident_char) & {
-            1+
-            view_ident TOK_EQ &toks_mem toks_push
-        } else if (viewc '/' ==) (over 1+ @c '/' ==) & {
-            while viewc dup ('\n' !=) swap (bool) & { 1+ }
         }
-        lex_trivial(':' TOK_COLON)
-        lex_trivial('#' TOK_POUND)
-        lex_trivial('$' TOK_DOLLAR)
-        lex_trivial('(' TOK_PAREN_START)
-        lex_trivial(')' TOK_PAREN_END)
-        lex_trivial('{' TOK_BRACE_START)
-        lex_trivial('}' TOK_BRACE_END)
-        lex_trivial('[' TOK_BRACKET_START)
-        lex_trivial(']' TOK_BRACKET_END)
-        else if viewc is_ident_char {
+        lex_tagged_ident('&' TOK_REF)
+        lex_tagged_ident(':' TOK_FN)
+        lex_tagged_ident('=' TOK_EQ)
+        lex_tagged_ident('.' TOK_FIELD)
+        else if (viewc '/' ==) (over 1+ @c '/' ==) & {
+            while viewc dup ('\n' !=) swap (flag) & { 1+ }
+        } else if (viewc '-' ==) (over 1+ @c '>' ==) & {
+            2+
+            0 TOK_ARROW &toks_mem toks_push
+        }
+        lex_single(':' TOK_COLON)
+        lex_single('#' TOK_POUND)
+        lex_single('$' TOK_DOLLAR)
+        lex_single('(' TOK_PAREN_START)
+        lex_single(')' TOK_PAREN_END)
+        lex_single('{' TOK_BRACE_START)
+        lex_single('}' TOK_BRACE_END)
+        lex_single('[' TOK_BRACKET_START)
+        lex_single(']' TOK_BRACKET_END)
+        else if viewc is_ident_first_char {
             lex_ident
         } else {
             view_word TOK_WORD &toks_mem toks_push

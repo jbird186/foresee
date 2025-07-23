@@ -2,9 +2,9 @@
 #include "src/config.4c"
 #include "src/token.4c"
 
-$static INT ASM_LABEL_ID
-$static INT ASM_ROLL_ID
-$static INT ASM_FOPEN_ID
+$static int ASM_LABEL_ID
+$static int ASM_ROLL_ID
+$static int ASM_FOPEN_ID
 
 :parse_tok
 
@@ -27,7 +27,7 @@ $static INT ASM_FOPEN_ID
 
 // name -- name [idx, -1]
 :scoped_buf_idx {
-    $static INT scope_idx
+    $static int scope_idx
     &scope_stack stack_len =scope_idx
 
     while &scope_idx@-- {
@@ -250,22 +250,42 @@ $static INT ASM_FOPEN_ID
 
 :view_buf_size
 
+// base tok_ptr -- total tok_ptr
+:view_buf_size_scalar {
+    while viewtk TOK_BRACKET_START == {
+        // -- total tok_ptr scalar
+        tok_next view_buf_size
+        // -- total tok_ptr
+        rot * swap
+        if viewtk TOK_BRACKET_END != {
+            "ERROR: Invalid buffer size\n" puts
+            1 exit
+        }
+        tok_next
+    }
+}
+
 // tok_ptr -- new_tok_ptr int
 :view_buf_size_int {
     if viewtk TOK_INT == {
         // -- base tok_ptr
         viewtd swap tok_next
-        while viewtk TOK_BRACKET_START == {
-            // -- total tok_ptr scalar
-            tok_next view_buf_size
-            // -- total tok_ptr
-            rot * swap
-            if viewtk TOK_BRACKET_END != {
-                "ERROR: Invalid buffer size\n" puts
-                1 exit
-            }
-            tok_next
+        view_buf_size_scalar
+    } else if viewtk TOK_IDENT == {
+        if viewtd &structs_map map_get dup not {
+            drop
+            "ERROR: '" puts viewtd puts "' is not a known type\n" puts
+            1 exit
         }
+
+        // -- tok_ptr sum fields
+        0 swap while dup@ {
+            8+ dup@ rot + swap
+            8+
+        }
+        // -- sum tok_ptr
+        drop swap tok_next
+        view_buf_size_scalar
     } else {
         // -- value tok_ptr
         tok_next view_buf_size swap
@@ -275,6 +295,7 @@ $static INT ASM_FOPEN_ID
         }
         tok_next
     }
+    // -- tok_ptr value
     swap
     if dup 0 < {
 		"ERROR: Invalid buffer size\n" puts
@@ -282,11 +303,18 @@ $static INT ASM_FOPEN_ID
 	}
 }
 
+// tok_ptr -- bool
+:tok_is_type {
+    if viewtk TOK_IDENT != {
+        drop false return
+    }
+    tok_data &structs_map map_get flag
+}
+
 // tok_ptr -- new_tok_ptr size
 :view_buf_size {
 	// -- sum tok_ptr
-	0 swap while viewtk TOK_INT == {
-        // -- sum tok_ptr
+	0 swap while (viewtk TOK_INT ==) (over tok_is_type) | {
 		view_buf_size_int rot + swap
 	}
     swap
@@ -316,14 +344,14 @@ $static INT ASM_FOPEN_ID
     }
 
     tok_next
-    $static INT size
-    if viewtk TOK_INT == {
+    $static int size
+    if (viewtk TOK_INT ==) (over tok_is_type) | {
         view_buf_size =size
     } else {
         -1 =size
     }
 
-    $static REF name
+    $static ptr name
     if viewtk TOK_IDENT != {
         "ERROR: Invalid buffer name\n" puts
         1 exit
@@ -334,7 +362,7 @@ $static INT ASM_FOPEN_ID
     viewtd =name
     tok_next
 
-    $static REF init
+    $static ptr init
     if viewtk TOK_COLON == {
         tok_next
         if viewtk TOK_STR == {
@@ -344,7 +372,7 @@ $static INT ASM_FOPEN_ID
                 =size
             } else {
                 if size > {
-                    "ERROR: Invalid size for buffer '" puts name  puts "'\n" puts
+                    "ERROR: Invalid size for buffer '" puts name puts "'\n" puts
                     1 exit
                 }
             }
@@ -355,7 +383,7 @@ $static INT ASM_FOPEN_ID
                 if (size 8 ==) {}
                 else if (viewtd dup (0xff <=) swap (0 >=) &) (size 1 ==) & {}
                 else {
-                    "ERROR: Invalid size for buffer '" puts name  puts "'\n" puts
+                    "ERROR: Invalid size for buffer '" puts name puts "'\n" puts
                     1 exit
                 }
                 // Negative values signal integer initialization
@@ -440,6 +468,89 @@ $static INT ASM_FOPEN_ID
     }
 }
 
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_struct {
+    // -- tok_ptr
+    swap drop tok_next
+    if viewtk TOK_IDENT != {
+        "ERROR: Invalid struct name\n" puts
+        1 exit
+    }
+
+    $static ptr name
+    viewtd =name
+    $static ptr fields_ref
+    &struct_fields_mem stack_top =fields_ref
+
+    tok_next
+    if viewtk TOK_BRACE_START != {
+        "ERROR: Invalid struct definition\n" puts
+        1 exit
+    }
+
+    tok_next
+    while viewtk TOK_BRACE_END != {
+        // -- size tok_ptr
+        view_buf_size_int swap
+        if viewtk TOK_IDENT != {
+            "ERROR: Invalid definition for struct '" puts name puts "'\n" puts
+            1 exit
+        }
+        viewtd &struct_fields_mem stack_push
+        // -- tok_ptr
+        swap &struct_fields_mem stack_push
+        tok_next
+    }
+    tok_next
+    0 &struct_fields_mem stack_push
+    name fields_ref &structs_map map_insert
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_arrow {
+    tok_next
+    if viewtk TOK_IDENT != {
+        "ERROR: Invalid struct name after '->'\n" puts
+        1 exit
+    }
+    $static ptr stuct_name
+    viewtd=stuct_name
+
+    // -- ops_dest tok_ptr struct_ptr
+    if stuct_name &structs_map map_get dup not {
+        drop
+        "ERROR: Unrecognized struct '" puts stuct_name puts "'\n" puts
+        1 exit
+    }
+
+    // -- ops_dest struct_ptr tok_ptr
+    swap tok_next
+    if viewtk TOK_FIELD != {
+        "ERROR: Expected field access after '->" puts stuct_name puts "'\n" puts
+        1 exit
+    }
+
+    // -- ops_dest tok_ptr field_name struct_ptr
+    viewtd rot
+    $static int sum
+    0=sum
+    while dup@ {
+        if over over@ str_eq {
+            sum OP_PUSH_INT 5 pick toks_push
+            // -- tok_ptr field_name struct_ptr
+            0 OP_ADD 5 roll toks_push
+            drop drop tok_next
+            return
+        }
+        dup 8+ @ sum + =sum
+        16+
+    }
+
+    drop
+    "ERROR: Field '" puts puts "' not found for struct '" puts stuct_name puts "'\n" puts
+    1 exit
+}
+
 #parse_with(parse_kind parse_function) {
     else if viewtk parse_kind == {
         parse_function
@@ -473,6 +584,8 @@ $static INT ASM_FOPEN_ID
     parse_with(TOK_DOLLAR parse_dollar)
     parse_with(TOK_REF parse_ref)
     parse_with(TOK_EQ parse_eq)
+    parse_with(TOK_STRUCT parse_struct)
+    parse_with(TOK_ARROW parse_arrow)
     else {
         "ERROR: Unexpected token of type " puts viewtk put cr
         1 exit
@@ -480,10 +593,11 @@ $static INT ASM_FOPEN_ID
 }
 
 :parse_out_toks {
+    $static char kind
     // -- tok_ptr
     &out_toks_mem tok_first
-    while viewtk TOK_EOF != {
-        if viewtk dup (TOK_FN !=) swap (TOK_DOLLAR !=) & {
+    while viewtk =kind kind TOK_EOF != {
+        if (kind TOK_FN !=) (kind TOK_DOLLAR !=) (kind TOK_STRUCT !=) & & {
             "ERROR: Unexpected token of type " puts viewtk put " outside of 'main'\n" puts
             1 exit
         }

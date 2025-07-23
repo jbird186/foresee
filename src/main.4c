@@ -5,14 +5,18 @@
 
 // TODO: prevent macro/argument name collision
 // TODO: fix bug where initialized variables cannot be auto-assigned (negative size)
+// TODO: fix buffer scoping in dowhile loops
 // TODO: non-static variables
 // TODO: more preprocessor directives
 // TODO: "use" blocks
-// TODO: structs, enums
+// TODO: enums
+// TODO: function pointers
+// TODO: improve error messages
 // TODO: simulation mode
+// TODO: optimization
 
-$static INT argc
-$static REF argv
+$static int argc
+$static ptr argv
 
 // idx -- ptr
 :get_argv {
@@ -27,14 +31,14 @@ $static REF argv
         1 exit
     }
 
-    $static REF src_file_name
-    $static REF out_file_name
+    $static ptr src_file_name
+    $static ptr out_file_name
     1 get_argv =src_file_name
     2 get_argv =out_file_name
 
     0 &scope_stack stack_push
 
-    $static REF src_fd
+    $static ptr src_fd
     src_file_name 0 fopen =src_fd
 
     if src_fd is_failure {
