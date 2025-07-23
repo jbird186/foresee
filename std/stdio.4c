@@ -1,6 +1,12 @@
 #include "std/core.4c"
 #include "std/stdconv.4c"
 
+// int fd -- [bytes_written, -1]
+:fwrite_int { swap __write_int_to_temp rot fwrite }
+
+:put { __write_int_to_temp stdout }
+#show{dup put}
+
 :putc {
     &__std_buf!
     &__std_buf 1 stdout
@@ -9,18 +15,23 @@
 #cr{'\n' putc}
 #sp{' ' putc}
 
-// int fd -- [bytes_written, -1]
-:fwrite_int { swap __write_int_to_temp rot fwrite }
-// int --
-:put { __write_int_to_temp stdout }
-#show{dup put}
-
 :puts {
     while dup@c dup {
         putc 1+
     } drop drop
 }
 #shows{dup puts}
+
+:eput { __write_int_to_temp stderr }
+:eputc {
+    &__std_buf!
+    &__std_buf 1 stderr
+}
+:eputs {
+    while dup@c dup {
+        eputc 1+
+    } drop drop
+}
 
 // -- char
 :readc {
@@ -49,7 +60,6 @@
     }
     // -- is_neg total
     drop drop
-
     if swap { -1* }
 }
 

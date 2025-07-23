@@ -27,7 +27,7 @@ $static ptr argv
 :main {
     =argc =argv
     if argc 3 != {
-        "Usage: " puts 0 get_argv puts " <source_file> <output_file>\n" puts
+        "Usage: "puts 0 get_argv puts " <source_file> <output_file>\n"puts
         1 exit
     }
 
@@ -42,7 +42,7 @@ $static ptr argv
     src_file_name 0 fopen =src_fd
 
     if src_fd is_failure {
-        "ERROR: File '" puts src_file_name puts "' not found\n" puts
+        "ERROR: File '"eputs src_file_name eputs "' not found\n"eputs
         1 exit
     }
 

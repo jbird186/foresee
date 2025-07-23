@@ -8,14 +8,14 @@ $static ptr out_fd
 // ptr --
 :coms {
     if dup str_len out_fd fwrite is_failure {
-        "ERROR: Failed to write string to output file\n" puts
+        "ERROR: Failed to write string to output file\n"eputs
         1 exit
     }
 }
 // int --
 :com {
     if out_fd fwrite_int is_failure {
-        "ERROR: Failed to write integer to output file\n" puts
+        "ERROR: Failed to write integer to output file\n"eputs
         1 exit
     }
 }
@@ -24,7 +24,7 @@ $static ptr out_fd
     $static char buf
     &buf!c
     if &buf 1 out_fd fwrite is_failure {
-        "ERROR: Failed to write character to output file\n" puts
+        "ERROR: Failed to write character to output file\n"eputs
         1 exit
     }
 }
@@ -284,7 +284,7 @@ $static ptr out_fd
         "rax" compile_push          // return 0 or -1
     }
     else {
-        "ERROR: Invalid opcode of type " puts viewtk put cr
+        "ERROR: Invalid opcode of type "eputs viewtk eput cr
         1 exit
     }
     tok_next

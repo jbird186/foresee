@@ -55,7 +55,7 @@
             // -- name def_tok_ptr tok_ptr
             swap
             if viewtk TOK_PAREN_START != {
-                "ERROR: Expected arguments for macro '" puts 2 pick puts "'\n" puts
+                "ERROR: Expected arguments for macro '"eputs 2 pick eputs "'\n"eputs
                 1 exit
             }
             tok_next
@@ -71,7 +71,7 @@
                 if viewtk TOK_BRACE_START == {
                     skip_braces
                 } else if viewtk TOK_PAREN_END == {
-                    "ERROR: Invalid number of arguments supplied to macro '" puts 2 pick puts "'\n" puts
+                    "ERROR: Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
                     1 exit
                 } else {
                     tok_next
@@ -80,7 +80,7 @@
             // -- name def_tok_ptr tok_ptr
             tok_next swap
             if viewtk TOK_PAREN_END != {
-                "ERROR: Invalid number of arguments supplied to macro '" puts 2 pick puts "'\n" puts
+                "ERROR: Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
                 1 exit
             }
             // -- name tok_ptr def_tok_ptr
@@ -106,7 +106,7 @@
 :preprocess_include {
     tok_next
     if viewtk TOK_STR != {
-        "ERROR: Expected file name after 'include' directive\n" puts
+        "ERROR: Expected file name after 'include' directive\n"eputs
         1 exit
     }
 
@@ -119,12 +119,12 @@
 
     // -- tok_ptr fd
     if viewtd 0 fopen dup is_failure {
-        "ERROR: 'include' directive failed to open file '" puts swap viewtd puts "'\n" puts
+        "ERROR: 'include' directive failed to open file '"eputs swap viewtd eputs "'\n"eputs
         1 exit
     }
     // -- tok_ptr fd bytes_read
     if &src_str SRC_STR_SIZE 2 pick fread dup is_failure {
-        "ERROR: 'include' directive failed to read file '" puts swap viewtd puts "'\n" puts
+        "ERROR: 'include' directive failed to read file '"eputs swap viewtd eputs "'\n"eputs
         1 exit
     }
     // -- tok_ptr fd
@@ -132,7 +132,7 @@
 
     // -- tok_ptr
     if fclose is_failure {
-        "ERROR: 'include' directive failed to close file '" puts swap viewtd puts "'\n" puts
+        "ERROR: 'include' directive failed to close file '"eputs swap viewtd eputs "'\n"eputs
         1 exit
     }
 
@@ -147,7 +147,7 @@
 // tok_ptr -- new_tok_ptr
 :preprocess_macro_def {
     if viewtd &macros_map map_get {
-        "ERROR: Macro '" puts viewtd puts "' already defined\n" puts
+        "ERROR: Macro '"eputs viewtd eputs "' already defined\n"eputs
         1 exit
     }
     // -- name tok_ptr
@@ -159,7 +159,7 @@
     if viewtk TOK_PAREN_START == {
         while tok_next viewtk TOK_PAREN_END != {
             if viewtk dup (TOK_IDENT ==) swap (TOK_WORD ==) | not {
-                "ERROR: Invalid parameter in definition for macro '" puts over puts "'\n" puts
+                "ERROR: Invalid parameter in definition for macro '"eputs over eputs "'\n"eputs
                 1 exit
             }
         }
@@ -167,7 +167,7 @@
     }
 
     if viewtk TOK_BRACE_START != {
-        "ERROR: Invalid body for macro '" puts over puts "'\n" puts
+        "ERROR: Invalid body for macro '"eputs over eputs "'\n"eputs
         1 exit
     }
     // -- tok_ptr
@@ -183,7 +183,7 @@
     } else if viewtk dup (TOK_IDENT ==) swap (TOK_WORD ==) | {
         preprocess_macro_def
     } else {
-        "ERROR: Unexpected preprocessor directive\n" puts
+        "ERROR: Unexpected preprocessor directive\n"eputs
         1 exit
     }
 }
