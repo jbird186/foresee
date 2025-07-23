@@ -39,6 +39,69 @@ $static int ASM_FOPEN_ID
     -1
 }
 
+// ops_dest tok_ptr -- ops_dest new_tok_ptr field_size offset
+:view_arrow {
+    tok_next
+    if viewtk TOK_IDENT != {
+        "ERROR: Invalid struct name after '->'\n"eputs
+        1 exit
+    }
+    $static ptr stuct_name
+    viewtd=stuct_name
+
+    // -- ops_dest tok_ptr struct_ptr
+    if stuct_name &structs_map map_get dup not {
+        drop
+        "ERROR: Unrecognized struct '"eputs stuct_name eputs "'\n"eputs
+        1 exit
+    }
+
+    // -- ops_dest struct_ptr tok_ptr
+    swap tok_next
+    if viewtk TOK_FIELD != {
+        "ERROR: Expected field access after '->"eputs stuct_name eputs "'\n"eputs
+        1 exit
+    }
+
+    // -- ops_dest tok_ptr field_name struct_ptr
+    viewtd rot
+    $static int sum
+    0=sum
+    while dup@ {
+        if over over@ str_eq {
+            // -- ops_dest tok_ptr field_size
+            8+ @ nip
+            swap tok_next swap
+            sum return
+        }
+        8+ dup @ sum + =sum
+        8+
+    }
+
+    drop
+    "ERROR: Field '"eputs eputs "' not found for struct '"eputs stuct_name eputs "'\n"eputs
+    1 exit
+}
+
+// ops_dest tok_ptr -- ops_dest tok_ptr
+#_view_arrows {
+    tok_next
+    idx bmap_idx_size =size
+
+    idx OP_PUSH_BUF 3 pick toks_push
+
+    if viewtk TOK_ARROW == {
+        while viewtk TOK_ARROW == {
+            // -- ops_dest new_tok_ptr field_size offset
+            view_arrow
+            OP_PUSH_INT 4 pick toks_push
+            0 OP_ADD 4 pick toks_push
+            // -- ops_dest new_tok_ptr
+            =size
+        }
+    }
+}
+
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_string {
     viewtd &inline_bufs stack_push
@@ -85,36 +148,38 @@ $static int ASM_FOPEN_ID
     define_intrinsic_opcode(0 OP_FCLOSE "__OP_FCLOSE")
 
     ////////// Functions //////////
-    // -- ops_dest tok_ptr
-    if viewtd &fns_map map_get {
-        // -- tok_ptr
-        viewtd &fns_map map_key_idx OP_CALL 3 roll toks_push
-    // -- ops_dest tok_ptr name idx
-    } else if viewtd scoped_buf_idx dup is_success {
-        // -- ops_dest tok_ptr name idx
-        dup OP_PUSH_BUF 5 pick toks_push
-        if dup bmap_idx_size 8 == {
-            // -- ops_dest tok_ptr
-            drop drop
-            0 OP_FETCH 3 roll toks_push
-        } else if dup bmap_idx_size 1 == {
-            // -- ops_dest tok_ptr
-            drop drop
-            // -- ops_dest tok_ptr storec_fn_ptr
-            if "fetchc" &fns_map map_key_idx dup is_failure {
-                "ERROR: Function 'fetchc' not defined\n"eputs
-                1 exit
-            }
-            OP_CALL 3 roll toks_push
-        } else {
-            "ERROR: Buffer '"eputs over eputs "' cannot be automatically read from\n"eputs
-            1 exit
-        }
-    } else {
-        "ERROR: Function '"eputs drop eputs "' not defined\n"eputs
+    // -- ops_dest tok_ptr idx
+    if viewtd &fns_map map_key_idx dup is_success {
+        OP_CALL 3 roll toks_push
+        tok_next
+        return
+    } drop
+
+    ////////// Buffers //////////
+    $static int idx
+    $static int name
+    $static int size
+
+    viewtd scoped_buf_idx =idx =name
+    if idx is_failure {
+        "ERROR: Function '"eputs name eputs "' not defined\n"eputs
         1 exit
     }
-    tok_next
+
+    _view_arrows
+    if size 8 == {
+        0 OP_FETCH 3 roll toks_push
+    } else if size 1 == {
+        // -- ops_dest tok_ptr fetchc_fn_ptr
+        if "fetchc" &fns_map map_key_idx dup is_failure {
+            "ERROR: Function 'fetchc' not defined\n"eputs
+            1 exit
+        }
+        OP_CALL 3 roll toks_push
+    } else {
+        "ERROR: Buffer '"eputs name eputs "' cannot be automatically read from\n"eputs
+        1 exit
+    }
 }
 
 // ops_dest tok_ptr if_id -- new_tok_ptr
@@ -439,32 +504,28 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_eq {
-    // -- ops_dest tok_ptr name idx
-    viewtd scoped_buf_idx
-    if dup is_success {
-        // -- ops_dest tok_ptr name idx
-        dup OP_PUSH_BUF 5 pick toks_push
-        if dup bmap_idx_size 8 == {
-            // -- ops_dest tok_ptr
-            drop drop
-            0 OP_STORE 3 roll toks_push
-        } else if dup bmap_idx_size 1 == {
-            // -- ops_dest tok_ptr
-            drop drop
-            // -- ops_dest tok_ptr storec_fn_ptr
-            if "storec" &fns_map map_key_idx dup is_failure {
-                "ERROR: Function 'storec' not defined\n"eputs
-                1 exit
-            }
-            OP_CALL 3 roll toks_push
-        } else {
-            "ERROR: Buffer '"eputs over eputs "' cannot be automatically assigned to\n"eputs
+    $static int idx
+    $static int name
+    $static int size
+
+    viewtd scoped_buf_idx =idx =name
+    if idx is_failure {
+        "ERROR: Buffer '"eputs name eputs "' not defined in this scope\n"eputs
+        1 exit
+    }
+
+    _view_arrows
+    if size 8 == {
+        0 OP_STORE 3 roll toks_push
+    } else if size 1 == {
+        // -- ops_dest tok_ptr storec_fn_ptr
+        if "storec" &fns_map map_key_idx dup is_failure {
+            "ERROR: Function 'storec' not defined\n"eputs
             1 exit
         }
-        // -- tok_ptr
-        tok_next
+        OP_CALL 3 roll toks_push
     } else {
-        "ERROR: Buffer '"eputs over eputs "' not defined in this scope\n"eputs
+        "ERROR: Buffer '"eputs name eputs "' cannot be automatically assigned to\n"eputs
         1 exit
     }
 }
@@ -514,47 +575,8 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_arrow {
-    tok_next
-    if viewtk TOK_IDENT != {
-        "ERROR: Invalid struct name after '->'\n"eputs
-        1 exit
-    }
-    $static ptr stuct_name
-    viewtd=stuct_name
-
-    // -- ops_dest tok_ptr struct_ptr
-    if stuct_name &structs_map map_get dup not {
-        drop
-        "ERROR: Unrecognized struct '"eputs stuct_name eputs "'\n"eputs
-        1 exit
-    }
-
-    // -- ops_dest struct_ptr tok_ptr
-    swap tok_next
-    if viewtk TOK_FIELD != {
-        "ERROR: Expected field access after '->"eputs stuct_name eputs "'\n"eputs
-        1 exit
-    }
-
-    // -- ops_dest tok_ptr field_name struct_ptr
-    viewtd rot
-    $static int sum
-    0=sum
-    while dup@ {
-        if over over@ str_eq {
-            sum OP_PUSH_INT 5 pick toks_push
-            // -- tok_ptr field_name struct_ptr
-            0 OP_ADD 5 roll toks_push
-            drop drop tok_next
-            return
-        }
-        dup 8+ @ sum + =sum
-        16+
-    }
-
-    drop
-    "ERROR: Field '"eputs eputs "' not found for struct '"eputs stuct_name eputs "'\n"eputs
-    1 exit
+    view_arrow nip OP_PUSH_INT 3 pick toks_push
+    0 OP_ADD 3 roll toks_push
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
