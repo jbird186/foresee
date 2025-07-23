@@ -142,9 +142,8 @@ $static int ASM_FOPEN_ID
 
     // No else condition
     if viewtk TOK_ELSE != {
-        swap drop
         // tok_ptr
-        swap drop
+        nip nip
         return
     }
     tok_next
@@ -153,13 +152,10 @@ $static int ASM_FOPEN_ID
     // -- if_id ops_dest tok_ptr
     if viewtk TOK_BRACE_START == {
         tok_next
-
         dup &scope_stack stack_push
         _parse_until(TOK_BRACE_END)
         &scope_stack stack_shrink
-
-        swap drop
-        swap drop
+        nip nip
     } else if viewtk TOK_IF == {
         // -- tok_ptr
         rot _parse_if_with_id
@@ -265,6 +261,22 @@ $static int ASM_FOPEN_ID
     }
 }
 
+// tok_ptr -- new_tok_ptr size
+:view_type_size {
+    if viewtd &structs_map map_get dup is_failure {
+        drop
+        "ERROR: Type '"eputs viewtd eputs "' not found\n"eputs
+        1 exit
+    }
+
+    // -- tok_ptr sum fields
+    0 swap while dup@ {
+        8+ dup@ rot + swap
+        8+
+    }
+    drop
+}
+
 // tok_ptr -- new_tok_ptr int
 :view_buf_size_int {
     if viewtk TOK_INT == {
@@ -272,19 +284,8 @@ $static int ASM_FOPEN_ID
         viewtd swap tok_next
         view_buf_size_scalar
     } else if viewtk TOK_IDENT == {
-        if viewtd &structs_map map_get dup not {
-            drop
-            "ERROR: '"eputs viewtd eputs "' is not a known type\n"eputs
-            1 exit
-        }
-
-        // -- tok_ptr sum fields
-        0 swap while dup@ {
-            8+ dup@ rot + swap
-            8+
-        }
         // -- sum tok_ptr
-        drop swap tok_next
+        view_type_size swap tok_next
         view_buf_size_scalar
     } else {
         // -- value tok_ptr
@@ -329,7 +330,7 @@ $static int ASM_FOPEN_ID
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_dollar {
     // -- tok_ptr
-    swap drop
+    nip
 
     tok_next
     if viewtk TOK_STATIC != {
@@ -471,7 +472,7 @@ $static int ASM_FOPEN_ID
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_struct {
     // -- tok_ptr
-    swap drop tok_next
+    nip tok_next
     if viewtk TOK_IDENT != {
         "ERROR: Invalid struct name\n"eputs
         1 exit
@@ -551,6 +552,22 @@ $static int ASM_FOPEN_ID
     1 exit
 }
 
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_size {
+    if viewtd &structs_map map_get {
+        view_type_size
+    // -- ops_dest tok_ptr idx
+    } else if viewtd scoped_buf_idx nip dup is_success {
+        bmap_idx_size
+    } else {
+        drop
+        "ERROR: Buffer '"eputs viewtd eputs "' not defined\n"eputs
+        1 exit
+    }
+    OP_PUSH_INT 3 roll toks_push
+    tok_next
+}
+
 #parse_with(parse_kind parse_function) {
     else if viewtk parse_kind == {
         parse_function
@@ -574,7 +591,7 @@ $static int ASM_FOPEN_ID
     else if viewtk TOK_PAREN_START == {
         tok_next
         _parse_until(TOK_PAREN_END)
-        swap drop
+        nip
     }
     parse_with(TOK_STR parse_string)
     parse_with(TOK_IDENT parse_ident)
@@ -586,6 +603,7 @@ $static int ASM_FOPEN_ID
     parse_with(TOK_EQ parse_eq)
     parse_with(TOK_STRUCT parse_struct)
     parse_with(TOK_ARROW parse_arrow)
+    parse_with(TOK_SIZE parse_size)
     else {
         "ERROR: Unexpected token of type "eputs viewtk eput cr
         1 exit

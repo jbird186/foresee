@@ -20,14 +20,16 @@ struct bool { 1 __inner }
 #is_success{0 >}
 #is_failure{0 <}
 
-// a  -- a a
+// a -- a a
 :dup{0 pick}
-// a b  -- a b a
+// a b -- a b a
 :over{1 pick}
-// a b  -- b a
+// a b -- b a
 :swap{1 roll}
-// a b c  -- b c a
+// a b c -- b c a
 :rot{2 roll}
+// a b -- b
+:nip{swap drop}
 
 #!{store}
 #@{fetch}
