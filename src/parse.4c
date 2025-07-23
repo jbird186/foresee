@@ -211,7 +211,7 @@ $static int ASM_FOPEN_ID
 
     // -- tok_ptr
     if swap {
-        "ERROR: Function '"eputs viewtd eputs "' must not define internal functions\n"eputs
+        "ERROR: Function '"eputs viewtd eputs "' must be defined in global scope\n"eputs
         1 exit
     }
 
@@ -472,7 +472,12 @@ $static int ASM_FOPEN_ID
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_struct {
     // -- tok_ptr
-    nip tok_next
+    tok_next
+    if swap {
+        "ERROR: Struct '"eputs viewtd eputs "' must be defined in global scope\n"eputs
+        1 exit
+    }
+
     if viewtk TOK_IDENT != {
         "ERROR: Invalid struct name\n"eputs
         1 exit
