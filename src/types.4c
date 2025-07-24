@@ -1,0 +1,37 @@
+#include "std/core.4c"
+
+struct File {
+    ptr name
+}
+
+struct ScopedKey {
+    ptr name
+    int scope
+}
+
+struct Buffer {
+    ScopedKey key
+    int size
+    ptr init
+    bool init_int
+}
+
+struct Macro {
+    ptr name
+    ptr toks
+}
+
+struct Function {
+    ptr name
+    ptr def
+}
+
+struct Struct {
+    ptr name
+    ptr fields
+}
+
+struct StructField {
+    ptr name
+    int size
+}

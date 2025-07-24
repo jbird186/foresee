@@ -3,6 +3,7 @@
 #include "src/parse.4c"
 #include "src/compile.4c"
 
+// TODO: prevent buffer/function/struct name collision
 // TODO: prevent macro/argument name collision
 // TODO: fix bug where initialized variables cannot be auto-assigned (negative size)
 // TODO: fix buffer scoping in dowhile loops
@@ -21,7 +22,7 @@ $static ptr argv
 
 // idx -- ptr
 :get_argv {
-    8* argv + @
+    %ptr* argv + @
 }
 
 // argv argc --
@@ -49,7 +50,6 @@ $static ptr argv
 
     &src_str SRC_STR_SIZE src_fd fread drop
     src_fd fclose drop
-
     &src_str lex_src
     preprocess_src
     parse_out_toks

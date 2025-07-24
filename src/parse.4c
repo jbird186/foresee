@@ -31,10 +31,11 @@ $static int ASM_FOPEN_ID
     &scope_stack stack_len =scope_idx
 
     while &scope_idx@-- {
-        // -- name idx
-        dup scope_idx &scope_stack stack_get bmap_get_idx
-        if dup is_success { return }
-        drop
+        // -- name
+        if dup scope_idx &scope_stack stack_get BUFS_MAP scoped_map_contains {
+            dup scope_idx &scope_stack stack_get BUFS_MAP get_scoped_map_idx
+            return
+        }
     }
     -1
 }
@@ -46,59 +47,57 @@ $static int ASM_FOPEN_ID
         "ERROR: Invalid struct name after '->'\n"eputs
         1 exit
     }
-    $static ptr stuct_name
-    viewtd=stuct_name
+    $static ptr struct_name
+    viewtd=struct_name
 
-    // -- ops_dest tok_ptr struct_ptr
-    if stuct_name &structs_map map_get dup not {
+    // -- ops_dest tok_ptr fields_ptr
+    if struct_name STRUCTS_MAP get_map_slot dup slot_is_empty {
         drop
-        "ERROR: Unrecognized struct '"eputs stuct_name eputs "'\n"eputs
+        "ERROR: Unrecognized struct '"eputs struct_name eputs "'\n"eputs
         1 exit
     }
+    ->Struct.fields@
 
-    // -- ops_dest struct_ptr tok_ptr
+    // -- ops_dest fields_ptr tok_ptr
     swap tok_next
     if viewtk TOK_FIELD != {
-        "ERROR: Expected field access after '->"eputs stuct_name eputs "'\n"eputs
+        "ERROR: Expected field access after '->"eputs struct_name eputs "'\n"eputs
         1 exit
     }
 
-    // -- ops_dest tok_ptr field_name struct_ptr
+    // -- ops_dest tok_ptr field_name fields_ptr
     viewtd rot
     $static int sum
     0=sum
-    while dup@ {
-        if over over@ str_eq {
+    while dup->StructField.name@ {
+        if over over->StructField.name@ str_eq {
             // -- ops_dest tok_ptr field_size
-            8+ @ nip
+            ->StructField.size@ nip
             swap tok_next swap
             sum return
         }
-        8+ dup @ sum + =sum
-        8+
+        dup->StructField.size@ sum + =sum
+        %StructField+
     }
 
     drop
-    "ERROR: Field '"eputs eputs "' not found for struct '"eputs stuct_name eputs "'\n"eputs
+    "ERROR: Field '"eputs eputs "' not found for struct '"eputs struct_name eputs "'\n"eputs
     1 exit
 }
 
 // ops_dest tok_ptr -- ops_dest tok_ptr
 #_view_arrows {
     tok_next
-    idx bmap_idx_size =size
-
+    idx BUFS_MAP map_idx->Buffer.size@ =size
     idx OP_PUSH_BUF 3 pick toks_push
 
-    if viewtk TOK_ARROW == {
-        while viewtk TOK_ARROW == {
-            // -- ops_dest new_tok_ptr field_size offset
-            view_arrow
-            OP_PUSH_INT 4 pick toks_push
-            0 OP_ADD 4 pick toks_push
-            // -- ops_dest new_tok_ptr
-            =size
-        }
+    while viewtk TOK_ARROW == {
+        // -- ops_dest new_tok_ptr field_size offset
+        view_arrow
+        OP_PUSH_INT 4 pick toks_push
+        0 OP_ADD 4 pick toks_push
+        // -- ops_dest new_tok_ptr
+        =size
     }
 }
 
@@ -148,12 +147,12 @@ $static int ASM_FOPEN_ID
     define_intrinsic_opcode(0 OP_FCLOSE "__OP_FCLOSE")
 
     ////////// Functions //////////
-    // -- ops_dest tok_ptr idx
-    if viewtd &fns_map map_key_idx dup is_success {
-        OP_CALL 3 roll toks_push
+    // -- ops_dest tok_ptr
+    if viewtd FNS_MAP map_contains {
+        viewtd FNS_MAP get_map_idx OP_CALL 3 roll toks_push
         tok_next
         return
-    } drop
+    }
 
     ////////// Buffers //////////
     $static int idx
@@ -170,12 +169,11 @@ $static int ASM_FOPEN_ID
     if size 8 == {
         0 OP_FETCH 3 roll toks_push
     } else if size 1 == {
-        // -- ops_dest tok_ptr fetchc_fn_ptr
-        if "fetchc" &fns_map map_key_idx dup is_failure {
+        if "fetchc" FNS_MAP map_contains not {
             "ERROR: Function 'fetchc' not defined\n"eputs
             1 exit
         }
-        OP_CALL 3 roll toks_push
+        "fetchc" FNS_MAP get_map_idx OP_CALL 3 roll toks_push
     } else {
         "ERROR: Buffer '"eputs name eputs "' cannot be automatically read from\n"eputs
         1 exit
@@ -269,7 +267,7 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_fn {
-    if viewtd &fns_map map_get dup (-1 !=) swap (0 !=) & {
+    if viewtd FNS_MAP get_map_slot->Function.def@ {
         "ERROR: Function '"eputs viewtd eputs "' already defined\n"eputs
         1 exit
     }
@@ -284,16 +282,17 @@ $static int ASM_FOPEN_ID
     viewtd swap tok_next
     // Function prototype
     if viewtk TOK_BRACE_START != {
-        // -- tok_ptr
-        swap -1 &fns_map map_insert
+        swap dup FNS_MAP get_map_slot->Function.name!
         return
     }
     dup &scope_stack stack_push
 
     // -- name tok_ptr fn_ptr
     &fn_ops_mem toks_top
+    // -- tok_ptr fn_ptr name slot_ptr
+    rot dup FNS_MAP get_map_slot
     // -- tok_ptr
-    rot swap &fns_map map_insert
+    swap over ->Function.name! ->Function.def!
     tok_next
 
     while viewtk TOK_BRACE_END != {
@@ -328,11 +327,12 @@ $static int ASM_FOPEN_ID
 
 // tok_ptr -- new_tok_ptr size
 :view_type_size {
-    if viewtd &structs_map map_get dup is_failure {
+    if viewtd STRUCTS_MAP get_map_slot dup slot_is_empty {
         drop
         "ERROR: Type '"eputs viewtd eputs "' not found\n"eputs
         1 exit
     }
+    ->Struct.fields@
 
     // -- tok_ptr sum fields
     0 swap while dup@ {
@@ -374,7 +374,7 @@ $static int ASM_FOPEN_ID
     if viewtk TOK_IDENT != {
         drop false return
     }
-    tok_data &structs_map map_get flag
+    tok_data STRUCTS_MAP map_contains
 }
 
 // tok_ptr -- new_tok_ptr size
@@ -421,14 +421,14 @@ $static int ASM_FOPEN_ID
     if viewtk TOK_IDENT != {
         "ERROR: Invalid buffer name\n"eputs
         1 exit
-    } else if viewtd &scope_stack stack_last bmap_get_idx is_success {
+    } else if viewtd &scope_stack stack_last BUFS_MAP scoped_map_contains {
         "ERROR: Buffer '"eputs viewtd eputs "' already defined\n"eputs
         1 exit
     }
     viewtd =name
     tok_next
-
     $static ptr init
+    $static char init_int
     if viewtk TOK_COLON == {
         tok_next
         if viewtk TOK_STR == {
@@ -442,30 +442,29 @@ $static int ASM_FOPEN_ID
                     1 exit
                 }
             }
+            false =init_int
         } else if viewtk TOK_INT == {
             if size 0 < {
-                -8 =size
+                8 =size
             } else {
-                if (size 8 ==) {}
+                if size 8 == {}
                 else if (viewtd dup (0xff <=) swap (0 >=) &) (size 1 ==) & {}
                 else {
                     "ERROR: Invalid size for buffer '"eputs name eputs "'\n"eputs
                     1 exit
                 }
-                // Negative values signal integer initialization
-                size -1 * =size
             }
+            true =init_int
         } else if viewtk TOK_CHAR == {
             if size 0 < {
-                -1 =size
+                1 =size
             } else {
                 if (size 8 !=) (size 1 !=) & {
                     "ERROR: Invalid size for buffer '"eputs name eputs "'\n"eputs
                     1 exit
                 }
-                // Negative values signal integer initialization
-                size -1 * =size
             }
+            true =init_int
         } else {
             "ERROR: Invalid initialization value for buffer '"eputs name eputs "'\n"eputs
             1 exit
@@ -478,6 +477,7 @@ $static int ASM_FOPEN_ID
             "ERROR: Invalid definition for buffer '"eputs name eputs "'\n"eputs
             1 exit
         }
+        false =init_int
     }
 
     if size BUFFER_SIZE_LIMIT > {
@@ -485,7 +485,13 @@ $static int ASM_FOPEN_ID
         1 exit
     }
 
-    init size name &scope_stack stack_last bmap_insert
+    // -- tok_ptr
+    name &scope_stack stack_last BUFS_MAP get_scoped_map_slot
+    name over->Buffer.key->ScopedKey.name!
+    &scope_stack stack_last over->Buffer.key->ScopedKey.scope!
+    size over->Buffer.size!
+    init over->Buffer.init!
+    init_int swap->Buffer.init_int!c
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -518,12 +524,11 @@ $static int ASM_FOPEN_ID
     if size 8 == {
         0 OP_STORE 3 roll toks_push
     } else if size 1 == {
-        // -- ops_dest tok_ptr storec_fn_ptr
-        if "storec" &fns_map map_key_idx dup is_failure {
+        if "storec" FNS_MAP map_contains not {
             "ERROR: Function 'storec' not defined\n"eputs
             1 exit
         }
-        OP_CALL 3 roll toks_push
+        "storec" FNS_MAP get_map_idx OP_CALL 3 roll toks_push
     } else {
         "ERROR: Buffer '"eputs name eputs "' cannot be automatically assigned to\n"eputs
         1 exit
@@ -564,13 +569,16 @@ $static int ASM_FOPEN_ID
             1 exit
         }
         viewtd &struct_fields_mem stack_push
-        // -- tok_ptr
         swap &struct_fields_mem stack_push
         tok_next
     }
     tok_next
-    0 &struct_fields_mem stack_push
-    name fields_ref &structs_map map_insert
+    NULL &struct_fields_mem stack_push
+
+    // -- tok_ptr slot_ptr
+    name STRUCTS_MAP get_map_slot
+    name over->Struct.name!
+    fields_ref swap->Struct.fields!
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -581,11 +589,11 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_size {
-    if viewtd &structs_map map_get {
+    if viewtd STRUCTS_MAP map_contains {
         view_type_size
     // -- ops_dest tok_ptr idx
     } else if viewtd scoped_buf_idx nip dup is_success {
-        bmap_idx_size
+        BUFS_MAP map_idx
     } else {
         drop
         "ERROR: Buffer '"eputs viewtd eputs "' not defined\n"eputs
@@ -651,11 +659,11 @@ $static int ASM_FOPEN_ID
     drop
 
     // -- main_fn_ptr
-    if "main" &fns_map map_key_idx dup is_failure {
+    if "main" FNS_MAP get_map_slot dup slot_is_empty {
         "ERROR: Function 'main' not defined\n"eputs
         1 exit
     }
-    OP_CALL &start_ops_mem toks_push
+    "main" FNS_MAP get_map_idx OP_CALL &start_ops_mem toks_push
     0 OP_PUSH_INT &start_ops_mem toks_push
     0 OP_EXIT &start_ops_mem toks_push
     0 OP_EOF &start_ops_mem toks_push

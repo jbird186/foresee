@@ -50,19 +50,19 @@ $static ptr out_fd
 
 :compile_ops
 
-// name --
+// idx map_slot_ptr -- idx
 :compile_function {
-    "; "coms dup coms "\n"coms
-    "f_"coms dup &fns_map map_key_idx com ":\n"coms
-    &fns_map map_get compile_ops
+    "; "coms dup->Function.name@ coms "\n"coms
+    "f_"coms over com ":\n"coms
+    ->Function.def@ compile_ops
 }
 
 :compile_functions {
     // -- idx
     0 while dup MAP_SIZE < {
-        // -- idx fn_name
-        dup &fns_map map_get_idx_key
-        if dup { compile_function }
+        // -- idx slot_ptr
+        dup FNS_MAP map_idx
+        if dup slot_is_used { compile_function }
         else { drop }
         1+
     } drop
@@ -345,21 +345,21 @@ $static ptr out_fd
 // idx --
 :compile_buf_data {
     $static int buf_size
-    dup bmap_idx_size if dup 0 < { -1* } =buf_size
+    dup BUFS_MAP map_idx->Buffer.size@ =buf_size
 
-    "    ; "coms dup bmap_idx_name coms "\n"coms
+    "    ; "coms dup BUFS_MAP map_idx->Buffer.key->ScopedKey.name@ coms "\n"coms
     "    b_"coms dup com
 
-    if dup bmap_idx_size 0 < {
+    if dup BUFS_MAP map_idx->Buffer.init_int@ {
         if buf_size 1 == {
-            " db "coms bmap_idx_init com "\n"coms
+            " db "coms BUFS_MAP map_idx->Buffer.init@ com "\n"coms
         } else if buf_size 8 == {
-            " dq "coms bmap_idx_init com "\n"coms
+            " dq "coms BUFS_MAP map_idx->Buffer.init@ com "\n"coms
         }
     } else {
         " db "coms
-        dup bmap_idx_init compile_buf_str
-        if (dup bmap_idx_init str_len 1+) (buf_size) < {
+        dup BUFS_MAP map_idx->Buffer.init@ compile_buf_str
+        if (dup BUFS_MAP map_idx->Buffer.init@ str_len 1+) (buf_size) < {
             "        times "coms buf_size com " - ($ - b_"coms dup com ") db 0\n"coms
         }
         drop
@@ -368,13 +368,13 @@ $static ptr out_fd
 
 // idx --
 :compile_buf_bss {
-    "    b_"coms dup com " resb "coms bmap_idx_size com
-    " ; "coms dup bmap_idx_name coms "\n" coms
+    "    b_"coms dup com " resb "coms BUFS_MAP map_idx->Buffer.size@ com
+    " ; "coms dup BUFS_MAP map_idx->Buffer.key->ScopedKey.name@ coms "\n" coms
 }
 
 // idx -- bool
-:use_section_data {
-    dup (bmap_idx_init flag) swap (bmap_idx_size 0 <) |
+:is_used_slot {
+    BUFS_MAP map_idx->Buffer.key->ScopedKey.name@ flag
 }
 
 :compile_program {
@@ -393,9 +393,10 @@ $static ptr out_fd
     &start_ops_mem tok_first compile_ops
 
     "section .data\n"coms
+
     // -- idx
     0 while dup MAP_SIZE < {
-        if dup dup (bmap_idx_name flag) swap (use_section_data) & {
+        if dup dup (is_used_slot) swap (BUFS_MAP map_idx->Buffer.init@ flag) & {
             dup compile_buf_data
         }
         1+
@@ -405,7 +406,7 @@ $static ptr out_fd
     "section .bss\n"coms
     // -- idx
     0 while dup MAP_SIZE < {
-        if dup dup (bmap_idx_name flag) swap (use_section_data not) & {
+        if dup dup (is_used_slot) swap (BUFS_MAP map_idx->Buffer.init@ not) & {
             dup compile_buf_bss
         }
         1+

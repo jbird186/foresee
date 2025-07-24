@@ -69,8 +69,9 @@
 
     // -- name tok_ptr
     viewtd swap
-    // -- name tok_ptr def_tok_ptr
-    if over &macros_map map_get dup {
+    // -- name tok_ptr macro_slot_ptr
+    if over MACROS_MAP get_map_slot dup slot_is_used {
+        ->Macro.toks@
         swap tok_next swap
         // Arguments (optional)
         if viewtk TOK_PAREN_START == {
@@ -84,10 +85,11 @@
 
             // -- name tok_ptr def_tok_ptr
             while swap tok_next viewtk TOK_PAREN_END != {
-                // -- name tok_ptr def_tok_ptr
                 // TODO: prevent name collision between macros and macro arguments
-                viewtd 2 pick &macros_map map_insert
-
+                // -- name tok_ptr def_tok_ptr slot_ptr
+                viewtd MACROS_MAP get_map_slot
+                over tok_data over ->Macro.name!
+                2 pick swap ->Macro.toks!
                 // -- name def_tok_ptr tok_ptr
                 swap
                 if viewtk TOK_BRACE_START == {
@@ -140,11 +142,11 @@
     }
 
     // Check if this file has already been included
-    if viewtd &files_set set_contains {
+    if viewtd FILES_SET map_contains {
         tok_next
         return
     }
-    viewtd &files_set set_insert
+    viewtd dup FILES_SET get_map_slot->File.name!
 
     // -- tok_ptr fd
     if viewtd 0 fopen dup is_failure {
@@ -175,13 +177,16 @@
 
 // tok_ptr -- new_tok_ptr
 :preprocess_macro_def {
-    if viewtd &macros_map map_get {
+    if viewtd MACROS_MAP map_contains {
         "ERROR: Macro '"eputs viewtd eputs "' already defined\n"eputs
         1 exit
     }
     // -- name tok_ptr
     viewtd swap tok_next
-    over over &macros_map map_insert
+    // -- name tok_ptr slot_ptr
+    over MACROS_MAP get_map_slot
+    // -- name tok_ptr
+    over over ->Macro.toks! 2 pick swap ->Macro.name!
 
     // Arguments (optional)
     // -- name tok_ptr

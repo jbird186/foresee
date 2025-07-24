@@ -9,200 +9,84 @@
         swap 1+ swap
     }
     nip
-
-    if dup 0 < {
-        -1 *
-    }
+    if dup 0 < { -1* }
 }
 
-// key map_ref --
-:set_insert {
-    // -- key map_ref idx
-    over hash MAP_SIZE %
-    // -- key map_ref idx ref
-    while dup 8* 2 pick + dup @ {
-        drop
-        1+ MAP_SIZE %
-    }
-    // -- map_ref idx
-    3 roll swap !
-    drop drop
-}
+// slot_ptr -- bool
+:slot_is_empty { @ not }
+// slot_ptr -- bool
+:slot_is_used { @ flag }
+// idx map_ref slot_size -- slot_ptr
+:map_idx { rot* + }
 
-// key map_ref -- [idx, -1]
-:set_key_idx {
-    // -- key map_ref idx
-    over hash MAP_SIZE %
-    // -- key map_ref idx slot_value
-    while dup 8* 2 pick + @ dup {
-        // -- key map_ref idx
-        if 3 pick str_eq {
-            nip nip
-            return
-        }
-        1+ MAP_SIZE %
-    }
-    drop drop drop drop
-    -1
-}
-
-// idx set_ref -- value
-:set_get_idx {
-    swap 8* + @
-}
-
-// key set_ref -- bool
-:set_contains {
-    set_key_idx is_success
-}
-
-// key value map_ref idx -- key value map_ref idx ref bool
-:_map_insert_skip_slot {
-    // -- key value map_ref idx ref
-    dup 16* 2 pick +
-
-    // Not occupied
-    if dup@ not {
+// key map_ref slot_size idx -- key map_ref slot_size idx slot_ptr bool
+:_map_slot_skip {
+    // -- key map_ref slot_size idx slot_ptr
+    over over* 3 pick +
+    if dup slot_is_empty {
         false
-    // Occupied (same name)
-    } else if dup@ 5 pick str_eq {
-        false
-    // Occupied (different name)
     } else {
-        true
+        dup@ 5 pick str_cmp flag
     }
 }
-
-// key value map_ref --
-:map_insert {
-    // -- key value map_ref idx
+// key map_ref slot_size -- slot_ptr
+:get_map_slot {
     2 pick hash MAP_SIZE %
-    // -- key value map_ref idx ref
-    while _map_insert_skip_slot {
+    // -- key map_ref slot_size idx slot_ptr
+    while _map_slot_skip {
         drop
         1+ MAP_SIZE %
     }
-    // -- value map_ref idx ref
-    4 roll over !
-    // -- map_ref idx
-    3 roll swap 8+ !
-    drop drop
+    nip nip nip nip
 }
-
-// key map_ref -- [idx, -1]
-:map_key_idx {
-    // -- key map_ref idx
-    over hash MAP_SIZE %
-    // -- key map_ref idx slot_value
-    while dup 16* 2 pick + @ dup {
-        // -- key map_ref idx
-        if 3 pick str_eq {
-            nip nip
-            return
-        }
+// key map_ref slot_size -- idx
+:get_map_idx {
+    2 pick hash MAP_SIZE %
+    // -- key map_ref slot_size idx slot_ptr
+    while _map_slot_skip {
+        drop
         1+ MAP_SIZE %
     }
-    drop drop drop drop
-    -1
+    drop nip nip nip
+}
+// key map_ref slot_size -- bool
+:map_contains {
+    get_map_slot slot_is_used
 }
 
-// idx map_ref -- value
-:map_get_idx_key {
-    swap 16* + @
-}
-
-// idx map_ref -- value
-:map_get_idx {
-    swap 16* 8+ + @
-}
-
-// key map_ref -- [value, 0]
-:map_get {
-    // -- map_ref key map_ref
-    swap over
-    // -- map_ref idx
-    if map_key_idx dup is_success {
-        16* 8+ + @
-    } else {
-        drop drop
-        0
-    }
-}
-
-
-
-// key scope idx -- key scope idx ref bool
-:_bmap_insert_skip_slot {
-    // -- key scope idx ref
-    dup 32* &bufs_map +
-
-    // Not occupied
-    if dup@ not {
+// key scope map_ref slot_size idx -- key scope map_ref slot_size idx slot_ptr bool
+:_scoped_map_slot_skip {
+    // -- key scope map_ref slot_size idx slot_ptr
+    over over* 3 pick +
+    if dup slot_is_empty {
         false
-    // Occupied (same name)
-    } else if dup@ 4 pick str_eq {
-        // Check the scope
-        dup 8+ @ 3 pick ==
-    // Occupied (different name)
+    } else if dup@ 6 pick str_eq {
+        dup->ScopedKey.scope@ 5 pick !=
     } else {
         true
     }
 }
-
-// init size key scope --
-:bmap_insert {
-    // -- init size key scope idx
-    over hash MAP_SIZE %
-    // -- init size key scope idx ref
-    while _bmap_insert_skip_slot {
+// key scope map_ref slot_size -- slot_ptr
+:get_scoped_map_slot {
+    3 pick hash MAP_SIZE %
+    // -- key scope map_ref slot_size idx slot_ptr
+    while _scoped_map_slot_skip {
         drop
         1+ MAP_SIZE %
     }
-    // -- init size key scope ref
-    nip
-
-    // -- init size scope ref
-    rot over!
-    // -- init size ref
-    swap over 8+ !
-    // -- init ref
-    swap over 16+ !
-    24+ !
+    nip nip nip nip nip
 }
-
-// key scope -- [idx, -1]
-:bmap_get_idx {
-    // -- key scope idx
-    over hash MAP_SIZE %
-    // -- key scope idx ref
-    while dup 32* &bufs_map + dup @ {
-        // -- key scope idx ref
-        if dup@ 4 pick str_eq {
-            // -- key scope idx
-            if 8+ @ 2 pick == {
-                nip nip
-                return
-            }
-        } else { drop }
+// key scope map_ref slot_size -- idx
+:get_scoped_map_idx {
+    3 pick hash MAP_SIZE %
+    // -- key scope map_ref slot_size idx slot_ptr
+    while _scoped_map_slot_skip {
+        drop
         1+ MAP_SIZE %
     }
-    drop drop drop drop
-    -1
+    drop nip nip nip nip
 }
-
-// idx -- name
-:bmap_idx_name {
-    32* &bufs_map + @
-}
-// idx -- scope
-:bmap_idx_scope {
-    32* &bufs_map + 8+ @
-}
-// idx -- size
-:bmap_idx_size {
-    32* &bufs_map + 16+ @
-}
-// idx -- init
-:bmap_idx_init {
-    32* &bufs_map + 24+ @
+// key scope map_ref slot_size -- bool
+:scoped_map_contains {
+    get_scoped_map_slot slot_is_used
 }

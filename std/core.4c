@@ -6,14 +6,11 @@ struct ptr { 8 __inner }
 struct char { 1 __inner }
 struct bool { 1 __inner }
 
-#%{over over / * -}
-
 #NULL{0}
-
 #false{0}
 #true{1}
-#flag{(if {true} else {false})}
-#not{(if {false} else {true})}
+:flag{(if {true} else {false})}
+:not{(if {false} else {true})}
 #!={== 1 ^}
 #<={> 1 ^}
 #>={< 1 ^}
@@ -30,6 +27,8 @@ struct bool { 1 __inner }
 :rot{2 roll}
 // a b -- b
 :nip{swap drop}
+
+#%{over over / * -}
 
 #!{store}
 #@{fetch}

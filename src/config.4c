@@ -1,8 +1,7 @@
-#include "std/core.4c"
+#include "src/types.4c"
 
 #TOK { 9 }
 #OP { 9 }
-#FIELD { 16 }
 
 #SRC_STR_SIZE { 65536 }
 $static char[SRC_STR_SIZE] src_str
@@ -13,15 +12,20 @@ $static int TOK[1024][32] out_toks_mem
 $static int OP[1024][32] fn_ops_mem
 $static int OP[16] start_ops_mem
 $static int ptr[1024][8] inline_bufs
-$static int FIELD[1024][32] struct_fields_mem
+$static int StructField[1024][32] struct_fields_mem
 $static int ptr[1024] scope_stack
 
 #MAP_SIZE { 8191 }
-$static ptr[MAP_SIZE] files_set
-$static ptr[2][MAP_SIZE] macros_map
-$static ptr[2][MAP_SIZE] fns_map
-$static ptr[4][MAP_SIZE] bufs_map
-$static ptr[2][MAP_SIZE] structs_map
+$static File[MAP_SIZE] files_set
+$static Macro[MAP_SIZE] macros_map
+$static Function[MAP_SIZE] fns_map
+$static Struct[MAP_SIZE] structs_map
+$static Buffer[MAP_SIZE] bufs_map
+#FILES_SET { &files_set %File }
+#MACROS_MAP { &macros_map %Macro }
+#FNS_MAP { &fns_map %Function }
+#STRUCTS_MAP { &structs_map %Struct }
+#BUFS_MAP { &bufs_map %Buffer }
 
 $static stack_size_str: "16384"
 $static stack_reg_str: "r12"
