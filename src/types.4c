@@ -17,7 +17,7 @@ struct Buffer {
 }
 
 struct Macro {
-    ptr name
+    ScopedKey key
     ptr toks
 }
 
@@ -34,4 +34,14 @@ struct Struct {
 struct StructField {
     ptr name
     int size
+}
+
+struct Op {
+    char kind
+    ptr data
+}
+
+struct Token {
+    char kind
+    ptr data
 }

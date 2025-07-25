@@ -1,31 +1,30 @@
 #include "src/types.4c"
 
-#TOK { 9 }
-#OP { 9 }
-
 #SRC_STR_SIZE { 65536 }
 $static char[SRC_STR_SIZE] src_str
 
 $static int char[1024][128] strs_mem
-$static int TOK[1024][32] toks_mem
-$static int TOK[1024][32] out_toks_mem
-$static int OP[1024][32] fn_ops_mem
-$static int OP[16] start_ops_mem
+$static int Token[1024][32] toks_mem
+$static int Token[1024][32] out_toks_mem
+$static int Op[1024][32] fn_ops_mem
+$static int Op[16] start_ops_mem
 $static int ptr[1024][8] inline_bufs
 $static int StructField[1024][32] struct_fields_mem
+
 $static int ptr[1024] scope_stack
+#SCOPE_STACK { &scope_stack %int }
 
 #MAP_SIZE { 8191 }
-$static File[MAP_SIZE] files_set
-$static Macro[MAP_SIZE] macros_map
-$static Function[MAP_SIZE] fns_map
-$static Struct[MAP_SIZE] structs_map
-$static Buffer[MAP_SIZE] bufs_map
-#FILES_SET { &files_set %File }
-#MACROS_MAP { &macros_map %Macro }
-#FNS_MAP { &fns_map %Function }
-#STRUCTS_MAP { &structs_map %Struct }
-#BUFS_MAP { &bufs_map %Buffer }
+$static File[MAP_SIZE] file_set
+$static Macro[MAP_SIZE] macro_map
+$static Function[MAP_SIZE] fn_map
+$static Struct[MAP_SIZE] struct_map
+$static Buffer[MAP_SIZE] buf_map
+#FILE_SET { &file_set %File }
+#MACRO_MAP { &macro_map %Macro }
+#FN_MAP { &fn_map %Function }
+#STRUCT_MAP { &struct_map %Struct }
+#BUF_MAP { &buf_map %Buffer }
 
 $static stack_size_str: "16384"
 $static stack_reg_str: "r12"

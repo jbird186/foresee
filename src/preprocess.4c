@@ -14,7 +14,7 @@
 // tok_ptr -- new_tok_ptr
 :skip_braces {
     // -- depth tok_ptr
-    1 swap while tok_next over {
+    1 swap while %Token+ over {
         if viewtk TOK_BRACE_START == {
             swap 1+ swap
         } else if viewtk TOK_BRACE_END == {
@@ -27,7 +27,7 @@
 
 // tok_ptr --
 :preprocess_macro_block {
-    tok_next
+    %Token+
     // -- depth tok_ptr
     1 swap while over {
         if viewtk TOK_BRACE_START == {
@@ -39,7 +39,7 @@
             preprocess_token
         }
     }
-    tok_next
+    %Token+
     drop drop
 }
 
@@ -62,6 +62,29 @@
     | |
 }
 
+// tok_ptr -- tok_ptr bool
+:check_include {
+    if viewtk TOK_IDENT == {
+        viewtd "include" str_eq
+    } else {
+        false
+    }
+}
+
+// name -- [idx, -1]
+:scoped_macro_idx {
+    $static int scope_idx
+    &scope_stack stack_len =scope_idx
+
+    while &scope_idx@-- {
+        if dup scope_idx SCOPE_STACK stack_get@ MACRO_MAP scoped_map_contains {
+            scope_idx SCOPE_STACK stack_get@ MACRO_MAP scoped_map_get_idx
+            return
+        }
+    }
+    drop -1
+}
+
 // tok_ptr -- new_tok_ptr
 :preprocess_word {
     $static char arg_kind
@@ -69,10 +92,11 @@
 
     // -- name tok_ptr
     viewtd swap
-    // -- name tok_ptr macro_slot_ptr
-    if over MACROS_MAP get_map_slot dup slot_is_used {
-        ->Macro.toks@
-        swap tok_next swap
+    // -- name tok_ptr macro_idx
+    if over scoped_macro_idx dup is_success {
+        MACRO_MAP map_idx->Macro.toks@
+        dup SCOPE_STACK stack_push!
+        swap %Token+ swap
         // Arguments (optional)
         if viewtk TOK_PAREN_START == {
             // -- name def_tok_ptr tok_ptr
@@ -81,15 +105,16 @@
                 "ERROR: Expected arguments for macro '"eputs 2 pick eputs "'\n"eputs
                 1 exit
             }
-            tok_next
+            %Token+
 
             // -- name tok_ptr def_tok_ptr
-            while swap tok_next viewtk TOK_PAREN_END != {
+            while swap %Token+ viewtk TOK_PAREN_END != {
                 // TODO: prevent name collision between macros and macro arguments
                 // -- name tok_ptr def_tok_ptr slot_ptr
-                viewtd MACROS_MAP get_map_slot
-                over tok_data over ->Macro.name!
-                2 pick swap ->Macro.toks!
+                viewtd MACRO_MAP map_get
+                over->Token.data@ over->Macro.key->ScopedKey.name!
+                SCOPE_STACK stack_last@ over->Macro.key->ScopedKey.scope!
+                2 pick swap->Macro.toks!
                 // -- name def_tok_ptr tok_ptr
                 swap
                 if viewtk TOK_BRACE_START == {
@@ -98,17 +123,17 @@
                     "ERROR: Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
                     1 exit
                 } else {
-                    tok_next
+                    %Token+
                 }
             }
             // -- name def_tok_ptr tok_ptr
-            tok_next swap
+            %Token+ swap
             if viewtk TOK_PAREN_END != {
                 "ERROR: Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
                 1 exit
             }
             // -- name tok_ptr def_tok_ptr
-            tok_next swap
+            %Token+ swap
         }
         if viewtk TOK_BRACE_START == {
             // -- tok_ptr def_tok_ptr
@@ -125,28 +150,29 @@
             preprocess_token
             drop nip
         }
+        &scope_stack stack_shrink
     } else {
         // -- tok_ptr
         drop nip
-        viewtk swap viewtd rot &out_toks_mem toks_push
-        tok_next
+        viewtk swap viewtd rot &out_toks_mem tok_push
+        %Token+
     }
 }
 
 // tok_ptr -- new_tok_ptr
 :preprocess_include {
-    tok_next
+    %Token+
     if viewtk TOK_STR != {
         "ERROR: Expected file name after 'include' directive\n"eputs
         1 exit
     }
 
     // Check if this file has already been included
-    if viewtd FILES_SET map_contains {
-        tok_next
+    if viewtd FILE_SET map_contains {
+        %Token+
         return
     }
-    viewtd dup FILES_SET get_map_slot->File.name!
+    viewtd dup FILE_SET map_get->File.name!
 
     // -- tok_ptr fd
     if viewtd 0 fopen dup is_failure {
@@ -168,36 +194,37 @@
     }
 
     // -- tok_ptr include_tok_ptr
-    &toks_mem toks_top
+    &toks_mem %Token stack_top
     &src_str lex_src
 
     preprocess
-    tok_next
+    %Token+
 }
 
 // tok_ptr -- new_tok_ptr
 :preprocess_macro_def {
-    if viewtd MACROS_MAP map_contains {
+    if viewtd MACRO_MAP map_contains {
         "ERROR: Macro '"eputs viewtd eputs "' already defined\n"eputs
         1 exit
     }
     // -- name tok_ptr
-    viewtd swap tok_next
+    viewtd swap %Token+
     // -- name tok_ptr slot_ptr
-    over MACROS_MAP get_map_slot
-    // -- name tok_ptr
-    over over ->Macro.toks! 2 pick swap ->Macro.name!
+    over MACRO_MAP map_get
+    over over->Macro.toks!
+    SCOPE_STACK stack_last@ over->Macro.key->ScopedKey.scope!
+    2 pick swap->Macro.key->ScopedKey.name!
 
     // Arguments (optional)
     // -- name tok_ptr
     if viewtk TOK_PAREN_START == {
-        while tok_next viewtk TOK_PAREN_END != {
+        while %Token+ viewtk TOK_PAREN_END != {
             if viewtk TOK_IDENT != {
                 "ERROR: Invalid parameter in definition for macro '"eputs over eputs "'\n"eputs
                 1 exit
             }
         }
-        tok_next
+        %Token+
     }
 
     if viewtk TOK_BRACE_START != {
@@ -211,7 +238,7 @@
 
 // tok_ptr -- new_tok_ptr
 :preprocess_pound {
-    tok_next
+    %Token+
     if check_include {
         preprocess_include
     } else if viewtk dup (TOK_IDENT ==) swap (TOK_WORD ==) | {
@@ -229,12 +256,12 @@
     } else if viewtk TOK_POUND == {
         preprocess_pound
     } else {
-        viewtk swap viewtd rot &out_toks_mem toks_push
-        tok_next
+        viewtk swap viewtd rot &out_toks_mem tok_push
+        %Token+
     }
 }
 
 :preprocess_src {
-    &toks_mem tok_first preprocess
-    0 TOK_EOF &out_toks_mem toks_push
+    &toks_mem->StackHead.data preprocess
+    0 TOK_EOF &out_toks_mem tok_push
 }

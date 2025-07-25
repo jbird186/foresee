@@ -4,7 +4,6 @@
 #include "src/compile.4c"
 
 // TODO: prevent buffer/function/struct name collision
-// TODO: prevent macro/argument name collision
 // TODO: fix bug where initialized variables cannot be auto-assigned (negative size)
 // TODO: fix buffer scoping in dowhile loops
 // TODO: compound buffer declarations
@@ -38,7 +37,7 @@ $static ptr argv
     1 get_argv =src_file_name
     2 get_argv =out_file_name
 
-    0 &scope_stack stack_push
+    0 SCOPE_STACK stack_push!
 
     $static ptr src_fd
     src_file_name 0 fopen =src_fd

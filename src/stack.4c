@@ -1,32 +1,28 @@
 #include "std/core.4c"
 
-// ref -- len
-#stack_len { @ }
-// ref --
-:stack_shrink { @-- drop }
+struct StackHead {
+    int len
+    NULL data
+}
 
-// ref -- head_ptr
-:stack_top { dup stack_len 8* + 8+ }
-// ref -- last_element
-:stack_last { dup stack_len 8* + @ }
-// value ref --
+// stack -- len
+#stack_len { ->StackHead.len@ }
+// stack --
+:stack_shrink { ->StackHead.len@-- drop }
+// stack slot_size -- slot_ptr
+:stack_top {
+    over->StackHead.len@
+    * + %int+
+}
+// stack slot_size -- slot_ptr
+:stack_last {
+    over->StackHead.len@ 1-
+    * + %int+
+}
+// stack slot_size -- slot_ptr
 :stack_push {
-    dup@ 1+
-    dup 2 pick !
-    8* + !
+    over->StackHead.len@++
+    * + %int+
 }
-// idx ref -- element
-:stack_get { 8+ swap 8* + @ }
-
-// ref -- head_ptr
-:stack_topc { dup stack_len + 8+ }
-// ref -- last_element
-:stack_lastc { dup stack_len + 7+ @c }
-// value ref --
-:stack_pushc {
-    dup@ 1+
-    dup 2 pick !
-    7+ + !c
-}
-// idx ref -- element
-:stack_getc { 8+ + @c }
+// idx stack slot_size -- slot_ptr
+:stack_get { rot* + %int+ }
