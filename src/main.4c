@@ -4,14 +4,12 @@
 #include "src/compile.4c"
 
 // TODO: prevent buffer/function/struct name collision
-// TODO: fix bug where initialized variables cannot be auto-assigned (negative size)
 // TODO: fix buffer scoping in dowhile loops
 // TODO: compound buffer declarations
 // TODO: non-static variables
 // TODO: more preprocessor directives
 // TODO: "use" blocks
 // TODO: enums
-// TODO: function pointers
 // TODO: improve error messages
 // TODO: simulation mode
 // TODO: optimization
@@ -21,7 +19,7 @@ $static ptr argv
 
 // idx -- ptr
 :get_argv {
-    %ptr* argv + @
+    %ptr* argv+ @
 }
 
 // argv argc --

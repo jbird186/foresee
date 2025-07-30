@@ -183,6 +183,7 @@
     match_ident_token("while" TOK_WHILE)
     match_ident_token("static" TOK_STATIC)
     match_ident_token("struct" TOK_STRUCT)
+    match_ident_token("call" TOK_CALL)
     TOK_IDENT &toks_mem tok_push
     return
 }

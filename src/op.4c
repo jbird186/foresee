@@ -6,41 +6,43 @@
 #OP_EXIT{ 2 }    // exit_code --
 // Functions
 #OP_CALL{ 3 }
-#OP_RET{ 4 }
+#OP_PUSH_FN{ 4 }
+#OP_CALL_FN{ 5 }
+#OP_RET{ 6 }
 // Stack Primitives
-#OP_DROP{ 5 }    // item --
-#OP_PICK{ 6 }    // n -- item
-#OP_ROLL{ 7 }    // n -- item
-#OP_DEPTH{ 8 }   // -- depth
-#OP_PUSH_INT{ 9 }
+#OP_DROP{ 7 }    // item --
+#OP_PICK{ 8 }    // n -- item
+#OP_ROLL{ 9 }    // n -- item
+#OP_DEPTH{ 10 }   // -- depth
+#OP_PUSH_INT{ 11 }
 // Reference Primitives
-#OP_PUSH_BUF{ 10 }
-#OP_STORE{ 11 }   // item ptr --
-#OP_FETCH{ 12 }   // ptr -- item
+#OP_PUSH_BUF{ 12 }
+#OP_STORE{ 13 }   // item ptr --
+#OP_FETCH{ 14 }   // ptr -- item
 // Binary Operations
-#OP_ADD{ 13 }
-#OP_SUB{ 14 }
-#OP_MUL{ 15 }
-#OP_DIV{ 16 }
-#OP_AND{ 17 }
-#OP_OR{ 18 }
-#OP_XOR{ 19 }
-#OP_SHL{ 20 }
-#OP_SHR{ 21 }
-#OP_SAR{ 22 }
-#OP_NOT{ 23 }
-#OP_EQ{ 24 }
-#OP_GT{ 25 }
-#OP_LT{ 26 }
+#OP_ADD{ 15 }
+#OP_SUB{ 16 }
+#OP_MUL{ 17 }
+#OP_DIV{ 18 }
+#OP_AND{ 19 }
+#OP_OR{ 20 }
+#OP_XOR{ 21 }
+#OP_SHL{ 22 }
+#OP_SHR{ 23 }
+#OP_SAR{ 24 }
+#OP_NOT{ 25 }
+#OP_EQ{ 26 }
+#OP_GT{ 27 }
+#OP_LT{ 28 }
 // Branching
-#OP_LABEL{ 27 }
-#OP_JMP{ 28 }
-#OP_JZ{ 29 }      // value --
+#OP_LABEL{ 29 }
+#OP_JMP{ 30 }
+#OP_JZ{ 31 }      // value --
 // I/O
-#OP_FOPEN{ 30 }   // filename_ptr [0=read, 1=write, 2=append] -- [fd, -1]
-#OP_FREAD{ 31 }   // ptr len fd -- [bytes_read, -1]
-#OP_FWRITE{ 32 }  // ptr len fd -- [bytes_written, -1]
-#OP_FCLOSE{ 33 }  // fd -- [0, -1]
+#OP_FOPEN{ 32 }   // filename_ptr [0=read, 1=write, 2=append] -- [fd, -1]
+#OP_FREAD{ 33 }   // ptr len fd -- [bytes_read, -1]
+#OP_FWRITE{ 34 }  // ptr len fd -- [bytes_written, -1]
+#OP_FCLOSE{ 35 }  // fd -- [0, -1]
 
 // data kind ref --
 :op_push {

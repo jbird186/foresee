@@ -150,7 +150,7 @@ $static int ASM_FOPEN_ID
     ////////// Functions //////////
     // -- ops_dest tok_ptr
     if viewtd FN_MAP map_contains {
-        viewtd FN_MAP map_get_idx OP_CALL 3 roll op_push
+        viewtd FN_MAP map_get_idx OP_CALL_FN 3 roll op_push
         %Token+
         return
     }
@@ -174,7 +174,7 @@ $static int ASM_FOPEN_ID
             "ERROR: Function 'fetchc' not defined\n"eputs
             1 exit
         }
-        "fetchc" FN_MAP map_get_idx OP_CALL 3 roll op_push
+        "fetchc" FN_MAP map_get_idx OP_CALL_FN 3 roll op_push
     } else {
         "ERROR: Buffer '"eputs name eputs "' cannot be automatically read from\n"eputs
         1 exit
@@ -497,6 +497,13 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_ref {
+    // -- ops_dest tok_ptr
+    if viewtd FN_MAP map_contains {
+        viewtd FN_MAP map_get_idx OP_PUSH_FN 3 roll op_push
+        %Token+
+        return
+    }
+
     // -- ops_dest tok_ptr name idx
     viewtd scoped_buf_idx
     if dup is_success {
@@ -529,7 +536,7 @@ $static int ASM_FOPEN_ID
             "ERROR: Function 'storec' not defined\n"eputs
             1 exit
         }
-        "storec" FN_MAP map_get_idx OP_CALL 3 roll op_push
+        "storec" FN_MAP map_get_idx OP_CALL_FN 3 roll op_push
     } else {
         "ERROR: Buffer '"eputs name eputs "' cannot be automatically assigned to\n"eputs
         1 exit
@@ -605,6 +612,12 @@ $static int ASM_FOPEN_ID
     %Token+
 }
 
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_call {
+    0 OP_CALL 3 roll op_push
+    %Token+
+}
+
 #parse_with(parse_kind parse_function) {
     else if viewtk parse_kind == {
         parse_function
@@ -641,6 +654,7 @@ $static int ASM_FOPEN_ID
     parse_with(TOK_STRUCT parse_struct)
     parse_with(TOK_ARROW parse_arrow)
     parse_with(TOK_SIZE parse_size)
+    parse_with(TOK_CALL parse_call)
     else {
         "ERROR: Unexpected token of type "eputs viewtk eput cr
         1 exit
@@ -660,12 +674,11 @@ $static int ASM_FOPEN_ID
     }
     drop
 
-    // -- main_fn_ptr
-    if "main" FN_MAP map_get dup slot_is_empty {
+    if "main" FN_MAP map_get slot_is_empty {
         "ERROR: Function 'main' not defined\n"eputs
         1 exit
     }
-    "main" FN_MAP map_get_idx OP_CALL &start_ops_mem op_push
+    "main" FN_MAP map_get_idx OP_CALL_FN &start_ops_mem op_push
     0 OP_PUSH_INT &start_ops_mem op_push
     0 OP_EXIT &start_ops_mem op_push
     0 OP_EOF &start_ops_mem op_push

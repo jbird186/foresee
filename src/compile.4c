@@ -89,6 +89,16 @@ $static ptr out_fd
     }
     else if viewok OP_CALL == {
         "    ; OP_CALL\n"coms
+        "rax" compile_pop
+        "    call rax\n"coms
+    }
+    else if viewok OP_PUSH_FN == {
+        "    ; OP_PUSH_FN\n"coms
+        "    lea rax, [rel f_"coms viewod com "]\n"coms
+        "rax" compile_push
+    }
+    else if viewok OP_CALL_FN == {
+        "    ; OP_CALL_FN\n"coms
         "    call f_"coms viewod com "\n"coms
     }
     else if viewok OP_RET == {
