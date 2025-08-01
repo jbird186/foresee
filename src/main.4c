@@ -10,7 +10,6 @@
 // TODO: more preprocessor directives
 // TODO: "use" blocks
 // TODO: enums
-// TODO: improve error messages
 // TODO: simulation mode
 // TODO: optimization
 
@@ -47,7 +46,7 @@ $static ptr argv
 
     &src_str SRC_STR_SIZE src_fd fread drop
     src_fd fclose drop
-    &src_str lex_src
+    &src_str src_file_name lex_src
     preprocess_src
     parse_out_toks
 

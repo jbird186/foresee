@@ -9,7 +9,7 @@ $static int Token[1024][32] out_toks_mem
 $static int Op[1024][32] fn_ops_mem
 $static int Op[16] start_ops_mem
 $static int ptr[1024][8] inline_bufs
-$static int StructField[1024][32] struct_fields_mem
+$static int StructField[1024][8] struct_fields_mem
 
 $static int ptr[1024] scope_stack
 #SCOPE_STACK { &scope_stack %int }
@@ -26,7 +26,7 @@ $static Buffer[MAP_SIZE] buf_map
 #STRUCT_MAP { &struct_map %Struct }
 #BUF_MAP { &buf_map %Buffer }
 
-$static stack_size_str: "16384"
+$static stack_size_str: "65536"
 $static stack_reg_str: "r12"
 
 #USE_ASM_STRINGS { true }

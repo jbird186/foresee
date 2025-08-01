@@ -1,6 +1,6 @@
 #include "src/types.4c"
+#include "src/stack.4c"
 
-////////// Token Kinds //////////
 #TOK_EOF{ 0 }
 #TOK_INT{ 1 }
 #TOK_CHAR{ 2 }
@@ -29,13 +29,32 @@
 #TOK_BRACKET_START{ 25 }
 #TOK_BRACKET_END{ 26 }
 
-// data kind ref --
+// data kind file line ref --
 :tok_push {
-    // -- data kind ptr
+    // -- data kind file line ptr
     %Token stack_push
-    swap over->Token.kind!
+    swap over->Token.line!
+    swap over->Token.file!
+    swap over->Token.kind!c
     ->Token.data!
+}
+
+// src dest --
+:tok_dup {
+    // -- src ptr
+    %Token stack_push
+    over->Token.kind@c over->Token.kind!c
+    over->Token.data@ over->Token.data!
+    over->Token.file@ over->Token.file!
+    swap->Token.line@ swap->Token.line!
 }
 
 :viewtk { dup->Token.kind@c }
 :viewtd { dup->Token.data@ }
+:viewtf { dup->Token.file@ }
+:viewtl { dup->Token.line@ }
+
+// tok_ptr -- tok_ptr
+:error {
+    viewtf eputs ':'eputc viewtl eput ": ERROR: "eputs
+}

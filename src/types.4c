@@ -44,4 +44,6 @@ struct Op {
 struct Token {
     char kind
     ptr data
+    ptr file
+    int line
 }
