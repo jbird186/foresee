@@ -15,9 +15,9 @@
 :skip_braces {
     // -- depth tok_ptr
     1 swap while %Token+ over {
-        if viewtk TOK_BRACE_START == {
+        if viewtk TKind.BRACE_START == {
             swap 1+ swap
-        } else if viewtk TOK_BRACE_END == {
+        } else if viewtk TKind.BRACE_END == {
             swap 1- swap
         }
     }
@@ -30,9 +30,9 @@
     %Token+
     // -- depth tok_ptr
     1 swap while over {
-        if viewtk TOK_BRACE_START == {
+        if viewtk TKind.BRACE_START == {
             swap 1+ swap
-        } else if viewtk TOK_BRACE_END == {
+        } else if viewtk TKind.BRACE_END == {
             swap 1- swap
         }
         if over {
@@ -46,25 +46,25 @@
 // token_kind -- bool
 :is_tagged_ident {
     // token_kind
-    dup (TOK_REF ==) swap
-    dup (TOK_FN ==) swap
-    dup (TOK_EQ ==) swap
-    dup (TOK_FIELD ==) swap
-    (TOK_SIZE ==)
+    dup (TKind.REF ==) swap
+    dup (TKind.FN ==) swap
+    dup (TKind.EQ ==) swap
+    dup (TKind.FIELD ==) swap
+    (TKind.SIZE ==)
     | | | |
 }
 // token_kind -- bool
 :is_macro_replaceable {
     // token_kind
-    dup (TOK_IDENT ==) swap
-    dup (TOK_WORD ==) swap
+    dup (TKind.IDENT ==) swap
+    dup (TKind.WORD ==) swap
     is_tagged_ident
     | |
 }
 
 // tok_ptr -- tok_ptr bool
 :check_include {
-    if viewtk TOK_IDENT == {
+    if viewtk TKind.IDENT == {
         viewtd "include" str_eq
     } else {
         false
@@ -98,17 +98,17 @@
         dup SCOPE_STACK stack_push!
         swap %Token+ swap
         // Arguments (optional)
-        if viewtk TOK_PAREN_START == {
+        if viewtk TKind.PAREN_START == {
             // -- name def_tok_ptr tok_ptr
             swap
-            if viewtk TOK_PAREN_START != {
+            if viewtk TKind.PAREN_START != {
                 error "Expected arguments for macro '"eputs 2 pick eputs "'\n"eputs
                 1 exit
             }
             %Token+
 
             // -- name tok_ptr def_tok_ptr
-            while swap %Token+ viewtk TOK_PAREN_END != {
+            while swap %Token+ viewtk TKind.PAREN_END != {
                 // TODO: prevent name collision between macros and macro arguments
                 // -- name tok_ptr def_tok_ptr slot_ptr
                 viewtd MACRO_MAP map_get
@@ -117,9 +117,9 @@
                 2 pick swap->Macro.toks!
                 // -- name def_tok_ptr tok_ptr
                 swap
-                if viewtk TOK_BRACE_START == {
+                if viewtk TKind.BRACE_START == {
                     skip_braces
-                } else if viewtk TOK_PAREN_END == {
+                } else if viewtk TKind.PAREN_END == {
                     error "Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
                     1 exit
                 } else {
@@ -128,20 +128,20 @@
             }
             // -- name def_tok_ptr tok_ptr
             %Token+ swap
-            if viewtk TOK_PAREN_END != {
+            if viewtk TKind.PAREN_END != {
                 error "Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
                 1 exit
             }
             // -- name tok_ptr def_tok_ptr
             %Token+ swap
         }
-        if viewtk TOK_BRACE_START == {
+        if viewtk TKind.BRACE_START == {
             // -- tok_ptr def_tok_ptr
             rot drop
             preprocess_macro_block
         } else {
             if arg_kind is_tagged_ident {
-                if viewtk TOK_IDENT != {
+                if viewtk TKind.IDENT != {
                     error "Macro expansion for '"eputs 2 pick eputs "' expected ident, found tagged ident\n"eputs
                     1 exit
                 }
@@ -162,7 +162,7 @@
 // tok_ptr -- new_tok_ptr
 :preprocess_include {
     %Token+
-    if viewtk TOK_STR != {
+    if viewtk TKind.STR != {
         error "Expected file name after 'include' directive\n"eputs
         1 exit
     }
@@ -219,9 +219,9 @@
 
     // Arguments (optional)
     // -- name tok_ptr
-    if viewtk TOK_PAREN_START == {
-        while %Token+ viewtk TOK_PAREN_END != {
-            if viewtk TOK_IDENT != {
+    if viewtk TKind.PAREN_START == {
+        while %Token+ viewtk TKind.PAREN_END != {
+            if viewtk TKind.IDENT != {
                 error "Invalid parameter in definition for macro '"eputs over eputs "'\n"eputs
                 1 exit
             }
@@ -229,7 +229,7 @@
         %Token+
     }
 
-    if viewtk TOK_BRACE_START != {
+    if viewtk TKind.BRACE_START != {
         error "Invalid body for macro '"eputs over eputs "'\n"eputs
         1 exit
     }
@@ -243,7 +243,7 @@
     %Token+
     if check_include {
         preprocess_include
-    } else if viewtk dup (TOK_IDENT ==) swap (TOK_WORD ==) | {
+    } else if viewtk dup (TKind.IDENT ==) swap (TKind.WORD ==) | {
         preprocess_macro_def
     } else {
         error "Unexpected preprocessor directive\n"eputs
@@ -255,7 +255,7 @@
 :preprocess_token {
     if viewtk is_macro_replaceable {
         preprocess_word
-    } else if viewtk TOK_POUND == {
+    } else if viewtk TKind.POUND == {
         preprocess_pound
     } else {
         dup &out_toks_mem tok_dup
@@ -265,5 +265,5 @@
 
 :preprocess_src {
     &toks_mem->StackHead.data preprocess
-    0 TOK_EOF 0 0 &out_toks_mem tok_push
+    0 TKind.EOF 0 0 &out_toks_mem tok_push
 }

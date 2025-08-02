@@ -185,13 +185,14 @@ $static ptr file
 // src_ptr -- new_src_ptr
 :lex_ident {
     view_ident
-    match_ident_token("if" TOK_IF)
-    match_ident_token("else" TOK_ELSE)
-    match_ident_token("while" TOK_WHILE)
-    match_ident_token("static" TOK_STATIC)
-    match_ident_token("struct" TOK_STRUCT)
-    match_ident_token("call" TOK_CALL)
-    TOK_IDENT file line &toks_mem tok_push
+    match_ident_token("if" {TKind.IF})
+    match_ident_token("else" {TKind.ELSE})
+    match_ident_token("while" {TKind.WHILE})
+    match_ident_token("static" {TKind.STATIC})
+    match_ident_token("enum" {TKind.ENUM})
+    match_ident_token("struct" {TKind.STRUCT})
+    match_ident_token("call" {TKind.CALL})
+    TKind.IDENT file line &toks_mem tok_push
     return
 }
 
@@ -231,41 +232,41 @@ $static ptr file
         }
         if viewc not {
             drop
-            0 TOK_EOF file line &toks_mem tok_push
+            0 TKind.EOF file line &toks_mem tok_push
             return
         } else if ((viewc '-' ==) (over 1+ @c is_digit) &) (over@c is_digit) | {
-            view_int TOK_INT file line &toks_mem tok_push
+            view_int TKind.INT file line &toks_mem tok_push
         } else if viewc '\'' == {
-            view_char TOK_CHAR file line &toks_mem tok_push
+            view_char TKind.CHAR file line &toks_mem tok_push
         } else if viewc '\"' == {
-            view_str TOK_STR file line &toks_mem tok_push
+            view_str TKind.STR file line &toks_mem tok_push
         }
-        lex_tagged_ident('&' TOK_REF)
-        lex_tagged_ident(':' TOK_FN)
-        lex_tagged_ident('=' TOK_EQ)
-        lex_tagged_ident('.' TOK_FIELD)
-        lex_tagged_ident('%' TOK_SIZE)
+        lex_tagged_ident('&' {TKind.REF})
+        lex_tagged_ident(':' {TKind.FN})
+        lex_tagged_ident('=' {TKind.EQ})
+        lex_tagged_ident('.' {TKind.FIELD})
+        lex_tagged_ident('%' {TKind.SIZE})
         else if (viewc '/' ==) (over 1+ @c '/' ==) & {
             while viewc dup ('\n' !=) swap (flag) & { 1+ }
         } else if (viewc '-' ==) (over 1+ @c '>' ==) & {
             2+
-            0 TOK_ARROW file line &toks_mem tok_push
+            0 TKind.ARROW file line &toks_mem tok_push
         }
-        lex_single(':' TOK_COLON)
-        lex_single('#' TOK_POUND)
-        lex_single('$' TOK_DOLLAR)
-        lex_single('(' TOK_PAREN_START)
-        lex_single(')' TOK_PAREN_END)
-        lex_single('{' TOK_BRACE_START)
-        lex_single('}' TOK_BRACE_END)
-        lex_single('[' TOK_BRACKET_START)
-        lex_single(']' TOK_BRACKET_END)
+        lex_single(':' {TKind.COLON})
+        lex_single('#' {TKind.POUND})
+        lex_single('$' {TKind.DOLLAR})
+        lex_single('(' {TKind.PAREN_START})
+        lex_single(')' {TKind.PAREN_END})
+        lex_single('{' {TKind.BRACE_START})
+        lex_single('}' {TKind.BRACE_END})
+        lex_single('[' {TKind.BRACKET_START})
+        lex_single(']' {TKind.BRACKET_END})
         else if viewc is_ident_first_char {
             lex_ident
         } else {
-            view_word TOK_WORD file line &toks_mem tok_push
+            view_word TKind.WORD file line &toks_mem tok_push
         }
     }
     drop
-    0 TOK_EOF file line &toks_mem tok_push
+    0 TKind.EOF file line &toks_mem tok_push
 }

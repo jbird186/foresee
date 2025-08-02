@@ -80,43 +80,43 @@ $static ptr out_fd
 
 // op_ptr -- new_op_ptr
 :compile_op {
-    if viewok OP_NOOP == {}
-    else if viewok OP_EXIT == {
-        "    ; OP_EXIT\n"coms
+    if viewok OKind.NOOP == {}
+    else if viewok OKind.EXIT == {
+        "    ; OKind.EXIT\n"coms
         "rdi" compile_pop
         "    mov     eax, 60\n"coms
         "    syscall\n"coms
     }
-    else if viewok OP_CALL == {
-        "    ; OP_CALL\n"coms
+    else if viewok OKind.CALL == {
+        "    ; OKind.CALL\n"coms
         "rax" compile_pop
         "    call rax\n"coms
     }
-    else if viewok OP_PUSH_FN == {
-        "    ; OP_PUSH_FN\n"coms
+    else if viewok OKind.PUSH_FN == {
+        "    ; OKind.PUSH_FN\n"coms
         "    lea rax, [rel f_"coms viewod com "]\n"coms
         "rax" compile_push
     }
-    else if viewok OP_CALL_FN == {
-        "    ; OP_CALL_FN\n"coms
+    else if viewok OKind.CALL_FN == {
+        "    ; OKind.CALL_FN\n"coms
         "    call f_"coms viewod com "\n"coms
     }
-    else if viewok OP_RET == {
-        "    ; OP_RET\n"coms
+    else if viewok OKind.RET == {
+        "    ; OKind.RET\n"coms
         "    ret\n"coms
     }
-    else if viewok OP_DROP == {
-        "    ; OP_DROP\n"coms
+    else if viewok OKind.DROP == {
+        "    ; OKind.DROP\n"coms
         compile_stack_shrink
     }
-    else if viewok OP_PICK == {
-        "    ; OP_PICK\n"coms
+    else if viewok OKind.PICK == {
+        "    ; OKind.PICK\n"coms
         "rax" compile_pop
         "    mov     rcx, ["coms &stack_reg_str coms " + rax*8]\n"coms
         "rcx" compile_push
     }
-    else if viewok OP_ROLL == {
-        "    ; OP_ROLL\n"coms
+    else if viewok OKind.ROLL == {
+        "    ; OKind.ROLL\n"coms
         "rax" compile_pop
         "    mov     rcx, ["coms &stack_reg_str coms " + rax*8]\n"coms
         "    lea     rbx, ["coms &stack_reg_str coms " + rax*8]\n"coms
@@ -130,76 +130,76 @@ $static ptr out_fd
         "   .rl_"coms viewod 1+ com ":\n"coms
         "    mov     ["coms &stack_reg_str coms "], rcx\n"coms
     }
-    else if viewok OP_DEPTH == {
-        "    ; OP_DEPTH\n"coms
+    else if viewok OKind.DEPTH == {
+        "    ; OKind.DEPTH\n"coms
         "    mov     rax, b_stack + "coms &stack_size_str coms "\n"coms
         "    sub     rax, "coms &stack_reg_str coms "\n"coms
         "    shr     rax, 3\n"coms
         "rax" compile_push
     }
-    else if viewok OP_PUSH_INT == {
-        "    ; OP_PUSH_INT\n"coms
+    else if viewok OKind.PUSH_INT == {
+        "    ; OKind.PUSH_INT\n"coms
         viewod compile_push_int
     }
-    else if viewok OP_PUSH_BUF == {
-        "    ; OP_PUSH_BUF\n"coms
+    else if viewok OKind.PUSH_BUF == {
+        "    ; OKind.PUSH_BUF\n"coms
         viewod compile_push_generic({"b_"coms com})
     }
-    else if viewok OP_STORE == {
-        "    ; OP_STORE\n"coms
+    else if viewok OKind.STORE == {
+        "    ; OKind.STORE\n"coms
         "rax" compile_pop
         "rcx" compile_pop
         "    mov     [rax], rcx\n"coms
     }
-    else if viewok OP_FETCH == {
-        "    ; OP_FETCH\n"coms
+    else if viewok OKind.FETCH == {
+        "    ; OKind.FETCH\n"coms
         "rax" compile_pop
         "    mov     rbx, qword [rax]\n"coms
         "rbx" compile_push
     }
-    else if viewok OP_ADD == {
-        "rcx" "add" "OP_ADD" compile_basic_binop
+    else if viewok OKind.ADD == {
+        "rcx" "add" "OKind.ADD" compile_basic_binop
     }
-    else if viewok OP_SUB == {
-        "rcx" "sub" "OP_SUB" compile_basic_binop
+    else if viewok OKind.SUB == {
+        "rcx" "sub" "OKind.SUB" compile_basic_binop
     }
-    else if viewok OP_MUL == {
-        "rcx" "imul" "OP_MUL" compile_basic_binop
+    else if viewok OKind.MUL == {
+        "rcx" "imul" "OKind.MUL" compile_basic_binop
     }
-    else if viewok OP_DIV == {
-        "    ; OP_DIV\n"coms
+    else if viewok OKind.DIV == {
+        "    ; OKind.DIV\n"coms
         "rbx" compile_pop
         "rax" compile_pop
         "    cqo\n"coms
         "    idiv    rbx\n"coms
         "rax" compile_push
     }
-    else if viewok OP_AND == {
-        "rcx" "and" "OP_AND" compile_basic_binop
+    else if viewok OKind.AND == {
+        "rcx" "and" "OKind.AND" compile_basic_binop
     }
-    else if viewok OP_OR == {
-        "rcx" "or" "OP_OR" compile_basic_binop
+    else if viewok OKind.OR == {
+        "rcx" "or" "OKind.OR" compile_basic_binop
     }
-    else if viewok OP_XOR == {
-        "rcx" "xor" "OP_XOR" compile_basic_binop
+    else if viewok OKind.XOR == {
+        "rcx" "xor" "OKind.XOR" compile_basic_binop
     }
-    else if viewok OP_SHL == {
-        "cl" "shl" "OP_SHL" compile_basic_binop
+    else if viewok OKind.SHL == {
+        "cl" "shl" "OKind.SHL" compile_basic_binop
     }
-    else if viewok OP_SHR == {
-        "cl" "shr" "OP_SHR" compile_basic_binop
+    else if viewok OKind.SHR == {
+        "cl" "shr" "OKind.SHR" compile_basic_binop
     }
-    else if viewok OP_SAR == {
-        "cl" "sar" "OP_SAR" compile_basic_binop
+    else if viewok OKind.SAR == {
+        "cl" "sar" "OKind.SAR" compile_basic_binop
     }
-    else if viewok OP_NOT == {
-        "    ; OP_NOT\n"coms
+    else if viewok OKind.NOT == {
+        "    ; OKind.NOT\n"coms
         "rax" compile_pop
         "    not     rax\n"coms
         "rax" compile_push
     }
-    else if viewok OP_EQ == {
-        "    ; OP_EQ\n"coms
+    else if viewok OKind.EQ == {
+        "    ; OKind.EQ\n"coms
         "rbx" compile_pop
         "rax" compile_pop
         "    cmp     rax, rbx\n"coms
@@ -207,8 +207,8 @@ $static ptr out_fd
         "    movzx   rax, al\n"coms
         "rax" compile_push
     }
-    else if viewok OP_GT == {
-        "    ; OP_GT\n"coms
+    else if viewok OKind.GT == {
+        "    ; OKind.GT\n"coms
         "rbx" compile_pop
         "rax" compile_pop
         "    cmp     rax, rbx\n"coms
@@ -216,8 +216,8 @@ $static ptr out_fd
         "    movzx   rax, al\n"coms
         "rax" compile_push
     }
-    else if viewok OP_LT == {
-        "    ; OP_LT\n"coms
+    else if viewok OKind.LT == {
+        "    ; OKind.LT\n"coms
         "rbx" compile_pop
         "rax" compile_pop
         "    cmp     rax, rbx\n"coms
@@ -225,21 +225,21 @@ $static ptr out_fd
         "    movzx   rax, al\n"coms
         "rax" compile_push
     }
-    else if viewok OP_LABEL == {
+    else if viewok OKind.LABEL == {
         ".l_"coms viewod com ":\n"coms
     }
-    else if viewok OP_JMP == {
-        "    ; OP_JMP\n"coms
+    else if viewok OKind.JMP == {
+        "    ; OKind.JMP\n"coms
         "    jmp     .l_"coms viewod com "\n"coms
     }
-    else if viewok OP_JZ == {
-        "    ; OP_JZ\n"coms
+    else if viewok OKind.JZ == {
+        "    ; OKind.JZ\n"coms
         "rax" compile_pop
         "    test    rax, rax\n"coms
         "    jz     .l_"coms viewod com "\n"coms
     }
-    else if viewok OP_FOPEN == {
-        "    ; OP_FOPEN\n"coms
+    else if viewok OKind.FOPEN == {
+        "    ; OKind.FOPEN\n"coms
         "rsi" compile_pop         // mode (0 = read, 1 = write, etc.)
         "rdi" compile_pop         // filename pointer
         "    mov     rax, 2\n"coms
@@ -269,8 +269,8 @@ $static ptr out_fd
         "rax" compile_push
         "    .fel_"coms viewod com ":\n"coms
     }
-    else if viewok OP_FREAD == {
-        "    ; OP_FREAD\n"coms
+    else if viewok OKind.FREAD == {
+        "    ; OKind.FREAD\n"coms
         "rdi" compile_pop           // file descriptor
         "rdx" compile_pop           // length
         "rsi" compile_pop           // buffer pointer
@@ -278,8 +278,8 @@ $static ptr out_fd
         "    syscall\n"coms
         "rax" compile_push          // bytes read or -1
     }
-    else if viewok OP_FWRITE == {
-        "    ; OP_FWRITE\n"coms
+    else if viewok OKind.FWRITE == {
+        "    ; OKind.FWRITE\n"coms
         "rdi" compile_pop           // file descriptor
         "rdx" compile_pop           // length
         "rsi" compile_pop           // buffer pointer
@@ -287,8 +287,8 @@ $static ptr out_fd
         "    syscall\n"coms
         "rax" compile_push          // bytes written or -1
     }
-    else if viewok OP_FCLOSE == {
-        "    ; OP_FCLOSE\n"coms
+    else if viewok OKind.FCLOSE == {
+        "    ; OKind.FCLOSE\n"coms
         "rdi" compile_pop           // file descriptor
         "    mov     rax, 3\n"coms // sys_close
         "    syscall\n"coms

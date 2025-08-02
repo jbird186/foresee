@@ -9,7 +9,10 @@ $static int Token[1024][32] out_toks_mem
 $static int Op[1024][32] fn_ops_mem
 $static int Op[16] start_ops_mem
 $static int ptr[1024][8] inline_bufs
+$static int EnumVariant[1024][8] enum_variants_mem
 $static int StructField[1024][8] struct_fields_mem
+#ENUM_MEM { &enum_variants_mem %EnumVariant }
+#STRUCT_MEM { &struct_fields_mem %StructField }
 
 $static int ptr[1024] scope_stack
 #SCOPE_STACK { &scope_stack %int }
@@ -18,13 +21,15 @@ $static int ptr[1024] scope_stack
 $static File[MAP_SIZE] file_set
 $static Macro[MAP_SIZE] macro_map
 $static Function[MAP_SIZE] fn_map
-$static Struct[MAP_SIZE] struct_map
 $static Buffer[MAP_SIZE] buf_map
+$static Enum[MAP_SIZE] enum_map
+$static Struct[MAP_SIZE] struct_map
 #FILE_SET { &file_set %File }
 #MACRO_MAP { &macro_map %Macro }
 #FN_MAP { &fn_map %Function }
-#STRUCT_MAP { &struct_map %Struct }
 #BUF_MAP { &buf_map %Buffer }
+#ENUM_MAP { &enum_map %Enum }
+#STRUCT_MAP { &struct_map %Struct }
 
 $static stack_size_str: "65536"
 $static stack_reg_str: "r12"

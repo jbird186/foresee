@@ -44,7 +44,7 @@ $static int ASM_FOPEN_ID
 // ops_dest tok_ptr -- ops_dest new_tok_ptr field_size offset
 :view_arrow {
     %Token+
-    if viewtk TOK_IDENT != {
+    if viewtk TKind.IDENT != {
         error "Invalid struct name after '->'\n"eputs
         1 exit
     }
@@ -61,7 +61,7 @@ $static int ASM_FOPEN_ID
 
     // -- ops_dest fields_ptr tok_ptr
     swap %Token+
-    if viewtk TOK_FIELD != {
+    if viewtk TKind.FIELD != {
         error "Expected field access after '->"eputs struct_name eputs "'\n"eputs
         1 exit
     }
@@ -90,13 +90,13 @@ $static int ASM_FOPEN_ID
 #_view_arrows {
     %Token+
     idx BUF_MAP map_idx->Buffer.size@ =size
-    idx OP_PUSH_BUF 3 pick op_push
+    idx OKind.PUSH_BUF 3 pick op_push
 
-    while viewtk TOK_ARROW == {
+    while viewtk TKind.ARROW == {
         // -- ops_dest new_tok_ptr field_size offset
         view_arrow
-        OP_PUSH_INT 4 pick op_push
-        0 OP_ADD 4 pick op_push
+        OKind.PUSH_INT 4 pick op_push
+        0 OKind.ADD 4 pick op_push
         // -- ops_dest new_tok_ptr
         =size
     }
@@ -106,7 +106,7 @@ $static int ASM_FOPEN_ID
 :parse_string {
     viewtd &inline_bufs %ptr stack_push!
     // -- tok_ptr
-    &inline_bufs stack_len 1- MAP_SIZE+ OP_PUSH_BUF 3 roll op_push
+    &inline_bufs stack_len 1- MAP_SIZE+ OKind.PUSH_BUF 3 roll op_push
     %Token+
 }
 
@@ -114,67 +114,92 @@ $static int ASM_FOPEN_ID
 :parse_ident {
     ////////// Intrinsics //////////
     // Misc / Special
-    define_intrinsic_opcode(0 OP_NOOP "__OP_NOOP")
-    define_intrinsic_opcode(0 OP_EXIT "__OP_EXIT")
+    define_intrinsic_opcode(0 {OKind.NOOP} "__OP_NOOP")
+    define_intrinsic_opcode(0 {OKind.EXIT} "__OP_EXIT")
     // Functions
-    define_intrinsic_opcode(0 OP_RET "__OP_RET")
+    define_intrinsic_opcode(0 {OKind.RET} "__OP_RET")
     // Stack Primitives
-    define_intrinsic_opcode(0 OP_DROP "__OP_DROP")
-    define_intrinsic_opcode(0 OP_PICK "__OP_PICK")
-    define_intrinsic_opcode({ASM_ROLL_ID dup 2+ &ASM_ROLL_ID!} OP_ROLL "__OP_ROLL")
-    define_intrinsic_opcode(0 OP_DEPTH "__OP_DEPTH")
+    define_intrinsic_opcode(0 {OKind.DROP} "__OP_DROP")
+    define_intrinsic_opcode(0 {OKind.PICK} "__OP_PICK")
+    define_intrinsic_opcode({ASM_ROLL_ID dup 2+ &ASM_ROLL_ID!} {OKind.ROLL} "__OP_ROLL")
+    define_intrinsic_opcode(0 {OKind.DEPTH} "__OP_DEPTH")
     // Reference Primitives
-    define_intrinsic_opcode(0 OP_STORE "__OP_STORE")
-    define_intrinsic_opcode(0 OP_FETCH "__OP_FETCH")
+    define_intrinsic_opcode(0 {OKind.STORE} "__OP_STORE")
+    define_intrinsic_opcode(0 {OKind.FETCH} "__OP_FETCH")
     // Binary Operations
-    define_intrinsic_opcode(0 OP_ADD "__OP_ADD")
-    define_intrinsic_opcode(0 OP_SUB "__OP_SUB")
-    define_intrinsic_opcode(0 OP_MUL "__OP_MUL")
-    define_intrinsic_opcode(0 OP_DIV "__OP_DIV")
-    define_intrinsic_opcode(0 OP_AND "__OP_AND")
-    define_intrinsic_opcode(0 OP_OR "__OP_OR")
-    define_intrinsic_opcode(0 OP_XOR "__OP_XOR")
-    define_intrinsic_opcode(0 OP_SHL "__OP_SHL")
-    define_intrinsic_opcode(0 OP_SHR "__OP_SHR")
-    define_intrinsic_opcode(0 OP_SAR "__OP_SAR")
-    define_intrinsic_opcode(0 OP_NOT "__OP_NOT")
-    define_intrinsic_opcode(0 OP_EQ "__OP_EQ")
-    define_intrinsic_opcode(0 OP_GT "__OP_GT")
-    define_intrinsic_opcode(0 OP_LT "__OP_LT")
+    define_intrinsic_opcode(0 {OKind.ADD} "__OP_ADD")
+    define_intrinsic_opcode(0 {OKind.SUB} "__OP_SUB")
+    define_intrinsic_opcode(0 {OKind.MUL} "__OP_MUL")
+    define_intrinsic_opcode(0 {OKind.DIV} "__OP_DIV")
+    define_intrinsic_opcode(0 {OKind.AND} "__OP_AND")
+    define_intrinsic_opcode(0 {OKind.OR} "__OP_OR")
+    define_intrinsic_opcode(0 {OKind.XOR} "__OP_XOR")
+    define_intrinsic_opcode(0 {OKind.SHL} "__OP_SHL")
+    define_intrinsic_opcode(0 {OKind.SHR} "__OP_SHR")
+    define_intrinsic_opcode(0 {OKind.SAR} "__OP_SAR")
+    define_intrinsic_opcode(0 {OKind.NOT} "__OP_NOT")
+    define_intrinsic_opcode(0 {OKind.EQ} "__OP_EQ")
+    define_intrinsic_opcode(0 {OKind.GT} "__OP_GT")
+    define_intrinsic_opcode(0 {OKind.LT} "__OP_LT")
     // I/O
-    define_intrinsic_opcode({&ASM_FOPEN_ID@++} OP_FOPEN "__OP_FOPEN")
-    define_intrinsic_opcode(0 OP_FREAD "__OP_FREAD")
-    define_intrinsic_opcode(0 OP_FWRITE "__OP_FWRITE")
-    define_intrinsic_opcode(0 OP_FCLOSE "__OP_FCLOSE")
+    define_intrinsic_opcode({&ASM_FOPEN_ID@++} {OKind.FOPEN} "__OP_FOPEN")
+    define_intrinsic_opcode(0 {OKind.FREAD} "__OP_FREAD")
+    define_intrinsic_opcode(0 {OKind.FWRITE} "__OP_FWRITE")
+    define_intrinsic_opcode(0 {OKind.FCLOSE} "__OP_FCLOSE")
 
     ////////// Functions //////////
-    // -- ops_dest tok_ptr
     if viewtd FN_MAP map_contains {
-        viewtd FN_MAP map_get_idx OP_CALL_FN 3 roll op_push
+        viewtd FN_MAP map_get_idx OKind.CALL_FN 3 roll op_push
         %Token+
         return
+    }
+    $static int name
+
+    ////////// Enums //////////
+    if viewtd ENUM_MAP map_contains {
+        viewtd =name
+
+        // -- ops_dest tok_ptr variants
+        name ENUM_MAP map_get->Enum.variants@
+        // -- ops_dest variants tok_ptr
+        swap %Token+
+        if viewtk TKind.FIELD != {
+            error "Expected variant after '"eputs name eputs "'\n"eputs
+            1 exit
+        }
+        // -- ops_dest tok_ptr name variants
+        viewtd rot
+        while dup->EnumVariant.name@ {
+            if over over->EnumVariant.name@ str_eq {
+                nip->EnumVariant.value@ OKind.PUSH_INT 3 roll op_push
+                %Token+
+                return
+            }
+            %EnumVariant+
+        }
+        drop
+        error "Field '"eputs eputs "' not found for enum '"eputs name eputs "'\n"eputs
     }
 
     ////////// Buffers //////////
     $static int idx
-    $static int name
     $static int size
 
     viewtd scoped_buf_idx =idx =name
     if idx is_failure {
-        error "Function '"eputs name eputs "' not defined\n"eputs
+        error "Buffer '"eputs name eputs "' not defined\n"eputs
         1 exit
     }
 
     _view_arrows
     if size 8 == {
-        0 OP_FETCH 3 roll op_push
+        0 OKind.FETCH 3 roll op_push
     } else if size 1 == {
         if "fetchc" FN_MAP map_contains not {
             error "Function 'fetchc' not defined\n"eputs
             1 exit
         }
-        "fetchc" FN_MAP map_get_idx OP_CALL_FN 3 roll op_push
+        "fetchc" FN_MAP map_get_idx OKind.CALL_FN 3 roll op_push
     } else {
         error "Buffer '"eputs name eputs "' cannot be automatically read from\n"eputs
         1 exit
@@ -189,23 +214,23 @@ $static int ASM_FOPEN_ID
     3 roll 3 roll
     %Token+
     // Condition
-    _parse_until(TOK_BRACE_START)
+    _parse_until({TKind.BRACE_START})
     // -- if_id else_id ops_dest tok_ptr
-    2 pick OP_JZ 3 pick op_push
+    2 pick OKind.JZ 3 pick op_push
 
     // Operations
     dup SCOPE_STACK stack_push!
-    _parse_until(TOK_BRACE_END)
+    _parse_until({TKind.BRACE_END})
     &scope_stack stack_shrink
 
     // -- if_id else_id ops_dest tok_ptr
-    3 pick OP_JMP 3 pick op_push
-    2 pick OP_LABEL 3 pick op_push
+    3 pick OKind.JMP 3 pick op_push
+    2 pick OKind.LABEL 3 pick op_push
     // -- if_id ops_dest tok_ptr
     rot drop
 
     // No else condition
-    if viewtk TOK_ELSE != {
+    if viewtk TKind.ELSE != {
         // tok_ptr
         nip nip
         return
@@ -214,13 +239,13 @@ $static int ASM_FOPEN_ID
 
     // Else condition
     // -- if_id ops_dest tok_ptr
-    if viewtk TOK_BRACE_START == {
+    if viewtk TKind.BRACE_START == {
         %Token+
         dup SCOPE_STACK stack_push!
-        _parse_until(TOK_BRACE_END)
+        _parse_until({TKind.BRACE_END})
         &scope_stack stack_shrink
         nip nip
-    } else if viewtk TOK_IF == {
+    } else if viewtk TKind.IF == {
         // -- tok_ptr
         rot _parse_if_with_id
     } else {
@@ -236,7 +261,7 @@ $static int ASM_FOPEN_ID
     // -- ops_dest if_id tok_ptr
     2 pick swap 2 pick _parse_if_with_id
     // -- tok_ptr
-    swap OP_LABEL 3 roll op_push
+    swap OKind.LABEL 3 roll op_push
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -248,21 +273,21 @@ $static int ASM_FOPEN_ID
     // -- start_id end_id ops_dest tok_ptr
     3 roll 3 roll
     // -- start_id end_id ops_dest tok_ptr
-    3 pick OP_LABEL 3 pick op_push
+    3 pick OKind.LABEL 3 pick op_push
 
     // Condition
-    _parse_until(TOK_BRACE_START)
-    2 pick OP_JZ 3 pick op_push
+    _parse_until({TKind.BRACE_START})
+    2 pick OKind.JZ 3 pick op_push
 
     // Operations
     dup SCOPE_STACK stack_push!
-    _parse_until(TOK_BRACE_END)
+    _parse_until({TKind.BRACE_END})
     &scope_stack stack_shrink
 
     // -- end_id ops_dest tok_ptr
-    3 roll OP_JMP 3 pick op_push
+    3 roll OKind.JMP 3 pick op_push
     // -- tok_ptr
-    rot OP_LABEL 3 roll op_push
+    rot OKind.LABEL 3 roll op_push
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -281,7 +306,7 @@ $static int ASM_FOPEN_ID
     // -- name tok_ptr
     viewtd swap %Token+
     // Function prototype
-    if viewtk TOK_BRACE_START != {
+    if viewtk TKind.BRACE_START != {
         swap dup FN_MAP map_get->Function.name!
         return
     }
@@ -295,16 +320,16 @@ $static int ASM_FOPEN_ID
     swap over ->Function.name! ->Function.def!
     %Token+
 
-    while viewtk TOK_BRACE_END != {
+    while viewtk TKind.BRACE_END != {
         &fn_ops_mem swap parse_tok
     }
     %Token+
 
-    if &fn_ops_mem %Op stack_last->Token.kind@c OP_RET != {
-        0 OP_RET &fn_ops_mem op_push
+    if &fn_ops_mem %Op stack_last->Token.kind@c OKind.RET != {
+        0 OKind.RET &fn_ops_mem op_push
     }
 
-    0 OP_EOF &fn_ops_mem op_push
+    0 OKind.EOF &fn_ops_mem op_push
     &scope_stack stack_shrink
 }
 
@@ -312,12 +337,12 @@ $static int ASM_FOPEN_ID
 
 // base tok_ptr -- total tok_ptr
 :view_buf_size_scalar {
-    while viewtk TOK_BRACKET_START == {
+    while viewtk TKind.BRACKET_START == {
         // -- total tok_ptr scalar
         %Token+ view_buf_size
         // -- total tok_ptr
         rot * swap
-        if viewtk TOK_BRACKET_END != {
+        if viewtk TKind.BRACKET_END != {
             error "Invalid buffer size\n"eputs
             1 exit
         }
@@ -344,18 +369,18 @@ $static int ASM_FOPEN_ID
 
 // tok_ptr -- new_tok_ptr int
 :view_buf_size_int {
-    if viewtk TOK_INT == {
+    if viewtk TKind.INT == {
         // -- base tok_ptr
         viewtd swap %Token+
         view_buf_size_scalar
-    } else if viewtk TOK_IDENT == {
+    } else if viewtk TKind.IDENT == {
         // -- sum tok_ptr
         view_type_size swap %Token+
         view_buf_size_scalar
     } else {
         // -- value tok_ptr
         %Token+ view_buf_size swap
-        if viewtk TOK_BRACKET_END != {
+        if viewtk TKind.BRACKET_END != {
             error "Invalid buffer size\n"eputs
             1 exit
         }
@@ -371,7 +396,7 @@ $static int ASM_FOPEN_ID
 
 // tok_ptr -- bool
 :tok_is_type {
-    if viewtk TOK_IDENT != {
+    if viewtk TKind.IDENT != {
         drop false return
     }
     ->Token.data@ STRUCT_MAP map_contains
@@ -380,7 +405,7 @@ $static int ASM_FOPEN_ID
 // tok_ptr -- new_tok_ptr size
 :view_buf_size {
 	// -- sum tok_ptr
-	0 swap while (viewtk TOK_INT ==) (over tok_is_type) | {
+	0 swap while (viewtk TKind.INT ==) (over tok_is_type) | {
 		view_buf_size_int rot + swap
 	}
 
@@ -398,10 +423,10 @@ $static int ASM_FOPEN_ID
     nip
 
     %Token+
-    if viewtk TOK_STATIC != {
-        if viewtk TOK_IDENT == {
+    if viewtk TKind.STATIC != {
+        if viewtk TKind.IDENT == {
             error "Buffer '"eputs viewtd eputs "' must be static\n"eputs
-        } else if %Token+ viewtk TOK_IDENT == {
+        } else if %Token+ viewtk TKind.IDENT == {
             error "Buffer '"eputs viewtd eputs "' must be static\n"eputs
         } else {
             error "Invalid buffer name\n"eputs
@@ -411,14 +436,14 @@ $static int ASM_FOPEN_ID
 
     %Token+
     $static int size
-    if (viewtk TOK_INT ==) (over tok_is_type) | {
+    if (viewtk TKind.INT ==) (over tok_is_type) | {
         view_buf_size =size
     } else {
         -1 =size
     }
 
     $static ptr name
-    if viewtk TOK_IDENT != {
+    if viewtk TKind.IDENT != {
         error "Invalid buffer name\n"eputs
         1 exit
     } else if viewtd SCOPE_STACK stack_last@ BUF_MAP scoped_map_contains {
@@ -429,9 +454,9 @@ $static int ASM_FOPEN_ID
     %Token+
     $static ptr init
     $static char init_int
-    if viewtk TOK_COLON == {
+    if viewtk TKind.COLON == {
         %Token+
-        if viewtk TOK_STR == {
+        if viewtk TKind.STR == {
             // -- tok_ptr str_size
             viewtd str_len 1+
             if size 0 < {
@@ -441,7 +466,7 @@ $static int ASM_FOPEN_ID
                 1 exit
             }
             false =init_int
-        } else if viewtk TOK_INT == {
+        } else if viewtk TKind.INT == {
             if size 0 < {
                 8 =size
             } else {
@@ -453,7 +478,7 @@ $static int ASM_FOPEN_ID
                 }
             }
             true =init_int
-        } else if viewtk TOK_CHAR == {
+        } else if viewtk TKind.CHAR == {
             if size 0 < {
                 1 =size
             } else {
@@ -496,7 +521,7 @@ $static int ASM_FOPEN_ID
 :parse_ref {
     // -- ops_dest tok_ptr
     if viewtd FN_MAP map_contains {
-        viewtd FN_MAP map_get_idx OP_PUSH_FN 3 roll op_push
+        viewtd FN_MAP map_get_idx OKind.PUSH_FN 3 roll op_push
         %Token+
         return
     }
@@ -505,7 +530,7 @@ $static int ASM_FOPEN_ID
     viewtd scoped_buf_idx
     if dup is_success {
         // -- tok_ptr name
-        OP_PUSH_BUF 4 roll op_push
+        OKind.PUSH_BUF 4 roll op_push
         drop %Token+
     } else {
         drop drop
@@ -528,13 +553,13 @@ $static int ASM_FOPEN_ID
 
     _view_arrows
     if size 8 == {
-        0 OP_STORE 3 roll op_push
+        0 OKind.STORE 3 roll op_push
     } else if size 1 == {
         if "storec" FN_MAP map_contains not {
             error "Function 'storec' not defined\n"eputs
             1 exit
         }
-        "storec" FN_MAP map_get_idx OP_CALL_FN 3 roll op_push
+        "storec" FN_MAP map_get_idx OKind.CALL_FN 3 roll op_push
     } else {
         error "Buffer '"eputs name eputs "' cannot be automatically assigned to\n"eputs
         1 exit
@@ -542,57 +567,124 @@ $static int ASM_FOPEN_ID
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
-:parse_struct {
-    // -- tok_ptr
+:parse_enum {
     %Token+
-    if swap {
-        error "Struct '"eputs viewtd eputs "' must be defined in global scope\n"eputs
+    if viewtk TKind.IDENT != {
+        error "Invalid enum name\n"eputs
         1 exit
     }
-
-    if viewtk TOK_IDENT != {
-        error "Invalid struct name\n"eputs
+    // -- tok_ptr
+    if swap {
+        error "Enum '"eputs viewtd eputs "' must be defined in global scope\n"eputs
         1 exit
     }
 
     $static ptr name
     viewtd =name
-    $static ptr fields_ref
-    &struct_fields_mem %StructField stack_top =fields_ref
+    $static ptr variants_ptr
+    ENUM_MEM stack_top =variants_ptr
 
     %Token+
-    if viewtk TOK_BRACE_START != {
+    if viewtk TKind.BRACE_START != {
+        error "Invalid enum definition\n"eputs
+        1 exit
+    }
+
+    %Token+
+    while viewtk TKind.BRACE_END != {
+        if viewtk TKind.IDENT != {
+            error "Invalid definition for enum '"eputs name eputs "'\n"eputs
+            1 exit
+        }
+
+        // -- name tok_ptr
+        viewtd swap %Token+
+        if viewtk TKind.COLON == {
+            %Token+
+            if viewtk TKind.INT != {
+                error "Invalid value for enum variant '"eputs over eputs "'\n"eputs
+                1 exit
+            }
+            // -- name tok_ptr value
+            viewtd
+            if ENUM_MEM stack_last->EnumVariant.name@ {
+                if dup ENUM_MEM stack_last->EnumVariant.value@ <= {
+                    drop
+                    error "Enum '"eputs name eputs "' must have values in ascending order\n"eputs
+                    1 exit
+                }
+            }
+            swap %Token+ swap
+        } else {
+            if ENUM_MEM stack_last->EnumVariant.name@ {
+                ENUM_MEM stack_last->EnumVariant.value@ 1+
+            } else { 0 }
+            // -- name tok_ptr value
+        }
+        // -- tok_ptr value name slot_ptr
+        rot ENUM_MEM stack_push
+        swap over->EnumVariant.name! ->EnumVariant.value!
+    }
+    %Token+
+    NULL ENUM_MEM stack_push->EnumVariant.name!
+
+    // -- tok_ptr slot_ptr
+    name ENUM_MAP map_get
+    name over->Enum.name!
+    variants_ptr swap->Enum.variants!
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_struct {
+    %Token+
+    if viewtk TKind.IDENT != {
+        error "Invalid struct name\n"eputs
+        1 exit
+    }
+    // -- tok_ptr
+    if swap {
+        error "Struct '"eputs viewtd eputs "' must be defined in global scope\n"eputs
+        1 exit
+    }
+
+    $static ptr name
+    viewtd =name
+    $static ptr fields_ptr
+    STRUCT_MEM stack_top =fields_ptr
+
+    %Token+
+    if viewtk TKind.BRACE_START != {
         error "Invalid struct definition\n"eputs
         1 exit
     }
 
     %Token+
-    while viewtk TOK_BRACE_END != {
+    while viewtk TKind.BRACE_END != {
         // -- tok_ptr size
         view_buf_size_int
-        if over->Token.kind@c TOK_IDENT != {
+        if over->Token.kind@c TKind.IDENT != {
             drop
             error "Invalid definition for struct '"eputs name eputs "'\n"eputs
             1 exit
         }
         // -- tok_ptr size name slot_ptr
-        over->Token.data@ &struct_fields_mem %StructField stack_push
+        over->Token.data@ STRUCT_MEM stack_push
         swap over->StructField.name! ->StructField.size!
         %Token+
     }
     %Token+
-    NULL &struct_fields_mem %StructField stack_push->StructField.name!
+    NULL STRUCT_MEM stack_push->StructField.name!
 
     // -- tok_ptr slot_ptr
     name STRUCT_MAP map_get
     name over->Struct.name!
-    fields_ref swap->Struct.fields!
+    fields_ptr swap->Struct.fields!
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_arrow {
-    view_arrow nip OP_PUSH_INT 3 pick op_push
-    0 OP_ADD 3 roll op_push
+    view_arrow nip OKind.PUSH_INT 3 pick op_push
+    0 OKind.ADD 3 roll op_push
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -607,13 +699,13 @@ $static int ASM_FOPEN_ID
         error "Buffer '"eputs viewtd eputs "' not defined\n"eputs
         1 exit
     }
-    OP_PUSH_INT 3 roll op_push
+    OKind.PUSH_INT 3 roll op_push
     %Token+
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_call {
-    0 OP_CALL 3 roll op_push
+    0 OKind.CALL 3 roll op_push
     %Token+
 }
 
@@ -625,35 +717,36 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_tok {
-    if viewtk TOK_POUND == {
+    if viewtk TKind.POUND == {
         error "Unexpected preprocessing directive\n"eputs
         1 exit
     }
-    else if viewtk TOK_WORD == {
+    else if viewtk TKind.WORD == {
         error "Macro '"eputs viewtd eputs "' not defined\n"eputs
         1 exit
     }
-    else if viewtk dup (TOK_INT ==) swap (TOK_CHAR ==) | {
-        viewtd OP_PUSH_INT 3 roll op_push
+    else if viewtk dup (TKind.INT ==) swap (TKind.CHAR ==) | {
+        viewtd OKind.PUSH_INT 3 roll op_push
         %Token+
     }
-    else if viewtk TOK_PAREN_START == {
+    else if viewtk TKind.PAREN_START == {
         %Token+
-        _parse_until(TOK_PAREN_END)
+        _parse_until({TKind.PAREN_END})
         nip
     }
-    parse_with(TOK_STR parse_string)
-    parse_with(TOK_IDENT parse_ident)
-    parse_with(TOK_IF parse_if)
-    parse_with(TOK_WHILE parse_while)
-    parse_with(TOK_FN parse_fn)
-    parse_with(TOK_DOLLAR parse_dollar)
-    parse_with(TOK_REF parse_ref)
-    parse_with(TOK_EQ parse_eq)
-    parse_with(TOK_STRUCT parse_struct)
-    parse_with(TOK_ARROW parse_arrow)
-    parse_with(TOK_SIZE parse_size)
-    parse_with(TOK_CALL parse_call)
+    parse_with({TKind.STR} parse_string)
+    parse_with({TKind.IDENT} parse_ident)
+    parse_with({TKind.IF} parse_if)
+    parse_with({TKind.WHILE} parse_while)
+    parse_with({TKind.FN} parse_fn)
+    parse_with({TKind.DOLLAR} parse_dollar)
+    parse_with({TKind.REF} parse_ref)
+    parse_with({TKind.EQ} parse_eq)
+    parse_with({TKind.ENUM} parse_enum)
+    parse_with({TKind.STRUCT} parse_struct)
+    parse_with({TKind.ARROW} parse_arrow)
+    parse_with({TKind.SIZE} parse_size)
+    parse_with({TKind.CALL} parse_call)
     else {
         error "Unexpected token of type "eputs viewtk eput cr
         1 exit
@@ -664,8 +757,8 @@ $static int ASM_FOPEN_ID
     $static char kind
     // -- tok_ptr
     &out_toks_mem->StackHead.data
-    while viewtk =kind kind TOK_EOF != {
-        if (kind TOK_FN !=) (kind TOK_DOLLAR !=) (kind TOK_STRUCT !=) & & {
+    while viewtk =kind kind TKind.EOF != {
+        if (kind TKind.FN !=) (kind TKind.DOLLAR !=) (kind TKind.ENUM !=) (kind TKind.STRUCT !=) & & & {
             error "Unexpected token of type "eputs viewtk eput " outside of 'main'\n"eputs
             1 exit
         }
@@ -677,8 +770,8 @@ $static int ASM_FOPEN_ID
         error "Function 'main' not defined\n"eputs
         1 exit
     }
-    "main" FN_MAP map_get_idx OP_CALL_FN &start_ops_mem op_push
-    0 OP_PUSH_INT &start_ops_mem op_push
-    0 OP_EXIT &start_ops_mem op_push
-    0 OP_EOF &start_ops_mem op_push
+    "main" FN_MAP map_get_idx OKind.CALL_FN &start_ops_mem op_push
+    0 OKind.PUSH_INT &start_ops_mem op_push
+    0 OKind.EXIT &start_ops_mem op_push
+    0 OKind.EOF &start_ops_mem op_push
 }

@@ -26,6 +26,16 @@ struct Function {
     ptr def
 }
 
+struct Enum {
+    ptr name
+    ptr variants
+}
+
+struct EnumVariant {
+    ptr name
+    int value
+}
+
 struct Struct {
     ptr name
     ptr fields
