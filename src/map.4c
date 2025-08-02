@@ -1,5 +1,5 @@
-#include "std/stdstr.4c"
-#include "src/config.4c"
+#use "std/stdstr.4c"
+#use "src/config.4c"
 
 // str_ref -- hash
 :hash {

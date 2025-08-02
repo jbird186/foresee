@@ -1,4 +1,4 @@
-#include "src/types.4c"
+#use "src/types.4c"
 
 #SRC_STR_SIZE { 65536 }
 $static char[SRC_STR_SIZE] src_str

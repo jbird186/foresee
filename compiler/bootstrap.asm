@@ -6246,44 +6246,6 @@ f_1531:
     mov     [rax], rcx
     ; OKind.RET
     ret
-; check_include
-f_1595:
-    ; OKind.CALL_FN
-    call f_702
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 4
-    ; OKind.EQ
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    sete    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_162
-    ; OKind.CALL_FN
-    call f_695
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8207
-    ; OKind.CALL_FN
-    call f_7618
-    ; OKind.JMP
-    jmp     .l_161
-.l_162:
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-.l_161:
-    ; OKind.RET
-    ret
 ; compile_buf_str
 f_1681:
     ; OKind.PUSH_INT
@@ -9285,14 +9247,14 @@ f_2407:
     sub     r12, 8
     mov     qword [r12], rax
     ; OKind.CALL_FN
-    call f_1595
+    call f_3278
     ; OKind.JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
     jz     .l_207
     ; OKind.CALL_FN
-    call f_3608
+    call f_5274
     ; OKind.JMP
     jmp     .l_206
 .l_207:
@@ -11046,8 +11008,46 @@ f_3178:
     mov     qword [r12], rax
     ; OKind.RET
     ret
-; scoped_macro_idx
+; check_use
 f_3278:
+    ; OKind.CALL_FN
+    call f_702
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 4
+    ; OKind.EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_162
+    ; OKind.CALL_FN
+    call f_695
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8207
+    ; OKind.CALL_FN
+    call f_7618
+    ; OKind.JMP
+    jmp     .l_161
+.l_162:
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+.l_161:
+    ; OKind.RET
+    ret
+; scoped_macro_idx
+f_3279:
     ; OKind.PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_7994
@@ -11825,422 +11825,6 @@ f_3476:
     call f_2068
     ; OKind.CALL_FN
     call f_3343
-    ; OKind.RET
-    ret
-; preprocess_include
-f_3608:
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OKind.ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.CALL_FN
-    call f_702
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 3
-    ; OKind.EQ
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    sete    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OKind.XOR
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    xor 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_187
-    ; OKind.CALL_FN
-    call f_2380
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8216
-    ; OKind.CALL_FN
-    call f_7658
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OKind.EXIT
-    mov     rdi, qword [r12]
-    add     r12, 8
-    mov     eax, 60
-    syscall
-    ; OKind.JMP
-    jmp     .l_186
-.l_187:
-.l_186:
-    ; OKind.CALL_FN
-    call f_695
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_6891
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 8
-    ; OKind.CALL_FN
-    call f_5605
-    ; OKind.JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_189
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OKind.ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.RET
-    ret
-    ; OKind.JMP
-    jmp     .l_188
-.l_189:
-.l_188:
-    ; OKind.CALL_FN
-    call f_695
-    ; OKind.CALL_FN
-    call f_2068
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_6891
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 8
-    ; OKind.CALL_FN
-    call f_2292
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OKind.ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.STORE
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     [rax], rcx
-    ; OKind.CALL_FN
-    call f_695
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OKind.FOPEN
-    mov     rsi, qword [r12]
-    add     r12, 8
-    mov     rdi, qword [r12]
-    add     r12, 8
-    mov     rax, 2
-    cmp     rsi, 0
-    je      .frl_0
-    cmp     rsi, 1
-    je      .fwl_0
-    cmp     rsi, 2
-    je      .fal_0
-    jmp     .ffl_0
-    .frl_0:
-    mov     rsi, 0
-    jmp     .fdl_0
-    .fwl_0:
-    mov     rsi, 577
-    jmp     .fdl_0
-    .fal_0:
-    mov     rsi, 1025
-    jmp     .fdl_0
-    .fdl_0:
-    mov     rdx, 420
-    syscall
-    sub     r12, 8
-    mov     qword [r12], rax
-    jmp     .fel_0
-    .ffl_0:
-    mov     rax, -1
-    sub     r12, 8
-    mov     qword [r12], rax
-    .fel_0:
-    ; OKind.CALL_FN
-    call f_2068
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OKind.LT
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    setl    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_191
-    ; OKind.DROP
-    add     r12, 8
-    ; OKind.CALL_FN
-    call f_2380
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8217
-    ; OKind.CALL_FN
-    call f_7658
-    ; OKind.CALL_FN
-    call f_2960
-    ; OKind.CALL_FN
-    call f_695
-    ; OKind.CALL_FN
-    call f_7658
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8218
-    ; OKind.CALL_FN
-    call f_7658
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OKind.EXIT
-    mov     rdi, qword [r12]
-    add     r12, 8
-    mov     eax, 60
-    syscall
-    ; OKind.JMP
-    jmp     .l_190
-.l_191:
-.l_190:
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_997
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 65536
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 2
-    ; OKind.PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OKind.FREAD
-    mov     rdi, qword [r12]
-    add     r12, 8
-    mov     rdx, qword [r12]
-    add     r12, 8
-    mov     rsi, qword [r12]
-    add     r12, 8
-    mov     rax, 0
-    syscall
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.CALL_FN
-    call f_2068
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OKind.LT
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    setl    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_193
-    ; OKind.DROP
-    add     r12, 8
-    ; OKind.DROP
-    add     r12, 8
-    ; OKind.CALL_FN
-    call f_2380
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8219
-    ; OKind.CALL_FN
-    call f_7658
-    ; OKind.CALL_FN
-    call f_2960
-    ; OKind.CALL_FN
-    call f_695
-    ; OKind.CALL_FN
-    call f_7658
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8220
-    ; OKind.CALL_FN
-    call f_7658
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OKind.EXIT
-    mov     rdi, qword [r12]
-    add     r12, 8
-    mov     eax, 60
-    syscall
-    ; OKind.JMP
-    jmp     .l_192
-.l_193:
-.l_192:
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_997
-    ; OKind.ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OKind.CALL_FN
-    call f_2960
-    ; OKind.CALL_FN
-    call f_2394
-    ; OKind.FCLOSE
-    mov     rdi, qword [r12]
-    add     r12, 8
-    mov     rax, 3
-    syscall
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OKind.LT
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    setl    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_195
-    ; OKind.CALL_FN
-    call f_2380
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8221
-    ; OKind.CALL_FN
-    call f_7658
-    ; OKind.CALL_FN
-    call f_2960
-    ; OKind.CALL_FN
-    call f_695
-    ; OKind.CALL_FN
-    call f_7658
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8222
-    ; OKind.CALL_FN
-    call f_7658
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OKind.EXIT
-    mov     rdi, qword [r12]
-    add     r12, 8
-    mov     eax, 60
-    syscall
-    ; OKind.JMP
-    jmp     .l_194
-.l_195:
-.l_194:
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_1224
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OKind.CALL_FN
-    call f_4800
-    ; OKind.CALL_FN
-    call f_5695
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OKind.ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OKind.FETCH
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rbx, qword [rax]
-    sub     r12, 8
-    mov     qword [r12], rbx
-    ; OKind.PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_997
-    ; OKind.CALL_FN
-    call f_2960
-    ; OKind.CALL_FN
-    call f_3761
-    ; OKind.CALL_FN
-    call f_5436
-    ; OKind.PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OKind.ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
     ; OKind.RET
     ret
 ; view_buf_size
@@ -16143,7 +15727,7 @@ f_4549:
     ; OKind.CALL_FN
     call f_5695
     ; OKind.CALL_FN
-    call f_3278
+    call f_3279
     ; OKind.CALL_FN
     call f_2068
     ; OKind.PUSH_INT
@@ -19865,6 +19449,422 @@ f_5129:
     mov     qword [r12], rax
     ; OKind.RET
     ret
+; preprocess_use
+f_5274:
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OKind.ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.CALL_FN
+    call f_702
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 3
+    ; OKind.EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OKind.XOR
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    xor 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_187
+    ; OKind.CALL_FN
+    call f_2380
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8216
+    ; OKind.CALL_FN
+    call f_7658
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OKind.EXIT
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     eax, 60
+    syscall
+    ; OKind.JMP
+    jmp     .l_186
+.l_187:
+.l_186:
+    ; OKind.CALL_FN
+    call f_695
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_6891
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 8
+    ; OKind.CALL_FN
+    call f_5605
+    ; OKind.JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_189
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OKind.ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.RET
+    ret
+    ; OKind.JMP
+    jmp     .l_188
+.l_189:
+.l_188:
+    ; OKind.CALL_FN
+    call f_695
+    ; OKind.CALL_FN
+    call f_2068
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_6891
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 8
+    ; OKind.CALL_FN
+    call f_2292
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OKind.ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OKind.CALL_FN
+    call f_695
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OKind.FOPEN
+    mov     rsi, qword [r12]
+    add     r12, 8
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     rax, 2
+    cmp     rsi, 0
+    je      .frl_0
+    cmp     rsi, 1
+    je      .fwl_0
+    cmp     rsi, 2
+    je      .fal_0
+    jmp     .ffl_0
+    .frl_0:
+    mov     rsi, 0
+    jmp     .fdl_0
+    .fwl_0:
+    mov     rsi, 577
+    jmp     .fdl_0
+    .fal_0:
+    mov     rsi, 1025
+    jmp     .fdl_0
+    .fdl_0:
+    mov     rdx, 420
+    syscall
+    sub     r12, 8
+    mov     qword [r12], rax
+    jmp     .fel_0
+    .ffl_0:
+    mov     rax, -1
+    sub     r12, 8
+    mov     qword [r12], rax
+    .fel_0:
+    ; OKind.CALL_FN
+    call f_2068
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OKind.LT
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    setl    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_191
+    ; OKind.DROP
+    add     r12, 8
+    ; OKind.CALL_FN
+    call f_2380
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8217
+    ; OKind.CALL_FN
+    call f_7658
+    ; OKind.CALL_FN
+    call f_2960
+    ; OKind.CALL_FN
+    call f_695
+    ; OKind.CALL_FN
+    call f_7658
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8218
+    ; OKind.CALL_FN
+    call f_7658
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OKind.EXIT
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     eax, 60
+    syscall
+    ; OKind.JMP
+    jmp     .l_190
+.l_191:
+.l_190:
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_997
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 65536
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 2
+    ; OKind.PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OKind.FREAD
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     rdx, qword [r12]
+    add     r12, 8
+    mov     rsi, qword [r12]
+    add     r12, 8
+    mov     rax, 0
+    syscall
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.CALL_FN
+    call f_2068
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OKind.LT
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    setl    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_193
+    ; OKind.DROP
+    add     r12, 8
+    ; OKind.DROP
+    add     r12, 8
+    ; OKind.CALL_FN
+    call f_2380
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8219
+    ; OKind.CALL_FN
+    call f_7658
+    ; OKind.CALL_FN
+    call f_2960
+    ; OKind.CALL_FN
+    call f_695
+    ; OKind.CALL_FN
+    call f_7658
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8220
+    ; OKind.CALL_FN
+    call f_7658
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OKind.EXIT
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     eax, 60
+    syscall
+    ; OKind.JMP
+    jmp     .l_192
+.l_193:
+.l_192:
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_997
+    ; OKind.ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OKind.CALL_FN
+    call f_2960
+    ; OKind.CALL_FN
+    call f_2394
+    ; OKind.FCLOSE
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     rax, 3
+    syscall
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OKind.LT
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    setl    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_195
+    ; OKind.CALL_FN
+    call f_2380
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8221
+    ; OKind.CALL_FN
+    call f_7658
+    ; OKind.CALL_FN
+    call f_2960
+    ; OKind.CALL_FN
+    call f_695
+    ; OKind.CALL_FN
+    call f_7658
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8222
+    ; OKind.CALL_FN
+    call f_7658
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OKind.EXIT
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     eax, 60
+    syscall
+    ; OKind.JMP
+    jmp     .l_194
+.l_195:
+.l_194:
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_1224
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OKind.CALL_FN
+    call f_4800
+    ; OKind.CALL_FN
+    call f_5695
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OKind.ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OKind.PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_997
+    ; OKind.CALL_FN
+    call f_2960
+    ; OKind.CALL_FN
+    call f_3761
+    ; OKind.CALL_FN
+    call f_5436
+    ; OKind.PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OKind.ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OKind.RET
+    ret
 ; parse_call
 f_5303:
     ; OKind.PUSH_INT
@@ -23231,7 +23231,7 @@ section .data
     b_8204 db "struct",0
     b_8205 db "call",0
     b_8206 db "(){}[]",0
-    b_8207 db "include",0
+    b_8207 db "use",0
     b_8208 db "Expected arguments for macro '",0
     b_8209 db "'",10,0
     b_8210 db "Invalid number of arguments supplied to macro '",0
@@ -23240,12 +23240,12 @@ section .data
     b_8213 db "'",10,0
     b_8214 db "Macro expansion for '",0
     b_8215 db "' expected ident, found tagged ident",10,0
-    b_8216 db "Expected file name after 'include' directive",10,0
-    b_8217 db "'include' directive failed to open file '",0
+    b_8216 db "Expected file name after 'use' directive",10,0
+    b_8217 db "'use' directive failed to open file '",0
     b_8218 db "'",10,0
-    b_8219 db "'include' directive failed to read file '",0
+    b_8219 db "'use' directive failed to read file '",0
     b_8220 db "'",10,0
-    b_8221 db "'include' directive failed to close file '",0
+    b_8221 db "'use' directive failed to close file '",0
     b_8222 db "'",10,0
     b_8223 db "Macro '",0
     b_8224 db "' already defined",10,0

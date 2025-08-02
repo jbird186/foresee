@@ -1,9 +1,9 @@
-#include "std/stdio.4c"
-#include "std/stdchar.4c"
-#include "std/stdstr.4c"
-#include "src/config.4c"
-#include "src/stack.4c"
-#include "src/token.4c"
+#use "std/stdio.4c"
+#use "std/stdchar.4c"
+#use "std/stdstr.4c"
+#use "src/config.4c"
+#use "src/stack.4c"
+#use "src/token.4c"
 
 $static int line
 $static ptr file

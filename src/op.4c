@@ -1,4 +1,4 @@
-#include "src/types.4c"
+#use "src/types.4c"
 
 enum OKind {
     // Misc / Special

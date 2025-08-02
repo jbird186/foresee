@@ -1,5 +1,5 @@
-#include "std/stdref.4c"
-#include "std/stdio.4c"
+#use "std/stdref.4c"
+#use "std/stdio.4c"
 
 $static board 9
 $static current_player 1

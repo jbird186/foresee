@@ -1,7 +1,7 @@
-#include "std/stdstr.4c"
-#include "src/config.4c"
-#include "src/token.4c"
-#include "src/op.4c"
+#use "std/stdstr.4c"
+#use "src/config.4c"
+#use "src/token.4c"
+#use "src/op.4c"
 
 $static int ASM_LABEL_ID
 $static int ASM_ROLL_ID

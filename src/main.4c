@@ -1,7 +1,7 @@
-#include "src/lex.4c"
-#include "src/preprocess.4c"
-#include "src/parse.4c"
-#include "src/compile.4c"
+#use "src/lex.4c"
+#use "src/preprocess.4c"
+#use "src/parse.4c"
+#use "src/compile.4c"
 
 // TODO: prevent buffer/function/struct name collision
 // TODO: fix buffer scoping in dowhile loops

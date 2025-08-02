@@ -1,5 +1,5 @@
-#include "std/core/intrinsics.4c"
-#include "std/core/linux.4c"
+#use "std/core/intrinsics.4c"
+#use "std/core/linux.4c"
 
 struct int { 8 __inner }
 struct ptr { 8 __inner }

@@ -1,6 +1,6 @@
-#include "src/config.4c"
-#include "src/token.4c"
-#include "src/map.4c"
+#use "src/config.4c"
+#use "src/token.4c"
+#use "src/map.4c"
 
 // tok_ptr -- new_tok_ptr
 :preprocess_token
@@ -63,9 +63,9 @@
 }
 
 // tok_ptr -- tok_ptr bool
-:check_include {
+:check_use {
     if viewtk TKind.IDENT == {
-        viewtd "include" str_eq
+        viewtd "use" str_eq
     } else {
         false
     }
@@ -160,14 +160,14 @@
 }
 
 // tok_ptr -- new_tok_ptr
-:preprocess_include {
+:preprocess_use {
     %Token+
     if viewtk TKind.STR != {
-        error "Expected file name after 'include' directive\n"eputs
+        error "Expected file name after 'use' directive\n"eputs
         1 exit
     }
 
-    // Check if this file has already been included
+    // Check if this file has already been used
     if viewtd FILE_SET map_contains {
         %Token+
         return
@@ -177,13 +177,13 @@
     // -- tok_ptr fd
     if viewtd 0 fopen dup is_failure {
         drop
-        error "'include' directive failed to open file '"eputs swap viewtd eputs "'\n"eputs
+        error "'use' directive failed to open file '"eputs swap viewtd eputs "'\n"eputs
         1 exit
     }
     // -- tok_ptr fd bytes_read
     if &src_str SRC_STR_SIZE 2 pick fread dup is_failure {
         drop drop
-        error "'include' directive failed to read file '"eputs swap viewtd eputs "'\n"eputs
+        error "'use' directive failed to read file '"eputs swap viewtd eputs "'\n"eputs
         1 exit
     }
     // -- tok_ptr fd
@@ -191,11 +191,11 @@
 
     // -- tok_ptr
     if fclose is_failure {
-        error "'include' directive failed to close file '"eputs swap viewtd eputs "'\n"eputs
+        error "'use' directive failed to close file '"eputs swap viewtd eputs "'\n"eputs
         1 exit
     }
 
-    // -- tok_ptr include_tok_ptr
+    // -- tok_ptr use_tok_ptr
     &toks_mem %Token stack_top
     over->Token.data@ &src_str swap lex_src
 
@@ -241,8 +241,8 @@
 // tok_ptr -- new_tok_ptr
 :preprocess_pound {
     %Token+
-    if check_include {
-        preprocess_include
+    if check_use {
+        preprocess_use
     } else if viewtk dup (TKind.IDENT ==) swap (TKind.WORD ==) | {
         preprocess_macro_def
     } else {
