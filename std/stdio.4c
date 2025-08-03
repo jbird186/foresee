@@ -5,22 +5,22 @@
 :fwrite_int { swap __write_int_to_temp rot fwrite }
 
 :put { __write_int_to_temp stdout }
-#show{dup put}
+#macro show{dup put}
 
 :putc {
     &__std_buf!
     &__std_buf 1 stdout
 }
-#showc{dup putc}
-#cr{'\n' putc}
-#sp{' ' putc}
+#macro showc{dup putc}
+#macro cr{'\n' putc}
+#macro sp{' ' putc}
 
 :puts {
     while dup@c dup {
         putc 1+
     } drop drop
 }
-#shows{dup puts}
+#macro shows{dup puts}
 
 :eput { __write_int_to_temp stderr }
 :eputc {

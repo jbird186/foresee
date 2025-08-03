@@ -10,14 +10,14 @@ $static int ASM_FOPEN_ID
 :parse_tok
 
 // ops_dest tok_ptr -- ops_dest tok_ptr
-#_parse_until(until_tok_kind) {
+#macro _parse_until(until_tok_kind) {
     while viewtk until_tok_kind != {
         over swap parse_tok
     }
     %Token+
 }
 
-#define_intrinsic_opcode(data op_code alias) {
+#macro define_intrinsic_opcode(data op_code alias) {
     if viewtd alias str_eq {
         // -- tok_ptr
         (data) op_code 3 roll op_push
@@ -108,12 +108,12 @@ $static int ASM_FOPEN_ID
     }
 
     drop
-    swap error "Field '"eputs swap eputs "' not found for struct '"eputs struct_name eputs "'\n"eputs
+    swap error swap "Field '"eputs eputs "' not found for struct '"eputs struct_name eputs "'\n"eputs
     1 exit
 }
 
 // ops_dest tok_ptr -- ops_dest tok_ptr
-#_view_arrows {
+#macro _view_arrows {
     %Token+
     idx BUF_MAP map_idx->Buffer.size@ =size
     idx OKind.PUSH_BUF 3 pick op_push
@@ -205,7 +205,8 @@ $static int ASM_FOPEN_ID
             %EnumVariant+
         }
         drop
-        error "Field '"eputs eputs "' not found for enum '"eputs type_name eputs "'\n"eputs
+        swap error swap "Field '"eputs eputs "' not found for enum '"eputs type_name eputs "'\n"eputs
+        1 exit
     }
 
     ////////// Buffers //////////
@@ -765,7 +766,7 @@ $static int ASM_FOPEN_ID
     %Token+
 }
 
-#parse_with(parse_kind parse_function) {
+#macro parse_with(parse_kind parse_function) {
     else if viewtk parse_kind == {
         parse_function
     }

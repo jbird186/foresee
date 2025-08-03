@@ -31,7 +31,7 @@ $static ptr out_fd
 }
 
 // item --
-#compile_push_generic(com_type) {
+#macro compile_push_generic(com_type) {
     "    sub     "coms &stack_reg_str coms ", 8\n"coms
     "    mov     qword ["coms &stack_reg_str coms "], "coms com_type "\n" coms
 }

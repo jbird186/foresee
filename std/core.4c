@@ -6,16 +6,16 @@ struct ptr { 8 __inner }
 struct char { 1 __inner }
 struct bool { 1 __inner }
 
-#NULL{0}
-#false{0}
-#true{1}
+#macro NULL{0}
+#macro false{0}
+#macro true{1}
+#macro !={== 1 ^}
+#macro <={> 1 ^}
+#macro >={< 1 ^}
+#macro is_success{-1 >}
+#macro is_failure{0 <}
 :flag{(if {true} else {false})}
 :not{(if {false} else {true})}
-#!={== 1 ^}
-#<={> 1 ^}
-#>={< 1 ^}
-#is_success{-1 >}
-#is_failure{0 <}
 
 // a -- a a
 :dup{0 pick}
@@ -28,31 +28,31 @@ struct bool { 1 __inner }
 // a b -- b
 :nip{swap drop}
 
-#%{over over / * -}
+#macro %{over over / * -}
 
-#!{store}
-#@{fetch}
-#@++{dup@ dup 1+ rot!}
-#++@{dup@ 1+ dup rot!}
-#@--{dup@ dup 1- rot!}
-#--@{dup@ 1- dup rot!}
+#macro !{store}
+#macro @{fetch}
+#macro @++{dup@ dup 1+ rot!}
+#macro ++@{dup@ 1+ dup rot!}
+#macro @--{dup@ dup 1- rot!}
+#macro --@{dup@ 1- dup rot!}
 
 :storec {
     dup fetch 0xff ~ &
     rot 0xff & |
     swap store
 }
-#!c{storec}
+#macro !c{storec}
 :fetchc {
     fetch 0xff &
 }
-#@c{fetchc}
-#@c++{dup@c dup 1+ rot!c}
-#++@c{dup@c 1+ dup rot!c}
-#@c--{dup@c dup 1- rot!c}
-#--@c{dup@c 1- dup rot!c}
+#macro @c{fetchc}
+#macro @c++{dup@c dup 1+ rot!c}
+#macro ++@c{dup@c 1+ dup rot!c}
+#macro @c--{dup@c dup 1- rot!c}
+#macro --@c{dup@c 1- dup rot!c}
 
-#dowhile(__ops __cond) {
+#macro dowhile(__ops __cond) {
     __ops
     while __cond {
         __ops

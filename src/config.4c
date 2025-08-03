@@ -1,6 +1,6 @@
 #use "src/types.4c"
 
-#SRC_STR_SIZE { 65536 }
+#macro SRC_STR_SIZE { 65536 }
 $static char[SRC_STR_SIZE] src_str
 
 $static int char[1024][128] strs_mem
@@ -11,28 +11,28 @@ $static int Op[16] start_ops_mem
 $static int ptr[1024][8] inline_bufs
 $static int EnumVariant[1024][8] enum_variants_mem
 $static int StructField[1024][8] struct_fields_mem
-#ENUM_MEM { &enum_variants_mem %EnumVariant }
-#STRUCT_MEM { &struct_fields_mem %StructField }
+#macro ENUM_MEM { &enum_variants_mem %EnumVariant }
+#macro STRUCT_MEM { &struct_fields_mem %StructField }
 
 $static int ptr[1024] scope_stack
-#SCOPE_STACK { &scope_stack %int }
+#macro SCOPE_STACK { &scope_stack %int }
 
-#MAP_SIZE { 8191 }
+#macro MAP_SIZE { 8191 }
 $static File[MAP_SIZE] file_set
 $static Macro[MAP_SIZE] macro_map
 $static Function[MAP_SIZE] fn_map
 $static Buffer[MAP_SIZE] buf_map
 $static Enum[MAP_SIZE] enum_map
 $static Struct[MAP_SIZE] struct_map
-#FILE_SET { &file_set %File }
-#MACRO_MAP { &macro_map %Macro }
-#FN_MAP { &fn_map %Function }
-#BUF_MAP { &buf_map %Buffer }
-#ENUM_MAP { &enum_map %Enum }
-#STRUCT_MAP { &struct_map %Struct }
+#macro FILE_SET { &file_set %File }
+#macro MACRO_MAP { &macro_map %Macro }
+#macro FN_MAP { &fn_map %Function }
+#macro BUF_MAP { &buf_map %Buffer }
+#macro ENUM_MAP { &enum_map %Enum }
+#macro STRUCT_MAP { &struct_map %Struct }
 
 $static stack_size_str: "65536"
 $static stack_reg_str: "r12"
 
-#USE_ASM_STRINGS { true }
-#BUFFER_SIZE_LIMIT { 16777216 }
+#macro USE_ASM_STRINGS { true }
+#macro BUFFER_SIZE_LIMIT { 16777216 }

@@ -25,8 +25,8 @@
     nip
 }
 
-// tok_ptr --
-:preprocess_macro_block {
+// tok_ptr -- tok_ptr
+:preprocess_block {
     %Token+
     // -- depth tok_ptr
     1 swap while over {
@@ -39,14 +39,13 @@
             preprocess_token
         }
     }
-    %Token+
-    drop drop
+    nip %Token+
 }
 
 // tok_ptr -- tok_ptr bool
-:check_use {
+#macro check_directive(value) {
     if viewtk TKind.IDENT == {
-        viewtd "use" str_eq
+        viewtd value str_eq
     } else {
         false
     }
@@ -119,7 +118,7 @@
         if viewtk TKind.BRACE_START == {
             // -- tok_ptr def_tok_ptr
             rot drop
-            preprocess_macro_block
+            preprocess_block drop
         } else {
             preprocess_token
             drop nip
@@ -134,7 +133,7 @@
 }
 
 // tok_ptr -- new_tok_ptr
-:preprocess_use {
+:parse_use_directive {
     %Token+
     if viewtk TKind.STR != {
         error "Expected file name after 'use' directive\n"eputs
@@ -178,7 +177,19 @@
 }
 
 // tok_ptr -- new_tok_ptr
-:preprocess_macro_def {
+:parse_error_directive {
+    %Token+
+    if viewtk TKind.STR == {
+        error viewtd eputs
+    } else {
+        error "Expected message after 'error' directive\n"eputs
+    }
+    1 exit
+}
+
+// tok_ptr -- new_tok_ptr
+:parse_macro_directive {
+    %Token+
     if viewtd MACRO_MAP map_contains {
         error "Macro '"eputs viewtd eputs "' already defined\n"eputs
         1 exit
@@ -213,12 +224,40 @@
 }
 
 // tok_ptr -- new_tok_ptr
+#macro parse_if_directive(true_case false_case) {
+    %Token+
+    if viewtk dup (TKind.IDENT !=) swap (TKind.WORD !=) & {
+        error "Expected macro name after 'if' directive\n"eputs
+        1 exit
+    }
+
+    // -- macro_name tok_ptr
+    viewtd swap %Token+
+    if viewtk TKind.BRACE_START != {
+        error "Expected braces after 'if' directive\n"eputs
+        1 exit
+    }
+
+    if swap MACRO_MAP map_contains {
+        true_case
+    } else {
+        false_case
+    }
+}
+
+// tok_ptr -- new_tok_ptr
 :preprocess_pound {
     %Token+
-    if check_use {
-        preprocess_use
-    } else if viewtk dup (TKind.IDENT ==) swap (TKind.WORD ==) | {
-        preprocess_macro_def
+    if check_directive("use") {
+        parse_use_directive
+    } else if check_directive("error") {
+        parse_error_directive
+    } else if check_directive("macro") {
+        parse_macro_directive
+    } else if viewtk TKind.IF == {
+        parse_if_directive(preprocess_block skip_braces)
+    } else if check_directive("ifnot") {
+        parse_if_directive(skip_braces preprocess_block)
     } else {
         error "Unexpected preprocessor directive\n"eputs
         1 exit

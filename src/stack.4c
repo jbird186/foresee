@@ -6,7 +6,7 @@ struct StackHead {
 }
 
 // stack -- len
-#stack_len { ->StackHead.len@ }
+#macro stack_len { ->StackHead.len@ }
 // stack --
 :stack_shrink { ->StackHead.len@-- drop }
 // stack slot_size -- slot_ptr

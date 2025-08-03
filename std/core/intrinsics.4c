@@ -1,27 +1,27 @@
-#+{__OP_ADD}
-#-{__OP_SUB}
-#*{__OP_MUL}
-#/{__OP_DIV}
-#&{__OP_AND}
-#|{__OP_OR}
-#^{__OP_XOR}
-#<<{__OP_SHL}
-#>>{__OP_SHR}
-#>>a{__OP_SAR}
-#~{__OP_NOT}
-#=={__OP_EQ}
-#>{__OP_GT}
-#<{__OP_LT}
-#noop{__OP_NOOP}
-#exit{__OP_EXIT}
-#return{__OP_RET}
-#drop{__OP_DROP}
-#pick{__OP_PICK}
-#roll{__OP_ROLL}
-#depth{__OP_DEPTH}
-#store{__OP_STORE}
-#fetch{__OP_FETCH}
-#fopen{__OP_FOPEN}
-#fread{__OP_FREAD}
-#fwrite{__OP_FWRITE}
-#fclose{__OP_FCLOSE}
+#macro +{__OP_ADD}
+#macro -{__OP_SUB}
+#macro *{__OP_MUL}
+#macro /{__OP_DIV}
+#macro &{__OP_AND}
+#macro |{__OP_OR}
+#macro ^{__OP_XOR}
+#macro <<{__OP_SHL}
+#macro >>{__OP_SHR}
+#macro >>a{__OP_SAR}
+#macro ~{__OP_NOT}
+#macro =={__OP_EQ}
+#macro >{__OP_GT}
+#macro <{__OP_LT}
+#macro noop{__OP_NOOP}
+#macro exit{__OP_EXIT}
+#macro return{__OP_RET}
+#macro drop{__OP_DROP}
+#macro pick{__OP_PICK}
+#macro roll{__OP_ROLL}
+#macro depth{__OP_DEPTH}
+#macro store{__OP_STORE}
+#macro fetch{__OP_FETCH}
+#macro fopen{__OP_FOPEN}
+#macro fread{__OP_FREAD}
+#macro fwrite{__OP_FWRITE}
+#macro fclose{__OP_FCLOSE}

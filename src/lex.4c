@@ -172,7 +172,7 @@ $static ptr file
     swap
 }
 
-#match_ident_token(token_str token_id) {
+#macro match_ident_token(token_str token_id) {
     if dup token_str str_eq {
         0 token_id file line &toks_mem tok_push
         // -- new_src_ptr n_chars
@@ -207,7 +207,7 @@ $static ptr file
     swap
 }
 
-#lex_tagged_ident(tag_char token_id) {
+#macro lex_tagged_ident(tag_char token_id) {
     else if (viewc tag_char ==) (over 1+ @c is_ident_first_char) & {
         1+
         0 token_id file line &toks_mem tok_push
@@ -215,7 +215,7 @@ $static ptr file
     }
 }
 
-#lex_single(token_char token_id) {
+#macro lex_single(token_char token_id) {
     else if viewc token_char == {
         1+
         0 token_id file line &toks_mem tok_push

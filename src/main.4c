@@ -6,7 +6,6 @@
 // TODO: fix buffer scoping in dowhile loops
 // TODO: compound buffer declarations
 // TODO: non-static variables
-// TODO: more preprocessor directives
 // TODO: "use" blocks
 // TODO: simulation mode
 // TODO: optimization
