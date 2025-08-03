@@ -90,6 +90,7 @@ $static int ASM_FOPEN_ID
         error "Expected field access after '->"eputs struct_name eputs "'\n"eputs
         1 exit
     }
+    %Token+
 
     // -- ops_dest tok_ptr field_name fields_ptr
     viewtd rot
@@ -192,6 +193,7 @@ $static int ASM_FOPEN_ID
             error "Expected variant after '"eputs type_name eputs "'\n"eputs
             1 exit
         }
+        %Token+
         // -- ops_dest tok_ptr name variants
         viewtd rot
         while dup->EnumVariant.name@ {
@@ -317,6 +319,7 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_fn {
+    %Token+
     check_name_availability_fn
     if viewtd FN_MAP map_get->Function.def@ {
         error "Function '"eputs eputs "' already defined\n"eputs
@@ -542,6 +545,7 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_ref {
+    %Token+
     // -- ops_dest tok_ptr
     if viewtd FN_MAP map_contains {
         viewtd FN_MAP map_get_idx OKind.PUSH_FN 3 roll op_push
@@ -564,6 +568,7 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_eq {
+    %Token+
     $static int idx
     $static int name
     $static int size
@@ -739,6 +744,7 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_size {
+    %Token+
     if viewtd STRUCT_MAP map_contains {
         view_type_size
     // -- ops_dest tok_ptr idx

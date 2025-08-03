@@ -43,25 +43,6 @@
     drop drop
 }
 
-// token_kind -- bool
-:is_tagged_ident {
-    // token_kind
-    dup (TKind.REF ==) swap
-    dup (TKind.FN ==) swap
-    dup (TKind.EQ ==) swap
-    dup (TKind.FIELD ==) swap
-    (TKind.SIZE ==)
-    | | | |
-}
-// token_kind -- bool
-:is_macro_replaceable {
-    // token_kind
-    dup (TKind.IDENT ==) swap
-    dup (TKind.WORD ==) swap
-    is_tagged_ident
-    | |
-}
-
 // tok_ptr -- tok_ptr bool
 :check_use {
     if viewtk TKind.IDENT == {
@@ -140,13 +121,6 @@
             rot drop
             preprocess_macro_block
         } else {
-            if arg_kind is_tagged_ident {
-                if viewtk TKind.IDENT != {
-                    error "Macro expansion for '"eputs 2 pick eputs "' expected ident, found tagged ident\n"eputs
-                    1 exit
-                }
-                arg_kind over!c
-            }
             preprocess_token
             drop nip
         }
@@ -253,7 +227,7 @@
 
 // tok_ptr -- new_tok_ptr
 :preprocess_token {
-    if viewtk is_macro_replaceable {
+    if viewtk dup (TKind.IDENT ==) swap (TKind.WORD ==) | {
         preprocess_word
     } else if viewtk TKind.POUND == {
         preprocess_pound
