@@ -17,15 +17,6 @@ $static int ASM_FOPEN_ID
     %Token+
 }
 
-#macro define_intrinsic_opcode(data op_code alias) {
-    if viewtd alias str_eq {
-        // -- tok_ptr
-        (data) op_code 3 roll op_push
-        %Token+
-        return
-    }
-}
-
 // name -- name [idx, -1]
 :scoped_buf_idx {
     $static int scope_idx
@@ -76,10 +67,8 @@ $static int ASM_FOPEN_ID
         error "Unrecognized struct '"eputs struct_name eputs "'\n"eputs
         1 exit
     }
-    struct_name STRUCT_MAP map_get->Struct.fields@
-
     // -- ops_dest fields_ptr tok_ptr
-    swap
+    struct_name STRUCT_MAP map_get->Struct.fields@ swap
     if viewtk TKind.FIELD != {
         error "Expected field access after '->"eputs struct_name eputs "'\n"eputs
         1 exit
@@ -108,31 +97,14 @@ $static int ASM_FOPEN_ID
     1 exit
 }
 
-// ops_dest tok_ptr -- ops_dest tok_ptr name size
+// ops_dest tok_ptr -- ops_dest new_tok_ptr name size
 :view_buffer_access {
     $static int idx
     $static int name
     $static int size
 
-    viewtd scoped_buf_idx =idx =name
-    if idx is_failure {
-        error "Buffer '"eputs name eputs "' not defined in this scope\n"eputs
-        1 exit
-    }
-
-    %Token+
-    idx BUF_MAP map_idx->Buffer.size@ =size
-    idx OKind.PUSH_BUF 3 pick op_push
-
-    while viewtk TKind.ARROW == {
-        %Token+
-        if viewtk TKind.IDENT != {
-            error "Invalid struct name after '->'\n"eputs
-            1 exit
-        }
-
-        // -- ops_dest new_tok_ptr type_name
-        viewtd swap %Token+ swap
+    // ops_dest tok_ptr type_name -- ops_dest new_tok_ptr
+    #macro view_fields {
         // -- ops_dest new_tok_ptr type_name field_size offset
         while view_field_access {
             // -- ops_dest new_tok_ptr type_name offset
@@ -145,6 +117,33 @@ $static int ASM_FOPEN_ID
         swap =size nip
         OKind.PUSH_INT 3 pick op_push
         0 OKind.ADD 3 pick op_push
+    }
+
+    viewtd scoped_buf_idx =idx =name
+    if idx is_failure {
+        error "Buffer '"eputs name eputs "' not defined in this scope\n"eputs
+        1 exit
+    }
+
+    %Token+
+    idx BUF_MAP map_idx->Buffer.size@ =size
+    idx OKind.PUSH_BUF 3 pick op_push
+
+    if viewtk TKind.FIELD == {
+        // -- ops_dest new_tok_ptr type_name
+        idx BUF_MAP map_idx->Buffer.type_name@
+        view_fields
+    }
+
+    while viewtk TKind.ARROW == {
+        %Token+
+        if viewtk TKind.IDENT != {
+            error "Invalid struct name after '->'\n"eputs
+            1 exit
+        }
+        // -- ops_dest new_tok_ptr type_name
+        viewtd swap %Token+ swap
+        view_fields
     }
     name size
 }
@@ -160,6 +159,14 @@ $static int ASM_FOPEN_ID
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_ident {
     ////////// Intrinsics //////////
+    #macro define_intrinsic_opcode(data op_code alias) {
+        if viewtd alias str_eq {
+            // -- tok_ptr
+            (data) op_code 3 roll op_push
+            %Token+
+            return
+        }
+    }
     // Misc / Special
     define_intrinsic_opcode(0 {OKind.NOOP} "__OP_NOOP")
     define_intrinsic_opcode(0 {OKind.EXIT} "__OP_EXIT")
@@ -494,10 +501,18 @@ $static int ASM_FOPEN_ID
         }
         1 exit
     }
-
     %Token+
+
     $static int size
-    if (viewtk TKind.INT ==) (over tok_is_type) | {
+    $static ptr type_name
+    NULL =type_name
+    if dup tok_is_type {
+        // -- type_name tok_ptr
+        viewtd swap
+        // -- type_name tok_ptr n_toks
+        dup view_buf_size =size dup rot - %Token/
+        if 1 == { swap =type_name } else { nip }
+    } else if viewtk TKind.INT == {
         view_buf_size =size
     } else {
         -1 =size
@@ -573,7 +588,8 @@ $static int ASM_FOPEN_ID
     SCOPE_STACK stack_last@ over->Buffer.key.scope!
     size over->Buffer.size!
     init over->Buffer.init!
-    init_int swap->Buffer.init_int!c
+    init_int over->Buffer.init_int!c
+    type_name swap->Buffer.type_name!
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -730,7 +746,7 @@ $static int ASM_FOPEN_ID
     while viewtk TKind.BRACE_END != {
         $static ptr type_name
 
-        // -- type_name_ptr new_tok_ptr size delta
+        // -- type_name_ptr new_tok_ptr size n_toks
         dup view_buf_size_int over 3 pick - %Token/
         // -- new_tok_ptr size type_name_ptr
         if 3 roll (viewtk TKind.IDENT ==) rot (1 ==) & {

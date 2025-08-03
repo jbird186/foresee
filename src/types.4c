@@ -14,6 +14,7 @@ struct Buffer {
     int size
     ptr init
     bool init_int
+    ptr type_name
 }
 
 struct Macro {

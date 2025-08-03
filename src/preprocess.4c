@@ -267,6 +267,11 @@
     } else if viewtk TKind.POUND == {
         preprocess_pound
     } else {
+        if viewtk TKind.BRACE_START == {
+            dup SCOPE_STACK stack_push!
+        } else if viewtk TKind.BRACE_END == {
+            &scope_stack stack_shrink
+        }
         dup &out_toks_mem tok_dup
         %Token+
     }
