@@ -188,6 +188,7 @@ $static ptr file
     match_ident_token("if" {TKind.IF})
     match_ident_token("else" {TKind.ELSE})
     match_ident_token("while" {TKind.WHILE})
+    match_ident_token("dowhile" {TKind.DOWHILE})
     match_ident_token("static" {TKind.STATIC})
     match_ident_token("enum" {TKind.ENUM})
     match_ident_token("struct" {TKind.STRUCT})

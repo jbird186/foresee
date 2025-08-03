@@ -3,7 +3,6 @@
 #use "src/parse.4c"
 #use "src/compile.4c"
 
-// TODO: fix buffer scoping in dowhile loops
 // TODO: compound buffer declarations
 // TODO: non-static variables
 // TODO: "use" blocks

@@ -32,6 +32,7 @@ struct bool { 1 __inner }
 
 #macro !{store}
 #macro @{fetch}
+#macro @->{@ ->}
 #macro @++{dup@ dup 1+ rot!}
 #macro ++@{dup@ 1+ dup rot!}
 #macro @--{dup@ dup 1- rot!}
@@ -47,14 +48,8 @@ struct bool { 1 __inner }
     fetch 0xff &
 }
 #macro @c{fetchc}
+#macro @c->{@c ->}
 #macro @c++{dup@c dup 1+ rot!c}
 #macro ++@c{dup@c 1+ dup rot!c}
 #macro @c--{dup@c dup 1- rot!c}
 #macro --@c{dup@c 1- dup rot!c}
-
-#macro dowhile(__ops __cond) {
-    __ops
-    while __cond {
-        __ops
-    }
-}

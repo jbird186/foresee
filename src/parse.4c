@@ -296,26 +296,44 @@ $static int ASM_FOPEN_ID
 :parse_while {
     %Token+
 
-    // -- ops_dest tok_ptr start_id end_id
-    &ASM_LABEL_ID@++ &ASM_LABEL_ID@++
-    // -- start_id end_id ops_dest tok_ptr
-    3 roll 3 roll
-    // -- start_id end_id ops_dest tok_ptr
-    3 pick OKind.LABEL 3 pick op_push
+    // -- start_id ops_dest tok_ptr
+    ASM_LABEL_ID dup 2+ =ASM_LABEL_ID rot rot
+    2 pick OKind.LABEL 3 pick op_push
 
     // Condition
     _parse_until({TKind.BRACE_START})
-    2 pick OKind.JZ 3 pick op_push
+    2 pick 1+ OKind.JZ 3 pick op_push
 
     // Operations
     dup SCOPE_STACK stack_push!
     _parse_until({TKind.BRACE_END})
     &scope_stack stack_shrink
 
-    // -- end_id ops_dest tok_ptr
-    3 roll OKind.JMP 3 pick op_push
-    // -- tok_ptr
-    rot OKind.LABEL 3 roll op_push
+    2 pick OKind.JMP 3 pick op_push
+    rot 1+ OKind.LABEL 3 roll op_push
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_dowhile {
+    %Token+
+
+    // -- start_id ops_dest tok_ptr
+    ASM_LABEL_ID dup 3+ =ASM_LABEL_ID rot rot
+    2 pick 2+ OKind.JMP 3 pick op_push
+    2 pick OKind.LABEL 3 pick op_push
+
+    // Condition
+    _parse_until({TKind.BRACE_START})
+    2 pick 1+ OKind.JZ 3 pick op_push
+    2 pick 2+ OKind.LABEL 3 pick op_push
+
+    // Operations
+    dup SCOPE_STACK stack_push!
+    _parse_until({TKind.BRACE_END})
+    &scope_stack stack_shrink
+
+    2 pick OKind.JMP 3 pick op_push
+    rot 1+ OKind.LABEL 3 roll op_push
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -788,13 +806,16 @@ $static int ASM_FOPEN_ID
     }
     else if viewtk TKind.PAREN_START == {
         %Token+
+        dup SCOPE_STACK stack_push!
         _parse_until({TKind.PAREN_END})
+        &scope_stack stack_shrink
         nip
     }
     parse_with({TKind.STR} parse_string)
     parse_with({TKind.IDENT} parse_ident)
     parse_with({TKind.IF} parse_if)
     parse_with({TKind.WHILE} parse_while)
+    parse_with({TKind.DOWHILE} parse_dowhile)
     parse_with({TKind.FN} parse_fn)
     parse_with({TKind.DOLLAR} parse_dollar)
     parse_with({TKind.REF} parse_ref)
