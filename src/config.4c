@@ -1,6 +1,6 @@
 #use "src/types.4c"
 
-#macro SRC_STR_SIZE { 65536 }
+#macro SRC_STR_SIZE { 131072 }
 $static char[SRC_STR_SIZE] src_str
 
 $static int char[1024][128] strs_mem

@@ -14,8 +14,8 @@ struct bool { 1 __inner }
 #macro >={< 1 ^}
 #macro is_success{-1 >}
 #macro is_failure{0 <}
-:flag{(if {true} else {false})}
-:not{(if {false} else {true})}
+:flag{if {true} else {false}}
+:not{if {false} else {true}}
 
 // a -- a a
 :dup{0 pick}

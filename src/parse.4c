@@ -66,26 +66,20 @@ $static int ASM_FOPEN_ID
     check_name_availability_fn
 }
 
-// ops_dest tok_ptr -- ops_dest new_tok_ptr field_size offset
-:view_arrow {
-    %Token+
-    if viewtk TKind.IDENT != {
-        error "Invalid struct name after '->'\n"eputs
-        1 exit
-    }
+// ops_dest tok_ptr type_name -- ops_dest new_tok_ptr type_name field_size offset should_chain
+:view_field_access {
     $static ptr struct_name
-    viewtd=struct_name
+    =struct_name
 
-    // -- ops_dest tok_ptr fields_ptr
-    if struct_name STRUCT_MAP map_get dup slot_is_empty {
-        drop
+    // -- ops_dest tok_ptr
+    if struct_name STRUCT_MAP map_contains not {
         error "Unrecognized struct '"eputs struct_name eputs "'\n"eputs
         1 exit
     }
-    ->Struct.fields@
+    struct_name STRUCT_MAP map_get->Struct.fields@
 
     // -- ops_dest fields_ptr tok_ptr
-    swap %Token+
+    swap
     if viewtk TKind.FIELD != {
         error "Expected field access after '->"eputs struct_name eputs "'\n"eputs
         1 exit
@@ -95,13 +89,15 @@ $static int ASM_FOPEN_ID
     // -- ops_dest tok_ptr field_name fields_ptr
     viewtd rot
     $static int sum
-    0=sum
+    0 =sum
     while dup->StructField.name@ {
         if over over->StructField.name@ str_eq {
-            // -- ops_dest tok_ptr field_size
-            ->StructField.size@ nip
-            swap %Token+ swap
-            sum return
+            // -- ops_dest tok_ptr fields_ptr
+            nip swap %Token+ swap
+            // -- ops_dest tok_ptr type_name field_size offset
+            dup->StructField.type_name@ swap->StructField.size@ sum
+            3 pick->Token.kind@c TKind.FIELD ==
+            return
         }
         dup->StructField.size@ sum + =sum
         %StructField+
@@ -112,20 +108,45 @@ $static int ASM_FOPEN_ID
     1 exit
 }
 
-// ops_dest tok_ptr -- ops_dest tok_ptr
-#macro _view_arrows {
+// ops_dest tok_ptr -- ops_dest tok_ptr name size
+:view_buffer_access {
+    $static int idx
+    $static int name
+    $static int size
+
+    viewtd scoped_buf_idx =idx =name
+    if idx is_failure {
+        error "Buffer '"eputs name eputs "' not defined in this scope\n"eputs
+        1 exit
+    }
+
     %Token+
     idx BUF_MAP map_idx->Buffer.size@ =size
     idx OKind.PUSH_BUF 3 pick op_push
 
     while viewtk TKind.ARROW == {
-        // -- ops_dest new_tok_ptr field_size offset
-        view_arrow
-        OKind.PUSH_INT 4 pick op_push
-        0 OKind.ADD 4 pick op_push
-        // -- ops_dest new_tok_ptr
-        =size
+        %Token+
+        if viewtk TKind.IDENT != {
+            error "Invalid struct name after '->'\n"eputs
+            1 exit
+        }
+
+        // -- ops_dest new_tok_ptr type_name
+        viewtd swap %Token+ swap
+        // -- ops_dest new_tok_ptr type_name field_size offset
+        while view_field_access {
+            // -- ops_dest new_tok_ptr type_name offset
+            swap =size
+            OKind.PUSH_INT 4 pick op_push
+            0 OKind.ADD 4 pick op_push
+        }
+
+        // -- ops_dest new_tok_ptr offset
+        swap =size nip
+        OKind.PUSH_INT 3 pick op_push
+        0 OKind.ADD 3 pick op_push
     }
+    name size
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -181,16 +202,16 @@ $static int ASM_FOPEN_ID
     }
 
     ////////// Enums //////////
-    $static int type_name
     if viewtd ENUM_MAP map_contains {
-        viewtd =type_name
+        $static int name
+        viewtd =name
 
         // -- ops_dest tok_ptr variants
-        type_name ENUM_MAP map_get->Enum.variants@
+        name ENUM_MAP map_get->Enum.variants@
         // -- ops_dest variants tok_ptr
         swap %Token+
         if viewtk TKind.FIELD != {
-            error "Expected variant after '"eputs type_name eputs "'\n"eputs
+            error "Expected variant after '"eputs name eputs "'\n"eputs
             1 exit
         }
         %Token+
@@ -205,31 +226,25 @@ $static int ASM_FOPEN_ID
             %EnumVariant+
         }
         drop
-        swap error swap "Field '"eputs eputs "' not found for enum '"eputs type_name eputs "'\n"eputs
+        swap error swap "Field '"eputs eputs "' not found for enum '"eputs name eputs "'\n"eputs
         1 exit
     }
 
     ////////// Buffers //////////
-    $static int idx
-    $static int size
-
-    viewtd scoped_buf_idx =idx =type_name
-    if idx is_failure {
-        error "Buffer '"eputs type_name eputs "' not defined\n"eputs
-        1 exit
-    }
-
-    _view_arrows
-    if size 8 == {
+    // -- ops_dest tok_ptr name size
+    view_buffer_access
+    if dup 8 == {
+        drop drop
         0 OKind.FETCH 3 roll op_push
-    } else if size 1 == {
+    } else if dup 1 == {
+        drop drop
         if "fetchc" FN_MAP map_contains not {
             error "Function 'fetchc' not defined\n"eputs
             1 exit
         }
         "fetchc" FN_MAP map_get_idx OKind.CALL_FN 3 roll op_push
     } else {
-        error "Buffer '"eputs type_name eputs "' cannot be automatically read from\n"eputs
+        rot error "Buffer '"eputs rot eputs "' ("eputs swap eput " bytes) cannot be automatically read from\n"eputs
         1 exit
     }
 }
@@ -316,6 +331,7 @@ $static int ASM_FOPEN_ID
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_dowhile {
     %Token+
+    // TODO: optimize
 
     // -- start_id ops_dest tok_ptr
     ASM_LABEL_ID dup 3+ =ASM_LABEL_ID rot rot
@@ -407,9 +423,9 @@ $static int ASM_FOPEN_ID
     ->Struct.fields@
 
     // -- tok_ptr sum fields
-    0 swap while dup@ {
-        8+ dup@ rot + swap
-        8+
+    0 swap while dup->StructField.name@ {
+        dup->StructField.size@ rot+ swap
+        %StructField+
     }
     drop
 }
@@ -473,10 +489,8 @@ $static int ASM_FOPEN_ID
     if viewtk TKind.STATIC != {
         if viewtk TKind.IDENT == {
             error "Buffer '"eputs viewtd eputs "' must be static\n"eputs
-        } else if %Token+ viewtk TKind.IDENT == {
-            error "Buffer '"eputs viewtd eputs "' must be static\n"eputs
         } else {
-            error "Invalid buffer name\n"eputs
+            error "Buffer must be static\n"eputs
         }
         1 exit
     }
@@ -549,14 +563,14 @@ $static int ASM_FOPEN_ID
     }
 
     if size BUFFER_SIZE_LIMIT > {
-        error "Buffer '"eputs name eputs "' too cannot exceed "eputs BUFFER_SIZE_LIMIT eput " bytes\n"eputs
+        error "Buffer '"eputs name eputs "' cannot exceed "eputs BUFFER_SIZE_LIMIT eput " bytes\n"eputs
         1 exit
     }
 
     // -- tok_ptr
     name SCOPE_STACK stack_last@ BUF_MAP scoped_map_get
-    name over->Buffer.key->ScopedKey.name!
-    SCOPE_STACK stack_last@ over->Buffer.key->ScopedKey.scope!
+    name over->Buffer.key.name!
+    SCOPE_STACK stack_last@ over->Buffer.key.scope!
     size over->Buffer.size!
     init over->Buffer.init!
     init_int swap->Buffer.init_int!c
@@ -588,27 +602,20 @@ $static int ASM_FOPEN_ID
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_eq {
     %Token+
-    $static int idx
-    $static int name
-    $static int size
-
-    viewtd scoped_buf_idx =idx =name
-    if idx is_failure {
-        error "Buffer '"eputs name eputs "' not defined in this scope\n"eputs
-        1 exit
-    }
-
-    _view_arrows
-    if size 8 == {
+    // -- ops_dest tok_ptr name size
+    view_buffer_access
+    if dup 8 == {
+        drop drop
         0 OKind.STORE 3 roll op_push
-    } else if size 1 == {
+    } else if dup 1 == {
+        drop drop
         if "storec" FN_MAP map_contains not {
             error "Function 'storec' not defined\n"eputs
             1 exit
         }
         "storec" FN_MAP map_get_idx OKind.CALL_FN 3 roll op_push
     } else {
-        error "Buffer '"eputs name eputs "' cannot be automatically assigned to\n"eputs
+        rot error "Buffer '"eputs rot eputs "' ("eputs swap eput " bytes) cannot be automatically assigned to\n"eputs
         1 exit
     }
 }
@@ -707,9 +714,9 @@ $static int ASM_FOPEN_ID
         1 exit
     }
 
-    $static ptr type_name
+    $static ptr struct_name
     check_name_availability
-    viewtd =type_name
+    viewtd =struct_name
     $static ptr fields_ptr
     STRUCT_MEM stack_top =fields_ptr
 
@@ -721,11 +728,22 @@ $static int ASM_FOPEN_ID
 
     %Token+
     while viewtk TKind.BRACE_END != {
-        // -- tok_ptr size
-        view_buf_size_int
+        $static ptr type_name
+
+        // -- type_name_ptr new_tok_ptr size delta
+        dup view_buf_size_int over 3 pick - %Token/
+        // -- new_tok_ptr size type_name_ptr
+        if 3 roll (viewtk TKind.IDENT ==) rot (1 ==) & {
+            ->Token.data@ =type_name
+        } else {
+            drop
+            0 =type_name
+        }
+
+        // -- new_tok_ptr size
         if over->Token.kind@c TKind.IDENT != {
             drop
-            error "Invalid field for struct '"eputs type_name eputs "'\n"eputs
+            error "Invalid field for struct '"eputs struct_name eputs "'\n"eputs
             1 exit
         }
 
@@ -735,7 +753,7 @@ $static int ASM_FOPEN_ID
             if over over->StructField.name@ str_eq {
                 // -- name tok_ptr
                 drop nip swap
-                error "Field '"eputs over eputs "' already defined for struct '"eputs type_name eputs "'\n"eputs
+                error "Field '"eputs over eputs "' already defined for struct '"eputs struct_name eputs "'\n"eputs
                 1 exit
             }
             %StructField+
@@ -743,21 +761,40 @@ $static int ASM_FOPEN_ID
 
         // -- tok_ptr size name slot_ptr
         drop STRUCT_MEM stack_push
-        swap over->StructField.name! ->StructField.size!
+        swap over->StructField.name!
+        swap over->StructField.size!
+        type_name swap->StructField.type_name!
         %Token+
     }
     %Token+
     NULL STRUCT_MEM stack_push->StructField.name!
 
     // -- tok_ptr slot_ptr
-    type_name STRUCT_MAP map_get
-    type_name over->Struct.name!
+    struct_name STRUCT_MAP map_get
+    struct_name over->Struct.name!
     fields_ptr swap->Struct.fields!
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_arrow {
-    view_arrow nip OKind.PUSH_INT 3 pick op_push
+    %Token+
+    if viewtk TKind.IDENT != {
+        error "Invalid struct name after '->'\n"eputs
+        1 exit
+    }
+
+    // -- ops_dest new_tok_ptr type_name
+    viewtd swap %Token+ swap
+    // -- ops_dest new_tok_ptr type_name field_size offset
+    while view_field_access {
+        // -- ops_dest new_tok_ptr type_name offset
+        nip OKind.PUSH_INT 4 pick op_push
+        0 OKind.ADD 4 pick op_push
+    }
+
+    // -- ops_dest new_tok_ptr offset
+    nip nip
+    OKind.PUSH_INT 3 pick op_push
     0 OKind.ADD 3 roll op_push
 }
 

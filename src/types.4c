@@ -44,6 +44,7 @@ struct Struct {
 struct StructField {
     ptr name
     int size
+    ptr type_name
 }
 
 struct Op {

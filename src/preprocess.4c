@@ -42,15 +42,6 @@
     nip %Token+
 }
 
-// tok_ptr -- tok_ptr bool
-#macro check_directive(value) {
-    if viewtk TKind.IDENT == {
-        viewtd value str_eq
-    } else {
-        false
-    }
-}
-
 // name -- [idx, -1]
 :scoped_macro_idx {
     $static int scope_idx
@@ -92,8 +83,8 @@
                 // TODO: prevent name collision between macros and macro arguments
                 // -- name tok_ptr def_tok_ptr slot_ptr
                 viewtd MACRO_MAP map_get
-                over->Token.data@ over->Macro.key->ScopedKey.name!
-                SCOPE_STACK stack_last@ over->Macro.key->ScopedKey.scope!
+                over->Token.data@ over->Macro.key.name!
+                SCOPE_STACK stack_last@ over->Macro.key.scope!
                 2 pick swap->Macro.toks!
                 // -- name def_tok_ptr tok_ptr
                 swap
@@ -199,8 +190,8 @@
     // -- name tok_ptr slot_ptr
     over MACRO_MAP map_get
     over over->Macro.toks!
-    SCOPE_STACK stack_last@ over->Macro.key->ScopedKey.scope!
-    2 pick swap->Macro.key->ScopedKey.name!
+    SCOPE_STACK stack_last@ over->Macro.key.scope!
+    2 pick swap->Macro.key.name!
 
     // Arguments (optional)
     // -- name tok_ptr
@@ -248,18 +239,23 @@
 // tok_ptr -- new_tok_ptr
 :preprocess_pound {
     %Token+
-    if check_directive("use") {
+    if viewtk TKind.IDENT != {
+        error "Invalid preprocessor directive\n"eputs
+        1 exit
+    }
+
+    if viewtd "use" str_eq {
         parse_use_directive
-    } else if check_directive("error") {
+    } else if viewtd "error" str_eq {
         parse_error_directive
-    } else if check_directive("macro") {
+    } else if viewtd "macro" str_eq {
         parse_macro_directive
-    } else if viewtk TKind.IF == {
+    } else if viewtd "ifdef" str_eq {
         parse_if_directive(preprocess_block skip_braces)
-    } else if check_directive("ifnot") {
+    } else if viewtd "ifndef" str_eq {
         parse_if_directive(skip_braces preprocess_block)
     } else {
-        error "Unexpected preprocessor directive\n"eputs
+        error "Unknown preprocessor directive '"eputs viewtd eputs "'\n"eputs
         1 exit
     }
 }
