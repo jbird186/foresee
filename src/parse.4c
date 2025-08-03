@@ -41,6 +41,31 @@ $static int ASM_FOPEN_ID
     -1
 }
 
+// tok_ptr -- tok_ptr
+:check_name_availability_fn {
+    if viewtd scoped_buf_idx is_success nip {
+        error "Buffer '"eputs eputs "' already defined\n"eputs
+        1 exit
+    }
+    if viewtd STRUCT_MAP map_contains {
+        error "Struct '"eputs eputs "' already defined\n"eputs
+        1 exit
+    }
+    if viewtd ENUM_MAP map_contains {
+        error "Enum '"eputs eputs "' already defined\n"eputs
+        1 exit
+    }
+}
+
+// tok_ptr -- tok_ptr
+:check_name_availability {
+    if viewtd FN_MAP map_contains {
+        error "Function '"eputs eputs "' already defined\n"eputs
+        1 exit
+    }
+    check_name_availability_fn
+}
+
 // ops_dest tok_ptr -- ops_dest new_tok_ptr field_size offset
 :view_arrow {
     %Token+
@@ -153,18 +178,18 @@ $static int ASM_FOPEN_ID
         %Token+
         return
     }
-    $static int name
 
     ////////// Enums //////////
+    $static int type_name
     if viewtd ENUM_MAP map_contains {
-        viewtd =name
+        viewtd =type_name
 
         // -- ops_dest tok_ptr variants
-        name ENUM_MAP map_get->Enum.variants@
+        type_name ENUM_MAP map_get->Enum.variants@
         // -- ops_dest variants tok_ptr
         swap %Token+
         if viewtk TKind.FIELD != {
-            error "Expected variant after '"eputs name eputs "'\n"eputs
+            error "Expected variant after '"eputs type_name eputs "'\n"eputs
             1 exit
         }
         // -- ops_dest tok_ptr name variants
@@ -178,16 +203,16 @@ $static int ASM_FOPEN_ID
             %EnumVariant+
         }
         drop
-        error "Field '"eputs eputs "' not found for enum '"eputs name eputs "'\n"eputs
+        error "Field '"eputs eputs "' not found for enum '"eputs type_name eputs "'\n"eputs
     }
 
     ////////// Buffers //////////
     $static int idx
     $static int size
 
-    viewtd scoped_buf_idx =idx =name
+    viewtd scoped_buf_idx =idx =type_name
     if idx is_failure {
-        error "Buffer '"eputs name eputs "' not defined\n"eputs
+        error "Buffer '"eputs type_name eputs "' not defined\n"eputs
         1 exit
     }
 
@@ -201,7 +226,7 @@ $static int ASM_FOPEN_ID
         }
         "fetchc" FN_MAP map_get_idx OKind.CALL_FN 3 roll op_push
     } else {
-        error "Buffer '"eputs name eputs "' cannot be automatically read from\n"eputs
+        error "Buffer '"eputs type_name eputs "' cannot be automatically read from\n"eputs
         1 exit
     }
 }
@@ -292,11 +317,11 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_fn {
+    check_name_availability_fn
     if viewtd FN_MAP map_get->Function.def@ {
-        error "Function '"eputs viewtd eputs "' already defined\n"eputs
+        error "Function '"eputs eputs "' already defined\n"eputs
         1 exit
     }
-
     // -- tok_ptr
     if swap {
         error "Function '"eputs viewtd eputs "' must be defined in global scope\n"eputs
@@ -446,10 +471,8 @@ $static int ASM_FOPEN_ID
     if viewtk TKind.IDENT != {
         error "Invalid buffer name\n"eputs
         1 exit
-    } else if viewtd SCOPE_STACK stack_last@ BUF_MAP scoped_map_contains {
-        error "Buffer '"eputs viewtd eputs "' already defined\n"eputs
-        1 exit
     }
+    check_name_availability
     viewtd =name
     %Token+
     $static ptr init
@@ -579,8 +602,9 @@ $static int ASM_FOPEN_ID
         1 exit
     }
 
-    $static ptr name
-    viewtd =name
+    $static ptr type_name
+    check_name_availability
+    viewtd =type_name
     $static ptr variants_ptr
     ENUM_MEM stack_top =variants_ptr
 
@@ -593,12 +617,24 @@ $static int ASM_FOPEN_ID
     %Token+
     while viewtk TKind.BRACE_END != {
         if viewtk TKind.IDENT != {
-            error "Invalid definition for enum '"eputs name eputs "'\n"eputs
+            error "Invalid variant for enum '"eputs type_name eputs "'\n"eputs
             1 exit
         }
 
+        // -- tok_ptr name variants
+        viewtd variants_ptr
+        while dup->EnumVariant.name@ {
+            if over over->EnumVariant.name@ str_eq {
+                // -- name tok_ptr
+                drop swap
+                error "Variant '"eputs over eputs "' already defined for enum '"eputs type_name eputs "'\n"eputs
+                1 exit
+            }
+            %EnumVariant+
+        }
+
         // -- name tok_ptr
-        viewtd swap %Token+
+        drop swap %Token+
         if viewtk TKind.COLON == {
             %Token+
             if viewtk TKind.INT != {
@@ -610,7 +646,7 @@ $static int ASM_FOPEN_ID
             if ENUM_MEM stack_last->EnumVariant.name@ {
                 if dup ENUM_MEM stack_last->EnumVariant.value@ <= {
                     drop
-                    error "Enum '"eputs name eputs "' must have values in ascending order\n"eputs
+                    error "Enum '"eputs type_name eputs "' must have values in ascending order\n"eputs
                     1 exit
                 }
             }
@@ -629,8 +665,8 @@ $static int ASM_FOPEN_ID
     NULL ENUM_MEM stack_push->EnumVariant.name!
 
     // -- tok_ptr slot_ptr
-    name ENUM_MAP map_get
-    name over->Enum.name!
+    type_name ENUM_MAP map_get
+    type_name over->Enum.name!
     variants_ptr swap->Enum.variants!
 }
 
@@ -647,8 +683,9 @@ $static int ASM_FOPEN_ID
         1 exit
     }
 
-    $static ptr name
-    viewtd =name
+    $static ptr type_name
+    check_name_availability
+    viewtd =type_name
     $static ptr fields_ptr
     STRUCT_MEM stack_top =fields_ptr
 
@@ -664,11 +701,24 @@ $static int ASM_FOPEN_ID
         view_buf_size_int
         if over->Token.kind@c TKind.IDENT != {
             drop
-            error "Invalid definition for struct '"eputs name eputs "'\n"eputs
+            error "Invalid field for struct '"eputs type_name eputs "'\n"eputs
             1 exit
         }
+
+        // -- tok_ptr size name field
+        over->Token.data@ fields_ptr
+        while dup->StructField.name@ {
+            if over over->StructField.name@ str_eq {
+                // -- name tok_ptr
+                drop nip swap
+                error "Field '"eputs over eputs "' already defined for struct '"eputs type_name eputs "'\n"eputs
+                1 exit
+            }
+            %StructField+
+        }
+
         // -- tok_ptr size name slot_ptr
-        over->Token.data@ STRUCT_MEM stack_push
+        drop STRUCT_MEM stack_push
         swap over->StructField.name! ->StructField.size!
         %Token+
     }
@@ -676,8 +726,8 @@ $static int ASM_FOPEN_ID
     NULL STRUCT_MEM stack_push->StructField.name!
 
     // -- tok_ptr slot_ptr
-    name STRUCT_MAP map_get
-    name over->Struct.name!
+    type_name STRUCT_MAP map_get
+    type_name over->Struct.name!
     fields_ptr swap->Struct.fields!
 }
 
