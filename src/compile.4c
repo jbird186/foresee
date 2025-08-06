@@ -22,7 +22,7 @@ $static ptr out_fd
 }
 // char --
 :comc {
-    $static char buf
+    $char buf
     &buf!c
     if &buf 1 out_fd fwrite is_failure {
         "ERROR: Failed to write character to output file\n"eputs
@@ -53,8 +53,10 @@ $static ptr out_fd
 
 // idx map_slot_ptr -- idx
 :compile_function {
-    "; "coms dup->Function.name@ coms "\n"coms
+    "; "coms dup->Function.name@ coms '\n'comc
     "f_"coms over com ":\n"coms
+    "    push    rbp\n"coms
+    "    mov     rbp, rsp\n"coms
     ->Function.def@ compile_ops
 }
 
@@ -71,10 +73,10 @@ $static ptr out_fd
 
 // b_register instruction name --
 :compile_basic_binop {
-    "    ; "coms coms "\n"coms
+    "    ; "coms coms '\n'comc
     "rcx" compile_pop
     "rax" compile_pop
-    "    "coms coms " \trax, "coms coms "\n"coms
+    "    "coms coms " \trax, "coms coms '\n'comc
     "rax" compile_push
 }
 
@@ -99,11 +101,16 @@ $static ptr out_fd
     }
     else if viewok OKind.CALL_FN == {
         "    ; OP_CALL_FN\n"coms
-        "    call f_"coms viewod com "\n"coms
+        "    call f_"coms viewod com '\n'comc
     }
     else if viewok OKind.RET == {
         "    ; OP_RET\n"coms
+        "    leave\n"coms
         "    ret\n"coms
+    }
+    else if viewok OKind.PUSH_INT == {
+        "    ; OP_PUSH_INT\n"coms
+        viewod compile_push_int
     }
     else if viewok OKind.DROP == {
         "    ; OP_DROP\n"coms
@@ -120,26 +127,22 @@ $static ptr out_fd
         "rax" compile_pop
         "    mov     rcx, ["coms &stack_reg_str coms " + rax*8]\n"coms
         "    lea     rbx, ["coms &stack_reg_str coms " + rax*8]\n"coms
-        "   .rl_"coms viewod com ":\n"coms
-        "    cmp     rbx, "coms &stack_reg_str coms "\n"coms
-        "    je      .rl_"coms viewod 1+ com "\n"coms
+        "    .rl_"coms viewod com ":\n"coms
+        "    cmp     rbx, "coms &stack_reg_str coms '\n'comc
+        "    je      .rl_"coms viewod 1+ com '\n'comc
         "    mov     rdx, [rbx - 8]\n"coms
         "    mov     [rbx], rdx\n"coms
         "    sub     rbx, 8\n"coms
-        "    jmp     .rl_"coms viewod com "\n"coms
-        "   .rl_"coms viewod 1+ com ":\n"coms
+        "    jmp     .rl_"coms viewod com '\n'comc
+        "    .rl_"coms viewod 1+ com ":\n"coms
         "    mov     ["coms &stack_reg_str coms "], rcx\n"coms
     }
     else if viewok OKind.DEPTH == {
         "    ; OP_DEPTH\n"coms
-        "    mov     rax, b_stack + "coms &stack_size_str coms "\n"coms
-        "    sub     rax, "coms &stack_reg_str coms "\n"coms
+        "    mov     rax, b_stack + "coms &stack_size_str coms '\n'comc
+        "    sub     rax, "coms &stack_reg_str coms '\n'comc
         "    shr     rax, 3\n"coms
         "rax" compile_push
-    }
-    else if viewok OKind.PUSH_INT == {
-        "    ; OP_PUSH_INT\n"coms
-        viewod compile_push_int
     }
     else if viewok OKind.PUSH_BUF == {
         "    ; OP_PUSH_BUF\n"coms
@@ -156,6 +159,19 @@ $static ptr out_fd
         "rax" compile_pop
         "    mov     rbx, qword [rax]\n"coms
         "rbx" compile_push
+    }
+    else if viewok OKind.PUSH_VAR == {
+        "    ; OP_PUSH_VAR\n"coms
+        "    lea     rax, [rbp - "coms viewod com "]\n"coms
+        "rax" compile_push
+    }
+    else if viewok OKind.ALLOC == {
+        "    ; OP_ALLOC\n"coms
+        "    sub     rsp, "coms viewod com '\n'comc
+    }
+    else if viewok OKind.DEALLOC == {
+        "    ; OP_DEALLOC\n"coms
+        "    add     rsp, "coms viewod com '\n'comc
     }
     else if viewok OKind.ADD == {
         "rcx" "add" "OP_ADD" compile_basic_binop
@@ -230,13 +246,13 @@ $static ptr out_fd
     }
     else if viewok OKind.JMP == {
         "    ; OP_JMP\n"coms
-        "    jmp     .l_"coms viewod com "\n"coms
+        "    jmp     .l_"coms viewod com '\n'comc
     }
     else if viewok OKind.JZ == {
         "    ; OP_JZ\n"coms
         "rax" compile_pop
         "    test    rax, rax\n"coms
-        "    jz     .l_"coms viewod com "\n"coms
+        "    jz     .l_"coms viewod com '\n'comc
     }
     else if viewok OKind.FOPEN == {
         "    ; OP_FOPEN\n"coms
@@ -244,26 +260,26 @@ $static ptr out_fd
         "rdi" compile_pop         // filename pointer
         "    mov     rax, 2\n"coms
         "    cmp     rsi, 0\n"coms
-        "    je      .frl_"coms viewod com "\n"coms
+        "    je      .frl_"coms viewod com '\n'comc
         "    cmp     rsi, 1\n"coms
-        "    je      .fwl_"coms viewod com "\n"coms
+        "    je      .fwl_"coms viewod com '\n'comc
         "    cmp     rsi, 2\n"coms
-        "    je      .fal_"coms viewod com "\n"coms
-        "    jmp     .ffl_"coms viewod com "\n"coms
+        "    je      .fal_"coms viewod com '\n'comc
+        "    jmp     .ffl_"coms viewod com '\n'comc
         "    .frl_"coms viewod com ":\n"coms
         "    mov     rsi, 0\n"coms
-        "    jmp     .fdl_"coms viewod com "\n"coms
+        "    jmp     .fdl_"coms viewod com '\n'comc
         "    .fwl_"coms viewod com ":\n"coms
         "    mov     rsi, 577\n"coms
-        "    jmp     .fdl_"coms viewod com "\n"coms
+        "    jmp     .fdl_"coms viewod com '\n'comc
         "    .fal_"coms viewod com ":\n"coms
         "    mov     rsi, 1025\n"coms
-        "    jmp     .fdl_"coms viewod com "\n"coms
+        "    jmp     .fdl_"coms viewod com '\n'comc
         "    .fdl_"coms viewod com ":\n"coms
         "    mov     rdx, 420\n"coms
         "    syscall\n"coms
         "rax" compile_push        // push FD (or -1 on error)
-        "    jmp     .fel_"coms viewod com "\n"coms
+        "    jmp     .fel_"coms viewod com '\n'comc
         "    .ffl_"coms viewod com ":\n"coms
         "    mov     rax, -1\n"coms
         "rax" compile_push
@@ -295,7 +311,7 @@ $static ptr out_fd
         "rax" compile_push          // return 0 or -1
     }
     else {
-        "ERROR: Invalid opcode of type "eputs viewok eput cr
+        "ERROR: Invalid opcode of type "eputs viewok eput '\n'eputc
         1 exit
     }
     %Op+
@@ -316,7 +332,7 @@ $static ptr out_fd
 
 // init --
 :compile_buf_str {
-    $static char is_quote
+    $char is_quote
     false =is_quote
 
     while dup@c {
@@ -355,17 +371,17 @@ $static ptr out_fd
 
 // idx --
 :compile_buf_data {
-    $static int buf_size
+    $int buf_size
     dup BUF_MAP map_idx->Buffer.size@ =buf_size
 
-    "    ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
+    "    ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms '\n'comc
     "    b_"coms dup com
 
     if dup BUF_MAP map_idx->Buffer.init_int@c {
         if buf_size 1 == {
-            " db "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
+            " db "coms BUF_MAP map_idx->Buffer.init@ com '\n'comc
         } else if buf_size 8 == {
-            " dq "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
+            " dq "coms BUF_MAP map_idx->Buffer.init@ com '\n'comc
         }
     } else {
         " db "coms
@@ -384,8 +400,11 @@ $static ptr out_fd
 }
 
 // idx -- bool
-:is_used_slot {
-    BUF_MAP map_idx->Buffer.key.name@ flag
+:is_valid_static_buffer {
+    BUF_MAP map_idx
+    dup->Buffer.key.name@ flag
+    swap->Buffer.is_static@c
+    &
 }
 
 :compile_program {
@@ -407,7 +426,7 @@ $static ptr out_fd
 
     // -- idx
     0 while dup MAP_SIZE < {
-        if dup dup (is_used_slot) swap (BUF_MAP map_idx->Buffer.init@ flag) & {
+        if dup dup (is_valid_static_buffer) swap (BUF_MAP map_idx->Buffer.init@ flag) & {
             dup compile_buf_data
         }
         1+
@@ -417,7 +436,7 @@ $static ptr out_fd
     "section .bss\n"coms
     // -- idx
     0 while dup MAP_SIZE < {
-        if dup dup (is_used_slot) swap (BUF_MAP map_idx->Buffer.init@ not) & {
+        if dup dup (is_valid_static_buffer) swap (BUF_MAP map_idx->Buffer.init@ not) & {
             dup compile_buf_bss
         }
         1+

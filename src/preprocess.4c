@@ -44,7 +44,7 @@
 
 // name -- [idx, -1]
 :scoped_macro_idx {
-    $static int scope_idx
+    $int scope_idx
     &scope_stack stack_len =scope_idx
 
     while &scope_idx@-- {
@@ -58,7 +58,7 @@
 
 // tok_ptr -- new_tok_ptr
 :preprocess_word {
-    $static char arg_kind
+    $char arg_kind
     viewtk =arg_kind
 
     // -- name tok_ptr

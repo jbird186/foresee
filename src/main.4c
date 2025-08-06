@@ -4,7 +4,6 @@
 #use "src/compile.4c"
 
 // TODO: compound buffer declarations
-// TODO: non-static variables
 // TODO: "use" blocks
 // TODO: simulation mode
 // TODO: optimization
@@ -25,14 +24,15 @@ $static ptr argv
         1 exit
     }
 
-    $static ptr src_file_name
-    $static ptr out_file_name
+    $ptr src_file_name
+    $ptr out_file_name
     1 get_argv =src_file_name
     2 get_argv =out_file_name
 
     0 SCOPE_STACK stack_push!
+    0 ALLOC_STACK stack_push!
 
-    $static ptr src_fd
+    $ptr src_fd
     src_file_name 0 fopen =src_fd
 
     if src_fd is_failure {

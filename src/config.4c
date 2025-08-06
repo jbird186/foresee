@@ -15,7 +15,9 @@ $static int StructField[1024][8] struct_fields_mem
 #macro STRUCT_MEM { &struct_fields_mem %StructField }
 
 $static int ptr[1024] scope_stack
-#macro SCOPE_STACK { &scope_stack %int }
+#macro SCOPE_STACK { &scope_stack %ptr }
+$static int int[1024] alloc_stack
+#macro ALLOC_STACK { &alloc_stack %int }
 
 #macro MAP_SIZE { 8191 }
 $static File[MAP_SIZE] file_set

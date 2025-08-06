@@ -12,9 +12,11 @@ struct ScopedKey {
 struct Buffer {
     ScopedKey key
     int size
+    ptr type_name
     ptr init
     bool init_int
-    ptr type_name
+    bool is_static
+    int alloc_offset
 }
 
 struct Macro {
