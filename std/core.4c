@@ -1,5 +1,11 @@
 #use "std/core/intrinsics.4c"
-#use "std/core/linux.4c"
+
+#ifdef OS_LINUX {
+    #use "std/core/linux.4c"
+}
+#ifdef OS_WINDOWS {
+    #error "TODO: implement Windows I/O"
+}
 
 struct int { 8 __inner }
 struct ptr { 8 __inner }

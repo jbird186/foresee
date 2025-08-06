@@ -33,7 +33,7 @@ $static ptr out_fd
 // item --
 #macro compile_push_generic(com_type) {
     "    sub     "coms &stack_reg_str coms ", 8\n"coms
-    "    mov     qword ["coms &stack_reg_str coms "], "coms com_type "\n" coms
+    "    mov     qword ["coms &stack_reg_str coms "], "coms com_type "\n"coms
 }
 // item --
 :compile_push { compile_push_generic(coms) }
@@ -53,7 +53,7 @@ $static ptr out_fd
 
 // idx map_slot_ptr -- idx
 :compile_function {
-    "; "coms dup->Function.name@ coms '\n'comc
+    "; "coms dup->Function.name@ coms "\n"coms
     "f_"coms over com ":\n"coms
     "    push    rbp\n"coms
     "    mov     rbp, rsp\n"coms
@@ -73,10 +73,10 @@ $static ptr out_fd
 
 // b_register instruction name --
 :compile_basic_binop {
-    "    ; "coms coms '\n'comc
+    "    ; "coms coms "\n"coms
     "rcx" compile_pop
     "rax" compile_pop
-    "    "coms coms " \trax, "coms coms '\n'comc
+    "    "coms coms " \trax, "coms coms "\n"coms
     "rax" compile_push
 }
 
@@ -101,7 +101,7 @@ $static ptr out_fd
     }
     else if viewok OKind.CALL_FN == {
         "    ; OP_CALL_FN\n"coms
-        "    call f_"coms viewod com '\n'comc
+        "    call f_"coms viewod com "\n"coms
     }
     else if viewok OKind.RET == {
         "    ; OP_RET\n"coms
@@ -128,19 +128,19 @@ $static ptr out_fd
         "    mov     rcx, ["coms &stack_reg_str coms " + rax*8]\n"coms
         "    lea     rbx, ["coms &stack_reg_str coms " + rax*8]\n"coms
         "    .rl_"coms viewod com ":\n"coms
-        "    cmp     rbx, "coms &stack_reg_str coms '\n'comc
-        "    je      .rl_"coms viewod 1+ com '\n'comc
+        "    cmp     rbx, "coms &stack_reg_str coms "\n"coms
+        "    je      .rl_"coms viewod 1+ com "\n"coms
         "    mov     rdx, [rbx - 8]\n"coms
         "    mov     [rbx], rdx\n"coms
         "    sub     rbx, 8\n"coms
-        "    jmp     .rl_"coms viewod com '\n'comc
+        "    jmp     .rl_"coms viewod com "\n"coms
         "    .rl_"coms viewod 1+ com ":\n"coms
         "    mov     ["coms &stack_reg_str coms "], rcx\n"coms
     }
     else if viewok OKind.DEPTH == {
         "    ; OP_DEPTH\n"coms
-        "    mov     rax, b_stack + "coms &stack_size_str coms '\n'comc
-        "    sub     rax, "coms &stack_reg_str coms '\n'comc
+        "    mov     rax, b_stack + "coms &stack_size_str coms "\n"coms
+        "    sub     rax, "coms &stack_reg_str coms "\n"coms
         "    shr     rax, 3\n"coms
         "rax" compile_push
     }
@@ -167,11 +167,11 @@ $static ptr out_fd
     }
     else if viewok OKind.ALLOC == {
         "    ; OP_ALLOC\n"coms
-        "    sub     rsp, "coms viewod com '\n'comc
+        "    sub     rsp, "coms viewod com "\n"coms
     }
     else if viewok OKind.DEALLOC == {
         "    ; OP_DEALLOC\n"coms
-        "    add     rsp, "coms viewod com '\n'comc
+        "    add     rsp, "coms viewod com "\n"coms
     }
     else if viewok OKind.ADD == {
         "rcx" "add" "OP_ADD" compile_basic_binop
@@ -246,13 +246,13 @@ $static ptr out_fd
     }
     else if viewok OKind.JMP == {
         "    ; OP_JMP\n"coms
-        "    jmp     .l_"coms viewod com '\n'comc
+        "    jmp     .l_"coms viewod com "\n"coms
     }
     else if viewok OKind.JZ == {
         "    ; OP_JZ\n"coms
         "rax" compile_pop
         "    test    rax, rax\n"coms
-        "    jz     .l_"coms viewod com '\n'comc
+        "    jz     .l_"coms viewod com "\n"coms
     }
     else if viewok OKind.FOPEN == {
         "    ; OP_FOPEN\n"coms
@@ -260,26 +260,26 @@ $static ptr out_fd
         "rdi" compile_pop         // filename pointer
         "    mov     rax, 2\n"coms
         "    cmp     rsi, 0\n"coms
-        "    je      .frl_"coms viewod com '\n'comc
+        "    je      .frl_"coms viewod com "\n"coms
         "    cmp     rsi, 1\n"coms
-        "    je      .fwl_"coms viewod com '\n'comc
+        "    je      .fwl_"coms viewod com "\n"coms
         "    cmp     rsi, 2\n"coms
-        "    je      .fal_"coms viewod com '\n'comc
-        "    jmp     .ffl_"coms viewod com '\n'comc
+        "    je      .fal_"coms viewod com "\n"coms
+        "    jmp     .ffl_"coms viewod com "\n"coms
         "    .frl_"coms viewod com ":\n"coms
         "    mov     rsi, 0\n"coms
-        "    jmp     .fdl_"coms viewod com '\n'comc
+        "    jmp     .fdl_"coms viewod com "\n"coms
         "    .fwl_"coms viewod com ":\n"coms
         "    mov     rsi, 577\n"coms
-        "    jmp     .fdl_"coms viewod com '\n'comc
+        "    jmp     .fdl_"coms viewod com "\n"coms
         "    .fal_"coms viewod com ":\n"coms
         "    mov     rsi, 1025\n"coms
-        "    jmp     .fdl_"coms viewod com '\n'comc
+        "    jmp     .fdl_"coms viewod com "\n"coms
         "    .fdl_"coms viewod com ":\n"coms
         "    mov     rdx, 420\n"coms
         "    syscall\n"coms
         "rax" compile_push        // push FD (or -1 on error)
-        "    jmp     .fel_"coms viewod com '\n'comc
+        "    jmp     .fel_"coms viewod com "\n"coms
         "    .ffl_"coms viewod com ":\n"coms
         "    mov     rax, -1\n"coms
         "rax" compile_push
@@ -336,7 +336,7 @@ $static ptr out_fd
     while dup@c {
         if dup@c should_print_char {
             if is_quote not {
-                '"' comc
+                "\""coms
                 true =is_quote
             }
             dup@c comc
@@ -371,14 +371,14 @@ $static ptr out_fd
 :compile_buf_data {
     $int buf_size: {dup BUF_MAP map_idx->Buffer.size@}
 
-    "    ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms '\n'comc
+    "    ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
     "    b_"coms dup com
 
     if dup BUF_MAP map_idx->Buffer.init_int@c {
         if buf_size 1 == {
-            " db "coms BUF_MAP map_idx->Buffer.init@ com '\n'comc
+            " db "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
         } else if buf_size 8 == {
-            " dq "coms BUF_MAP map_idx->Buffer.init@ com '\n'comc
+            " dq "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
         }
     } else {
         " db "coms
@@ -393,7 +393,7 @@ $static ptr out_fd
 // idx --
 :compile_buf_bss {
     "    b_"coms dup com " resb "coms BUF_MAP map_idx->Buffer.size@ com
-    " ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n" coms
+    " ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
 }
 
 // idx -- bool

@@ -63,6 +63,12 @@
     // -- name tok_ptr macro_idx
     if over scoped_macro_idx dup is_success {
         MACRO_MAP map_idx->Macro.toks@
+        if dup not {
+            drop
+            error "Attempted to expand preprocessor flag '"eputs swap eputs "'\n"eputs
+            1 exit
+        }
+
         dup SCOPE_STACK stack_push!
         swap %Token+ swap
         // Arguments (optional)
@@ -77,9 +83,8 @@
 
             // -- name tok_ptr def_tok_ptr
             while swap %Token+ viewtk TKind.PAREN_END != {
-                // TODO: prevent name collision between macros and macro arguments
                 // -- name tok_ptr def_tok_ptr slot_ptr
-                viewtd MACRO_MAP map_get
+                viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
                 over->Token.data@ over->Macro.key.name!
                 SCOPE_STACK stack_last@ over->Macro.key.scope!
                 2 pick swap->Macro.toks!
@@ -124,7 +129,7 @@
 :parse_use_directive {
     %Token+
     if viewtk TKind.STR != {
-        error "Expected file name after 'use' directive\n"eputs
+        error "Expected file name for 'use' directive\n"eputs
         1 exit
     }
 
@@ -170,7 +175,7 @@
     if viewtk TKind.STR == {
         error viewtd eputs
     } else {
-        error "Expected message after 'error' directive\n"eputs
+        error "Expected message for 'error' directive\n"eputs
     }
     1 exit
 }
@@ -178,14 +183,18 @@
 // tok_ptr -- new_tok_ptr
 :parse_macro_directive {
     %Token+
-    if viewtd MACRO_MAP map_contains {
-        error "Macro '"eputs viewtd eputs "' already defined\n"eputs
+    if viewtk dup (TKind.IDENT !=) swap (TKind.WORD !=) & {
+        error "Expected name for 'macro' directive\n"eputs
+        1 exit
+    }
+    if viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_contains {
+        error "Macro '"eputs viewtd eputs "' already defined in this scope\n"eputs
         1 exit
     }
     // -- name tok_ptr
     viewtd swap %Token+
     // -- name tok_ptr slot_ptr
-    over MACRO_MAP map_get
+    over SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
     over over->Macro.toks!
     SCOPE_STACK stack_last@ over->Macro.key.scope!
     2 pick swap->Macro.key.name!
@@ -212,21 +221,60 @@
 }
 
 // tok_ptr -- new_tok_ptr
+:parse_flag_directive {
+    %Token+
+    if viewtk TKind.IDENT != {
+        error "Expected identifier for 'flag' directive\n"eputs
+        1 exit
+    }
+    if viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_contains {
+        error "Macro '"eputs viewtd eputs "' already defined in this scope\n"eputs
+        1 exit
+    }
+
+    viewtd
+    dup SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
+    swap over->Macro.key.name!
+    SCOPE_STACK stack_last@ over->Macro.key.scope!
+    NULL swap->Macro.toks!
+    %Token+
+}
+
+// tok_ptr -- new_tok_ptr
+:parse_undef_directive {
+    %Token+
+    if viewtk dup (TKind.IDENT !=) swap (TKind.WORD !=) & {
+        error "Expected macro name for 'undef' directive\n"eputs
+        1 exit
+    }
+    if viewtd scoped_macro_idx is_failure {
+        error "Macro '"eputs viewtd eputs "' not defined\n"eputs
+        1 exit
+    }
+
+    viewtd scoped_macro_idx MACRO_MAP map_idx
+    NULL over->Macro.key.name!
+    NULL over->Macro.key.scope!
+    NULL swap->Macro.toks!
+    %Token+
+}
+
+// tok_ptr -- new_tok_ptr
 #macro parse_if_directive(true_case false_case) {
     %Token+
     if viewtk dup (TKind.IDENT !=) swap (TKind.WORD !=) & {
-        error "Expected macro name after 'if' directive\n"eputs
+        error "Expected macro name for 'if' directive\n"eputs
         1 exit
     }
 
     // -- macro_name tok_ptr
     viewtd swap %Token+
     if viewtk TKind.BRACE_START != {
-        error "Expected braces after 'if' directive\n"eputs
+        error "Expected braces for 'if' directive\n"eputs
         1 exit
     }
 
-    if swap MACRO_MAP map_contains {
+    if swap scoped_macro_idx is_success {
         true_case
     } else {
         false_case
@@ -247,6 +295,10 @@
         parse_error_directive
     } else if viewtd "macro" str_eq {
         parse_macro_directive
+    } else if viewtd "flag" str_eq {
+        parse_flag_directive
+    } else if viewtd "undef" str_eq {
+        parse_undef_directive
     } else if viewtd "ifdef" str_eq {
         parse_if_directive(preprocess_block skip_braces)
     } else if viewtd "ifndef" str_eq {
@@ -277,4 +329,12 @@
 :preprocess_src {
     &toks_mem->StackHead.data preprocess
     0 TKind.EOF 0 0 &out_toks_mem tok_push
+}
+
+// name --
+:define_builtin_flag {
+    dup SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
+    NULL over->Macro.toks!
+    NULL over->Macro.key.scope!
+    ->Macro.key.name!
 }
