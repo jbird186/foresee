@@ -37,4 +37,4 @@ $static stack_size_str: "65536"
 $static stack_reg_str: "r12"
 
 #macro USE_ASM_STRINGS { true }
-#macro BUFFER_SIZE_LIMIT { 16777216 }
+#macro BUFFER_SIZE_LIMIT { 8388608 }

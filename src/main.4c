@@ -24,21 +24,17 @@ $static ptr argv
         1 exit
     }
 
-    $ptr src_file_name
-    $ptr out_file_name
-    1 get_argv =src_file_name
-    2 get_argv =out_file_name
+    $ptr src_file_name: {1 get_argv}
+    $ptr out_file_name: {2 get_argv}
+    $ptr src_fd: {src_file_name 0 fopen}
+
+    if src_fd is_failure {
+        "ERROR: File '"eputs src_file_name eput sp src_file_name eputs "' not found\n"eputs
+        1 exit
+    }
 
     0 SCOPE_STACK stack_push!
     0 ALLOC_STACK stack_push!
-
-    $ptr src_fd
-    src_file_name 0 fopen =src_fd
-
-    if src_fd is_failure {
-        "ERROR: File '"eputs src_file_name eputs "' not found\n"eputs
-        1 exit
-    }
 
     &src_str SRC_STR_SIZE src_fd fread drop
     src_fd fclose drop

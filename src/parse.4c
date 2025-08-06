@@ -26,8 +26,7 @@ $static int ASM_FOPEN_ID
 
 // name -- name [idx, -1]
 :scoped_buf_idx {
-    $int scope_idx
-    &scope_stack stack_len =scope_idx
+    $int scope_idx: {&scope_stack stack_len}
 
     while &scope_idx@-- {
         // -- name
@@ -78,8 +77,7 @@ $static int ASM_FOPEN_ID
 
 // ops_dest tok_ptr type_name -- ops_dest new_tok_ptr type_name field_size offset should_chain
 :view_field_access {
-    $ptr struct_name
-    =struct_name
+    $ptr struct_name: {}
 
     // -- ops_dest tok_ptr
     if struct_name STRUCT_MAP map_contains not {
@@ -96,8 +94,7 @@ $static int ASM_FOPEN_ID
 
     // -- ops_dest tok_ptr field_name fields_ptr
     viewtd rot
-    $int sum
-    0 =sum
+    $int sum: {0}
     while dup->StructField.name@ {
         if over over->StructField.name@ str_eq {
             // -- ops_dest tok_ptr fields_ptr
@@ -167,6 +164,24 @@ $static int ASM_FOPEN_ID
     name size
 }
 
+// ops_dest tok_ptr -- ops_dest tok_ptr
+:call_storec {
+    if "storec" FN_MAP map_contains not {
+        error "Function 'storec' not defined\n"eputs
+        1 exit
+    }
+    "storec" FN_MAP map_get_idx OKind.CALL_FN 3 pick op_push
+}
+
+// ops_dest tok_ptr -- ops_dest tok_ptr
+:call_fetchc {
+    if "fetchc" FN_MAP map_contains not {
+        error "Function 'fetchc' not defined\n"eputs
+        1 exit
+    }
+    "fetchc" FN_MAP map_get_idx OKind.CALL_FN 3 pick op_push
+}
+
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_string {
     viewtd &inline_bufs %ptr stack_push!
@@ -234,8 +249,7 @@ $static int ASM_FOPEN_ID
 
     ////////// Enums //////////
     if viewtd ENUM_MAP map_contains {
-        $int name
-        viewtd =name
+        $int name: {viewtd}
 
         // -- ops_dest tok_ptr variants
         name ENUM_MAP map_get->Enum.variants@
@@ -268,12 +282,7 @@ $static int ASM_FOPEN_ID
         drop drop
         0 OKind.FETCH 3 roll op_push
     } else if dup 1 == {
-        drop drop
-        if "fetchc" FN_MAP map_contains not {
-            error "Function 'fetchc' not defined\n"eputs
-            1 exit
-        }
-        "fetchc" FN_MAP map_get_idx OKind.CALL_FN 3 roll op_push
+        drop drop call_fetchc nip
     } else {
         rot error "Buffer '"eputs rot eputs "' ("eputs swap eput " bytes) cannot be automatically read from\n"eputs
         1 exit
@@ -514,6 +523,70 @@ $static int ASM_FOPEN_ID
     swap
 }
 
+#macro _parse_dollar_non_static_init {
+    if viewtk TKind.BRACE_START == {
+        %Token+
+        if (size 1 ==) (size 8 ==) | not {
+            error "Buffer '"eputs name eputs "' ("eputs size eput " bytes) cannot be automatically assigned to\n"eputs
+            1 exit
+        }
+
+        dup SCOPE_STACK stack_push!
+        _parse_until({TKind.BRACE_END})
+        &scope_stack stack_shrink
+
+        alloc_offset size+ OKind.PUSH_VAR 3 pick op_push
+        if size 1 == {
+            call_storec
+        } else {
+            0 OKind.STORE 3 pick op_push
+        }
+    } else {
+        error "Non-static buffers can only utilize block initialization\n"eputs
+        1 exit
+    }
+}
+
+#macro _parse_dollar_static_init {
+    if viewtk TKind.STR == {
+        // -- tok_ptr str_size
+        viewtd str_len 1+
+        if size 0 < {
+            =size
+        } else if size > {
+            error "Invalid size for buffer '"eputs name eputs "'\n"eputs
+            1 exit
+        }
+        false =init_int
+    } else if viewtk TKind.INT == {
+        if size 0 < {
+            8 =size
+        } else {
+            if size 8 == {}
+            else if (viewtd dup (0xff <=) swap (0 >=) &) (size 1 ==) & {}
+            else {
+                error "Invalid size for buffer '"eputs name eputs "'\n"eputs
+                1 exit
+            }
+        }
+        true =init_int
+    } else if viewtk TKind.CHAR == {
+        if size 0 < {
+            1 =size
+        } else {
+            if (size 8 !=) (size 1 !=) & {
+                error "Invalid size for buffer '"eputs name eputs "'\n"eputs
+                1 exit
+            }
+        }
+        true =init_int
+    } else {
+        error "Invalid initialization value for buffer '"eputs name eputs "'\n"eputs
+        1 exit
+    }
+    viewtd =init
+    %Token+
+}
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_dollar {
@@ -534,8 +607,7 @@ $static int ASM_FOPEN_ID
     }
 
     $int size
-    $ptr type_name
-    NULL =type_name
+    $ptr type_name: {NULL}
     if dup tok_is_type {
         // -- type_name tok_ptr
         viewtd swap
@@ -548,79 +620,43 @@ $static int ASM_FOPEN_ID
         -1 =size
     }
 
-    $ptr name
+    if is_static not {
+        ALLOC_STACK stack_last dup@ size+ swap!
+        size OKind.ALLOC 3 pick op_push
+    }
+
     if viewtk TKind.IDENT != {
         error "Invalid buffer name\n"eputs
         1 exit
     }
     check_name_availability
-    viewtd =name
+    $ptr name: {viewtd}
+
     %Token+
     $ptr init
     $char init_int
-    if (viewtk TKind.COLON ==) (is_static not) & {
-        error "Only static buffers can have initialization values\n"eputs
-        1 exit
-    } else if viewtk TKind.COLON == {
+    if viewtk TKind.COLON == {
         %Token+
-        if viewtk TKind.STR == {
-            // -- tok_ptr str_size
-            viewtd str_len 1+
-            if size 0 < {
-                =size
-            } else if size > {
-                error "Invalid size for buffer '"eputs name eputs "'\n"eputs
-                1 exit
-            }
-            false =init_int
-        } else if viewtk TKind.INT == {
-            if size 0 < {
-                8 =size
-            } else {
-                if size 8 == {}
-                else if (viewtd dup (0xff <=) swap (0 >=) &) (size 1 ==) & {}
-                else {
-                    error "Invalid size for buffer '"eputs name eputs "'\n"eputs
-                    1 exit
-                }
-            }
-            true =init_int
-        } else if viewtk TKind.CHAR == {
-            if size 0 < {
-                1 =size
-            } else {
-                if (size 8 !=) (size 1 !=) & {
-                    error "Invalid size for buffer '"eputs name eputs "'\n"eputs
-                    1 exit
-                }
-            }
-            true =init_int
+        if is_static {
+            _parse_dollar_static_init
         } else {
-            error "Invalid initialization value for buffer '"eputs name eputs "'\n"eputs
-            1 exit
+            _parse_dollar_non_static_init
         }
-        viewtd =init
-        %Token+
     } else {
         0 =init
-        if size 0 < {
-            error "Invalid definition for buffer '"eputs name eputs "'\n"eputs
-            1 exit
-        }
         false =init_int
     }
 
+    if size 0 < {
+        error "Invalid definition for buffer '"eputs name eputs "'\n"eputs
+        1 exit
+    }
     if size BUFFER_SIZE_LIMIT > {
         error "Buffer '"eputs name eputs "' cannot exceed "eputs BUFFER_SIZE_LIMIT eput " bytes\n"eputs
         1 exit
     }
 
-    if is_static not {
-        ALLOC_STACK stack_last dup@ size+ swap!
-        size OKind.ALLOC 3 roll op_push
-    } else { nip }
-    // -- tok_ptr
-
+    nip
     name SCOPE_STACK stack_last@ BUF_MAP scoped_map_get
     name over->Buffer.key.name!
     SCOPE_STACK stack_last@ over->Buffer.key.scope!
@@ -664,12 +700,7 @@ $static int ASM_FOPEN_ID
         drop drop
         0 OKind.STORE 3 roll op_push
     } else if dup 1 == {
-        drop drop
-        if "storec" FN_MAP map_contains not {
-            error "Function 'storec' not defined\n"eputs
-            1 exit
-        }
-        "storec" FN_MAP map_get_idx OKind.CALL_FN 3 roll op_push
+        drop drop call_storec nip
     } else {
         rot error "Buffer '"eputs rot eputs "' ("eputs swap eput " bytes) cannot be automatically assigned to\n"eputs
         1 exit
@@ -689,11 +720,9 @@ $static int ASM_FOPEN_ID
         1 exit
     }
 
-    $ptr type_name
     check_name_availability
-    viewtd =type_name
-    $ptr variants_ptr
-    ENUM_MEM stack_top =variants_ptr
+    $ptr type_name: {viewtd}
+    $ptr variants_ptr: {ENUM_MEM stack_top}
 
     %Token+
     if viewtk TKind.BRACE_START != {
@@ -770,11 +799,9 @@ $static int ASM_FOPEN_ID
         1 exit
     }
 
-    $ptr struct_name
     check_name_availability
-    viewtd =struct_name
-    $ptr fields_ptr
-    STRUCT_MEM stack_top =fields_ptr
+    $ptr struct_name: {viewtd}
+    $ptr fields_ptr: {STRUCT_MEM stack_top}
 
     %Token+
     if viewtk TKind.BRACE_START != {
