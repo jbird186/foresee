@@ -5,7 +5,6 @@
 
 // TODO: "use" blocks
 // TODO: simulation mode
-// TODO: optimization
 
 $static int argc
 $static ptr argv
@@ -18,6 +17,12 @@ $static ptr argv
 :put_example {
     "Example:\n"puts
     "\t"puts 0 get_argv puts " ./src/main.4c ./target/output.asm x86_64-linux"puts
+}
+
+:put_options {
+    "Options:\n"puts
+    "\t-d, --debug\t\tcompile with debug information\n"puts
+    "\t-o, --optimize\t\tenable optimizations\n"puts
 }
 
 :parse_platform {
@@ -49,20 +54,39 @@ $static ptr argv
     }
 }
 
+// arg_ptr --
+:parse_switches {
+    while %char+ dup@c {
+        if dup@c 'd' == {
+            true =debug_mode
+        } else if dup@c 'o' == {
+            true =optimize_mode
+        } else {
+            "ERROR: Unrecognized switch '-"puts dup@c putc "'\n"puts
+            put_options
+            1 exit
+        }
+    }
+    drop
+}
+
 // idx -- new_idx
 :parse_option {
     $int idx: {}
     #macro ARG { idx get_argv }
 
-    if (ARG "--debug" streq) (ARG "-d" streq) | {
+    if (ARG "-" 1 strneq) (ARG "--" 2 strncmp flag) & {
+        ARG parse_switches
+    } else if ARG "--debug" streq {
         true =debug_mode
+    } else if ARG "--optimize" streq {
+        true =optimize_mode
     } else if ARG "--std" streq {
         idx 1+ =idx
         ARG DIRS_MEM stack_push!
     } else {
         "ERROR: Unrecognized option '"puts ARG puts "'\n"puts
-        "Options:\n"puts
-        "\t-d, --debug\t\tcompile with debug information"puts
+        put_options
         1 exit
     }
     idx 1+
@@ -97,6 +121,7 @@ $static ptr argv
     &src_str SRC_STR_SIZE src_fd fread drop
     src_fd fclose drop
     &src_str src_file_name lex_src
+    "__core.4c" use_file
     preprocess_src
     parse_out_toks
 

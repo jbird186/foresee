@@ -4,8 +4,6 @@
 #use "op.4c"
 
 $static int ASM_LABEL_ID
-$static int ASM_ROLL_ID
-$static int ASM_FOPEN_ID
 $static int FN_ALLOC_SIZE
 
 :parse_tok
@@ -144,17 +142,6 @@ $static int FN_ALLOC_SIZE
         idx BUF_MAP map_idx->Buffer.type_name@
         view_fields
     }
-
-    while viewtk TKind.ARROW == {
-        %Token+
-        if viewtk TKind.IDENT != {
-            error "Invalid struct name after '->'\n"eputs
-            1 exit
-        }
-        // -- ops_dest new_tok_ptr type_name
-        viewtd swap %Token+ swap
-        view_fields
-    }
     name size
 }
 
@@ -199,15 +186,11 @@ $static int FN_ALLOC_SIZE
     define_intrinsic_opcode(0 {OKind.NOOP} "__OP_NOOP")
     define_intrinsic_opcode(0 {OKind.EXIT} "__OP_EXIT")
     // Functions
-    if viewtd "__OP_RET" streq {
-        0 OKind.RET 3 roll op_push
-        %Token+
-        return
-    }
+    define_intrinsic_opcode(0 {OKind.RET} "__OP_RET")
     // Stack Primitives
     define_intrinsic_opcode(0 {OKind.DROP} "__OP_DROP")
     define_intrinsic_opcode(0 {OKind.PICK} "__OP_PICK")
-    define_intrinsic_opcode({ASM_ROLL_ID dup 2+ &ASM_ROLL_ID!} {OKind.ROLL} "__OP_ROLL")
+    define_intrinsic_opcode({&ASM_LABEL_ID@++} {OKind.ROLL} "__OP_ROLL")
     define_intrinsic_opcode(0 {OKind.DEPTH} "__OP_DEPTH")
     // Reference Primitives
     define_intrinsic_opcode(0 {OKind.STORE} "__OP_STORE")
@@ -228,7 +211,7 @@ $static int FN_ALLOC_SIZE
     define_intrinsic_opcode(0 {OKind.GT} "__OP_GT")
     define_intrinsic_opcode(0 {OKind.LT} "__OP_LT")
     // I/O
-    define_intrinsic_opcode({&ASM_FOPEN_ID@++} {OKind.FOPEN} "__OP_FOPEN")
+    define_intrinsic_opcode({&ASM_LABEL_ID@++} {OKind.FOPEN} "__OP_FOPEN")
     define_intrinsic_opcode(0 {OKind.FREAD} "__OP_FREAD")
     define_intrinsic_opcode(0 {OKind.FWRITE} "__OP_FWRITE")
     define_intrinsic_opcode(0 {OKind.FCLOSE} "__OP_FCLOSE")
@@ -417,7 +400,8 @@ $static int FN_ALLOC_SIZE
     fn_ptr swap->Function.def!
     %Token+
 
-    0=FN_ALLOC_SIZE
+    0 =ASM_LABEL_ID
+    0 =FN_ALLOC_SIZE
     0 OKind.ALLOC &fn_ops_mem op_push
     while viewtk TKind.BRACE_END != {
         &fn_ops_mem swap parse_tok

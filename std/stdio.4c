@@ -1,4 +1,3 @@
-#use "core.4c"
 #use "stdconv.4c"
 
 // int fd -- [bytes_written, -1]

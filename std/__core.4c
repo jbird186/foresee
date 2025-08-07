@@ -1,7 +1,7 @@
-#use "core/intrinsics.4c"
+#use "__core/intrinsics.4c"
 
 #ifdef OS_LINUX {
-    #use "core/linux.4c"
+    #use "__core/linux.4c"
 }
 #ifdef OS_WINDOWS {
     #error "TODO: implement Windows I/O"

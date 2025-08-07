@@ -1,4 +1,4 @@
-#use "core.4c"
+#use "__core.4c"
 
 $static char[24] __std_buf
 

@@ -40,3 +40,4 @@ $static stack_reg_str: "r12"
 #macro BUFFER_SIZE_LIMIT { 8388608 }
 
 $static bool debug_mode: false
+$static bool optimize_mode: false

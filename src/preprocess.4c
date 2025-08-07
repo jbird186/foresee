@@ -156,16 +156,9 @@
     NULL -1 return
 }
 
-// tok_ptr -- new_tok_ptr
-:parse_use_directive {
-    %Token+
-    if viewtk TKind.STR != {
-        error "Expected file name for 'use' directive\n"eputs
-        1 exit
-    }
-
-    $ptr name: {viewtd}
-    %Token+
+// name --
+:use_file {
+    $ptr name: {}
     if name _file_name FILE_SET map_contains {
         return
     }
@@ -194,9 +187,18 @@
 
     // -- tok_ptr use_tok_ptr
     &toks_mem %Token stack_top
-    &src_str path lex_src
-
+    &src_str name lex_src
     preprocess
+}
+
+// tok_ptr -- new_tok_ptr
+:parse_use_directive {
+    %Token+
+    if viewtk TKind.STR != {
+        error "Expected file name for 'use' directive\n"eputs
+        1 exit
+    }
+    viewtd use_file %Token+
 }
 
 // tok_ptr -- new_tok_ptr
@@ -358,7 +360,7 @@
 
 :preprocess_src {
     &toks_mem->StackHead.data preprocess
-    0 TKind.EOF 0 0 &out_toks_mem tok_push
+    0 TKind.EOF NULL 0 &out_toks_mem tok_push
 }
 
 // name --
