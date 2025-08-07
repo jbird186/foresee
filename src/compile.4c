@@ -1,17 +1,21 @@
-#use "std/stdstr.4c"
-#use "std/stdchar.4c"
-#use "src/config.4c"
-#use "src/map.4c"
-#use "src/op.4c"
+#use "stdstr.4c"
+#use "stdchar.4c"
+#use "config.4c"
+#use "map.4c"
+#use "op.4c"
 
 $static ptr out_fd
 
 // ptr --
 :coms {
-    if dup str_len out_fd fwrite is_failure {
+    if dup strlen out_fd fwrite is_failure {
         "ERROR: Failed to write string to output file\n"eputs
         1 exit
     }
+}
+:coms_dbg {
+    if debug_mode { coms }
+    else { drop }
 }
 // int --
 :com {
@@ -53,7 +57,9 @@ $static ptr out_fd
 
 // idx map_slot_ptr -- idx
 :compile_function {
-    "; "coms dup->Function.name@ coms "\n"coms
+    if debug_mode {
+        "; "coms dup->Function.name@ coms "\n"coms
+    }
     "f_"coms over com ":\n"coms
     "    push    rbp\n"coms
     "    mov     rbp, rsp\n"coms
@@ -73,7 +79,7 @@ $static ptr out_fd
 
 // b_register instruction name --
 :compile_basic_binop {
-    "    ; "coms coms "\n"coms
+    "    ; "coms_dbg coms_dbg "\n"coms_dbg
     "rcx" compile_pop
     "rax" compile_pop
     "    "coms coms " \trax, "coms coms "\n"coms
@@ -84,46 +90,46 @@ $static ptr out_fd
 :compile_op {
     if viewok OKind.NOOP == {}
     else if viewok OKind.EXIT == {
-        "    ; OP_EXIT\n"coms
+        "    ; OP_EXIT\n"coms_dbg
         "rdi" compile_pop
         "    mov     eax, 60\n"coms
         "    syscall\n"coms
     }
     else if viewok OKind.CALL == {
-        "    ; OP_CALL\n"coms
+        "    ; OP_CALL\n"coms_dbg
         "rax" compile_pop
         "    call rax\n"coms
     }
     else if viewok OKind.PUSH_FN == {
-        "    ; OP_PUSH_FN\n"coms
+        "    ; OP_PUSH_FN\n"coms_dbg
         "    lea rax, [rel f_"coms viewod com "]\n"coms
         "rax" compile_push
     }
     else if viewok OKind.CALL_FN == {
-        "    ; OP_CALL_FN\n"coms
+        "    ; OP_CALL_FN\n"coms_dbg
         "    call f_"coms viewod com "\n"coms
     }
     else if viewok OKind.RET == {
-        "    ; OP_RET\n"coms
+        "    ; OP_RET\n"coms_dbg
         "    leave\n"coms
         "    ret\n"coms
     }
     else if viewok OKind.PUSH_INT == {
-        "    ; OP_PUSH_INT\n"coms
+        "    ; OP_PUSH_INT\n"coms_dbg
         viewod compile_push_int
     }
     else if viewok OKind.DROP == {
-        "    ; OP_DROP\n"coms
+        "    ; OP_DROP\n"coms_dbg
         compile_stack_shrink
     }
     else if viewok OKind.PICK == {
-        "    ; OP_PICK\n"coms
+        "    ; OP_PICK\n"coms_dbg
         "rax" compile_pop
         "    mov     rcx, ["coms &stack_reg_str coms " + rax*8]\n"coms
         "rcx" compile_push
     }
     else if viewok OKind.ROLL == {
-        "    ; OP_ROLL\n"coms
+        "    ; OP_ROLL\n"coms_dbg
         "rax" compile_pop
         "    mov     rcx, ["coms &stack_reg_str coms " + rax*8]\n"coms
         "    lea     rbx, ["coms &stack_reg_str coms " + rax*8]\n"coms
@@ -138,40 +144,36 @@ $static ptr out_fd
         "    mov     ["coms &stack_reg_str coms "], rcx\n"coms
     }
     else if viewok OKind.DEPTH == {
-        "    ; OP_DEPTH\n"coms
+        "    ; OP_DEPTH\n"coms_dbg
         "    mov     rax, b_stack + "coms &stack_size_str coms "\n"coms
         "    sub     rax, "coms &stack_reg_str coms "\n"coms
         "    shr     rax, 3\n"coms
         "rax" compile_push
     }
     else if viewok OKind.PUSH_BUF == {
-        "    ; OP_PUSH_BUF\n"coms
+        "    ; OP_PUSH_BUF\n"coms_dbg
         viewod compile_push_generic({"b_"coms com})
     }
     else if viewok OKind.STORE == {
-        "    ; OP_STORE\n"coms
+        "    ; OP_STORE\n"coms_dbg
         "rax" compile_pop
         "rcx" compile_pop
         "    mov     [rax], rcx\n"coms
     }
     else if viewok OKind.FETCH == {
-        "    ; OP_FETCH\n"coms
+        "    ; OP_FETCH\n"coms_dbg
         "rax" compile_pop
         "    mov     rbx, qword [rax]\n"coms
         "rbx" compile_push
     }
     else if viewok OKind.PUSH_VAR == {
-        "    ; OP_PUSH_VAR\n"coms
+        "    ; OP_PUSH_VAR\n"coms_dbg
         "    lea     rax, [rbp - "coms viewod com "]\n"coms
         "rax" compile_push
     }
     else if viewok OKind.ALLOC == {
-        "    ; OP_ALLOC\n"coms
+        "    ; OP_ALLOC\n"coms_dbg
         "    sub     rsp, "coms viewod com "\n"coms
-    }
-    else if viewok OKind.DEALLOC == {
-        "    ; OP_DEALLOC\n"coms
-        "    add     rsp, "coms viewod com "\n"coms
     }
     else if viewok OKind.ADD == {
         "rcx" "add" "OP_ADD" compile_basic_binop
@@ -183,7 +185,7 @@ $static ptr out_fd
         "rcx" "imul" "OP_MUL" compile_basic_binop
     }
     else if viewok OKind.DIV == {
-        "    ; OP_DIV\n"coms
+        "    ; OP_DIV\n"coms_dbg
         "rbx" compile_pop
         "rax" compile_pop
         "    cqo\n"coms
@@ -209,13 +211,13 @@ $static ptr out_fd
         "cl" "sar" "OP_SAR" compile_basic_binop
     }
     else if viewok OKind.NOT == {
-        "    ; OP_NOT\n"coms
+        "    ; OP_NOT\n"coms_dbg
         "rax" compile_pop
         "    not     rax\n"coms
         "rax" compile_push
     }
     else if viewok OKind.EQ == {
-        "    ; OP_EQ\n"coms
+        "    ; OP_EQ\n"coms_dbg
         "rbx" compile_pop
         "rax" compile_pop
         "    cmp     rax, rbx\n"coms
@@ -224,7 +226,7 @@ $static ptr out_fd
         "rax" compile_push
     }
     else if viewok OKind.GT == {
-        "    ; OP_GT\n"coms
+        "    ; OP_GT\n"coms_dbg
         "rbx" compile_pop
         "rax" compile_pop
         "    cmp     rax, rbx\n"coms
@@ -233,7 +235,7 @@ $static ptr out_fd
         "rax" compile_push
     }
     else if viewok OKind.LT == {
-        "    ; OP_LT\n"coms
+        "    ; OP_LT\n"coms_dbg
         "rbx" compile_pop
         "rax" compile_pop
         "    cmp     rax, rbx\n"coms
@@ -245,17 +247,17 @@ $static ptr out_fd
         ".l_"coms viewod com ":\n"coms
     }
     else if viewok OKind.JMP == {
-        "    ; OP_JMP\n"coms
+        "    ; OP_JMP\n"coms_dbg
         "    jmp     .l_"coms viewod com "\n"coms
     }
     else if viewok OKind.JZ == {
-        "    ; OP_JZ\n"coms
+        "    ; OP_JZ\n"coms_dbg
         "rax" compile_pop
         "    test    rax, rax\n"coms
         "    jz     .l_"coms viewod com "\n"coms
     }
     else if viewok OKind.FOPEN == {
-        "    ; OP_FOPEN\n"coms
+        "    ; OP_FOPEN\n"coms_dbg
         "rsi" compile_pop         // mode (0 = read, 1 = write, etc.)
         "rdi" compile_pop         // filename pointer
         "    mov     rax, 2\n"coms
@@ -286,7 +288,7 @@ $static ptr out_fd
         "    .fel_"coms viewod com ":\n"coms
     }
     else if viewok OKind.FREAD == {
-        "    ; OP_FREAD\n"coms
+        "    ; OP_FREAD\n"coms_dbg
         "rdi" compile_pop           // file descriptor
         "rdx" compile_pop           // length
         "rsi" compile_pop           // buffer pointer
@@ -295,7 +297,7 @@ $static ptr out_fd
         "rax" compile_push          // bytes read or -1
     }
     else if viewok OKind.FWRITE == {
-        "    ; OP_FWRITE\n"coms
+        "    ; OP_FWRITE\n"coms_dbg
         "rdi" compile_pop           // file descriptor
         "rdx" compile_pop           // length
         "rsi" compile_pop           // buffer pointer
@@ -304,7 +306,7 @@ $static ptr out_fd
         "rax" compile_push          // bytes written or -1
     }
     else if viewok OKind.FCLOSE == {
-        "    ; OP_FCLOSE\n"coms
+        "    ; OP_FCLOSE\n"coms_dbg
         "rdi" compile_pop           // file descriptor
         "    mov     rax, 3\n"coms // sys_close
         "    syscall\n"coms
@@ -358,7 +360,7 @@ $static ptr out_fd
 }
 
 :compile_inline_bufs {
-    "    ; Inline Buffers\n"coms
+    "    ; Inline Buffers\n"coms_dbg
     // -- idx
     0 while dup &inline_bufs stack_len < {
         "    b_"coms dup MAP_SIZE+ com " db "coms
@@ -371,7 +373,9 @@ $static ptr out_fd
 :compile_buf_data {
     $int buf_size: {dup BUF_MAP map_idx->Buffer.size@}
 
-    "    ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
+    if debug_mode {
+        "    ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
+    }
     "    b_"coms dup com
 
     if dup BUF_MAP map_idx->Buffer.init_int@c {
@@ -383,7 +387,7 @@ $static ptr out_fd
     } else {
         " db "coms
         dup BUF_MAP map_idx->Buffer.init@ compile_buf_str
-        if (dup BUF_MAP map_idx->Buffer.init@ str_len 1+) (buf_size) < {
+        if (dup BUF_MAP map_idx->Buffer.init@ strlen 1+) (buf_size) < {
             "        times "coms buf_size com " - ($ - b_"coms dup com ") db 0\n"coms
         }
         drop
@@ -393,7 +397,10 @@ $static ptr out_fd
 // idx --
 :compile_buf_bss {
     "    b_"coms dup com " resb "coms BUF_MAP map_idx->Buffer.size@ com
-    " ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
+    if debug_mode {
+        " ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms
+    }
+    "\n"coms
 }
 
 // idx -- bool
@@ -410,7 +417,7 @@ $static ptr out_fd
     "section .text\n"coms
     compile_functions
 
-    "; start\n"coms
+    "; start\n"coms_dbg
     "_start:\n"coms
     "    lea     "coms &stack_reg_str coms ", [b_stack + "coms &stack_size_str coms "]\n"coms
     "    lea     rdi, [rsp + 8]\n"coms
@@ -438,5 +445,5 @@ $static ptr out_fd
         }
         1+
     } drop
-    "    b_stack: resb "coms &stack_size_str coms " ; Stack Pointer\n" coms
+    "    b_stack: resb "coms &stack_size_str coms "\n"coms
 }

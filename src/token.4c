@@ -1,5 +1,5 @@
-#use "src/types.4c"
-#use "src/stack.4c"
+#use "types.4c"
+#use "stack.4c"
 
 enum TKind {
     EOF

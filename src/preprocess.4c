@@ -1,6 +1,6 @@
-#use "src/config.4c"
-#use "src/token.4c"
-#use "src/map.4c"
+#use "config.4c"
+#use "token.4c"
+#use "map.4c"
 
 // tok_ptr -- new_tok_ptr
 :preprocess_token
@@ -125,6 +125,37 @@
     }
 }
 
+// path -- name
+:_file_name {
+    $ptr name: {}
+    name while dup@c {
+        if dup@c '/' == {
+            dup 1+ =name
+        }
+        %char+
+    } drop
+    name
+}
+
+// name -- file_path fd
+:_open_file {
+    $ptr name: {}
+    $int idx: {0}
+    while idx &dirs_mem stack_len < {
+        $char[256] file_path
+        idx DIRS_MEM stack_get@ &file_path strcpy
+        name &file_path strcat
+
+        $ptr fd: {&file_path 0 fopen}
+        if fd is_success {
+            &file_path fd return
+        }
+
+        idx 1+ =idx
+    }
+    NULL -1 return
+}
+
 // tok_ptr -- new_tok_ptr
 :parse_use_directive {
     %Token+
@@ -133,40 +164,39 @@
         1 exit
     }
 
-    // Check if this file has already been used
-    if viewtd FILE_SET map_contains {
-        %Token+
+    $ptr name: {viewtd}
+    %Token+
+    if name _file_name FILE_SET map_contains {
         return
     }
-    viewtd dup FILE_SET map_get->File.name!
 
-    // -- tok_ptr fd
-    if viewtd 0 fopen dup is_failure {
-        drop
-        error "'use' directive failed to open file '"eputs swap viewtd eputs "'\n"eputs
+    name _open_file
+    $ptr fd: {}
+    $ptr path: {}
+
+    if fd is_failure {
+        error "'use' directive failed to open file '"eputs name eputs "'\n"eputs
         1 exit
     }
-    // -- tok_ptr fd bytes_read
-    if &src_str SRC_STR_SIZE 2 pick fread dup is_failure {
-        drop drop
-        error "'use' directive failed to read file '"eputs swap viewtd eputs "'\n"eputs
+    name _file_name dup FILE_SET map_get!
+
+    $int read_res: {&src_str SRC_STR_SIZE fd fread }
+    if read_res is_failure {
+        error "'use' directive failed to read file '"eputs path eputs "'\n"eputs
         1 exit
     }
-    // -- tok_ptr fd
-    &src_str+ 0 swap!c
+    0 (read_res &src_str+)!c
 
-    // -- tok_ptr
-    if fclose is_failure {
-        error "'use' directive failed to close file '"eputs swap viewtd eputs "'\n"eputs
+    if fd fclose is_failure {
+        error "'use' directive failed to close file '"eputs path eputs "'\n"eputs
         1 exit
     }
 
     // -- tok_ptr use_tok_ptr
     &toks_mem %Token stack_top
-    over->Token.data@ &src_str swap lex_src
+    &src_str path lex_src
 
     preprocess
-    %Token+
 }
 
 // tok_ptr -- new_tok_ptr
@@ -289,19 +319,19 @@
         1 exit
     }
 
-    if viewtd "use" str_eq {
+    if viewtd "use" streq {
         parse_use_directive
-    } else if viewtd "error" str_eq {
+    } else if viewtd "error" streq {
         parse_error_directive
-    } else if viewtd "macro" str_eq {
+    } else if viewtd "macro" streq {
         parse_macro_directive
-    } else if viewtd "flag" str_eq {
+    } else if viewtd "flag" streq {
         parse_flag_directive
-    } else if viewtd "undef" str_eq {
+    } else if viewtd "undef" streq {
         parse_undef_directive
-    } else if viewtd "ifdef" str_eq {
+    } else if viewtd "ifdef" streq {
         parse_if_directive(preprocess_block skip_braces)
-    } else if viewtd "ifndef" str_eq {
+    } else if viewtd "ifndef" streq {
         parse_if_directive(skip_braces preprocess_block)
     } else {
         error "Unknown preprocessor directive '"eputs viewtd eputs "'\n"eputs

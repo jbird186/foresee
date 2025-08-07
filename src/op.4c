@@ -1,4 +1,4 @@
-#use "src/types.4c"
+#use "types.4c"
 
 enum OKind {
     // Misc / Special
@@ -23,7 +23,6 @@ enum OKind {
     // Allocation
     PUSH_VAR
     ALLOC
-    DEALLOC
     // Binary Operations
     ADD
     SUB

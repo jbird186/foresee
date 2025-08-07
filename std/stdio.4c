@@ -1,5 +1,5 @@
-#use "std/core.4c"
-#use "std/stdconv.4c"
+#use "core.4c"
+#use "stdconv.4c"
 
 // int fd -- [bytes_written, -1]
 :fwrite_int { swap __write_int_to_temp rot fwrite }

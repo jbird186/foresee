@@ -1,4 +1,4 @@
-#use "src/types.4c"
+#use "types.4c"
 
 #macro SRC_STR_SIZE { 131072 }
 $static char[SRC_STR_SIZE] src_str
@@ -11,13 +11,13 @@ $static int Op[16] start_ops_mem
 $static int ptr[1024][8] inline_bufs
 $static int EnumVariant[1024][8] enum_variants_mem
 $static int StructField[1024][8] struct_fields_mem
+$static int ptr[16] dirs_mem
 #macro ENUM_MEM { &enum_variants_mem %EnumVariant }
 #macro STRUCT_MEM { &struct_fields_mem %StructField }
+#macro DIRS_MEM { &dirs_mem %ptr }
 
 $static int ptr[1024] scope_stack
 #macro SCOPE_STACK { &scope_stack %ptr }
-$static int int[1024] alloc_stack
-#macro ALLOC_STACK { &alloc_stack %int }
 
 #macro MAP_SIZE { 8191 }
 $static File[MAP_SIZE] file_set
@@ -38,3 +38,5 @@ $static stack_reg_str: "r12"
 
 #macro USE_ASM_STRINGS { true }
 #macro BUFFER_SIZE_LIMIT { 8388608 }
+
+$static bool debug_mode: false

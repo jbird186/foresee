@@ -5,6 +5,8 @@ section .text
 f_37:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -67,7 +69,7 @@ f_37:
     sub     r12, 8
     mov     qword [r12], rcx
     ; OP_CALL_FN
-    call f_3466
+    call f_4046
     ; OP_CALL_FN
     call f_7060
 .l_141:
@@ -78,6 +80,8 @@ f_37:
 f_68:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_7675
@@ -102,6 +106,8 @@ f_68:
 f_84:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
 .l_13:
     ; OP_CALL_FN
     call f_2068
@@ -141,6 +147,8 @@ f_84:
 f_218:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 24
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -182,7 +190,7 @@ f_218:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_483
+    jz     .l_489
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -199,16 +207,16 @@ f_218:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_482
-.l_483:
-.l_482:
+    jmp     .l_488
+.l_489:
+.l_488:
     ; OP_CALL_FN
     call f_2960
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_485
+    jz     .l_491
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -234,13 +242,11 @@ f_218:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_484
-.l_485:
-.l_484:
+    jmp     .l_490
+.l_491:
+.l_490:
     ; OP_CALL_FN
     call f_8058
-    ; OP_ALLOC
-    sub     rsp, 8
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_VAR
@@ -253,8 +259,6 @@ f_218:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-    ; OP_ALLOC
-    sub     rsp, 8
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_4692
@@ -314,7 +318,7 @@ f_218:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_487
+    jz     .l_493
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -331,9 +335,9 @@ f_218:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_486
-.l_487:
-.l_486:
+    jmp     .l_492
+.l_493:
+.l_492:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -345,7 +349,7 @@ f_218:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-.l_488:
+.l_494:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -376,9 +380,7 @@ f_218:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_489
-    ; OP_ALLOC
-    sub     rsp, 8
+    jz     .l_495
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -422,14 +424,14 @@ f_218:
     add     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .rl_82:
+    .rl_80:
     cmp     rbx, r12
-    je      .rl_83
+    je      .rl_81
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .rl_82
-    .rl_83:
+    jmp     .rl_80
+    .rl_81:
     mov     [r12], rcx
     ; OP_CALL_FN
     call f_702
@@ -473,7 +475,7 @@ f_218:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_491
+    jz     .l_497
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -502,8 +504,8 @@ f_218:
     add     r12, 8
     mov     [rax], rcx
     ; OP_JMP
-    jmp     .l_490
-.l_491:
+    jmp     .l_496
+.l_497:
     ; OP_DROP
     add     r12, 8
     ; OP_PUSH_INT
@@ -519,7 +521,7 @@ f_218:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-.l_490:
+.l_496:
     ; OP_CALL_FN
     call f_5695
     ; OP_PUSH_INT
@@ -563,7 +565,7 @@ f_218:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_493
+    jz     .l_499
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
@@ -599,9 +601,9 @@ f_218:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_492
-.l_493:
-.l_492:
+    jmp     .l_498
+.l_499:
+.l_498:
     ; OP_CALL_FN
     call f_5695
     ; OP_PUSH_INT
@@ -631,7 +633,7 @@ f_218:
     mov     rbx, qword [rax]
     sub     r12, 8
     mov     qword [r12], rbx
-.l_494:
+.l_500:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -655,7 +657,7 @@ f_218:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_495
+    jz     .l_501
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -678,12 +680,12 @@ f_218:
     sub     r12, 8
     mov     qword [r12], rbx
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_497
+    jz     .l_503
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
@@ -732,9 +734,9 @@ f_218:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_496
-.l_497:
-.l_496:
+    jmp     .l_502
+.l_503:
+.l_502:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 24
@@ -747,8 +749,8 @@ f_218:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_494
-.l_495:
+    jmp     .l_500
+.l_501:
     ; OP_DROP
     add     r12, 8
     ; OP_PUSH_BUF
@@ -842,8 +844,8 @@ f_218:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_488
-.l_489:
+    jmp     .l_494
+.l_495:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -959,8 +961,6 @@ f_218:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-    ; OP_DEALLOC
-    add     rsp, 24
     ; OP_RET
     leave
     ret
@@ -968,6 +968,8 @@ f_218:
 f_373:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -998,7 +1000,7 @@ f_373:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_200
+    jz     .l_208
     ; OP_CALL_FN
     call f_2380
     ; OP_CALL_FN
@@ -1006,8 +1008,8 @@ f_373:
     ; OP_CALL_FN
     call f_7658
     ; OP_JMP
-    jmp     .l_199
-.l_200:
+    jmp     .l_207
+.l_208:
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -1015,7 +1017,7 @@ f_373:
     mov     qword [r12], b_8223
     ; OP_CALL_FN
     call f_7658
-.l_199:
+.l_207:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -1031,6 +1033,8 @@ f_373:
 f_516:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_702
     ; OP_CALL_FN
@@ -1075,12 +1079,12 @@ f_516:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_244
+    jz     .l_252
     ; OP_CALL_FN
     call f_4549
     ; OP_JMP
-    jmp     .l_243
-.l_244:
+    jmp     .l_251
+.l_252:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -1100,12 +1104,12 @@ f_516:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_245
+    jz     .l_253
     ; OP_CALL_FN
     call f_2407
     ; OP_JMP
-    jmp     .l_243
-.l_245:
+    jmp     .l_251
+.l_253:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -1125,7 +1129,7 @@ f_516:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_247
+    jz     .l_255
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
@@ -1143,8 +1147,8 @@ f_516:
     add     r12, 8
     mov     [rax], rcx
     ; OP_JMP
-    jmp     .l_246
-.l_247:
+    jmp     .l_254
+.l_255:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -1164,16 +1168,16 @@ f_516:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_248
+    jz     .l_256
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_7994
     ; OP_CALL_FN
     call f_2204
     ; OP_JMP
-    jmp     .l_246
-.l_248:
-.l_246:
+    jmp     .l_254
+.l_256:
+.l_254:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
@@ -1192,7 +1196,7 @@ f_516:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-.l_243:
+.l_251:
     ; OP_RET
     leave
     ret
@@ -1200,6 +1204,8 @@ f_516:
 f_530:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -1226,6 +1232,8 @@ f_530:
 f_537:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -1248,6 +1256,8 @@ f_537:
 f_656:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -1364,6 +1374,8 @@ f_656:
 f_692:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2960
     ; OP_CALL_FN
@@ -1388,6 +1400,8 @@ f_692:
 f_695:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -1414,6 +1428,8 @@ f_695:
 f_697:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -1440,6 +1456,8 @@ f_697:
 f_702:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -1462,6 +1480,8 @@ f_702:
 f_703:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -1488,6 +1508,8 @@ f_703:
 f_725:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_1426
     ; OP_CALL_FN
@@ -1499,6 +1521,8 @@ f_725:
 f_738:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 2
@@ -1519,10 +1543,43 @@ f_738:
     ; OP_RET
     leave
     ret
+; put_example
+f_761:
+    push    rbp
+    mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8655
+    ; OP_CALL_FN
+    call f_84
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8656
+    ; OP_CALL_FN
+    call f_84
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_CALL_FN
+    call f_6775
+    ; OP_CALL_FN
+    call f_84
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8657
+    ; OP_CALL_FN
+    call f_84
+    ; OP_RET
+    leave
+    ret
 ; com
 f_778:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_648
@@ -1551,7 +1608,7 @@ f_778:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_535
+    jz     .l_543
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8380
@@ -1566,9 +1623,9 @@ f_778:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_534
-.l_535:
-.l_534:
+    jmp     .l_542
+.l_543:
+.l_542:
     ; OP_RET
     leave
     ret
@@ -1576,6 +1633,8 @@ f_778:
 f_823:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -1643,6 +1702,8 @@ f_823:
 f_840:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -1666,6 +1727,8 @@ f_840:
 f_869:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -1696,7 +1759,7 @@ f_869:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_401
+    jz     .l_407
     ; OP_DROP
     add     r12, 8
     ; OP_PUSH_INT
@@ -1706,9 +1769,9 @@ f_869:
     leave
     ret
     ; OP_JMP
-    jmp     .l_400
-.l_401:
-.l_400:
+    jmp     .l_406
+.l_407:
+.l_406:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -1741,6 +1804,8 @@ f_869:
 f_876:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_424
@@ -1853,7 +1918,7 @@ f_915:
     push    rbp
     mov     rbp, rsp
     ; OP_ALLOC
-    sub     rsp, 8
+    sub     rsp, 16
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -1888,7 +1953,7 @@ f_915:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_266
+    jz     .l_272
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -1922,9 +1987,9 @@ f_915:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_265
-.l_266:
-.l_265:
+    jmp     .l_271
+.l_272:
+.l_271:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -1992,7 +2057,7 @@ f_915:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_268
+    jz     .l_274
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -2026,9 +2091,9 @@ f_915:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_267
-.l_268:
-.l_267:
+    jmp     .l_273
+.l_274:
+.l_273:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -2044,8 +2109,6 @@ f_915:
     call f_695
     ; OP_CALL_FN
     call f_738
-    ; OP_ALLOC
-    sub     rsp, 8
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -2059,7 +2122,7 @@ f_915:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-.l_269:
+.l_275:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -2083,7 +2146,7 @@ f_915:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_270
+    jz     .l_276
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -2106,12 +2169,12 @@ f_915:
     sub     r12, 8
     mov     qword [r12], rbx
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_272
+    jz     .l_278
     ; OP_CALL_FN
     call f_4371
     ; OP_CALL_FN
@@ -2212,15 +2275,13 @@ f_915:
     movzx   rax, al
     sub     r12, 8
     mov     qword [r12], rax
-    ; OP_DEALLOC
-    add     rsp, 16
     ; OP_RET
     leave
     ret
     ; OP_JMP
-    jmp     .l_271
-.l_272:
-.l_271:
+    jmp     .l_277
+.l_278:
+.l_277:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -2280,8 +2341,8 @@ f_915:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_269
-.l_270:
+    jmp     .l_275
+.l_276:
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
@@ -2327,8 +2388,6 @@ f_915:
     add     r12, 8
     mov     eax, 60
     syscall
-    ; OP_DEALLOC
-    add     rsp, 16
     ; OP_RET
     leave
     ret
@@ -2336,6 +2395,8 @@ f_915:
 f_1088:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_7675
@@ -2358,6 +2419,8 @@ f_1088:
 f_1168:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -2415,7 +2478,7 @@ f_1168:
     mov     qword [r12], rcx
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 32
+    mov     qword [r12], 31
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -2427,7 +2490,7 @@ f_1168:
     mov     qword [r12], rcx
     ; OP_CALL_FN
     call f_4482
-.l_367:
+.l_373:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -2458,7 +2521,7 @@ f_1168:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_368
+    jz     .l_374
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -2466,8 +2529,8 @@ f_1168:
     ; OP_CALL_FN
     call f_2253
     ; OP_JMP
-    jmp     .l_367
-.l_368:
+    jmp     .l_373
+.l_374:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -2501,7 +2564,7 @@ f_1168:
     mov     qword [r12], rax
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 34
+    mov     qword [r12], 33
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -2529,7 +2592,7 @@ f_1168:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-.l_369:
+.l_375:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -2560,7 +2623,7 @@ f_1168:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_370
+    jz     .l_376
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -2568,8 +2631,8 @@ f_1168:
     ; OP_CALL_FN
     call f_2253
     ; OP_JMP
-    jmp     .l_369
-.l_370:
+    jmp     .l_375
+.l_376:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -2597,7 +2660,7 @@ f_1168:
     mov     qword [r12], rcx
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 33
+    mov     qword [r12], 32
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -2624,7 +2687,7 @@ f_1168:
     mov     qword [r12], rax
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 32
+    mov     qword [r12], 31
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -2647,10 +2710,39 @@ f_1168:
     ; OP_RET
     leave
     ret
+; coms_dbg
+f_1171:
+    push    rbp
+    mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_6128
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_541
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_JMP
+    jmp     .l_540
+.l_541:
+    ; OP_DROP
+    add     r12, 8
+.l_540:
+    ; OP_RET
+    leave
+    ret
 ; itoa
 f_1174:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2960
     ; OP_CALL_FN
@@ -2746,6 +2838,8 @@ f_1174:
 f_1181:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 24
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_6114
@@ -2776,51 +2870,40 @@ f_1181:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 4
-    ; OP_EQ
+    ; OP_LT
     mov     rbx, qword [r12]
     add     r12, 8
     mov     rax, qword [r12]
     add     r12, 8
     cmp     rax, rbx
-    sete    al
+    setl    al
     movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_XOR
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    xor 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_618
+    jz     .l_634
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8674
+    mov     qword [r12], b_8678
     ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_CALL_FN
     call f_6775
     ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8675
+    mov     qword [r12], b_8679
     ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_CALL_FN
-    call f_1609
+    call f_761
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -2830,11 +2913,146 @@ f_1181:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_617
-.l_618:
-.l_617:
+    jmp     .l_633
+.l_634:
+.l_633:
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_CALL_FN
+    call f_6775
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 2
+    ; OP_CALL_FN
+    call f_6775
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
     ; OP_CALL_FN
     call f_2709
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 4
+.l_635:
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_6114
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_LT
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    setl    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_636
+    ; OP_CALL_FN
+    call f_2825
+    ; OP_JMP
+    jmp     .l_635
+.l_636:
+    ; OP_DROP
+    add     r12, 8
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8680
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_4418
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 8
+    ; OP_CALL_FN
+    call f_5007
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8681
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_4418
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 8
+    ; OP_CALL_FN
+    call f_5007
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8682
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_4418
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 8
+    ; OP_CALL_FN
+    call f_5007
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8683
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_4418
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 8
+    ; OP_CALL_FN
+    call f_5007
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -2852,59 +3070,6 @@ f_1181:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_6292
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 8
-    ; OP_CALL_FN
-    call f_5007
-    ; OP_STORE
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     [rax], rcx
-    ; OP_ALLOC
-    sub     rsp, 8
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_CALL_FN
-    call f_6775
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 8]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_STORE
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     [rax], rcx
-    ; OP_ALLOC
-    sub     rsp, 8
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 2
-    ; OP_CALL_FN
-    call f_6775
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 16]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_STORE
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     [rax], rcx
-    ; OP_ALLOC
-    sub     rsp, 8
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -2988,12 +3153,12 @@ f_1181:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_620
+    jz     .l_638
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8676
+    mov     qword [r12], b_8684
     ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -3005,7 +3170,7 @@ f_1181:
     sub     r12, 8
     mov     qword [r12], rbx
     ; OP_CALL_FN
-    call f_725
+    call f_6949
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 32
@@ -3022,12 +3187,12 @@ f_1181:
     sub     r12, 8
     mov     qword [r12], rbx
     ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8677
+    mov     qword [r12], b_8685
     ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -3037,9 +3202,9 @@ f_1181:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_619
-.l_620:
-.l_619:
+    jmp     .l_637
+.l_638:
+.l_637:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_997
@@ -3182,8 +3347,39 @@ f_1181:
     mov     qword [r12], rax
     ; OP_DROP
     add     r12, 8
-    ; OP_DEALLOC
-    add     rsp, 24
+    ; OP_DEPTH
+    mov     rax, b_stack + 65536
+    sub     rax, r12
+    shr     rax, 3
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_640
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8686
+    ; OP_CALL_FN
+    call f_84
+    ; OP_DEPTH
+    mov     rax, b_stack + 65536
+    sub     rax, r12
+    shr     rax, 3
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_6949
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8687
+    ; OP_CALL_FN
+    call f_84
+    ; OP_JMP
+    jmp     .l_639
+.l_640:
+.l_639:
     ; OP_RET
     leave
     ret
@@ -3243,7 +3439,7 @@ f_1200:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_537
+    jz     .l_545
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8381
@@ -3258,11 +3454,9 @@ f_1200:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_536
-.l_537:
-.l_536:
-    ; OP_DEALLOC
-    add     rsp, 1
+    jmp     .l_544
+.l_545:
+.l_544:
     ; OP_RET
     leave
     ret
@@ -3270,6 +3464,8 @@ f_1200:
 f_1206:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -3291,10 +3487,12 @@ f_1206:
 f_1216:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
-    call f_4810
+    call f_5390
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_648
@@ -3332,7 +3530,7 @@ f_1216:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_533
+    jz     .l_539
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8379
@@ -3347,9 +3545,9 @@ f_1216:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_532
-.l_533:
-.l_532:
+    jmp     .l_538
+.l_539:
+.l_538:
     ; OP_RET
     leave
     ret
@@ -3357,6 +3555,8 @@ f_1216:
 f_1298:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -3376,7 +3576,7 @@ f_1298:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_394
+    jz     .l_400
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -3395,8 +3595,8 @@ f_1298:
     ; OP_CALL_FN
     call f_6629
     ; OP_JMP
-    jmp     .l_393
-.l_394:
+    jmp     .l_399
+.l_400:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -3416,7 +3616,7 @@ f_1298:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_395
+    jz     .l_401
     ; OP_CALL_FN
     call f_3280
     ; OP_CALL_FN
@@ -3435,8 +3635,8 @@ f_1298:
     ; OP_CALL_FN
     call f_6629
     ; OP_JMP
-    jmp     .l_393
-.l_395:
+    jmp     .l_399
+.l_401:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -3482,7 +3682,7 @@ f_1298:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_397
+    jz     .l_403
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -3499,9 +3699,9 @@ f_1298:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_396
-.l_397:
-.l_396:
+    jmp     .l_402
+.l_403:
+.l_402:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -3513,7 +3713,7 @@ f_1298:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-.l_393:
+.l_399:
     ; OP_CALL_FN
     call f_5695
     ; OP_PUSH_INT
@@ -3533,7 +3733,7 @@ f_1298:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_399
+    jz     .l_405
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -3550,9 +3750,9 @@ f_1298:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_398
-.l_399:
-.l_398:
+    jmp     .l_404
+.l_405:
+.l_404:
     ; OP_CALL_FN
     call f_2960
     ; OP_RET
@@ -3562,6 +3762,8 @@ f_1298:
 f_1301:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 32
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -3603,7 +3805,7 @@ f_1301:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_190
+    jz     .l_198
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -3620,11 +3822,44 @@ f_1301:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_189
-.l_190:
-.l_189:
+    jmp     .l_197
+.l_198:
+.l_197:
     ; OP_CALL_FN
     call f_695
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_1467
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_6891
@@ -3637,46 +3872,28 @@ f_1301:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_192
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
+    jz     .l_200
     ; OP_RET
     leave
     ret
     ; OP_JMP
-    jmp     .l_191
-.l_192:
-.l_191:
-    ; OP_CALL_FN
-    call f_695
-    ; OP_CALL_FN
-    call f_2068
-    ; OP_PUSH_BUF
+    jmp     .l_199
+.l_200:
+.l_199:
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
     sub     r12, 8
-    mov     qword [r12], b_6891
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 8
-    ; OP_CALL_FN
-    call f_2292
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
     mov     rax, qword [r12]
     add     r12, 8
-    add 	rax, rcx
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_2144
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_STORE
@@ -3685,46 +3902,26 @@ f_1301:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-    ; OP_CALL_FN
-    call f_695
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OP_FOPEN
-    mov     rsi, qword [r12]
-    add     r12, 8
-    mov     rdi, qword [r12]
-    add     r12, 8
-    mov     rax, 2
-    cmp     rsi, 0
-    je      .frl_0
-    cmp     rsi, 1
-    je      .fwl_0
-    cmp     rsi, 2
-    je      .fal_0
-    jmp     .ffl_0
-    .frl_0:
-    mov     rsi, 0
-    jmp     .fdl_0
-    .fwl_0:
-    mov     rsi, 577
-    jmp     .fdl_0
-    .fal_0:
-    mov     rsi, 1025
-    jmp     .fdl_0
-    .fdl_0:
-    mov     rdx, 420
-    syscall
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 24]
     sub     r12, 8
     mov     qword [r12], rax
-    jmp     .fel_0
-    .ffl_0:
-    mov     rax, -1
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
     sub     r12, 8
     mov     qword [r12], rax
-    .fel_0:
-    ; OP_CALL_FN
-    call f_2068
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -3742,9 +3939,7 @@ f_1301:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_194
-    ; OP_DROP
-    add     r12, 8
+    jz     .l_202
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -3752,10 +3947,16 @@ f_1301:
     mov     qword [r12], b_8217
     ; OP_CALL_FN
     call f_7658
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_CALL_FN
-    call f_695
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_CALL_FN
     call f_7658
     ; OP_PUSH_BUF
@@ -3772,24 +3973,53 @@ f_1301:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_193
-.l_194:
-.l_193:
+    jmp     .l_201
+.l_202:
+.l_201:
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_1467
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_6891
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 8
+    ; OP_CALL_FN
+    call f_2292
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_997
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 131072
-    ; OP_PUSH_INT
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
     sub     r12, 8
-    mov     qword [r12], 2
-    ; OP_PICK
+    mov     qword [r12], rax
+    ; OP_FETCH
     mov     rax, qword [r12]
     add     r12, 8
-    mov     rcx, [r12 + rax*8]
+    mov     rbx, qword [rax]
     sub     r12, 8
-    mov     qword [r12], rcx
+    mov     qword [r12], rbx
     ; OP_FREAD
     mov     rdi, qword [r12]
     add     r12, 8
@@ -3801,8 +4031,26 @@ f_1301:
     syscall
     sub     r12, 8
     mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2068
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 32]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 32]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -3820,11 +4068,7 @@ f_1301:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_196
-    ; OP_DROP
-    add     r12, 8
-    ; OP_DROP
-    add     r12, 8
+    jz     .l_204
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -3832,10 +4076,16 @@ f_1301:
     mov     qword [r12], b_8219
     ; OP_CALL_FN
     call f_7658
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_CALL_FN
-    call f_695
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 24]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_CALL_FN
     call f_7658
     ; OP_PUSH_BUF
@@ -3852,9 +4102,22 @@ f_1301:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_195
-.l_196:
-.l_195:
+    jmp     .l_203
+.l_204:
+.l_203:
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 32]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_997
@@ -3866,13 +4129,18 @@ f_1301:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OP_CALL_FN
-    call f_2960
     ; OP_CALL_FN
     call f_2394
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_FCLOSE
     mov     rdi, qword [r12]
     add     r12, 8
@@ -3897,7 +4165,7 @@ f_1301:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_198
+    jz     .l_206
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -3905,10 +4173,16 @@ f_1301:
     mov     qword [r12], b_8221
     ; OP_CALL_FN
     call f_7658
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_CALL_FN
-    call f_695
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 24]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_CALL_FN
     call f_7658
     ; OP_PUSH_BUF
@@ -3925,9 +4199,9 @@ f_1301:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_197
-.l_198:
-.l_197:
+    jmp     .l_205
+.l_206:
+.l_205:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_1224
@@ -3936,17 +4210,11 @@ f_1301:
     mov     qword [r12], 25
     ; OP_CALL_FN
     call f_4800
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_PUSH_INT
+    ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
+    mov     qword [r12], b_997
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 24]
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_FETCH
@@ -3955,26 +4223,10 @@ f_1301:
     mov     rbx, qword [rax]
     sub     r12, 8
     mov     qword [r12], rbx
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_997
-    ; OP_CALL_FN
-    call f_2960
     ; OP_CALL_FN
     call f_3761
     ; OP_CALL_FN
     call f_5436
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
     ; OP_RET
     leave
     ret
@@ -3982,6 +4234,8 @@ f_1301:
 f_1332:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -4040,6 +4294,115 @@ f_1332:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 2
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 32
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 3
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_CALL_FN
+    call f_4482
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 2
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 31
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 3
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_CALL_FN
+    call f_4482
+.l_377:
+    ; OP_CALL_FN
+    call f_702
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OP_EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_XOR
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    xor 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_378
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_CALL_FN
+    call f_2253
+    ; OP_JMP
+    jmp     .l_377
+.l_378:
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 2
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
     ; OP_ADD
     mov     rcx, qword [r12]
     add     r12, 8
@@ -4073,115 +4436,6 @@ f_1332:
     mov     qword [r12], rcx
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 32
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 3
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_CALL_FN
-    call f_4482
-.l_371:
-    ; OP_CALL_FN
-    call f_702
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OP_EQ
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    sete    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_XOR
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    xor 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_372
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_CALL_FN
-    call f_2253
-    ; OP_JMP
-    jmp     .l_371
-.l_372:
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 2
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 34
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 3
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_CALL_FN
-    call f_4482
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 2
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_PUSH_INT
-    sub     r12, 8
     mov     qword [r12], 2
     ; OP_ADD
     mov     rcx, qword [r12]
@@ -4193,7 +4447,7 @@ f_1332:
     mov     qword [r12], rax
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 32
+    mov     qword [r12], 31
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -4221,7 +4475,7 @@ f_1332:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-.l_373:
+.l_379:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -4252,7 +4506,7 @@ f_1332:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_374
+    jz     .l_380
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -4260,8 +4514,8 @@ f_1332:
     ; OP_CALL_FN
     call f_2253
     ; OP_JMP
-    jmp     .l_373
-.l_374:
+    jmp     .l_379
+.l_380:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -4289,7 +4543,7 @@ f_1332:
     mov     qword [r12], rcx
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 33
+    mov     qword [r12], 32
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -4316,7 +4570,7 @@ f_1332:
     mov     qword [r12], rax
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 32
+    mov     qword [r12], 31
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -4343,6 +4597,18 @@ f_1332:
 f_1372:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_6128
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_547
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8397
@@ -4374,6 +4640,10 @@ f_1372:
     mov     qword [r12], b_8398
     ; OP_CALL_FN
     call f_1216
+    ; OP_JMP
+    jmp     .l_546
+.l_547:
+.l_546:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8399
@@ -4424,6 +4694,8 @@ f_1372:
 f_1384:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
@@ -4538,6 +4810,8 @@ f_1384:
 f_1426:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -4808,10 +5082,126 @@ f_1426:
     ; OP_RET
     leave
     ret
+; _file_name
+f_1467:
+    push    rbp
+    mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 8
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+.l_189:
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_190
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 47
+    ; OP_EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_192
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_JMP
+    jmp     .l_191
+.l_192:
+.l_191:
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JMP
+    jmp     .l_189
+.l_190:
+    ; OP_DROP
+    add     r12, 8
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_RET
+    leave
+    ret
 ; compile_push_int
 f_1485:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8387
@@ -4856,18 +5246,20 @@ f_1485:
 f_1490:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 8
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8275
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_290
+    jz     .l_296
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -4908,21 +5300,21 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_289
-.l_290:
-.l_289:
+    jmp     .l_295
+.l_296:
+.l_295:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8276
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_292
+    jz     .l_298
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -4963,23 +5355,21 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_291
-.l_292:
-.l_291:
+    jmp     .l_297
+.l_298:
+.l_297:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8277
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_294
-    ; OP_CALL_FN
-    call f_6666
+    jz     .l_300
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -5020,21 +5410,21 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_293
-.l_294:
-.l_293:
+    jmp     .l_299
+.l_300:
+.l_299:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8278
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_296
+    jz     .l_302
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -5075,21 +5465,21 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_295
-.l_296:
-.l_295:
+    jmp     .l_301
+.l_302:
+.l_301:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8279
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_298
+    jz     .l_304
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -5130,21 +5520,21 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_297
-.l_298:
-.l_297:
+    jmp     .l_303
+.l_304:
+.l_303:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8280
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_300
+    jz     .l_306
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_5605
@@ -5213,21 +5603,21 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_299
-.l_300:
-.l_299:
+    jmp     .l_305
+.l_306:
+.l_305:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8281
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_302
+    jz     .l_308
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -5268,21 +5658,21 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_301
-.l_302:
-.l_301:
+    jmp     .l_307
+.l_308:
+.l_307:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8282
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_304
+    jz     .l_310
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -5323,21 +5713,21 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_303
-.l_304:
-.l_303:
+    jmp     .l_309
+.l_310:
+.l_309:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8283
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_306
+    jz     .l_312
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -5378,27 +5768,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_305
-.l_306:
-.l_305:
+    jmp     .l_311
+.l_312:
+.l_311:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8284
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_308
+    jz     .l_314
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 18
+    mov     qword [r12], 17
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5433,27 +5823,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_307
-.l_308:
-.l_307:
+    jmp     .l_313
+.l_314:
+.l_313:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8285
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_310
+    jz     .l_316
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 19
+    mov     qword [r12], 18
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5488,27 +5878,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_309
-.l_310:
-.l_309:
+    jmp     .l_315
+.l_316:
+.l_315:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8286
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_312
+    jz     .l_318
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 20
+    mov     qword [r12], 19
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5543,27 +5933,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_311
-.l_312:
-.l_311:
+    jmp     .l_317
+.l_318:
+.l_317:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8287
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_314
+    jz     .l_320
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 21
+    mov     qword [r12], 20
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5598,27 +5988,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_313
-.l_314:
-.l_313:
+    jmp     .l_319
+.l_320:
+.l_319:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8288
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_316
+    jz     .l_322
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 22
+    mov     qword [r12], 21
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5653,27 +6043,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_315
-.l_316:
-.l_315:
+    jmp     .l_321
+.l_322:
+.l_321:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8289
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_318
+    jz     .l_324
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 23
+    mov     qword [r12], 22
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5708,27 +6098,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_317
-.l_318:
-.l_317:
+    jmp     .l_323
+.l_324:
+.l_323:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8290
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_320
+    jz     .l_326
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 24
+    mov     qword [r12], 23
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5763,27 +6153,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_319
-.l_320:
-.l_319:
+    jmp     .l_325
+.l_326:
+.l_325:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8291
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_322
+    jz     .l_328
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 25
+    mov     qword [r12], 24
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5818,27 +6208,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_321
-.l_322:
-.l_321:
+    jmp     .l_327
+.l_328:
+.l_327:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8292
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_324
+    jz     .l_330
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 26
+    mov     qword [r12], 25
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5873,27 +6263,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_323
-.l_324:
-.l_323:
+    jmp     .l_329
+.l_330:
+.l_329:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8293
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_326
+    jz     .l_332
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 27
+    mov     qword [r12], 26
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5928,27 +6318,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_325
-.l_326:
-.l_325:
+    jmp     .l_331
+.l_332:
+.l_331:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8294
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_328
+    jz     .l_334
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 28
+    mov     qword [r12], 27
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -5983,27 +6373,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_327
-.l_328:
-.l_327:
+    jmp     .l_333
+.l_334:
+.l_333:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8295
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_330
+    jz     .l_336
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 29
+    mov     qword [r12], 28
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -6038,27 +6428,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_329
-.l_330:
-.l_329:
+    jmp     .l_335
+.l_336:
+.l_335:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8296
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_332
+    jz     .l_338
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 30
+    mov     qword [r12], 29
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -6093,27 +6483,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_331
-.l_332:
-.l_331:
+    jmp     .l_337
+.l_338:
+.l_337:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8297
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_334
+    jz     .l_340
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 31
+    mov     qword [r12], 30
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -6148,21 +6538,21 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_333
-.l_334:
-.l_333:
+    jmp     .l_339
+.l_340:
+.l_339:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8298
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_336
+    jz     .l_342
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_6691
@@ -6197,7 +6587,7 @@ f_1490:
     mov     [rax], rcx
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 35
+    mov     qword [r12], 34
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -6232,27 +6622,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_335
-.l_336:
-.l_335:
+    jmp     .l_341
+.l_342:
+.l_341:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8299
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_338
+    jz     .l_344
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 36
+    mov     qword [r12], 35
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -6287,27 +6677,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_337
-.l_338:
-.l_337:
+    jmp     .l_343
+.l_344:
+.l_343:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8300
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_340
+    jz     .l_346
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 37
+    mov     qword [r12], 36
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -6342,27 +6732,27 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_339
-.l_340:
-.l_339:
+    jmp     .l_345
+.l_346:
+.l_345:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8301
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_342
+    jz     .l_348
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 38
+    mov     qword [r12], 37
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -6397,9 +6787,9 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_341
-.l_342:
-.l_341:
+    jmp     .l_347
+.l_348:
+.l_347:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -6414,7 +6804,7 @@ f_1490:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_344
+    jz     .l_350
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -6462,9 +6852,9 @@ f_1490:
     leave
     ret
     ; OP_JMP
-    jmp     .l_343
-.l_344:
-.l_343:
+    jmp     .l_349
+.l_350:
+.l_349:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -6479,9 +6869,7 @@ f_1490:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_346
-    ; OP_ALLOC
-    sub     rsp, 8
+    jz     .l_352
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_VAR
@@ -6572,7 +6960,7 @@ f_1490:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_348
+    jz     .l_354
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -6606,9 +6994,9 @@ f_1490:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_347
-.l_348:
-.l_347:
+    jmp     .l_353
+.l_354:
+.l_353:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -6624,7 +7012,7 @@ f_1490:
     call f_695
     ; OP_CALL_FN
     call f_738
-.l_349:
+.l_355:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -6648,7 +7036,7 @@ f_1490:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_350
+    jz     .l_356
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -6671,12 +7059,12 @@ f_1490:
     sub     r12, 8
     mov     qword [r12], rbx
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_352
+    jz     .l_358
     ; OP_CALL_FN
     call f_4371
     ; OP_PUSH_INT
@@ -6729,15 +7117,13 @@ f_1490:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-    ; OP_DEALLOC
-    add     rsp, 8
     ; OP_RET
     leave
     ret
     ; OP_JMP
-    jmp     .l_351
-.l_352:
-.l_351:
+    jmp     .l_357
+.l_358:
+.l_357:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 16
@@ -6750,8 +7136,8 @@ f_1490:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_349
-.l_350:
+    jmp     .l_355
+.l_356:
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
@@ -6798,9 +7184,9 @@ f_1490:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_345
-.l_346:
-.l_345:
+    jmp     .l_351
+.l_352:
+.l_351:
     ; OP_CALL_FN
     call f_4859
     ; OP_CALL_FN
@@ -6822,7 +7208,7 @@ f_1490:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_354
+    jz     .l_360
     ; OP_DROP
     add     r12, 8
     ; OP_DROP
@@ -6853,8 +7239,8 @@ f_1490:
     ; OP_CALL_FN
     call f_4482
     ; OP_JMP
-    jmp     .l_353
-.l_354:
+    jmp     .l_359
+.l_360:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -6874,7 +7260,7 @@ f_1490:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_355
+    jz     .l_361
     ; OP_DROP
     add     r12, 8
     ; OP_DROP
@@ -6884,8 +7270,8 @@ f_1490:
     ; OP_CALL_FN
     call f_4371
     ; OP_JMP
-    jmp     .l_353
-.l_355:
+    jmp     .l_359
+.l_361:
     ; OP_CALL_FN
     call f_738
     ; OP_CALL_FN
@@ -6921,9 +7307,7 @@ f_1490:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_353:
-    ; OP_DEALLOC
-    add     rsp, 8
+.l_359:
     ; OP_RET
     leave
     ret
@@ -6931,15 +7315,17 @@ f_1490:
 f_1518:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8624
+    mov     qword [r12], b_8621
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
-.l_593:
+.l_602:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
@@ -6976,10 +7362,10 @@ f_1518:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_594
+    jz     .l_603
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8625
+    mov     qword [r12], b_8622
     ; OP_CALL_FN
     call f_1216
     ; OP_CALL_FN
@@ -6999,7 +7385,7 @@ f_1518:
     call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8626
+    mov     qword [r12], b_8623
     ; OP_CALL_FN
     call f_1216
     ; OP_CALL_FN
@@ -7032,8 +7418,8 @@ f_1518:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_593
-.l_594:
+    jmp     .l_602
+.l_603:
     ; OP_DROP
     add     r12, 8
     ; OP_RET
@@ -7043,6 +7429,8 @@ f_1518:
 f_1522:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -7131,6 +7519,8 @@ f_1522:
 f_1531:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 16
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -7172,7 +7562,7 @@ f_1531:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_459
+    jz     .l_465
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -7189,16 +7579,16 @@ f_1531:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_458
-.l_459:
-.l_458:
+    jmp     .l_464
+.l_465:
+.l_464:
     ; OP_CALL_FN
     call f_2960
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_461
+    jz     .l_467
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -7224,13 +7614,11 @@ f_1531:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_460
-.l_461:
-.l_460:
+    jmp     .l_466
+.l_467:
+.l_466:
     ; OP_CALL_FN
     call f_8058
-    ; OP_ALLOC
-    sub     rsp, 8
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_VAR
@@ -7243,8 +7631,6 @@ f_1531:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-    ; OP_ALLOC
-    sub     rsp, 8
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8001
@@ -7304,7 +7690,7 @@ f_1531:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_463
+    jz     .l_469
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -7321,9 +7707,9 @@ f_1531:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_462
-.l_463:
-.l_462:
+    jmp     .l_468
+.l_469:
+.l_468:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -7335,7 +7721,7 @@ f_1531:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-.l_464:
+.l_470:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -7366,7 +7752,7 @@ f_1531:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_465
+    jz     .l_471
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -7397,7 +7783,7 @@ f_1531:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_467
+    jz     .l_473
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -7431,9 +7817,9 @@ f_1531:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_466
-.l_467:
-.l_466:
+    jmp     .l_472
+.l_473:
+.l_472:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_VAR
@@ -7446,7 +7832,7 @@ f_1531:
     mov     rbx, qword [rax]
     sub     r12, 8
     mov     qword [r12], rbx
-.l_468:
+.l_474:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -7470,7 +7856,7 @@ f_1531:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_469
+    jz     .l_475
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -7493,12 +7879,12 @@ f_1531:
     sub     r12, 8
     mov     qword [r12], rbx
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_471
+    jz     .l_477
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
@@ -7545,9 +7931,9 @@ f_1531:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_470
-.l_471:
-.l_470:
+    jmp     .l_476
+.l_477:
+.l_476:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 16
@@ -7560,8 +7946,8 @@ f_1531:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_468
-.l_469:
+    jmp     .l_474
+.l_475:
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
@@ -7596,7 +7982,7 @@ f_1531:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_473
+    jz     .l_479
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -7638,7 +8024,7 @@ f_1531:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_475
+    jz     .l_481
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -7664,9 +8050,9 @@ f_1531:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_474
-.l_475:
-.l_474:
+    jmp     .l_480
+.l_481:
+.l_480:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -7698,7 +8084,7 @@ f_1531:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_477
+    jz     .l_483
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
@@ -7751,7 +8137,7 @@ f_1531:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_479
+    jz     .l_485
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
@@ -7787,13 +8173,13 @@ f_1531:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_478
-.l_479:
-.l_478:
+    jmp     .l_484
+.l_485:
+.l_484:
     ; OP_JMP
-    jmp     .l_476
-.l_477:
-.l_476:
+    jmp     .l_482
+.l_483:
+.l_482:
     ; OP_CALL_FN
     call f_2960
     ; OP_PUSH_INT
@@ -7810,8 +8196,8 @@ f_1531:
     ; OP_CALL_FN
     call f_2960
     ; OP_JMP
-    jmp     .l_472
-.l_473:
+    jmp     .l_478
+.l_479:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8001
@@ -7841,7 +8227,7 @@ f_1531:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_481
+    jz     .l_487
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8001
@@ -7879,13 +8265,13 @@ f_1531:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_480
-.l_481:
+    jmp     .l_486
+.l_487:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
-.l_480:
-.l_472:
+.l_486:
+.l_478:
     ; OP_CALL_FN
     call f_738
     ; OP_PUSH_BUF
@@ -7935,8 +8321,8 @@ f_1531:
     add     r12, 8
     mov     [rax], rcx
     ; OP_JMP
-    jmp     .l_464
-.l_465:
+    jmp     .l_470
+.l_471:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -8052,37 +8438,6 @@ f_1531:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-    ; OP_DEALLOC
-    add     rsp, 16
-    ; OP_RET
-    leave
-    ret
-; eput_example
-f_1609:
-    push    rbp
-    mov     rbp, rsp
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8658
-    ; OP_CALL_FN
-    call f_7658
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8659
-    ; OP_CALL_FN
-    call f_7658
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OP_CALL_FN
-    call f_6775
-    ; OP_CALL_FN
-    call f_7658
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8660
-    ; OP_CALL_FN
-    call f_7658
     ; OP_RET
     leave
     ret
@@ -8101,7 +8456,7 @@ f_1681:
     mov     qword [r12], rax
     ; OP_CALL_FN
     call f_2394
-.l_583:
+.l_592:
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -8110,7 +8465,7 @@ f_1681:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_584
+    jz     .l_593
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -8121,7 +8476,7 @@ f_1681:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_586
+    jz     .l_595
     ; OP_PUSH_VAR
     lea     rax, [rbp - 1]
     sub     r12, 8
@@ -8134,10 +8489,10 @@ f_1681:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_588
+    jz     .l_597
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8619
+    mov     qword [r12], b_8616
     ; OP_CALL_FN
     call f_1216
     ; OP_PUSH_INT
@@ -8150,9 +8505,9 @@ f_1681:
     ; OP_CALL_FN
     call f_2394
     ; OP_JMP
-    jmp     .l_587
-.l_588:
-.l_587:
+    jmp     .l_596
+.l_597:
+.l_596:
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -8160,8 +8515,8 @@ f_1681:
     ; OP_CALL_FN
     call f_1200
     ; OP_JMP
-    jmp     .l_585
-.l_586:
+    jmp     .l_594
+.l_595:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 1]
     sub     r12, 8
@@ -8172,10 +8527,10 @@ f_1681:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_590
+    jz     .l_599
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8620
+    mov     qword [r12], b_8617
     ; OP_CALL_FN
     call f_1216
     ; OP_PUSH_INT
@@ -8188,9 +8543,9 @@ f_1681:
     ; OP_CALL_FN
     call f_2394
     ; OP_JMP
-    jmp     .l_589
-.l_590:
-.l_589:
+    jmp     .l_598
+.l_599:
+.l_598:
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -8199,10 +8554,10 @@ f_1681:
     call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8621
+    mov     qword [r12], b_8618
     ; OP_CALL_FN
     call f_1216
-.l_585:
+.l_594:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -8215,8 +8570,8 @@ f_1681:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_583
-.l_584:
+    jmp     .l_592
+.l_593:
     ; OP_DROP
     add     r12, 8
     ; OP_PUSH_VAR
@@ -8229,86 +8584,191 @@ f_1681:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_592
+    jz     .l_601
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8622
+    mov     qword [r12], b_8619
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_591
-.l_592:
-.l_591:
+    jmp     .l_600
+.l_601:
+.l_600:
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8623
+    mov     qword [r12], b_8620
     ; OP_CALL_FN
     call f_1216
-    ; OP_DEALLOC
-    add     rsp, 1
     ; OP_RET
     leave
     ret
-; str_copy
-f_2003:
+; strncmp
+f_1915:
     push    rbp
     mov     rbp, rsp
-.l_29:
+    ; OP_ALLOC
+    sub     rsp, 8
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+.l_35:
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
     call f_3343
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_OR
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    or 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_7060
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_7060
+    ; OP_AND
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    and 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_36
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_SUB
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    sub 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
     ; OP_CALL_FN
     call f_2068
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_30
+    jz     .l_38
     ; OP_CALL_FN
-    call f_5695
+    call f_738
     ; OP_CALL_FN
-    call f_2394
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_ADD
-    mov     rcx, qword [r12]
+    call f_738
+    ; OP_DROP
     add     r12, 8
-    mov     rax, qword [r12]
+    ; OP_DROP
     add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2960
+    ; OP_RET
+    leave
+    ret
     ; OP_JMP
-    jmp     .l_29
-.l_30:
+    jmp     .l_37
+.l_38:
+.l_37:
+    ; OP_DROP
+    add     r12, 8
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_SUB
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    sub 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_JMP
+    jmp     .l_35
+.l_36:
+    ; OP_DROP
+    add     r12, 8
     ; OP_DROP
     add     r12, 8
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_CALL_FN
-    call f_2394
-    ; OP_DROP
-    add     r12, 8
     ; OP_RET
     leave
     ret
@@ -8316,6 +8776,8 @@ f_2003:
 f_2010:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -8357,7 +8819,7 @@ f_2010:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_214
+    jz     .l_222
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -8374,9 +8836,9 @@ f_2010:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_213
-.l_214:
-.l_213:
+    jmp     .l_221
+.l_222:
+.l_221:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -8405,7 +8867,7 @@ f_2010:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_216
+    jz     .l_224
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -8431,9 +8893,9 @@ f_2010:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_215
-.l_216:
-.l_215:
+    jmp     .l_223
+.l_224:
+.l_223:
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -8576,6 +9038,8 @@ f_2010:
 f_2022:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 5381
@@ -8684,6 +9148,8 @@ f_2022:
 f_2068:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -8696,31 +9162,73 @@ f_2068:
     ; OP_RET
     leave
     ret
-; str_char
-f_2069:
+; _open_file
+f_2144:
     push    rbp
     mov     rbp, rsp
-.l_39:
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_3343
-    ; OP_CALL_FN
-    call f_2068
-    ; OP_JZ
+    ; OP_ALLOC
+    sub     rsp, 280
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
     mov     rax, qword [r12]
     add     r12, 8
-    test    rax, rax
-    jz     .l_40
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_EQ
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+.l_193:
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_4418
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_LT
     mov     rbx, qword [r12]
     add     r12, 8
     mov     rax, qword [r12]
     add     r12, 8
     cmp     rax, rbx
-    sete    al
+    setl    al
     movzx   rax, al
     sub     r12, 8
     mov     qword [r12], rax
@@ -8728,18 +9236,162 @@ f_2069:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_42
-    ; OP_DROP
+    jz     .l_194
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
     add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_4418
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 8
+    ; OP_CALL_FN
+    call f_6699
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 272]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_4154
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 272]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_3654
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 272]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_FOPEN
+    mov     rsi, qword [r12]
+    add     r12, 8
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     rax, 2
+    cmp     rsi, 0
+    je      .frl_0
+    cmp     rsi, 1
+    je      .fwl_0
+    cmp     rsi, 2
+    je      .fal_0
+    jmp     .ffl_0
+    .frl_0:
+    mov     rsi, 0
+    jmp     .fdl_0
+    .fwl_0:
+    mov     rsi, 577
+    jmp     .fdl_0
+    .fal_0:
+    mov     rsi, 1025
+    jmp     .fdl_0
+    .fdl_0:
+    mov     rdx, 420
+    syscall
+    sub     r12, 8
+    mov     qword [r12], rax
+    jmp     .fel_0
+    .ffl_0:
+    mov     rax, -1
+    sub     r12, 8
+    mov     qword [r12], rax
+    .fel_0:
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 280]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 280]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], -1
+    ; OP_GT
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    setg    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_196
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 272]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 280]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_RET
     leave
     ret
     ; OP_JMP
-    jmp     .l_41
-.l_42:
-.l_41:
-    ; OP_CALL_FN
-    call f_2960
+    jmp     .l_195
+.l_196:
+.l_195:
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -8751,20 +9403,25 @@ f_2069:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2960
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
     ; OP_JMP
-    jmp     .l_39
-.l_40:
-    ; OP_DROP
-    add     r12, 8
-    ; OP_DROP
-    add     r12, 8
-    ; OP_DROP
-    add     r12, 8
+    jmp     .l_193
+.l_194:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], -1
     ; OP_RET
     leave
     ret
@@ -8772,6 +9429,8 @@ f_2069:
 f_2180:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 42
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -8783,10 +9442,6 @@ f_2180:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-    ; OP_ALLOC
-    sub     rsp, 1
-    ; OP_ALLOC
-    sub     rsp, 8
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -8806,7 +9461,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_407
+    jz     .l_413
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -8841,8 +9496,8 @@ f_2180:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_406
-.l_407:
+    jmp     .l_412
+.l_413:
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -8851,7 +9506,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_409
+    jz     .l_415
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -8868,9 +9523,9 @@ f_2180:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_408
-.l_409:
-.l_408:
+    jmp     .l_414
+.l_415:
+.l_414:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -8882,12 +9537,7 @@ f_2180:
     call f_2394
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_6292
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 8
-    ; OP_CALL_FN
-    call f_3311
+    mov     qword [r12], b_5137
     ; OP_FETCH
     mov     rax, qword [r12]
     add     r12, 8
@@ -8904,11 +9554,7 @@ f_2180:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-.l_406:
-    ; OP_ALLOC
-    sub     rsp, 8
-    ; OP_ALLOC
-    sub     rsp, 8
+.l_412:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -8930,7 +9576,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_411
+    jz     .l_417
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -8990,7 +9636,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_413
+    jz     .l_419
     ; OP_CALL_FN
     call f_2960
     ; OP_PUSH_VAR
@@ -9004,14 +9650,14 @@ f_2180:
     add     r12, 8
     mov     [rax], rcx
     ; OP_JMP
-    jmp     .l_412
-.l_413:
+    jmp     .l_418
+.l_419:
     ; OP_CALL_FN
     call f_4371
-.l_412:
+.l_418:
     ; OP_JMP
-    jmp     .l_410
-.l_411:
+    jmp     .l_416
+.l_417:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -9031,7 +9677,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_414
+    jz     .l_420
     ; OP_CALL_FN
     call f_3675
     ; OP_PUSH_VAR
@@ -9045,8 +9691,8 @@ f_2180:
     add     r12, 8
     mov     [rax], rcx
     ; OP_JMP
-    jmp     .l_410
-.l_414:
+    jmp     .l_416
+.l_420:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], -1
@@ -9060,7 +9706,7 @@ f_2180:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-.l_410:
+.l_416:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 1]
     sub     r12, 8
@@ -9073,17 +9719,10 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_416
+    jz     .l_422
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_6292
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 8
-    ; OP_CALL_FN
-    call f_3311
-    ; OP_CALL_FN
-    call f_2068
+    mov     qword [r12], b_5137
     ; OP_FETCH
     mov     rax, qword [r12]
     add     r12, 8
@@ -9108,42 +9747,19 @@ f_2180:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2960
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_5137
     ; OP_STORE
     mov     rax, qword [r12]
     add     r12, 8
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 17]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_FETCH
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rbx, qword [rax]
-    sub     r12, 8
-    mov     qword [r12], rbx
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 16
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 3
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_CALL_FN
-    call f_4482
     ; OP_JMP
-    jmp     .l_415
-.l_416:
-.l_415:
+    jmp     .l_421
+.l_422:
+.l_421:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -9174,7 +9790,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_418
+    jz     .l_424
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -9191,13 +9807,11 @@ f_2180:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_417
-.l_418:
-.l_417:
+    jmp     .l_423
+.l_424:
+.l_423:
     ; OP_CALL_FN
     call f_8058
-    ; OP_ALLOC
-    sub     rsp, 8
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_VAR
@@ -9221,10 +9835,6 @@ f_2180:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-    ; OP_ALLOC
-    sub     rsp, 8
-    ; OP_ALLOC
-    sub     rsp, 1
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -9244,7 +9854,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_420
+    jz     .l_426
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -9266,7 +9876,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_422
+    jz     .l_428
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -9286,11 +9896,11 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_424
+    jz     .l_430
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
-    call f_4810
+    call f_5390
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -9329,7 +9939,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_426
+    jz     .l_432
     ; OP_PUSH_VAR
     lea     rax, [rbp - 17]
     sub     r12, 8
@@ -9341,8 +9951,8 @@ f_2180:
     add     r12, 8
     mov     [rax], rcx
     ; OP_JMP
-    jmp     .l_425
-.l_426:
+    jmp     .l_431
+.l_432:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 17]
     sub     r12, 8
@@ -9367,7 +9977,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_427
+    jz     .l_433
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -9401,9 +10011,9 @@ f_2180:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_425
-.l_427:
-.l_425:
+    jmp     .l_431
+.l_433:
+.l_431:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -9414,8 +10024,8 @@ f_2180:
     ; OP_CALL_FN
     call f_2394
     ; OP_JMP
-    jmp     .l_423
-.l_424:
+    jmp     .l_429
+.l_430:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -9435,7 +10045,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_428
+    jz     .l_434
     ; OP_PUSH_VAR
     lea     rax, [rbp - 17]
     sub     r12, 8
@@ -9463,7 +10073,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_430
+    jz     .l_436
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 8
@@ -9478,8 +10088,8 @@ f_2180:
     add     r12, 8
     mov     [rax], rcx
     ; OP_JMP
-    jmp     .l_429
-.l_430:
+    jmp     .l_435
+.l_436:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 17]
     sub     r12, 8
@@ -9507,10 +10117,10 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_432
+    jz     .l_438
     ; OP_JMP
-    jmp     .l_431
-.l_432:
+    jmp     .l_437
+.l_438:
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -9608,10 +10218,10 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_433
+    jz     .l_439
     ; OP_JMP
-    jmp     .l_431
-.l_433:
+    jmp     .l_437
+.l_439:
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -9644,8 +10254,8 @@ f_2180:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_431:
-.l_429:
+.l_437:
+.l_435:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -9656,8 +10266,8 @@ f_2180:
     ; OP_CALL_FN
     call f_2394
     ; OP_JMP
-    jmp     .l_423
-.l_428:
+    jmp     .l_429
+.l_434:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -9677,7 +10287,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_434
+    jz     .l_440
     ; OP_PUSH_VAR
     lea     rax, [rbp - 17]
     sub     r12, 8
@@ -9705,7 +10315,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_436
+    jz     .l_442
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -9720,8 +10330,8 @@ f_2180:
     add     r12, 8
     mov     [rax], rcx
     ; OP_JMP
-    jmp     .l_435
-.l_436:
+    jmp     .l_441
+.l_442:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 17]
     sub     r12, 8
@@ -9802,7 +10412,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_438
+    jz     .l_444
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -9836,10 +10446,10 @@ f_2180:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_437
-.l_438:
-.l_437:
-.l_435:
+    jmp     .l_443
+.l_444:
+.l_443:
+.l_441:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -9850,8 +10460,8 @@ f_2180:
     ; OP_CALL_FN
     call f_2394
     ; OP_JMP
-    jmp     .l_423
-.l_434:
+    jmp     .l_429
+.l_440:
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -9884,7 +10494,7 @@ f_2180:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_423:
+.l_429:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_VAR
@@ -9909,8 +10519,8 @@ f_2180:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_421
-.l_422:
+    jmp     .l_427
+.l_428:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -9930,7 +10540,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_440
+    jz     .l_446
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -10002,7 +10612,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_442
+    jz     .l_448
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -10053,9 +10663,9 @@ f_2180:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_441
-.l_442:
-.l_441:
+    jmp     .l_447
+.l_448:
+.l_447:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
@@ -10072,7 +10682,7 @@ f_2180:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-.l_443:
+.l_449:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -10103,7 +10713,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_444
+    jz     .l_450
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -10111,8 +10721,8 @@ f_2180:
     ; OP_CALL_FN
     call f_2253
     ; OP_JMP
-    jmp     .l_443
-.l_444:
+    jmp     .l_449
+.l_450:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -10198,12 +10808,12 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_446
+    jz     .l_452
     ; OP_CALL_FN
     call f_6356
     ; OP_JMP
-    jmp     .l_445
-.l_446:
+    jmp     .l_451
+.l_452:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -10221,10 +10831,10 @@ f_2180:
     mov     qword [r12], rcx
     ; OP_CALL_FN
     call f_4482
-.l_445:
+.l_451:
     ; OP_JMP
-    jmp     .l_439
-.l_440:
+    jmp     .l_445
+.l_446:
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -10240,11 +10850,11 @@ f_2180:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_439:
-.l_421:
+.l_445:
+.l_427:
     ; OP_JMP
-    jmp     .l_419
-.l_420:
+    jmp     .l_425
+.l_426:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -10267,7 +10877,7 @@ f_2180:
     mov     qword [r12], rax
     ; OP_CALL_FN
     call f_2394
-.l_419:
+.l_425:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 17]
     sub     r12, 8
@@ -10295,7 +10905,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_448
+    jz     .l_454
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -10329,9 +10939,9 @@ f_2180:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_447
-.l_448:
-.l_447:
+    jmp     .l_453
+.l_454:
+.l_453:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 17]
     sub     r12, 8
@@ -10359,7 +10969,7 @@ f_2180:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_450
+    jz     .l_456
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -10403,9 +11013,9 @@ f_2180:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_449
-.l_450:
-.l_449:
+    jmp     .l_455
+.l_456:
+.l_455:
     ; OP_CALL_FN
     call f_4371
     ; OP_PUSH_VAR
@@ -10682,8 +11292,6 @@ f_2180:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-    ; OP_DEALLOC
-    add     rsp, 42
     ; OP_RET
     leave
     ret
@@ -10691,6 +11299,8 @@ f_2180:
 f_2204:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -10740,6 +11350,8 @@ f_2204:
 f_2244:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -10807,6 +11419,8 @@ f_2244:
 f_2253:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -10826,7 +11440,7 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_506
+    jz     .l_512
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -10843,8 +11457,8 @@ f_2253:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_505
-.l_506:
+    jmp     .l_511
+.l_512:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -10864,7 +11478,7 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_507
+    jz     .l_513
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -10890,8 +11504,8 @@ f_2253:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_505
-.l_507:
+    jmp     .l_511
+.l_513:
     ; OP_CALL_FN
     call f_702
     ; OP_CALL_FN
@@ -10936,7 +11550,7 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_508
+    jz     .l_514
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_INT
@@ -10950,14 +11564,14 @@ f_2253:
     add     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .rl_90:
+    .rl_88:
     cmp     rbx, r12
-    je      .rl_91
+    je      .rl_89
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .rl_90
-    .rl_91:
+    jmp     .rl_88
+    .rl_89:
     mov     [r12], rcx
     ; OP_CALL_FN
     call f_4482
@@ -10973,8 +11587,8 @@ f_2253:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_505
-.l_508:
+    jmp     .l_511
+.l_514:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -10994,7 +11608,7 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_509
+    jz     .l_515
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -11022,7 +11636,7 @@ f_2253:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-.l_510:
+.l_516:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11053,7 +11667,7 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_511
+    jz     .l_517
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -11061,8 +11675,8 @@ f_2253:
     ; OP_CALL_FN
     call f_2253
     ; OP_JMP
-    jmp     .l_510
-.l_511:
+    jmp     .l_516
+.l_517:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -11082,8 +11696,8 @@ f_2253:
     ; OP_CALL_FN
     call f_4371
     ; OP_JMP
-    jmp     .l_505
-.l_509:
+    jmp     .l_511
+.l_515:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11103,12 +11717,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_512
+    jz     .l_518
     ; OP_CALL_FN
     call f_4745
     ; OP_JMP
-    jmp     .l_505
-.l_512:
+    jmp     .l_511
+.l_518:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11128,12 +11742,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_513
+    jz     .l_519
     ; OP_CALL_FN
     call f_1490
     ; OP_JMP
-    jmp     .l_505
-.l_513:
+    jmp     .l_511
+.l_519:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11153,12 +11767,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_514
+    jz     .l_520
     ; OP_CALL_FN
     call f_3168
     ; OP_JMP
-    jmp     .l_505
-.l_514:
+    jmp     .l_511
+.l_520:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11178,12 +11792,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_515
+    jz     .l_521
     ; OP_CALL_FN
     call f_1168
     ; OP_JMP
-    jmp     .l_505
-.l_515:
+    jmp     .l_511
+.l_521:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11203,12 +11817,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_516
+    jz     .l_522
     ; OP_CALL_FN
     call f_1332
     ; OP_JMP
-    jmp     .l_505
-.l_516:
+    jmp     .l_511
+.l_522:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11228,12 +11842,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_517
+    jz     .l_523
     ; OP_CALL_FN
     call f_3077
     ; OP_JMP
-    jmp     .l_505
-.l_517:
+    jmp     .l_511
+.l_523:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11253,12 +11867,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_518
+    jz     .l_524
     ; OP_CALL_FN
     call f_2180
     ; OP_JMP
-    jmp     .l_505
-.l_518:
+    jmp     .l_511
+.l_524:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11278,12 +11892,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_519
+    jz     .l_525
     ; OP_CALL_FN
     call f_7931
     ; OP_JMP
-    jmp     .l_505
-.l_519:
+    jmp     .l_511
+.l_525:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11303,12 +11917,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_520
+    jz     .l_526
     ; OP_CALL_FN
     call f_3047
     ; OP_JMP
-    jmp     .l_505
-.l_520:
+    jmp     .l_511
+.l_526:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11328,12 +11942,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_521
+    jz     .l_527
     ; OP_CALL_FN
     call f_1531
     ; OP_JMP
-    jmp     .l_505
-.l_521:
+    jmp     .l_511
+.l_527:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11353,12 +11967,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_522
+    jz     .l_528
     ; OP_CALL_FN
     call f_218
     ; OP_JMP
-    jmp     .l_505
-.l_522:
+    jmp     .l_511
+.l_528:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11378,12 +11992,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_523
+    jz     .l_529
     ; OP_CALL_FN
     call f_2402
     ; OP_JMP
-    jmp     .l_505
-.l_523:
+    jmp     .l_511
+.l_529:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11403,12 +12017,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_524
+    jz     .l_530
     ; OP_CALL_FN
     call f_7901
     ; OP_JMP
-    jmp     .l_505
-.l_524:
+    jmp     .l_511
+.l_530:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -11428,12 +12042,12 @@ f_2253:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_525
+    jz     .l_531
     ; OP_CALL_FN
     call f_5303
     ; OP_JMP
-    jmp     .l_505
-.l_525:
+    jmp     .l_511
+.l_531:
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -11458,7 +12072,7 @@ f_2253:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_505:
+.l_511:
     ; OP_RET
     leave
     ret
@@ -11466,6 +12080,8 @@ f_2253:
 f_2292:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 2
@@ -11580,6 +12196,8 @@ f_2292:
 f_2359:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -11861,6 +12479,8 @@ f_2359:
 f_2380:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_697
     ; OP_CALL_FN
@@ -11886,6 +12506,8 @@ f_2380:
 f_2394:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_FETCH
@@ -11947,6 +12569,8 @@ f_2394:
 f_2402:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -11988,7 +12612,7 @@ f_2402:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_499
+    jz     .l_505
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -12005,9 +12629,9 @@ f_2402:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_498
-.l_499:
-.l_498:
+    jmp     .l_504
+.l_505:
+.l_504:
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -12025,14 +12649,14 @@ f_2402:
     mov     qword [r12], rax
     ; OP_CALL_FN
     call f_2960
-.l_500:
+.l_506:
     ; OP_CALL_FN
     call f_915
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_501
+    jz     .l_507
     ; OP_CALL_FN
     call f_4371
     ; OP_PUSH_INT
@@ -12054,7 +12678,7 @@ f_2402:
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 18
+    mov     qword [r12], 17
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 4
@@ -12067,8 +12691,8 @@ f_2402:
     ; OP_CALL_FN
     call f_4482
     ; OP_JMP
-    jmp     .l_500
-.l_501:
+    jmp     .l_506
+.l_507:
     ; OP_CALL_FN
     call f_4371
     ; OP_CALL_FN
@@ -12092,7 +12716,7 @@ f_2402:
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 18
+    mov     qword [r12], 17
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -12101,14 +12725,14 @@ f_2402:
     add     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .rl_84:
+    .rl_82:
     cmp     rbx, r12
-    je      .rl_85
+    je      .rl_83
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .rl_84
-    .rl_85:
+    jmp     .rl_82
+    .rl_83:
     mov     [r12], rcx
     ; OP_CALL_FN
     call f_4482
@@ -12119,6 +12743,8 @@ f_2402:
 f_2407:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -12160,7 +12786,7 @@ f_2407:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_222
+    jz     .l_230
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -12177,106 +12803,106 @@ f_2407:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_221
-.l_222:
-.l_221:
+    jmp     .l_229
+.l_230:
+.l_229:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8238
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_224
+    jz     .l_232
     ; OP_CALL_FN
     call f_1301
     ; OP_JMP
-    jmp     .l_223
-.l_224:
+    jmp     .l_231
+.l_232:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8239
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_225
+    jz     .l_233
     ; OP_CALL_FN
     call f_373
     ; OP_JMP
-    jmp     .l_223
-.l_225:
+    jmp     .l_231
+.l_233:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8240
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_226
+    jz     .l_234
     ; OP_CALL_FN
     call f_6036
     ; OP_JMP
-    jmp     .l_223
-.l_226:
+    jmp     .l_231
+.l_234:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8241
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_227
+    jz     .l_235
     ; OP_CALL_FN
     call f_2010
     ; OP_JMP
-    jmp     .l_223
-.l_227:
+    jmp     .l_231
+.l_235:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8242
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_228
+    jz     .l_236
     ; OP_CALL_FN
     call f_7393
     ; OP_JMP
-    jmp     .l_223
-.l_228:
+    jmp     .l_231
+.l_236:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8243
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_229
+    jz     .l_237
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -12354,7 +12980,7 @@ f_2407:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_231
+    jz     .l_239
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -12371,9 +12997,9 @@ f_2407:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_230
-.l_231:
-.l_230:
+    jmp     .l_238
+.l_239:
+.l_238:
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -12419,7 +13045,7 @@ f_2407:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_233
+    jz     .l_241
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -12436,9 +13062,9 @@ f_2407:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_232
-.l_233:
-.l_232:
+    jmp     .l_240
+.l_241:
+.l_240:
     ; OP_CALL_FN
     call f_2960
     ; OP_CALL_FN
@@ -12460,30 +13086,30 @@ f_2407:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_235
+    jz     .l_243
     ; OP_CALL_FN
     call f_2643
     ; OP_JMP
-    jmp     .l_234
-.l_235:
+    jmp     .l_242
+.l_243:
     ; OP_CALL_FN
     call f_4940
-.l_234:
+.l_242:
     ; OP_JMP
-    jmp     .l_223
-.l_229:
+    jmp     .l_231
+.l_237:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8246
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_236
+    jz     .l_244
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -12561,7 +13187,7 @@ f_2407:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_238
+    jz     .l_246
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -12578,9 +13204,9 @@ f_2407:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_237
-.l_238:
-.l_237:
+    jmp     .l_245
+.l_246:
+.l_245:
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -12626,7 +13252,7 @@ f_2407:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_240
+    jz     .l_248
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -12643,9 +13269,9 @@ f_2407:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_239
-.l_240:
-.l_239:
+    jmp     .l_247
+.l_248:
+.l_247:
     ; OP_CALL_FN
     call f_2960
     ; OP_CALL_FN
@@ -12667,18 +13293,18 @@ f_2407:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_242
+    jz     .l_250
     ; OP_CALL_FN
     call f_4940
     ; OP_JMP
-    jmp     .l_241
-.l_242:
+    jmp     .l_249
+.l_250:
     ; OP_CALL_FN
     call f_2643
-.l_241:
+.l_249:
     ; OP_JMP
-    jmp     .l_223
-.l_236:
+    jmp     .l_231
+.l_244:
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -12703,7 +13329,7 @@ f_2407:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_223:
+.l_231:
     ; OP_RET
     leave
     ret
@@ -12711,6 +13337,8 @@ f_2407:
 f_2543:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -12778,6 +13406,8 @@ f_2543:
 f_2643:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -12916,7 +13546,7 @@ f_2709:
     push    rbp
     mov     rbp, rsp
     ; OP_ALLOC
-    sub     rsp, 8
+    sub     rsp, 16
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -12932,8 +13562,6 @@ f_2709:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-    ; OP_ALLOC
-    sub     rsp, 8
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -12948,7 +13576,7 @@ f_2709:
     sub     r12, 8
     mov     qword [r12], 45
     ; OP_CALL_FN
-    call f_2069
+    call f_3883
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -12957,26 +13585,26 @@ f_2709:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_611
+    jz     .l_624
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8661
+    mov     qword [r12], b_8658
     ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
     ; OP_CALL_FN
     call f_6775
     ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8662
+    mov     qword [r12], b_8659
     ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_CALL_FN
-    call f_1609
+    call f_761
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -12986,9 +13614,9 @@ f_2709:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_610
-.l_611:
-.l_610:
+    jmp     .l_623
+.l_624:
+.l_623:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -13029,9 +13657,9 @@ f_2709:
     mov     qword [r12], rbx
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8663
+    mov     qword [r12], b_8660
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -13044,9 +13672,9 @@ f_2709:
     mov     qword [r12], rbx
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8664
+    mov     qword [r12], b_8661
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_OR
     mov     rcx, qword [r12]
     add     r12, 8
@@ -13059,20 +13687,20 @@ f_2709:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_613
+    jz     .l_626
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8665
+    mov     qword [r12], b_8662
     ; OP_CALL_FN
     call f_1384
     ; OP_JMP
-    jmp     .l_612
-.l_613:
+    jmp     .l_625
+.l_626:
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8666
+    mov     qword [r12], b_8663
     ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -13084,49 +13712,82 @@ f_2709:
     sub     r12, 8
     mov     qword [r12], rbx
     ; OP_CALL_FN
-    call f_7658
+    call f_84
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8664
+    ; OP_CALL_FN
+    call f_84
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_EXIT
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     eax, 60
+    syscall
+.l_625:
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8665
+    ; OP_CALL_FN
+    call f_8132
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_628
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8666
+    ; OP_CALL_FN
+    call f_1384
+    ; OP_JMP
+    jmp     .l_627
+.l_628:
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8667
     ; OP_CALL_FN
-    call f_7658
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_EXIT
-    mov     rdi, qword [r12]
-    add     r12, 8
-    mov     eax, 60
-    syscall
-.l_612:
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 16]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_FETCH
+    call f_8132
+    ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
-    mov     rbx, qword [rax]
-    sub     r12, 8
-    mov     qword [r12], rbx
+    test    rax, rax
+    jz     .l_629
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8668
     ; OP_CALL_FN
-    call f_7618
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_615
+    call f_1384
+    ; OP_JMP
+    jmp     .l_627
+.l_629:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8669
     ; OP_CALL_FN
-    call f_1384
-    ; OP_JMP
-    jmp     .l_614
-.l_615:
+    call f_84
     ; OP_PUSH_VAR
     lea     rax, [rbp - 16]
     sub     r12, 8
@@ -13137,46 +13798,13 @@ f_2709:
     mov     rbx, qword [rax]
     sub     r12, 8
     mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_84
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8670
     ; OP_CALL_FN
-    call f_7618
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_616
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8671
-    ; OP_CALL_FN
-    call f_1384
-    ; OP_JMP
-    jmp     .l_614
-.l_616:
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8672
-    ; OP_CALL_FN
-    call f_7658
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 16]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_FETCH
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rbx, qword [rax]
-    sub     r12, 8
-    mov     qword [r12], rbx
-    ; OP_CALL_FN
-    call f_7658
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8673
-    ; OP_CALL_FN
-    call f_7658
+    call f_84
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -13185,20 +13813,7 @@ f_2709:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_614:
-    ; OP_DEALLOC
-    add     rsp, 16
-    ; OP_RET
-    leave
-    ret
-; str_n_eq
-f_2729:
-    push    rbp
-    mov     rbp, rsp
-    ; OP_CALL_FN
-    call f_5949
-    ; OP_CALL_FN
-    call f_4573
+.l_627:
     ; OP_RET
     leave
     ret
@@ -13206,6 +13821,8 @@ f_2729:
 f_2784:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -13318,10 +13935,235 @@ f_2784:
     ; OP_RET
     leave
     ret
+; parse_option
+f_2825:
+    push    rbp
+    mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 8
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_6775
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8671
+    ; OP_CALL_FN
+    call f_8132
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_6775
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8672
+    ; OP_CALL_FN
+    call f_8132
+    ; OP_OR
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    or 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_631
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_6128
+    ; OP_CALL_FN
+    call f_2394
+    ; OP_JMP
+    jmp     .l_630
+.l_631:
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_6775
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8673
+    ; OP_CALL_FN
+    call f_8132
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_632
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_6775
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_4418
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 8
+    ; OP_CALL_FN
+    call f_5007
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_JMP
+    jmp     .l_630
+.l_632:
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8674
+    ; OP_CALL_FN
+    call f_84
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_6775
+    ; OP_CALL_FN
+    call f_84
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8675
+    ; OP_CALL_FN
+    call f_84
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8676
+    ; OP_CALL_FN
+    call f_84
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8677
+    ; OP_CALL_FN
+    call f_84
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_EXIT
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     eax, 60
+    syscall
+.l_630:
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_RET
+    leave
+    ret
 ; stderr
 f_2924:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 2
@@ -13345,6 +14187,8 @@ f_2924:
 f_2960:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -13369,6 +14213,8 @@ f_2960:
 f_2981:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_424
@@ -13388,7 +14234,7 @@ f_2981:
     ; OP_CALL_FN
     call f_3343
     ; OP_CALL_FN
-    call f_2069
+    call f_3883
     ; OP_CALL_FN
     call f_4573
     ; OP_CALL_FN
@@ -13474,6 +14320,8 @@ f_2981:
 f_3047:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -13506,7 +14354,7 @@ f_3047:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_456
+    jz     .l_462
     ; OP_DROP
     add     r12, 8
     ; OP_DROP
@@ -13525,20 +14373,20 @@ f_3047:
     add     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .rl_80:
+    .rl_78:
     cmp     rbx, r12
-    je      .rl_81
+    je      .rl_79
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .rl_80
-    .rl_81:
+    jmp     .rl_78
+    .rl_79:
     mov     [r12], rcx
     ; OP_CALL_FN
     call f_4482
     ; OP_JMP
-    jmp     .l_455
-.l_456:
+    jmp     .l_461
+.l_462:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -13558,7 +14406,7 @@ f_3047:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_457
+    jz     .l_463
     ; OP_DROP
     add     r12, 8
     ; OP_DROP
@@ -13568,8 +14416,8 @@ f_3047:
     ; OP_CALL_FN
     call f_4371
     ; OP_JMP
-    jmp     .l_455
-.l_457:
+    jmp     .l_461
+.l_463:
     ; OP_CALL_FN
     call f_738
     ; OP_CALL_FN
@@ -13605,7 +14453,7 @@ f_3047:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_455:
+.l_461:
     ; OP_RET
     leave
     ret
@@ -13613,6 +14461,8 @@ f_3047:
 f_3061:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_1224
@@ -13649,31 +14499,12 @@ f_3061:
     ; OP_RET
     leave
     ret
-; str_cat
-f_3074:
-    push    rbp
-    mov     rbp, rsp
-    ; OP_CALL_FN
-    call f_2068
-    ; OP_CALL_FN
-    call f_4810
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2003
-    ; OP_RET
-    leave
-    ret
 ; parse_fn
 f_3077:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 16
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -13718,7 +14549,7 @@ f_3077:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_376
+    jz     .l_382
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -13742,16 +14573,16 @@ f_3077:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_375
-.l_376:
-.l_375:
+    jmp     .l_381
+.l_382:
+.l_381:
     ; OP_CALL_FN
     call f_2960
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_378
+    jz     .l_384
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -13777,13 +14608,21 @@ f_3077:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_377
-.l_378:
-.l_377:
+    jmp     .l_383
+.l_384:
+.l_383:
     ; OP_CALL_FN
     call f_695
-    ; OP_CALL_FN
-    call f_2960
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -13825,9 +14664,17 @@ f_3077:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_380
-    ; OP_CALL_FN
-    call f_2960
+    jz     .l_386
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
@@ -13859,31 +14706,14 @@ f_3077:
     leave
     ret
     ; OP_JMP
-    jmp     .l_379
-.l_380:
-.l_379:
+    jmp     .l_385
+.l_386:
+.l_385:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_7994
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 8
-    ; OP_CALL_FN
-    call f_5007
-    ; OP_STORE
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     [rax], rcx
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_6292
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 8
@@ -13903,10 +14733,26 @@ f_3077:
     mov     qword [r12], 9
     ; OP_CALL_FN
     call f_4800
-    ; OP_CALL_FN
-    call f_738
-    ; OP_CALL_FN
-    call f_2068
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_5135
@@ -13915,8 +14761,16 @@ f_3077:
     mov     qword [r12], 16
     ; OP_CALL_FN
     call f_2292
-    ; OP_CALL_FN
-    call f_2960
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 8]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
     ; OP_CALL_FN
     call f_5695
     ; OP_PUSH_INT
@@ -13936,6 +14790,18 @@ f_3077:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_CALL_FN
+    call f_2960
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 8
@@ -13964,7 +14830,30 @@ f_3077:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-.l_381:
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_5137
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 16
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_104
+    ; OP_CALL_FN
+    call f_4482
+.l_387:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -13995,7 +14884,7 @@ f_3077:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_382
+    jz     .l_388
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_104
@@ -14004,8 +14893,8 @@ f_3077:
     ; OP_CALL_FN
     call f_2253
     ; OP_JMP
-    jmp     .l_381
-.l_382:
+    jmp     .l_387
+.l_388:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -14066,43 +14955,22 @@ f_3077:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_384
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_104
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_CALL_FN
-    call f_6666
+    jz     .l_390
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 6
-    ; OP_PUSH_INT
+    ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], 3
-    ; OP_ROLL
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    lea     rbx, [r12 + rax*8]
-    .rl_76:
-    cmp     rbx, r12
-    je      .rl_77
-    mov     rdx, [rbx - 8]
-    mov     [rbx], rdx
-    sub     rbx, 8
-    jmp     .rl_76
-    .rl_77:
-    mov     [r12], rcx
+    mov     qword [r12], b_104
     ; OP_CALL_FN
     call f_4482
     ; OP_JMP
-    jmp     .l_383
-.l_384:
-.l_383:
+    jmp     .l_389
+.l_390:
+.l_389:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_7994
@@ -14110,9 +14978,40 @@ f_3077:
     call f_2204
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_6292
-    ; OP_CALL_FN
-    call f_2204
+    mov     qword [r12], b_5137
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 16]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_FETCH
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rbx, qword [rax]
+    sub     r12, 8
+    mov     qword [r12], rbx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -14131,6 +15030,8 @@ f_3077:
 f_3120:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -14329,6 +15230,8 @@ f_3120:
 f_3168:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_6555
@@ -14389,7 +15292,7 @@ f_3168:
     call f_2960
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 32
+    mov     qword [r12], 31
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -14416,6 +15319,8 @@ f_3168:
 f_3174:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8394
@@ -14447,6 +15352,8 @@ f_3174:
 f_3178:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_3476
     ; OP_PUSH_INT
@@ -14776,8 +15683,6 @@ f_3278:
     mov     qword [r12], 24
     ; OP_CALL_FN
     call f_656
-    ; OP_DEALLOC
-    add     rsp, 8
     ; OP_RET
     leave
     ret
@@ -14793,8 +15698,6 @@ f_3278:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], -1
-    ; OP_DEALLOC
-    add     rsp, 8
     ; OP_RET
     leave
     ret
@@ -14802,6 +15705,8 @@ f_3278:
 f_3280:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -14820,7 +15725,7 @@ f_3280:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_390
+    jz     .l_396
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
@@ -14848,9 +15753,9 @@ f_3280:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_389
-.l_390:
-.l_389:
+    jmp     .l_395
+.l_396:
+.l_395:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 8
@@ -14873,7 +15778,7 @@ f_3280:
     mov     qword [r12], 0
     ; OP_CALL_FN
     call f_2960
-.l_391:
+.l_397:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -14897,7 +15802,7 @@ f_3280:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_392
+    jz     .l_398
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -14941,8 +15846,8 @@ f_3280:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_391
-.l_392:
+    jmp     .l_397
+.l_398:
     ; OP_DROP
     add     r12, 8
     ; OP_RET
@@ -14952,6 +15857,8 @@ f_3280:
 f_3311:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_5695
     ; OP_PUSH_INT
@@ -15016,6 +15923,8 @@ f_3311:
 f_3343:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_FETCH
     mov     rax, qword [r12]
     add     r12, 8
@@ -15036,115 +15945,12 @@ f_3343:
     ; OP_RET
     leave
     ret
-; str_cmp
-f_3466:
-    push    rbp
-    mov     rbp, rsp
-.l_31:
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_3343
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_3343
-    ; OP_OR
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    or 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_32
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_3343
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_3343
-    ; OP_SUB
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    sub 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2068
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_34
-    ; OP_CALL_FN
-    call f_738
-    ; OP_CALL_FN
-    call f_738
-    ; OP_DROP
-    add     r12, 8
-    ; OP_DROP
-    add     r12, 8
-    ; OP_RET
-    leave
-    ret
-    ; OP_JMP
-    jmp     .l_33
-.l_34:
-.l_33:
-    ; OP_DROP
-    add     r12, 8
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_JMP
-    jmp     .l_31
-.l_32:
-    ; OP_DROP
-    add     r12, 8
-    ; OP_DROP
-    add     r12, 8
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OP_RET
-    leave
-    ret
 ; match_char
 f_3469:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_3476
     ; OP_PUSH_INT
@@ -15448,6 +16254,8 @@ f_3469:
 f_3476:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -15455,16 +16263,41 @@ f_3476:
     ; OP_RET
     leave
     ret
+; strcat
+f_3654:
+    push    rbp
+    mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_CALL_FN
+    call f_5390
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_4154
+    ; OP_RET
+    leave
+    ret
 ; view_buf_size
 f_3675:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
     ; OP_CALL_FN
     call f_2960
-.l_402:
+.l_408:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -15496,7 +16329,7 @@ f_3675:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_403
+    jz     .l_409
     ; OP_CALL_FN
     call f_1298
     ; OP_CALL_FN
@@ -15512,8 +16345,8 @@ f_3675:
     ; OP_CALL_FN
     call f_2960
     ; OP_JMP
-    jmp     .l_402
-.l_403:
+    jmp     .l_408
+.l_409:
     ; OP_CALL_FN
     call f_5695
     ; OP_PUSH_INT
@@ -15533,7 +16366,7 @@ f_3675:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_405
+    jz     .l_411
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -15550,9 +16383,9 @@ f_3675:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_404
-.l_405:
-.l_404:
+    jmp     .l_410
+.l_411:
+.l_410:
     ; OP_CALL_FN
     call f_2960
     ; OP_RET
@@ -15562,6 +16395,8 @@ f_3675:
 f_3700:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_6555
@@ -15639,7 +16474,7 @@ f_3700:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-.l_356:
+.l_362:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -15670,7 +16505,7 @@ f_3700:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_357
+    jz     .l_363
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -15678,8 +16513,8 @@ f_3700:
     ; OP_CALL_FN
     call f_2253
     ; OP_JMP
-    jmp     .l_356
-.l_357:
+    jmp     .l_362
+.l_363:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -15694,102 +16529,6 @@ f_3700:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 2
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 34
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 3
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_CALL_FN
-    call f_4482
-    ; OP_CALL_FN
-    call f_2068
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_7994
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 8
-    ; OP_CALL_FN
-    call f_5007
-    ; OP_STORE
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     [rax], rcx
-.l_358:
-    ; OP_CALL_FN
-    call f_702
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 26
-    ; OP_EQ
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    sete    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_XOR
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    xor 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_359
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_CALL_FN
-    call f_2253
-    ; OP_JMP
-    jmp     .l_358
-.l_359:
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_7994
-    ; OP_CALL_FN
-    call f_2204
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 3
     ; OP_PICK
     mov     rax, qword [r12]
     add     r12, 8
@@ -15810,117 +16549,6 @@ f_3700:
     mov     qword [r12], rcx
     ; OP_CALL_FN
     call f_4482
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 2
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 32
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 3
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_CALL_FN
-    call f_4482
-    ; OP_CALL_FN
-    call f_738
-    ; OP_DROP
-    add     r12, 8
-    ; OP_CALL_FN
-    call f_702
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 9
-    ; OP_EQ
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    sete    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_XOR
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    xor 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_361
-    ; OP_CALL_FN
-    call f_4371
-    ; OP_CALL_FN
-    call f_4371
-    ; OP_RET
-    leave
-    ret
-    ; OP_JMP
-    jmp     .l_360
-.l_361:
-.l_360:
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_702
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OP_EQ
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    sete    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_363
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
@@ -15994,13 +16622,220 @@ f_3700:
     mov     qword [r12], b_7994
     ; OP_CALL_FN
     call f_2204
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 3
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 32
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 3
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_CALL_FN
+    call f_4482
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 2
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 31
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 3
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_CALL_FN
+    call f_4482
+    ; OP_CALL_FN
+    call f_738
+    ; OP_DROP
+    add     r12, 8
+    ; OP_CALL_FN
+    call f_702
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 9
+    ; OP_EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_XOR
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    xor 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_367
+    ; OP_CALL_FN
+    call f_4371
+    ; OP_CALL_FN
+    call f_4371
+    ; OP_RET
+    leave
+    ret
+    ; OP_JMP
+    jmp     .l_366
+.l_367:
+.l_366:
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_702
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OP_EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_369
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_7994
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 8
+    ; OP_CALL_FN
+    call f_5007
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+.l_370:
+    ; OP_CALL_FN
+    call f_702
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 26
+    ; OP_EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_XOR
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    xor 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_371
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_CALL_FN
+    call f_2253
+    ; OP_JMP
+    jmp     .l_370
+.l_371:
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_7994
+    ; OP_CALL_FN
+    call f_2204
     ; OP_CALL_FN
     call f_4371
     ; OP_CALL_FN
     call f_4371
     ; OP_JMP
-    jmp     .l_362
-.l_363:
+    jmp     .l_368
+.l_369:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -16020,14 +16855,14 @@ f_3700:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_366
+    jz     .l_372
     ; OP_CALL_FN
     call f_738
     ; OP_CALL_FN
     call f_3700
     ; OP_JMP
-    jmp     .l_362
-.l_366:
+    jmp     .l_368
+.l_372:
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -16043,7 +16878,7 @@ f_3700:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_362:
+.l_368:
     ; OP_RET
     leave
     ret
@@ -16083,7 +16918,7 @@ f_3703:
     mov     rcx, qword [r12]
     add     r12, 8
     mov     [rax], rcx
-.l_251:
+.l_257:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -16121,7 +16956,7 @@ f_3703:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_252
+    jz     .l_258
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_VAR
@@ -16160,7 +16995,7 @@ f_3703:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_254
+    jz     .l_260
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_VAR
@@ -16195,23 +17030,19 @@ f_3703:
     mov     qword [r12], 50
     ; OP_CALL_FN
     call f_656
-    ; OP_DEALLOC
-    add     rsp, 8
     ; OP_RET
     leave
     ret
     ; OP_JMP
-    jmp     .l_253
-.l_254:
-.l_253:
+    jmp     .l_259
+.l_260:
+.l_259:
     ; OP_JMP
-    jmp     .l_251
-.l_252:
+    jmp     .l_257
+.l_258:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], -1
-    ; OP_DEALLOC
-    add     rsp, 8
     ; OP_RET
     leave
     ret
@@ -16219,6 +17050,8 @@ f_3703:
 f_3761:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_4154
@@ -18012,6 +18845,8 @@ f_3761:
 f_3821:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -18039,10 +18874,86 @@ f_3821:
     ; OP_RET
     leave
     ret
+; strchr
+f_3883:
+    push    rbp
+    mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
+.l_39:
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_40
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_42
+    ; OP_DROP
+    add     r12, 8
+    ; OP_RET
+    leave
+    ret
+    ; OP_JMP
+    jmp     .l_41
+.l_42:
+.l_41:
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_JMP
+    jmp     .l_39
+.l_40:
+    ; OP_DROP
+    add     r12, 8
+    ; OP_DROP
+    add     r12, 8
+    ; OP_DROP
+    add     r12, 8
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_RET
+    leave
+    ret
 ; scoped_map_contains
 f_4038:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2784
     ; OP_CALL_FN
@@ -18054,6 +18965,8 @@ f_4038:
 f_4044:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_876
     ; OP_CALL_FN
@@ -18062,7 +18975,7 @@ f_4044:
     sub     r12, 8
     mov     qword [r12], b_8199
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -18167,7 +19080,7 @@ f_4044:
     sub     r12, 8
     mov     qword [r12], b_8200
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -18272,7 +19185,7 @@ f_4044:
     sub     r12, 8
     mov     qword [r12], b_8201
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -18377,7 +19290,7 @@ f_4044:
     sub     r12, 8
     mov     qword [r12], b_8202
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -18482,7 +19395,7 @@ f_4044:
     sub     r12, 8
     mov     qword [r12], b_8203
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -18587,7 +19500,7 @@ f_4044:
     sub     r12, 8
     mov     qword [r12], b_8204
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -18692,7 +19605,7 @@ f_4044:
     sub     r12, 8
     mov     qword [r12], b_8205
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -18797,7 +19710,7 @@ f_4044:
     sub     r12, 8
     mov     qword [r12], b_8206
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -18925,10 +19838,119 @@ f_4044:
     ; OP_RET
     leave
     ret
+; strcmp
+f_4046:
+    push    rbp
+    mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
+.l_31:
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_OR
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    or 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_32
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_SUB
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    sub 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_34
+    ; OP_CALL_FN
+    call f_738
+    ; OP_CALL_FN
+    call f_738
+    ; OP_DROP
+    add     r12, 8
+    ; OP_DROP
+    add     r12, 8
+    ; OP_RET
+    leave
+    ret
+    ; OP_JMP
+    jmp     .l_33
+.l_34:
+.l_33:
+    ; OP_DROP
+    add     r12, 8
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_JMP
+    jmp     .l_31
+.l_32:
+    ; OP_DROP
+    add     r12, 8
+    ; OP_DROP
+    add     r12, 8
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_RET
+    leave
+    ret
 ; is_ident_first_char
 f_4089:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -18959,10 +19981,77 @@ f_4089:
     ; OP_RET
     leave
     ret
+; strcpy
+f_4154:
+    push    rbp
+    mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
+.l_29:
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_30
+    ; OP_CALL_FN
+    call f_5695
+    ; OP_CALL_FN
+    call f_2394
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_JMP
+    jmp     .l_29
+.l_30:
+    ; OP_DROP
+    add     r12, 8
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_CALL_FN
+    call f_2394
+    ; OP_DROP
+    add     r12, 8
+    ; OP_RET
+    leave
+    ret
 ; push_buf_ptr
 f_4158:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
@@ -18990,7 +20079,7 @@ f_4158:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_256
+    jz     .l_262
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 12
@@ -19006,8 +20095,8 @@ f_4158:
     ; OP_CALL_FN
     call f_4482
     ; OP_JMP
-    jmp     .l_255
-.l_256:
+    jmp     .l_261
+.l_262:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_5622
@@ -19076,7 +20165,7 @@ f_4158:
     mov     qword [r12], rcx
     ; OP_CALL_FN
     call f_4482
-.l_255:
+.l_261:
     ; OP_RET
     leave
     ret
@@ -19084,18 +20173,20 @@ f_4158:
 f_4169:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8403
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8404
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8405
@@ -19137,19 +20228,21 @@ f_4169:
 f_4227:
     push    rbp
     mov     rbp, rsp
-.l_581:
+    ; OP_ALLOC
+    sub     rsp, 0
+.l_590:
     ; OP_CALL_FN
     call f_537
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_582
+    jz     .l_591
     ; OP_CALL_FN
     call f_4957
     ; OP_JMP
-    jmp     .l_581
-.l_582:
+    jmp     .l_590
+.l_591:
     ; OP_DROP
     add     r12, 8
     ; OP_RET
@@ -19159,6 +20252,8 @@ f_4227:
 f_4371:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2960
     ; OP_DROP
@@ -19170,6 +20265,8 @@ f_4371:
 f_4441:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_738
     ; OP_MUL
@@ -19236,7 +20333,17 @@ f_4460:
     mov     [rax], rcx
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8627
+    mov     qword [r12], b_6128
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_605
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8624
     ; OP_CALL_FN
     call f_1216
     ; OP_CALL_FN
@@ -19281,12 +20388,16 @@ f_4460:
     call f_1216
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8628
+    mov     qword [r12], b_8625
     ; OP_CALL_FN
     call f_1216
+    ; OP_JMP
+    jmp     .l_604
+.l_605:
+.l_604:
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8629
+    mov     qword [r12], b_8626
     ; OP_CALL_FN
     call f_1216
     ; OP_CALL_FN
@@ -19320,7 +20431,7 @@ f_4460:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_596
+    jz     .l_607
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -19348,10 +20459,10 @@ f_4460:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_598
+    jz     .l_609
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8630
+    mov     qword [r12], b_8627
     ; OP_CALL_FN
     call f_1216
     ; OP_PUSH_BUF
@@ -19383,12 +20494,12 @@ f_4460:
     call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8631
+    mov     qword [r12], b_8628
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_597
-.l_598:
+    jmp     .l_608
+.l_609:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -19416,10 +20527,10 @@ f_4460:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_599
+    jz     .l_610
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8632
+    mov     qword [r12], b_8629
     ; OP_CALL_FN
     call f_1216
     ; OP_PUSH_BUF
@@ -19451,19 +20562,19 @@ f_4460:
     call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8633
+    mov     qword [r12], b_8630
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_597
-.l_599:
-.l_597:
+    jmp     .l_608
+.l_610:
+.l_608:
     ; OP_JMP
-    jmp     .l_595
-.l_596:
+    jmp     .l_606
+.l_607:
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8634
+    mov     qword [r12], b_8631
     ; OP_CALL_FN
     call f_1216
     ; OP_CALL_FN
@@ -19523,7 +20634,7 @@ f_4460:
     sub     r12, 8
     mov     qword [r12], rbx
     ; OP_CALL_FN
-    call f_4810
+    call f_5390
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -19559,10 +20670,10 @@ f_4460:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_601
+    jz     .l_612
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8635
+    mov     qword [r12], b_8632
     ; OP_CALL_FN
     call f_1216
     ; OP_PUSH_VAR
@@ -19579,7 +20690,7 @@ f_4460:
     call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8636
+    mov     qword [r12], b_8633
     ; OP_CALL_FN
     call f_1216
     ; OP_CALL_FN
@@ -19588,18 +20699,16 @@ f_4460:
     call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8637
+    mov     qword [r12], b_8634
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_600
-.l_601:
-.l_600:
+    jmp     .l_611
+.l_612:
+.l_611:
     ; OP_DROP
     add     r12, 8
-.l_595:
-    ; OP_DEALLOC
-    add     rsp, 8
+.l_606:
     ; OP_RET
     leave
     ret
@@ -19607,6 +20716,8 @@ f_4460:
 f_4482:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 9
@@ -19657,6 +20768,8 @@ f_4482:
 f_4540:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -19719,7 +20832,7 @@ f_4540:
     sub     r12, 8
     mov     qword [r12], rcx
     ; OP_CALL_FN
-    call f_7618
+    call f_8132
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -20471,8 +21584,6 @@ f_4549:
     sub     r12, 8
     mov     qword [r12], rax
 .l_172:
-    ; OP_DEALLOC
-    add     rsp, 1
     ; OP_RET
     leave
     ret
@@ -20480,6 +21591,8 @@ f_4549:
 f_4573:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -20502,6 +21615,8 @@ f_4573:
 f_4745:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -20600,6 +21715,8 @@ f_4745:
 f_4746:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_7675
@@ -20776,6 +21893,8 @@ f_4746:
 f_4800:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_5695
     ; OP_PUSH_INT
@@ -20825,59 +21944,12 @@ f_4800:
     ; OP_RET
     leave
     ret
-; str_len
-f_4810:
-    push    rbp
-    mov     rbp, rsp
-    ; OP_CALL_FN
-    call f_2068
-.l_27:
-    ; OP_CALL_FN
-    call f_2068
-    ; OP_CALL_FN
-    call f_3343
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_28
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JMP
-    jmp     .l_27
-.l_28:
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_SUB
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    sub 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_RET
-    leave
-    ret
 ; view_buffer_access
 f_4859:
     push    rbp
     mov     rbp, rsp
     ; OP_ALLOC
-    sub     rsp, 8
-    ; OP_ALLOC
-    sub     rsp, 8
-    ; OP_ALLOC
-    sub     rsp, 8
+    sub     rsp, 24
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -20929,7 +22001,7 @@ f_4859:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_274
+    jz     .l_280
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -20963,9 +22035,9 @@ f_4859:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_273
-.l_274:
-.l_273:
+    jmp     .l_279
+.l_280:
+.l_279:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -21053,7 +22125,7 @@ f_4859:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_276
+    jz     .l_282
     ; OP_PUSH_VAR
     lea     rax, [rbp - 8]
     sub     r12, 8
@@ -21089,208 +22161,6 @@ f_4859:
     mov     rbx, qword [rax]
     sub     r12, 8
     mov     qword [r12], rbx
-.l_277:
-    ; OP_CALL_FN
-    call f_915
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_278
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 24]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_STORE
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     [rax], rcx
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 7
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 4
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_CALL_FN
-    call f_4482
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 18
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 4
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_CALL_FN
-    call f_4482
-    ; OP_JMP
-    jmp     .l_277
-.l_278:
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 24]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_STORE
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     [rax], rcx
-    ; OP_CALL_FN
-    call f_4371
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 7
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 3
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_CALL_FN
-    call f_4482
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 18
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 3
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_CALL_FN
-    call f_4482
-    ; OP_JMP
-    jmp     .l_275
-.l_276:
-.l_275:
-.l_279:
-    ; OP_CALL_FN
-    call f_702
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 19
-    ; OP_EQ
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    sete    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_280
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_702
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 4
-    ; OP_EQ
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    sete    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_XOR
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    xor 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_282
-    ; OP_CALL_FN
-    call f_2380
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8268
-    ; OP_CALL_FN
-    call f_7658
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_EXIT
-    mov     rdi, qword [r12]
-    add     r12, 8
-    mov     eax, 60
-    syscall
-    ; OP_JMP
-    jmp     .l_281
-.l_282:
-.l_281:
-    ; OP_CALL_FN
-    call f_695
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 25
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2960
 .l_283:
     ; OP_CALL_FN
     call f_915
@@ -21330,7 +22200,7 @@ f_4859:
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 18
+    mov     qword [r12], 17
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 4
@@ -21378,7 +22248,7 @@ f_4859:
     mov     qword [r12], 0
     ; OP_PUSH_INT
     sub     r12, 8
-    mov     qword [r12], 18
+    mov     qword [r12], 17
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 3
@@ -21391,8 +22261,210 @@ f_4859:
     ; OP_CALL_FN
     call f_4482
     ; OP_JMP
-    jmp     .l_279
-.l_280:
+    jmp     .l_281
+.l_282:
+.l_281:
+.l_285:
+    ; OP_CALL_FN
+    call f_702
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 19
+    ; OP_EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_286
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_702
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 4
+    ; OP_EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_XOR
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    xor 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_288
+    ; OP_CALL_FN
+    call f_2380
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8268
+    ; OP_CALL_FN
+    call f_7658
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_EXIT
+    mov     rdi, qword [r12]
+    add     r12, 8
+    mov     eax, 60
+    syscall
+    ; OP_JMP
+    jmp     .l_287
+.l_288:
+.l_287:
+    ; OP_CALL_FN
+    call f_695
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 25
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_CALL_FN
+    call f_2960
+.l_289:
+    ; OP_CALL_FN
+    call f_915
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_290
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 24]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 7
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 4
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_CALL_FN
+    call f_4482
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 17
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 4
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_CALL_FN
+    call f_4482
+    ; OP_JMP
+    jmp     .l_289
+.l_290:
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_PUSH_VAR
+    lea     rax, [rbp - 24]
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_STORE
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     [rax], rcx
+    ; OP_CALL_FN
+    call f_4371
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 7
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 3
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_CALL_FN
+    call f_4482
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 0
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 17
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 3
+    ; OP_PICK
+    mov     rax, qword [r12]
+    add     r12, 8
+    mov     rcx, [r12 + rax*8]
+    sub     r12, 8
+    mov     qword [r12], rcx
+    ; OP_CALL_FN
+    call f_4482
+    ; OP_JMP
+    jmp     .l_285
+.l_286:
     ; OP_PUSH_VAR
     lea     rax, [rbp - 16]
     sub     r12, 8
@@ -21413,8 +22485,6 @@ f_4859:
     mov     rbx, qword [rax]
     sub     r12, 8
     mov     qword [r12], rbx
-    ; OP_DEALLOC
-    add     rsp, 24
     ; OP_RET
     leave
     ret
@@ -21422,6 +22492,8 @@ f_4859:
 f_4940:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -21535,6 +22607,8 @@ f_4940:
 f_4957:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -21554,10 +22628,10 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_543
+    jz     .l_553
     ; OP_JMP
-    jmp     .l_542
-.l_543:
+    jmp     .l_552
+.l_553:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -21577,12 +22651,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_544
+    jz     .l_554
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8411
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8412
@@ -21599,8 +22673,8 @@ f_4957:
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_544:
+    jmp     .l_552
+.l_554:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -21620,12 +22694,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_545
+    jz     .l_555
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8415
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8416
@@ -21637,8 +22711,8 @@ f_4957:
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_545:
+    jmp     .l_552
+.l_555:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -21658,12 +22732,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_546
+    jz     .l_556
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8418
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8419
@@ -21684,8 +22758,8 @@ f_4957:
     ; OP_CALL_FN
     call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_546:
+    jmp     .l_552
+.l_556:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -21705,12 +22779,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_547
+    jz     .l_557
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8422
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8423
@@ -21726,8 +22800,8 @@ f_4957:
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_547:
+    jmp     .l_552
+.l_557:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -21747,12 +22821,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_548
+    jz     .l_558
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8425
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8426
@@ -21764,8 +22838,8 @@ f_4957:
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_548:
+    jmp     .l_552
+.l_558:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -21785,19 +22859,19 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_549
+    jz     .l_559
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8428
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_CALL_FN
     call f_530
     ; OP_CALL_FN
     call f_1485
     ; OP_JMP
-    jmp     .l_542
-.l_549:
+    jmp     .l_552
+.l_559:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -21817,17 +22891,17 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_550
+    jz     .l_560
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8429
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_CALL_FN
     call f_6606
     ; OP_JMP
-    jmp     .l_542
-.l_550:
+    jmp     .l_552
+.l_560:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -21847,12 +22921,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_551
+    jz     .l_561
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8430
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8431
@@ -21879,8 +22953,8 @@ f_4957:
     ; OP_CALL_FN
     call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_551:
+    jmp     .l_552
+.l_561:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -21900,12 +22974,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_552
+    jz     .l_562
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8435
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8436
@@ -22065,8 +23139,8 @@ f_4957:
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_552:
+    jmp     .l_552
+.l_562:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22086,12 +23160,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_553
+    jz     .l_563
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8456
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8457
@@ -22133,8 +23207,8 @@ f_4957:
     ; OP_CALL_FN
     call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_553:
+    jmp     .l_552
+.l_563:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22154,12 +23228,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_554
+    jz     .l_564
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8463
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_CALL_FN
     call f_530
     ; OP_PUSH_BUF
@@ -22205,8 +23279,8 @@ f_4957:
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_554:
+    jmp     .l_552
+.l_564:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22226,12 +23300,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_555
+    jz     .l_565
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8470
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8471
@@ -22248,8 +23322,8 @@ f_4957:
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_555:
+    jmp     .l_552
+.l_565:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22269,12 +23343,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_556
+    jz     .l_566
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8474
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8475
@@ -22291,8 +23365,8 @@ f_4957:
     ; OP_CALL_FN
     call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_556:
+    jmp     .l_552
+.l_566:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22312,12 +23386,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_557
+    jz     .l_567
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8478
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8479
@@ -22338,8 +23412,8 @@ f_4957:
     ; OP_CALL_FN
     call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_557:
+    jmp     .l_552
+.l_567:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22359,12 +23433,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_558
+    jz     .l_568
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8482
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8483
@@ -22380,8 +23454,8 @@ f_4957:
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_558:
+    jmp     .l_552
+.l_568:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22401,29 +23475,21 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_559
+    jz     .l_569
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8485
-    ; OP_CALL_FN
-    call f_1216
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8486
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_CALL_FN
-    call f_530
-    ; OP_CALL_FN
-    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8487
     ; OP_CALL_FN
-    call f_1216
+    call f_4169
     ; OP_JMP
-    jmp     .l_542
-.l_559:
+    jmp     .l_552
+.l_569:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22443,7 +23509,7 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_560
+    jz     .l_570
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8488
@@ -22456,8 +23522,8 @@ f_4957:
     ; OP_CALL_FN
     call f_4169
     ; OP_JMP
-    jmp     .l_542
-.l_560:
+    jmp     .l_552
+.l_570:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22477,7 +23543,7 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_561
+    jz     .l_571
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8491
@@ -22490,8 +23556,8 @@ f_4957:
     ; OP_CALL_FN
     call f_4169
     ; OP_JMP
-    jmp     .l_542
-.l_561:
+    jmp     .l_552
+.l_571:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22511,21 +23577,40 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_562
+    jz     .l_572
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8494
+    ; OP_CALL_FN
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8495
+    ; OP_CALL_FN
+    call f_3174
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8496
     ; OP_CALL_FN
-    call f_4169
+    call f_3174
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8497
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8498
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8499
+    ; OP_CALL_FN
+    call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_562:
+    jmp     .l_552
+.l_572:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22545,40 +23630,21 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_563
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8497
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8498
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8499
-    ; OP_CALL_FN
-    call f_3174
+    jz     .l_573
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8500
-    ; OP_CALL_FN
-    call f_1216
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8501
-    ; OP_CALL_FN
-    call f_1216
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8502
     ; OP_CALL_FN
-    call f_7900
+    call f_4169
     ; OP_JMP
-    jmp     .l_542
-.l_563:
+    jmp     .l_552
+.l_573:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22598,7 +23664,7 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_564
+    jz     .l_574
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8503
@@ -22611,8 +23677,8 @@ f_4957:
     ; OP_CALL_FN
     call f_4169
     ; OP_JMP
-    jmp     .l_542
-.l_564:
+    jmp     .l_552
+.l_574:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22632,7 +23698,7 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_565
+    jz     .l_575
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8506
@@ -22645,8 +23711,8 @@ f_4957:
     ; OP_CALL_FN
     call f_4169
     ; OP_JMP
-    jmp     .l_542
-.l_565:
+    jmp     .l_552
+.l_575:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22666,7 +23732,7 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_566
+    jz     .l_576
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8509
@@ -22679,8 +23745,8 @@ f_4957:
     ; OP_CALL_FN
     call f_4169
     ; OP_JMP
-    jmp     .l_542
-.l_566:
+    jmp     .l_552
+.l_576:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22700,7 +23766,7 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_567
+    jz     .l_577
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8512
@@ -22713,8 +23779,8 @@ f_4957:
     ; OP_CALL_FN
     call f_4169
     ; OP_JMP
-    jmp     .l_542
-.l_567:
+    jmp     .l_552
+.l_577:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22734,7 +23800,7 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_568
+    jz     .l_578
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8515
@@ -22747,8 +23813,8 @@ f_4957:
     ; OP_CALL_FN
     call f_4169
     ; OP_JMP
-    jmp     .l_542
-.l_568:
+    jmp     .l_552
+.l_578:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22768,21 +23834,30 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_569
+    jz     .l_579
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8518
+    ; OP_CALL_FN
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8519
+    ; OP_CALL_FN
+    call f_3174
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8520
     ; OP_CALL_FN
-    call f_4169
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8521
+    ; OP_CALL_FN
+    call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_569:
+    jmp     .l_552
+.l_579:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22802,30 +23877,45 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_570
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8521
-    ; OP_CALL_FN
-    call f_1216
+    jz     .l_580
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8522
     ; OP_CALL_FN
-    call f_3174
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8523
     ; OP_CALL_FN
-    call f_1216
+    call f_3174
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8524
     ; OP_CALL_FN
+    call f_3174
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8525
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8526
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8527
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8528
+    ; OP_CALL_FN
     call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_570:
+    jmp     .l_552
+.l_580:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22845,45 +23935,45 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_571
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8525
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8526
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8527
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8528
-    ; OP_CALL_FN
-    call f_1216
+    jz     .l_581
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8529
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8530
     ; OP_CALL_FN
-    call f_1216
+    call f_3174
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8531
     ; OP_CALL_FN
+    call f_3174
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8532
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8533
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8534
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8535
+    ; OP_CALL_FN
     call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_571:
+    jmp     .l_552
+.l_581:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22903,45 +23993,45 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_572
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8532
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8533
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8534
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8535
-    ; OP_CALL_FN
-    call f_1216
+    jz     .l_582
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8536
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8537
     ; OP_CALL_FN
-    call f_1216
+    call f_3174
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8538
     ; OP_CALL_FN
+    call f_3174
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8539
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8540
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8541
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8542
+    ; OP_CALL_FN
     call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_572:
+    jmp     .l_552
+.l_582:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -22961,45 +24051,24 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_573
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8539
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8540
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8541
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8542
-    ; OP_CALL_FN
-    call f_1216
+    jz     .l_583
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8543
     ; OP_CALL_FN
     call f_1216
+    ; OP_CALL_FN
+    call f_530
+    ; OP_CALL_FN
+    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8544
     ; OP_CALL_FN
     call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8545
-    ; OP_CALL_FN
-    call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_573:
+    jmp     .l_552
+.l_583:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -23019,7 +24088,12 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_574
+    jz     .l_584
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8545
+    ; OP_CALL_FN
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8546
@@ -23035,8 +24109,8 @@ f_4957:
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_574:
+    jmp     .l_552
+.l_584:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -23056,15 +24130,25 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_575
+    jz     .l_585
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8548
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8549
+    ; OP_CALL_FN
+    call f_3174
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8550
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8551
     ; OP_CALL_FN
     call f_1216
     ; OP_CALL_FN
@@ -23073,12 +24157,12 @@ f_4957:
     call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8550
+    mov     qword [r12], b_8552
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_575:
+    jmp     .l_552
+.l_585:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -23098,59 +24182,22 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_576
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8551
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8552
-    ; OP_CALL_FN
-    call f_3174
+    jz     .l_586
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8553
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8554
     ; OP_CALL_FN
-    call f_1216
-    ; OP_CALL_FN
-    call f_530
-    ; OP_CALL_FN
-    call f_778
+    call f_3174
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8555
     ; OP_CALL_FN
-    call f_1216
-    ; OP_JMP
-    jmp     .l_542
-.l_576:
-    ; OP_CALL_FN
-    call f_537
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 35
-    ; OP_EQ
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    sete    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_577
+    call f_3174
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8556
@@ -23160,12 +24207,16 @@ f_4957:
     sub     r12, 8
     mov     qword [r12], b_8557
     ; OP_CALL_FN
-    call f_3174
+    call f_1216
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8558
     ; OP_CALL_FN
-    call f_3174
+    call f_1216
+    ; OP_CALL_FN
+    call f_530
+    ; OP_CALL_FN
+    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8559
@@ -23214,29 +24265,29 @@ f_4957:
     mov     qword [r12], b_8566
     ; OP_CALL_FN
     call f_1216
+    ; OP_CALL_FN
+    call f_530
+    ; OP_CALL_FN
+    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8567
     ; OP_CALL_FN
     call f_1216
-    ; OP_CALL_FN
-    call f_530
-    ; OP_CALL_FN
-    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8568
     ; OP_CALL_FN
     call f_1216
+    ; OP_CALL_FN
+    call f_530
+    ; OP_CALL_FN
+    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8569
     ; OP_CALL_FN
     call f_1216
-    ; OP_CALL_FN
-    call f_530
-    ; OP_CALL_FN
-    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8570
@@ -23261,15 +24312,15 @@ f_4957:
     mov     qword [r12], b_8573
     ; OP_CALL_FN
     call f_1216
+    ; OP_CALL_FN
+    call f_530
+    ; OP_CALL_FN
+    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8574
     ; OP_CALL_FN
     call f_1216
-    ; OP_CALL_FN
-    call f_530
-    ; OP_CALL_FN
-    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8575
@@ -23294,15 +24345,15 @@ f_4957:
     mov     qword [r12], b_8578
     ; OP_CALL_FN
     call f_1216
+    ; OP_CALL_FN
+    call f_530
+    ; OP_CALL_FN
+    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8579
     ; OP_CALL_FN
     call f_1216
-    ; OP_CALL_FN
-    call f_530
-    ; OP_CALL_FN
-    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8580
@@ -23327,15 +24378,15 @@ f_4957:
     mov     qword [r12], b_8583
     ; OP_CALL_FN
     call f_1216
+    ; OP_CALL_FN
+    call f_530
+    ; OP_CALL_FN
+    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8584
     ; OP_CALL_FN
     call f_1216
-    ; OP_CALL_FN
-    call f_530
-    ; OP_CALL_FN
-    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8585
@@ -23346,20 +24397,20 @@ f_4957:
     mov     qword [r12], b_8586
     ; OP_CALL_FN
     call f_1216
-    ; OP_CALL_FN
-    call f_530
-    ; OP_CALL_FN
-    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8587
     ; OP_CALL_FN
-    call f_1216
+    call f_7900
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8588
     ; OP_CALL_FN
     call f_1216
+    ; OP_CALL_FN
+    call f_530
+    ; OP_CALL_FN
+    call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8589
@@ -23369,16 +24420,16 @@ f_4957:
     sub     r12, 8
     mov     qword [r12], b_8590
     ; OP_CALL_FN
-    call f_7900
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8591
-    ; OP_CALL_FN
     call f_1216
     ; OP_CALL_FN
     call f_530
     ; OP_CALL_FN
     call f_778
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8591
+    ; OP_CALL_FN
+    call f_1216
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8592
@@ -23388,43 +24439,82 @@ f_4957:
     sub     r12, 8
     mov     qword [r12], b_8593
     ; OP_CALL_FN
-    call f_1216
-    ; OP_CALL_FN
-    call f_530
-    ; OP_CALL_FN
-    call f_778
+    call f_7900
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8594
     ; OP_CALL_FN
     call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8595
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8596
-    ; OP_CALL_FN
-    call f_7900
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8597
-    ; OP_CALL_FN
-    call f_1216
     ; OP_CALL_FN
     call f_530
     ; OP_CALL_FN
     call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8598
+    mov     qword [r12], b_8595
     ; OP_CALL_FN
     call f_1216
     ; OP_JMP
-    jmp     .l_542
-.l_577:
+    jmp     .l_552
+.l_586:
+    ; OP_CALL_FN
+    call f_537
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 35
+    ; OP_EQ
+    mov     rbx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    cmp     rax, rbx
+    sete    al
+    movzx   rax, al
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_587
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8596
+    ; OP_CALL_FN
+    call f_1171
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8597
+    ; OP_CALL_FN
+    call f_3174
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8598
+    ; OP_CALL_FN
+    call f_3174
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8599
+    ; OP_CALL_FN
+    call f_3174
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8600
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8601
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8602
+    ; OP_CALL_FN
+    call f_7900
+    ; OP_JMP
+    jmp     .l_552
+.l_587:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -23444,45 +24534,45 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_578
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8599
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8600
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8601
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8602
-    ; OP_CALL_FN
-    call f_3174
+    jz     .l_588
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8603
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8604
     ; OP_CALL_FN
-    call f_1216
+    call f_3174
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8605
     ; OP_CALL_FN
+    call f_3174
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8606
+    ; OP_CALL_FN
+    call f_3174
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8607
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8608
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8609
+    ; OP_CALL_FN
     call f_7900
     ; OP_JMP
-    jmp     .l_542
-.l_578:
+    jmp     .l_552
+.l_588:
     ; OP_CALL_FN
     call f_537
     ; OP_PUSH_INT
@@ -23502,65 +24592,22 @@ f_4957:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_579
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8606
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8607
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8608
-    ; OP_CALL_FN
-    call f_3174
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8609
-    ; OP_CALL_FN
-    call f_3174
+    jz     .l_589
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8610
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8611
     ; OP_CALL_FN
-    call f_1216
+    call f_3174
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8612
     ; OP_CALL_FN
-    call f_7900
-    ; OP_JMP
-    jmp     .l_542
-.l_579:
-    ; OP_CALL_FN
-    call f_537
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 38
-    ; OP_EQ
-    mov     rbx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    cmp     rax, rbx
-    sete    al
-    movzx   rax, al
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_580
+    call f_1216
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8613
@@ -23570,28 +24617,13 @@ f_4957:
     sub     r12, 8
     mov     qword [r12], b_8614
     ; OP_CALL_FN
-    call f_3174
+    call f_7900
+    ; OP_JMP
+    jmp     .l_552
+.l_589:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8615
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8616
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8617
-    ; OP_CALL_FN
-    call f_7900
-    ; OP_JMP
-    jmp     .l_542
-.l_580:
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8618
     ; OP_CALL_FN
     call f_7658
     ; OP_CALL_FN
@@ -23611,7 +24643,7 @@ f_4957:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_542:
+.l_552:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 9
@@ -23630,6 +24662,8 @@ f_4957:
 f_5007:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_5695
     ; OP_PUSH_INT
@@ -23706,6 +24740,8 @@ f_5007:
 f_5070:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -23811,11 +24847,30 @@ f_5070:
 f_5080:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8639
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8640
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8641
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_CALL_FN
+    call f_8087
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8642
     ; OP_CALL_FN
-    call f_1216
+    call f_1171
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8643
@@ -23826,11 +24881,19 @@ f_5080:
     mov     qword [r12], b_8644
     ; OP_CALL_FN
     call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_1150
     ; OP_CALL_FN
-    call f_8087
+    call f_1216
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8645
+    ; OP_CALL_FN
+    call f_1216
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_450
     ; OP_CALL_FN
     call f_1216
     ; OP_PUSH_BUF
@@ -23845,19 +24908,9 @@ f_5080:
     call f_1216
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_1150
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
     mov     qword [r12], b_8648
     ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_450
-    ; OP_CALL_FN
-    call f_1216
+    call f_7900
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8649
@@ -23866,21 +24919,6 @@ f_5080:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8650
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8651
-    ; OP_CALL_FN
-    call f_7900
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8652
-    ; OP_CALL_FN
-    call f_1216
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_8653
     ; OP_CALL_FN
     call f_7900
     ; OP_PUSH_BUF
@@ -23901,13 +24939,13 @@ f_5080:
     call f_4227
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8654
+    mov     qword [r12], b_8651
     ; OP_CALL_FN
     call f_1216
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
-.l_602:
+.l_615:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -23927,7 +24965,7 @@ f_5080:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_603
+    jz     .l_616
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -23975,15 +25013,15 @@ f_5080:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_605
+    jz     .l_618
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
     call f_4460
     ; OP_JMP
-    jmp     .l_604
-.l_605:
-.l_604:
+    jmp     .l_617
+.l_618:
+.l_617:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -23996,21 +25034,21 @@ f_5080:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_602
-.l_603:
+    jmp     .l_615
+.l_616:
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
     call f_1518
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8655
+    mov     qword [r12], b_8652
     ; OP_CALL_FN
     call f_1216
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
-.l_606:
+.l_619:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -24030,7 +25068,7 @@ f_5080:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_607
+    jz     .l_620
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -24078,15 +25116,15 @@ f_5080:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_609
+    jz     .l_622
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
     call f_7709
     ; OP_JMP
-    jmp     .l_608
-.l_609:
-.l_608:
+    jmp     .l_621
+.l_622:
+.l_621:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -24099,13 +25137,13 @@ f_5080:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_606
-.l_607:
+    jmp     .l_619
+.l_620:
     ; OP_DROP
     add     r12, 8
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8656
+    mov     qword [r12], b_8653
     ; OP_CALL_FN
     call f_1216
     ; OP_PUSH_BUF
@@ -24115,7 +25153,7 @@ f_5080:
     call f_1216
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8657
+    mov     qword [r12], b_8654
     ; OP_CALL_FN
     call f_1216
     ; OP_RET
@@ -24125,6 +25163,8 @@ f_5080:
 f_5129:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -24217,6 +25257,8 @@ f_5129:
 f_5303:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -24231,14 +25273,14 @@ f_5303:
     add     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .rl_88:
+    .rl_86:
     cmp     rbx, r12
-    je      .rl_89
+    je      .rl_87
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .rl_88
-    .rl_89:
+    jmp     .rl_86
+    .rl_87:
     mov     [r12], rcx
     ; OP_CALL_FN
     call f_4482
@@ -24256,10 +25298,57 @@ f_5303:
     ; OP_RET
     leave
     ret
+; strlen
+f_5390:
+    push    rbp
+    mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
+    ; OP_CALL_FN
+    call f_2068
+.l_27:
+    ; OP_CALL_FN
+    call f_2068
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_28
+    ; OP_PUSH_INT
+    sub     r12, 8
+    mov     qword [r12], 1
+    ; OP_ADD
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    add 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_JMP
+    jmp     .l_27
+.l_28:
+    ; OP_CALL_FN
+    call f_2960
+    ; OP_SUB
+    mov     rcx, qword [r12]
+    add     r12, 8
+    mov     rax, qword [r12]
+    add     r12, 8
+    sub 	rax, rcx
+    sub     r12, 8
+    mov     qword [r12], rax
+    ; OP_RET
+    leave
+    ret
 ; call_fetchc
 f_5407:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8272
@@ -24277,7 +25366,7 @@ f_5407:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_288
+    jz     .l_294
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -24294,9 +25383,9 @@ f_5407:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_287
-.l_288:
-.l_287:
+    jmp     .l_293
+.l_294:
+.l_293:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8274
@@ -24329,6 +25418,8 @@ f_5407:
 f_5436:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
 .l_154:
     ; OP_CALL_FN
     call f_702
@@ -24351,6 +25442,8 @@ f_5436:
 f_5471:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -24518,7 +25611,7 @@ f_5477:
     add 	rax, rcx
     sub     r12, 8
     mov     qword [r12], rax
-.l_526:
+.l_532:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_VAR
@@ -24561,7 +25654,7 @@ f_5477:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_527
+    jz     .l_533
     ; OP_PUSH_VAR
     lea     rax, [rbp - 1]
     sub     r12, 8
@@ -24710,7 +25803,7 @@ f_5477:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_529
+    jz     .l_535
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -24736,9 +25829,9 @@ f_5477:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_528
-.l_529:
-.l_528:
+    jmp     .l_534
+.l_535:
+.l_534:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
@@ -24747,8 +25840,8 @@ f_5477:
     ; OP_CALL_FN
     call f_2253
     ; OP_JMP
-    jmp     .l_526
-.l_527:
+    jmp     .l_532
+.l_533:
     ; OP_DROP
     add     r12, 8
     ; OP_PUSH_BUF
@@ -24768,7 +25861,7 @@ f_5477:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_531
+    jz     .l_537
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -24785,9 +25878,9 @@ f_5477:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_530
-.l_531:
-.l_530:
+    jmp     .l_536
+.l_537:
+.l_536:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8378
@@ -24840,8 +25933,6 @@ f_5477:
     mov     qword [r12], b_1640
     ; OP_CALL_FN
     call f_4482
-    ; OP_DEALLOC
-    add     rsp, 1
     ; OP_RET
     leave
     ret
@@ -24849,6 +25940,8 @@ f_5477:
 f_5525:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -24883,6 +25976,8 @@ f_5525:
 f_5605:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2292
     ; OP_CALL_FN
@@ -24894,6 +25989,8 @@ f_5605:
 f_5695:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -24910,6 +26007,8 @@ f_5695:
 f_5724:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -24933,6 +26032,8 @@ f_5724:
 f_5881:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_5622
@@ -25003,6 +26104,8 @@ f_5881:
 f_5916:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 2
@@ -25113,184 +26216,12 @@ f_5916:
     ; OP_RET
     leave
     ret
-; str_n_cmp
-f_5949:
-    push    rbp
-    mov     rbp, rsp
-    ; OP_ALLOC
-    sub     rsp, 8
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 8]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_STORE
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     [rax], rcx
-.l_35:
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_3343
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_3343
-    ; OP_OR
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    or 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_7060
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 8]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_FETCH
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rbx, qword [rax]
-    sub     r12, 8
-    mov     qword [r12], rbx
-    ; OP_CALL_FN
-    call f_7060
-    ; OP_AND
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    and 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_36
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_3343
-    ; OP_CALL_FN
-    call f_5695
-    ; OP_CALL_FN
-    call f_3343
-    ; OP_SUB
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    sub 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2068
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_38
-    ; OP_CALL_FN
-    call f_738
-    ; OP_CALL_FN
-    call f_738
-    ; OP_DROP
-    add     r12, 8
-    ; OP_DROP
-    add     r12, 8
-    ; OP_DEALLOC
-    add     rsp, 8
-    ; OP_RET
-    leave
-    ret
-    ; OP_JMP
-    jmp     .l_37
-.l_38:
-.l_37:
-    ; OP_DROP
-    add     r12, 8
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_ADD
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    add 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_CALL_FN
-    call f_2960
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 8]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_FETCH
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rbx, qword [rax]
-    sub     r12, 8
-    mov     qword [r12], rbx
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 1
-    ; OP_SUB
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     rax, qword [r12]
-    add     r12, 8
-    sub 	rax, rcx
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_PUSH_VAR
-    lea     rax, [rbp - 8]
-    sub     r12, 8
-    mov     qword [r12], rax
-    ; OP_STORE
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, qword [r12]
-    add     r12, 8
-    mov     [rax], rcx
-    ; OP_JMP
-    jmp     .l_35
-.l_36:
-    ; OP_DROP
-    add     r12, 8
-    ; OP_DROP
-    add     r12, 8
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 0
-    ; OP_DEALLOC
-    add     rsp, 8
-    ; OP_RET
-    leave
-    ret
 ; parse_macro_directive
 f_6036:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -25368,7 +26299,7 @@ f_6036:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_202
+    jz     .l_210
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -25385,9 +26316,9 @@ f_6036:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_201
-.l_202:
-.l_201:
+    jmp     .l_209
+.l_210:
+.l_209:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -25416,7 +26347,7 @@ f_6036:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_204
+    jz     .l_212
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -25442,9 +26373,9 @@ f_6036:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_203
-.l_204:
-.l_203:
+    jmp     .l_211
+.l_212:
+.l_211:
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -25607,8 +26538,8 @@ f_6036:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_206
-.l_207:
+    jz     .l_214
+.l_215:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -25650,7 +26581,7 @@ f_6036:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_208
+    jz     .l_216
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -25681,7 +26612,7 @@ f_6036:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_210
+    jz     .l_218
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -25707,12 +26638,12 @@ f_6036:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_209
-.l_210:
-.l_209:
+    jmp     .l_217
+.l_218:
+.l_217:
     ; OP_JMP
-    jmp     .l_207
-.l_208:
+    jmp     .l_215
+.l_216:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -25725,9 +26656,9 @@ f_6036:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_205
-.l_206:
-.l_205:
+    jmp     .l_213
+.l_214:
+.l_213:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -25758,7 +26689,7 @@ f_6036:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_212
+    jz     .l_220
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -25784,9 +26715,9 @@ f_6036:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_211
-.l_212:
-.l_211:
+    jmp     .l_219
+.l_220:
+.l_219:
     ; OP_CALL_FN
     call f_4371
     ; OP_CALL_FN
@@ -25798,6 +26729,8 @@ f_6036:
 f_6059:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -25943,6 +26876,8 @@ f_6059:
 f_6073:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_424
@@ -26108,6 +27043,8 @@ f_6073:
 f_6356:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8269
@@ -26125,7 +27062,7 @@ f_6356:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_286
+    jz     .l_292
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -26142,9 +27079,9 @@ f_6356:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_285
-.l_286:
-.l_285:
+    jmp     .l_291
+.l_292:
+.l_291:
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8271
@@ -26177,6 +27114,8 @@ f_6356:
 f_6448:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_5695
     ; OP_CALL_FN
@@ -26220,6 +27159,8 @@ f_6448:
 f_6577:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -26287,6 +27228,8 @@ f_6577:
 f_6606:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8392
@@ -26309,7 +27252,9 @@ f_6606:
 f_6629:
     push    rbp
     mov     rbp, rsp
-.l_385:
+    ; OP_ALLOC
+    sub     rsp, 0
+.l_391:
     ; OP_CALL_FN
     call f_702
     ; OP_PUSH_INT
@@ -26329,7 +27274,7 @@ f_6629:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_386
+    jz     .l_392
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -26385,7 +27330,7 @@ f_6629:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_388
+    jz     .l_394
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -26402,9 +27347,9 @@ f_6629:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_387
-.l_388:
-.l_387:
+    jmp     .l_393
+.l_394:
+.l_393:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -26417,66 +27362,8 @@ f_6629:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_385
-.l_386:
-    ; OP_RET
-    leave
-    ret
-; scope_dealloc
-f_6666:
-    push    rbp
-    mov     rbp, rsp
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_6292
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 8
-    ; OP_CALL_FN
-    call f_3311
-    ; OP_FETCH
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rbx, qword [rax]
-    sub     r12, 8
-    mov     qword [r12], rbx
-    ; OP_JZ
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz     .l_250
-    ; OP_PUSH_BUF
-    sub     r12, 8
-    mov     qword [r12], b_6292
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 8
-    ; OP_CALL_FN
-    call f_3311
-    ; OP_FETCH
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rbx, qword [rax]
-    sub     r12, 8
-    mov     qword [r12], rbx
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 17
-    ; OP_PUSH_INT
-    sub     r12, 8
-    mov     qword [r12], 3
-    ; OP_PICK
-    mov     rax, qword [r12]
-    add     r12, 8
-    mov     rcx, [r12 + rax*8]
-    sub     r12, 8
-    mov     qword [r12], rcx
-    ; OP_CALL_FN
-    call f_4482
-    ; OP_JMP
-    jmp     .l_249
-.l_250:
-.l_249:
+    jmp     .l_391
+.l_392:
     ; OP_RET
     leave
     ret
@@ -26484,6 +27371,8 @@ f_6666:
 f_6699:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_738
     ; OP_MUL
@@ -26520,6 +27409,8 @@ f_6699:
 f_6757:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_FETCH
     mov     rax, qword [r12]
     add     r12, 8
@@ -26535,6 +27426,8 @@ f_6757:
 f_6775:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 8
@@ -26576,6 +27469,8 @@ f_6775:
 f_6918:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -26599,7 +27494,7 @@ f_6918:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_258
+    jz     .l_264
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -26623,9 +27518,9 @@ f_6918:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_257
-.l_258:
-.l_257:
+    jmp     .l_263
+.l_264:
+.l_263:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -26640,7 +27535,7 @@ f_6918:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_260
+    jz     .l_266
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -26664,9 +27559,9 @@ f_6918:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_259
-.l_260:
-.l_259:
+    jmp     .l_265
+.l_266:
+.l_265:
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -26681,7 +27576,7 @@ f_6918:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_262
+    jz     .l_268
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -26705,9 +27600,9 @@ f_6918:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_261
-.l_262:
-.l_261:
+    jmp     .l_267
+.l_268:
+.l_267:
     ; OP_RET
     leave
     ret
@@ -26715,6 +27610,8 @@ f_6918:
 f_6949:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_1426
     ; OP_CALL_FN
@@ -26726,6 +27623,8 @@ f_6949:
 f_7060:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_JZ
     mov     rax, qword [r12]
     add     r12, 8
@@ -26748,6 +27647,8 @@ f_7060:
 f_7294:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -26771,6 +27672,8 @@ f_7294:
 f_7393:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -26848,7 +27751,7 @@ f_7393:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_218
+    jz     .l_226
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -26865,9 +27768,9 @@ f_7393:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_217
-.l_218:
-.l_217:
+    jmp     .l_225
+.l_226:
+.l_225:
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -26889,7 +27792,7 @@ f_7393:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_220
+    jz     .l_228
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -26915,9 +27818,9 @@ f_7393:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_219
-.l_220:
-.l_219:
+    jmp     .l_227
+.l_228:
+.l_227:
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -27032,12 +27935,14 @@ f_7393:
     ; OP_RET
     leave
     ret
-; str_eq
-f_7618:
+; strneq
+f_7571:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
-    call f_3466
+    call f_1915
     ; OP_CALL_FN
     call f_4573
     ; OP_RET
@@ -27047,6 +27952,8 @@ f_7618:
 f_7642:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_7675
@@ -27071,6 +27978,8 @@ f_7642:
 f_7658:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
 .l_15:
     ; OP_CALL_FN
     call f_2068
@@ -27110,9 +28019,11 @@ f_7658:
 f_7709:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8638
+    mov     qword [r12], b_8635
     ; OP_CALL_FN
     call f_1216
     ; OP_CALL_FN
@@ -27121,7 +28032,7 @@ f_7709:
     call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8639
+    mov     qword [r12], b_8636
     ; OP_CALL_FN
     call f_1216
     ; OP_PUSH_BUF
@@ -27153,7 +28064,17 @@ f_7709:
     call f_778
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8640
+    mov     qword [r12], b_6128
+    ; OP_CALL_FN
+    call f_3343
+    ; OP_JZ
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz     .l_614
+    ; OP_PUSH_BUF
+    sub     r12, 8
+    mov     qword [r12], b_8637
     ; OP_CALL_FN
     call f_1216
     ; OP_CALL_FN
@@ -27196,9 +28117,13 @@ f_7709:
     mov     qword [r12], rbx
     ; OP_CALL_FN
     call f_1216
+    ; OP_JMP
+    jmp     .l_613
+.l_614:
+.l_613:
     ; OP_PUSH_BUF
     sub     r12, 8
-    mov     qword [r12], b_8641
+    mov     qword [r12], b_8638
     ; OP_CALL_FN
     call f_1216
     ; OP_RET
@@ -27208,6 +28133,8 @@ f_7709:
 f_7855:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_2068
     ; OP_CALL_FN
@@ -27239,6 +28166,8 @@ f_7855:
 f_7866:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_FETCH
     mov     rax, qword [r12]
     add     r12, 8
@@ -27254,6 +28183,8 @@ f_7866:
 f_7900:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_8382
@@ -27298,6 +28229,8 @@ f_7900:
 f_7901:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -27323,12 +28256,12 @@ f_7901:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_503
+    jz     .l_509
     ; OP_CALL_FN
     call f_3280
     ; OP_JMP
-    jmp     .l_502
-.l_503:
+    jmp     .l_508
+.l_509:
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -27354,7 +28287,7 @@ f_7901:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_504
+    jz     .l_510
     ; OP_PUSH_BUF
     sub     r12, 8
     mov     qword [r12], b_5622
@@ -27364,8 +28297,8 @@ f_7901:
     ; OP_CALL_FN
     call f_4441
     ; OP_JMP
-    jmp     .l_502
-.l_504:
+    jmp     .l_508
+.l_510:
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
@@ -27392,7 +28325,7 @@ f_7901:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_502:
+.l_508:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 7
@@ -27404,14 +28337,14 @@ f_7901:
     add     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .rl_86:
+    .rl_84:
     cmp     rbx, r12
-    je      .rl_87
+    je      .rl_85
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .rl_86
-    .rl_87:
+    jmp     .rl_84
+    .rl_85:
     mov     [r12], rcx
     ; OP_CALL_FN
     call f_4482
@@ -27433,6 +28366,8 @@ f_7901:
 f_7931:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -27458,7 +28393,7 @@ f_7931:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_452
+    jz     .l_458
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -27480,14 +28415,14 @@ f_7931:
     add     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .rl_78:
+    .rl_76:
     cmp     rbx, r12
-    je      .rl_79
+    je      .rl_77
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .rl_78
-    .rl_79:
+    jmp     .rl_76
+    .rl_77:
     mov     [r12], rcx
     ; OP_CALL_FN
     call f_4482
@@ -27506,9 +28441,9 @@ f_7931:
     leave
     ret
     ; OP_JMP
-    jmp     .l_451
-.l_452:
-.l_451:
+    jmp     .l_457
+.l_458:
+.l_457:
     ; OP_CALL_FN
     call f_695
     ; OP_CALL_FN
@@ -27532,7 +28467,7 @@ f_7931:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_454
+    jz     .l_460
     ; OP_CALL_FN
     call f_4371
     ; OP_CALL_FN
@@ -27551,8 +28486,8 @@ f_7931:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_453
-.l_454:
+    jmp     .l_459
+.l_460:
     ; OP_DROP
     add     r12, 8
     ; OP_CALL_FN
@@ -27581,7 +28516,7 @@ f_7931:
     add     r12, 8
     mov     eax, 60
     syscall
-.l_453:
+.l_459:
     ; OP_RET
     leave
     ret
@@ -27589,6 +28524,8 @@ f_7931:
 f_8058:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_CALL_FN
     call f_695
     ; OP_PUSH_BUF
@@ -27603,7 +28540,7 @@ f_8058:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_264
+    jz     .l_270
     ; OP_CALL_FN
     call f_2380
     ; OP_PUSH_BUF
@@ -27627,9 +28564,9 @@ f_8058:
     mov     eax, 60
     syscall
     ; OP_JMP
-    jmp     .l_263
-.l_264:
-.l_263:
+    jmp     .l_269
+.l_270:
+.l_269:
     ; OP_CALL_FN
     call f_6918
     ; OP_RET
@@ -27639,6 +28576,8 @@ f_8058:
 f_8070:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 25
@@ -27795,10 +28734,12 @@ f_8070:
 f_8087:
     push    rbp
     mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 0
-.l_538:
+.l_548:
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_INT
@@ -27818,7 +28759,7 @@ f_8087:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_539
+    jz     .l_549
     ; OP_CALL_FN
     call f_2068
     ; OP_PUSH_BUF
@@ -27837,15 +28778,15 @@ f_8087:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz     .l_541
+    jz     .l_551
     ; OP_CALL_FN
     call f_1372
     ; OP_JMP
-    jmp     .l_540
-.l_541:
+    jmp     .l_550
+.l_551:
     ; OP_DROP
     add     r12, 8
-.l_540:
+.l_550:
     ; OP_PUSH_INT
     sub     r12, 8
     mov     qword [r12], 1
@@ -27858,10 +28799,23 @@ f_8087:
     sub     r12, 8
     mov     qword [r12], rax
     ; OP_JMP
-    jmp     .l_538
-.l_539:
+    jmp     .l_548
+.l_549:
     ; OP_DROP
     add     r12, 8
+    ; OP_RET
+    leave
+    ret
+; streq
+f_8132:
+    push    rbp
+    mov     rbp, rsp
+    ; OP_ALLOC
+    sub     rsp, 0
+    ; OP_CALL_FN
+    call f_4046
+    ; OP_CALL_FN
+    call f_4573
     ; OP_RET
     leave
     ret
@@ -28184,199 +29138,209 @@ section .data
     b_8482 db "    ; OP_ALLOC",10,0
     b_8483 db "    sub     rsp, ",0
     b_8484 db 10,0
-    b_8485 db "    ; OP_DEALLOC",10,0
-    b_8486 db "    add     rsp, ",0
-    b_8487 db 10,0
+    b_8485 db "rcx",0
+    b_8486 db "add",0
+    b_8487 db "OP_ADD",0
     b_8488 db "rcx",0
-    b_8489 db "add",0
-    b_8490 db "OP_ADD",0
+    b_8489 db "sub",0
+    b_8490 db "OP_SUB",0
     b_8491 db "rcx",0
-    b_8492 db "sub",0
-    b_8493 db "OP_SUB",0
-    b_8494 db "rcx",0
-    b_8495 db "imul",0
-    b_8496 db "OP_MUL",0
-    b_8497 db "    ; OP_DIV",10,0
-    b_8498 db "rbx",0
+    b_8492 db "imul",0
+    b_8493 db "OP_MUL",0
+    b_8494 db "    ; OP_DIV",10,0
+    b_8495 db "rbx",0
+    b_8496 db "rax",0
+    b_8497 db "    cqo",10,0
+    b_8498 db "    idiv    rbx",10,0
     b_8499 db "rax",0
-    b_8500 db "    cqo",10,0
-    b_8501 db "    idiv    rbx",10,0
-    b_8502 db "rax",0
+    b_8500 db "rcx",0
+    b_8501 db "and",0
+    b_8502 db "OP_AND",0
     b_8503 db "rcx",0
-    b_8504 db "and",0
-    b_8505 db "OP_AND",0
+    b_8504 db "or",0
+    b_8505 db "OP_OR",0
     b_8506 db "rcx",0
-    b_8507 db "or",0
-    b_8508 db "OP_OR",0
-    b_8509 db "rcx",0
-    b_8510 db "xor",0
-    b_8511 db "OP_XOR",0
+    b_8507 db "xor",0
+    b_8508 db "OP_XOR",0
+    b_8509 db "cl",0
+    b_8510 db "shl",0
+    b_8511 db "OP_SHL",0
     b_8512 db "cl",0
-    b_8513 db "shl",0
-    b_8514 db "OP_SHL",0
+    b_8513 db "shr",0
+    b_8514 db "OP_SHR",0
     b_8515 db "cl",0
-    b_8516 db "shr",0
-    b_8517 db "OP_SHR",0
-    b_8518 db "cl",0
-    b_8519 db "sar",0
-    b_8520 db "OP_SAR",0
-    b_8521 db "    ; OP_NOT",10,0
-    b_8522 db "rax",0
-    b_8523 db "    not     rax",10,0
+    b_8516 db "sar",0
+    b_8517 db "OP_SAR",0
+    b_8518 db "    ; OP_NOT",10,0
+    b_8519 db "rax",0
+    b_8520 db "    not     rax",10,0
+    b_8521 db "rax",0
+    b_8522 db "    ; OP_EQ",10,0
+    b_8523 db "rbx",0
     b_8524 db "rax",0
-    b_8525 db "    ; OP_EQ",10,0
-    b_8526 db "rbx",0
-    b_8527 db "rax",0
-    b_8528 db "    cmp     rax, rbx",10,0
-    b_8529 db "    sete    al",10,0
-    b_8530 db "    movzx   rax, al",10,0
+    b_8525 db "    cmp     rax, rbx",10,0
+    b_8526 db "    sete    al",10,0
+    b_8527 db "    movzx   rax, al",10,0
+    b_8528 db "rax",0
+    b_8529 db "    ; OP_GT",10,0
+    b_8530 db "rbx",0
     b_8531 db "rax",0
-    b_8532 db "    ; OP_GT",10,0
-    b_8533 db "rbx",0
-    b_8534 db "rax",0
-    b_8535 db "    cmp     rax, rbx",10,0
-    b_8536 db "    setg    al",10,0
-    b_8537 db "    movzx   rax, al",10,0
+    b_8532 db "    cmp     rax, rbx",10,0
+    b_8533 db "    setg    al",10,0
+    b_8534 db "    movzx   rax, al",10,0
+    b_8535 db "rax",0
+    b_8536 db "    ; OP_LT",10,0
+    b_8537 db "rbx",0
     b_8538 db "rax",0
-    b_8539 db "    ; OP_LT",10,0
-    b_8540 db "rbx",0
-    b_8541 db "rax",0
-    b_8542 db "    cmp     rax, rbx",10,0
-    b_8543 db "    setl    al",10,0
-    b_8544 db "    movzx   rax, al",10,0
-    b_8545 db "rax",0
-    b_8546 db ".l_",0
-    b_8547 db ":",10,0
-    b_8548 db "    ; OP_JMP",10,0
-    b_8549 db "    jmp     .l_",0
-    b_8550 db 10,0
-    b_8551 db "    ; OP_JZ",10,0
-    b_8552 db "rax",0
-    b_8553 db "    test    rax, rax",10,0
-    b_8554 db "    jz     .l_",0
-    b_8555 db 10,0
-    b_8556 db "    ; OP_FOPEN",10,0
-    b_8557 db "rsi",0
-    b_8558 db "rdi",0
-    b_8559 db "    mov     rax, 2",10,0
-    b_8560 db "    cmp     rsi, 0",10,0
-    b_8561 db "    je      .frl_",0
+    b_8539 db "    cmp     rax, rbx",10,0
+    b_8540 db "    setl    al",10,0
+    b_8541 db "    movzx   rax, al",10,0
+    b_8542 db "rax",0
+    b_8543 db ".l_",0
+    b_8544 db ":",10,0
+    b_8545 db "    ; OP_JMP",10,0
+    b_8546 db "    jmp     .l_",0
+    b_8547 db 10,0
+    b_8548 db "    ; OP_JZ",10,0
+    b_8549 db "rax",0
+    b_8550 db "    test    rax, rax",10,0
+    b_8551 db "    jz     .l_",0
+    b_8552 db 10,0
+    b_8553 db "    ; OP_FOPEN",10,0
+    b_8554 db "rsi",0
+    b_8555 db "rdi",0
+    b_8556 db "    mov     rax, 2",10,0
+    b_8557 db "    cmp     rsi, 0",10,0
+    b_8558 db "    je      .frl_",0
+    b_8559 db 10,0
+    b_8560 db "    cmp     rsi, 1",10,0
+    b_8561 db "    je      .fwl_",0
     b_8562 db 10,0
-    b_8563 db "    cmp     rsi, 1",10,0
-    b_8564 db "    je      .fwl_",0
+    b_8563 db "    cmp     rsi, 2",10,0
+    b_8564 db "    je      .fal_",0
     b_8565 db 10,0
-    b_8566 db "    cmp     rsi, 2",10,0
-    b_8567 db "    je      .fal_",0
-    b_8568 db 10,0
-    b_8569 db "    jmp     .ffl_",0
-    b_8570 db 10,0
-    b_8571 db "    .frl_",0
-    b_8572 db ":",10,0
-    b_8573 db "    mov     rsi, 0",10,0
-    b_8574 db "    jmp     .fdl_",0
-    b_8575 db 10,0
-    b_8576 db "    .fwl_",0
-    b_8577 db ":",10,0
-    b_8578 db "    mov     rsi, 577",10,0
-    b_8579 db "    jmp     .fdl_",0
-    b_8580 db 10,0
-    b_8581 db "    .fal_",0
-    b_8582 db ":",10,0
-    b_8583 db "    mov     rsi, 1025",10,0
-    b_8584 db "    jmp     .fdl_",0
-    b_8585 db 10,0
-    b_8586 db "    .fdl_",0
-    b_8587 db ":",10,0
-    b_8588 db "    mov     rdx, 420",10,0
-    b_8589 db "    syscall",10,0
-    b_8590 db "rax",0
-    b_8591 db "    jmp     .fel_",0
-    b_8592 db 10,0
-    b_8593 db "    .ffl_",0
-    b_8594 db ":",10,0
-    b_8595 db "    mov     rax, -1",10,0
-    b_8596 db "rax",0
-    b_8597 db "    .fel_",0
-    b_8598 db ":",10,0
-    b_8599 db "    ; OP_FREAD",10,0
-    b_8600 db "rdi",0
-    b_8601 db "rdx",0
-    b_8602 db "rsi",0
-    b_8603 db "    mov     rax, 0",10,0
-    b_8604 db "    syscall",10,0
-    b_8605 db "rax",0
-    b_8606 db "    ; OP_FWRITE",10,0
-    b_8607 db "rdi",0
-    b_8608 db "rdx",0
-    b_8609 db "rsi",0
-    b_8610 db "    mov     rax, 1",10,0
-    b_8611 db "    syscall",10,0
-    b_8612 db "rax",0
-    b_8613 db "    ; OP_FCLOSE",10,0
-    b_8614 db "rdi",0
-    b_8615 db "    mov     rax, 3",10,0
-    b_8616 db "    syscall",10,0
-    b_8617 db "rax",0
-    b_8618 db "ERROR: Invalid opcode of type ",0
-    b_8619 db 34,0
-    b_8620 db 34,",",0
-    b_8621 db ",",0
-    b_8622 db 34,",",0
-    b_8623 db "0",10,0
-    b_8624 db "    ; Inline Buffers",10,0
-    b_8625 db "    b_",0
-    b_8626 db " db ",0
-    b_8627 db "    ; ",0
+    b_8566 db "    jmp     .ffl_",0
+    b_8567 db 10,0
+    b_8568 db "    .frl_",0
+    b_8569 db ":",10,0
+    b_8570 db "    mov     rsi, 0",10,0
+    b_8571 db "    jmp     .fdl_",0
+    b_8572 db 10,0
+    b_8573 db "    .fwl_",0
+    b_8574 db ":",10,0
+    b_8575 db "    mov     rsi, 577",10,0
+    b_8576 db "    jmp     .fdl_",0
+    b_8577 db 10,0
+    b_8578 db "    .fal_",0
+    b_8579 db ":",10,0
+    b_8580 db "    mov     rsi, 1025",10,0
+    b_8581 db "    jmp     .fdl_",0
+    b_8582 db 10,0
+    b_8583 db "    .fdl_",0
+    b_8584 db ":",10,0
+    b_8585 db "    mov     rdx, 420",10,0
+    b_8586 db "    syscall",10,0
+    b_8587 db "rax",0
+    b_8588 db "    jmp     .fel_",0
+    b_8589 db 10,0
+    b_8590 db "    .ffl_",0
+    b_8591 db ":",10,0
+    b_8592 db "    mov     rax, -1",10,0
+    b_8593 db "rax",0
+    b_8594 db "    .fel_",0
+    b_8595 db ":",10,0
+    b_8596 db "    ; OP_FREAD",10,0
+    b_8597 db "rdi",0
+    b_8598 db "rdx",0
+    b_8599 db "rsi",0
+    b_8600 db "    mov     rax, 0",10,0
+    b_8601 db "    syscall",10,0
+    b_8602 db "rax",0
+    b_8603 db "    ; OP_FWRITE",10,0
+    b_8604 db "rdi",0
+    b_8605 db "rdx",0
+    b_8606 db "rsi",0
+    b_8607 db "    mov     rax, 1",10,0
+    b_8608 db "    syscall",10,0
+    b_8609 db "rax",0
+    b_8610 db "    ; OP_FCLOSE",10,0
+    b_8611 db "rdi",0
+    b_8612 db "    mov     rax, 3",10,0
+    b_8613 db "    syscall",10,0
+    b_8614 db "rax",0
+    b_8615 db "ERROR: Invalid opcode of type ",0
+    b_8616 db 34,0
+    b_8617 db 34,",",0
+    b_8618 db ",",0
+    b_8619 db 34,",",0
+    b_8620 db "0",10,0
+    b_8621 db "    ; Inline Buffers",10,0
+    b_8622 db "    b_",0
+    b_8623 db " db ",0
+    b_8624 db "    ; ",0
+    b_8625 db 10,0
+    b_8626 db "    b_",0
+    b_8627 db " db ",0
     b_8628 db 10,0
-    b_8629 db "    b_",0
-    b_8630 db " db ",0
-    b_8631 db 10,0
-    b_8632 db " dq ",0
-    b_8633 db 10,0
-    b_8634 db " db ",0
-    b_8635 db "        times ",0
-    b_8636 db " - ($ - b_",0
-    b_8637 db ") db 0",10,0
-    b_8638 db "    b_",0
-    b_8639 db " resb ",0
-    b_8640 db " ; ",0
-    b_8641 db 10,0
-    b_8642 db "BITS 64",10,0
-    b_8643 db "global _start",10,0
-    b_8644 db "section .text",10,0
-    b_8645 db "; start",10,0
-    b_8646 db "_start:",10,0
-    b_8647 db "    lea     ",0
-    b_8648 db ", [b_stack + ",0
-    b_8649 db "]",10,0
-    b_8650 db "    lea     rdi, [rsp + 8]",10,0
-    b_8651 db "rdi",0
-    b_8652 db "    mov     rdi, [rsp]",10,0
-    b_8653 db "rdi",0
-    b_8654 db "section .data",10,0
-    b_8655 db "section .bss",10,0
-    b_8656 db "    b_stack: resb ",0
-    b_8657 db " ; Stack Pointer",10,0
-    b_8658 db "Example:",10,0
-    b_8659 db 9,0
-    b_8660 db " ./src/main.4c ./target/output.asm x86_64-linux",0
-    b_8661 db "ERROR: Invalid target '",0
-    b_8662 db "'. Expected <architecture>-<OS>.",10,0
-    b_8663 db "x86_64",0
-    b_8664 db "x64",0
-    b_8665 db "ARCH_X86_64",0
-    b_8666 db "ERROR: Unrecognized architecture '",0
-    b_8667 db "'",10,0
-    b_8668 db "linux",0
-    b_8669 db "OS_LINUX",0
-    b_8670 db "windows",0
-    b_8671 db "OS_WINDOWS",0
-    b_8672 db "ERROR: Unrecognized OS '",0
-    b_8673 db "'",10,0
-    b_8674 db "Usage: ",0
-    b_8675 db " <source_file> <output_file> <platform>",10,0
-    b_8676 db "ERROR: File '",0
-    b_8677 db "' not found",10,0
+    b_8629 db " dq ",0
+    b_8630 db 10,0
+    b_8631 db " db ",0
+    b_8632 db "        times ",0
+    b_8633 db " - ($ - b_",0
+    b_8634 db ") db 0",10,0
+    b_8635 db "    b_",0
+    b_8636 db " resb ",0
+    b_8637 db " ; ",0
+    b_8638 db 10,0
+    b_8639 db "BITS 64",10,0
+    b_8640 db "global _start",10,0
+    b_8641 db "section .text",10,0
+    b_8642 db "; start",10,0
+    b_8643 db "_start:",10,0
+    b_8644 db "    lea     ",0
+    b_8645 db ", [b_stack + ",0
+    b_8646 db "]",10,0
+    b_8647 db "    lea     rdi, [rsp + 8]",10,0
+    b_8648 db "rdi",0
+    b_8649 db "    mov     rdi, [rsp]",10,0
+    b_8650 db "rdi",0
+    b_8651 db "section .data",10,0
+    b_8652 db "section .bss",10,0
+    b_8653 db "    b_stack: resb ",0
+    b_8654 db 10,0
+    b_8655 db "Example:",10,0
+    b_8656 db 9,0
+    b_8657 db " ./src/main.4c ./target/output.asm x86_64-linux",0
+    b_8658 db "ERROR: Invalid target '",0
+    b_8659 db "'. Expected <architecture>-<OS>.",10,0
+    b_8660 db "x86_64",0
+    b_8661 db "x64",0
+    b_8662 db "ARCH_X86_64",0
+    b_8663 db "ERROR: Unrecognized architecture '",0
+    b_8664 db "'",10,0
+    b_8665 db "linux",0
+    b_8666 db "OS_LINUX",0
+    b_8667 db "windows",0
+    b_8668 db "OS_WINDOWS",0
+    b_8669 db "ERROR: Unrecognized OS '",0
+    b_8670 db "'",10,0
+    b_8671 db "--debug",0
+    b_8672 db "-d",0
+    b_8673 db "--std",0
+    b_8674 db "ERROR: Unrecognized option '",0
+    b_8675 db "'",10,0
+    b_8676 db "Options:",10,0
+    b_8677 db 9,"-d, --debug",9,9,"compile with debug information",0
+    b_8678 db "Usage: ",0
+    b_8679 db " <source_file> <output_file> <platform> [options]",10,0
+    b_8680 db "./std/",0
+    b_8681 db "./src/",0
+    b_8682 db "./",0
+    b_8683 db 0
+    b_8684 db "ERROR: File '",0
+    b_8685 db "' not found",10,0
+    b_8686 db "WARNING: Compilation completed with a stack depth of ",0
+    b_8687 db 10,0
 section .bss
     b_104 resb 294920 ; fn_ops_mem
     b_424 resb 131080 ; strs_mem
@@ -28386,16 +29350,18 @@ section .bss
     b_1640 resb 152 ; start_ops_mem
     b_3738 resb 196584 ; macro_map
     b_4154 resb 8 ; file
+    b_4418 resb 136 ; dirs_mem
     b_4692 resb 196616 ; struct_fields_mem
     b_4950 resb 819208 ; out_toks_mem
     b_5135 resb 131056 ; fn_map
+    b_5137 resb 8 ; FN_ALLOC_SIZE
     b_5221 resb 131056 ; struct_map
     b_5451 resb 65544 ; inline_bufs
     b_5605 resb 8 ; ASM_ROLL_ID
     b_5622 resb 409550 ; buf_map
     b_6114 resb 8 ; argc
+    b_6128 resb 1 ; debug_mode
     b_6133 resb 8 ; argv
-    b_6292 resb 8200 ; alloc_stack
     b_6555 resb 8 ; ASM_LABEL_ID
     b_6691 resb 8 ; ASM_FOPEN_ID
     b_6876 resb 8 ; line
@@ -28404,4 +29370,4 @@ section .bss
     b_7675 resb 24 ; __std_buf
     b_7994 resb 8200 ; scope_stack
     b_8001 resb 131080 ; enum_variants_mem
-    b_stack: resb 65536 ; Stack Pointer
+    b_stack: resb 65536

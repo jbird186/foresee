@@ -1,4 +1,4 @@
-#use "std/core.4c"
+#use "core.4c"
 
 :is_digit {
     dup ('0' >=) swap ('9' <=) &

@@ -1,11 +1,12 @@
-#use "std/stdstr.4c"
-#use "src/config.4c"
-#use "src/token.4c"
-#use "src/op.4c"
+#use "stdstr.4c"
+#use "config.4c"
+#use "token.4c"
+#use "op.4c"
 
 $static int ASM_LABEL_ID
 $static int ASM_ROLL_ID
 $static int ASM_FOPEN_ID
+$static int FN_ALLOC_SIZE
 
 :parse_tok
 
@@ -15,13 +16,6 @@ $static int ASM_FOPEN_ID
         over swap parse_tok
     }
     %Token+
-}
-
-// ops_dest tok_ptr -- ops_dest tok_ptr
-:scope_dealloc {
-    if ALLOC_STACK stack_last@ {
-        ALLOC_STACK stack_last@ OKind.DEALLOC 3 pick op_push
-    }
 }
 
 // name -- name [idx, -1]
@@ -96,7 +90,7 @@ $static int ASM_FOPEN_ID
     viewtd rot
     $int sum: {0}
     while dup->StructField.name@ {
-        if over over->StructField.name@ str_eq {
+        if over over->StructField.name@ streq {
             // -- ops_dest tok_ptr fields_ptr
             nip swap %Token+ swap
             // -- ops_dest tok_ptr type_name field_size offset
@@ -194,7 +188,7 @@ $static int ASM_FOPEN_ID
 :parse_ident {
     ////////// Intrinsics //////////
     #macro define_intrinsic_opcode(data op_code alias) {
-        if viewtd alias str_eq {
+        if viewtd alias streq {
             // -- tok_ptr
             (data) op_code 3 roll op_push
             %Token+
@@ -205,8 +199,7 @@ $static int ASM_FOPEN_ID
     define_intrinsic_opcode(0 {OKind.NOOP} "__OP_NOOP")
     define_intrinsic_opcode(0 {OKind.EXIT} "__OP_EXIT")
     // Functions
-    if viewtd "__OP_RET" str_eq {
-        scope_dealloc
+    if viewtd "__OP_RET" streq {
         0 OKind.RET 3 roll op_push
         %Token+
         return
@@ -263,7 +256,7 @@ $static int ASM_FOPEN_ID
         // -- ops_dest tok_ptr name variants
         viewtd rot
         while dup->EnumVariant.name@ {
-            if over over->EnumVariant.name@ str_eq {
+            if over over->EnumVariant.name@ streq {
                 nip->EnumVariant.value@ OKind.PUSH_INT 3 roll op_push
                 %Token+
                 return
@@ -406,37 +399,38 @@ $static int ASM_FOPEN_ID
         1 exit
     }
 
-    // -- name tok_ptr
-    viewtd swap %Token+
-    // Function prototype
-    if viewtk TKind.BRACE_START != {
-        swap dup FN_MAP map_get->Function.name!
-        return
-    }
-    dup SCOPE_STACK stack_push!
-    0 ALLOC_STACK stack_push!
-
-    // -- name tok_ptr fn_ptr
-    &fn_ops_mem %Op stack_top
-    // -- tok_ptr fn_ptr name slot_ptr
-    rot dup FN_MAP map_get
     // -- tok_ptr
-    swap over ->Function.name! ->Function.def!
+    $ptr name: {viewtd}
     %Token+
 
+    // Function prototype
+    if viewtk TKind.BRACE_START != {
+        name dup FN_MAP map_get->Function.name!
+        return
+    }
+
+    dup SCOPE_STACK stack_push!
+
+    $ptr fn_ptr: {&fn_ops_mem %Op stack_top}
+    name FN_MAP map_get
+    name over->Function.name!
+    fn_ptr swap->Function.def!
+    %Token+
+
+    0=FN_ALLOC_SIZE
+    0 OKind.ALLOC &fn_ops_mem op_push
     while viewtk TKind.BRACE_END != {
         &fn_ops_mem swap parse_tok
     }
     %Token+
 
     if &fn_ops_mem %Op stack_last->Token.kind@c OKind.RET != {
-        &fn_ops_mem swap scope_dealloc
-        0 OKind.RET 3 roll op_push
+        0 OKind.RET &fn_ops_mem op_push
     }
 
     // fn_ops tok_ptr
     &scope_stack stack_shrink
-    &alloc_stack stack_shrink
+    FN_ALLOC_SIZE &fn_ptr@ ->Op.data!
     0 OKind.EOF &fn_ops_mem op_push
 }
 
@@ -549,8 +543,8 @@ $static int ASM_FOPEN_ID
 
 #macro _parse_dollar_static_init {
     if viewtk TKind.STR == {
-        // -- tok_ptr str_size
-        viewtd str_len 1+
+        // -- tok_ptr TODO strsize
+        viewtd strlen 1+
         if size 0 < {
             =size
         } else if size > {
@@ -603,7 +597,7 @@ $static int ASM_FOPEN_ID
             1 exit
         }
         false =is_static
-        ALLOC_STACK stack_last@ =alloc_offset
+        FN_ALLOC_SIZE =alloc_offset
     }
 
     $int size
@@ -621,8 +615,7 @@ $static int ASM_FOPEN_ID
     }
 
     if is_static not {
-        ALLOC_STACK stack_last dup@ size+ swap!
-        size OKind.ALLOC 3 pick op_push
+        FN_ALLOC_SIZE size+ =FN_ALLOC_SIZE
     }
 
     if viewtk TKind.IDENT != {
@@ -740,7 +733,7 @@ $static int ASM_FOPEN_ID
         // -- tok_ptr name variants
         viewtd variants_ptr
         while dup->EnumVariant.name@ {
-            if over over->EnumVariant.name@ str_eq {
+            if over over->EnumVariant.name@ streq {
                 // -- name tok_ptr
                 drop swap
                 error "Variant '"eputs over eputs "' already defined for enum '"eputs type_name eputs "'\n"eputs
@@ -833,7 +826,7 @@ $static int ASM_FOPEN_ID
         // -- tok_ptr size name field
         over->Token.data@ fields_ptr
         while dup->StructField.name@ {
-            if over over->StructField.name@ str_eq {
+            if over over->StructField.name@ streq {
                 // -- name tok_ptr
                 drop nip swap
                 error "Field '"eputs over eputs "' already defined for struct '"eputs struct_name eputs "'\n"eputs

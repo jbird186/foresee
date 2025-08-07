@@ -1,14 +1,14 @@
-#use "std/core.4c"
+#use "core.4c"
 
 // ptr -- len
-:str_len {
+:strlen {
     dup
     while dup@c { 1+ }
     swap -
 }
 
 // src dest --
-:str_copy {
+:strcpy {
     while over@c dup {
         over!c
         1+ swap 1+ swap
@@ -18,13 +18,13 @@
 }
 
 // src dest --
-:str_cat {
-    dup str_len +
-    str_copy
+:strcat {
+    dup strlen +
+    strcpy
 }
 
 // s1 s2 -- diff
-:str_cmp {
+:strcmp {
     while over@c over@c | {
         if over@c over@c - dup {
             rot rot drop drop
@@ -37,7 +37,7 @@
 }
 
 // s1 s2 n -- diff
-:str_n_cmp {
+:strncmp {
     $int n: {}
     while (over@c over@c | flag) (n flag) & {
         if over@c over@c - dup {
@@ -52,13 +52,13 @@
 }
 
 // s1 s2 -- is_eq
-:str_eq { str_cmp not }
+:streq { strcmp not }
 
 // s1 s2 n -- is_eq
-:str_n_eq { str_n_cmp not }
+:strneq { strncmp not }
 
 // str char -- [ptr, 0]
-:str_char {
+:strchr {
     while over@c dup {
         if over == {
             drop

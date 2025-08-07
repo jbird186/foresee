@@ -1,7 +1,7 @@
-#use "std/stdstr.4c"
-#use "src/config.4c"
+#use "stdstr.4c"
+#use "config.4c"
 
-// str_ref -- hash
+// strref -- hash
 :hash {
     5381
     while over@c {
@@ -26,7 +26,7 @@
     if dup slot_is_empty {
         false
     } else {
-        dup@ 5 pick str_cmp flag
+        dup@ 5 pick strcmp flag
     }
 }
 // key map_ref slot_size -- slot_ptr
@@ -60,7 +60,7 @@
     over over* 3 pick +
     if dup slot_is_empty {
         false
-    } else if dup@ 6 pick str_eq {
+    } else if dup@ 6 pick streq {
         dup->ScopedKey.scope@ 5 pick !=
     } else {
         true

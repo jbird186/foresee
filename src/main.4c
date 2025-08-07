@@ -1,7 +1,7 @@
-#use "src/lex.4c"
-#use "src/preprocess.4c"
-#use "src/parse.4c"
-#use "src/compile.4c"
+#use "lex.4c"
+#use "preprocess.4c"
+#use "parse.4c"
+#use "compile.4c"
 
 // TODO: "use" blocks
 // TODO: simulation mode
@@ -15,59 +15,82 @@ $static ptr argv
     %ptr* argv+ @
 }
 
-:eput_example {
-    "Example:\n"eputs
-    "\t"eputs 0 get_argv eputs " ./src/main.4c ./target/output.asm x86_64-linux"eputs
+:put_example {
+    "Example:\n"puts
+    "\t"puts 0 get_argv puts " ./src/main.4c ./target/output.asm x86_64-linux"puts
 }
 
 :parse_platform {
     $ptr arch: {3 get_argv}
     $ptr os
 
-    arch '-' str_char
+    arch '-' strchr
     if dup not {
-        "ERROR: Invalid target '"eputs 3 get_argv eputs "'. Expected <architecture>-<OS>.\n"eputs
-        eput_example
+        "ERROR: Invalid target '"puts 3 get_argv puts "'. Expected <architecture>-<OS>.\n"puts
+        put_example
         1 exit
     }
     0 over!c 1+ =os
 
-    if (arch "x86_64" str_eq) (arch "x64" str_eq) | {
+    if (arch "x86_64" streq) (arch "x64" streq) | {
         "ARCH_X86_64" define_builtin_flag
     } else {
-        "ERROR: Unrecognized architecture '"eputs arch eputs "'\n"eputs
+        "ERROR: Unrecognized architecture '"puts arch puts "'\n"puts
         1 exit
     }
 
-    if os "linux" str_eq {
+    if os "linux" streq {
         "OS_LINUX" define_builtin_flag
-    } else if os "windows" str_eq {
+    } else if os "windows" streq {
         "OS_WINDOWS" define_builtin_flag
     } else {
-        "ERROR: Unrecognized OS '"eputs os eputs "'\n"eputs
+        "ERROR: Unrecognized OS '"puts os puts "'\n"puts
         1 exit
     }
+}
+
+// idx -- new_idx
+:parse_option {
+    $int idx: {}
+    #macro ARG { idx get_argv }
+
+    if (ARG "--debug" streq) (ARG "-d" streq) | {
+        true =debug_mode
+    } else if ARG "--std" streq {
+        idx 1+ =idx
+        ARG DIRS_MEM stack_push!
+    } else {
+        "ERROR: Unrecognized option '"puts ARG puts "'\n"puts
+        "Options:\n"puts
+        "\t-d, --debug\t\tcompile with debug information"puts
+        1 exit
+    }
+    idx 1+
 }
 
 // argv argc --
 :main {
     =argc =argv
-    if argc 4 != {
-        "Usage: "eputs 0 get_argv eputs " <source_file> <output_file> <platform>\n"eputs
-        eput_example
+    if argc 4 < {
+        "Usage: "puts 0 get_argv puts " <source_file> <output_file> <platform> [options]\n"puts
+        put_example
         1 exit
     }
-    parse_platform
-
-    0 SCOPE_STACK stack_push!
-    0 ALLOC_STACK stack_push!
-
     $ptr src_file_name: {1 get_argv}
     $ptr out_file_name: {2 get_argv}
-    $ptr src_fd: {src_file_name 0 fopen}
+    parse_platform
+    4 while dup argc < { parse_option } drop
 
+    "./std/" DIRS_MEM stack_push!
+    "./src/" DIRS_MEM stack_push!
+    "./" DIRS_MEM stack_push!
+    "" DIRS_MEM stack_push!
+
+    0 SCOPE_STACK stack_push!
+
+    $ptr src_fd: {src_file_name 0 fopen}
     if src_fd is_failure {
-        "ERROR: File '"eputs src_file_name eput sp src_file_name eputs "' not found\n"eputs
+        "ERROR: File '"puts src_file_name put sp src_file_name puts "' not found\n"puts
         1 exit
     }
 
@@ -80,4 +103,8 @@ $static ptr argv
     out_file_name 1 fopen =out_fd
     compile_program
     out_fd fclose drop
+
+    if depth {
+        "WARNING: Compilation completed with a stack depth of "puts depth put "\n"puts
+    }
 }

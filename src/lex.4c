@@ -1,9 +1,9 @@
-#use "std/stdio.4c"
-#use "std/stdchar.4c"
-#use "std/stdstr.4c"
-#use "src/config.4c"
-#use "src/stack.4c"
-#use "src/token.4c"
+#use "stdio.4c"
+#use "stdchar.4c"
+#use "stdstr.4c"
+#use "config.4c"
+#use "stack.4c"
+#use "token.4c"
 
 $static int line
 $static ptr file
@@ -173,7 +173,7 @@ $static ptr file
 }
 
 #macro match_ident_token(token_str token_id) {
-    if dup token_str str_eq {
+    if dup token_str streq {
         0 token_id file line &toks_mem tok_push
         // -- new_src_ptr n_chars
         &strs_mem %char stack_top swap -
@@ -200,7 +200,7 @@ $static ptr file
 // src_ptr -- new_src_ptr ref
 :view_word {
     &strs_mem %char stack_top swap
-    while ("(){}[]" over@c str_char not) (over@c is_space not) & (over@c flag) & {
+    while ("(){}[]" over@c strchr not) (over@c is_space not) & (over@c flag) & {
         viewc &strs_mem %char stack_push!c
         1+
     }
