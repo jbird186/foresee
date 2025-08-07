@@ -35,6 +35,13 @@ $static ptr out_fd
 }
 
 $static int stack_ptr_delta
+:com_stack_delta {
+    if stack_ptr_delta 0 > {
+        " + "coms stack_ptr_delta com
+    } else if stack_ptr_delta 0 < {
+        " - "coms stack_ptr_delta -1* com
+    }
+}
 :flush_stack_ptr_delta {
     if stack_ptr_delta 0 > {
         "    add     "coms &stack_reg_str coms ", "coms stack_ptr_delta com "\n"coms
@@ -43,22 +50,16 @@ $static int stack_ptr_delta
     }
     0 =stack_ptr_delta
 }
-
-:com_stack_delta {
-    if stack_ptr_delta 0 > {
-        " + "coms stack_ptr_delta com
-    } else if stack_ptr_delta 0 < {
-        " - "coms stack_ptr_delta -1* com
+:update_stack_ptr_delta {
+    stack_ptr_delta+ =stack_ptr_delta
+    if optimize_mode not {
+        flush_stack_ptr_delta
     }
 }
 
 // item --
 :force_compile_push {
-    stack_ptr_delta 8- =stack_ptr_delta
-    if optimize_mode not {
-        flush_stack_ptr_delta
-    }
-
+    -8 update_stack_ptr_delta
     "    mov     qword ["coms &stack_reg_str coms com_stack_delta "], "coms coms "\n"coms
 }
 
@@ -85,10 +86,7 @@ $static char[32] push_cache
         NULL &push_cache!
         return
     }
-    stack_ptr_delta 8+ =stack_ptr_delta
-    if optimize_mode not {
-        flush_stack_ptr_delta
-    }
+    8 update_stack_ptr_delta
 }
 
 // item --
@@ -102,12 +100,8 @@ $static char[32] push_cache
         NULL &push_cache!
         return
     }
-
     "    mov     "coms coms ", qword ["coms &stack_reg_str coms com_stack_delta "]\n"coms
-    stack_ptr_delta 8+ =stack_ptr_delta
-    if optimize_mode not {
-        flush_stack_ptr_delta
-    }
+    8 update_stack_ptr_delta
 }
 
 // b_register instruction name --
@@ -154,7 +148,6 @@ $static char[32] push_cache
         "    ret\n"coms
     }
     else if viewok OKind.PUSH_INT == {
-        flush_push_cache
         "    ; OP_PUSH_INT\n"coms_dbg
         viewod &buf_name itoa
         &buf_name compile_push
@@ -196,7 +189,6 @@ $static char[32] push_cache
         "rax" compile_push
     }
     else if viewok OKind.PUSH_BUF == {
-        flush_push_cache
         "    ; OP_PUSH_BUF\n"coms_dbg
         "b_" &buf_name strcpy
         viewod &buf_name 2+ itoa
@@ -233,13 +225,14 @@ $static char[32] push_cache
     else if viewok OKind.MUL == {
         "rcx" "imul" "OP_MUL" compile_basic_binop
     }
-    else if viewok OKind.DIV == {
-        "    ; OP_DIV\n"coms_dbg
+    else if viewok OKind.DIVMOD == {
+        "    ; OP_DIVMOD\n"coms_dbg
         "rbx" compile_pop
         "rax" compile_pop
         "    cqo\n"coms
         "    idiv    rbx\n"coms
         "rax" compile_push
+        "rdx" compile_push
     }
     else if viewok OKind.AND == {
         "rcx" "and" "OP_AND" compile_basic_binop

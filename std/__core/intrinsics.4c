@@ -1,7 +1,7 @@
 #macro +{__OP_ADD}
 #macro -{__OP_SUB}
 #macro *{__OP_MUL}
-#macro /{__OP_DIV}
+#macro divmod{__OP_DIVMOD}
 #macro &{__OP_AND}
 #macro |{__OP_OR}
 #macro ^{__OP_XOR}

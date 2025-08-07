@@ -27,7 +27,7 @@ enum OKind {
     ADD
     SUB
     MUL
-    DIV
+    DIVMOD  // a b -- (a / b) (a % b)
     AND
     OR
     XOR

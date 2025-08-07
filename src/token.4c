@@ -13,7 +13,6 @@ enum TKind {
     IF
     ELSE
     WHILE
-    DOWHILE
     COLON
     POUND
     DOLLAR

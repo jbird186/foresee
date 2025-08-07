@@ -34,7 +34,8 @@ struct bool { 1 __inner }
 // a b -- b
 :nip{swap drop}
 
-#macro %{over over / * -}
+#macro /{divmod drop}
+#macro %{divmod nip}
 
 #macro !{store}
 #macro @{fetch}

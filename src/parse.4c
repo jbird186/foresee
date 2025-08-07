@@ -199,7 +199,7 @@ $static int FN_ALLOC_SIZE
     define_intrinsic_opcode(0 {OKind.ADD} "__OP_ADD")
     define_intrinsic_opcode(0 {OKind.SUB} "__OP_SUB")
     define_intrinsic_opcode(0 {OKind.MUL} "__OP_MUL")
-    define_intrinsic_opcode(0 {OKind.DIV} "__OP_DIV")
+    define_intrinsic_opcode(0 {OKind.DIVMOD} "__OP_DIVMOD")
     define_intrinsic_opcode(0 {OKind.AND} "__OP_AND")
     define_intrinsic_opcode(0 {OKind.OR} "__OP_OR")
     define_intrinsic_opcode(0 {OKind.XOR} "__OP_XOR")
@@ -334,30 +334,6 @@ $static int FN_ALLOC_SIZE
     // Condition
     _parse_until({TKind.BRACE_START})
     2 pick 1+ OKind.JZ 3 pick op_push
-
-    // Operations
-    dup SCOPE_STACK stack_push!
-    _parse_until({TKind.BRACE_END})
-    &scope_stack stack_shrink
-
-    2 pick OKind.JMP 3 pick op_push
-    rot 1+ OKind.LABEL 3 roll op_push
-}
-
-// ops_dest tok_ptr -- new_tok_ptr
-:parse_dowhile {
-    %Token+
-    // TODO: optimize
-
-    // -- start_id ops_dest tok_ptr
-    ASM_LABEL_ID dup 3+ =ASM_LABEL_ID rot rot
-    2 pick 2+ OKind.JMP 3 pick op_push
-    2 pick OKind.LABEL 3 pick op_push
-
-    // Condition
-    _parse_until({TKind.BRACE_START})
-    2 pick 1+ OKind.JZ 3 pick op_push
-    2 pick 2+ OKind.LABEL 3 pick op_push
 
     // Operations
     dup SCOPE_STACK stack_push!
@@ -527,7 +503,7 @@ $static int FN_ALLOC_SIZE
 
 #macro _parse_dollar_static_init {
     if viewtk TKind.STR == {
-        // -- tok_ptr TODO strsize
+        // -- tok_ptr str_size
         viewtd strlen 1+
         if size 0 < {
             =size
@@ -912,7 +888,6 @@ $static int FN_ALLOC_SIZE
     parse_with({TKind.IDENT} parse_ident)
     parse_with({TKind.IF} parse_if)
     parse_with({TKind.WHILE} parse_while)
-    parse_with({TKind.DOWHILE} parse_dowhile)
     parse_with({TKind.FN} parse_fn)
     parse_with({TKind.DOLLAR} parse_dollar)
     parse_with({TKind.REF} parse_ref)

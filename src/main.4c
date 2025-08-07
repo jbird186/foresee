@@ -3,9 +3,6 @@
 #use "parse.4c"
 #use "compile.4c"
 
-// TODO: "use" blocks
-// TODO: simulation mode
-
 $static int argc
 $static ptr argv
 

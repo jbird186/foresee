@@ -1,5 +1,3 @@
-#use "__core.4c"
-
 $static char[24] __std_buf
 
 // int -- ptr len
@@ -11,12 +9,13 @@ $static char[24] __std_buf
     if over { -1* }
 
     // -- is_neg int len
-    0 dowhile over {
+    0 true while {
         &__std_buf 22+ over -
         rot dup 10 % '0' +
         rot !c
         10 /
         swap 1 +
+        over
     }
 
     // -- int len
