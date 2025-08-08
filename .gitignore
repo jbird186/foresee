@@ -1,4 +1,2 @@
 .vscode
-compiler/*
-!compiler/bootstrap.asm
 target/*

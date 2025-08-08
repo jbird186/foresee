@@ -16,16 +16,16 @@ $pub static int ptr[16] dirs_mem
 #pub macro STRUCT_MEM { &struct_fields_mem %StructField }
 #pub macro DIRS_MEM { &dirs_mem %ptr }
 
-$static int ptr[1024] scope_stack
+$pub static int ptr[1024] scope_stack
 #pub macro SCOPE_STACK { &scope_stack %ptr }
 
 #pub macro MAP_SIZE { 8191 }
-$static File[MAP_SIZE] file_set
-$static Macro[MAP_SIZE] macro_map
-$static Function[MAP_SIZE] fn_map
-$static Buffer[MAP_SIZE] buf_map
-$static Enum[MAP_SIZE] enum_map
-$static Struct[MAP_SIZE] struct_map
+$pub static File[MAP_SIZE] file_set
+$pub static Macro[MAP_SIZE] macro_map
+$pub static Function[MAP_SIZE] fn_map
+$pub static Buffer[MAP_SIZE] buf_map
+$pub static Enum[MAP_SIZE] enum_map
+$pub static Struct[MAP_SIZE] struct_map
 #pub macro FILE_SET { &file_set %File }
 #pub macro MACRO_MAP { &macro_map %Macro }
 #pub macro FN_MAP { &fn_map %Function }
@@ -33,11 +33,11 @@ $static Struct[MAP_SIZE] struct_map
 #pub macro ENUM_MAP { &enum_map %Enum }
 #pub macro STRUCT_MAP { &struct_map %Struct }
 
-$static stack_size_str: "65536"
-$static stack_reg_str: "r12"
+// MUST be >= 4096
+#macro ASM_STACK_SIZE { 65536 }
 
 #pub macro USE_ASM_STRINGS { true }
 #pub macro BUFFER_SIZE_LIMIT { 8388608 }
 
-$static bool debug_mode: false
-$static bool optimize_mode: false
+$pub static bool debug_mode: false
+$pub static bool optimize_mode: false

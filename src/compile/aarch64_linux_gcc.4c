@@ -1,0 +1,530 @@
+#use "compile/common.4c"
+#use "stdstr.4c"
+#use "stdchar.4c"
+#use "config.4c"
+#use "map.4c"
+#use "op.4c"
+
+#macro STACK_SIZE_PAGES { (ASM_STACK_SIZE 4096 /) }
+
+$static int stack_ptr_delta
+:com_stack_delta {
+    if stack_ptr_delta {
+        ", #"coms stack_ptr_delta com
+    }
+}
+:flush_stack_ptr_delta {
+    if stack_ptr_delta 0 > {
+        "    add     x12, x12, "coms stack_ptr_delta com "\n"coms
+    } else if stack_ptr_delta 0 < {
+        "    sub     x12, x12, "coms stack_ptr_delta -1* com "\n"coms
+    }
+    0 =stack_ptr_delta
+}
+:update_stack_ptr_delta {
+    stack_ptr_delta+ =stack_ptr_delta
+    if optimize_mode not {
+        flush_stack_ptr_delta
+    }
+}
+
+// item --
+:force_compile_push {
+    -8 update_stack_ptr_delta
+    "    str     "coms coms ", [x12"coms com_stack_delta "]\n"coms
+}
+
+$static char[32] push_cache
+:flush_push_cache {
+    if &push_cache@ {
+        &push_cache force_compile_push
+        NULL &push_cache!
+    }
+}
+
+// item --
+:compile_push {
+    if optimize_mode {
+        flush_push_cache
+        &push_cache strcpy
+        return
+    }
+    force_compile_push
+}
+
+:compile_stack_shrink {
+    if &push_cache@ {
+        NULL &push_cache!
+        return
+    }
+    8 update_stack_ptr_delta
+}
+
+// item --
+:compile_pop {
+    if &push_cache@ {
+        if dup &push_cache strcmp {
+            "    mov     "coms coms ", "coms &push_cache coms "\n"coms
+        } else {
+            drop
+        }
+        NULL &push_cache!
+        return
+    }
+    "    ldr     "coms coms ", [x12"coms com_stack_delta "]\n"coms
+    8 update_stack_ptr_delta
+}
+
+// b_register instruction name --
+:compile_basic_binop {
+    "    // "coms_dbg coms_dbg "\n"coms_dbg
+    "x0" compile_pop
+    "x1" compile_pop
+    "    "coms coms " \tx0, x1, x0\n"coms
+    "x0" compile_push
+}
+
+// op_ptr -- new_op_ptr
+:compile_op {
+    $char[32] buf_name
+    if viewok OKind.NOOP == {}
+    else if viewok OKind.EXIT == {
+        "    // OP_EXIT\n"coms_dbg
+        "x0" compile_pop
+        "    mov     x8, 93\n"coms
+        "    svc     #0\n"coms
+    }
+    else if viewok OKind.CALL == {
+        "    // OP_CALL\n"coms_dbg
+        "x0" compile_pop
+        flush_stack_ptr_delta
+        "    blr     x0\n"coms
+    }
+    else if viewok OKind.PUSH_FN == {
+        flush_push_cache
+        "    // OP_PUSH_FN\n"coms_dbg
+        "    adrp    x0, f_"coms viewod com "@PAGE\n"coms
+        "    add     x0, x0, f_"coms viewod com "@PAGEOFF\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.CALL_FN == {
+        flush_push_cache
+        flush_stack_ptr_delta
+        "    // OP_CALL_FN\n"coms_dbg
+        "    bl      f_"coms viewod com "\n"coms
+    }
+    else if viewok OKind.RET == {
+        flush_push_cache
+        flush_stack_ptr_delta
+        "    // OP_RET\n"coms_dbg
+        "    mov     sp, x29\n"coms
+        "    ldp     x29, x30, [sp], #16\n"coms
+        "    ret\n"coms
+    }
+    else if viewok OKind.PUSH_INT == {
+        viewod &buf_name itoa
+        flush_push_cache
+        "    // OP_PUSH_INT\n"coms_dbg
+        "    mov     x0, #"coms &buf_name coms "\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.DROP == {
+        "    // OP_DROP\n"coms_dbg
+        compile_stack_shrink
+    }
+    else if viewok OKind.PICK == {
+        "    // OP_PICK\n"coms_dbg
+        "x0" compile_pop
+        flush_stack_ptr_delta
+        "    lsl     x0, x0, #3\n"coms
+        "    add     x0, x12, x0\n"coms
+        "    ldr     x0, [x0]\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.ROLL == {
+        "    // OP_ROLL\n"coms_dbg
+        "x0" compile_pop
+        flush_push_cache
+        flush_stack_ptr_delta
+        "    lsl     x0, x0, #3\n"coms
+        "    add     x0, x12, x0\n"coms
+        "    ldr     x1, [x0]\n"coms
+        "    .ral_"coms viewod com ":\n"coms
+        "    cmp     x0, x12\n"coms
+        "    beq     .rbl_"coms viewod com "\n"coms
+        "    ldr     x2, [x0, #-8]\n"coms
+        "    str     x2, [x0]\n"coms
+        "    sub     x0, x0, #8\n"coms
+        "    b       .ral_"coms viewod com "\n"coms
+        "    .rbl_"coms viewod com ":\n"coms
+        "    str     x1, [x12]\n"coms
+    }
+    else if viewok OKind.DEPTH == {
+        flush_push_cache
+        flush_stack_ptr_delta
+        "    // OP_DEPTH\n"coms_dbg
+        "    adrp    x0, bsp\n"coms
+        "    add     x0, x0, :lo12:bsp\n"coms
+        "    add     x0, x0, #"coms ASM_STACK_SIZE com "\n"coms
+        "    sub     x0, x0, x12\n"coms
+        "    lsr     x0, x0, #3\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.PUSH_BUF == {
+        "b_" &buf_name strcpy
+        viewod &buf_name 2+ itoa
+        flush_push_cache
+        "    // OP_PUSH_BUF\n"coms_dbg
+        "    adrp    x0, "coms &buf_name coms "\n"coms
+        "    add     x0, x0, :lo12:"coms &buf_name coms "\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.STORE == {
+        "    // OP_STORE\n"coms_dbg
+        "x0" compile_pop
+        "x1" compile_pop
+        "    str     x1, [x0]\n"coms
+    }
+    else if viewok OKind.FETCH == {
+        "    // OP_FETCH\n"coms_dbg
+        "x0" compile_pop
+        "    ldr     x0, [x0]\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.PUSH_VAR == {
+        flush_push_cache
+        "    // OP_PUSH_VAR\n"coms_dbg
+        "    sub     x0, x29, #"coms viewod com "\n"coms
+        "    x0" compile_push
+    }
+    else if viewok OKind.ALLOC == {
+        "    // OP_ALLOC\n"coms_dbg
+        "    sub     sp, sp, #"coms viewod com "\n"coms
+    }
+    else if viewok OKind.ADD == {
+        "add" "OP_ADD" compile_basic_binop
+    }
+    else if viewok OKind.SUB == {
+        "sub" "OP_SUB" compile_basic_binop
+    }
+    else if viewok OKind.MUL == {
+        "mul" "OP_MUL" compile_basic_binop
+    }
+    else if viewok OKind.AND == {
+        "and" "OP_AND" compile_basic_binop
+    }
+    else if viewok OKind.OR == {
+        "orr" "OP_OR" compile_basic_binop
+    }
+    else if viewok OKind.XOR == {
+        "eor" "OP_XOR" compile_basic_binop
+    }
+    else if viewok OKind.SHL == {
+        "lsl" "OP_SHL" compile_basic_binop
+    }
+    else if viewok OKind.SHR == {
+        "lsr" "OP_SHR" compile_basic_binop
+    }
+    else if viewok OKind.SAR == {
+        "asr" "OP_SAR" compile_basic_binop
+    }
+    else if viewok OKind.NOT == {
+        "    // OP_NOT\n"coms_dbg
+        "x0" compile_pop
+        "    mvn     x0, x0\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.EQ == {
+        "    // OP_EQ\n"coms_dbg
+        "x0" compile_pop
+        "x1" compile_pop
+        "    cmp     x1, x0\n"coms
+        "    cset    w0, eq\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.GT == {
+        "    // OP_GT\n"coms_dbg
+        "x0" compile_pop
+        "x1" compile_pop
+        "    cmp     x1, x0\n"coms
+        "    cset    w0, gt\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.LT == {
+        "    // OP_LT\n"coms_dbg
+        "x0" compile_pop
+        "x1" compile_pop
+        "    cmp     x1, x0\n"coms
+        "    cset    w0, lt\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.DIVMOD == {
+        "    // OP_DIVMOD\n" coms_dbg
+        "x1" compile_pop
+        "x0" compile_pop
+        "    sdiv    x2, x0, x1\n" coms
+        "    msub    x3, x2, x1, x0\n" coms
+        "x2" compile_push
+        "x3" compile_push
+    }
+    else if viewok OKind.LABEL == {
+        flush_push_cache
+        flush_stack_ptr_delta
+        ".l_"coms viewod com ":\n"coms
+    }
+    else if viewok OKind.JMP == {
+        flush_push_cache
+        flush_stack_ptr_delta
+        "    // OP_JMP\n"coms_dbg
+        "    b       .l_"coms viewod com "\n"coms
+    }
+    else if viewok OKind.JZ == {
+        "    // OP_JZ\n"coms_dbg
+        "x0" compile_pop
+        flush_stack_ptr_delta
+        "    cbz     x0, .l_"coms viewod com "\n"coms
+    }
+    else if viewok OKind.FOPEN == {
+        "    // OP_FOPEN\n"coms_dbg
+        "x0" compile_pop           // mode (0 = read, 1 = write, 2 = append)
+        "x1" compile_pop           // filename pointer
+        "    cmp     x0, #0\n"coms
+        "    beq     .frl_"coms viewod com "\n"coms
+        "    cmp     x0, #1\n"coms
+        "    beq     .fwl_"coms viewod com "\n"coms
+        "    cmp     x0, #2\n"coms
+        "    beq     .fal_"coms viewod com "\n"coms
+        "    b       .ffl_"coms viewod com "\n"coms
+        "    .frl_"coms viewod com ":\n"coms
+        "    mov     x2, #0\n"coms
+        "    b       .fdl_"coms viewod com "\n"coms
+        "    .fwl_"coms viewod com ":\n"coms
+        "    mov     x2, #577\n"coms
+        "    b       .fdl_"coms viewod com "\n"coms
+        "    .fal_"coms viewod com ":\n"coms
+        "    mov     x2, #1089\n"coms
+        "    b       .fdl_"coms viewod com "\n"coms
+        "    .fdl_"coms viewod com ":\n"coms
+        "    mov     x8, #56\n"coms
+        "    mov     x0, #-100\n"coms
+        "    mov     x3, #420\n"coms
+        "    svc     #0\n"coms
+        "x0" force_compile_push    // push FD (or -1 on error)
+        flush_stack_ptr_delta
+        "    b       .fel_"coms viewod com "\n"coms
+        "    .ffl_"coms viewod com ":\n"coms
+        "    mov     x0, #-1\n"coms
+        "x0" force_compile_push
+        flush_stack_ptr_delta
+        "    .fel_"coms viewod com ":\n"coms
+    }
+    else if viewok OKind.FREAD == {
+        "    // OP_FREAD\n"coms_dbg
+        "x0" compile_pop            // file descriptor
+        "x2" compile_pop            // length
+        "x1" compile_pop            // buffer pointer
+        "    mov     x8, #63\n"coms // sys_read
+        "    svc     #0\n"coms
+        "x0" compile_push           // bytes read or -1
+    }
+    else if viewok OKind.FWRITE == {
+        "    // OP_FWRITE\n"coms_dbg
+        "x0" compile_pop            // file descriptor
+        "x2" compile_pop            // length
+        "x1" compile_pop            // buffer pointer
+        "    mov     x8, #64\n"coms // sys_write
+        "    svc     #0\n"coms
+        "x0" compile_push           // bytes written or -1
+    }
+    else if viewok OKind.FCLOSE == {
+        "    // OP_FCLOSE\n"coms_dbg
+        "x0" compile_pop            // file descriptor
+        "    mov     x8, #57\n"coms // sys_close
+        "    svc     #0\n"coms
+        "x0" compile_push           // return 0 or -1
+    }
+    else {
+        "ERROR: Invalid opcode of type "eputs viewok eput '\n'eputc
+        1 exit
+    }
+    %Op+
+}
+
+// op_ptr --
+:compile_ops {
+    while viewok { compile_op }
+    drop
+}
+
+// idx map_slot_ptr -- idx
+:compile_function {
+    if debug_mode {
+        "// "coms dup->Function.key.name@ coms "\n"coms
+    }
+    "f_"coms over com ":\n"coms
+    "    stp     x29, x30, [sp, #-16]!\n"coms
+    "    mov     x29, sp\n"coms
+    ->Function.def@ compile_ops
+}
+
+:compile_functions {
+    // -- idx
+    0 while dup MAP_SIZE < {
+        // -- idx slot_ptr
+        dup FN_MAP map_idx
+        if dup slot_is_used { compile_function }
+        else { drop }
+        1+
+    } drop
+}
+
+// char -- bool
+:should_print_char {
+    dup is_print
+    swap (dup ('\\' !=) swap ('"' !=) &) &
+    USE_ASM_STRINGS &
+}
+
+// char --
+:com_char_literal {
+    $char c: {}
+    // null
+    if c '\0' == { "\\0" }
+    // newline
+    else if c '\n' == { "\\n" }
+    // tab
+    else if c '\t' == { "\\t" }
+    // vertical tab
+    else if c '\v' == { "\\v" }
+    // form feed
+    else if c '\f' == { "\\f" }
+    // return
+    else if c '\r' == { "\\r" }
+    // single quote
+    else if c '\'' == { "\'" }
+    // double quote
+    else if c '\"' == { "\\\"" }
+    // backslash
+    else if c '\\' == { "\\\\" }
+    else { c comc return }
+    coms
+}
+
+// init --
+:compile_buf_str {
+    $char is_quote: {false}
+
+    if USE_ASM_STRINGS {
+        ".ascii \""coms
+    } else {
+        ".byte "coms
+    }
+
+    while dup@c {
+        if USE_ASM_STRINGS {
+            dup@c com_char_literal
+        } else {
+            dup@c com
+            ","coms
+        }
+        1+
+    } drop
+
+    if USE_ASM_STRINGS {
+        "\\0\"\n"coms
+    } else {
+        "0\n"coms
+    }
+}
+
+:compile_inline_bufs {
+    "    // Inline Buffers\n"coms_dbg
+    // -- idx
+    0 while dup &inline_bufs stack_len < {
+        "    b_"coms dup MAP_SIZE+ com ": "coms
+        dup &inline_bufs %ptr stack_get@ compile_buf_str
+        1+
+    } drop
+}
+
+// idx --
+:compile_buf_data {
+    $int buf_size: {dup BUF_MAP map_idx->Buffer.size@}
+
+    if debug_mode {
+        "    // "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
+    }
+    "    b_"coms dup com ": "coms
+
+    if dup BUF_MAP map_idx->Buffer.init_int@c {
+        if buf_size 1 == {
+            ".byte "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
+        } else if buf_size 8 == {
+            ".quad "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
+        }
+    } else {
+        $ptr init: {dup BUF_MAP map_idx->Buffer.init@}
+        $int init_size: {init strlen 1+}
+        init compile_buf_str
+        if init_size buf_size < {
+            "        .skip "coms buf_size init_size- com "\n"coms
+        }
+        drop
+    }
+}
+
+// idx --
+:compile_buf_bss {
+    "    b_"coms dup com ": .skip "coms BUF_MAP map_idx->Buffer.size@ com
+    if debug_mode {
+        " // "coms dup BUF_MAP map_idx->Buffer.key.name@ coms
+    }
+    "\n"coms
+}
+
+// idx -- bool
+:is_valid_static_buffer {
+    BUF_MAP map_idx
+    dup->Buffer.key.name@ flag
+    swap->Buffer.is_static@c
+    &
+}
+
+:pub compile_program_aarch64_linux_gcc {
+    ".section .text\n"coms
+    ".global _start\n"coms
+    ".align  2\n"coms
+    compile_functions
+
+    "// start\n"coms_dbg
+    "_start:\n"coms
+    "    adrp    x0, bsp\n"coms
+    "    add     x0, x0, :lo12:bsp\n"coms
+    "    add     x12, x0, #"coms STACK_SIZE_PAGES com ", lsl #12\n"coms
+    "    add     x0, sp,  #8\n"coms
+    "x0" force_compile_push
+    "    ldr     x0, [sp]\n"coms
+    "x0" force_compile_push
+    &start_ops_mem->StackHead.data compile_ops
+
+    ".section .data\n"coms
+
+    // -- idx
+    0 while dup MAP_SIZE < {
+        if dup dup (is_valid_static_buffer) swap (BUF_MAP map_idx->Buffer.init@ flag) & {
+            dup compile_buf_data
+        }
+        1+
+    } drop
+    compile_inline_bufs
+
+    ".section .bss\n"coms
+    // -- idx
+    0 while dup MAP_SIZE < {
+        if dup dup (is_valid_static_buffer) swap (BUF_MAP map_idx->Buffer.init@ not) & {
+            dup compile_buf_bss
+        }
+        1+
+    } drop
+    "    bsp: .skip "coms ASM_STACK_SIZE com "\n"coms
+}

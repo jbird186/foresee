@@ -1,0 +1,29 @@
+$pub static ptr out_fd
+
+// ptr --
+:pub coms {
+    if dup strlen out_fd fwrite is_failure {
+        "ERROR: Failed to write string to output file\n"eputs
+        1 exit
+    }
+}
+:pub coms_dbg {
+    if debug_mode { coms }
+    else { drop }
+}
+// int --
+:pub com {
+    if out_fd fwrite_int is_failure {
+        "ERROR: Failed to write integer to output file\n"eputs
+        1 exit
+    }
+}
+// char --
+:pub comc {
+    $char buf
+    &buf!c
+    if &buf 1 out_fd fwrite is_failure {
+        "ERROR: Failed to write character to output file\n"eputs
+        1 exit
+    }
+}

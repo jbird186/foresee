@@ -8,31 +8,42 @@ $pub static ptr argv
 
 :put_example {
     "Example:\n"puts
-    "\t"puts 0 get_argv puts " ./src/main.4c ./target/output.asm x86_64-linux"puts
+    "\t"puts 0 get_argv puts " ./src/main.4c ./target/output.asm x86_64-linux-nasm\n"puts
 }
 
 :put_options {
     "Options:\n"puts
     "\t-d, --debug\t\tcompile with debug information\n"puts
-    "\t-o, --optimize\t\tenable optimizations\n"puts
+    "\t-O, --optimize\t\tenable optimizations\n"puts
 }
 
 :parse_platform {
     $ptr arch: {3 get_argv}
     $ptr os
+    $ptr tool
 
     arch '-' strchr
     if dup not {
-        "ERROR: Invalid target '"puts 3 get_argv puts "'. Expected <architecture>-<OS>.\n"puts
+        "ERROR: Invalid target '"puts 3 get_argv puts "', expected <architecture>-<OS>-<toolchain>\n"puts
         put_example
         1 exit
     }
     0 over!c 1+ =os
 
+    os '-' strchr
+    if dup not {
+        "ERROR: Invalid target '"puts 3 get_argv puts "', expected <architecture>-<OS>-<toolchain>\n"puts
+        put_example
+        1 exit
+    }
+    0 over!c 1+ =tool
+
     if (arch "x86_64" streq) (arch "x64" streq) | {
         "ARCH_X86_64" define_builtin_flag
+    } else if arch "aarch64" streq {
+        "ARCH_AARCH64" define_builtin_flag
     } else {
-        "ERROR: Unrecognized architecture '"puts arch puts "'\n"puts
+        "ERROR: Unsupported architecture '"puts arch puts "'\n"puts
         1 exit
     }
 
@@ -41,7 +52,16 @@ $pub static ptr argv
     } else if os "windows" streq {
         "OS_WINDOWS" define_builtin_flag
     } else {
-        "ERROR: Unrecognized OS '"puts os puts "'\n"puts
+        "ERROR: Unsupported OS '"puts os puts "'\n"puts
+        1 exit
+    }
+
+    if tool "nasm" streq {
+        "TOOLCHAIN_NASM" define_builtin_flag
+    } else if tool "gcc" streq {
+        "TOOLCHAIN_GCC" define_builtin_flag
+    } else {
+        "ERROR: Unsupported toolchain '"puts tool puts "'\n"puts
         1 exit
     }
 }
@@ -51,7 +71,7 @@ $pub static ptr argv
     while %char+ dup@c {
         if dup@c 'd' == {
             true =debug_mode
-        } else if dup@c 'o' == {
+        } else if dup@c 'O' == {
             true =optimize_mode
         } else {
             "ERROR: Unrecognized switch '-"puts dup@c putc "'\n"puts

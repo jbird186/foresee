@@ -28,26 +28,27 @@ $static int FN_ALLOC_SIZE
     }
 }
 
-// tok_ptr -- tok_ptr
+// name scope --
 :check_name_availability_fn {
-    if viewtd SCOPE_STACK stack_last@ BUF_MAP scoped_map_get slot_is_used {
-        error "Buffer '"eputs viewtd eputs "' already defined in this scope\n"eputs
+    if over over BUF_MAP scoped_map_get slot_is_used {
+        error "Buffer '"eputs over eputs "' already defined in this scope\n"eputs
         1 exit
     }
-    if viewtd SCOPE_STACK stack_last@ STRUCT_MAP scoped_map_get slot_is_used {
-        error "Struct '"eputs viewtd eputs "' already defined in this scope\n"eputs
+    if over over STRUCT_MAP scoped_map_get slot_is_used {
+        error "Struct '"eputs over eputs "' already defined in this scope\n"eputs
         1 exit
     }
-    if viewtd SCOPE_STACK stack_last@ ENUM_MAP scoped_map_get slot_is_used {
-        error "Enum '"eputs viewtd eputs "' already defined in this scope\n"eputs
+    if over over ENUM_MAP scoped_map_get slot_is_used {
+        error "Enum '"eputs over eputs "' already defined in this scope\n"eputs
         1 exit
     }
+    drop drop
 }
 
-// tok_ptr -- tok_ptr
+// name scope --
 :check_name_availability {
-    if viewtd SCOPE_STACK stack_last@ FN_MAP scoped_map_get slot_is_used {
-        error "Function '"eputs eputs "' already defined in this scope\n"eputs
+    if over over FN_MAP scoped_map_get slot_is_used {
+        error "Function '"eputs over eputs "' already defined in this scope\n"eputs
         1 exit
     }
     check_name_availability_fn
@@ -333,16 +334,12 @@ $static int FN_ALLOC_SIZE
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_fn {
     %Token+
+    $int scope: { SCOPE_STACK stack_last@ }
     if viewtk TKind.PUB == {
-        true =IS_PUBLIC
+        NULL =scope
         %Token+
     }
 
-    check_name_availability_fn
-    if viewtd SCOPE_STACK stack_last@ FN_MAP scoped_map_get->Function.def@ {
-        error "Function '"eputs eputs "' already defined\n"eputs
-        1 exit
-    }
     // -- tok_ptr
     if swap {
         error "Function '"eputs viewtd eputs "' must be defined in global scope\n"eputs
@@ -352,8 +349,11 @@ $static int FN_ALLOC_SIZE
     $ptr name: {viewtd}
     %Token+
 
-    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
-    false =IS_PUBLIC
+    name scope check_name_availability_fn
+    if name scope FN_MAP scoped_map_get->Function.def@ {
+        error "Function '"eputs name eputs "' already defined in this scope\n"eputs
+        1 exit
+    }
 
     // Function prototype
     if viewtk TKind.BRACE_START != {
@@ -370,7 +370,7 @@ $static int FN_ALLOC_SIZE
     fn_ptr swap->Function.def!
     %Token+
 
-    0 =ASM_LABEL_ID
+    // 0 =ASM_LABEL_ID
     0 =FN_ALLOC_SIZE
     0 OKind.ALLOC &fn_ops_mem op_push
     dup SCOPE_STACK stack_push!
@@ -540,11 +540,11 @@ $static int FN_ALLOC_SIZE
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_dollar {
     %Token+
+    $int scope: { SCOPE_STACK stack_last@ }
     if viewtk TKind.PUB == {
-        true =IS_PUBLIC
+        NULL =scope
         %Token+
     }
-    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
 
     $char is_static
     $int alloc_offset
@@ -583,8 +583,8 @@ $static int FN_ALLOC_SIZE
         error "Invalid buffer name\n"eputs
         1 exit
     }
-    check_name_availability
     $ptr name: {viewtd}
+    name scope check_name_availability
 
     %Token+
     $ptr init
@@ -674,9 +674,10 @@ $static int FN_ALLOC_SIZE
         1 exit
     }
 
-    check_name_availability
-    $ptr type_name: {viewtd}
+    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    $ptr enum_name: {viewtd}
     $ptr variants_ptr: {ENUM_MEM stack_top}
+    enum_name scope check_name_availability
 
     %Token+
     if viewtk TKind.BRACE_START != {
@@ -687,7 +688,7 @@ $static int FN_ALLOC_SIZE
     %Token+
     while viewtk TKind.BRACE_END != {
         if viewtk TKind.IDENT != {
-            error "Invalid variant for enum '"eputs type_name eputs "'\n"eputs
+            error "Invalid variant for enum '"eputs enum_name eputs "'\n"eputs
             1 exit
         }
 
@@ -697,7 +698,7 @@ $static int FN_ALLOC_SIZE
             if over over->EnumVariant.name@ streq {
                 // -- name tok_ptr
                 drop swap
-                error "Variant '"eputs over eputs "' already defined for enum '"eputs type_name eputs "'\n"eputs
+                error "Variant '"eputs over eputs "' already defined for enum '"eputs enum_name eputs "'\n"eputs
                 1 exit
             }
             %EnumVariant+
@@ -716,7 +717,7 @@ $static int FN_ALLOC_SIZE
             if ENUM_MEM stack_last->EnumVariant.name@ {
                 if dup ENUM_MEM stack_last->EnumVariant.value@ <= {
                     drop
-                    error "Enum '"eputs type_name eputs "' must have values in ascending order\n"eputs
+                    error "Enum '"eputs enum_name eputs "' must have values in ascending order\n"eputs
                     1 exit
                 }
             }
@@ -735,9 +736,8 @@ $static int FN_ALLOC_SIZE
 
     NULL ENUM_MEM stack_push->EnumVariant.name!
 
-    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
-    type_name scope ENUM_MAP scoped_map_get
-    type_name over->Enum.key.name!
+    enum_name scope ENUM_MAP scoped_map_get
+    enum_name over->Enum.key.name!
     scope over->Enum.key.scope!
     variants_ptr swap->Enum.variants!
 }
@@ -755,9 +755,10 @@ $static int FN_ALLOC_SIZE
         1 exit
     }
 
-    check_name_availability
+    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
     $ptr struct_name: {viewtd}
     $ptr fields_ptr: {STRUCT_MEM stack_top}
+    struct_name scope check_name_availability
 
     %Token+
     if viewtk TKind.BRACE_START != {
@@ -808,7 +809,6 @@ $static int FN_ALLOC_SIZE
     %Token+
     NULL STRUCT_MEM stack_push->StructField.name!
 
-    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
     struct_name scope STRUCT_MAP scoped_map_get
     struct_name over->Struct.key.name!
     scope over->Struct.key.scope!

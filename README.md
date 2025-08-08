@@ -1,5 +1,8 @@
-### Bootstrap:
-`nasm -f elf64 ./compiler/bootstrap.asm -o ./compiler/compiler.o && ld ./compiler/compiler.o -o ./compiler/compiler`
+### Bootstrap (x86_64-linux-nasm):
+`nasm -f elf64 ./bootstrap/x86_64-linux-nasm.asm -o ./target/compiler.o && ld ./target/compiler.o -o ./target/compiler`
+
+### Bootstrap (aarch64-linux-gcc)
+`aarch64-linux-gnu-gcc -static ./bootstrap/aarch64-linux-gcc.s -nostartfiles -o ./target/compiler`
 
 ### Self-compile:
-`./compiler/compiler ./src/main.4c ./compiler/compiler.asm x86_64-linux -o && nasm -f elf64 ./compiler/compiler.asm -o ./compiler/compiler.o && ld ./compiler/compiler.o -o ./compiler/compiler`
+`./target/compiler ./src/main.4c ./target/compiler.asm <platform> -O`

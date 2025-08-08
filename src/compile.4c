@@ -1,8 +1,16 @@
-#use "compile/x86_64_linux.4c"
+#use "compile/x86_64_linux_nasm.4c"
+#use "compile/aarch64_linux_gcc.4c"
+
+// arch os toolchain -- bool
+:check_platform {
+    has_builtin_flag swap has_builtin_flag rot has_builtin_flag & &
+}
 
 :pub compile_program {
-    if ("ARCH_X86_64" has_builtin_flag) ("OS_LINUX" has_builtin_flag) & {
-        compile_program_x86_64_linux
+    if "ARCH_X86_64" "OS_LINUX" "TOOLCHAIN_NASM" check_platform {
+        compile_program_x86_64_linux_nasm
+    } else if "ARCH_AARCH64" "OS_LINUX" "TOOLCHAIN_GCC" check_platform {
+        compile_program_aarch64_linux_gcc
     } else {
         "ERROR: Unsupported platform\n"puts
         1 exit
