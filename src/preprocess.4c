@@ -42,18 +42,6 @@
     nip %Token+
 }
 
-// name -- [idx, -1]
-:scoped_macro_idx {
-    $int scope_idx: {&scope_stack stack_len}
-    while &scope_idx@-- {
-        if dup scope_idx SCOPE_STACK stack_get@ MACRO_MAP scoped_map_contains {
-            scope_idx SCOPE_STACK stack_get@ MACRO_MAP scoped_map_get_idx
-            return
-        }
-    }
-    drop -1
-}
-
 // tok_ptr -- new_tok_ptr
 :preprocess_word {
     $char arg_kind: {viewtk}
@@ -61,7 +49,7 @@
     // -- name tok_ptr
     viewtd swap
     // -- name tok_ptr macro_idx
-    if over scoped_macro_idx dup is_success {
+    if over MACRO_MAP scoped_map_find_idx dup is_success {
         MACRO_MAP map_idx->Macro.toks@
         if dup not {
             drop
@@ -157,7 +145,7 @@
 }
 
 // name --
-:use_file {
+:pub use_file {
     $ptr name: {}
     if name _file_name FILE_SET map_contains {
         return
@@ -185,10 +173,14 @@
         1 exit
     }
 
+    // dup SCOPE_STACK stack_push!
     // -- tok_ptr use_tok_ptr
     &toks_mem %Token stack_top
     &src_str name lex_src
+    0 TKind.FILE_START name 0 &out_toks_mem tok_push
     preprocess
+    0 TKind.FILE_END name 0 &out_toks_mem tok_push
+    // &scope_stack stack_shrink
 }
 
 // tok_ptr -- new_tok_ptr
@@ -225,10 +217,12 @@
     }
     // -- name tok_ptr
     viewtd swap %Token+
+    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+
     // -- name tok_ptr slot_ptr
-    over SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
+    over scope MACRO_MAP scoped_map_get
     over over->Macro.toks!
-    SCOPE_STACK stack_last@ over->Macro.key.scope!
+    scope over->Macro.key.scope!
     2 pick swap->Macro.key.name!
 
     // Arguments (optional)
@@ -248,8 +242,7 @@
         1 exit
     }
     // -- tok_ptr
-    nip
-    skip_braces
+    nip skip_braces
 }
 
 // tok_ptr -- new_tok_ptr
@@ -264,10 +257,11 @@
         1 exit
     }
 
+    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
     viewtd
-    dup SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
+    dup scope MACRO_MAP scoped_map_get
     swap over->Macro.key.name!
-    SCOPE_STACK stack_last@ over->Macro.key.scope!
+    scope over->Macro.key.scope!
     NULL swap->Macro.toks!
     %Token+
 }
@@ -279,12 +273,12 @@
         error "Expected macro name for 'undef' directive\n"eputs
         1 exit
     }
-    if viewtd scoped_macro_idx is_failure {
+    if viewtd MACRO_MAP scoped_map_find_idx is_failure {
         error "Macro '"eputs viewtd eputs "' not defined\n"eputs
         1 exit
     }
 
-    viewtd scoped_macro_idx MACRO_MAP map_idx
+    viewtd MACRO_MAP scoped_map_find_idx MACRO_MAP map_idx
     NULL over->Macro.key.name!
     NULL over->Macro.key.scope!
     NULL swap->Macro.toks!
@@ -306,7 +300,7 @@
         1 exit
     }
 
-    if swap scoped_macro_idx is_success {
+    if swap MACRO_MAP scoped_map_find_idx is_success {
         true_case
     } else {
         false_case
@@ -316,26 +310,31 @@
 // tok_ptr -- new_tok_ptr
 :preprocess_pound {
     %Token+
+    if viewtk TKind.PUB == {
+        true =IS_PUBLIC
+        %Token+
+        if viewtd "macro" streq { parse_macro_directive }
+        else if viewtd "flag" streq { parse_flag_directive }
+        else {
+            error "Unknown preprocessor directive '"eputs viewtd eputs "'\n"eputs
+            1 exit
+        }
+        false =IS_PUBLIC
+        return
+    }
+
     if viewtk TKind.IDENT != {
         error "Invalid preprocessor directive\n"eputs
         1 exit
     }
-
-    if viewtd "use" streq {
-        parse_use_directive
-    } else if viewtd "error" streq {
-        parse_error_directive
-    } else if viewtd "macro" streq {
-        parse_macro_directive
-    } else if viewtd "flag" streq {
-        parse_flag_directive
-    } else if viewtd "undef" streq {
-        parse_undef_directive
-    } else if viewtd "ifdef" streq {
-        parse_if_directive(preprocess_block skip_braces)
-    } else if viewtd "ifndef" streq {
-        parse_if_directive(skip_braces preprocess_block)
-    } else {
+    if viewtd "use" streq { parse_use_directive }
+    else if viewtd "error" streq { parse_error_directive }
+    else if viewtd "macro" streq { parse_macro_directive }
+    else if viewtd "flag" streq { parse_flag_directive }
+    else if viewtd "undef" streq { parse_undef_directive }
+    else if viewtd "ifdef" streq { parse_if_directive(preprocess_block skip_braces) }
+    else if viewtd "ifndef" streq { parse_if_directive(skip_braces preprocess_block) }
+    else {
         error "Unknown preprocessor directive '"eputs viewtd eputs "'\n"eputs
         1 exit
     }
@@ -358,15 +357,20 @@
     }
 }
 
-:preprocess_src {
+:pub preprocess_src {
     &toks_mem->StackHead.data preprocess
     0 TKind.EOF NULL 0 &out_toks_mem tok_push
 }
 
 // name --
-:define_builtin_flag {
+:pub define_builtin_flag {
     dup SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
     NULL over->Macro.toks!
     NULL over->Macro.key.scope!
     ->Macro.key.name!
+}
+
+// name -- bool
+:pub has_builtin_flag {
+    MACRO_MAP scoped_map_find_idx is_success
 }

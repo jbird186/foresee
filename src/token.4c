@@ -1,7 +1,7 @@
 #use "types.4c"
 #use "stack.4c"
 
-enum TKind {
+pub enum TKind {
     EOF
     INT
     CHAR
@@ -24,16 +24,19 @@ enum TKind {
     FIELD
     SIZE
     CALL
+    PUB
     PAREN_START
     PAREN_END
     BRACE_START
     BRACE_END
     BRACKET_START
     BRACKET_END
+    FILE_START
+    FILE_END
 }
 
 // data kind file line ref --
-:tok_push {
+:pub tok_push {
     // -- data kind file line ptr
     %Token stack_push
     swap over->Token.line!
@@ -43,7 +46,7 @@ enum TKind {
 }
 
 // src dest --
-:tok_dup {
+:pub tok_dup {
     // -- src ptr
     %Token stack_push
     over->Token.kind@c over->Token.kind!c
@@ -52,12 +55,12 @@ enum TKind {
     swap->Token.line@ swap->Token.line!
 }
 
-:viewtk { dup->Token.kind@c }
-:viewtd { dup->Token.data@ }
-:viewtf { dup->Token.file@ }
-:viewtl { dup->Token.line@ }
+:pub viewtk { dup->Token.kind@c }
+:pub viewtd { dup->Token.data@ }
+:pub viewtf { dup->Token.file@ }
+:pub viewtl { dup->Token.line@ }
 
 // tok_ptr -- tok_ptr
-:error {
+:pub error {
     viewtf eputs ':'eputc viewtl eput ": ERROR: "eputs
 }

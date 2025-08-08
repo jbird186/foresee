@@ -1,13 +1,13 @@
-struct File {
+pub struct File {
     ptr name
 }
 
-struct ScopedKey {
+pub struct ScopedKey {
     ptr name
     int scope
 }
 
-struct Buffer {
+pub struct Buffer {
     ScopedKey key
     int size
     ptr type_name
@@ -17,45 +17,47 @@ struct Buffer {
     int alloc_offset
 }
 
-struct Macro {
+pub struct Macro {
     ScopedKey key
     ptr toks
 }
 
-struct Function {
-    ptr name
+pub struct Function {
+    ScopedKey key
     ptr def
 }
 
-struct Enum {
-    ptr name
+pub struct Enum {
+    ScopedKey key
     ptr variants
 }
 
-struct EnumVariant {
+pub struct EnumVariant {
     ptr name
     int value
 }
 
-struct Struct {
-    ptr name
+pub struct Struct {
+    ScopedKey key
     ptr fields
 }
 
-struct StructField {
+pub struct StructField {
     ptr name
     int size
     ptr type_name
 }
 
-struct Op {
+pub struct Op {
     char kind
     ptr data
 }
 
-struct Token {
+pub struct Token {
     char kind
     ptr data
     ptr file
     int line
 }
+
+$pub static bool IS_PUBLIC

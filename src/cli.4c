@@ -1,0 +1,97 @@
+$pub static int argc
+$pub static ptr argv
+
+// idx -- ptr
+:pub get_argv {
+    %ptr* argv+ @
+}
+
+:put_example {
+    "Example:\n"puts
+    "\t"puts 0 get_argv puts " ./src/main.4c ./target/output.asm x86_64-linux"puts
+}
+
+:put_options {
+    "Options:\n"puts
+    "\t-d, --debug\t\tcompile with debug information\n"puts
+    "\t-o, --optimize\t\tenable optimizations\n"puts
+}
+
+:parse_platform {
+    $ptr arch: {3 get_argv}
+    $ptr os
+
+    arch '-' strchr
+    if dup not {
+        "ERROR: Invalid target '"puts 3 get_argv puts "'. Expected <architecture>-<OS>.\n"puts
+        put_example
+        1 exit
+    }
+    0 over!c 1+ =os
+
+    if (arch "x86_64" streq) (arch "x64" streq) | {
+        "ARCH_X86_64" define_builtin_flag
+    } else {
+        "ERROR: Unrecognized architecture '"puts arch puts "'\n"puts
+        1 exit
+    }
+
+    if os "linux" streq {
+        "OS_LINUX" define_builtin_flag
+    } else if os "windows" streq {
+        "OS_WINDOWS" define_builtin_flag
+    } else {
+        "ERROR: Unrecognized OS '"puts os puts "'\n"puts
+        1 exit
+    }
+}
+
+// arg_ptr --
+:parse_switches {
+    while %char+ dup@c {
+        if dup@c 'd' == {
+            true =debug_mode
+        } else if dup@c 'o' == {
+            true =optimize_mode
+        } else {
+            "ERROR: Unrecognized switch '-"puts dup@c putc "'\n"puts
+            put_options
+            1 exit
+        }
+    }
+    drop
+}
+
+// idx -- new_idx
+:parse_option {
+    $int idx: {}
+    #macro ARG { idx get_argv }
+
+    if (ARG "-" 1 strneq) (ARG "--" 2 strncmp flag) & {
+        ARG parse_switches
+    } else if ARG "--debug" streq {
+        true =debug_mode
+    } else if ARG "--optimize" streq {
+        true =optimize_mode
+    } else if ARG "--std" streq {
+        idx 1+ =idx
+        ARG DIRS_MEM stack_push!
+    } else {
+        "ERROR: Unrecognized option '"puts ARG puts "'\n"puts
+        put_options
+        1 exit
+    }
+    idx 1+
+}
+
+// argv argc --
+:pub parse_args {
+    =argc =argv
+    if argc 4 < {
+        "Usage: "puts 0 get_argv puts " <source_file> <output_file> <platform> [options]\n"puts
+        put_example
+        1 exit
+    }
+    parse_platform
+    4 while dup argc < { parse_option } drop
+}

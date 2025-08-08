@@ -1,6 +1,6 @@
 #use "types.4c"
 
-enum OKind {
+pub enum OKind {
     // Misc / Special
     EOF
     NOOP
@@ -27,7 +27,6 @@ enum OKind {
     ADD
     SUB
     MUL
-    DIVMOD  // a b -- (a / b) (a % b)
     AND
     OR
     XOR
@@ -38,6 +37,7 @@ enum OKind {
     EQ
     GT
     LT
+    DIVMOD  // a b -- (a / b) (a % b)
     // Branching
     LABEL
     JMP
@@ -50,12 +50,12 @@ enum OKind {
 }
 
 // data kind ref --
-:op_push {
+:pub op_push {
     // -- data kind ptr
     %Op stack_push
     swap over->Op.kind!
     ->Op.data!
 }
 
-:viewok { dup->Op.kind@c }
-:viewod { dup->Op.data@ }
+:pub viewok { dup->Op.kind@c }
+:pub viewod { dup->Op.data@ }

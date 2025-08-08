@@ -1,43 +1,43 @@
 #use "types.4c"
 
-#macro SRC_STR_SIZE { 131072 }
-$static char[SRC_STR_SIZE] src_str
+#pub macro SRC_STR_SIZE { 131072 }
+$pub static char[SRC_STR_SIZE] src_str
 
-$static int char[1024][128] strs_mem
-$static int Token[1024][32] toks_mem
-$static int Token[1024][32] out_toks_mem
-$static int Op[1024][32] fn_ops_mem
-$static int Op[16] start_ops_mem
-$static int ptr[1024][8] inline_bufs
-$static int EnumVariant[1024][8] enum_variants_mem
-$static int StructField[1024][8] struct_fields_mem
-$static int ptr[16] dirs_mem
-#macro ENUM_MEM { &enum_variants_mem %EnumVariant }
-#macro STRUCT_MEM { &struct_fields_mem %StructField }
-#macro DIRS_MEM { &dirs_mem %ptr }
+$pub static int char[1024][128] strs_mem
+$pub static int Token[1024][32] toks_mem
+$pub static int Token[1024][32] out_toks_mem
+$pub static int Op[1024][32] fn_ops_mem
+$pub static int Op[16] start_ops_mem
+$pub static int ptr[1024][8] inline_bufs
+$pub static int EnumVariant[1024][8] enum_variants_mem
+$pub static int StructField[1024][8] struct_fields_mem
+$pub static int ptr[16] dirs_mem
+#pub macro ENUM_MEM { &enum_variants_mem %EnumVariant }
+#pub macro STRUCT_MEM { &struct_fields_mem %StructField }
+#pub macro DIRS_MEM { &dirs_mem %ptr }
 
 $static int ptr[1024] scope_stack
-#macro SCOPE_STACK { &scope_stack %ptr }
+#pub macro SCOPE_STACK { &scope_stack %ptr }
 
-#macro MAP_SIZE { 8191 }
+#pub macro MAP_SIZE { 8191 }
 $static File[MAP_SIZE] file_set
 $static Macro[MAP_SIZE] macro_map
 $static Function[MAP_SIZE] fn_map
 $static Buffer[MAP_SIZE] buf_map
 $static Enum[MAP_SIZE] enum_map
 $static Struct[MAP_SIZE] struct_map
-#macro FILE_SET { &file_set %File }
-#macro MACRO_MAP { &macro_map %Macro }
-#macro FN_MAP { &fn_map %Function }
-#macro BUF_MAP { &buf_map %Buffer }
-#macro ENUM_MAP { &enum_map %Enum }
-#macro STRUCT_MAP { &struct_map %Struct }
+#pub macro FILE_SET { &file_set %File }
+#pub macro MACRO_MAP { &macro_map %Macro }
+#pub macro FN_MAP { &fn_map %Function }
+#pub macro BUF_MAP { &buf_map %Buffer }
+#pub macro ENUM_MAP { &enum_map %Enum }
+#pub macro STRUCT_MAP { &struct_map %Struct }
 
 $static stack_size_str: "65536"
 $static stack_reg_str: "r12"
 
-#macro USE_ASM_STRINGS { true }
-#macro BUFFER_SIZE_LIMIT { 8388608 }
+#pub macro USE_ASM_STRINGS { true }
+#pub macro BUFFER_SIZE_LIMIT { 8388608 }
 
 $static bool debug_mode: false
 $static bool optimize_mode: false

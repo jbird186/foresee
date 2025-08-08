@@ -192,6 +192,7 @@ $static ptr file
     match_ident_token("enum" {TKind.ENUM})
     match_ident_token("struct" {TKind.STRUCT})
     match_ident_token("call" {TKind.CALL})
+    match_ident_token("pub" {TKind.PUB})
     TKind.IDENT file line &toks_mem tok_push
     return
 }
@@ -211,7 +212,6 @@ $static ptr file
     else if (viewc tag_char ==) (over 1+ @c is_ident_first_char) & {
         1+
         0 token_id file line &toks_mem tok_push
-        view_ident TKind.IDENT file line &toks_mem tok_push
     }
 }
 
@@ -223,7 +223,7 @@ $static ptr file
 }
 
 // src_ptr file --
-:lex_src {
+:pub lex_src {
     =file
     1 =line
     while viewc {

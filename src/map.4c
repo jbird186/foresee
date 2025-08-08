@@ -13,11 +13,11 @@
 }
 
 // slot_ptr -- bool
-:slot_is_empty { @ not }
+:pub slot_is_empty { @ not }
 // slot_ptr -- bool
-:slot_is_used { @ flag }
+:pub slot_is_used { @ flag }
 // idx map_ref slot_size -- slot_ptr
-:map_idx { rot* + }
+:pub map_idx { rot* + }
 
 // key map_ref slot_size idx -- key map_ref slot_size idx slot_ptr bool
 :_map_slot_skip {
@@ -30,7 +30,7 @@
     }
 }
 // key map_ref slot_size -- slot_ptr
-:map_get {
+:pub map_get {
     2 pick hash MAP_SIZE %
     // -- key map_ref slot_size idx slot_ptr
     while _map_slot_skip {
@@ -40,7 +40,7 @@
     nip nip nip nip
 }
 // key map_ref slot_size -- idx
-:map_get_idx {
+:pub map_get_idx {
     2 pick hash MAP_SIZE %
     // -- key map_ref slot_size idx slot_ptr
     while _map_slot_skip {
@@ -50,7 +50,7 @@
     drop nip nip nip
 }
 // key map_ref slot_size -- bool
-:map_contains {
+:pub map_contains {
     map_get slot_is_used
 }
 
@@ -67,7 +67,7 @@
     }
 }
 // key scope map_ref slot_size -- slot_ptr
-:scoped_map_get {
+:pub scoped_map_get {
     3 pick hash MAP_SIZE %
     // -- key scope map_ref slot_size idx slot_ptr
     while _scoped_map_slot_skip {
@@ -77,7 +77,7 @@
     nip nip nip nip nip
 }
 // key scope map_ref slot_size -- idx
-:scoped_map_get_idx {
+:pub scoped_map_get_idx {
     3 pick hash MAP_SIZE %
     // -- key scope map_ref slot_size idx slot_ptr
     while _scoped_map_slot_skip {
@@ -87,6 +87,31 @@
     drop nip nip nip nip
 }
 // key scope map_ref slot_size -- bool
-:scoped_map_contains {
+:pub scoped_map_contains {
     scoped_map_get slot_is_used
+}
+// name map_ref slot_size -- [idx, -1]
+:pub scoped_map_find_idx {
+    $int scope_idx: {&scope_stack stack_len}
+    while &scope_idx@-- {
+        #macro map_lookup {
+            2 pick scope_idx SCOPE_STACK stack_get@ 3 pick 3 pick
+        }
+        if map_lookup scoped_map_contains {
+            map_lookup scoped_map_get_idx
+            nip nip nip
+            return
+        }
+    }
+    drop drop drop -1
+}
+// key map_ref slot_size -- slot_ptr
+:pub scoped_map_find {
+    // map_ref slot_size idx
+    rot 2 pick 2 pick scoped_map_find_idx
+    if dup is_success {
+        rot rot map_idx
+    } else {
+        drop drop drop NULL
+    }
 }

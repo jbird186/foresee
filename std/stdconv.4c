@@ -1,7 +1,7 @@
-$static char[24] __std_buf
+$pub static char[24] __std_buf
 
 // int -- ptr len
-:__write_int_to_temp {
+:pub __write_int_to_temp {
     0 &__std_buf 16+ !
 
     // -- is_neg int
@@ -30,7 +30,7 @@ $static char[24] __std_buf
 }
 
 // int buf --
-:itoa {
+:pub itoa {
     // -- buf ptr len
     swap __write_int_to_temp
     // -- len ptr buf
