@@ -195,7 +195,7 @@ $static char[32] push_cache
         flush_push_cache
         "    // OP_PUSH_VAR\n"coms_dbg
         "    sub     x0, x29, #"coms viewod com "\n"coms
-        "    x0" compile_push
+        "x0" compile_push
     }
     else if viewok OKind.ALLOC == {
         "    // OP_ALLOC\n"coms_dbg

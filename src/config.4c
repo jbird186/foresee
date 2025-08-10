@@ -2,6 +2,8 @@
 
 #pub macro SRC_STR_SIZE { 131072 }
 $pub static char[SRC_STR_SIZE] src_str
+#pub macro WRITE_BUFFER_SIZE { SRC_STR_SIZE }
+#pub macro out_fd_buffer { src_str }
 
 $pub static int char[1024][128] strs_mem
 $pub static int Token[1024][32] toks_mem
@@ -34,7 +36,7 @@ $pub static Struct[MAP_SIZE] struct_map
 #pub macro STRUCT_MAP { &struct_map %Struct }
 
 // MUST be >= 4096
-#macro ASM_STACK_SIZE { 65536 }
+#pub macro ASM_STACK_SIZE { 65536 }
 
 #pub macro USE_ASM_STRINGS { true }
 #pub macro BUFFER_SIZE_LIMIT { 8388608 }

@@ -173,14 +173,14 @@
         1 exit
     }
 
-    // dup SCOPE_STACK stack_push!
+    dup SCOPE_STACK stack_push!
     // -- tok_ptr use_tok_ptr
     &toks_mem %Token stack_top
     &src_str name lex_src
     0 TKind.FILE_START name 0 &out_toks_mem tok_push
     preprocess
     0 TKind.FILE_END name 0 &out_toks_mem tok_push
-    // &scope_stack stack_shrink
+    &scope_stack stack_shrink
 }
 
 // tok_ptr -- new_tok_ptr

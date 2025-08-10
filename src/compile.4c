@@ -15,4 +15,5 @@
         "ERROR: Unsupported platform\n"puts
         1 exit
     }
+    flush_out_fd
 }

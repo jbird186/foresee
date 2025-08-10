@@ -1,29 +1,41 @@
 $pub static ptr out_fd
+$static int out_fd_buffer_len
 
-// ptr --
-:pub coms {
-    if dup strlen out_fd fwrite is_failure {
+:pub flush_out_fd {
+    if &out_fd_buffer out_fd_buffer_len out_fd fwrite is_failure {
         "ERROR: Failed to write string to output file\n"eputs
         1 exit
     }
+    0 =out_fd_buffer_len
 }
+
+// ptr --
+:pub coms {
+    $int ptr_len: {dup strlen}
+    if out_fd_buffer_len ptr_len+ WRITE_BUFFER_SIZE >= {
+        flush_out_fd
+    }
+
+    &out_fd_buffer out_fd_buffer_len+ strcpy
+    out_fd_buffer_len ptr_len+ =out_fd_buffer_len
+}
+
+// ptr --
 :pub coms_dbg {
     if debug_mode { coms }
     else { drop }
 }
+
 // int --
 :pub com {
-    if out_fd fwrite_int is_failure {
-        "ERROR: Failed to write integer to output file\n"eputs
-        1 exit
-    }
+    $char[32] buf
+    &buf itoa
+    &buf coms
 }
+
 // char --
 :pub comc {
-    $char buf
+    $char[2] buf
     &buf!c
-    if &buf 1 out_fd fwrite is_failure {
-        "ERROR: Failed to write character to output file\n"eputs
-        1 exit
-    }
+    &buf coms
 }
