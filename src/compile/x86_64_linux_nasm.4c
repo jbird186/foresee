@@ -273,7 +273,7 @@ $static char[32] push_cache
         "rax" compile_pop
         flush_stack_ptr_delta
         "    test    rax, rax\n"coms
-        "    jz     .l_"coms viewod com "\n"coms
+        "    jz      .l_"coms viewod com "\n"coms
     }
     else if viewok OKind.FOPEN == {
         "    ; OP_FOPEN\n"coms_dbg

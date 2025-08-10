@@ -385,7 +385,11 @@ $static int FN_ALLOC_SIZE
 
     // fn_ops tok_ptr
     &scope_stack stack_shrink
-    FN_ALLOC_SIZE &fn_ptr@ ->Op.data!
+    if FN_ALLOC_SIZE {
+        FN_ALLOC_SIZE fn_ptr->Op.data!
+    } else {
+        OKind.NOOP fn_ptr->Op.kind!c
+    }
     0 OKind.EOF &fn_ops_mem op_push
 }
 
