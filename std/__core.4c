@@ -8,8 +8,12 @@
 }
 
 pub struct int { 8 __inner }
+#pub macro INT_MIN { -9223372036854775808 }
+#pub macro INT_MAX { 9223372036854775807 }
 pub struct ptr { 8 __inner }
 pub struct char { 1 __inner }
+#pub macro CHAR_MIN { 0 }
+#pub macro CHAR_MAX { 255 }
 pub struct bool { 1 __inner }
 
 #pub macro NULL{0}

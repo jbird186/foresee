@@ -1,7 +1,12 @@
 $pub static char[24] __std_buf
+$static int_min_buf: "-9223372036854775808"
 
 // int -- ptr len
 :pub __write_int_to_temp {
+    if (dup) (1 63 <<) == {
+        drop &int_min_buf 20 return
+    }
+
     0 &__std_buf 16+ !
 
     // -- is_neg int

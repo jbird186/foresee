@@ -9,7 +9,7 @@ $static int line
 $static ptr file
 
 // src_ptr -- src_ptr char
-:viewc { dup @c }
+:viewc { dup@c }
 
 // src_ptr -- new_src_ptr int
 :view_binary_int {

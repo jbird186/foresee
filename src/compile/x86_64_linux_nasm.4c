@@ -119,9 +119,15 @@ $static char[32] push_cache
         "    ret\n"coms
     }
     else if viewok OKind.PUSH_INT == {
-        viewod &buf_name itoa
         "    ; OP_PUSH_INT\n"coms_dbg
-        &buf_name compile_push
+        if viewod dup (1 31 << 1- >) swap (1 31 << -1* <) | {
+            flush_push_cache
+            "    mov     rax, "coms viewod com "\n"coms
+            "rax" compile_push
+        } else {
+            viewod &buf_name itoa
+            &buf_name compile_push
+        }
     }
     else if viewok OKind.DROP == {
         "    ; OP_DROP\n"coms_dbg
