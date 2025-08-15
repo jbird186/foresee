@@ -35,6 +35,6 @@
     out_fd fclose drop
 
     if depth {
-        "WARNING: Compilation completed with a stack depth of "puts depth put cr
+        "WARNING: Compilation completed with a stack depth of "puts depth put "\n"puts
     }
 }

@@ -344,7 +344,7 @@ $static char[32] push_cache
         "x0" compile_push           // return 0 or -1
     }
     else {
-        "ERROR: Invalid opcode of type "eputs viewok eput '\n'eputc
+        "ERROR: Invalid opcode of type "puts viewok put "\n"puts
         1 exit
     }
     %Op+

@@ -31,15 +31,15 @@ $static int FN_ALLOC_SIZE
 // name scope --
 :check_name_availability_fn {
     if over over BUF_MAP scoped_map_get slot_is_used {
-        error "Buffer '"eputs over eputs "' already defined in this scope\n"eputs
+        error "Buffer '"puts over puts "' already defined in this scope\n"puts
         1 exit
     }
     if over over STRUCT_MAP scoped_map_get slot_is_used {
-        error "Struct '"eputs over eputs "' already defined in this scope\n"eputs
+        error "Struct '"puts over puts "' already defined in this scope\n"puts
         1 exit
     }
     if over over ENUM_MAP scoped_map_get slot_is_used {
-        error "Enum '"eputs over eputs "' already defined in this scope\n"eputs
+        error "Enum '"puts over puts "' already defined in this scope\n"puts
         1 exit
     }
     drop drop
@@ -48,7 +48,7 @@ $static int FN_ALLOC_SIZE
 // name scope --
 :check_name_availability {
     if over over FN_MAP scoped_map_get slot_is_used {
-        error "Function '"eputs over eputs "' already defined in this scope\n"eputs
+        error "Function '"puts over puts "' already defined in this scope\n"puts
         1 exit
     }
     check_name_availability_fn
@@ -60,13 +60,13 @@ $static int FN_ALLOC_SIZE
 
     // -- ops_dest tok_ptr
     if struct_name STRUCT_MAP scoped_map_find_idx is_failure {
-        error "Unrecognized struct '"eputs struct_name eputs "'\n"eputs
+        error "Unrecognized struct '"puts struct_name puts "'\n"puts
         1 exit
     }
     // -- ops_dest fields_ptr tok_ptr
     struct_name STRUCT_MAP scoped_map_find->Struct.fields@ swap
     if viewtk TKind.FIELD != {
-        error "Expected field access after '->"eputs struct_name eputs "'\n"eputs
+        error "Expected field access after '->"puts struct_name puts "'\n"puts
         1 exit
     }
     %Token+
@@ -88,7 +88,7 @@ $static int FN_ALLOC_SIZE
     }
 
     drop
-    swap error swap "Field '"eputs eputs "' not found for struct '"eputs struct_name eputs "'\n"eputs
+    swap error swap "Field '"puts puts "' not found for struct '"puts struct_name puts "'\n"puts
     1 exit
 }
 
@@ -116,7 +116,7 @@ $static int FN_ALLOC_SIZE
 
     viewtd dup BUF_MAP scoped_map_find_idx =idx =name
     if idx is_failure {
-        error "Buffer '"eputs name eputs "' not defined in this scope\n"eputs
+        error "Buffer '"puts name puts "' not defined in this scope\n"puts
         1 exit
     }
 
@@ -135,7 +135,7 @@ $static int FN_ALLOC_SIZE
 // ops_dest tok_ptr -- ops_dest tok_ptr
 :call_storec {
     if "storec" FN_MAP scoped_map_find_idx is_failure {
-        error "Function 'storec' not defined\n"eputs
+        error "Function 'storec' not defined\n"puts
         1 exit
     }
     "storec" FN_MAP scoped_map_find_idx OKind.CALL_FN 3 pick op_push
@@ -144,7 +144,7 @@ $static int FN_ALLOC_SIZE
 // ops_dest tok_ptr -- ops_dest tok_ptr
 :call_fetchc {
     if "fetchc" FN_MAP scoped_map_find_idx is_failure {
-        error "Function 'fetchc' not defined\n"eputs
+        error "Function 'fetchc' not defined\n"puts
         1 exit
     }
     "fetchc" FN_MAP scoped_map_find_idx OKind.CALL_FN 3 pick op_push
@@ -219,7 +219,7 @@ $static int FN_ALLOC_SIZE
         // -- ops_dest variants tok_ptr
         swap %Token+
         if viewtk TKind.FIELD != {
-            error "Expected variant after '"eputs name eputs "'\n"eputs
+            error "Expected variant after '"puts name puts "'\n"puts
             1 exit
         }
         %Token+
@@ -234,7 +234,7 @@ $static int FN_ALLOC_SIZE
             %EnumVariant+
         }
         drop
-        swap error swap "Field '"eputs eputs "' not found for enum '"eputs name eputs "'\n"eputs
+        swap error swap "Field '"puts puts "' not found for enum '"puts name puts "'\n"puts
         1 exit
     }
 
@@ -247,7 +247,7 @@ $static int FN_ALLOC_SIZE
     } else if dup 1 == {
         drop drop call_fetchc nip
     } else {
-        rot error "Buffer '"eputs rot eputs "' ("eputs swap eput " bytes) cannot be automatically read from\n"eputs
+        rot error "Buffer '"puts rot puts "' ("puts swap put " bytes) cannot be automatically read from\n"puts
         1 exit
     }
 }
@@ -295,7 +295,7 @@ $static int FN_ALLOC_SIZE
         // -- tok_ptr
         rot _parse_if_with_id
     } else {
-        error "Invalid 'if' condition\n"eputs
+        error "Invalid 'if' condition\n"puts
         1 exit
     }
 }
@@ -342,7 +342,7 @@ $static int FN_ALLOC_SIZE
 
     // -- tok_ptr
     if swap {
-        error "Function '"eputs viewtd eputs "' must be defined in global scope\n"eputs
+        error "Function '"puts viewtd puts "' must be defined in global scope\n"puts
         1 exit
     }
 
@@ -351,7 +351,7 @@ $static int FN_ALLOC_SIZE
 
     name scope check_name_availability_fn
     if name scope FN_MAP scoped_map_get->Function.def@ {
-        error "Function '"eputs name eputs "' already defined in this scope\n"eputs
+        error "Function '"puts name puts "' already defined in this scope\n"puts
         1 exit
     }
 
@@ -403,7 +403,7 @@ $static int FN_ALLOC_SIZE
         // -- total tok_ptr
         rot * swap
         if viewtk TKind.BRACKET_END != {
-            error "Invalid buffer size\n"eputs
+            error "Invalid buffer size\n"puts
             1 exit
         }
         %Token+
@@ -414,7 +414,7 @@ $static int FN_ALLOC_SIZE
 :view_type_size {
     if viewtd STRUCT_MAP scoped_map_find dup slot_is_empty {
         drop
-        error "Type '"eputs viewtd eputs "' not found\n"eputs
+        error "Type '"puts viewtd puts "' not found\n"puts
         1 exit
     }
     ->Struct.fields@
@@ -441,14 +441,14 @@ $static int FN_ALLOC_SIZE
         // -- value tok_ptr
         %Token+ view_buf_size swap
         if viewtk TKind.BRACKET_END != {
-            error "Invalid buffer size\n"eputs
+            error "Invalid buffer size\n"puts
             1 exit
         }
         %Token+
     }
 
     if over 0 < {
-		error "Invalid buffer size\n"eputs
+		error "Invalid buffer size\n"puts
 		1 exit
 	}
     swap
@@ -470,7 +470,7 @@ $static int FN_ALLOC_SIZE
 	}
 
     if over 0 < {
-		error "Invalid buffer size\n"eputs
+		error "Invalid buffer size\n"puts
 		1 exit
 	}
     swap
@@ -480,7 +480,7 @@ $static int FN_ALLOC_SIZE
     if viewtk TKind.BRACE_START == {
         %Token+
         if (size 1 ==) (size 8 ==) | not {
-            error "Buffer '"eputs name eputs "' ("eputs size eput " bytes) cannot be automatically assigned to\n"eputs
+            error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
             1 exit
         }
 
@@ -495,7 +495,7 @@ $static int FN_ALLOC_SIZE
             0 OKind.STORE 3 pick op_push
         }
     } else {
-        error "Non-static buffers can only utilize block initialization\n"eputs
+        error "Non-static buffers can only utilize block initialization\n"puts
         1 exit
     }
 }
@@ -507,7 +507,7 @@ $static int FN_ALLOC_SIZE
         if size 0 < {
             =size
         } else if size > {
-            error "Invalid size for buffer '"eputs name eputs "'\n"eputs
+            error "Invalid size for buffer '"puts name puts "'\n"puts
             1 exit
         }
         false =init_int
@@ -518,7 +518,7 @@ $static int FN_ALLOC_SIZE
             if size 8 == {}
             else if (viewtd dup (0xff <=) swap (0 >=) &) (size 1 ==) & {}
             else {
-                error "Invalid size for buffer '"eputs name eputs "'\n"eputs
+                error "Invalid size for buffer '"puts name puts "'\n"puts
                 1 exit
             }
         }
@@ -528,13 +528,13 @@ $static int FN_ALLOC_SIZE
             1 =size
         } else {
             if (size 8 !=) (size 1 !=) & {
-                error "Invalid size for buffer '"eputs name eputs "'\n"eputs
+                error "Invalid size for buffer '"puts name puts "'\n"puts
                 1 exit
             }
         }
         true =init_int
     } else {
-        error "Invalid initialization value for buffer '"eputs name eputs "'\n"eputs
+        error "Invalid initialization value for buffer '"puts name puts "'\n"puts
         1 exit
     }
     viewtd =init
@@ -558,7 +558,7 @@ $static int FN_ALLOC_SIZE
         %Token+
     } else {
         if over not {
-            error "Buffers defined at global scope must be static\n"eputs
+            error "Buffers defined at global scope must be static\n"puts
             1 exit
         }
         false =is_static
@@ -584,7 +584,7 @@ $static int FN_ALLOC_SIZE
     }
 
     if viewtk TKind.IDENT != {
-        error "Invalid buffer name\n"eputs
+        error "Invalid buffer name\n"puts
         1 exit
     }
     $ptr name: {viewtd}
@@ -606,11 +606,11 @@ $static int FN_ALLOC_SIZE
     }
 
     if size 0 < {
-        error "Invalid definition for buffer '"eputs name eputs "'\n"eputs
+        error "Invalid definition for buffer '"puts name puts "'\n"puts
         1 exit
     }
     if size BUFFER_SIZE_LIMIT > {
-        error "Buffer '"eputs name eputs "' cannot exceed "eputs BUFFER_SIZE_LIMIT eput " bytes\n"eputs
+        error "Buffer '"puts name puts "' cannot exceed "puts BUFFER_SIZE_LIMIT put " bytes\n"puts
         1 exit
     }
 
@@ -644,7 +644,7 @@ $static int FN_ALLOC_SIZE
         nip %Token+
     } else {
         drop
-        swap error swap "Buffer '"eputs eputs "' not defined in this scope\n"eputs
+        swap error swap "Buffer '"puts puts "' not defined in this scope\n"puts
         1 exit
     }
 }
@@ -660,7 +660,7 @@ $static int FN_ALLOC_SIZE
     } else if dup 1 == {
         drop drop call_storec nip
     } else {
-        rot error "Buffer '"eputs rot eputs "' ("eputs swap eput " bytes) cannot be automatically assigned to\n"eputs
+        rot error "Buffer '"puts rot puts "' ("puts swap put " bytes) cannot be automatically assigned to\n"puts
         1 exit
     }
 }
@@ -669,12 +669,12 @@ $static int FN_ALLOC_SIZE
 :parse_enum {
     %Token+
     if viewtk TKind.IDENT != {
-        error "Invalid enum name\n"eputs
+        error "Invalid enum name\n"puts
         1 exit
     }
     // -- tok_ptr
     if swap {
-        error "Enum '"eputs viewtd eputs "' must be defined in global scope\n"eputs
+        error "Enum '"puts viewtd puts "' must be defined in global scope\n"puts
         1 exit
     }
 
@@ -685,14 +685,14 @@ $static int FN_ALLOC_SIZE
 
     %Token+
     if viewtk TKind.BRACE_START != {
-        error "Invalid enum definition\n"eputs
+        error "Invalid enum definition\n"puts
         1 exit
     }
 
     %Token+
     while viewtk TKind.BRACE_END != {
         if viewtk TKind.IDENT != {
-            error "Invalid variant for enum '"eputs enum_name eputs "'\n"eputs
+            error "Invalid variant for enum '"puts enum_name puts "'\n"puts
             1 exit
         }
 
@@ -702,7 +702,7 @@ $static int FN_ALLOC_SIZE
             if over over->EnumVariant.name@ streq {
                 // -- name tok_ptr
                 drop swap
-                error "Variant '"eputs over eputs "' already defined for enum '"eputs enum_name eputs "'\n"eputs
+                error "Variant '"puts over puts "' already defined for enum '"puts enum_name puts "'\n"puts
                 1 exit
             }
             %EnumVariant+
@@ -713,7 +713,7 @@ $static int FN_ALLOC_SIZE
         if viewtk TKind.COLON == {
             %Token+
             if viewtk TKind.INT != {
-                error "Invalid value for enum variant '"eputs over eputs "'\n"eputs
+                error "Invalid value for enum variant '"puts over puts "'\n"puts
                 1 exit
             }
             // -- name tok_ptr value
@@ -721,7 +721,7 @@ $static int FN_ALLOC_SIZE
             if ENUM_MEM stack_last->EnumVariant.name@ {
                 if dup ENUM_MEM stack_last->EnumVariant.value@ <= {
                     drop
-                    error "Enum '"eputs enum_name eputs "' must have values in ascending order\n"eputs
+                    error "Enum '"puts enum_name puts "' must have values in ascending order\n"puts
                     1 exit
                 }
             }
@@ -750,12 +750,12 @@ $static int FN_ALLOC_SIZE
 :parse_struct {
     %Token+
     if viewtk TKind.IDENT != {
-        error "Invalid struct name\n"eputs
+        error "Invalid struct name\n"puts
         1 exit
     }
     // -- tok_ptr
     if swap {
-        error "Struct '"eputs viewtd eputs "' must be defined in global scope\n"eputs
+        error "Struct '"puts viewtd puts "' must be defined in global scope\n"puts
         1 exit
     }
 
@@ -766,7 +766,7 @@ $static int FN_ALLOC_SIZE
 
     %Token+
     if viewtk TKind.BRACE_START != {
-        error "Invalid struct definition\n"eputs
+        error "Invalid struct definition\n"puts
         1 exit
     }
 
@@ -787,7 +787,7 @@ $static int FN_ALLOC_SIZE
         // -- new_tok_ptr size
         if over->Token.kind@c TKind.IDENT != {
             drop
-            error "Invalid field for struct '"eputs struct_name eputs "'\n"eputs
+            error "Invalid field for struct '"puts struct_name puts "'\n"puts
             1 exit
         }
 
@@ -797,7 +797,7 @@ $static int FN_ALLOC_SIZE
             if over over->StructField.name@ streq {
                 // -- name tok_ptr
                 drop nip swap
-                error "Field '"eputs over eputs "' already defined for struct '"eputs struct_name eputs "'\n"eputs
+                error "Field '"puts over puts "' already defined for struct '"puts struct_name puts "'\n"puts
                 1 exit
             }
             %StructField+
@@ -823,7 +823,7 @@ $static int FN_ALLOC_SIZE
 :parse_arrow {
     %Token+
     if viewtk TKind.IDENT != {
-        error "Invalid struct name after '->'\n"eputs
+        error "Invalid struct name after '->'\n"puts
         1 exit
     }
 
@@ -852,7 +852,7 @@ $static int FN_ALLOC_SIZE
         BUF_MAP map_idx
     } else {
         drop
-        error "Buffer '"eputs viewtd eputs "' not defined\n"eputs
+        error "Buffer '"puts viewtd puts "' not defined\n"puts
         1 exit
     }
     OKind.PUSH_INT 3 roll op_push
@@ -873,13 +873,13 @@ $static int FN_ALLOC_SIZE
         if viewtk TKind.ENUM == { parse_enum }
         else if viewtk TKind.STRUCT == { parse_struct }
         else {
-            error "Unexpected token of type "eputs viewtk eput " after 'pub'\n"eputs
+            error "Unexpected token of type "puts viewtk put " after 'pub'\n"puts
             1 exit
         }
         false =IS_PUBLIC
     }
     else if viewtk TKind.WORD == {
-        error "Macro '"eputs viewtd eputs "' not defined\n"eputs
+        error "Macro '"puts viewtd puts "' not defined\n"puts
         1 exit
     }
     else if viewtk dup (TKind.INT ==) swap (TKind.CHAR ==) | {
@@ -915,7 +915,7 @@ $static int FN_ALLOC_SIZE
         nip %Token+
     }
     else {
-        error "Unexpected token of type "eputs viewtk eput "\n"eputs
+        error "Unexpected token of type "puts viewtk put "\n"puts
         1 exit
     }
 }
@@ -938,7 +938,7 @@ $static int FN_ALLOC_SIZE
     &out_toks_mem->StackHead.data
     while viewtk TKind.EOF != {
         if viewtk is_tok_allowed_outside_main not {
-            error "Unexpected token of type "eputs viewtk eput " outside of 'main'\n"eputs
+            error "Unexpected token of type "puts viewtk put " outside of 'main'\n"puts
             1 exit
         }
         0 swap parse_tok
@@ -946,9 +946,10 @@ $static int FN_ALLOC_SIZE
     drop
 
     if "main" FN_MAP scoped_map_find_idx is_failure {
-        error "Function 'main' not defined\n"eputs
+        "ERROR: Function 'main' not defined\n"puts
         1 exit
     }
+
     "main" FN_MAP scoped_map_find_idx OKind.CALL_FN &start_ops_mem op_push
     0 OKind.PUSH_INT &start_ops_mem op_push
     0 OKind.EXIT &start_ops_mem op_push

@@ -63,5 +63,5 @@ pub enum TKind {
 
 // tok_ptr -- tok_ptr
 :pub error {
-    viewtf eputs ':'eputc viewtl eput ": ERROR: "eputs
+    viewtf puts ":"puts viewtl put ": ERROR: "puts
 }

@@ -77,7 +77,7 @@
     MACRO_MAP map_idx->Macro.toks@
     if dup not {
         drop
-        error "Attempted to expand preprocessor flag '"eputs swap eputs "'\n"eputs
+        error "Attempted to expand preprocessor flag '"puts swap puts "'\n"puts
         1 exit
     }
 
@@ -100,7 +100,7 @@
         // -- name def_tok_ptr tok_ptr
         swap
         if viewtk TKind.PAREN_START != {
-            error "Expected arguments for macro '"eputs 2 pick eputs "'\n"eputs
+            error "Expected arguments for macro '"puts 2 pick puts "'\n"puts
             1 exit
         }
         // -- name tok_ptr def_tok_ptr
@@ -117,7 +117,7 @@
             // -- name def_tok_ptr tok_ptr
             swap
             if viewtk TKind.PAREN_END == {
-                error "Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
+                error "Invalid number of arguments supplied to macro '"puts 2 pick puts "'\n"puts
                 1 exit
             } else {
                 while viewtk dup (TKind.COMMA !=) swap (TKind.PAREN_END !=) & {
@@ -134,7 +134,7 @@
         // -- name def_tok_ptr tok_ptr
         %Token+ swap
         if viewtk TKind.PAREN_END != {
-            error "Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
+            error "Invalid number of arguments supplied to macro '"puts 2 pick puts "'\n"puts
             1 exit
         }
         // -- name tok_ptr def_tok_ptr
@@ -208,20 +208,20 @@
     $ptr path: {}
 
     if fd is_failure {
-        error "'use' directive failed to open file '"eputs name eputs "'\n"eputs
+        error "'use' directive failed to open file '"puts name puts "'\n"puts
         1 exit
     }
     name _file_name dup FILE_SET map_get!
 
     $int read_res: {&src_str SRC_STR_SIZE fd fread }
     if read_res is_failure {
-        error "'use' directive failed to read file '"eputs path eputs "'\n"eputs
+        error "'use' directive failed to read file '"puts path puts "'\n"puts
         1 exit
     }
     0 (read_res &src_str+)!c
 
     if fd fclose is_failure {
-        error "'use' directive failed to close file '"eputs path eputs "'\n"eputs
+        error "'use' directive failed to close file '"puts path puts "'\n"puts
         1 exit
     }
 
@@ -239,7 +239,7 @@
 :parse_use_directive {
     %Token+
     if viewtk TKind.STR != {
-        error "Expected file name for 'use' directive\n"eputs
+        error "Expected file name for 'use' directive\n"puts
         1 exit
     }
     viewtd use_file %Token+
@@ -249,9 +249,9 @@
 :parse_error_directive {
     %Token+
     if viewtk TKind.STR == {
-        error viewtd eputs
+        error viewtd puts
     } else {
-        error "Expected message for 'error' directive\n"eputs
+        error "Expected message for 'error' directive\n"puts
     }
     1 exit
 }
@@ -260,11 +260,11 @@
 :parse_macro_directive {
     %Token+
     if viewtk dup (TKind.IDENT !=) swap (TKind.WORD !=) & {
-        error "Expected name for 'macro' directive\n"eputs
+        error "Expected name for 'macro' directive\n"puts
         1 exit
     }
     if viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_contains {
-        error "Macro '"eputs viewtd eputs "' already defined in this scope\n"eputs
+        error "Macro '"puts viewtd puts "' already defined in this scope\n"puts
         1 exit
     }
     // -- name tok_ptr
@@ -284,12 +284,12 @@
         %Token+
         while viewtk TKind.PAREN_END != {
             if viewtk TKind.IDENT != {
-                error "Invalid parameter in definition for macro '"eputs over eputs "'\n"eputs
+                error "Invalid parameter in definition for macro '"puts over puts "'\n"puts
                 1 exit
             }
             if %Token+ viewtk TKind.PAREN_END != {
                 if viewtk TKind.COMMA != {
-                    error "Expected comma after parameter in definition for macro '"eputs over eputs "'\n"eputs
+                    error "Expected comma after parameter in definition for macro '"puts over puts "'\n"puts
                     1 exit
                 }
                 %Token+
@@ -299,7 +299,7 @@
     }
 
     if viewtk TKind.BRACE_START != {
-        error "Invalid body for macro '"eputs over eputs "'\n"eputs
+        error "Invalid body for macro '"puts over puts "'\n"puts
         1 exit
     }
     // -- tok_ptr
@@ -310,11 +310,11 @@
 :parse_flag_directive {
     %Token+
     if viewtk TKind.IDENT != {
-        error "Expected identifier for 'flag' directive\n"eputs
+        error "Expected identifier for 'flag' directive\n"puts
         1 exit
     }
     if viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_contains {
-        error "Macro '"eputs viewtd eputs "' already defined in this scope\n"eputs
+        error "Macro '"puts viewtd puts "' already defined in this scope\n"puts
         1 exit
     }
 
@@ -331,11 +331,11 @@
 :parse_undef_directive {
     %Token+
     if viewtk dup (TKind.IDENT !=) swap (TKind.WORD !=) & {
-        error "Expected macro name for 'undef' directive\n"eputs
+        error "Expected macro name for 'undef' directive\n"puts
         1 exit
     }
     if viewtd MACRO_MAP scoped_map_find_idx is_failure {
-        error "Macro '"eputs viewtd eputs "' not defined\n"eputs
+        error "Macro '"puts viewtd puts "' not defined\n"puts
         1 exit
     }
 
@@ -350,14 +350,14 @@
 #macro parse_if_directive(true_case, false_case) {
     %Token+
     if viewtk dup (TKind.IDENT !=) swap (TKind.WORD !=) & {
-        error "Expected macro name for 'if' directive\n"eputs
+        error "Expected macro name for 'if' directive\n"puts
         1 exit
     }
 
     // -- macro_name tok_ptr
     viewtd swap %Token+
     if viewtk TKind.BRACE_START != {
-        error "Expected braces for 'if' directive\n"eputs
+        error "Expected braces for 'if' directive\n"puts
         1 exit
     }
 
@@ -377,7 +377,7 @@
         if viewtd "macro" streq { parse_macro_directive }
         else if viewtd "flag" streq { parse_flag_directive }
         else {
-            error "Unknown preprocessor directive '"eputs viewtd eputs "' following 'pub'\n"eputs
+            error "Unknown preprocessor directive '"puts viewtd puts "' following 'pub'\n"puts
             1 exit
         }
         false =IS_PUBLIC
@@ -385,7 +385,7 @@
     }
 
     if viewtk TKind.IDENT != {
-        error "Invalid preprocessor directive\n"eputs
+        error "Invalid preprocessor directive\n"puts
         1 exit
     }
     if viewtd "use" streq { parse_use_directive }
@@ -396,7 +396,7 @@
     else if viewtd "ifdef" streq { parse_if_directive(preprocess_brace_block, skip_braces) }
     else if viewtd "ifndef" streq { parse_if_directive(skip_braces, preprocess_brace_block) }
     else {
-        error "Unknown preprocessor directive '"eputs viewtd eputs "'\n"eputs
+        error "Unknown preprocessor directive '"puts viewtd puts "'\n"puts
         1 exit
     }
 }
