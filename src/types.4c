@@ -20,6 +20,7 @@ pub struct Buffer {
 pub struct Macro {
     ScopedKey key
     ptr toks
+    bool is_arg
 }
 
 pub struct Function {

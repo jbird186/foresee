@@ -19,7 +19,7 @@
 
     $ptr src_fd: {src_file_name 0 fopen}
     if src_fd is_failure {
-        "ERROR: File '"puts src_file_name put sp src_file_name puts "' not found\n"puts
+        "ERROR: File '"puts src_file_name puts "' not found\n"puts
         1 exit
     }
 

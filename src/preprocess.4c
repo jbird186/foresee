@@ -11,13 +11,12 @@
     drop
 }
 
-// tok_ptr -- new_tok_ptr
-:skip_braces {
+#macro skip_delim(start, end) {
     // -- depth tok_ptr
     1 swap while %Token+ over {
-        if viewtk TKind.BRACE_START == {
+        if viewtk TKind.start == {
             swap 1+ swap
-        } else if viewtk TKind.BRACE_END == {
+        } else if viewtk TKind.end == {
             swap 1- swap
         }
     }
@@ -25,14 +24,23 @@
     nip
 }
 
+// tok_ptr -- new_tok_ptr
+:skip_braces {
+    skip_delim(BRACE_START, BRACE_END)
+}
+// tok_ptr -- new_tok_ptr
+:skip_paren {
+    skip_delim(PAREN_START, PAREN_END)
+}
+
 // tok_ptr -- tok_ptr
-:preprocess_block {
+#macro preprocess_delim(start, end) {
     %Token+
     // -- depth tok_ptr
     1 swap while over {
-        if viewtk TKind.BRACE_START == {
+        if viewtk TKind.start == {
             swap 1+ swap
-        } else if viewtk TKind.BRACE_END == {
+        } else if viewtk TKind.end == {
             swap 1- swap
         }
         if over {
@@ -40,6 +48,94 @@
         }
     }
     nip %Token+
+}
+
+// tok_ptr -- tok_ptr
+:preprocess_brace_block {
+    preprocess_delim(BRACE_START, BRACE_END)
+}
+
+// tok_ptr -- tok_ptr
+:preprocess_paren_block {
+    preprocess_delim(PAREN_START, PAREN_END)
+}
+
+// name tok_ptr macro_idx -- new_tok_ptr
+:preprocess_macro_call {
+    $bool is_arg: {dup MACRO_MAP map_idx->Macro.is_arg@c}
+    // name tok_ptr macro_def
+    MACRO_MAP map_idx->Macro.toks@
+    if dup not {
+        drop
+        error "Attempted to expand preprocessor flag '"eputs swap eputs "'\n"eputs
+        1 exit
+    }
+
+    if is_arg {
+        $int counter: {0}
+        while (viewtk dup (TKind.COMMA !=) swap (TKind.PAREN_END !=) &) (counter) | {
+            if viewtk TKind.PAREN_START == { counter 1+ =counter }
+            else if viewtk TKind.PAREN_END == { counter 1- =counter }
+            preprocess_token
+        }
+        drop nip
+        %Token+
+        return
+    }
+
+    dup SCOPE_STACK stack_push!
+    swap %Token+ swap
+    // Arguments (optional)
+    if viewtk TKind.PAREN_START == {
+        // -- name def_tok_ptr tok_ptr
+        swap
+        if viewtk TKind.PAREN_START != {
+            error "Expected arguments for macro '"eputs 2 pick eputs "'\n"eputs
+            1 exit
+        }
+        // -- name tok_ptr def_tok_ptr
+        %Token+ swap %Token+
+
+        // -- name tok_ptr def_tok_ptr
+        while viewtk TKind.PAREN_END != {
+            // -- name tok_ptr def_tok_ptr slot_ptr
+            viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
+            over->Token.data@ over->Macro.key.name!
+            true over->Macro.is_arg!c
+            SCOPE_STACK stack_last@ over->Macro.key.scope!
+            2 pick swap->Macro.toks!
+            // -- name def_tok_ptr tok_ptr
+            swap
+            if viewtk TKind.PAREN_END == {
+                error "Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
+                1 exit
+            } else {
+                while viewtk dup (TKind.COMMA !=) swap (TKind.PAREN_END !=) & {
+                    if viewtk TKind.BRACE_START == { skip_braces }
+                    else if viewtk TKind.PAREN_START == { skip_paren }
+                    else { %Token+ }
+                }
+                if viewtk TKind.COMMA == { %Token+ }
+            }
+            swap %Token+
+            if viewtk TKind.COMMA == { %Token+ }
+        }
+
+        // -- name def_tok_ptr tok_ptr
+        %Token+ swap
+        if viewtk TKind.PAREN_END != {
+            error "Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
+            1 exit
+        }
+        // -- name tok_ptr def_tok_ptr
+        %Token+ swap
+    }
+    if viewtk TKind.BRACE_START == {
+        // -- tok_ptr def_tok_ptr
+        rot drop
+        preprocess_brace_block drop
+    }
+    &scope_stack stack_shrink
 }
 
 // tok_ptr -- new_tok_ptr
@@ -50,61 +146,7 @@
     viewtd swap
     // -- name tok_ptr macro_idx
     if over MACRO_MAP scoped_map_find_idx dup is_success {
-        MACRO_MAP map_idx->Macro.toks@
-        if dup not {
-            drop
-            error "Attempted to expand preprocessor flag '"eputs swap eputs "'\n"eputs
-            1 exit
-        }
-
-        dup SCOPE_STACK stack_push!
-        swap %Token+ swap
-        // Arguments (optional)
-        if viewtk TKind.PAREN_START == {
-            // -- name def_tok_ptr tok_ptr
-            swap
-            if viewtk TKind.PAREN_START != {
-                error "Expected arguments for macro '"eputs 2 pick eputs "'\n"eputs
-                1 exit
-            }
-            %Token+
-
-            // -- name tok_ptr def_tok_ptr
-            while swap %Token+ viewtk TKind.PAREN_END != {
-                // -- name tok_ptr def_tok_ptr slot_ptr
-                viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
-                over->Token.data@ over->Macro.key.name!
-                SCOPE_STACK stack_last@ over->Macro.key.scope!
-                2 pick swap->Macro.toks!
-                // -- name def_tok_ptr tok_ptr
-                swap
-                if viewtk TKind.BRACE_START == {
-                    skip_braces
-                } else if viewtk TKind.PAREN_END == {
-                    error "Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
-                    1 exit
-                } else {
-                    %Token+
-                }
-            }
-            // -- name def_tok_ptr tok_ptr
-            %Token+ swap
-            if viewtk TKind.PAREN_END != {
-                error "Invalid number of arguments supplied to macro '"eputs 2 pick eputs "'\n"eputs
-                1 exit
-            }
-            // -- name tok_ptr def_tok_ptr
-            %Token+ swap
-        }
-        if viewtk TKind.BRACE_START == {
-            // -- tok_ptr def_tok_ptr
-            rot drop
-            preprocess_block drop
-        } else {
-            preprocess_token
-            drop nip
-        }
-        &scope_stack stack_shrink
+        preprocess_macro_call
     } else {
         // -- tok_ptr
         drop nip
@@ -222,16 +264,25 @@
     // -- name tok_ptr slot_ptr
     over scope MACRO_MAP scoped_map_get
     over over->Macro.toks!
+    false over->Macro.is_arg!c
     scope over->Macro.key.scope!
     2 pick swap->Macro.key.name!
 
     // Arguments (optional)
     // -- name tok_ptr
     if viewtk TKind.PAREN_START == {
-        while %Token+ viewtk TKind.PAREN_END != {
+        %Token+
+        while viewtk TKind.PAREN_END != {
             if viewtk TKind.IDENT != {
                 error "Invalid parameter in definition for macro '"eputs over eputs "'\n"eputs
                 1 exit
+            }
+            if %Token+ viewtk TKind.PAREN_END != {
+                if viewtk TKind.COMMA != {
+                    error "Expected comma after parameter in definition for macro '"eputs over eputs "'\n"eputs
+                    1 exit
+                }
+                %Token+
             }
         }
         %Token+
@@ -286,7 +337,7 @@
 }
 
 // tok_ptr -- new_tok_ptr
-#macro parse_if_directive(true_case false_case) {
+#macro parse_if_directive(true_case, false_case) {
     %Token+
     if viewtk dup (TKind.IDENT !=) swap (TKind.WORD !=) & {
         error "Expected macro name for 'if' directive\n"eputs
@@ -332,8 +383,8 @@
     else if viewtd "macro" streq { parse_macro_directive }
     else if viewtd "flag" streq { parse_flag_directive }
     else if viewtd "undef" streq { parse_undef_directive }
-    else if viewtd "ifdef" streq { parse_if_directive(preprocess_block skip_braces) }
-    else if viewtd "ifndef" streq { parse_if_directive(skip_braces preprocess_block) }
+    else if viewtd "ifdef" streq { parse_if_directive(preprocess_brace_block, skip_braces) }
+    else if viewtd "ifndef" streq { parse_if_directive(skip_braces, preprocess_brace_block) }
     else {
         error "Unknown preprocessor directive '"eputs viewtd eputs "'\n"eputs
         1 exit
