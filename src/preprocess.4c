@@ -63,6 +63,16 @@
 // name tok_ptr macro_idx -- new_tok_ptr
 :preprocess_macro_call {
     $bool is_arg: {dup MACRO_MAP map_idx->Macro.is_arg@c}
+    $ptr src: {over}
+
+    if 2 pick "HERE_FILE" streq {
+        src->Token.file@ TKind.STR src->Token.file@ src->Token.line@ &out_toks_mem tok_push
+        drop nip %Token+ return
+    } else if 2 pick "HERE_LINE" streq {
+        src->Token.line@ TKind.INT src->Token.file@ src->Token.line@ &out_toks_mem tok_push
+        drop nip %Token+ return
+    }
+
     // name tok_ptr macro_def
     MACRO_MAP map_idx->Macro.toks@
     if dup not {
@@ -150,7 +160,7 @@
     } else {
         // -- tok_ptr
         drop nip
-        dup &out_toks_mem tok_dup
+        dup &out_toks_mem tok_push_clone
         %Token+
     }
 }
@@ -367,7 +377,7 @@
         if viewtd "macro" streq { parse_macro_directive }
         else if viewtd "flag" streq { parse_flag_directive }
         else {
-            error "Unknown preprocessor directive '"eputs viewtd eputs "'\n"eputs
+            error "Unknown preprocessor directive '"eputs viewtd eputs "' following 'pub'\n"eputs
             1 exit
         }
         false =IS_PUBLIC
@@ -403,7 +413,7 @@
         } else if viewtk TKind.BRACE_END == {
             &scope_stack stack_shrink
         }
-        dup &out_toks_mem tok_dup
+        dup &out_toks_mem tok_push_clone
         %Token+
     }
 }

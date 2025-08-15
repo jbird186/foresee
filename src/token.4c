@@ -47,7 +47,7 @@ pub enum TKind {
 }
 
 // src dest --
-:pub tok_dup {
+:pub tok_push_clone {
     // -- src ptr
     %Token stack_push
     over->Token.kind@c over->Token.kind!c

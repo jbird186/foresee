@@ -1,3 +1,5 @@
+#pub flag HERE_FILE
+#pub flag HERE_LINE
 #pub macro noop{__OP_NOOP}
 #pub macro exit{__OP_EXIT}
 #pub macro return{__OP_RET}
