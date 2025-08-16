@@ -3,7 +3,7 @@ $static int_min_buf: "-9223372036854775808"
 
 // int -- ptr len
 :pub __write_int_to_temp {
-    if (dup) (1 63 <<) == {
+    if dup INT_MIN == {
         drop &int_min_buf 20 return
     }
 

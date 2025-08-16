@@ -12,9 +12,9 @@ pub struct Buffer {
     int size
     ptr type_name
     ptr init
+    int alloc_offset
     bool init_int
     bool is_static
-    int alloc_offset
 }
 
 pub struct Macro {
@@ -40,6 +40,7 @@ pub struct EnumVariant {
 
 pub struct Struct {
     ScopedKey key
+    int size
     ptr fields
 }
 

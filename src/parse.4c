@@ -54,41 +54,62 @@ $static int FN_ALLOC_SIZE
     check_name_availability_fn
 }
 
-// ops_dest tok_ptr type_name -- ops_dest new_tok_ptr type_name field_size offset should_chain
+// ops_dest tok_ptr type_name -- ops_dest new_tok_ptr type_name should_chain field_size
 :view_field_access {
-    $ptr struct_name: {}
-
     // -- ops_dest tok_ptr
+    $ptr struct_name: {}
     if struct_name STRUCT_MAP scoped_map_find_idx is_failure {
         error "Unrecognized struct '"puts struct_name puts "'\n"puts
         1 exit
     }
-    // -- ops_dest fields_ptr tok_ptr
-    struct_name STRUCT_MAP scoped_map_find->Struct.fields@ swap
+
+    $ptr fields_ptr: {struct_name STRUCT_MAP scoped_map_find->Struct.fields@}
     if viewtk TKind.FIELD != {
         error "Expected field access after '->"puts struct_name puts "'\n"puts
         1 exit
     }
     %Token+
 
-    // -- ops_dest tok_ptr field_name fields_ptr
-    viewtd rot
+    $ptr field_name: {viewtd}
     $int sum: {0}
-    while dup->StructField.name@ {
-        if over over->StructField.name@ streq {
-            // -- ops_dest tok_ptr fields_ptr
-            nip swap %Token+ swap
-            // -- ops_dest tok_ptr type_name field_size offset
-            dup->StructField.type_name@ swap->StructField.size@ sum
-            3 pick->Token.kind@c TKind.FIELD ==
+    while field_name->StructField.name@ {
+        $int field_size: {fields_ptr->StructField.size@}
+        if field_name fields_ptr->StructField.name@ streq {
+            %Token+
+
+            sum OKind.PUSH_INT 3 pick op_push
+            0 OKind.ADD 3 pick op_push
+
+            if viewtk TKind.BRACKET_START == {
+                %Token+
+                _parse_until(TKind.BRACKET_END)
+                $ptr field_type_size: {
+                    fields_ptr->StructField.type_name@
+                    if dup not {
+                        drop error
+                        "Field '"puts fields_ptr->StructField.name@ puts
+                        "' of struct '"puts struct_name puts
+                        "' cannot be indexed\n"puts
+                        1 exit
+                    }
+                    STRUCT_MAP scoped_map_find->Struct.size@
+                }
+                field_type_size =field_size
+                field_type_size OKind.PUSH_INT 3 pick op_push
+                0 OKind.MUL 3 pick op_push
+                0 OKind.ADD 3 pick op_push
+            }
+
+            fields_ptr->StructField.type_name@
+            over->Token.kind@c TKind.FIELD ==
+            field_size
             return
         }
-        dup->StructField.size@ sum + =sum
-        %StructField+
+        field_size sum+ =sum
+        %StructField fields_ptr+ =fields_ptr
     }
 
-    drop
-    swap error swap "Field '"puts puts "' not found for struct '"puts struct_name puts "'\n"puts
+    error "Field '"puts field_name puts "' not found for struct '"puts struct_name puts "'\n"puts
     1 exit
 }
 
@@ -97,22 +118,6 @@ $static int FN_ALLOC_SIZE
     $int idx
     $int name
     $int size
-
-    // ops_dest tok_ptr type_name -- ops_dest new_tok_ptr
-    #macro view_fields {
-        // -- ops_dest new_tok_ptr type_name field_size offset
-        while view_field_access {
-            // -- ops_dest new_tok_ptr type_name offset
-            swap =size
-            OKind.PUSH_INT 4 pick op_push
-            0 OKind.ADD 4 pick op_push
-        }
-
-        // -- ops_dest new_tok_ptr offset
-        swap =size nip
-        OKind.PUSH_INT 3 pick op_push
-        0 OKind.ADD 3 pick op_push
-    }
 
     viewtd dup BUF_MAP scoped_map_find_idx =idx =name
     if idx is_failure {
@@ -127,9 +132,24 @@ $static int FN_ALLOC_SIZE
     if viewtk TKind.FIELD == {
         // -- ops_dest new_tok_ptr type_name
         idx BUF_MAP map_idx->Buffer.type_name@
-        view_fields
+        while view_field_access =size {}
+        drop
     }
-    name size
+
+    if viewtk TKind.BRACKET_START == {
+        %Token+
+        _parse_until(TKind.BRACKET_END)
+        idx BUF_MAP map_idx->Buffer.type_name@
+        if dup not {
+            drop error "Buffer '"puts name puts "' cannot be indexed\n"puts
+            1 exit
+        }
+        STRUCT_MAP scoped_map_find->Struct.size@ =size
+        size OKind.PUSH_INT 3 pick op_push
+        0 OKind.MUL 3 pick op_push
+        0 OKind.ADD 3 pick op_push
+    }
+    size
 }
 
 // ops_dest tok_ptr -- ops_dest tok_ptr
@@ -239,15 +259,14 @@ $static int FN_ALLOC_SIZE
     }
 
     ////////// Buffers //////////
-    // -- ops_dest tok_ptr name size
-    view_buffer_access
-    if dup 8 == {
-        drop drop
+    $ptr name: {viewtd}
+    $ptr size: {view_buffer_access}
+    if size 8 == {
         0 OKind.FETCH 3 roll op_push
-    } else if dup 1 == {
-        drop drop call_fetchc nip
+    } else if size 1 == {
+        call_fetchc nip
     } else {
-        rot error "Buffer '"puts rot puts "' ("puts swap put " bytes) cannot be automatically read from\n"puts
+        error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically read from\n"puts
         1 exit
     }
 }
@@ -393,13 +412,13 @@ $static int FN_ALLOC_SIZE
     0 OKind.EOF &fn_ops_mem op_push
 }
 
-:view_buf_size
+:_view_buf_size
 
 // base tok_ptr -- total tok_ptr
 :view_buf_size_scalar {
     while viewtk TKind.BRACKET_START == {
         // -- total tok_ptr scalar
-        %Token+ view_buf_size
+        %Token+ _view_buf_size
         // -- total tok_ptr
         rot * swap
         if viewtk TKind.BRACKET_END != {
@@ -417,16 +436,10 @@ $static int FN_ALLOC_SIZE
         error "Type '"puts viewtd puts "' not found\n"puts
         1 exit
     }
-    ->Struct.fields@
-
-    // -- tok_ptr sum fields
-    0 swap while dup->StructField.name@ {
-        dup->StructField.size@ rot+ swap
-        %StructField+
-    }
-    drop
+    ->Struct.size@
 }
 
+$static int can_be_indexed
 // tok_ptr -- new_tok_ptr int
 :view_buf_size_int {
     if viewtk TKind.INT == {
@@ -434,17 +447,13 @@ $static int FN_ALLOC_SIZE
         viewtd swap %Token+
         view_buf_size_scalar
     } else if viewtk TKind.IDENT == {
+        if can_be_indexed { -1 } else { true } =can_be_indexed
         // -- sum tok_ptr
         view_type_size swap %Token+
         view_buf_size_scalar
     } else {
-        // -- value tok_ptr
-        %Token+ view_buf_size swap
-        if viewtk TKind.BRACKET_END != {
-            error "Invalid buffer size\n"puts
-            1 exit
-        }
-        %Token+
+        error "Invalid buffer size\n"puts
+        1 exit
     }
 
     if over 0 < {
@@ -463,9 +472,10 @@ $static int FN_ALLOC_SIZE
 }
 
 // tok_ptr -- new_tok_ptr size
-:view_buf_size {
+:_view_buf_size {
 	// -- sum tok_ptr
 	0 swap while (viewtk TKind.INT ==) (over tok_is_type) | {
+        if over { -1 =can_be_indexed }
 		view_buf_size_int rot + swap
 	}
 
@@ -474,6 +484,12 @@ $static int FN_ALLOC_SIZE
 		1 exit
 	}
     swap
+}
+
+// tok_ptr -- new_tok_ptr size
+:view_buf_size {
+    false =can_be_indexed
+	_view_buf_size
 }
 
 #macro _parse_dollar_non_static_init {
@@ -570,9 +586,8 @@ $static int FN_ALLOC_SIZE
     if dup tok_is_type {
         // -- type_name tok_ptr
         viewtd swap
-        // -- type_name tok_ptr n_toks
-        dup view_buf_size =size dup rot - %Token/
-        if 1 == { swap =type_name } else { nip }
+        view_buf_size =size
+        if can_be_indexed true == { swap =type_name } else { nip }
     } else if viewtk TKind.INT == {
         view_buf_size =size
     } else {
@@ -621,9 +636,9 @@ $static int FN_ALLOC_SIZE
     size over->Buffer.size!
     type_name over->Buffer.type_name!
     init over->Buffer.init!
+    alloc_offset over->Buffer.alloc_offset!
     init_int over->Buffer.init_int!c
-    is_static over->Buffer.is_static!c
-    alloc_offset swap->Buffer.alloc_offset!
+    is_static swap->Buffer.is_static!c
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -636,31 +651,44 @@ $static int FN_ALLOC_SIZE
         return
     }
 
-    // -- ops_dest tok_ptr name idx
-    viewtd dup BUF_MAP scoped_map_find_idx
-    if dup is_success {
-        // -- ops_dest tok_ptr
-        nip push_buf_ptr
-        nip %Token+
-    } else {
-        drop
-        swap error swap "Buffer '"puts puts "' not defined in this scope\n"puts
+    // -- ops_dest tok_ptr
+    $ptr name: {viewtd}
+    $int idx: {name BUF_MAP scoped_map_find_idx}
+    if idx is_failure {
+        error "Buffer '"puts name puts "' not defined in this scope\n"puts
         1 exit
     }
+    // -- ops_dest tok_ptr
+    idx push_buf_ptr
+    %Token+
+
+    if viewtk TKind.BRACKET_START == {
+        %Token+
+        _parse_until(TKind.BRACKET_END)
+        idx BUF_MAP map_idx->Buffer.type_name@
+        if dup not {
+            drop error "Buffer '"puts name puts "' cannot be indexed\n"puts
+            1 exit
+        }
+        STRUCT_MAP scoped_map_find->Struct.size@
+        OKind.PUSH_INT 3 pick op_push
+        0 OKind.MUL 3 pick op_push
+        0 OKind.ADD 3 pick op_push
+    }
+    nip
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_eq {
     %Token+
-    // -- ops_dest tok_ptr name size
-    view_buffer_access
-    if dup 8 == {
-        drop drop
+    $ptr name: {viewtd}
+    $ptr size: {view_buffer_access}
+    if size 8 == {
         0 OKind.STORE 3 roll op_push
-    } else if dup 1 == {
-        drop drop call_storec nip
+    } else if size 1 == {
+        call_storec nip
     } else {
-        rot error "Buffer '"puts rot puts "' ("puts swap put " bytes) cannot be automatically assigned to\n"puts
+        error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
         1 exit
     }
 }
@@ -771,20 +799,20 @@ $static int FN_ALLOC_SIZE
     }
 
     %Token+
+    $int struct_size: {0}
     while viewtk TKind.BRACE_END != {
         $ptr type_name
 
-        // -- type_name_ptr new_tok_ptr size n_toks
-        dup view_buf_size_int over 3 pick - %Token/
-        // -- new_tok_ptr size type_name_ptr
-        if 3 roll (viewtk TKind.IDENT ==) rot (1 ==) & {
-            ->Token.data@ =type_name
+        if viewtk TKind.IDENT == {
+            viewtd =type_name
+            view_type_size
         } else {
-            drop
-            0 =type_name
+            NULL =type_name
+            viewtd
         }
+        // -- tok_ptr size
+        swap %Token+ view_buf_size_scalar swap
 
-        // -- new_tok_ptr size
         if over->Token.kind@c TKind.IDENT != {
             drop
             error "Invalid field for struct '"puts struct_name puts "'\n"puts
@@ -802,6 +830,7 @@ $static int FN_ALLOC_SIZE
             }
             %StructField+
         }
+        2 pick struct_size+ =struct_size
 
         // -- tok_ptr size name slot_ptr
         drop STRUCT_MEM stack_push
@@ -816,6 +845,7 @@ $static int FN_ALLOC_SIZE
     struct_name scope STRUCT_MAP scoped_map_get
     struct_name over->Struct.key.name!
     scope over->Struct.key.scope!
+    struct_size over->Struct.size!
     fields_ptr swap->Struct.fields!
 }
 
@@ -829,17 +859,8 @@ $static int FN_ALLOC_SIZE
 
     // -- ops_dest new_tok_ptr type_name
     viewtd swap %Token+ swap
-    // -- ops_dest new_tok_ptr type_name field_size offset
-    while view_field_access {
-        // -- ops_dest new_tok_ptr type_name offset
-        nip OKind.PUSH_INT 4 pick op_push
-        0 OKind.ADD 4 pick op_push
-    }
-
-    // -- ops_dest new_tok_ptr offset
-    nip nip
-    OKind.PUSH_INT 3 pick op_push
-    0 OKind.ADD 3 roll op_push
+    while view_field_access drop {}
+    drop nip
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
