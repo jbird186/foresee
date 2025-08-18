@@ -54,7 +54,7 @@ $static int FN_ALLOC_SIZE
     check_name_availability_fn
 }
 
-// ops_dest tok_ptr type_name -- ops_dest new_tok_ptr type_name should_chain field_size
+// ops_dest tok_ptr struct_name -- ops_dest new_tok_ptr type_name should_chain field_size
 :view_field_access {
     // -- ops_dest tok_ptr
     $ptr struct_name: {}
@@ -71,42 +71,42 @@ $static int FN_ALLOC_SIZE
     %Token+
 
     $ptr field_name: {viewtd}
-    $int sum: {0}
-    while field_name->StructField.name@ {
+    $int field_offset: {0}
+    while fields_ptr->StructField.name@ {
         $int field_size: {fields_ptr->StructField.size@}
         if field_name fields_ptr->StructField.name@ streq {
             %Token+
 
-            sum OKind.PUSH_INT 3 pick op_push
+            field_offset OKind.PUSH_INT 3 pick op_push
             0 OKind.ADD 3 pick op_push
 
-            if viewtk TKind.BRACKET_START == {
+            $ptr dims: {fields_ptr->StructField.type.dims@}
+            while viewtk TKind.BRACKET_START == {
                 %Token+
                 _parse_until(TKind.BRACKET_END)
-                $ptr field_type_size: {
-                    fields_ptr->StructField.type_name@
-                    if dup not {
-                        drop error
-                        "Field '"puts fields_ptr->StructField.name@ puts
-                        "' of struct '"puts struct_name puts
-                        "' cannot be indexed\n"puts
-                        1 exit
-                    }
-                    STRUCT_MAP scoped_map_find->Struct.size@
+
+                if (if dims {dims@ not} else {true}) {
+                    error
+                    "Field '"puts fields_ptr->StructField.name@ puts
+                    "' of struct '"puts struct_name puts
+                    "' cannot be indexed to this depth\n"puts
+                    1 exit
                 }
-                field_type_size =field_size
-                field_type_size OKind.PUSH_INT 3 pick op_push
+                field_size dims@ / =field_size
+                dims %ptr+ =dims
+
+                field_size OKind.PUSH_INT 3 pick op_push
                 0 OKind.MUL 3 pick op_push
                 0 OKind.ADD 3 pick op_push
             }
 
-            fields_ptr->StructField.type_name@
+            fields_ptr->StructField.type.name@
             over->Token.kind@c TKind.FIELD ==
             field_size
             return
         }
-        field_size sum+ =sum
-        %StructField fields_ptr+ =fields_ptr
+        field_offset field_size + =field_offset
+        fields_ptr %StructField + =fields_ptr
     }
 
     error "Field '"puts field_name puts "' not found for struct '"puts struct_name puts "'\n"puts
@@ -131,20 +131,25 @@ $static int FN_ALLOC_SIZE
 
     if viewtk TKind.FIELD == {
         // -- ops_dest new_tok_ptr type_name
-        idx BUF_MAP map_idx->Buffer.type_name@
+        idx BUF_MAP map_idx->Buffer.type.name@
         while view_field_access =size {}
         drop
     }
 
-    if viewtk TKind.BRACKET_START == {
+    $ptr dims: {idx BUF_MAP map_idx->Buffer.type.dims@}
+    while viewtk TKind.BRACKET_START == {
         %Token+
         _parse_until(TKind.BRACKET_END)
-        idx BUF_MAP map_idx->Buffer.type_name@
-        if dup not {
-            drop error "Buffer '"puts name puts "' cannot be indexed\n"puts
+
+        if (if dims {dims@ not} else {false}) {
+            error
+            "Buffer '"puts idx BUF_MAP map_idx->Buffer.type.name@ puts
+            "' cannot be indexed to this depth\n"puts
             1 exit
         }
-        STRUCT_MAP scoped_map_find->Struct.size@ =size
+        size dims@ / =size
+        dims %ptr+ =dims
+
         size OKind.PUSH_INT 3 pick op_push
         0 OKind.MUL 3 pick op_push
         0 OKind.ADD 3 pick op_push
@@ -419,6 +424,7 @@ $static int FN_ALLOC_SIZE
     while viewtk TKind.BRACKET_START == {
         // -- total tok_ptr scalar
         %Token+ _view_buf_size
+        dup DIMS_MEM stack_push!
         // -- total tok_ptr
         rot * swap
         if viewtk TKind.BRACKET_END != {
@@ -440,6 +446,7 @@ $static int FN_ALLOC_SIZE
 }
 
 $static int can_be_indexed
+
 // tok_ptr -- new_tok_ptr int
 :view_buf_size_int {
     if viewtk TKind.INT == {
@@ -583,6 +590,8 @@ $static int can_be_indexed
 
     $int size
     $ptr type_name: {NULL}
+    $ptr type_dims_mem_len: {&dims_mem stack_len}
+    $ptr type_dims: {DIMS_MEM stack_top}
     if dup tok_is_type {
         // -- type_name tok_ptr
         viewtd swap
@@ -592,6 +601,12 @@ $static int can_be_indexed
         view_buf_size =size
     } else {
         -1 =size
+    }
+    if can_be_indexed {
+        0 DIMS_MEM stack_push!
+    } else {
+        NULL =type_dims
+        type_dims_mem_len &type_dims!
     }
 
     if is_static not {
@@ -634,7 +649,8 @@ $static int can_be_indexed
     name over->Buffer.key.name!
     scope over->Buffer.key.scope!
     size over->Buffer.size!
-    type_name over->Buffer.type_name!
+    type_name over->Buffer.type.name!
+    type_dims over->Buffer.type.dims!
     init over->Buffer.init!
     alloc_offset over->Buffer.alloc_offset!
     init_int over->Buffer.init_int!c
@@ -662,16 +678,22 @@ $static int can_be_indexed
     idx push_buf_ptr
     %Token+
 
-    if viewtk TKind.BRACKET_START == {
+    $int size: {idx BUF_MAP map_idx->Buffer.size@}
+    $ptr dims: {idx BUF_MAP map_idx->Buffer.type.dims@}
+    while viewtk TKind.BRACKET_START == {
         %Token+
         _parse_until(TKind.BRACKET_END)
-        idx BUF_MAP map_idx->Buffer.type_name@
-        if dup not {
-            drop error "Buffer '"puts name puts "' cannot be indexed\n"puts
+
+        if (if dims {dims@ not} else {false}) {
+            error
+            "Buffer '"puts idx BUF_MAP map_idx->Buffer.type.name@ puts
+            "' cannot be indexed to this depth\n"puts
             1 exit
         }
-        STRUCT_MAP scoped_map_find->Struct.size@
-        OKind.PUSH_INT 3 pick op_push
+        size dims@ / =size
+        dims %ptr+ =dims
+
+        size OKind.PUSH_INT 3 pick op_push
         0 OKind.MUL 3 pick op_push
         0 OKind.ADD 3 pick op_push
     }
@@ -801,18 +823,29 @@ $static int can_be_indexed
     %Token+
     $int struct_size: {0}
     while viewtk TKind.BRACE_END != {
-        $ptr type_name
-
-        if viewtk TKind.IDENT == {
-            viewtd =type_name
-            view_type_size
+        $int size
+        $ptr type_name: {NULL}
+        $ptr type_dims_mem_len: {&dims_mem stack_len}
+        $ptr type_dims: {DIMS_MEM stack_top}
+        if dup tok_is_type {
+            // -- type_name tok_ptr
+            viewtd swap
+            view_buf_size =size
+            if can_be_indexed true == { swap =type_name } else { nip }
+        } else if viewtk TKind.INT == {
+            view_buf_size =size
         } else {
-            NULL =type_name
-            viewtd
+            -1 =size
         }
-        // -- tok_ptr size
-        swap %Token+ view_buf_size_scalar swap
+        if can_be_indexed {
+            0 DIMS_MEM stack_push!
+        } else {
+            NULL =type_dims
+            type_dims_mem_len &type_dims!
+        }
 
+        // -- tok_ptr size
+        size
         if over->Token.kind@c TKind.IDENT != {
             drop
             error "Invalid field for struct '"puts struct_name puts "'\n"puts
@@ -836,7 +869,8 @@ $static int can_be_indexed
         drop STRUCT_MEM stack_push
         swap over->StructField.name!
         swap over->StructField.size!
-        type_name swap->StructField.type_name!
+        type_name over->StructField.type.name!
+        type_dims swap->StructField.type.dims!
         %Token+
     }
     %Token+

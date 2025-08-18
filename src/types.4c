@@ -7,10 +7,15 @@ pub struct ScopedKey {
     int scope
 }
 
+pub struct Type {
+    ptr name
+    ptr dims
+}
+
 pub struct Buffer {
     ScopedKey key
     int size
-    ptr type_name
+    Type type
     ptr init
     int alloc_offset
     bool init_int
@@ -47,7 +52,7 @@ pub struct Struct {
 pub struct StructField {
     ptr name
     int size
-    ptr type_name
+    Type type
 }
 
 pub struct Op {

@@ -13,9 +13,11 @@ $pub static int Op[16] start_ops_mem
 $pub static int ptr[1024][8] inline_bufs
 $pub static int EnumVariant[1024][8] enum_variants_mem
 $pub static int StructField[1024][8] struct_fields_mem
-$pub static int ptr[16] dirs_mem
+$pub static int int[1024][8] dims_mem
+$pub static int ptr[1024] dirs_mem
 #pub macro ENUM_MEM { &enum_variants_mem %EnumVariant }
 #pub macro STRUCT_MEM { &struct_fields_mem %StructField }
+#pub macro DIMS_MEM { &dims_mem %ptr }
 #pub macro DIRS_MEM { &dirs_mem %ptr }
 
 $pub static int ptr[1024] scope_stack
