@@ -17,7 +17,7 @@ $static int out_fd_buffer_len
     }
 
     &out_fd_buffer out_fd_buffer_len+ strcpy
-    out_fd_buffer_len ptr_len+ =out_fd_buffer_len
+    ptr_len +=out_fd_buffer_len
 }
 
 // ptr --

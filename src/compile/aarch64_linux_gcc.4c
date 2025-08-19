@@ -21,8 +21,9 @@ $static int stack_ptr_delta
     }
     0 =stack_ptr_delta
 }
+// n --
 :update_stack_ptr_delta {
-    stack_ptr_delta+ =stack_ptr_delta
+    +=stack_ptr_delta
     if optimize_mode not {
         flush_stack_ptr_delta
     }

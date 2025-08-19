@@ -84,8 +84,8 @@
     if is_arg {
         $int counter: {0}
         while (viewtk dup (TKind.COMMA !=) swap (TKind.PAREN_END !=) &) (counter) | {
-            if viewtk TKind.PAREN_START == { counter 1+ =counter }
-            else if viewtk TKind.PAREN_END == { counter 1- =counter }
+            if viewtk TKind.PAREN_START == { 1 +=counter }
+            else if viewtk TKind.PAREN_END == { 1 -=counter }
             preprocess_token
         }
         drop nip
@@ -191,7 +191,7 @@
             &file_path fd return
         }
 
-        idx 1+ =idx
+        1 +=idx
     }
     NULL -1 return
 }

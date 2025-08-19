@@ -94,7 +94,7 @@ $pub static ptr argv
     } else if ARG "--optimize" streq {
         true =optimize_mode
     } else if ARG "--std" streq {
-        idx 1+ =idx
+        1 +=idx
         ARG DIRS_MEM stack_push!
     } else {
         "ERROR: Unrecognized option '"puts ARG puts "'\n"puts

@@ -92,8 +92,8 @@ $static int FN_ALLOC_SIZE
                     "' cannot be indexed to this depth\n"puts
                     1 exit
                 }
-                field_size dims@ / =field_size
-                dims %ptr+ =dims
+                dims@ /=field_size
+                %ptr +=dims
 
                 field_size OKind.PUSH_INT 3 pick op_push
                 0 OKind.MUL 3 pick op_push
@@ -105,28 +105,25 @@ $static int FN_ALLOC_SIZE
             field_size
             return
         }
-        field_offset field_size + =field_offset
-        fields_ptr %StructField + =fields_ptr
+        field_size +=field_offset
+        %StructField +=fields_ptr
     }
 
     error "Field '"puts field_name puts "' not found for struct '"puts struct_name puts "'\n"puts
     1 exit
 }
 
-// ops_dest tok_ptr -- ops_dest new_tok_ptr name size
+// ops_dest tok_ptr -- ops_dest new_tok_ptr size
 :view_buffer_access {
-    $int idx
-    $int name
-    $int size
-
-    viewtd dup BUF_MAP scoped_map_find_idx =idx =name
+    $ptr name: {viewtd}
+    $int idx: {name BUF_MAP scoped_map_find_idx}
     if idx is_failure {
         error "Buffer '"puts name puts "' not defined in this scope\n"puts
         1 exit
     }
 
     %Token+
-    idx BUF_MAP map_idx->Buffer.size@ =size
+    $int size: {idx BUF_MAP map_idx->Buffer.size@}
     idx push_buf_ptr
 
     if viewtk TKind.FIELD == {
@@ -147,8 +144,8 @@ $static int FN_ALLOC_SIZE
             "' cannot be indexed to this depth\n"puts
             1 exit
         }
-        size dims@ / =size
-        dims %ptr+ =dims
+        dims@ /=size
+        %ptr +=dims
 
         size OKind.PUSH_INT 3 pick op_push
         0 OKind.MUL 3 pick op_push
@@ -157,22 +154,13 @@ $static int FN_ALLOC_SIZE
     size
 }
 
-// ops_dest tok_ptr -- ops_dest tok_ptr
-:call_storec {
-    if "storec" FN_MAP scoped_map_find_idx is_failure {
-        error "Function 'storec' not defined\n"puts
+// ops_dest tok_ptr name -- ops_dest tok_ptr
+:call_fn {
+    if dup FN_MAP scoped_map_find_idx is_failure {
+        swap error swap "Function '"puts puts "' not defined\n"puts
         1 exit
     }
-    "storec" FN_MAP scoped_map_find_idx OKind.CALL_FN 3 pick op_push
-}
-
-// ops_dest tok_ptr -- ops_dest tok_ptr
-:call_fetchc {
-    if "fetchc" FN_MAP scoped_map_find_idx is_failure {
-        error "Function 'fetchc' not defined\n"puts
-        1 exit
-    }
-    "fetchc" FN_MAP scoped_map_find_idx OKind.CALL_FN 3 pick op_push
+    FN_MAP scoped_map_find_idx OKind.CALL_FN 3 pick op_push
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -181,6 +169,20 @@ $static int FN_ALLOC_SIZE
     // -- tok_ptr
     &inline_bufs stack_len 1- MAP_SIZE+ OKind.PUSH_BUF 3 roll op_push
     %Token+
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_buffer_ident {
+    $ptr name: {viewtd}
+    $ptr size: {view_buffer_access}
+    if size 8 == {
+        0 OKind.FETCH 3 roll op_push
+    } else if size 1 == {
+        "fetchc" call_fn nip
+    } else {
+        error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically read from\n"puts
+        1 exit
+    }
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -264,16 +266,7 @@ $static int FN_ALLOC_SIZE
     }
 
     ////////// Buffers //////////
-    $ptr name: {viewtd}
-    $ptr size: {view_buffer_access}
-    if size 8 == {
-        0 OKind.FETCH 3 roll op_push
-    } else if size 1 == {
-        call_fetchc nip
-    } else {
-        error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically read from\n"puts
-        1 exit
-    }
+    parse_buffer_ident
 }
 
 // ops_dest tok_ptr if_id -- new_tok_ptr
@@ -513,7 +506,7 @@ $static int can_be_indexed
 
         alloc_offset size+ OKind.PUSH_VAR 3 pick op_push
         if size 1 == {
-            call_storec
+            "storec" call_fn
         } else {
             0 OKind.STORE 3 pick op_push
         }
@@ -610,7 +603,7 @@ $static int can_be_indexed
     }
 
     if is_static not {
-        FN_ALLOC_SIZE size+ =FN_ALLOC_SIZE
+        size +=FN_ALLOC_SIZE
     }
 
     if viewtk TKind.IDENT != {
@@ -667,48 +660,71 @@ $static int can_be_indexed
         return
     }
 
-    // -- ops_dest tok_ptr
-    $ptr name: {viewtd}
-    $int idx: {name BUF_MAP scoped_map_find_idx}
-    if idx is_failure {
-        error "Buffer '"puts name puts "' not defined in this scope\n"puts
-        1 exit
-    }
-    // -- ops_dest tok_ptr
-    idx push_buf_ptr
-    %Token+
-
-    $int size: {idx BUF_MAP map_idx->Buffer.size@}
-    $ptr dims: {idx BUF_MAP map_idx->Buffer.type.dims@}
-    while viewtk TKind.BRACKET_START == {
-        %Token+
-        _parse_until(TKind.BRACKET_END)
-
-        if (if dims {dims@ not} else {false}) {
-            error
-            "Buffer '"puts idx BUF_MAP map_idx->Buffer.type.name@ puts
-            "' cannot be indexed to this depth\n"puts
-            1 exit
-        }
-        size dims@ / =size
-        dims %ptr+ =dims
-
-        size OKind.PUSH_INT 3 pick op_push
-        0 OKind.MUL 3 pick op_push
-        0 OKind.ADD 3 pick op_push
-    }
-    nip
+    view_buffer_access drop nip
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_eq {
+    // #macro check_no_swap
+    $ptr original_tok_ptr: {dup}
+    if viewtd "=" strcmp {
+        %Token+
+        over swap parse_buffer_ident
+        drop original_tok_ptr
+        if viewtd "+=" streq {
+            0 OKind.ADD 3 pick op_push
+        }
+        else if viewtd "-=" streq {
+            "swap" call_fn
+            0 OKind.SUB 3 pick op_push
+        }
+        else if viewtd "*=" streq {
+            0 OKind.MUL 3 pick op_push
+        }
+        else if viewtd "&=" streq {
+            0 OKind.AND 3 pick op_push
+        }
+        else if viewtd "|=" streq {
+            0 OKind.OR 3 pick op_push
+        }
+        else if viewtd "^=" streq {
+            0 OKind.XOR 3 pick op_push
+        }
+        else if viewtd "<<=" streq {
+            "swap" call_fn
+            0 OKind.SHL 3 pick op_push
+        }
+        else if viewtd ">>=" streq {
+            "swap" call_fn
+            0 OKind.SHR 3 pick op_push
+        }
+        else if viewtd ">>:=" streq {
+            "swap" call_fn
+            0 OKind.SAR 3 pick op_push
+        }
+        else if viewtd "/=" streq {
+            "swap" call_fn
+            0 OKind.DIVMOD 3 pick op_push
+            0 OKind.DROP 3 pick op_push
+        }
+        else if viewtd "%=" streq {
+            "swap" call_fn
+            0 OKind.DIVMOD 3 pick op_push
+            "nip" call_fn
+        }
+        else {
+            error "Unknown assignment operator '"puts viewtd puts "'\n"puts
+            1 exit
+        }
+    }
+
     %Token+
     $ptr name: {viewtd}
     $ptr size: {view_buffer_access}
     if size 8 == {
         0 OKind.STORE 3 roll op_push
     } else if size 1 == {
-        call_storec nip
+        "storec" call_fn nip
     } else {
         error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
         1 exit
@@ -863,7 +879,7 @@ $static int can_be_indexed
             }
             %StructField+
         }
-        2 pick struct_size+ =struct_size
+        2 pick +=struct_size
 
         // -- tok_ptr size name slot_ptr
         drop STRUCT_MEM stack_push
@@ -1000,12 +1016,7 @@ $static int can_be_indexed
     }
     drop
 
-    if "main" FN_MAP scoped_map_find_idx is_failure {
-        "ERROR: Function 'main' not defined\n"puts
-        1 exit
-    }
-
-    "main" FN_MAP scoped_map_find_idx OKind.CALL_FN &start_ops_mem op_push
+    &start_ops_mem swap "main" call_fn nip
     0 OKind.PUSH_INT &start_ops_mem op_push
     0 OKind.EXIT &start_ops_mem op_push
     0 OKind.EOF &start_ops_mem op_push

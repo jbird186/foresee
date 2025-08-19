@@ -15,6 +15,7 @@ $pub static int EnumVariant[1024][8] enum_variants_mem
 $pub static int StructField[1024][8] struct_fields_mem
 $pub static int int[1024][8] dims_mem
 $pub static int ptr[1024] dirs_mem
+#pub macro STRS_MEM { &strs_mem %char }
 #pub macro ENUM_MEM { &enum_variants_mem %EnumVariant }
 #pub macro STRUCT_MEM { &struct_fields_mem %StructField }
 #pub macro DIMS_MEM { &dims_mem %ptr }
