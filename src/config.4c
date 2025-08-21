@@ -22,7 +22,9 @@ $pub static int ptr[1024] dirs_mem
 #pub macro DIRS_MEM { &dirs_mem %ptr }
 
 $pub static int ptr[1024] scope_stack
+$pub static int int[1024] loop_stack
 #pub macro SCOPE_STACK { &scope_stack %ptr }
+#pub macro LOOP_STACK { &loop_stack %int }
 
 #pub macro MAP_SIZE { 8191 }
 $pub static File[MAP_SIZE] file_set

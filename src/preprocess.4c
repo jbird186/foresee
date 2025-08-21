@@ -62,16 +62,19 @@
 
 // name tok_ptr macro_idx -- new_tok_ptr
 :preprocess_macro_call {
-    $bool is_arg: {dup MACRO_MAP map_idx->Macro.is_arg@c}
+    dup MACRO_MAP map_idx
+    $int n_args: {dup->Macro.n_args@}
+    $bool is_arg: {->Macro.is_arg@c}
     $ptr src: {over}
 
-    if 2 pick "HERE_FILE" streq {
-        src->Token.file@ TKind.STR src->Token.file@ src->Token.line@ &out_toks_mem tok_push
-        drop nip %Token+ return
-    } else if 2 pick "HERE_LINE" streq {
-        src->Token.line@ TKind.INT src->Token.file@ src->Token.line@ &out_toks_mem tok_push
-        drop nip %Token+ return
+    #macro parse_here_macro(name, access, tkind) {
+        if 2 pick name streq {
+            src->Token.access@ TKind.tkind src->Token.file@ src->Token.line@ &out_toks_mem tok_push
+            drop nip %Token+ return
+        }
     }
+    parse_here_macro("HERE_FILE", file, STR)
+    parse_here_macro("HERE_LINE", line, INT)
 
     // name tok_ptr macro_def
     MACRO_MAP map_idx->Macro.toks@
@@ -95,6 +98,7 @@
 
     dup SCOPE_STACK stack_push!
     swap %Token+ swap
+
     // Arguments (optional)
     if viewtk TKind.PAREN_START == {
         // -- name def_tok_ptr tok_ptr
@@ -108,26 +112,39 @@
 
         // -- name tok_ptr def_tok_ptr
         while viewtk TKind.PAREN_END != {
-            $bool had_comma
             // -- name tok_ptr def_tok_ptr slot_ptr
             viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
             over->Token.data@ over->Macro.key.name!
-            true over->Macro.is_arg!c
             SCOPE_STACK stack_last@ over->Macro.key.scope!
-            2 pick swap->Macro.toks!
+            0 over->Macro.n_args!
+            2 pick over->Macro.toks!
+            true swap->Macro.is_arg!c
+
             // -- name def_tok_ptr tok_ptr
             swap
-            if (viewtk TKind.PAREN_END ==) (had_comma not) & {
-                error "Invalid number of arguments supplied to macro '"puts 2 pick puts "'\n"puts
-                1 exit
-            } else {
-                while viewtk dup (TKind.COMMA !=) swap (TKind.PAREN_END !=) & {
-                    if viewtk TKind.BRACE_START == { skip_braces }
-                    else if viewtk TKind.PAREN_START == { skip_paren }
-                    else { %Token+ }
+            if viewtk TKind.PAREN_END == {
+                if dup %Token- ->Token.kind TKind.COMMA == {
+                    error "Invalid number of arguments supplied to macro '"puts 2 pick puts "'\n"puts
+                    1 exit
                 }
-                if viewtk TKind.COMMA == dup =had_comma { %Token+ }
+                swap %Token+
+                break
             }
+
+            $char parse_until_tok: { if n_args 1 > {TKind.COMMA} else {TKind.PAREN_END} }
+            $char err_if_tok: { if n_args 1 > {TKind.PAREN_END} else {TKind.COMMA} }
+            while viewtk parse_until_tok != {
+                if viewtk err_if_tok == {
+                    error "Invalid number of arguments supplied to macro '"puts 2 pick puts "'\n"puts
+                    1 exit
+                }
+                if viewtk TKind.BRACE_START == { skip_braces }
+                else if viewtk TKind.PAREN_START == { skip_paren }
+                else { %Token+ }
+            }
+            1 -=n_args
+            if viewtk TKind.COMMA == { %Token+ }
+
             swap %Token+
             if viewtk TKind.COMMA == { %Token+ }
         }
@@ -141,6 +158,7 @@
         // -- name tok_ptr def_tok_ptr
         %Token+ swap
     }
+
     if viewtk TKind.BRACE_START == {
         // -- tok_ptr def_tok_ptr
         rot drop
@@ -268,29 +286,24 @@
         error "Macro '"puts viewtd puts "' already defined in this scope\n"puts
         1 exit
     }
-    // -- name tok_ptr
-    viewtd swap %Token+
+
+    $ptr name: {viewtd} %Token+
+    $ptr macro_toks: {dup}
     $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
 
-    // -- name tok_ptr slot_ptr
-    over scope MACRO_MAP scoped_map_get
-    over over->Macro.toks!
-    false over->Macro.is_arg!c
-    scope over->Macro.key.scope!
-    2 pick swap->Macro.key.name!
-
     // Arguments (optional)
-    // -- name tok_ptr
+    $int n_args: {0}
     if viewtk TKind.PAREN_START == {
         %Token+
         while viewtk TKind.PAREN_END != {
+            1 +=n_args
             if viewtk TKind.IDENT != {
-                error "Invalid parameter in definition for macro '"puts over puts "'\n"puts
+                error "Invalid parameter in definition for macro '"puts name puts "'\n"puts
                 1 exit
             }
             if %Token+ viewtk TKind.PAREN_END != {
                 if viewtk TKind.COMMA != {
-                    error "Expected comma after parameter in definition for macro '"puts over puts "'\n"puts
+                    error "Expected comma after parameter in definition for macro '"puts name puts "'\n"puts
                     1 exit
                 }
                 %Token+
@@ -299,12 +312,18 @@
         %Token+
     }
 
+    name scope MACRO_MAP scoped_map_get
+    name over->Macro.key.name!
+    scope over->Macro.key.scope!
+    n_args over->Macro.n_args!
+    macro_toks over->Macro.toks!
+    false swap->Macro.is_arg!c
+
     if viewtk TKind.BRACE_START != {
-        error "Invalid body for macro '"puts over puts "'\n"puts
+        error "Invalid body for macro '"puts name puts "'\n"puts
         1 exit
     }
-    // -- tok_ptr
-    nip skip_braces
+    skip_braces
 }
 
 // tok_ptr -- new_tok_ptr
@@ -324,7 +343,9 @@
     dup scope MACRO_MAP scoped_map_get
     swap over->Macro.key.name!
     scope over->Macro.key.scope!
-    NULL swap->Macro.toks!
+    0 over->Macro.n_args!
+    NULL over->Macro.toks!
+    false swap->Macro.is_arg!c
     %Token+
 }
 
@@ -427,8 +448,10 @@
 // name --
 :pub define_builtin_flag {
     dup SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
-    NULL over->Macro.toks!
     NULL over->Macro.key.scope!
+    0 over->Macro.n_args!
+    NULL over->Macro.toks!
+    false over->Macro.is_arg!c
     ->Macro.key.name!
 }
 

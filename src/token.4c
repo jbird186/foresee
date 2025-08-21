@@ -13,6 +13,8 @@ pub enum TKind {
     IF
     ELSE
     WHILE
+    CONTINUE
+    BREAK
     COLON
     POUND
     COMMA

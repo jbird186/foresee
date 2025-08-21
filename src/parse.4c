@@ -330,22 +330,44 @@ $static int FN_ALLOC_SIZE
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_while {
     %Token+
+    $int label_id: {ASM_LABEL_ID}
+    2 +=ASM_LABEL_ID
 
-    // -- start_id ops_dest tok_ptr
-    ASM_LABEL_ID dup 2+ =ASM_LABEL_ID rot rot
-    2 pick OKind.LABEL 3 pick op_push
+    label_id OKind.LABEL 3 pick op_push
 
     // Condition
     _parse_until(TKind.BRACE_START)
-    2 pick 1+ OKind.JZ 3 pick op_push
+    label_id 1+ OKind.JZ 3 pick op_push
 
     // Operations
+    label_id LOOP_STACK stack_push!
     dup SCOPE_STACK stack_push!
     _parse_until(TKind.BRACE_END)
+    &loop_stack stack_shrink
     &scope_stack stack_shrink
 
-    2 pick OKind.JMP 3 pick op_push
-    rot 1+ OKind.LABEL 3 roll op_push
+    label_id OKind.JMP 3 pick op_push
+    label_id 1+ OKind.LABEL 3 roll op_push
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_continue {
+    if &loop_stack stack_len not {
+        error "'continue' can only be used within loops\n"puts
+        1 exit
+    }
+    LOOP_STACK stack_last@ OKind.JMP 3 roll op_push
+    %Token+
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_break {
+    if &loop_stack stack_len not {
+        error "'break' can only be used within loops\n"puts
+        1 exit
+    }
+    LOOP_STACK stack_last@ 1+ OKind.JMP 3 roll op_push
+    %Token+
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -952,6 +974,8 @@ $static int can_be_indexed
     else if viewtk TKind.IDENT == { parse_ident }
     else if viewtk TKind.IF == { parse_if }
     else if viewtk TKind.WHILE == { parse_while }
+    else if viewtk TKind.CONTINUE == { parse_continue }
+    else if viewtk TKind.BREAK == { parse_break }
     else if viewtk TKind.FN == { parse_fn }
     else if viewtk TKind.DOLLAR == { parse_dollar }
     else if viewtk TKind.REF == { parse_ref }

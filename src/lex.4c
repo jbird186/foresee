@@ -188,6 +188,8 @@ $static ptr file
     match_ident_token("if", TKind.IF)
     match_ident_token("else", TKind.ELSE)
     match_ident_token("while", TKind.WHILE)
+    match_ident_token("continue", TKind.CONTINUE)
+    match_ident_token("break", TKind.BREAK)
     match_ident_token("static", TKind.STATIC)
     match_ident_token("enum", TKind.ENUM)
     match_ident_token("struct", TKind.STRUCT)

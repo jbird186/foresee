@@ -24,6 +24,7 @@ pub struct Buffer {
 
 pub struct Macro {
     ScopedKey key
+    int n_args
     ptr toks
     bool is_arg
 }
