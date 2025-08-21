@@ -8732,235 +8732,8 @@ f_3047:
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_557
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #17
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_4482
-    b       .l_556
-.l_557:
-    bl      f_695
     adrp    x0, b_8353
     add     x0, x0, :lo12:b_8353
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_8132
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_558
-    adrp    x0, b_8354
-    add     x0, x0, :lo12:b_8354
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_5479
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #18
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_4482
-    b       .l_556
-.l_558:
-    bl      f_695
-    adrp    x0, b_8355
-    add     x0, x0, :lo12:b_8355
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_8132
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_559
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #19
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_4482
-    b       .l_556
-.l_559:
-    bl      f_695
-    adrp    x0, b_8356
-    add     x0, x0, :lo12:b_8356
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_8132
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_560
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #20
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_4482
-    b       .l_556
-.l_560:
-    bl      f_695
-    adrp    x0, b_8357
-    add     x0, x0, :lo12:b_8357
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_8132
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_561
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #21
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_4482
-    b       .l_556
-.l_561:
-    bl      f_695
-    adrp    x0, b_8358
-    add     x0, x0, :lo12:b_8358
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_8132
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_562
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #22
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_4482
-    b       .l_556
-.l_562:
-    bl      f_695
-    adrp    x0, b_8359
-    add     x0, x0, :lo12:b_8359
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_8132
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_563
-    adrp    x0, b_8360
-    add     x0, x0, :lo12:b_8360
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_5479
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #23
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_4482
-    b       .l_556
-.l_563:
-    bl      f_695
-    adrp    x0, b_8361
-    add     x0, x0, :lo12:b_8361
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_8132
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_564
-    adrp    x0, b_8362
-    add     x0, x0, :lo12:b_8362
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_5479
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #24
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_4482
-    b       .l_556
-.l_564:
-    bl      f_695
-    adrp    x0, b_8363
-    add     x0, x0, :lo12:b_8363
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_8132
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_565
-    adrp    x0, b_8364
-    add     x0, x0, :lo12:b_8364
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_5479
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #25
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_4482
-    b       .l_556
-.l_565:
-    bl      f_695
-    adrp    x0, b_8365
-    add     x0, x0, :lo12:b_8365
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_8132
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_566
-    adrp    x0, b_8366
-    add     x0, x0, :lo12:b_8366
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_5479
@@ -8989,18 +8762,18 @@ f_3047:
     sub     x12, x12, 8
     bl      f_4482
     b       .l_556
-.l_566:
+.l_557:
     bl      f_695
-    adrp    x0, b_8367
-    add     x0, x0, :lo12:b_8367
+    adrp    x0, b_8354
+    add     x0, x0, :lo12:b_8354
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_8132
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_567
-    adrp    x0, b_8368
-    add     x0, x0, :lo12:b_8368
+    cbz     x0, .l_558
+    adrp    x0, b_8355
+    add     x0, x0, :lo12:b_8355
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_5479
@@ -9016,11 +8789,238 @@ f_3047:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_4482
+    adrp    x0, b_8356
+    add     x0, x0, :lo12:b_8356
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_5479
+    b       .l_556
+.l_558:
+    bl      f_695
+    adrp    x0, b_8357
+    add     x0, x0, :lo12:b_8357
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_8132
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_559
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #17
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    sub     x12, x12, 16
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_4482
+    b       .l_556
+.l_559:
+    bl      f_695
+    adrp    x0, b_8358
+    add     x0, x0, :lo12:b_8358
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_8132
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_560
+    adrp    x0, b_8359
+    add     x0, x0, :lo12:b_8359
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_5479
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #18
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    sub     x12, x12, 16
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_4482
+    b       .l_556
+.l_560:
+    bl      f_695
+    adrp    x0, b_8360
+    add     x0, x0, :lo12:b_8360
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_8132
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_561
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #19
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    sub     x12, x12, 16
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_4482
+    b       .l_556
+.l_561:
+    bl      f_695
+    adrp    x0, b_8361
+    add     x0, x0, :lo12:b_8361
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_8132
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_562
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #20
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    sub     x12, x12, 16
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_4482
+    b       .l_556
+.l_562:
+    bl      f_695
+    adrp    x0, b_8362
+    add     x0, x0, :lo12:b_8362
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_8132
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_563
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #21
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    sub     x12, x12, 16
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_4482
+    b       .l_556
+.l_563:
+    bl      f_695
+    adrp    x0, b_8363
+    add     x0, x0, :lo12:b_8363
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_8132
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_564
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #22
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    sub     x12, x12, 16
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_4482
+    b       .l_556
+.l_564:
+    bl      f_695
+    adrp    x0, b_8364
+    add     x0, x0, :lo12:b_8364
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_8132
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_565
+    adrp    x0, b_8365
+    add     x0, x0, :lo12:b_8365
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_5479
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #23
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    sub     x12, x12, 16
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_4482
+    b       .l_556
+.l_565:
+    bl      f_695
+    adrp    x0, b_8366
+    add     x0, x0, :lo12:b_8366
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_8132
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_566
+    adrp    x0, b_8367
+    add     x0, x0, :lo12:b_8367
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_5479
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #24
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    sub     x12, x12, 16
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_4482
+    b       .l_556
+.l_566:
+    bl      f_695
+    adrp    x0, b_8368
+    add     x0, x0, :lo12:b_8368
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_8132
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_567
     adrp    x0, b_8369
     add     x0, x0, :lo12:b_8369
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_5479
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #25
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    sub     x12, x12, 16
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_4482
     b       .l_556
 .l_567:
     bl      f_2380
@@ -11310,7 +11310,7 @@ f_3883:
 f_3915:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    sub     sp, sp, #17
+    sub     sp, sp, #18
     bl      f_2068
     adrp    x0, b_3738
     add     x0, x0, :lo12:b_3738
@@ -11747,7 +11747,16 @@ f_3915:
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
-    add     x12, x12, 8
+    str     x0, [x12]
+    sub     x0, x29, #18
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3343
+    bl      f_4573
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
+    and 	x0, x1, x0
+    add     x12, x12, 16
     cbz     x0, .l_210
     bl      f_2380
     adrp    x0, b_8215
@@ -11829,6 +11838,13 @@ f_3915:
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
+    str     x0, [x12]
+    bl      f_2068
+    sub     x0, x29, #18
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2394
+    ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_217
     mov     x0, #25
@@ -20294,24 +20310,24 @@ _start:
     b_8349: .ascii "' cannot exceed \0"
     b_8350: .ascii " bytes\n\0"
     b_8351: .ascii "=\0"
-    b_8352: .ascii "+=\0"
-    b_8353: .ascii "-=\0"
-    b_8354: .ascii "swap\0"
-    b_8355: .ascii "*=\0"
-    b_8356: .ascii "&=\0"
-    b_8357: .ascii "|=\0"
-    b_8358: .ascii "^=\0"
-    b_8359: .ascii "<<=\0"
-    b_8360: .ascii "swap\0"
-    b_8361: .ascii ">>=\0"
-    b_8362: .ascii "swap\0"
-    b_8363: .ascii ">>:=\0"
-    b_8364: .ascii "swap\0"
-    b_8365: .ascii "/=\0"
-    b_8366: .ascii "swap\0"
-    b_8367: .ascii "%=\0"
-    b_8368: .ascii "swap\0"
-    b_8369: .ascii "nip\0"
+    b_8352: .ascii "/=\0"
+    b_8353: .ascii "swap\0"
+    b_8354: .ascii "%=\0"
+    b_8355: .ascii "swap\0"
+    b_8356: .ascii "nip\0"
+    b_8357: .ascii "+=\0"
+    b_8358: .ascii "-=\0"
+    b_8359: .ascii "swap\0"
+    b_8360: .ascii "*=\0"
+    b_8361: .ascii "&=\0"
+    b_8362: .ascii "|=\0"
+    b_8363: .ascii "^=\0"
+    b_8364: .ascii "<<=\0"
+    b_8365: .ascii "swap\0"
+    b_8366: .ascii ">>=\0"
+    b_8367: .ascii "swap\0"
+    b_8368: .ascii ">>:=\0"
+    b_8369: .ascii "swap\0"
     b_8370: .ascii "Unknown assignment operator '\0"
     b_8371: .ascii "'\n\0"
     b_8372: .ascii "storec\0"

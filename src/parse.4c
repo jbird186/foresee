@@ -665,44 +665,19 @@ $static int can_be_indexed
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_eq {
-    // #macro check_no_swap
     $ptr original_tok_ptr: {dup}
     if viewtd "=" strcmp {
         %Token+
         over swap parse_buffer_ident
         drop original_tok_ptr
-        if viewtd "+=" streq {
-            0 OKind.ADD 3 pick op_push
+
+        #macro parse_simple_eq(string, opcode, preop) {
+            else if viewtd string streq {
+                preop
+                0 opcode 3 pick op_push
+            }
         }
-        else if viewtd "-=" streq {
-            "swap" call_fn
-            0 OKind.SUB 3 pick op_push
-        }
-        else if viewtd "*=" streq {
-            0 OKind.MUL 3 pick op_push
-        }
-        else if viewtd "&=" streq {
-            0 OKind.AND 3 pick op_push
-        }
-        else if viewtd "|=" streq {
-            0 OKind.OR 3 pick op_push
-        }
-        else if viewtd "^=" streq {
-            0 OKind.XOR 3 pick op_push
-        }
-        else if viewtd "<<=" streq {
-            "swap" call_fn
-            0 OKind.SHL 3 pick op_push
-        }
-        else if viewtd ">>=" streq {
-            "swap" call_fn
-            0 OKind.SHR 3 pick op_push
-        }
-        else if viewtd ">>:=" streq {
-            "swap" call_fn
-            0 OKind.SAR 3 pick op_push
-        }
-        else if viewtd "/=" streq {
+        if viewtd "/=" streq {
             "swap" call_fn
             0 OKind.DIVMOD 3 pick op_push
             0 OKind.DROP 3 pick op_push
@@ -712,6 +687,15 @@ $static int can_be_indexed
             0 OKind.DIVMOD 3 pick op_push
             "nip" call_fn
         }
+        parse_simple_eq("+=", OKind.ADD,)
+        parse_simple_eq("-=", OKind.SUB, "swap" call_fn)
+        parse_simple_eq("*=", OKind.MUL,)
+        parse_simple_eq("&=", OKind.AND,)
+        parse_simple_eq("|=", OKind.OR,)
+        parse_simple_eq("^=", OKind.XOR,)
+        parse_simple_eq("<<=", OKind.SHL, "swap" call_fn)
+        parse_simple_eq(">>=", OKind.SHR, "swap" call_fn)
+        parse_simple_eq(">>:=", OKind.SAR, "swap" call_fn)
         else {
             error "Unknown assignment operator '"puts viewtd puts "'\n"puts
             1 exit

@@ -108,6 +108,7 @@
 
         // -- name tok_ptr def_tok_ptr
         while viewtk TKind.PAREN_END != {
+            $bool had_comma
             // -- name tok_ptr def_tok_ptr slot_ptr
             viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
             over->Token.data@ over->Macro.key.name!
@@ -116,7 +117,7 @@
             2 pick swap->Macro.toks!
             // -- name def_tok_ptr tok_ptr
             swap
-            if viewtk TKind.PAREN_END == {
+            if (viewtk TKind.PAREN_END ==) (had_comma not) & {
                 error "Invalid number of arguments supplied to macro '"puts 2 pick puts "'\n"puts
                 1 exit
             } else {
@@ -125,7 +126,7 @@
                     else if viewtk TKind.PAREN_START == { skip_paren }
                     else { %Token+ }
                 }
-                if viewtk TKind.COMMA == { %Token+ }
+                if viewtk TKind.COMMA == dup =had_comma { %Token+ }
             }
             swap %Token+
             if viewtk TKind.COMMA == { %Token+ }
