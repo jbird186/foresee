@@ -1,15 +1,16 @@
 #use "stdstr.4c"
 #use "config.4c"
 
-// strref -- hash
+// FNV-1a
+// str_ptr -- int
 :hash {
-    5381
-    while over@c {
-        dup 5 << + over@c +
-        swap 1+ swap
+    $int res: {2166136261}
+    while dup@c {
+        dup@c res^ 16777619* =res
+        1+
     }
-    nip
-    if dup 0 < { -1* }
+    drop
+    res if dup 0 < { -1* }
 }
 
 // slot_ptr -- bool
