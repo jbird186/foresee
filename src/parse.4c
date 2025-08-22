@@ -141,24 +141,37 @@ $static int FN_ALLOC_SIZE
         drop
     }
 
-    $ptr dims: {idx BUF_MAP map_idx->Buffer.type.dims@}
     while viewtk TKind.BRACKET_START == {
-        %Token+
-        parse_until(TKind.BRACKET_END)
-
-        if (if dims {dims@ not} else {false}) {
-            error
-            "Buffer '"puts idx BUF_MAP map_idx->Buffer.type.name@ puts
-            "' cannot be indexed to this depth\n"puts
+        if (idx BUF_MAP map_idx->Buffer.type.name@ not) {
+            error "Buffer '"puts name puts "' cannot be indexed to this depth\n"puts
             1 exit
         }
-        dims@ /=size
-        %ptr +=dims
 
-        size OKind.PUSH_INT 3 pick op_push
-        0 OKind.MUL 3 pick op_push
-        0 OKind.ADD 3 pick op_push
+        $ptr dims: {idx BUF_MAP map_idx->Buffer.type.dims@}
+        while viewtk TKind.BRACKET_START == {
+            %Token+
+            parse_until(TKind.BRACKET_END)
+
+            if (if dims {dims@ not} else {false}) {
+                error "Buffer '"puts name puts "' cannot be indexed to this depth\n"puts
+                1 exit
+            }
+            dims@ /=size
+            %ptr +=dims
+
+            size OKind.PUSH_INT 3 pick op_push
+            0 OKind.MUL 3 pick op_push
+            0 OKind.ADD 3 pick op_push
+        }
+
+        if viewtk TKind.FIELD == {
+            // -- ops_dest new_tok_ptr type_name
+            idx BUF_MAP map_idx->Buffer.type.name@
+            while view_field_access =size {}
+            drop
+        }
     }
+
     size
 }
 
@@ -471,6 +484,7 @@ $static int FN_ALLOC_SIZE
     0 =FN_ALLOC_SIZE
     0 OKind.ALLOC &fn_ops_mem op_push
     dup SCOPE_STACK stack_push!
+
     while viewtk TKind.BRACE_END != {
         &fn_ops_mem swap parse_tok
     }
@@ -518,7 +532,7 @@ $static int FN_ALLOC_SIZE
     ->Struct.size@
 }
 
-$static int can_be_indexed
+$static int n_extra_types
 
 // tok_ptr -- new_tok_ptr int
 :view_buf_size_int {
@@ -527,7 +541,7 @@ $static int can_be_indexed
         viewtd swap %Token+
         view_buf_size_scalar
     } else if viewtk TKind.IDENT == {
-        if can_be_indexed { -1 } else { true } =can_be_indexed
+        1 +=n_extra_types
         // -- sum tok_ptr
         view_type_size swap %Token+
         view_buf_size_scalar
@@ -555,7 +569,6 @@ $static int can_be_indexed
 :_view_buf_size {
 	// -- sum tok_ptr
 	0 swap while (viewtk TKind.INT ==) (over tok_is_type) | {
-        if over { -1 =can_be_indexed }
 		view_buf_size_int rot + swap
 	}
 
@@ -568,7 +581,7 @@ $static int can_be_indexed
 
 // tok_ptr -- new_tok_ptr size
 :view_buf_size {
-    false =can_be_indexed
+    -1 =n_extra_types
 	_view_buf_size
 }
 
@@ -669,17 +682,17 @@ $static int can_be_indexed
         // -- type_name tok_ptr
         viewtd swap
         view_buf_size =size
-        if can_be_indexed true == { swap =type_name } else { nip }
+        if n_extra_types { nip } else { swap =type_name }
     } else if viewtk TKind.INT == {
         view_buf_size =size
     } else {
         -1 =size
     }
-    if can_be_indexed {
-        0 DIMS_MEM stack_push!
-    } else {
+    if n_extra_types {
         NULL =type_dims
         type_dims_mem_len &type_dims!
+    } else {
+        0 DIMS_MEM stack_push!
     }
 
     if is_static not {
@@ -911,17 +924,17 @@ $static int can_be_indexed
             // -- type_name tok_ptr
             viewtd swap
             view_buf_size =size
-            if can_be_indexed true == { swap =type_name } else { nip }
+            if n_extra_types { nip } else { swap =type_name }
         } else if viewtk TKind.INT == {
             view_buf_size =size
         } else {
             -1 =size
         }
-        if can_be_indexed {
-            0 DIMS_MEM stack_push!
-        } else {
+        if n_extra_types {
             NULL =type_dims
             type_dims_mem_len &type_dims!
+        } else {
+            0 DIMS_MEM stack_push!
         }
 
         // -- tok_ptr size
