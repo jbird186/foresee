@@ -9,6 +9,7 @@
 #pub macro depth{__OP_DEPTH}
 #pub macro store{__OP_STORE}
 #pub macro fetch{__OP_FETCH}
+#pub macro memcpy{__OP_MEMCPY}
 #pub macro +{__OP_ADD}
 #pub macro -{__OP_SUB}
 #pub macro *{__OP_MUL}

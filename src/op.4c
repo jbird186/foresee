@@ -20,6 +20,7 @@ pub enum OKind {
     PUSH_BUF
     STORE   // item ptr --
     FETCH   // ptr -- item
+    MEMCPY  // src dest length --
     // Allocation
     PUSH_VAR
     ALLOC

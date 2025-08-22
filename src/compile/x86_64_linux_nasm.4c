@@ -185,6 +185,14 @@ $static char[32] push_cache
         "    mov     rax, qword [rax]\n"coms
         "rax" compile_push
     }
+    else if viewok OKind.MEMCPY == {
+        "    ; OP_MEMCPY\n"coms_dbg
+        "rcx" compile_pop
+        "rdi" compile_pop
+        "rsi" compile_pop
+        "    cld\n"coms
+        "    rep     movsb\n"coms
+    }
     else if viewok OKind.PUSH_VAR == {
         flush_push_cache
         "    ; OP_PUSH_VAR\n"coms_dbg

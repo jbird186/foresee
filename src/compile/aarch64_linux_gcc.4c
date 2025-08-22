@@ -192,6 +192,18 @@ $static char[32] push_cache
         "    ldr     x0, [x0]\n"coms
         "x0" compile_push
     }
+    else if viewok OKind.MEMCPY == {
+        "    // OP_MEMCPY\n"coms_dbg
+        "x0" compile_pop
+        "x1" compile_pop
+        "x2" compile_pop
+        flush_push_cache
+        "    .cpyl_"coms viewod com ":\n"coms
+        "    ldrb    w3, [x2], #1\n"coms
+        "    strb    w3, [x1], #1\n"coms
+        "    subs    x0, x0, #1\n"coms
+        "    b.ne    .cpyl_"coms viewod com "\n"coms
+    }
     else if viewok OKind.PUSH_VAR == {
         flush_push_cache
         "    // OP_PUSH_VAR\n"coms_dbg

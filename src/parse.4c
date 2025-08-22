@@ -217,6 +217,7 @@ $static int FN_ALLOC_SIZE
     // Reference Primitives
     define_intrinsic_opcode(0, OKind.STORE, "__OP_STORE")
     define_intrinsic_opcode(0, OKind.FETCH, "__OP_FETCH")
+    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.MEMCPY, "__OP_MEMCPY")
     // Binary Operations
     define_intrinsic_opcode(0, OKind.ADD, "__OP_ADD")
     define_intrinsic_opcode(0, OKind.SUB, "__OP_SUB")
