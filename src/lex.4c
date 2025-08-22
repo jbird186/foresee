@@ -95,24 +95,15 @@ $static ptr file
 :match_char {
     if viewc '\\' == {
         1+
-        // null
-        if viewc '0' == { '\0' }
-        // newline
-        else if viewc 'n' == { '\n' }
-        // tab
-        else if viewc 't' == { '\t' }
-        // vertical tab
-        else if viewc 'v' == { '\v' }
-        // form feed
-        else if viewc 'f' == { '\f' }
-        // return
-        else if viewc 'r' == { '\r' }
-        // single quote
-        else if viewc '\'' == { '\'' }
-        // double quote
-        else if viewc '\"' == { '\"' }
-        // backslash
-        else if viewc '\\' == { '\\' }
+        if viewc '0' == { '\0' }       // null
+        else if viewc 'n' == { '\n' }  // newline
+        else if viewc 't' == { '\t' }  // tab
+        else if viewc 'v' == { '\v' }  // vertical tab
+        else if viewc 'f' == { '\f' }  // form feed
+        else if viewc 'r' == { '\r' }  // return
+        else if viewc '\'' == { '\'' } // single quote
+        else if viewc '\"' == { '\"' } // double quote
+        else if viewc '\\' == { '\\' } // backslash
         else {
             error "Invalid escape character '\\"puts viewc putc "'\n"puts
             1 exit
@@ -188,6 +179,7 @@ $static ptr file
     match_ident_token("if", TKind.IF)
     match_ident_token("else", TKind.ELSE)
     match_ident_token("while", TKind.WHILE)
+    match_ident_token("for", TKind.FOR)
     match_ident_token("continue", TKind.CONTINUE)
     match_ident_token("break", TKind.BREAK)
     match_ident_token("static", TKind.STATIC)

@@ -9,12 +9,20 @@ $static int FN_ALLOC_SIZE
 :parse_tok
 
 // ops_dest tok_ptr -- ops_dest tok_ptr
-#macro _parse_until(until_tok_kind) {
+#macro parse_until(until_tok_kind) {(
+    $ptr original_tok_ptr: {dup}
     while viewtk until_tok_kind != {
+        if viewtk not {
+            original_tok_ptr error
+            "Expected token of type "puts until_tok_kind put
+            " after token of type "puts viewtk put
+            "\n"puts
+            1 exit
+        }
         over swap parse_tok
     }
     %Token+
-}
+)}
 
 // ops_dest tok_ptr idx -- ops_dest tok_ptr
 :push_buf_ptr {
@@ -83,7 +91,7 @@ $static int FN_ALLOC_SIZE
             $ptr dims: {fields_ptr->StructField.type.dims@}
             while viewtk TKind.BRACKET_START == {
                 %Token+
-                _parse_until(TKind.BRACKET_END)
+                parse_until(TKind.BRACKET_END)
 
                 if (if dims {dims@ not} else {true}) {
                     error
@@ -136,7 +144,7 @@ $static int FN_ALLOC_SIZE
     $ptr dims: {idx BUF_MAP map_idx->Buffer.type.dims@}
     while viewtk TKind.BRACKET_START == {
         %Token+
-        _parse_until(TKind.BRACKET_END)
+        parse_until(TKind.BRACKET_END)
 
         if (if dims {dims@ not} else {false}) {
             error
@@ -277,13 +285,13 @@ $static int FN_ALLOC_SIZE
     3 roll 3 roll
     %Token+
     // Condition
-    _parse_until(TKind.BRACE_START)
+    parse_until(TKind.BRACE_START)
     // -- if_id else_id ops_dest tok_ptr
     2 pick OKind.JZ 3 pick op_push
 
     // Operations
     dup SCOPE_STACK stack_push!
-    _parse_until(TKind.BRACE_END)
+    parse_until(TKind.BRACE_END)
     &scope_stack stack_shrink
 
     // -- if_id else_id ops_dest tok_ptr
@@ -305,7 +313,7 @@ $static int FN_ALLOC_SIZE
     if viewtk TKind.BRACE_START == {
         %Token+
         dup SCOPE_STACK stack_push!
-        _parse_until(TKind.BRACE_END)
+        parse_until(TKind.BRACE_END)
         &scope_stack stack_shrink
         nip nip
     } else if viewtk TKind.IF == {
@@ -336,15 +344,60 @@ $static int FN_ALLOC_SIZE
     label_id OKind.LABEL 3 pick op_push
 
     // Condition
-    _parse_until(TKind.BRACE_START)
+    parse_until(TKind.BRACE_START)
     label_id 1+ OKind.JZ 3 pick op_push
 
     // Operations
     label_id LOOP_STACK stack_push!
     dup SCOPE_STACK stack_push!
-    _parse_until(TKind.BRACE_END)
+    parse_until(TKind.BRACE_END)
     &loop_stack stack_shrink
     &scope_stack stack_shrink
+
+    label_id OKind.JMP 3 pick op_push
+    label_id 1+ OKind.LABEL 3 roll op_push
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_for {
+    %Token+
+    $int label_id: {ASM_LABEL_ID}
+    2 +=ASM_LABEL_ID
+
+    $char has_paren: {false}
+    if viewtk TKind.PAREN_START == {
+        dup skip_paren
+        if viewtk dup (TKind.COMMA !=) swap (TKind.BRACE_START !=) & {
+            drop error "Invalid 'for' loop\n"puts
+            1 exit
+        }
+        ->Token.kind@c TKind.BRACE_START == =has_paren
+    }
+    if has_paren { %Token+ }
+
+    // Initialization
+    parse_until(TKind.COMMA)
+    label_id OKind.LABEL 3 pick op_push
+
+    // Condition
+    parse_until(TKind.COMMA)
+    $ptr iter: {dup}
+    if has_paren { skip_until(TKind.PAREN_END) %Token+ }
+    else { skip_until(TKind.BRACE_START) }
+    label_id 1+ OKind.JZ 3 pick op_push
+
+    // Operations
+    label_id LOOP_STACK stack_push!
+    dup SCOPE_STACK stack_push!
+    parse_until(TKind.BRACE_END)
+    &loop_stack stack_shrink
+    &scope_stack stack_shrink
+
+    // Iteration
+    swap iter
+    if has_paren { parse_until(TKind.PAREN_END) }
+    else { parse_until(TKind.BRACE_START) }
+    drop swap
 
     label_id OKind.JMP 3 pick op_push
     label_id 1+ OKind.LABEL 3 roll op_push
@@ -523,7 +576,7 @@ $static int can_be_indexed
         }
 
         dup SCOPE_STACK stack_push!
-        _parse_until(TKind.BRACE_END)
+        parse_until(TKind.BRACE_END)
         &scope_stack stack_shrink
 
         alloc_offset size+ OKind.PUSH_VAR 3 pick op_push
@@ -966,7 +1019,7 @@ $static int can_be_indexed
     else if viewtk TKind.PAREN_START == {
         %Token+
         dup SCOPE_STACK stack_push!
-        _parse_until(TKind.PAREN_END)
+        parse_until(TKind.PAREN_END)
         &scope_stack stack_shrink
         nip
     }
@@ -974,6 +1027,7 @@ $static int can_be_indexed
     else if viewtk TKind.IDENT == { parse_ident }
     else if viewtk TKind.IF == { parse_if }
     else if viewtk TKind.WHILE == { parse_while }
+    else if viewtk TKind.FOR == { parse_for }
     else if viewtk TKind.CONTINUE == { parse_continue }
     else if viewtk TKind.BREAK == { parse_break }
     else if viewtk TKind.FN == { parse_fn }

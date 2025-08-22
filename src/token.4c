@@ -13,6 +13,7 @@ pub enum TKind {
     IF
     ELSE
     WHILE
+    FOR
     CONTINUE
     BREAK
     COLON
@@ -67,3 +68,59 @@ pub enum TKind {
 :pub error {
     viewtf puts ":"puts viewtl put ": ERROR: "puts
 }
+
+#macro skip_delim(start, end) {(
+    $ptr original_tok_ptr: {dup}
+    // -- depth tok_ptr
+    1 swap while %Token+ over {
+        if viewtk not {
+            original_tok_ptr error
+            "Expected token of type "puts TKind.end put
+            " after token of type "puts viewtk put
+            "\n"puts
+            1 exit
+        }
+        if viewtk TKind.start == {
+            swap 1+ swap
+        } else if viewtk TKind.end == {
+            swap 1- swap
+        }
+    }
+    // -- tok_ptr
+    nip
+)}
+
+// tok_ptr -- new_tok_ptr
+:pub skip_braces {
+    skip_delim(BRACE_START, BRACE_END)
+}
+
+// tok_ptr -- new_tok_ptr
+:pub skip_paren {
+    skip_delim(PAREN_START, PAREN_END)
+}
+
+// tok_ptr -- new_tok_ptr
+:pub skip_brackets {
+    skip_delim(BRACKET_START, BRACKET_END)
+}
+
+// tok_ptr -- tok_ptr
+#pub macro skip_until(until_tok_kind) {(
+    dup
+    while viewtk until_tok_kind != {
+        if viewtk not {
+            swap error
+            "Expected token of type "puts until_tok_kind put
+            " after token of type "puts viewtk put
+            "\n"puts
+            1 exit
+        }
+        else if viewtk TKind.PAREN_START == { skip_paren }
+        else if viewtk TKind.BRACE_START == { skip_braces }
+        else if viewtk TKind.BRACKET_START == { skip_brackets }
+        else { %Token+ }
+    }
+    nip
+    %Token+
+)}

@@ -11,28 +11,6 @@
     drop
 }
 
-#macro skip_delim(start, end) {
-    // -- depth tok_ptr
-    1 swap while %Token+ over {
-        if viewtk TKind.start == {
-            swap 1+ swap
-        } else if viewtk TKind.end == {
-            swap 1- swap
-        }
-    }
-    // -- tok_ptr
-    nip
-}
-
-// tok_ptr -- new_tok_ptr
-:skip_braces {
-    skip_delim(BRACE_START, BRACE_END)
-}
-// tok_ptr -- new_tok_ptr
-:skip_paren {
-    skip_delim(PAREN_START, PAREN_END)
-}
-
 // tok_ptr -- tok_ptr
 #macro preprocess_delim(start, end) {
     %Token+
@@ -140,6 +118,7 @@
                 }
                 if viewtk TKind.BRACE_START == { skip_braces }
                 else if viewtk TKind.PAREN_START == { skip_paren }
+                else if viewtk TKind.BRACKET_START == { skip_brackets }
                 else { %Token+ }
             }
             1 -=n_args
