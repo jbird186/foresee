@@ -45,7 +45,7 @@ $static ptr file
             viewc '0' -
             rot 16* + swap
         } else if viewc to_lower dup ('a' >=) swap ('f' <=) & {
-            viewc 'a' - 10 +
+            viewc to_lower 'a' - 10 +
             rot 16* + swap
         } else if viewc is_alpha {
             lex_error "Invalid hexadecimal integer literal\n"puts

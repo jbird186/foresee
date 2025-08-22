@@ -344,14 +344,16 @@ $static int FN_ALLOC_SIZE
 
     label_id OKind.LABEL 3 pick op_push
 
+    label_id LOOP_STACK stack_push!
+    dup SCOPE_STACK stack_push!
+
     // Condition
     parse_until(TKind.BRACE_START)
     label_id 1+ OKind.JZ 3 pick op_push
 
     // Operations
-    label_id LOOP_STACK stack_push!
-    dup SCOPE_STACK stack_push!
     parse_until(TKind.BRACE_END)
+
     &loop_stack stack_shrink
     &scope_stack stack_shrink
 
@@ -376,6 +378,9 @@ $static int FN_ALLOC_SIZE
     }
     if has_paren { %Token+ }
 
+    label_id LOOP_STACK stack_push!
+    dup SCOPE_STACK stack_push!
+
     // Initialization
     parse_until(TKind.COMMA)
     label_id OKind.LABEL 3 pick op_push
@@ -388,17 +393,16 @@ $static int FN_ALLOC_SIZE
     label_id 1+ OKind.JZ 3 pick op_push
 
     // Operations
-    label_id LOOP_STACK stack_push!
-    dup SCOPE_STACK stack_push!
     parse_until(TKind.BRACE_END)
-    &loop_stack stack_shrink
-    &scope_stack stack_shrink
 
     // Iteration
     swap iter
     if has_paren { parse_until(TKind.PAREN_END) }
     else { parse_until(TKind.BRACE_START) }
     drop swap
+
+    &loop_stack stack_shrink
+    &scope_stack stack_shrink
 
     label_id OKind.JMP 3 pick op_push
     label_id 1+ OKind.LABEL 3 roll op_push

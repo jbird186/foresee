@@ -85,6 +85,12 @@ $static char[32] push_cache
     "x0" compile_push
 }
 
+// op_ptr -- op_ptr
+:compile_mov_x0_large_int {
+    "    movz    x0, #"coms viewod 0xffff& com "\n"coms
+    "    movk    x0, #"coms viewod 16>> com ", lsl 16\n"coms
+}
+
 // op_ptr -- new_op_ptr
 :compile_op {
     $char[32] buf_name
@@ -207,12 +213,23 @@ $static char[32] push_cache
     else if viewok OKind.PUSH_VAR == {
         flush_push_cache
         "    // OP_PUSH_VAR\n"coms_dbg
-        "    sub     x0, x29, #"coms viewod com "\n"coms
+        if viewod 0xffff > {
+            compile_mov_x0_large_int
+            "    sub     x0, x29, x0\n"coms
+        } else {
+            "    sub     x0, x29, #"coms viewod com "\n"coms
+        }
         "x0" compile_push
     }
     else if viewok OKind.ALLOC == {
         "    // OP_ALLOC\n"coms_dbg
-        "    sub     sp, sp, #"coms viewod com "\n"coms
+        if viewod 0xffff > {
+            flush_push_cache
+            compile_mov_x0_large_int
+            "    sub     sp, sp, x0\n"coms
+        } else {
+            "    sub     sp, sp, #"coms viewod com "\n"coms
+        }
     }
     else if viewok OKind.ADD == {
         "add" "OP_ADD" compile_basic_binop
