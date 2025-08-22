@@ -8,6 +8,10 @@
 $static int line
 $static ptr file
 
+:lex_error {
+    file puts ":"puts line put ": ERROR: "puts
+}
+
 // src_ptr -- src_ptr char
 :viewc { dup@c }
 
@@ -21,7 +25,7 @@ $static ptr file
             viewc '0' -
             rot 2* + swap
         } else if viewc is_alnum {
-            error "Invalid binary integer literal\n"puts
+            lex_error "Invalid binary integer literal\n"puts
             1 exit
         } else if viewc '_' != {
             swap return
@@ -44,7 +48,7 @@ $static ptr file
             viewc 'a' - 10 +
             rot 16* + swap
         } else if viewc is_alpha {
-            error "Invalid hexadecimal integer literal\n"puts
+            lex_error "Invalid hexadecimal integer literal\n"puts
             1 exit
         } else if viewc '_' != {
             swap return
@@ -63,7 +67,7 @@ $static ptr file
             viewc '0' -
             rot 10* + swap
         } else if viewc is_alpha {
-            error "Invalid integer literal\n"puts
+            lex_error "Invalid integer literal\n"puts
             1 exit
         } else if viewc '_' != {
             swap return
@@ -105,7 +109,7 @@ $static ptr file
         else if viewc '\"' == { '\"' } // double quote
         else if viewc '\\' == { '\\' } // backslash
         else {
-            error "Invalid escape character '\\"puts viewc putc "'\n"puts
+            lex_error "Invalid escape character '\\"puts viewc putc "'\n"puts
             1 exit
         }
     } else { viewc }
@@ -118,7 +122,7 @@ $static ptr file
     swap 1+
 
     if viewc '\'' != {
-        error "Expected endquote after valid character '"puts swap putc "'\n"puts
+        lex_error "Expected endquote after valid character '"puts swap putc "'\n"puts
         1 exit
     }
 
