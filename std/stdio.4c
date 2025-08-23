@@ -1,12 +1,12 @@
 #use "stdconv.4c"
 
 // int fd -- [bytes_written, -1]
-:pub fwrite_int { swap __write_int_to_temp rot fwrite }
+pub :fwrite_int { swap __write_int_to_temp rot fwrite }
 
-:pub put { __write_int_to_temp stdout }
+pub :put { __write_int_to_temp stdout }
 #pub macro show{dup put}
 
-:pub putc {
+pub :putc {
     &__std_buf!
     &__std_buf 1 stdout
 }
@@ -14,32 +14,32 @@
 #pub macro cr{'\n' putc}
 #pub macro sp{' ' putc}
 
-:pub puts {
+pub :puts {
     while dup@c dup {
         putc 1+
     } drop drop
 }
 #pub macro shows{dup puts}
 
-:pub eput { __write_int_to_temp stderr }
-:pub eputc {
+pub :eput { __write_int_to_temp stderr }
+pub :eputc {
     &__std_buf!
     &__std_buf 1 stderr
 }
-:pub eputs {
+pub :eputs {
     while dup@c dup {
         eputc 1+
     } drop drop
 }
 
 // -- char
-:pub readc {
+pub :readc {
     &__std_buf 1 stdin drop
     &__std_buf@c
 }
 
 // -- int
-:pub read {
+pub :read {
     &__std_buf 24 stdin drop
 
     // -- buf
@@ -62,7 +62,7 @@
     if swap { -1* }
 }
 
-:pub stdinln {
+pub :stdinln {
     over swap stdin
     1 -
     dup rot +

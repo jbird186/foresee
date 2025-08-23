@@ -6,21 +6,21 @@ pub struct StackHead {
 // stack -- len
 #pub macro stack_len { ->StackHead.len@ }
 // stack --
-:pub stack_shrink { ->StackHead.len@-- drop }
+pub :stack_shrink { ->StackHead.len@-- drop }
 // stack slot_size -- slot_ptr
-:pub stack_top {
+pub :stack_top {
     over->StackHead.len@
     * + %int+
 }
 // stack slot_size -- slot_ptr
-:pub stack_last {
+pub :stack_last {
     over->StackHead.len@ 1-
     * + %int+
 }
 // stack slot_size -- slot_ptr
-:pub stack_push {
+pub :stack_push {
     over->StackHead.len@++
     * + %int+
 }
 // idx stack slot_size -- slot_ptr
-:pub stack_get { rot* + %int+ }
+pub :stack_get { rot* + %int+ }

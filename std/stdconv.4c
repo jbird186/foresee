@@ -1,8 +1,8 @@
-$pub static char[24] __std_buf
-$static int_min_buf: "-9223372036854775808"
+pub static char[24] __std_buf
+static int_min_buf: "-9223372036854775808"
 
 // int -- ptr len
-:pub __write_int_to_temp {
+pub :__write_int_to_temp {
     if dup INT_MIN == {
         drop &int_min_buf 20 return
     }
@@ -35,7 +35,7 @@ $static int_min_buf: "-9223372036854775808"
 }
 
 // int buf --
-:pub itoa {
+pub :itoa {
     // -- buf ptr len
     swap __write_int_to_temp
     // -- len ptr buf

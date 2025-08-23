@@ -24,11 +24,11 @@ Output: `0 1 4 9 16 25 36 49 64 81 `
 
 #### Static Variables
 
-Static variables can be defined like `$static type name: init`. `init` is optional, and must be a literal integer or string. If `init` is not specified, static variables will be automatically initialized with zero'd bytes. `type` can be inferred if an initialization value is used.
+Static variables can be defined like `static type name: init`. `init` is optional, and must be a literal integer or string. If `init` is not specified, static variables will be automatically initialized with zero'd bytes. `type` can be inferred if an initialization value is used.
 
 The value of a static variable *always* persists across function calls, even when declared and initialized within a function.
 
-Global static variables are private by default, but can be shared across files by changing `$static` to `$pub static`.
+Global static variables are private by default, but can be shared across files by changing `static` to `pub static`.
 
 #### Local Variables
 
@@ -72,9 +72,9 @@ Complex Types cannot be used intelligently by the compiler. Their purpose is onl
 ```
 #use "stdio.4c"
 
-$static hello: "Hello, "
-$static char[32] world: "World!\n"
-$static int value
+static hello: "Hello, "
+static char[32] world: "World!\n"
+static int value
 
 :main {
     6 +=value
@@ -109,7 +109,7 @@ hello
 
 ### Functions
 
-Functions can be defined by using Forth's colon notation followed by a brace block, like `:fn_name { [stuff] }`. Function prototypes can be defined by omitting the block, like `:fn_name`. Functions can be shared across files by changing `:fn_name` to `:pub fn_name`.
+Functions can be defined by using Forth's colon notation followed by a brace block, like `:fn_name { [stuff] }`. Function prototypes can be defined by omitting the block, like `:fn_name`. Functions can be shared across files by changing `:fn_name` to `pub :fn_name`.
 
 A `main` function must be defined for all programs, and will be automatically executed when the program is run.
 

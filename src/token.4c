@@ -9,7 +9,6 @@ pub enum TKind {
     IDENT
     WORD
     FN
-    STATIC
     IF
     ELSE
     WHILE
@@ -19,7 +18,8 @@ pub enum TKind {
     COLON
     POUND
     COMMA
-    DOLLAR
+    STATIC
+    VAR
     REF
     EQ
     ENUM
@@ -40,7 +40,7 @@ pub enum TKind {
 }
 
 // data kind file line ref --
-:pub tok_push {
+pub :tok_push {
     // -- data kind file line ptr
     %Token stack_push
     swap over->Token.line!
@@ -50,7 +50,7 @@ pub enum TKind {
 }
 
 // src dest --
-:pub tok_push_clone {
+pub :tok_push_clone {
     // -- src ptr
     %Token stack_push
     over->Token.kind@c over->Token.kind!c
@@ -59,13 +59,13 @@ pub enum TKind {
     swap->Token.line@ swap->Token.line!
 }
 
-:pub viewtk { dup->Token.kind@c }
-:pub viewtd { dup->Token.data@ }
-:pub viewtf { dup->Token.file@ }
-:pub viewtl { dup->Token.line@ }
+pub :viewtk { dup->Token.kind@c }
+pub :viewtd { dup->Token.data@ }
+pub :viewtf { dup->Token.file@ }
+pub :viewtl { dup->Token.line@ }
 
 // tok_ptr -- tok_ptr
-:pub error {
+pub :error {
     viewtf puts ":"puts viewtl put ": ERROR: "puts
 }
 
@@ -91,17 +91,17 @@ pub enum TKind {
 )}
 
 // tok_ptr -- new_tok_ptr
-:pub skip_braces {
+pub :skip_braces {
     skip_delim(BRACE_START, BRACE_END)
 }
 
 // tok_ptr -- new_tok_ptr
-:pub skip_paren {
+pub :skip_paren {
     skip_delim(PAREN_START, PAREN_END)
 }
 
 // tok_ptr -- new_tok_ptr
-:pub skip_brackets {
+pub :skip_brackets {
     skip_delim(BRACKET_START, BRACKET_END)
 }
 

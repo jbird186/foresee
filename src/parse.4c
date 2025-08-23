@@ -3,9 +3,9 @@
 #use "token.4c"
 #use "op.4c"
 
-$static int ASM_LABEL_ID
-$static int FN_ALLOC_SIZE
-$static int TOTAL_DATA_SIZE
+static int ASM_LABEL_ID
+static int FN_ALLOC_SIZE
+static int TOTAL_DATA_SIZE
 
 :parse_tok
 
@@ -454,18 +454,17 @@ $static int TOTAL_DATA_SIZE
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_fn {
     %Token+
-    $int scope: { SCOPE_STACK stack_last@ }
-    if viewtk TKind.PUB == {
-        NULL =scope
-        %Token+
+    if viewtk TKind.IDENT != {
+        error "Invalid function name\n"puts
+        1 exit
     }
-
     // -- tok_ptr
     if swap {
         error "Function '"puts viewtd puts "' must be defined in global scope\n"puts
         1 exit
     }
 
+    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
     $ptr name: {viewtd}
     %Token+
 
@@ -617,7 +616,7 @@ $static int TOTAL_DATA_SIZE
     total
 }
 
-#macro _parse_dollar_non_static_init {
+#macro _parse_buffer_non_static_init {
     if viewtk TKind.BRACE_START == {
         %Token+
         if (size 1 ==) (size 8 ==) | not {
@@ -641,7 +640,7 @@ $static int TOTAL_DATA_SIZE
     }
 }
 
-#macro _parse_dollar_static_init {
+#macro _parse_buffer_static_init {
     if viewtk TKind.STR == {
         // -- tok_ptr str_size
         viewtd strlen 1+
@@ -683,32 +682,21 @@ $static int TOTAL_DATA_SIZE
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
-:parse_dollar {
-    %Token+
-    $int scope: { SCOPE_STACK stack_last@ }
-    if viewtk TKind.PUB == {
-        if over {
-            error "Public buffers must be defined at global scope\n"puts
-            1 exit
-        }
-        NULL =scope
-        %Token+
-    }
-
+:parse_buffer_def {
+    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
     $char is_static
     $int alloc_offset
     if viewtk TKind.STATIC == {
         true =is_static
         0 =alloc_offset
-        %Token+
-    } else {
-        if over not {
-            error "Buffers defined at global scope must be static\n"puts
-            1 exit
-        }
+    } else if over {
         false =is_static
         FN_ALLOC_SIZE =alloc_offset
+    } else {
+        error "Buffers defined at global scope must be static\n"puts
+        1 exit
     }
+    %Token+
 
     $int size
     $ptr type_name: {NULL}
@@ -738,9 +726,9 @@ $static int TOTAL_DATA_SIZE
     if viewtk TKind.COLON == {
         %Token+
         if is_static {
-            _parse_dollar_static_init
+            _parse_buffer_static_init
         } else {
-            _parse_dollar_non_static_init
+            _parse_buffer_non_static_init
         }
     } else {
         0 =init
@@ -748,7 +736,7 @@ $static int TOTAL_DATA_SIZE
     }
 
     if size 0 < {
-        error "Invalid definition for buffer '"puts name puts "'\n"puts
+        error "Invalid size for buffer '"puts name puts "'\n"puts
         1 exit
     }
     if size BUFFER_SIZE_LIMIT > {
@@ -955,7 +943,8 @@ $static int TOTAL_DATA_SIZE
         } else if viewtk TKind.BRACKET_START == {
             view_complex_type =size
         } else {
-            -1 =size
+            error "Invalid field type\n"puts
+            1 exit
         }
 
         // -- tok_ptr size
@@ -1036,16 +1025,24 @@ $static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_tok {
+    false =IS_PUBLIC
     if viewtk TKind.PUB == {
+        if over {
+            error "Public items must be defined at global scope\n"puts
+            1 exit
+        }
+
         true =IS_PUBLIC
         %Token+
-        if viewtk TKind.ENUM == { parse_enum }
+        if viewtk TKind.FN == { parse_fn }
+        else if viewtk TKind.STATIC == { parse_buffer_def }
+        else if viewtk TKind.VAR == { parse_buffer_def }
+        else if viewtk TKind.ENUM == { parse_enum }
         else if viewtk TKind.STRUCT == { parse_struct }
         else {
             error "Unexpected token of type "puts viewtk put " after 'pub'\n"puts
             1 exit
         }
-        false =IS_PUBLIC
     }
     else if viewtk TKind.WORD == {
         error "Macro '"puts viewtd puts "' not defined\n"puts
@@ -1070,7 +1067,8 @@ $static int TOTAL_DATA_SIZE
     else if viewtk TKind.CONTINUE == { parse_continue }
     else if viewtk TKind.BREAK == { parse_break }
     else if viewtk TKind.FN == { parse_fn }
-    else if viewtk TKind.DOLLAR == { parse_dollar }
+    else if viewtk TKind.STATIC == { parse_buffer_def }
+    else if viewtk TKind.VAR == { parse_buffer_def }
     else if viewtk TKind.REF == { parse_ref }
     else if viewtk TKind.EQ == { parse_eq }
     else if viewtk TKind.ENUM == { parse_enum }
@@ -1096,7 +1094,7 @@ $static int TOTAL_DATA_SIZE
 :is_tok_allowed_outside_main {
     $char kind: {}
     (kind TKind.FN ==)
-    (kind TKind.DOLLAR ==)
+    (kind TKind.STATIC ==)
     (kind TKind.ENUM ==)
     (kind TKind.STRUCT ==)
     (kind TKind.PUB ==)
@@ -1105,7 +1103,7 @@ $static int TOTAL_DATA_SIZE
     | | | | | |
 }
 
-:pub parse_out_toks {
+pub :parse_out_toks {
     // -- tok_ptr
     &out_toks_mem->StackHead.data
     while viewtk TKind.EOF != {

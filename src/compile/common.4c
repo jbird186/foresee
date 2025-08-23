@@ -1,7 +1,7 @@
-$pub static ptr out_fd
-$static int out_fd_buffer_len
+pub static ptr out_fd
+static int out_fd_buffer_len
 
-:pub flush_out_fd {
+pub :flush_out_fd {
     if &out_fd_buffer out_fd_buffer_len out_fd fwrite is_failure {
         "ERROR: Failed to write string to output file\n"puts
         1 exit
@@ -10,7 +10,7 @@ $static int out_fd_buffer_len
 }
 
 // ptr --
-:pub coms {
+pub :coms {
     $int ptr_len: {dup strlen}
     if out_fd_buffer_len ptr_len+ WRITE_BUFFER_SIZE >= {
         flush_out_fd
@@ -21,20 +21,20 @@ $static int out_fd_buffer_len
 }
 
 // ptr --
-:pub coms_dbg {
+pub :coms_dbg {
     if debug_mode { coms }
     else { drop }
 }
 
 // int --
-:pub com {
+pub :com {
     $char[32] buf
     &buf itoa
     &buf coms
 }
 
 // char --
-:pub comc {
+pub :comc {
     $char[2] buf
     &buf!c
     &buf coms

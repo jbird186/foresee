@@ -6,7 +6,7 @@
     has_builtin_flag swap has_builtin_flag rot has_builtin_flag & &
 }
 
-:pub compile_program {
+pub :compile_program {
     if "ARCH_X86_64" "OS_LINUX" "TOOLCHAIN_NASM" check_platform {
         compile_program_x86_64_linux_nasm
     } else if "ARCH_AARCH64" "OS_LINUX" "TOOLCHAIN_GCC" check_platform {

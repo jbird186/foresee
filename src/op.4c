@@ -51,12 +51,12 @@ pub enum OKind {
 }
 
 // data kind ref --
-:pub op_push {
+pub :op_push {
     // -- data kind ptr
     %Op stack_push
     swap over->Op.kind!
     ->Op.data!
 }
 
-:pub viewok { dup->Op.kind@c }
-:pub viewod { dup->Op.data@ }
+pub :viewok { dup->Op.kind@c }
+pub :viewod { dup->Op.data@ }

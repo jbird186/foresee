@@ -1,12 +1,12 @@
 // ptr -- len
-:pub strlen {
+pub :strlen {
     dup
     while dup@c { 1+ }
     swap -
 }
 
 // src dest --
-:pub strcpy {
+pub :strcpy {
     while over@c dup {
         over!c
         1+ swap 1+ swap
@@ -16,13 +16,13 @@
 }
 
 // src dest --
-:pub strcat {
+pub :strcat {
     dup strlen +
     strcpy
 }
 
 // s1 s2 -- diff
-:pub strcmp {
+pub :strcmp {
     while over@c over@c | {
         if over@c over@c - dup {
             rot rot drop drop
@@ -35,7 +35,7 @@
 }
 
 // s1 s2 n -- diff
-:pub strncmp {
+pub :strncmp {
     $int n: {}
     while (over@c over@c | flag) (n flag) & {
         if over@c over@c - dup {
@@ -50,13 +50,13 @@
 }
 
 // s1 s2 -- is_eq
-:pub streq { strcmp not }
+pub :streq { strcmp not }
 
 // s1 s2 n -- is_eq
-:pub strneq { strncmp not }
+pub :strneq { strncmp not }
 
 // str char -- [ptr, 0]
-:pub strchr {
+pub :strchr {
     while over@c dup {
         if over == {
             drop

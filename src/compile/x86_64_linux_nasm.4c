@@ -5,7 +5,7 @@
 #use "map.4c"
 #use "op.4c"
 
-$static int stack_ptr_delta
+static int stack_ptr_delta
 :com_stack_delta {
     if stack_ptr_delta 0 > {
         " + "coms stack_ptr_delta com
@@ -35,7 +35,7 @@ $static int stack_ptr_delta
     "    mov     qword [r12"coms com_stack_delta "], "coms coms "\n"coms
 }
 
-$static char[32] push_cache
+static char[32] push_cache
 :flush_push_cache {
     if &push_cache@ {
         &push_cache force_compile_push
@@ -470,7 +470,7 @@ $static char[32] push_cache
     &
 }
 
-:pub compile_program_x86_64_linux_nasm {
+pub :compile_program_x86_64_linux_nasm {
     "BITS 64\n"coms
     "global _start\n"coms
     "section .text\n"coms

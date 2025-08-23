@@ -1,6 +1,6 @@
 // buf len -- bytes_read
-:pub stdin{0 fread}
+pub :stdin{0 fread}
 // ptr len --
-:pub stdout{1 fwrite drop}
+pub :stdout{1 fwrite drop}
 // ptr len --
-:pub stderr{2 fwrite drop}
+pub :stderr{2 fwrite drop}

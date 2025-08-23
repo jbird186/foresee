@@ -2,7 +2,7 @@
 #use "token.4c"
 #use "map.4c"
 
-$static int scope_depth
+static int scope_depth
 
 // tok_ptr -- new_tok_ptr
 :preprocess_token
@@ -197,7 +197,7 @@ $static int scope_depth
 }
 
 // name --
-:pub use_file {
+pub :use_file {
     $ptr name: {}
     if name _file_name FILE_SET map_contains {
         return
@@ -428,14 +428,14 @@ $static int scope_depth
     }
 }
 
-:pub preprocess_src {
+pub :preprocess_src {
     0 =scope_depth
     &toks_mem->StackHead.data preprocess
     0 TKind.EOF NULL 0 &out_toks_mem tok_push
 }
 
 // name --
-:pub define_builtin_flag {
+pub :define_builtin_flag {
     dup SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
     NULL over->Macro.key.scope!
     0 over->Macro.n_args!
@@ -445,6 +445,6 @@ $static int scope_depth
 }
 
 // name -- bool
-:pub has_builtin_flag {
+pub :has_builtin_flag {
     MACRO_MAP scoped_map_find_idx is_success
 }

@@ -5,8 +5,8 @@
 #use "stack.4c"
 #use "token.4c"
 
-$static int line
-$static ptr file
+static int line
+static ptr file
 
 :lex_error {
     file puts ":"puts line put ": ERROR: "puts
@@ -231,7 +231,7 @@ $static ptr file
 }
 
 // src_ptr file --
-:pub lex_src {
+pub :lex_src {
     =file
     1 =line
     while viewc {
@@ -263,7 +263,7 @@ $static ptr file
         lex_single(':', TKind.COLON)
         lex_single('#', TKind.POUND)
         lex_single(',', TKind.COMMA)
-        lex_single('$', TKind.DOLLAR)
+        lex_single('$', TKind.VAR)
         lex_single('(', TKind.PAREN_START)
         lex_single(')', TKind.PAREN_END)
         lex_single('{', TKind.BRACE_START)

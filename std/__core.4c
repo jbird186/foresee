@@ -24,19 +24,19 @@ pub struct bool { [1] __inner }
 #pub macro >= {< 1 ^}
 #pub macro is_success {-1 >}
 #pub macro is_failure {0 <}
-:pub flag {if {true} else {false}}
-:pub not {if {false} else {true}}
+pub :flag {if {true} else {false}}
+pub :not {if {false} else {true}}
 
 // a -- a a
-:pub dup {0 pick}
+pub :dup {0 pick}
 // a b -- a b a
-:pub over {1 pick}
+pub :over {1 pick}
 // a b -- b a
-:pub swap {1 roll}
+pub :swap {1 roll}
 // a b c -- b c a
-:pub rot {2 roll}
+pub :rot {2 roll}
 // a b -- b
-:pub nip {swap drop}
+pub :nip {swap drop}
 
 #pub macro / {divmod drop}
 #pub macro % {divmod nip}
@@ -48,13 +48,13 @@ pub struct bool { [1] __inner }
 #pub macro @-- {dup@ dup 1- rot!}
 #pub macro --@ {dup@ 1- dup rot!}
 
-:pub storec {
+pub :storec {
     dup fetch 0xff ~ &
     rot 0xff & |
     swap store
 }
 #pub macro !c {storec}
-:pub fetchc { fetch 0xff & }
+pub :fetchc { fetch 0xff & }
 #pub macro @c {fetchc}
 #pub macro @c++ {dup@c dup 1+ rot!c}
 #pub macro ++@c {dup@c 1+ dup rot!c}

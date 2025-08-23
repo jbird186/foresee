@@ -7,7 +7,7 @@
 
 #macro STACK_SIZE_PAGES { (ASM_STACK_SIZE 4096 /) }
 
-$static int stack_ptr_delta
+static int stack_ptr_delta
 :com_stack_delta {
     if stack_ptr_delta {
         ", #"coms stack_ptr_delta com
@@ -35,7 +35,7 @@ $static int stack_ptr_delta
     "    str     "coms coms ", [x12"coms com_stack_delta "]\n"coms
 }
 
-$static char[32] push_cache
+static char[32] push_cache
 :flush_push_cache {
     if &push_cache@ {
         &push_cache force_compile_push
@@ -520,7 +520,7 @@ $static char[32] push_cache
     &
 }
 
-:pub compile_program_aarch64_linux_gcc {
+pub :compile_program_aarch64_linux_gcc {
     ".section .text\n"coms
     ".global _start\n"coms
     ".align  2\n"coms
