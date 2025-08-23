@@ -7,58 +7,56 @@
     #error "TODO: implement Windows I/O"
 }
 
-pub struct int { 8 __inner }
+pub struct int { [8] __inner }
 #pub macro INT_MIN { -9223372036854775808 }
 #pub macro INT_MAX { 9223372036854775807 }
-pub struct ptr { 8 __inner }
-pub struct char { 1 __inner }
+pub struct ptr { [8] __inner }
+pub struct char { [1] __inner }
 #pub macro CHAR_MIN { 0 }
 #pub macro CHAR_MAX { 255 }
-pub struct bool { 1 __inner }
+pub struct bool { [1] __inner }
 
-#pub macro NULL{0}
-#pub macro false{0}
-#pub macro true{1}
-#pub macro !={== 1 ^}
-#pub macro <={> 1 ^}
-#pub macro >={< 1 ^}
-#pub macro is_success{-1 >}
-#pub macro is_failure{0 <}
-:pub flag{if {true} else {false}}
-:pub not{if {false} else {true}}
+#pub macro NULL {0}
+#pub macro false {0}
+#pub macro true {1}
+#pub macro != {== 1 ^}
+#pub macro <= {> 1 ^}
+#pub macro >= {< 1 ^}
+#pub macro is_success {-1 >}
+#pub macro is_failure {0 <}
+:pub flag {if {true} else {false}}
+:pub not {if {false} else {true}}
 
 // a -- a a
-:pub dup{0 pick}
+:pub dup {0 pick}
 // a b -- a b a
-:pub over{1 pick}
+:pub over {1 pick}
 // a b -- b a
-:pub swap{1 roll}
+:pub swap {1 roll}
 // a b c -- b c a
-:pub rot{2 roll}
+:pub rot {2 roll}
 // a b -- b
-:pub nip{swap drop}
+:pub nip {swap drop}
 
-#pub macro /{divmod drop}
-#pub macro %{divmod nip}
+#pub macro / {divmod drop}
+#pub macro % {divmod nip}
 
-#pub macro !{store}
-#pub macro @{fetch}
-#pub macro @++{dup@ dup 1+ rot!}
-#pub macro ++@{dup@ 1+ dup rot!}
-#pub macro @--{dup@ dup 1- rot!}
-#pub macro --@{dup@ 1- dup rot!}
+#pub macro ! {store}
+#pub macro @ {fetch}
+#pub macro @++ {dup@ dup 1+ rot!}
+#pub macro ++@ {dup@ 1+ dup rot!}
+#pub macro @-- {dup@ dup 1- rot!}
+#pub macro --@ {dup@ 1- dup rot!}
 
 :pub storec {
     dup fetch 0xff ~ &
     rot 0xff & |
     swap store
 }
-#pub macro !c{storec}
-:pub fetchc {
-    fetch 0xff &
-}
-#pub macro @c{fetchc}
-#pub macro @c++{dup@c dup 1+ rot!c}
-#pub macro ++@c{dup@c 1+ dup rot!c}
-#pub macro @c--{dup@c dup 1- rot!c}
-#pub macro --@c{dup@c 1- dup rot!c}
+#pub macro !c {storec}
+:pub fetchc { fetch 0xff & }
+#pub macro @c {fetchc}
+#pub macro @c++ {dup@c dup 1+ rot!c}
+#pub macro ++@c {dup@c 1+ dup rot!c}
+#pub macro @c-- {dup@c dup 1- rot!c}
+#pub macro --@c {dup@c 1- dup rot!c}

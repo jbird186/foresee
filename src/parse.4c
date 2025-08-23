@@ -5,6 +5,7 @@
 
 $static int ASM_LABEL_ID
 $static int FN_ALLOC_SIZE
+$static int TOTAL_DATA_SIZE
 
 :parse_tok
 
@@ -24,6 +25,14 @@ $static int FN_ALLOC_SIZE
     %Token+
 )}
 
+// tok_ptr -- bool
+:tok_is_type {
+    if viewtk TKind.IDENT != {
+        drop false return
+    }
+    ->Token.data@ STRUCT_MAP scoped_map_find_idx is_success
+}
+
 // ops_dest tok_ptr idx -- ops_dest tok_ptr
 :push_buf_ptr {
     if dup BUF_MAP map_idx->Buffer.is_static@c {
@@ -38,19 +47,20 @@ $static int FN_ALLOC_SIZE
 
 // name scope --
 :check_name_availability_fn {
-    if over over BUF_MAP scoped_map_get slot_is_used {
-        error "Buffer '"puts over puts "' already defined in this scope\n"puts
+    $ptr scope: {}
+    $ptr name: {}
+    if name scope BUF_MAP scoped_map_get slot_is_used {
+        error "Buffer '"puts name puts "' already defined in this scope\n"puts
         1 exit
     }
-    if over over STRUCT_MAP scoped_map_get slot_is_used {
-        error "Struct '"puts over puts "' already defined in this scope\n"puts
+    if name scope STRUCT_MAP scoped_map_get slot_is_used {
+        error "Struct '"puts name puts "' already defined in this scope\n"puts
         1 exit
     }
-    if over over ENUM_MAP scoped_map_get slot_is_used {
-        error "Enum '"puts over puts "' already defined in this scope\n"puts
+    if name scope ENUM_MAP scoped_map_get slot_is_used {
+        error "Enum '"puts name puts "' already defined in this scope\n"puts
         1 exit
     }
-    drop drop
 }
 
 // name scope --
@@ -504,26 +514,12 @@ $static int FN_ALLOC_SIZE
     0 OKind.EOF &fn_ops_mem op_push
 }
 
-:_view_buf_size
-
-// base tok_ptr -- total tok_ptr
-:view_buf_size_scalar {
-    while viewtk TKind.BRACKET_START == {
-        // -- total tok_ptr scalar
-        %Token+ _view_buf_size
-        dup DIMS_MEM stack_push!
-        // -- total tok_ptr
-        rot * swap
-        if viewtk TKind.BRACKET_END != {
-            error "Invalid buffer size\n"puts
-            1 exit
-        }
-        %Token+
-    }
-}
-
-// tok_ptr -- new_tok_ptr size
+// tok_ptr -- tok_ptr size
 :view_type_size {
+    if viewtk TKind.IDENT != {
+        error "Invalid type\n"puts
+        1 exit
+    }
     if viewtd STRUCT_MAP scoped_map_find dup slot_is_empty {
         drop
         error "Type '"puts viewtd puts "' not found\n"puts
@@ -532,57 +528,93 @@ $static int FN_ALLOC_SIZE
     ->Struct.size@
 }
 
-$static int n_extra_types
+// tok_ptr -- new_tok_ptr name dims size
+:view_simple_type {
+    $ptr type_name: {viewtd}
+    $ptr dims: {0}
+    $int total: {view_type_size}
+    %Token+
+    if viewtk TKind.BRACKET_START == {
+        DIMS_MEM stack_top =dims
+        while viewtk TKind.BRACKET_START == {
+            $int subtotal: {0}
 
-// tok_ptr -- new_tok_ptr int
-:view_buf_size_int {
-    if viewtk TKind.INT == {
-        // -- base tok_ptr
-        viewtd swap %Token+
-        view_buf_size_scalar
-    } else if viewtk TKind.IDENT == {
-        1 +=n_extra_types
-        // -- sum tok_ptr
-        view_type_size swap %Token+
-        view_buf_size_scalar
-    } else {
-        error "Invalid buffer size\n"puts
+            if %Token+ viewtk TKind.INT != {
+                error "Invalid array size\n"puts
+                1 exit
+            }
+            while viewtk TKind.INT == {
+                viewtd +=subtotal
+                %Token+
+            }
+            if viewtk TKind.BRACKET_END != {
+                error "Invalid buffer size\n"puts
+                1 exit
+            }
+            %Token+
+
+            subtotal DIMS_MEM stack_push!
+            subtotal *=total
+        }
+        0 DIMS_MEM stack_push!
+    }
+    type_name dims total
+}
+
+// tok_ptr -- new_tok_ptr size
+:view_complex_subtype {
+    if %Token+ viewtk TKind.BRACKET_END == {
+        error "Invalid array size\n"puts
         1 exit
     }
 
-    if over 0 < {
-		error "Invalid buffer size\n"puts
-		1 exit
-	}
-    swap
-}
+    $int total: {0}
+    while viewtk TKind.BRACKET_END != {
+        if viewtk TKind.INT != {
+            error "Invalid buffer size\n"puts
+            1 exit
+        }
+        $int subtotal: {viewtd}
+        %Token+
 
-// tok_ptr -- bool
-:tok_is_type {
-    if viewtk TKind.IDENT != {
-        drop false return
+        while viewtk TKind.BRACKET_START == {
+            view_complex_subtype *=subtotal
+        }
+        subtotal +=total
     }
-    ->Token.data@ STRUCT_MAP scoped_map_find_idx is_success
+    %Token+
+
+    total
 }
 
 // tok_ptr -- new_tok_ptr size
-:_view_buf_size {
-	// -- sum tok_ptr
-	0 swap while (viewtk TKind.INT ==) (over tok_is_type) | {
-		view_buf_size_int rot + swap
-	}
+:view_complex_type {
+    if %Token+ viewtk TKind.BRACKET_END == {
+        error "Invalid array size\n"puts
+        1 exit
+    }
 
-    if over 0 < {
-		error "Invalid buffer size\n"puts
-		1 exit
-	}
-    swap
-}
+    $int total: {0}
+    while viewtk TKind.BRACKET_END != {
+        $int subtotal
+        if viewtk TKind.INT == {
+            viewtd =subtotal
+        } else if viewtk TKind.IDENT == {
+            view_type_size =subtotal
+        } else {
+            error "Invalid buffer size\n"puts
+            1 exit
+        }
+        %Token+
 
-// tok_ptr -- new_tok_ptr size
-:view_buf_size {
-    -1 =n_extra_types
-	_view_buf_size
+        while viewtk TKind.BRACKET_START == {
+            view_complex_subtype *=subtotal
+        }
+        subtotal +=total
+    }
+    %Token+
+
+    total
 }
 
 #macro _parse_dollar_non_static_init {
@@ -655,6 +687,10 @@ $static int n_extra_types
     %Token+
     $int scope: { SCOPE_STACK stack_last@ }
     if viewtk TKind.PUB == {
+        if over {
+            error "Public buffers must be defined at global scope\n"puts
+            1 exit
+        }
         NULL =scope
         %Token+
     }
@@ -676,23 +712,13 @@ $static int n_extra_types
 
     $int size
     $ptr type_name: {NULL}
-    $ptr type_dims_mem_len: {&dims_mem stack_len}
-    $ptr type_dims: {DIMS_MEM stack_top}
+    $ptr type_dims: {NULL}
     if dup tok_is_type {
-        // -- type_name tok_ptr
-        viewtd swap
-        view_buf_size =size
-        if n_extra_types { nip } else { swap =type_name }
-    } else if viewtk TKind.INT == {
-        view_buf_size =size
+        view_simple_type =size =type_dims =type_name
+    } else if viewtk TKind.BRACKET_START == {
+        view_complex_type =size
     } else {
         -1 =size
-    }
-    if n_extra_types {
-        NULL =type_dims
-        type_dims_mem_len &type_dims!
-    } else {
-        0 DIMS_MEM stack_push!
     }
 
     if is_static not {
@@ -727,6 +753,11 @@ $static int n_extra_types
     }
     if size BUFFER_SIZE_LIMIT > {
         error "Buffer '"puts name puts "' cannot exceed "puts BUFFER_SIZE_LIMIT put " bytes\n"puts
+        1 exit
+    }
+    size +=TOTAL_DATA_SIZE
+    if size DATA_SIZE_LIMIT > {
+        error "Total data usage cannot exceed "puts DATA_SIZE_LIMIT put " bytes\n"puts
         1 exit
     }
 
@@ -918,23 +949,13 @@ $static int n_extra_types
     while viewtk TKind.BRACE_END != {
         $int size
         $ptr type_name: {NULL}
-        $ptr type_dims_mem_len: {&dims_mem stack_len}
-        $ptr type_dims: {DIMS_MEM stack_top}
+        $ptr type_dims: {NULL}
         if dup tok_is_type {
-            // -- type_name tok_ptr
-            viewtd swap
-            view_buf_size =size
-            if n_extra_types { nip } else { swap =type_name }
-        } else if viewtk TKind.INT == {
-            view_buf_size =size
+            view_simple_type =size =type_dims =type_name
+        } else if viewtk TKind.BRACKET_START == {
+            view_complex_type =size
         } else {
             -1 =size
-        }
-        if n_extra_types {
-            NULL =type_dims
-            type_dims_mem_len &type_dims!
-        } else {
-            0 DIMS_MEM stack_push!
         }
 
         // -- tok_ptr size
@@ -997,7 +1018,7 @@ $static int n_extra_types
         view_type_size
     // -- ops_dest tok_ptr idx
     } else if viewtd BUF_MAP scoped_map_find_idx dup is_success {
-        BUF_MAP map_idx
+        BUF_MAP map_idx->Buffer.size@
     } else {
         drop
         error "Buffer '"puts viewtd puts "' not defined\n"puts

@@ -5,24 +5,24 @@ $pub static char[SRC_STR_SIZE] src_str
 #pub macro WRITE_BUFFER_SIZE { SRC_STR_SIZE }
 #pub macro out_fd_buffer { src_str }
 
-$pub static int char[1024][128] strs_mem
-$pub static int Token[1024][32] toks_mem
-$pub static int Token[1024][32] out_toks_mem
-$pub static int Op[1024][32] fn_ops_mem
-$pub static int Op[16] start_ops_mem
-$pub static int ptr[1024][8] inline_bufs
-$pub static int EnumVariant[1024][8] enum_variants_mem
-$pub static int StructField[1024][8] struct_fields_mem
-$pub static int int[1024][8] dims_mem
-$pub static int ptr[1024] dirs_mem
+$pub static [int char[1024][128]] strs_mem
+$pub static [int Token[1024][32]] toks_mem
+$pub static [int Token[1024][32]] out_toks_mem
+$pub static [int Op[1024][32]] fn_ops_mem
+$pub static [int Op[16]] start_ops_mem
+$pub static [int ptr[1024][8]] inline_bufs
+$pub static [int EnumVariant[1024][8]] enum_variants_mem
+$pub static [int StructField[1024][8]] struct_fields_mem
+$pub static [int int[1024][8]] dims_mem
+$pub static [int ptr[1024]] dirs_mem
 #pub macro STRS_MEM { &strs_mem %char }
 #pub macro ENUM_MEM { &enum_variants_mem %EnumVariant }
 #pub macro STRUCT_MEM { &struct_fields_mem %StructField }
 #pub macro DIMS_MEM { &dims_mem %ptr }
 #pub macro DIRS_MEM { &dirs_mem %ptr }
 
-$pub static int ptr[1024] scope_stack
-$pub static int int[1024] loop_stack
+$pub static [int ptr[1024]] scope_stack
+$pub static [int int[1024]] loop_stack
 #pub macro SCOPE_STACK { &scope_stack %ptr }
 #pub macro LOOP_STACK { &loop_stack %int }
 
@@ -40,11 +40,10 @@ $pub static Struct[MAP_SIZE] struct_map
 #pub macro ENUM_MAP { &enum_map %Enum }
 #pub macro STRUCT_MAP { &struct_map %Struct }
 
-// MUST be >= 4096
-#pub macro ASM_STACK_SIZE { 65536 }
-
+#pub macro ASM_STACK_SIZE { 65536 } // MUST be >= 4096
 #pub macro USE_ASM_STRINGS { true }
-#pub macro BUFFER_SIZE_LIMIT { 8388608 }
+#pub macro BUFFER_SIZE_LIMIT { 100_000_000 } // Sanity check
+#pub macro DATA_SIZE_LIMIT { 250_000_000 } // Sanity check
 
 $pub static bool debug_mode: false
 $pub static bool optimize_mode: false
