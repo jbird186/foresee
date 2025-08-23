@@ -21,8 +21,10 @@ pub static [int ptr[1024]] dirs_mem
 #pub macro DIMS_MEM { &dims_mem %ptr }
 #pub macro DIRS_MEM { &dirs_mem %ptr }
 
+pub static [int int[1024]] alloc_stack
 pub static [int ptr[1024]] scope_stack
 pub static [int int[1024]] loop_stack
+#pub macro ALLOC_STACK { &alloc_stack %int }
 #pub macro SCOPE_STACK { &scope_stack %ptr }
 #pub macro LOOP_STACK { &loop_stack %int }
 

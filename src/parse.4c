@@ -5,7 +5,36 @@
 
 static int ASM_LABEL_ID
 static int FN_ALLOC_SIZE
+static int CURRENT_ALLOC_SIZE
 static int TOTAL_DATA_SIZE
+
+:reset_fn_alloc {
+    0 =FN_ALLOC_SIZE
+    0 =CURRENT_ALLOC_SIZE
+}
+
+// n --
+:alloc_bytes {
+    dup +=CURRENT_ALLOC_SIZE
+    if CURRENT_ALLOC_SIZE FN_ALLOC_SIZE > {
+        CURRENT_ALLOC_SIZE =FN_ALLOC_SIZE
+    }
+
+    $ptr scope: {ALLOC_STACK stack_last}
+    scope@ + scope!
+}
+
+// tok_ptr -- tok_ptr
+:new_local_scope {
+    0 ALLOC_STACK stack_push!
+    dup SCOPE_STACK stack_push!
+}
+
+:pop_local_scope {
+    ALLOC_STACK stack_last@ -=CURRENT_ALLOC_SIZE
+    &alloc_stack stack_shrink
+    &scope_stack stack_shrink
+}
 
 :parse_tok
 
@@ -314,9 +343,9 @@ static int TOTAL_DATA_SIZE
     2 pick OKind.JZ 3 pick op_push
 
     // Operations
-    dup SCOPE_STACK stack_push!
+    new_local_scope
     parse_until(TKind.BRACE_END)
-    &scope_stack stack_shrink
+    pop_local_scope
 
     // -- if_id else_id ops_dest tok_ptr
     3 pick OKind.JMP 3 pick op_push
@@ -336,9 +365,9 @@ static int TOTAL_DATA_SIZE
     // -- if_id ops_dest tok_ptr
     if viewtk TKind.BRACE_START == {
         %Token+
-        dup SCOPE_STACK stack_push!
+        new_local_scope
         parse_until(TKind.BRACE_END)
-        &scope_stack stack_shrink
+        pop_local_scope
         nip nip
     } else if viewtk TKind.IF == {
         // -- tok_ptr
@@ -368,7 +397,7 @@ static int TOTAL_DATA_SIZE
     label_id OKind.LABEL 3 pick op_push
 
     label_id LOOP_STACK stack_push!
-    dup SCOPE_STACK stack_push!
+    new_local_scope
 
     // Condition
     parse_until(TKind.BRACE_START)
@@ -378,7 +407,7 @@ static int TOTAL_DATA_SIZE
     parse_until(TKind.BRACE_END)
 
     &loop_stack stack_shrink
-    &scope_stack stack_shrink
+    pop_local_scope
 
     label_id OKind.JMP 3 pick op_push
     label_id 1+ OKind.LABEL 3 roll op_push
@@ -402,7 +431,7 @@ static int TOTAL_DATA_SIZE
     if has_paren { %Token+ }
 
     label_id LOOP_STACK stack_push!
-    dup SCOPE_STACK stack_push!
+    new_local_scope
 
     // Initialization
     parse_until(TKind.COMMA)
@@ -425,7 +454,7 @@ static int TOTAL_DATA_SIZE
     drop swap
 
     &loop_stack stack_shrink
-    &scope_stack stack_shrink
+    pop_local_scope
 
     label_id OKind.JMP 3 pick op_push
     label_id 1+ OKind.LABEL 3 roll op_push
@@ -489,10 +518,9 @@ static int TOTAL_DATA_SIZE
     fn_ptr swap->Function.def!
     %Token+
 
-    // 0 =ASM_LABEL_ID
-    0 =FN_ALLOC_SIZE
+    reset_fn_alloc
     0 OKind.ALLOC &fn_ops_mem op_push
-    dup SCOPE_STACK stack_push!
+    new_local_scope
 
     while viewtk TKind.BRACE_END != {
         &fn_ops_mem swap parse_tok
@@ -504,7 +532,7 @@ static int TOTAL_DATA_SIZE
     }
 
     // fn_ops tok_ptr
-    &scope_stack stack_shrink
+    pop_local_scope
     if FN_ALLOC_SIZE {
         FN_ALLOC_SIZE fn_ptr->Op.data!
     } else {
@@ -624,9 +652,9 @@ static int TOTAL_DATA_SIZE
             1 exit
         }
 
-        dup SCOPE_STACK stack_push!
+        new_local_scope
         parse_until(TKind.BRACE_END)
-        &scope_stack stack_shrink
+        pop_local_scope
 
         alloc_offset size+ OKind.PUSH_VAR 3 pick op_push
         if size 1 == {
@@ -691,7 +719,7 @@ static int TOTAL_DATA_SIZE
         0 =alloc_offset
     } else if over {
         false =is_static
-        FN_ALLOC_SIZE =alloc_offset
+        CURRENT_ALLOC_SIZE =alloc_offset
     } else {
         error "Buffers defined at global scope must be static\n"puts
         1 exit
@@ -710,7 +738,7 @@ static int TOTAL_DATA_SIZE
     }
 
     if is_static not {
-        size +=FN_ALLOC_SIZE
+        size alloc_bytes
     }
 
     if viewtk TKind.IDENT != {
@@ -1054,9 +1082,9 @@ static int TOTAL_DATA_SIZE
     }
     else if viewtk TKind.PAREN_START == {
         %Token+
-        dup SCOPE_STACK stack_push!
+        new_local_scope
         parse_until(TKind.PAREN_END)
-        &scope_stack stack_shrink
+        pop_local_scope
         nip
     }
     else if viewtk TKind.STR == { parse_string }
