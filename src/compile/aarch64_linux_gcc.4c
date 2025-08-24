@@ -129,10 +129,13 @@ static char[32] push_cache
         "    ret\n"coms
     }
     else if viewok OKind.PUSH_INT == {
-        viewod &buf_name itoa
         flush_push_cache
         "    // OP_PUSH_INT\n"coms_dbg
-        "    mov     x0, #"coms &buf_name coms "\n"coms
+        if viewod 0xffff > {
+            compile_mov_x0_large_int
+        } else {
+            "    mov     x0, #"coms viewod com "\n"coms
+        }
         "x0" compile_push
     }
     else if viewok OKind.DROP == {
