@@ -1,10 +1,6 @@
+#use "platform.4c"
 #use "compile/x86_64_linux_nasm.4c"
 #use "compile/aarch64_linux_gcc.4c"
-
-// arch os toolchain -- bool
-:check_platform {
-    has_builtin_flag swap has_builtin_flag rot has_builtin_flag & &
-}
 
 pub :compile_program {
     if "ARCH_X86_64" "OS_LINUX" "TOOLCHAIN_NASM" check_platform {

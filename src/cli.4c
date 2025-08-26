@@ -1,3 +1,5 @@
+#use "platform.4c"
+
 pub static int argc
 pub static ptr argv
 

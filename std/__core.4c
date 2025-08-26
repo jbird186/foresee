@@ -4,7 +4,7 @@
     #use "__core/linux.4c"
 }
 #ifdef OS_WINDOWS {
-    #error "TODO: implement Windows I/O"
+    #fail "TODO: implement Windows I/O"
 }
 
 pub struct int { [8] __inner }

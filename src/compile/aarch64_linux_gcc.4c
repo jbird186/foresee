@@ -374,7 +374,27 @@ static char[32] push_cache
         "x0" compile_pop            // file descriptor
         "    mov     x8, #57\n"coms // sys_close
         "    svc     #0\n"coms
-        "x0" compile_push           // return 0 or -1
+        "x0" compile_push           // 0 or -1
+    }
+    else if viewok OKind.GETCWD == {
+        "    // OP_GETCWD\n"coms_dbg
+        "x1" compile_pop            // length
+        "x0" compile_pop            // buffer pointer
+        "    mov     x8, #17\n"coms // sys_getcwd
+        "    svc     #0\n"coms
+        "x0" compile_push           // bytes written or error
+    }
+    else if viewok OKind.SYSCALL == {
+        "    // OP_SYSCALL\n"coms_dbg
+        "x8" compile_pop    // syscall number
+        "x5" compile_pop    // arg 6
+        "x4" compile_pop    // arg 5
+        "x3" compile_pop    // arg 4
+        "x2" compile_pop    // arg 3
+        "x1" compile_pop    // arg 2
+        "x0" compile_pop    // arg 1
+        "    svc     #0\n"coms
+        "x0" compile_push   // return value
     }
     else {
         "ERROR: Invalid opcode of type "puts viewok put "\n"puts

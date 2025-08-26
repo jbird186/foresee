@@ -1,5 +1,6 @@
 #use "stdstr.4c"
 #use "config.4c"
+#use "platform.4c"
 #use "token.4c"
 #use "op.4c"
 
@@ -256,6 +257,7 @@ static int TOTAL_DATA_SIZE
             return
         }
     }
+
     // Misc / Special
     define_intrinsic_opcode(0, OKind.NOOP, "__OP_NOOP")
     define_intrinsic_opcode(0, OKind.EXIT, "__OP_EXIT")
@@ -285,11 +287,14 @@ static int TOTAL_DATA_SIZE
     define_intrinsic_opcode(0, OKind.GT, "__OP_GT")
     define_intrinsic_opcode(0, OKind.LT, "__OP_LT")
     define_intrinsic_opcode(0, OKind.DIVMOD, "__OP_DIVMOD")
-    // I/O
+    // Syscalls
     define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.FOPEN, "__OP_FOPEN")
     define_intrinsic_opcode(0, OKind.FREAD, "__OP_FREAD")
     define_intrinsic_opcode(0, OKind.FWRITE, "__OP_FWRITE")
     define_intrinsic_opcode(0, OKind.FCLOSE, "__OP_FCLOSE")
+    define_intrinsic_opcode(0, OKind.GETCWD, "__OP_GETCWD")
+    // Linux Only
+    define_intrinsic_opcode(0, OKind.SYSCALL, "__OP_SYSCALL")
 
     ////////// Functions //////////
     if viewtd FN_MAP scoped_map_find_idx is_success {

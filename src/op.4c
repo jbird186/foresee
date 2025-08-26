@@ -43,11 +43,14 @@ pub enum OKind {
     LABEL
     JMP
     JZ      // value --
-    // I/O
+    // Syscalls
     FOPEN   // filename_ptr [0=read, 1=write, 2=append] -- [fd, -1]
     FREAD   // ptr len fd -- [bytes_read, -1]
     FWRITE  // ptr len fd -- [bytes_written, -1]
-    FCLOSE  // fd -- [0, -1]}
+    FCLOSE  // fd -- [0, -1]
+    GETCWD  // ptr len -- [bytes_written, -err]
+    // Linux Only
+    SYSCALL // arg1 arg2 arg3 arg4 arg5 arg6 n -- result
 }
 
 // data kind ref --

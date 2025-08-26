@@ -2,6 +2,8 @@
 #use "token.4c"
 #use "map.4c"
 
+static ptr expansion_origin
+static ptr expansion_depth
 static int scope_depth
 
 // tok_ptr -- new_tok_ptr
@@ -64,6 +66,16 @@ static int scope_depth
         1 exit
     }
 
+    if expansion_depth not {
+        over =expansion_origin
+    }
+
+    1 +=expansion_depth
+    if expansion_depth MACRO_DEPTH_LIMIT > {
+        error "Macro expansion cannot exceed depth "puts MACRO_DEPTH_LIMIT put "\n"puts
+        1 exit
+    }
+
     if is_arg {
         $int counter: {0}
         while (viewtk dup (TKind.COMMA !=) swap (TKind.PAREN_END !=) &) (counter) | {
@@ -73,6 +85,7 @@ static int scope_depth
         }
         drop nip
         %Token+
+        1 -=expansion_depth
         return
     }
 
@@ -146,6 +159,7 @@ static int scope_depth
         preprocess_brace_block drop
     }
     &scope_stack stack_shrink
+    1 -=expansion_depth
 }
 
 // tok_ptr -- new_tok_ptr
@@ -246,12 +260,29 @@ pub :use_file {
 }
 
 // tok_ptr -- new_tok_ptr
-:parse_error_directive {
+:parse_fail_directive {
     %Token+
     if viewtk TKind.STR == {
         error viewtd puts
     } else {
-        error "Expected message for 'error' directive\n"puts
+        error "Expected message for 'fail' directive\n"puts
+    }
+    1 exit
+}
+
+// tok_ptr -- new_tok_ptr
+:parse_raise_directive {
+    %Token+
+    if viewtk TKind.STR == {
+        if expansion_depth {
+            expansion_origin
+            error drop
+        } else {
+            error
+        }
+        viewtd puts
+    } else {
+        error "Expected message for 'raise' directive\n"puts
     }
     1 exit
 }
@@ -397,7 +428,8 @@ pub :use_file {
         1 exit
     }
     if viewtd "use" streq { parse_use_directive }
-    else if viewtd "error" streq { parse_error_directive }
+    else if viewtd "fail" streq { parse_fail_directive }
+    else if viewtd "raise" streq { parse_raise_directive }
     else if viewtd "macro" streq { parse_macro_directive }
     else if viewtd "flag" streq { parse_flag_directive }
     else if viewtd "undef" streq { parse_undef_directive }
@@ -432,19 +464,4 @@ pub :preprocess_src {
     0 =scope_depth
     &toks_mem->StackHead.data preprocess
     0 TKind.EOF NULL 0 &out_toks_mem tok_push
-}
-
-// name --
-pub :define_builtin_flag {
-    dup SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
-    NULL over->Macro.key.scope!
-    0 over->Macro.n_args!
-    NULL over->Macro.toks!
-    false over->Macro.is_arg!c
-    ->Macro.key.name!
-}
-
-// name -- bool
-pub :has_builtin_flag {
-    MACRO_MAP scoped_map_find_idx is_success
 }

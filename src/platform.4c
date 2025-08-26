@@ -1,0 +1,22 @@
+#use "config.4c"
+#use "map.4c"
+
+// name --
+pub :define_builtin_flag {
+    dup SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
+    NULL over->Macro.key.scope!
+    0 over->Macro.n_args!
+    NULL over->Macro.toks!
+    false over->Macro.is_arg!c
+    ->Macro.key.name!
+}
+
+// name -- bool
+pub :has_builtin_flag {
+    MACRO_MAP scoped_map_find_idx is_success
+}
+
+// arch os toolchain -- bool
+pub :check_platform {
+    has_builtin_flag swap has_builtin_flag rot has_builtin_flag & &
+}

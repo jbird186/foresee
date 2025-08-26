@@ -1,5 +1,6 @@
 #pub flag HERE_FILE
 #pub flag HERE_LINE
+
 #pub macro noop{__OP_NOOP}
 #pub macro exit{__OP_EXIT}
 #pub macro return{__OP_RET}
@@ -28,3 +29,11 @@
 #pub macro fread{__OP_FREAD}
 #pub macro fwrite{__OP_FWRITE}
 #pub macro fclose{__OP_FCLOSE}
+#pub macro getcwd{__OP_GETCWD}
+
+#ifdef OS_LINUX {
+    #pub macro syscall{__OP_SYSCALL}
+}
+#ifndef OS_LINUX {
+    #pub macro syscall{ #raise "Syscalls can only be used on Linux\n" }
+}

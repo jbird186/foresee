@@ -42,6 +42,7 @@ pub static Struct[MAP_SIZE] struct_map
 #pub macro ENUM_MAP { &enum_map %Enum }
 #pub macro STRUCT_MAP { &struct_map %Struct }
 
+#pub macro MACRO_DEPTH_LIMIT { 256 }
 #pub macro ASM_STACK_SIZE { 65536 } // MUST be >= 4096
 #pub macro USE_ASM_STRINGS { true }
 #pub macro BUFFER_SIZE_LIMIT { 100_000_000 } // Sanity check
