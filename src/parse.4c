@@ -122,7 +122,7 @@ static int TOTAL_DATA_SIZE
     $int field_offset: {0}
     while fields_ptr->StructField.name@ {
         $int field_size: {fields_ptr->StructField.size@}
-        if field_name fields_ptr->StructField.name@ streq {
+        if field_name fields_ptr->StructField.name@ strcmp not {
             %Token+
 
             field_offset OKind.PUSH_INT 3 pick op_push
@@ -250,7 +250,7 @@ static int TOTAL_DATA_SIZE
 :parse_ident {
     ////////// Intrinsics //////////
     #macro define_intrinsic_opcode(data, op_code, alias) {
-        if viewtd alias streq {
+        if viewtd alias strcmp not {
             // -- tok_ptr
             (data) op_code 3 roll op_push
             %Token+
@@ -319,7 +319,7 @@ static int TOTAL_DATA_SIZE
         // -- ops_dest tok_ptr name variants
         viewtd rot
         while dup->EnumVariant.name@ {
-            if over over->EnumVariant.name@ streq {
+            if over over->EnumVariant.name@ strcmp not {
                 nip->EnumVariant.value@ OKind.PUSH_INT 3 roll op_push
                 %Token+
                 return
@@ -817,17 +817,17 @@ static int TOTAL_DATA_SIZE
         drop original_tok_ptr
 
         #macro parse_simple_eq(string, opcode, preop) {
-            else if viewtd string streq {
+            else if viewtd string strcmp not {
                 preop
                 0 opcode 3 pick op_push
             }
         }
-        if viewtd "/=" streq {
+        if viewtd "/=" strcmp not {
             "swap" call_fn
             0 OKind.DIVMOD 3 pick op_push
             0 OKind.DROP 3 pick op_push
         }
-        else if viewtd "%=" streq {
+        else if viewtd "%=" strcmp not {
             "swap" call_fn
             0 OKind.DIVMOD 3 pick op_push
             "nip" call_fn
@@ -894,7 +894,7 @@ static int TOTAL_DATA_SIZE
         // -- tok_ptr name variants
         viewtd variants_ptr
         while dup->EnumVariant.name@ {
-            if over over->EnumVariant.name@ streq {
+            if over over->EnumVariant.name@ strcmp not {
                 // -- name tok_ptr
                 drop swap
                 error "Variant '"puts over puts "' already defined for enum '"puts enum_name puts "'\n"puts
@@ -991,7 +991,7 @@ static int TOTAL_DATA_SIZE
         // -- tok_ptr size name field
         over->Token.data@ fields_ptr
         while dup->StructField.name@ {
-            if over over->StructField.name@ streq {
+            if over over->StructField.name@ strcmp not {
                 // -- name tok_ptr
                 drop nip swap
                 error "Field '"puts over puts "' already defined for struct '"puts struct_name puts "'\n"puts

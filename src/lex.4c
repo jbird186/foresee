@@ -168,7 +168,7 @@ static ptr file
 }
 
 #macro match_ident_token(token_str, token_id) {
-    if dup token_str streq {
+    if dup token_str strcmp not {
         0 token_id file line &toks_mem tok_push
         // -- new_src_ptr n_chars
         STRS_MEM stack_top swap -

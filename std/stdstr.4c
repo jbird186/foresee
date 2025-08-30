@@ -15,6 +15,18 @@ pub :strcpy {
     drop
 }
 
+// src dest n --
+pub :strncpy {
+    $int n: {}
+    while over@c (dup flag) (n flag) & {
+        over!c
+        1+ swap 1+ swap
+        1 -=n
+    } drop
+    0 swap !c
+    drop
+}
+
 // src dest --
 pub :strcat {
     dup strlen +
@@ -48,12 +60,6 @@ pub :strncmp {
     drop drop
     0
 }
-
-// s1 s2 -- is_eq
-pub :streq { strcmp not }
-
-// s1 s2 n -- is_eq
-pub :strneq { strncmp not }
 
 // str char -- [ptr, 0]
 pub :strchr {

@@ -61,7 +61,7 @@ pub :map_contains {
     over over* 3 pick +
     if dup slot_is_empty {
         false
-    } else if dup@ 6 pick streq {
+    } else if dup@ 6 pick strcmp not {
         dup->ScopedKey.scope@ 5 pick !=
     } else {
         true

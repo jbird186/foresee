@@ -40,27 +40,27 @@ pub :get_argv {
     }
     0 over!c 1+ =tool
 
-    if (arch "x86_64" streq) (arch "x64" streq) | {
+    if (arch "x86_64" strcmp not) (arch "x64" strcmp not) | {
         "ARCH_X86_64" define_builtin_flag
-    } else if arch "aarch64" streq {
+    } else if arch "aarch64" strcmp not {
         "ARCH_AARCH64" define_builtin_flag
     } else {
         "ERROR: Unsupported architecture '"puts arch puts "'\n"puts
         1 exit
     }
 
-    if os "linux" streq {
+    if os "linux" strcmp not {
         "OS_LINUX" define_builtin_flag
-    } else if os "windows" streq {
+    } else if os "windows" strcmp not {
         "OS_WINDOWS" define_builtin_flag
     } else {
         "ERROR: Unsupported OS '"puts os puts "'\n"puts
         1 exit
     }
 
-    if tool "nasm" streq {
+    if tool "nasm" strcmp not {
         "TOOLCHAIN_NASM" define_builtin_flag
-    } else if tool "gcc" streq {
+    } else if tool "gcc" strcmp not {
         "TOOLCHAIN_GCC" define_builtin_flag
     } else {
         "ERROR: Unsupported toolchain '"puts tool puts "'\n"puts
@@ -68,13 +68,21 @@ pub :get_argv {
     }
 }
 
+#macro set_compiler_flag(var, name) {
+    if var {
+        "ERROR: flag '"puts name puts "' already set\n"puts
+        1 exit
+    }
+    true =var
+}
+
 // arg_ptr --
 :parse_switches {
     while %char+ dup@c {
         if dup@c 'd' == {
-            true =debug_mode
+            set_compiler_flag(debug_mode, "debug")
         } else if dup@c 'O' == {
-            true =optimize_mode
+            set_compiler_flag(optimize_mode, "optimize")
         } else {
             "ERROR: Unrecognized switch '-"puts dup@c putc "'\n"puts
             put_options
@@ -84,26 +92,62 @@ pub :get_argv {
     drop
 }
 
+// arg_ptr --
+:parse_include_option {
+    $ptr arg: {2+}
+    $ptr path: {STRS_MEM stack_top}
+
+    if arg@c '/' != {
+        $int cwd_res: {path 4096 getcwd}
+        if cwd_res is_failure {
+            "ERROR: Failed to obtain current working directory\n"puts
+            1 exit
+        }
+
+        if arg "./" 2 strncmp not { 2 +=arg }
+        &strs_mem@ cwd_res+ 1- &strs_mem!
+        '/' STRS_MEM stack_push!c
+    }
+
+    arg STRS_MEM stack_top strcpy
+    &strs_mem@ arg strlen+ &strs_mem!
+    if STRS_MEM stack_last@c '/' != {
+        '/' STRS_MEM stack_push!c
+    }
+    0 STRS_MEM stack_push!c
+
+    path DIRS_MEM stack_push!
+}
+
 // idx -- new_idx
 :parse_option {
     $int idx: {}
-    #macro ARG { idx get_argv }
+    $ptr arg: {idx get_argv}
 
-    if (ARG "-" 1 strneq) (ARG "--" 2 strncmp flag) & {
-        ARG parse_switches
-    } else if ARG "--debug" streq {
-        true =debug_mode
-    } else if ARG "--optimize" streq {
-        true =optimize_mode
-    } else if ARG "--std" streq {
-        1 +=idx
-        ARG DIRS_MEM stack_push!
+    if arg "-I" 2 strncmp not {
+        arg parse_include_option
+    } else if (arg@c '-' ==) (arg "--" 2 strncmp flag) & {
+        arg parse_switches
+    } else if arg "--debug" strcmp not {
+        set_compiler_flag(debug_mode, "debug")
+    } else if arg "--optimize" strcmp not {
+        set_compiler_flag(optimize_mode, "optimize")
     } else {
-        "ERROR: Unrecognized option '"puts ARG puts "'\n"puts
+        "ERROR: Unrecognized option '"puts arg puts "'\n"puts
         put_options
         1 exit
     }
     idx 1+
+}
+
+// -- src_file
+pub :get_src_file {
+    1 get_argv
+}
+
+// -- out_file
+pub :get_out_file {
+    2 get_argv
 }
 
 // argv argc --
@@ -116,4 +160,6 @@ pub :parse_args {
     }
     parse_platform
     4 while dup argc < { parse_option } drop
+
+    get_src_file add_file_dir
 }

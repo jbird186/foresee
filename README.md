@@ -149,4 +149,4 @@ Output: `6 12 9 81`
 `aarch64-linux-gnu-gcc -static ./bootstrap/aarch64-linux-gcc.s -nostartfiles -o ./target/compiler`
 
 ### Self-compile:
-`./target/compiler ./src/main.4c ./target/compiler.asm <platform> -O`
+`./target/compiler ./src/main.4c ./target/compiler.asm -Istd/ <platform> -O`

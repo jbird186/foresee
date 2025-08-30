@@ -7,30 +7,30 @@
 // argv argc --
 :main {
     parse_args
-    $ptr src_file_name: {1 get_argv}
-    $ptr out_file_name: {2 get_argv}
-
-    "./std/" DIRS_MEM stack_push!
-    "./src/" DIRS_MEM stack_push!
-    "./" DIRS_MEM stack_push!
-    "" DIRS_MEM stack_push!
+    $ptr src_file: {get_src_file}
+    $ptr out_file: {get_out_file}
 
     0 SCOPE_STACK stack_push!
 
-    $ptr src_fd: {src_file_name 0 fopen}
+    $ptr src_fd: {src_file 0 fopen}
     if src_fd is_failure {
-        "ERROR: File '"puts src_file_name puts "' not found\n"puts
+        "ERROR: File '"puts src_file puts "' not found\n"puts
         1 exit
     }
 
     &src_str SRC_STR_SIZE src_fd fread drop
     src_fd fclose drop
-    &src_str src_file_name lex_src
-    "__core.4c" use_file
+    &src_str src_file lex_src
+
+    if "__core.4c" use_file is_failure {
+        "ERROR: standard library not found\n"puts
+        1 exit
+    }
+
     preprocess_src
     parse_out_toks
 
-    out_file_name 1 fopen =out_fd
+    out_file 1 fopen =out_fd
     compile_program
     out_fd fclose drop
 

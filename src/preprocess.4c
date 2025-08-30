@@ -50,7 +50,7 @@ static int scope_depth
     $ptr src: {over}
 
     #macro parse_here_macro(name, access, tkind) {
-        if 2 pick name streq {
+        if 2 pick name strcmp not {
             src->Token.access@ TKind.tkind src->Token.file@ src->Token.line@ &out_toks_mem tok_push
             drop nip %Token+ return
         }
@@ -191,6 +191,31 @@ static int scope_depth
     name
 }
 
+// file_path --
+pub :add_file_dir {
+    $ptr name: {}
+    $int n: {0}
+    $int size: {0}
+
+    while $char c: {name n+ @c} c {
+        1 +=n
+        if c '/' == { n =size }
+    }
+
+    $ptr dir_ptr: {STRS_MEM stack_top}
+
+    name dir_ptr size strncpy
+    &strs_mem stack_len size+ &strs_mem!
+    0 STRS_MEM stack_push!c
+
+    for $int i: {0}, i &dirs_mem stack_len <, 1 +=i {
+        if (i DIRS_MEM stack_get@) (dir_ptr) strcmp not {
+            return
+        }
+    }
+    dir_ptr DIRS_MEM stack_push!
+}
+
 // name -- file_path fd
 :_open_file {
     $ptr name: {}
@@ -202,6 +227,7 @@ static int scope_depth
 
         $ptr fd: {&file_path 0 fopen}
         if fd is_success {
+            &file_path add_file_dir
             &file_path fd return
         }
 
@@ -210,11 +236,11 @@ static int scope_depth
     NULL -1 return
 }
 
-// name --
+// name -- result
 pub :use_file {
     $ptr name: {}
     if name _file_name FILE_SET map_contains {
-        return
+        0 return
     }
 
     name _open_file
@@ -222,21 +248,21 @@ pub :use_file {
     $ptr path: {}
 
     if fd is_failure {
-        error "'use' directive failed to open file '"puts name puts "'\n"puts
-        1 exit
+        "WARNING: 'use' directive failed to open file '"puts name puts "'\n"puts
+        -1 return
     }
     name _file_name dup FILE_SET map_get!
 
     $int read_res: {&src_str SRC_STR_SIZE fd fread }
     if read_res is_failure {
-        error "'use' directive failed to read file '"puts path puts "'\n"puts
-        1 exit
+        "WARNING: 'use' directive failed to read file '"puts path puts "'\n"puts
+        -1 return
     }
     0 (read_res &src_str+)!c
 
     if fd fclose is_failure {
-        error "'use' directive failed to close file '"puts path puts "'\n"puts
-        1 exit
+        "WARNING: 'use' directive failed to close file '"puts path puts "'\n"puts
+        -1 return
     }
 
     dup SCOPE_STACK stack_push!
@@ -247,6 +273,8 @@ pub :use_file {
     preprocess
     0 TKind.FILE_END name 0 &out_toks_mem tok_push
     &scope_stack stack_shrink
+
+    0 return
 }
 
 // tok_ptr -- new_tok_ptr
@@ -256,7 +284,11 @@ pub :use_file {
         error "Expected file name for 'use' directive\n"puts
         1 exit
     }
-    viewtd use_file %Token+
+    if viewtd use_file is_failure {
+        error "Failed to use file '"puts viewtd puts "'\n"puts
+        1 exit
+    }
+    %Token+
 }
 
 // tok_ptr -- new_tok_ptr
@@ -413,8 +445,8 @@ pub :use_file {
 
         true =IS_PUBLIC
         %Token+
-        if viewtd "macro" streq { parse_macro_directive }
-        else if viewtd "flag" streq { parse_flag_directive }
+        if viewtd "macro" strcmp not { parse_macro_directive }
+        else if viewtd "flag" strcmp not { parse_flag_directive }
         else {
             error "Unknown preprocessor directive '"puts viewtd puts "' following 'pub'\n"puts
             1 exit
@@ -427,14 +459,14 @@ pub :use_file {
         error "Invalid preprocessor directive\n"puts
         1 exit
     }
-    if viewtd "use" streq { parse_use_directive }
-    else if viewtd "fail" streq { parse_fail_directive }
-    else if viewtd "raise" streq { parse_raise_directive }
-    else if viewtd "macro" streq { parse_macro_directive }
-    else if viewtd "flag" streq { parse_flag_directive }
-    else if viewtd "undef" streq { parse_undef_directive }
-    else if viewtd "ifdef" streq { parse_if_directive(preprocess_brace_block, skip_braces) }
-    else if viewtd "ifndef" streq { parse_if_directive(skip_braces, preprocess_brace_block) }
+    if viewtd "use" strcmp not { parse_use_directive }
+    else if viewtd "fail" strcmp not { parse_fail_directive }
+    else if viewtd "raise" strcmp not { parse_raise_directive }
+    else if viewtd "macro" strcmp not { parse_macro_directive }
+    else if viewtd "flag" strcmp not { parse_flag_directive }
+    else if viewtd "undef" strcmp not { parse_undef_directive }
+    else if viewtd "ifdef" strcmp not { parse_if_directive(preprocess_brace_block, skip_braces) }
+    else if viewtd "ifndef" strcmp not { parse_if_directive(skip_braces, preprocess_brace_block) }
     else {
         error "Unknown preprocessor directive '"puts viewtd puts "'\n"puts
         1 exit
