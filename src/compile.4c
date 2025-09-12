@@ -1,5 +1,6 @@
 #use "platform.4c"
 #use "compile/x86_64_linux_nasm.4c"
+#use "compile/x86_64_windows_nasm.4c"
 #use "compile/aarch64_linux_gcc.4c"
 
 pub :compile_program {
@@ -7,6 +8,8 @@ pub :compile_program {
         compile_program_x86_64_linux_nasm
     } else if "ARCH_AARCH64" "OS_LINUX" "TOOLCHAIN_GCC" check_platform {
         compile_program_aarch64_linux_gcc
+    } else if "ARCH_X86_64" "OS_WINDOWS" "TOOLCHAIN_NASM" check_platform {
+        compile_program_x86_64_windows_nasm
     } else {
         "ERROR: Unsupported platform\n"puts
         1 exit

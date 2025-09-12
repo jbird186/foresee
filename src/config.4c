@@ -5,10 +5,10 @@ pub static char[SRC_STR_SIZE] src_str
 #pub macro WRITE_BUFFER_SIZE { SRC_STR_SIZE }
 #pub macro out_fd_buffer { src_str }
 
-pub static [int char[1024][128]] strs_mem
-pub static [int Token[1024][32]] toks_mem
-pub static [int Token[1024][32]] out_toks_mem
-pub static [int Op[1024][32]] fn_ops_mem
+pub static [int char[1024][256]] strs_mem
+pub static [int Token[1024][64]] toks_mem
+pub static [int Token[1024][64]] out_toks_mem
+pub static [int Op[1024][64]] fn_ops_mem
 pub static [int Op[16]] start_ops_mem
 pub static [int ptr[1024][8]] inline_bufs
 pub static [int EnumVariant[1024][8]] enum_variants_mem

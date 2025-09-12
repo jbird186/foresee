@@ -260,7 +260,6 @@ static int TOTAL_DATA_SIZE
 
     // Misc / Special
     define_intrinsic_opcode(0, OKind.NOOP, "__OP_NOOP")
-    define_intrinsic_opcode(0, OKind.EXIT, "__OP_EXIT")
     // Functions
     define_intrinsic_opcode(0, OKind.RET, "__OP_RET")
     // Stack Primitives
@@ -288,13 +287,21 @@ static int TOTAL_DATA_SIZE
     define_intrinsic_opcode(0, OKind.LT, "__OP_LT")
     define_intrinsic_opcode(0, OKind.DIVMOD, "__OP_DIVMOD")
     // Syscalls
+    define_intrinsic_opcode(0, OKind.EXIT, "__OP_EXIT")
     define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.FOPEN, "__OP_FOPEN")
-    define_intrinsic_opcode(0, OKind.FREAD, "__OP_FREAD")
-    define_intrinsic_opcode(0, OKind.FWRITE, "__OP_FWRITE")
+    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.FREAD, "__OP_FREAD")
+    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.FWRITE, "__OP_FWRITE")
     define_intrinsic_opcode(0, OKind.FCLOSE, "__OP_FCLOSE")
-    define_intrinsic_opcode(0, OKind.GETCWD, "__OP_GETCWD")
+    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.GETCWD, "__OP_GETCWD")
     // Linux Only
-    define_intrinsic_opcode(0, OKind.SYSCALL, "__OP_SYSCALL")
+    define_intrinsic_opcode(0, OKind.LIN_syscall, "__LIN_syscall")
+    // Windows Only
+    define_intrinsic_opcode(0, OKind.WIN_GetCommandLineW, "__WIN_GetCommandLineW")
+    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.WIN_CommandLineToArgvW, "__WIN_CommandLineToArgvW")
+    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.WIN_WideCharToMultiByte, "__WIN_WideCharToMultiByte")
+    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.WIN_LocalAlloc, "__WIN_LocalAlloc")
+    define_intrinsic_opcode(0, OKind.WIN_LocalFree, "__WIN_LocalFree")
+    define_intrinsic_opcode(0, OKind.WIN_LocalFree, "__WIN_GetStdHandle")
 
     ////////// Functions //////////
     if viewtd FN_MAP scoped_map_find_idx is_success {
@@ -327,7 +334,7 @@ static int TOTAL_DATA_SIZE
             %EnumVariant+
         }
         drop
-        swap error swap "Field '"puts puts "' not found for enum '"puts name puts "'\n"puts
+        swap error swap "Variant '"puts puts "' not found for enum '"puts name puts "'\n"puts
         1 exit
     }
 
@@ -343,7 +350,9 @@ static int TOTAL_DATA_SIZE
     3 roll 3 roll
     %Token+
     // Condition
+    new_local_scope
     parse_until(TKind.BRACE_START)
+    pop_local_scope
     // -- if_id else_id ops_dest tok_ptr
     2 pick OKind.JZ 3 pick op_push
 
@@ -534,6 +543,11 @@ static int TOTAL_DATA_SIZE
 
     if &fn_ops_mem %Op stack_last->Token.kind@c OKind.RET != {
         0 OKind.RET &fn_ops_mem op_push
+    }
+
+    // Align to 16 bytes for Windows calling convention
+    if "OS_WINDOWS" has_builtin_flag {
+        16 (FN_ALLOC_SIZE 8+ 16%)- 16% +=FN_ALLOC_SIZE
     }
 
     // fn_ops tok_ptr

@@ -4,6 +4,26 @@
 #use "compile.4c"
 #use "cli.4c"
 
+:warn_memory_usage {
+    if debug_mode not { return }
+
+    #macro check_buf(buf, item_size, name) {
+        if (&buf stack_len item_size* 4*) (%buf) > {
+            "WARNING: "puts name puts " is more than 25% full\n"puts
+        }
+    }
+    check_buf(strs_mem, %char, "strs_mem")
+    check_buf(toks_mem, %Token, "toks_mem")
+    check_buf(out_toks_mem, %Token, "out_toks_mem")
+    check_buf(fn_ops_mem, %Op, "fn_ops_mem")
+    check_buf(start_ops_mem, %Op, "start_ops_mem")
+    check_buf(inline_bufs, %ptr, "inline_bufs")
+    check_buf(enum_variants_mem, %EnumVariant, "enum_variants_mem")
+    check_buf(struct_fields_mem, %StructField, "struct_fields_mem")
+    check_buf(dims_mem, %int, "dims_mem")
+    check_buf(dirs_mem, %ptr, "dirs_mem")
+}
+
 // argv argc --
 :main {
     parse_args
@@ -34,6 +54,7 @@
     compile_program
     out_fd fclose drop
 
+    warn_memory_usage
     if depth {
         "WARNING: Compilation completed with a stack depth of "puts depth put "\n"puts
     }

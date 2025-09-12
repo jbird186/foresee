@@ -1,20 +1,13 @@
 #use "__core/intrinsics.4c"
 
-#ifdef OS_LINUX {
-    #use "__core/linux.4c"
-}
-#ifdef OS_WINDOWS {
-    #fail "TODO: implement Windows I/O"
-}
-
-pub struct int { [8] __inner }
-#pub macro INT_MIN { -9223372036854775808 }
-#pub macro INT_MAX { 9223372036854775807 }
-pub struct ptr { [8] __inner }
-pub struct char { [1] __inner }
-#pub macro CHAR_MIN { 0 }
-#pub macro CHAR_MAX { 255 }
-pub struct bool { [1] __inner }
+pub struct int {[8] __inner}
+#pub macro INT_MIN {-9223372036854775808}
+#pub macro INT_MAX {9223372036854775807}
+pub struct ptr {[8] __inner}
+pub struct char {[1] __inner}
+#pub macro CHAR_MIN {0}
+#pub macro CHAR_MAX {255}
+pub struct bool {[1] __inner}
 
 #pub macro NULL {0}
 #pub macro false {0}
@@ -54,9 +47,23 @@ pub :storec {
     swap store
 }
 #pub macro !c {storec}
-pub :fetchc { fetch 0xff & }
+pub :fetchc {fetch 0xff &}
 #pub macro @c {fetchc}
 #pub macro @c++ {dup@c dup 1+ rot!c}
 #pub macro ++@c {dup@c 1+ dup rot!c}
 #pub macro @c-- {dup@c dup 1- rot!c}
 #pub macro --@c {dup@c 1- dup rot!c}
+
+#ifdef OS_LINUX {
+    #use "__core/linux.4c"
+}
+#ifdef OS_WINDOWS {
+    #use "__core/windows.4c"
+}
+
+// buf len -- bytes_read
+pub :stdin{STDIN_FD fread}
+// ptr len --
+pub :stdout{STDOUT_FD fwrite drop}
+// ptr len --
+pub :stderr{STDERR_FD fwrite drop}

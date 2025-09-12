@@ -4,7 +4,6 @@ pub enum OKind {
     // Misc / Special
     EOF
     NOOP
-    EXIT    // exit_code --
     // Functions
     CALL
     PUSH_FN
@@ -44,13 +43,21 @@ pub enum OKind {
     JMP
     JZ      // value --
     // Syscalls
+    EXIT    // exit_code --
     FOPEN   // filename_ptr [0=read, 1=write, 2=append] -- [fd, -1]
     FREAD   // ptr len fd -- [bytes_read, -1]
     FWRITE  // ptr len fd -- [bytes_written, -1]
     FCLOSE  // fd -- [0, -1]
     GETCWD  // ptr len -- [bytes_written, -err]
     // Linux Only
-    SYSCALL // arg1 arg2 arg3 arg4 arg5 arg6 n -- result
+    LIN_syscall // arg1 arg2 arg3 arg4 arg5 arg6 n -- result
+    // Windows Only
+    WIN_GetCommandLineW // -- ptr
+    WIN_CommandLineToArgvW // src argc_ptr -- [argv_ptr, -1]
+    WIN_WideCharToMultiByte // src dest [len, 0=strlen] -- [size, -1];
+    WIN_LocalAlloc // size -- [ptr, -1]
+    WIN_LocalFree // ptr -- [0, -err]
+    WIN_GetStdHandle // n -- [fd, -1]
 }
 
 // data kind ref --

@@ -95,12 +95,6 @@ static char[32] push_cache
 :compile_op {
     $char[32] buf_name
     if viewok OKind.NOOP == {}
-    else if viewok OKind.EXIT == {
-        "    // OP_EXIT\n"coms_dbg
-        "x0" compile_pop
-        "    mov     x8, 93\n"coms
-        "    svc     #0\n"coms
-    }
     else if viewok OKind.CALL == {
         "    // OP_CALL\n"coms_dbg
         "x0" compile_pop
@@ -317,6 +311,12 @@ static char[32] push_cache
         flush_stack_ptr_delta
         "    cbz     x0, .l_"coms viewod com "\n"coms
     }
+    else if viewok OKind.EXIT == {
+        "    // OP_EXIT\n"coms_dbg
+        "x0" compile_pop
+        "    mov     x8, 93\n"coms
+        "    svc     #0\n"coms
+    }
     else if viewok OKind.FOPEN == {
         "    // OP_FOPEN\n"coms_dbg
         "x0" compile_pop           // mode (0 = read, 1 = write, 2 = append)
@@ -384,8 +384,9 @@ static char[32] push_cache
         "    svc     #0\n"coms
         "x0" compile_push           // bytes written or error
     }
-    else if viewok OKind.SYSCALL == {
-        "    // OP_SYSCALL\n"coms_dbg
+    // Linux Only
+    else if viewok OKind.LIN_syscall == {
+        "    // LIN_syscall\n"coms_dbg
         "x8" compile_pop    // syscall number
         "x5" compile_pop    // arg 6
         "x4" compile_pop    // arg 5
