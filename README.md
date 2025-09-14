@@ -148,5 +148,8 @@ Output: `6 12 9 81`
 ### Bootstrap (aarch64-linux-gcc)
 `aarch64-linux-gnu-gcc -static ./bootstrap/aarch64-linux-gcc.s -nostartfiles -o ./target/compiler`
 
+### Bootstrap (x86_64-windows-nasm):
+`nasm -f win64 ./bootstrap/x86_64-windows-nasm.asm -o ./target/compiler.o && x86_64-w64-mingw32-gcc ./target/compiler.o -o ./target/compiler.exe -nostdlib -e _start -lkernel32 -lshell32`
+
 ### Self-compile:
-`./target/compiler ./src/main.4c ./target/compiler.asm -Istd/ <platform> -O`
+`./target/compiler ./src/main.4c ./target/compiler.asm <platform> -Istd/ -O`

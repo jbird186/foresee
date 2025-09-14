@@ -1,0 +1,409 @@
+#use "compile/common.4c"
+#use "stdstr.4c"
+#use "stdchar.4c"
+#use "config.4c"
+#use "map.4c"
+#use "op.4c"
+
+static int stack_ptr_delta
+:com_stack_delta {
+    if stack_ptr_delta 0 > {
+        " + "coms stack_ptr_delta com
+    } else if stack_ptr_delta 0 < {
+        " - "coms stack_ptr_delta -1* com
+    }
+}
+
+pub :x64n_flush_stack_ptr_delta {
+    if stack_ptr_delta 0 > {
+        "    add     r12, "coms stack_ptr_delta com "\n"coms
+    } else if stack_ptr_delta 0 < {
+        "    sub     r12, "coms stack_ptr_delta -1* com "\n"coms
+    }
+    0 =stack_ptr_delta
+}
+
+// n --
+:update_stack_ptr_delta {
+    +=stack_ptr_delta
+    if optimize_mode not {
+        x64n_flush_stack_ptr_delta
+    }
+}
+
+// item --
+pub :x64n_force_compile_push {
+    -8 update_stack_ptr_delta
+    "    mov     qword [r12"coms com_stack_delta "], "coms coms "\n"coms
+}
+
+static char[32] push_cache
+pub :x64n_flush_push_cache {
+    if &push_cache@ {
+        &push_cache x64n_force_compile_push
+        NULL &push_cache!
+    }
+}
+
+// item --
+pub :x64n_compile_push {
+    if optimize_mode {
+        x64n_flush_push_cache
+        &push_cache strcpy
+        return
+    }
+    x64n_force_compile_push
+}
+
+:compile_stack_shrink {
+    if &push_cache@ {
+        NULL &push_cache!
+        return
+    }
+    8 update_stack_ptr_delta
+}
+
+// item --
+pub :x64n_compile_pop {
+    if &push_cache@ {
+        if dup &push_cache strcmp {
+            "    mov     "coms coms ", "coms &push_cache coms "\n"coms
+        } else {
+            drop
+        }
+        NULL &push_cache!
+        return
+    }
+    "    mov     "coms coms ", qword [r12"coms com_stack_delta "]\n"coms
+    8 update_stack_ptr_delta
+}
+
+// b_register instruction name --
+:compile_basic_binop {
+    "    ; "coms_dbg coms_dbg "\n"coms_dbg
+    "rcx" x64n_compile_pop
+    "rax" x64n_compile_pop
+    "    "coms coms " \trax, "coms coms "\n"coms
+    "rax" x64n_compile_push
+}
+
+// op_ptr -- new_op_ptr
+pub :x64n_compile_generic_op {
+    if viewok OKind.NOOP == {}
+    else if viewok OKind.CALL == {
+        "    ; OP_CALL\n"coms_dbg
+        "rax" x64n_compile_pop
+        x64n_flush_stack_ptr_delta
+        "    call    rax\n"coms
+    }
+    else if viewok OKind.PUSH_FN == {
+        "    ; OP_PUSH_FN\n"coms_dbg
+        "    lea     rax, [f_"coms viewod com "]\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.CALL_FN == {
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
+        "    ; OP_CALL_FN\n"coms_dbg
+        "    call    f_"coms viewod com "\n"coms
+    }
+    else if viewok OKind.RET == {
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
+        "    ; OP_RET\n"coms_dbg
+        "    leave\n"coms
+        "    ret\n"coms
+    }
+    else if viewok OKind.PUSH_INT == {
+        "    ; OP_PUSH_INT\n"coms_dbg
+        if viewod dup (1 31 << 1- >) swap (1 31 << -1* <) | {
+            x64n_flush_push_cache
+            "    mov     rax, "coms viewod com "\n"coms
+            "rax" x64n_compile_push
+        } else {
+            $char[32] buf_name
+            viewod &buf_name itoa
+            &buf_name x64n_compile_push
+        }
+    }
+    else if viewok OKind.DROP == {
+        "    ; OP_DROP\n"coms_dbg
+        compile_stack_shrink
+    }
+    else if viewok OKind.PICK == {
+        "    ; OP_PICK\n"coms_dbg
+        "rax" x64n_compile_pop
+        x64n_flush_stack_ptr_delta
+        "    mov     rax, [r12 + rax*8]\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.ROLL == {
+        "    ; OP_ROLL\n"coms_dbg
+        "rax" x64n_compile_pop
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
+        "    mov     rcx, [r12 + rax*8]\n"coms
+        "    lea     rbx, [r12 + rax*8]\n"coms
+        "    .ral_"coms viewod com ":\n"coms
+        "    cmp     rbx, r12\n"coms
+        "    je      .rbl_"coms viewod com "\n"coms
+        "    mov     rdx, [rbx - 8]\n"coms
+        "    mov     [rbx], rdx\n"coms
+        "    sub     rbx, 8\n"coms
+        "    jmp     .ral_"coms viewod com "\n"coms
+        "    .rbl_"coms viewod com ":\n"coms
+        "    mov     [r12], rcx\n"coms
+    }
+    else if viewok OKind.DEPTH == {
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
+        "    ; OP_DEPTH\n"coms_dbg
+        "    mov     rax, bsp + "coms ASM_STACK_SIZE com "\n"coms
+        "    sub     rax, r12\n"coms
+        "    shr     rax, 3\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.PUSH_BUF == {
+        x64n_flush_push_cache
+        "    ; OP_PUSH_BUF\n"coms_dbg
+        "    lea     rax, [rel b_"coms viewod com "]\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.STORE == {
+        "    ; OP_STORE\n"coms_dbg
+        "rax" x64n_compile_pop
+        "rcx" x64n_compile_pop
+        "    mov     [rax], rcx\n"coms
+    }
+    else if viewok OKind.FETCH == {
+        "    ; OP_FETCH\n"coms_dbg
+        "rax" x64n_compile_pop
+        "    mov     rax, qword [rax]\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.MEMCPY == {
+        "    ; OP_MEMCPY\n"coms_dbg
+        "rcx" x64n_compile_pop
+        "rdi" x64n_compile_pop
+        "rsi" x64n_compile_pop
+        "    cld\n"coms
+        "    rep     movsb\n"coms
+    }
+    else if viewok OKind.PUSH_VAR == {
+        x64n_flush_push_cache
+        "    ; OP_PUSH_VAR\n"coms_dbg
+        "    lea     rax, [rbp - "coms viewod com "]\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.ALLOC == {
+        "    ; OP_ALLOC\n"coms_dbg
+        "    sub     rsp, "coms viewod com "\n"coms
+    }
+    else if viewok OKind.ADD == {
+        "rcx" "add" "OP_ADD" compile_basic_binop
+    }
+    else if viewok OKind.SUB == {
+        "rcx" "sub" "OP_SUB" compile_basic_binop
+    }
+    else if viewok OKind.MUL == {
+        "rcx" "imul" "OP_MUL" compile_basic_binop
+    }
+    else if viewok OKind.AND == {
+        "rcx" "and" "OP_AND" compile_basic_binop
+    }
+    else if viewok OKind.OR == {
+        "rcx" "or" "OP_OR" compile_basic_binop
+    }
+    else if viewok OKind.XOR == {
+        "rcx" "xor" "OP_XOR" compile_basic_binop
+    }
+    else if viewok OKind.SHL == {
+        "cl" "shl" "OP_SHL" compile_basic_binop
+    }
+    else if viewok OKind.SHR == {
+        "cl" "shr" "OP_SHR" compile_basic_binop
+    }
+    else if viewok OKind.SAR == {
+        "cl" "sar" "OP_SAR" compile_basic_binop
+    }
+    else if viewok OKind.NOT == {
+        "    ; OP_NOT\n"coms_dbg
+        "rax" x64n_compile_pop
+        "    not     rax\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.EQ == {
+        "    ; OP_EQ\n"coms_dbg
+        "rax" x64n_compile_pop
+        "rbx" x64n_compile_pop
+        "    cmp     rbx, rax\n"coms
+        "    sete    al\n"coms
+        "    movzx   rax, al\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.GT == {
+        "    ; OP_GT\n"coms_dbg
+        "rax" x64n_compile_pop
+        "rbx" x64n_compile_pop
+        "    cmp     rbx, rax\n"coms
+        "    setg    al\n"coms
+        "    movzx   rax, al\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.LT == {
+        "    ; OP_LT\n"coms_dbg
+        "rax" x64n_compile_pop
+        "rbx" x64n_compile_pop
+        "    cmp     rbx, rax\n"coms
+        "    setl    al\n"coms
+        "    movzx   rax, al\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.DIVMOD == {
+        "    ; OP_DIVMOD\n"coms_dbg
+        "rbx" x64n_compile_pop
+        "rax" x64n_compile_pop
+        "    cqo\n"coms
+        "    idiv    rbx\n"coms
+        "rax" x64n_compile_push
+        "rdx" x64n_compile_push
+    }
+    else if viewok OKind.LABEL == {
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
+        ".l_"coms viewod com ":\n"coms
+    }
+    else if viewok OKind.JMP == {
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
+        "    ; OP_JMP\n"coms_dbg
+        "    jmp     .l_"coms viewod com "\n"coms
+    }
+    else if viewok OKind.JZ == {
+        "    ; OP_JZ\n"coms_dbg
+        "rax" x64n_compile_pop
+        x64n_flush_stack_ptr_delta
+        "    test    rax, rax\n"coms
+        "    jz      .l_"coms viewod com "\n"coms
+    }
+    else {
+        "ERROR: Invalid opcode of type "puts viewok put "\n"puts
+        1 exit
+    }
+}
+
+#pub macro x64n_compile_text_fns {
+    // op_ptr --
+    :compile_ops {
+        while viewok { compile_op }
+        drop
+    }
+
+    // idx map_slot_ptr -- idx
+    :compile_function {
+        if debug_mode {
+            "; "coms dup->Function.key.name@ coms "\n"coms
+        }
+        "f_"coms over com ":\n"coms
+        "    push    rbp\n"coms
+        "    mov     rbp, rsp\n"coms
+        ->Function.def@ compile_ops
+    }
+
+    :compile_functions {
+        // -- idx
+        0 while dup MAP_SIZE < {
+            // -- idx slot_ptr
+            dup FN_MAP map_idx
+            if dup slot_is_used { compile_function }
+            else { drop }
+            1+
+        } drop
+    }
+}
+
+// char -- bool
+:should_print_char {
+    dup is_print
+    swap (dup ('\\' !=) swap ('"' !=) &) &
+    USE_ASM_STRINGS &
+}
+
+// init --
+:compile_buf_str {
+    $char is_quote: {false}
+    while dup@c {
+        if dup@c should_print_char {
+            if is_quote not {
+                "\""coms
+                true =is_quote
+            }
+            dup@c comc
+        } else {
+            if is_quote {
+                "\","coms
+                false =is_quote
+            }
+            dup@c com
+            ","coms
+        }
+        1+
+    } drop
+
+    if is_quote {
+        "\","coms
+    }
+    "0\n" coms
+}
+
+pub :x64n_compile_inline_bufs {
+    "    ; Inline Buffers\n"coms_dbg
+    // -- idx
+    0 while dup &inline_bufs stack_len < {
+        "    b_"coms dup MAP_SIZE+ com " db "coms
+        dup &inline_bufs %ptr stack_get@ compile_buf_str
+        1+
+    } drop
+}
+
+// idx --
+pub :x64n_compile_buf_data {
+    $int buf_size: {dup BUF_MAP map_idx->Buffer.size@}
+
+    if debug_mode {
+        "    ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
+    }
+    "    b_"coms dup com
+
+    if dup BUF_MAP map_idx->Buffer.init_int@c {
+        if buf_size 1 == {
+            " db "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
+        } else if buf_size 8 == {
+            " dq "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
+        }
+    } else {
+        " db "coms
+        dup BUF_MAP map_idx->Buffer.init@ compile_buf_str
+        if (dup BUF_MAP map_idx->Buffer.init@ strlen 1+) (buf_size) < {
+            "        times "coms buf_size com " - ($ - b_"coms dup com ") db 0\n"coms
+        }
+        drop
+    }
+}
+
+// idx --
+pub :x64n_compile_buf_bss {
+    "    b_"coms dup com " resb "coms BUF_MAP map_idx->Buffer.size@ com
+    if debug_mode {
+        " ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms
+    }
+    "\n"coms
+}
+
+// idx -- bool
+pub :x64n_is_valid_static_buffer {
+    BUF_MAP map_idx
+    dup->Buffer.key.name@ flag
+    swap->Buffer.is_static@c
+    &
+}

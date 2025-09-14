@@ -22,94 +22,94 @@ f_15:
 f_90:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_9174
-    add     x0, x0, :lo12:b_9174
+    adrp    x0, b_8988
+    add     x0, x0, :lo12:b_8988
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9175
-    add     x0, x0, :lo12:b_9175
+    adrp    x0, b_8989
+    add     x0, x0, :lo12:b_8989
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9176
-    add     x0, x0, :lo12:b_9176
+    adrp    x0, b_8990
+    add     x0, x0, :lo12:b_8990
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9177
-    add     x0, x0, :lo12:b_9177
+    adrp    x0, b_8991
+    add     x0, x0, :lo12:b_8991
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9178
-    add     x0, x0, :lo12:b_9178
+    adrp    x0, b_8992
+    add     x0, x0, :lo12:b_8992
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9179
-    add     x0, x0, :lo12:b_9179
+    adrp    x0, b_8993
+    add     x0, x0, :lo12:b_8993
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9180
-    add     x0, x0, :lo12:b_9180
+    adrp    x0, b_8994
+    add     x0, x0, :lo12:b_8994
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9181
-    add     x0, x0, :lo12:b_9181
+    adrp    x0, b_8995
+    add     x0, x0, :lo12:b_8995
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9182
-    add     x0, x0, :lo12:b_9182
+    adrp    x0, b_8996
+    add     x0, x0, :lo12:b_8996
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9183
-    add     x0, x0, :lo12:b_9183
+    adrp    x0, b_8997
+    add     x0, x0, :lo12:b_8997
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9184
-    add     x0, x0, :lo12:b_9184
+    adrp    x0, b_8998
+    add     x0, x0, :lo12:b_8998
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9185
-    add     x0, x0, :lo12:b_9185
+    adrp    x0, b_8999
+    add     x0, x0, :lo12:b_8999
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9186
-    add     x0, x0, :lo12:b_9186
+    adrp    x0, b_9000
+    add     x0, x0, :lo12:b_9000
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9187
-    add     x0, x0, :lo12:b_9187
+    adrp    x0, b_9001
+    add     x0, x0, :lo12:b_9001
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9188
-    add     x0, x0, :lo12:b_9188
+    adrp    x0, b_9002
+    add     x0, x0, :lo12:b_9002
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_1102
-    adrp    x0, b_9189
-    add     x0, x0, :lo12:b_9189
+    adrp    x0, b_9003
+    add     x0, x0, :lo12:b_9003
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6412
-    adrp    x0, b_9190
-    add     x0, x0, :lo12:b_9190
+    adrp    x0, b_9004
+    add     x0, x0, :lo12:b_9004
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9191
-    add     x0, x0, :lo12:b_9191
+    adrp    x0, b_9005
+    add     x0, x0, :lo12:b_9005
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -118,16 +118,11 @@ f_90:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3176
-    adrp    x0, b_9192
-    add     x0, x0, :lo12:b_9192
+    adrp    x0, b_9006
+    add     x0, x0, :lo12:b_9006
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9193
-    add     x0, x0, :lo12:b_9193
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2021
     adrp    x0, b_1627
     add     x0, x0, :lo12:b_1627
     str     x0, [x12, #-8]
@@ -137,25 +132,25 @@ f_90:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_1041
-    adrp    x0, b_9194
-    add     x0, x0, :lo12:b_9194
+    adrp    x0, b_9007
+    add     x0, x0, :lo12:b_9007
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_1045:
+.l_917:
     bl      f_7285
     mov     x0, #8191
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 8
-    cbz     x0, .l_1046
+    cbz     x0, .l_918
     bl      f_7285
     bl      f_7285
-    bl      f_1352
+    bl      f_1531
     bl      f_7804
     adrp    x0, b_2010
     add     x0, x0, :lo12:b_2010
@@ -167,46 +162,46 @@ f_90:
     mov     x0, #40
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_5070
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_1048
+    cbz     x0, .l_920
     bl      f_7285
-    bl      f_3706
-    b       .l_1047
-.l_1048:
-.l_1047:
+    bl      f_8089
+    b       .l_919
+.l_920:
+.l_919:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_1045
-.l_1046:
-    add     x12, x12, 8
-    bl      f_3272
-    adrp    x0, b_9195
-    add     x0, x0, :lo12:b_9195
+    b       .l_917
+.l_918:
+    bl      f_6973
+    bl      f_756
+    adrp    x0, b_9008
+    add     x0, x0, :lo12:b_9008
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_1049:
+.l_921:
     bl      f_7285
     mov     x0, #8191
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 8
-    cbz     x0, .l_1050
+    cbz     x0, .l_922
     bl      f_7285
     bl      f_7285
-    bl      f_1352
+    bl      f_1531
     bl      f_7804
     adrp    x0, b_2010
     add     x0, x0, :lo12:b_2010
@@ -218,31 +213,33 @@ f_90:
     mov     x0, #40
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6709
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_1052
+    cbz     x0, .l_924
     bl      f_7285
-    bl      f_4741
-    b       .l_1051
-.l_1052:
-.l_1051:
+    bl      f_7952
+    b       .l_923
+.l_924:
+.l_923:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_1049
-.l_1050:
-    adrp    x0, b_9196
-    add     x0, x0, :lo12:b_9196
-    str     x0, [x12]
+    b       .l_921
+.l_922:
+    bl      f_6973
+    adrp    x0, b_9009
+    add     x0, x0, :lo12:b_9009
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9197
-    add     x0, x0, :lo12:b_9197
+    adrp    x0, b_9010
+    add     x0, x0, :lo12:b_9010
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -251,8 +248,8 @@ f_90:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3176
-    adrp    x0, b_9198
-    add     x0, x0, :lo12:b_9198
+    adrp    x0, b_9011
+    add     x0, x0, :lo12:b_9011
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -282,10 +279,14 @@ f_209:
     mov     x0, #0
     ldr     x1, [x12, #-16]
     add 	x0, x1, x0
-    ldr     x0, [x0]
-    ldr     x1, [x12, #-8]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_2606
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
     cmp     x1, x0
     cset    w0, lt
+    add     x12, x12, 16
     cbz     x0, .l_276
     sub     x0, x29, #16
     ldr     x0, [x0]
@@ -297,9 +298,7 @@ f_209:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_7421
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     sub     x0, x29, #272
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -314,48 +313,19 @@ f_209:
     sub     x0, x29, #272
     str     x0, [x12, #-8]
     mov     x0, #0
-    ldr     x1, [x12, #-8]
-    cmp     x0, #0
-    beq     .frl_277
-    cmp     x0, #1
-    beq     .fwl_277
-    cmp     x0, #2
-    beq     .fal_277
-    b       .ffl_277
-    .frl_277:
-    mov     x2, #0
-    b       .fdl_277
-    .fwl_277:
-    mov     x2, #577
-    b       .fdl_277
-    .fal_277:
-    mov     x2, #1089
-    b       .fdl_277
-    .fdl_277:
-    mov     x8, #56
-    mov     x0, #-100
-    mov     x3, #420
-    svc     #0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    b       .fel_277
-    .ffl_277:
-    mov     x0, #-1
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    .fel_277:
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7332
     sub     x0, x29, #280
     ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #280
     ldr     x0, [x0]
     str     x0, [x12]
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
+    bl      f_2382
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_279
+    cbz     x0, .l_278
     sub     x0, x29, #272
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -369,9 +339,9 @@ f_209:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_278
-.l_279:
+    b       .l_277
 .l_278:
+.l_277:
     mov     x0, #1
     str     x0, [x12, #-8]
     sub     x0, x29, #16
@@ -410,7 +380,7 @@ f_229:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_745
+    cbz     x0, .l_694
     bl      f_6138
     adrp    x0, b_8465
     add     x0, x0, :lo12:b_8465
@@ -418,15 +388,16 @@ f_229:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_744
-.l_745:
-.l_744:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_693
+.l_694:
+.l_693:
     bl      f_7804
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_747
+    cbz     x0, .l_696
     bl      f_6138
     adrp    x0, b_8466
     add     x0, x0, :lo12:b_8466
@@ -441,11 +412,12 @@ f_229:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_746
-.l_747:
-.l_746:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_695
+.l_696:
+.l_695:
     adrp    x0, b_5800
     add     x0, x0, :lo12:b_5800
     str     x0, [x12, #-8]
@@ -453,12 +425,12 @@ f_229:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_749
+    cbz     x0, .l_698
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_748
-.l_749:
+    b       .l_697
+.l_698:
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
     str     x0, [x12, #-8]
@@ -466,10 +438,8 @@ f_229:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-.l_748:
+    bl      f_2606
+.l_697:
     sub     x0, x29, #8
     ldr     x1, [x12]
     str     x1, [x0]
@@ -510,7 +480,7 @@ f_229:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_751
+    cbz     x0, .l_700
     bl      f_6138
     adrp    x0, b_8468
     add     x0, x0, :lo12:b_8468
@@ -518,16 +488,17 @@ f_229:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_750
-.l_751:
-.l_750:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_699
+.l_700:
+.l_699:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-.l_752:
+.l_701:
     bl      f_2175
     mov     x0, #30
     ldr     x1, [x12]
@@ -538,7 +509,7 @@ f_229:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_753
+    cbz     x0, .l_702
     bl      f_2175
     mov     x0, #4
     ldr     x1, [x12]
@@ -549,7 +520,7 @@ f_229:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_755
+    cbz     x0, .l_704
     bl      f_6138
     adrp    x0, b_8469
     add     x0, x0, :lo12:b_8469
@@ -567,37 +538,40 @@ f_229:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_754
-.l_755:
-.l_754:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_703
+.l_704:
+.l_703:
     bl      f_6176
     sub     x0, x29, #24
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_756:
+.l_705:
     bl      f_7285
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_2606
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_757
+    cbz     x0, .l_706
     bl      f_6426
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_759
-    add     x12, x12, 8
+    cbz     x0, .l_708
+    bl      f_6973
     bl      f_7804
     bl      f_6138
     adrp    x0, b_8471
@@ -623,18 +597,19 @@ f_229:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_758
-.l_759:
-.l_758:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_707
+.l_708:
+.l_707:
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_756
-.l_757:
-    add     x12, x12, 8
+    b       .l_705
+.l_706:
+    bl      f_6973
     bl      f_7804
     mov     x0, #25
     ldr     x1, [x12]
@@ -646,7 +621,7 @@ f_229:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_761
+    cbz     x0, .l_710
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -661,7 +636,7 @@ f_229:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_763
+    cbz     x0, .l_712
     bl      f_6138
     adrp    x0, b_8474
     add     x0, x0, :lo12:b_8474
@@ -676,11 +651,12 @@ f_229:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_762
-.l_763:
-.l_762:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_711
+.l_712:
+.l_711:
     bl      f_6176
     adrp    x0, b_3970
     add     x0, x0, :lo12:b_3970
@@ -692,9 +668,11 @@ f_229:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_2606
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_765
+    cbz     x0, .l_714
     bl      f_7285
     adrp    x0, b_3970
     add     x0, x0, :lo12:b_3970
@@ -706,7 +684,9 @@ f_229:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_2606
+    ldr     x0, [x12]
     ldr     x1, [x12, #8]
     cmp     x1, x0
     cset    w0, gt
@@ -715,8 +695,8 @@ f_229:
     ldr     x1, [x12, #8]
     eor 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_767
-    add     x12, x12, 8
+    cbz     x0, .l_716
+    bl      f_6973
     bl      f_6138
     adrp    x0, b_8476
     add     x0, x0, :lo12:b_8476
@@ -734,22 +714,23 @@ f_229:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_766
-.l_767:
-.l_766:
-    b       .l_764
-.l_765:
-.l_764:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_715
+.l_716:
+.l_715:
+    b       .l_713
+.l_714:
+.l_713:
     bl      f_7804
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_7804
-    b       .l_760
-.l_761:
+    b       .l_709
+.l_710:
     adrp    x0, b_3970
     add     x0, x0, :lo12:b_3970
     str     x0, [x12, #-8]
@@ -760,9 +741,11 @@ f_229:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_2606
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_769
+    cbz     x0, .l_718
     adrp    x0, b_3970
     add     x0, x0, :lo12:b_3970
     str     x0, [x12, #-8]
@@ -773,19 +756,19 @@ f_229:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_768
-.l_769:
+    b       .l_717
+.l_718:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_768:
-.l_760:
+.l_717:
+.l_709:
     bl      f_5764
     adrp    x0, b_3970
     add     x0, x0, :lo12:b_3970
@@ -799,16 +782,15 @@ f_229:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #8
-    ldr     x1, [x12, #16]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #24]
-    str     x1, [x0]
-    add     x12, x12, 32
-    b       .l_752
-.l_753:
+    str     x0, [x12]
+    bl      f_7702
+    b       .l_701
+.l_702:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -825,20 +807,20 @@ f_229:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #8]
+    str     x0, [x12, #-8]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12]
+    str     x0, [x12, #-16]
     adrp    x0, b_359
     add     x0, x0, :lo12:b_359
-    str     x0, [x12, #-8]
+    str     x0, [x12, #-24]
     mov     x0, #24
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
+    str     x0, [x12, #-32]
+    sub     x12, x12, 32
     bl      f_728
     sub     x0, x29, #16
     ldr     x0, [x0]
@@ -852,12 +834,12 @@ f_229:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
@@ -866,19 +848,18 @@ f_229:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -891,13 +872,13 @@ f_242:
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_2606
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_621
+    cbz     x0, .l_574
     bl      f_6138
     adrp    x0, b_8398
     add     x0, x0, :lo12:b_8398
@@ -905,11 +886,12 @@ f_242:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_620
-.l_621:
-.l_620:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_573
+.l_574:
+.l_573:
     adrp    x0, b_3547
     add     x0, x0, :lo12:b_3547
     str     x0, [x12, #-8]
@@ -917,25 +899,13 @@ f_242:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     mov     x0, #32
     str     x0, [x12, #-8]
     mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_622:
-    cmp     x0, x12
-    beq     .rbl_622
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_622
-    .rbl_622:
-    str     x1, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -947,9 +917,7 @@ f_242:
 f_275:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_5070
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -977,57 +945,26 @@ f_288:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    bl      f_7702
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    mov     x0, #0
-    ldr     x1, [x12, #8]
-    cmp     x0, #0
-    beq     .frl_1234
-    cmp     x0, #1
-    beq     .fwl_1234
-    cmp     x0, #2
-    beq     .fal_1234
-    b       .ffl_1234
-    .frl_1234:
-    mov     x2, #0
-    b       .fdl_1234
-    .fwl_1234:
-    mov     x2, #577
-    b       .fdl_1234
-    .fal_1234:
-    mov     x2, #1089
-    b       .fdl_1234
-    .fdl_1234:
-    mov     x8, #56
-    mov     x0, #-100
-    mov     x3, #420
-    svc     #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
-    b       .fel_1234
-    .ffl_1234:
-    mov     x0, #-1
     str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    .fel_1234:
+    mov     x0, #0
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7332
     sub     x0, x29, #24
     ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #24
     ldr     x0, [x0]
     str     x0, [x12]
-    mov     x0, #0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
+    bl      f_4481
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1236
-    adrp    x0, b_9600
-    add     x0, x0, :lo12:b_9600
+    cbz     x0, .l_1104
+    adrp    x0, b_9410
+    add     x0, x0, :lo12:b_9410
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -1036,17 +973,18 @@ f_288:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9601
-    add     x0, x0, :lo12:b_9601
+    adrp    x0, b_9411
+    add     x0, x0, :lo12:b_9411
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1235
-.l_1236:
-.l_1235:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_1103
+.l_1104:
+.l_1103:
     adrp    x0, b_3232
     add     x0, x0, :lo12:b_3232
     str     x0, [x12, #-8]
@@ -1055,14 +993,16 @@ f_288:
     str     x0, [x12, #-16]
     sub     x0, x29, #24
     ldr     x0, [x0]
-    ldr     x2, [x12, #-16]
-    ldr     x1, [x12, #-8]
-    mov     x8, #63
-    svc     #0
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_6042
+    bl      f_6973
     sub     x0, x29, #24
     ldr     x0, [x0]
-    mov     x8, #57
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2890
+    bl      f_6973
     adrp    x0, b_3232
     add     x0, x0, :lo12:b_3232
     str     x0, [x12, #-8]
@@ -1071,64 +1011,36 @@ f_288:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3028
-    adrp    x0, b_9602
-    add     x0, x0, :lo12:b_9602
+    adrp    x0, b_9412
+    add     x0, x0, :lo12:b_9412
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_7777
-    mov     x0, #0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
+    bl      f_4481
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1239
-    adrp    x0, b_9603
-    add     x0, x0, :lo12:b_9603
+    cbz     x0, .l_1106
+    adrp    x0, b_9413
+    add     x0, x0, :lo12:b_9413
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1238
-.l_1239:
-.l_1238:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_1105
+.l_1106:
+.l_1105:
     bl      f_8163
     bl      f_2230
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     mov     x0, #1
-    ldr     x1, [x12, #-8]
-    cmp     x0, #0
-    beq     .frl_1240
-    cmp     x0, #1
-    beq     .fwl_1240
-    cmp     x0, #2
-    beq     .fal_1240
-    b       .ffl_1240
-    .frl_1240:
-    mov     x2, #0
-    b       .fdl_1240
-    .fwl_1240:
-    mov     x2, #577
-    b       .fdl_1240
-    .fal_1240:
-    mov     x2, #1089
-    b       .fdl_1240
-    .fdl_1240:
-    mov     x8, #56
-    mov     x0, #-100
-    mov     x3, #420
-    svc     #0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    b       .fel_1240
-    .ffl_1240:
-    mov     x0, #-1
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    .fel_1240:
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7332
     adrp    x0, b_1949
     add     x0, x0, :lo12:b_1949
     ldr     x1, [x12]
@@ -1138,36 +1050,30 @@ f_288:
     adrp    x0, b_1949
     add     x0, x0, :lo12:b_1949
     ldr     x0, [x0]
-    mov     x8, #57
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2890
+    bl      f_6973
     bl      f_4359
-    adrp    x0, bsp
-    add     x0, x0, :lo12:bsp
-    add     x0, x0, #65536
-    sub     x0, x0, x12
-    lsr     x0, x0, #3
-    cbz     x0, .l_1242
-    adrp    x0, b_9604
-    add     x0, x0, :lo12:b_9604
+    bl      f_5844
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_1108
+    adrp    x0, b_9414
+    add     x0, x0, :lo12:b_9414
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, bsp
-    add     x0, x0, :lo12:bsp
-    add     x0, x0, #65536
-    sub     x0, x0, x12
-    lsr     x0, x0, #3
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    bl      f_5844
     bl      f_7036
-    adrp    x0, b_9605
-    add     x0, x0, :lo12:b_9605
+    adrp    x0, b_9415
+    add     x0, x0, :lo12:b_9415
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_1241
-.l_1242:
-.l_1241:
+    b       .l_1107
+.l_1108:
+.l_1107:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -1181,18 +1087,18 @@ f_332:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-.l_915:
+.l_849:
     bl      f_7285
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_916
+    cbz     x0, .l_850
     bl      f_7285
     bl      f_2002
     bl      f_5859
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_918
+    cbz     x0, .l_852
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -1200,9 +1106,9 @@ f_332:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_920
-    adrp    x0, b_8756
-    add     x0, x0, :lo12:b_8756
+    cbz     x0, .l_854
+    adrp    x0, b_8672
+    add     x0, x0, :lo12:b_8672
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -1212,23 +1118,23 @@ f_332:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-    b       .l_919
-.l_920:
-.l_919:
+    b       .l_853
+.l_854:
+.l_853:
     bl      f_7285
     bl      f_2002
     bl      f_5223
-    b       .l_917
-.l_918:
+    b       .l_851
+.l_852:
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_922
-    adrp    x0, b_8757
-    add     x0, x0, :lo12:b_8757
+    cbz     x0, .l_856
+    adrp    x0, b_8673
+    add     x0, x0, :lo12:b_8673
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -1238,40 +1144,42 @@ f_332:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-    b       .l_921
-.l_922:
-.l_921:
+    b       .l_855
+.l_856:
+.l_855:
     bl      f_7285
     bl      f_2002
     bl      f_3176
-    adrp    x0, b_8758
-    add     x0, x0, :lo12:b_8758
+    adrp    x0, b_8674
+    add     x0, x0, :lo12:b_8674
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-.l_917:
+.l_851:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_915
-.l_916:
+    b       .l_849
+.l_850:
+    bl      f_6973
     sub     x0, x29, #1
-    str     x0, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_924
-    adrp    x0, b_8759
-    add     x0, x0, :lo12:b_8759
+    cbz     x0, .l_858
+    adrp    x0, b_8675
+    add     x0, x0, :lo12:b_8675
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_923
-.l_924:
-.l_923:
-    adrp    x0, b_8760
-    add     x0, x0, :lo12:b_8760
+    b       .l_857
+.l_858:
+.l_857:
+    adrp    x0, b_8676
+    add     x0, x0, :lo12:b_8676
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -1288,172 +1196,65 @@ f_333:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-.l_1020:
-    bl      f_7285
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1021
-    bl      f_7285
-    bl      f_2002
-    bl      f_5860
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1023
-    sub     x0, x29, #1
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2002
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1025
-    adrp    x0, b_9147
-    add     x0, x0, :lo12:b_9147
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
     mov     x0, #1
-    str     x0, [x12, #-8]
-    sub     x0, x29, #1
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3552
-    b       .l_1024
-.l_1025:
-.l_1024:
-    bl      f_7285
-    bl      f_2002
-    bl      f_5223
-    b       .l_1022
-.l_1023:
-    sub     x0, x29, #1
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1027
-    adrp    x0, b_9148
-    add     x0, x0, :lo12:b_9148
+    cbz     x0, .l_1008
+    adrp    x0, b_9281
+    add     x0, x0, :lo12:b_9281
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    sub     x0, x29, #1
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3552
-    b       .l_1026
-.l_1027:
-.l_1026:
-    bl      f_7285
-    bl      f_2002
-    bl      f_3176
-    adrp    x0, b_9149
-    add     x0, x0, :lo12:b_9149
+    b       .l_1007
+.l_1008:
+    adrp    x0, b_9282
+    add     x0, x0, :lo12:b_9282
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-.l_1022:
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    b       .l_1020
-.l_1021:
-    sub     x0, x29, #1
-    str     x0, [x12]
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1029
-    adrp    x0, b_9150
-    add     x0, x0, :lo12:b_9150
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1028
-.l_1029:
-.l_1028:
-    adrp    x0, b_9151
-    add     x0, x0, :lo12:b_9151
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_334:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    sub     sp, sp, #1
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    sub     x0, x29, #1
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3552
-    mov     x0, #1
-    cbz     x0, .l_1136
-    adrp    x0, b_9468
-    add     x0, x0, :lo12:b_9468
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1135
-.l_1136:
-    adrp    x0, b_9469
-    add     x0, x0, :lo12:b_9469
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-.l_1135:
-.l_1137:
+.l_1007:
+.l_1009:
     bl      f_7285
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1138
+    cbz     x0, .l_1010
     mov     x0, #1
-    cbz     x0, .l_1140
+    cbz     x0, .l_1012
     bl      f_7285
     bl      f_2002
     bl      f_2539
-    b       .l_1139
-.l_1140:
+    b       .l_1011
+.l_1012:
     bl      f_7285
     bl      f_2002
     bl      f_3176
-    adrp    x0, b_9470
-    add     x0, x0, :lo12:b_9470
+    adrp    x0, b_9283
+    add     x0, x0, :lo12:b_9283
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-.l_1139:
+.l_1011:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_1137
-.l_1138:
+    b       .l_1009
+.l_1010:
+    bl      f_6973
     mov     x0, #1
-    add     x12, x12, 8
-    cbz     x0, .l_1142
-    adrp    x0, b_9471
-    add     x0, x0, :lo12:b_9471
+    cbz     x0, .l_1014
+    adrp    x0, b_9284
+    add     x0, x0, :lo12:b_9284
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_1141
-.l_1142:
-    adrp    x0, b_9472
-    add     x0, x0, :lo12:b_9472
+    b       .l_1013
+.l_1014:
+    adrp    x0, b_9285
+    add     x0, x0, :lo12:b_9285
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-.l_1141:
+.l_1013:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -1463,78 +1264,31 @@ f_358:
     mov     x0, #-8
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1026
-    adrp    x0, b_8511
-    add     x0, x0, :lo12:b_8511
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6752
-    adrp    x0, b_8512
-    add     x0, x0, :lo12:b_8512
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
-    adrp    x0, b_8513
-    add     x0, x0, :lo12:b_8513
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_359:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    mov     x0, #-8
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
     bl      f_1027
-    adrp    x0, b_8800
-    add     x0, x0, :lo12:b_8800
+    adrp    x0, b_9017
+    add     x0, x0, :lo12:b_9017
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_6962
+    adrp    x0, b_9018
+    add     x0, x0, :lo12:b_9018
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_6753
-    adrp    x0, b_8801
-    add     x0, x0, :lo12:b_8801
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
-    adrp    x0, b_8802
-    add     x0, x0, :lo12:b_8802
+    adrp    x0, b_9019
+    add     x0, x0, :lo12:b_9019
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-f_360:
+f_415:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    mov     x0, #-8
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1028
-    adrp    x0, b_9204
-    add     x0, x0, :lo12:b_9204
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
-    adrp    x0, b_9205
-    add     x0, x0, :lo12:b_9205
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6754
-    adrp    x0, b_9206
-    add     x0, x0, :lo12:b_9206
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
+    bl      f_7417
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -1576,9 +1330,11 @@ f_465:
     add     x12, x12, 8
     b       .l_175
 .l_176:
+    bl      f_6973
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7285
     mov     x0, #0
     ldr     x1, [x12]
@@ -1654,18 +1410,19 @@ f_509:
     cbz     x0, .l_47
     bl      f_5764
     bl      f_5764
-    add     x12, x12, 16
+    bl      f_6973
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
     b       .l_46
 .l_47:
 .l_46:
+    bl      f_6973
     mov     x0, #1
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12]
     bl      f_7804
     mov     x0, #1
     ldr     x1, [x12]
@@ -1689,9 +1446,11 @@ f_509:
     add     x12, x12, 16
     b       .l_44
 .l_45:
+    bl      f_6973
+    bl      f_6973
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -1700,20 +1459,25 @@ f_610:
     mov     x29, sp
     adrp    x0, b_195
     add     x0, x0, :lo12:b_195
-    ldr     x0, [x0]
-    cbz     x0, .l_859
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_808
     mov     x0, #0
     str     x0, [x12, #-8]
     adrp    x0, b_195
     add     x0, x0, :lo12:b_195
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_858
-.l_859:
-.l_858:
+    b       .l_807
+.l_808:
+.l_807:
     mov     x0, #8
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -1726,20 +1490,25 @@ f_611:
     mov     x29, sp
     adrp    x0, b_196
     add     x0, x0, :lo12:b_196
-    ldr     x0, [x0]
-    cbz     x0, .l_959
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_937
     mov     x0, #0
     str     x0, [x12, #-8]
     adrp    x0, b_196
     add     x0, x0, :lo12:b_196
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_958
-.l_959:
-.l_958:
+    b       .l_936
+.l_937:
+.l_936:
     mov     x0, #8
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -1812,32 +1581,6 @@ f_612:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-f_613:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_197
-    add     x0, x0, :lo12:b_197
-    ldr     x0, [x0]
-    cbz     x0, .l_1065
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    adrp    x0, b_197
-    add     x0, x0, :lo12:b_197
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_1064
-.l_1065:
-.l_1064:
-    mov     x0, #8
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1028
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
 f_624:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
@@ -1849,7 +1592,7 @@ f_624:
     bl      f_2212
     b       .l_198
 .l_199:
-    add     x12, x12, 8
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -1868,41 +1611,74 @@ f_648:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
+f_675:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x1, [x12]
+    ldr     x0, [x12, #8]
+    sdiv    x2, x0, x1
+    msub    x3, x2, x1, x0
+    str     x2, [x12, #8]
+    str     x3, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_692:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    adrp    x0, b_195
+    add     x0, x0, :lo12:b_195
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_804
+    adrp    x0, b_195
+    add     x0, x0, :lo12:b_195
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_983
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    adrp    x0, b_195
+    add     x0, x0, :lo12:b_195
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7702
+    b       .l_803
+.l_804:
+.l_803:
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
 f_728:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     mov     x0, #3
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_465
     mov     x0, #8191
-    mov     x1, x0
-    ldr     x0, [x12]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12]
-    str     x3, [x12, #-8]
+    str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_675
     bl      f_3910
 .l_188:
     bl      f_2060
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_189
+    bl      f_6973
     mov     x0, #1
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #8]
+    str     x0, [x12]
     mov     x0, #8191
-    mov     x1, x0
-    ldr     x0, [x12, #8]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12, #8]
-    str     x3, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_675
     bl      f_3910
     b       .l_188
 .l_189:
@@ -1919,23 +1695,17 @@ f_742:
     mov     x29, sp
     bl      f_5764
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7210
     mov     x0, #2
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_3972
     bl      f_7285
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
+    bl      f_2382
+    ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_197
     bl      f_5764
@@ -1943,10 +1713,148 @@ f_742:
     bl      f_3545
     b       .l_196
 .l_197:
+    bl      f_6973
+    bl      f_6973
+    bl      f_6973
     mov     x0, #0
-    str     x0, [x12, #16]
-    add     x12, x12, 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
 .l_196:
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_756:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    adrp    x0, b_8677
+    add     x0, x0, :lo12:b_8677
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+.l_859:
+    bl      f_7285
+    adrp    x0, b_8159
+    add     x0, x0, :lo12:b_8159
+    str     x0, [x12, #-8]
+    mov     x0, #0
+    ldr     x1, [x12, #-8]
+    add 	x0, x1, x0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
+    cmp     x1, x0
+    cset    w0, lt
+    add     x12, x12, 16
+    cbz     x0, .l_860
+    adrp    x0, b_8678
+    add     x0, x0, :lo12:b_8678
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7285
+    mov     x0, #8191
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_3176
+    adrp    x0, b_8679
+    add     x0, x0, :lo12:b_8679
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7285
+    adrp    x0, b_8159
+    add     x0, x0, :lo12:b_8159
+    str     x0, [x12, #-8]
+    mov     x0, #8
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7421
+    bl      f_2606
+    bl      f_332
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    b       .l_859
+.l_860:
+    bl      f_6973
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_798:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    adrp    x0, b_5843
+    add     x0, x0, :lo12:b_5843
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    mov     x0, #0
+    ldr     x1, [x12, #-8]
+    cmp     x1, x0
+    cset    w0, gt
+    cbz     x0, .l_799
+    adrp    x0, b_8510
+    add     x0, x0, :lo12:b_8510
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_5843
+    add     x0, x0, :lo12:b_5843
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3176
+    adrp    x0, b_8511
+    add     x0, x0, :lo12:b_8511
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_798
+.l_799:
+    adrp    x0, b_5843
+    add     x0, x0, :lo12:b_5843
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    mov     x0, #0
+    ldr     x1, [x12, #-8]
+    cmp     x1, x0
+    cset    w0, lt
+    cbz     x0, .l_800
+    adrp    x0, b_8512
+    add     x0, x0, :lo12:b_8512
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_5843
+    add     x0, x0, :lo12:b_5843
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    mov     x0, #-1
+    ldr     x1, [x12, #-8]
+    mul 	x0, x1, x0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3176
+    adrp    x0, b_8513
+    add     x0, x0, :lo12:b_8513
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_798
+.l_800:
+.l_798:
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    adrp    x0, b_5843
+    add     x0, x0, :lo12:b_5843
+    ldr     x1, [x12, #-8]
+    str     x1, [x0]
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -1980,7 +1888,7 @@ f_803:
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_324
+    cbz     x0, .l_322
     bl      f_6138
     adrp    x0, b_8260
     add     x0, x0, :lo12:b_8260
@@ -1988,11 +1896,12 @@ f_803:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_323
-.l_324:
-.l_323:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_321
+.l_322:
+.l_321:
     bl      f_6176
     adrp    x0, b_7731
     add     x0, x0, :lo12:b_7731
@@ -2001,12 +1910,10 @@ f_803:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
+    bl      f_4481
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_326
+    cbz     x0, .l_324
     bl      f_6138
     adrp    x0, b_8261
     add     x0, x0, :lo12:b_8261
@@ -2021,11 +1928,12 @@ f_803:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_325
-.l_326:
-.l_325:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_323
+.l_324:
+.l_323:
     bl      f_6176
     adrp    x0, b_7731
     add     x0, x0, :lo12:b_7731
@@ -2052,11 +1960,11 @@ f_803:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
@@ -2065,22 +1973,41 @@ f_803:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     mov     x0, #24
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #25
-    ldr     x1, [x12, #16]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #16]
-    add     x12, x12, 16
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_830:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x1, [x0]
+    .ral_0:
+    cmp     x0, x12
+    beq     .rbl_0
+    ldr     x2, [x0, #-8]
+    str     x2, [x0]
+    sub     x0, x0, #8
+    b       .ral_0
+    .rbl_0:
+    str     x1, [x12]
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -2104,14 +2031,40 @@ f_934:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #1
-    ldr     x1, [x12, #16]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #24]
-    str     x1, [x0]
-    add     x12, x12, 32
+    str     x0, [x12]
+    bl      f_7702
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_983:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    mov     x0, #-8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_1026
+    adrp    x0, b_8514
+    add     x0, x0, :lo12:b_8514
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_6752
+    adrp    x0, b_8515
+    add     x0, x0, :lo12:b_8515
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_6962
+    adrp    x0, b_8516
+    add     x0, x0, :lo12:b_8516
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -2125,35 +2078,8 @@ f_1009:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_857
+    cbz     x0, .l_935
     bl      f_1612
-    adrp    x0, b_195
-    add     x0, x0, :lo12:b_195
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7518
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_856
-.l_857:
-.l_856:
-    bl      f_358
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_1010:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_2442
-    add     x0, x0, :lo12:b_2442
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_957
-    bl      f_1613
     adrp    x0, b_196
     add     x0, x0, :lo12:b_196
     str     x0, [x12, #-8]
@@ -2162,37 +2088,10 @@ f_1010:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_956
-.l_957:
-.l_956:
-    bl      f_359
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_1011:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_2442
-    add     x0, x0, :lo12:b_2442
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1063
-    bl      f_1614
-    adrp    x0, b_197
-    add     x0, x0, :lo12:b_197
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7518
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_1062
-.l_1063:
-.l_1062:
-    bl      f_360
+    b       .l_934
+.l_935:
+.l_934:
+    bl      f_358
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -2225,7 +2124,7 @@ f_1023:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_649
+    cbz     x0, .l_600
     adrp    x0, b_4300
     add     x0, x0, :lo12:b_4300
     str     x0, [x12, #-8]
@@ -2237,14 +2136,14 @@ f_1023:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_650:
+.l_601:
     bl      f_2175
     mov     x0, #31
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_651
+    cbz     x0, .l_602
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x0, x29, #32
@@ -2264,7 +2163,7 @@ f_1023:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_653
+    cbz     x0, .l_604
     bl      f_6138
     adrp    x0, b_8409
     add     x0, x0, :lo12:b_8409
@@ -2272,19 +2171,20 @@ f_1023:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_652
-.l_653:
-.l_652:
-.l_654:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_603
+.l_604:
+.l_603:
+.l_605:
     bl      f_2175
     mov     x0, #1
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_655
+    cbz     x0, .l_606
     bl      f_6176
     sub     x0, x29, #32
     ldr     x0, [x0]
@@ -2299,8 +2199,8 @@ f_1023:
     add 	x0, x1, x0
     str     x0, [x12, #8]
     add     x12, x12, 8
-    b       .l_654
-.l_655:
+    b       .l_605
+.l_606:
     bl      f_2175
     mov     x0, #32
     ldr     x1, [x12]
@@ -2311,7 +2211,7 @@ f_1023:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_657
+    cbz     x0, .l_608
     bl      f_6138
     adrp    x0, b_8410
     add     x0, x0, :lo12:b_8410
@@ -2319,11 +2219,12 @@ f_1023:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_656
-.l_657:
-.l_656:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_607
+.l_608:
+.l_607:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -2338,23 +2239,20 @@ f_1023:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    bl      f_7702
     sub     x0, x29, #32
     ldr     x0, [x0]
-    str     x0, [x12, #8]
+    str     x0, [x12, #-8]
     sub     x0, x29, #24
     ldr     x0, [x0]
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12, #-8]
     mul 	x0, x1, x0
-    str     x0, [x12, #8]
+    str     x0, [x12, #-8]
     sub     x0, x29, #24
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12, #-8]
     str     x1, [x0]
-    add     x12, x12, 16
-    b       .l_650
-.l_651:
+    b       .l_601
+.l_602:
     mov     x0, #0
     str     x0, [x12, #-8]
     adrp    x0, b_4300
@@ -2364,13 +2262,10 @@ f_1023:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
-    b       .l_648
-.l_649:
-.l_648:
+    bl      f_7702
+    b       .l_599
+.l_600:
+.l_599:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -2404,11 +2299,11 @@ f_1026:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_853
-    bl      f_3809
-    b       .l_852
-.l_853:
-.l_852:
+    cbz     x0, .l_802
+    bl      f_798
+    b       .l_801
+.l_802:
+.l_801:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -2432,39 +2327,11 @@ f_1027:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_953
-    bl      f_3810
-    b       .l_952
-.l_953:
-.l_952:
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_1028:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_5845
-    add     x0, x0, :lo12:b_5845
-    ldr     x0, [x0]
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    adrp    x0, b_5845
-    add     x0, x0, :lo12:b_5845
-    ldr     x1, [x12]
-    str     x1, [x0]
-    adrp    x0, b_2442
-    add     x0, x0, :lo12:b_2442
-    str     x0, [x12]
-    bl      f_2002
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1059
-    bl      f_3811
-    b       .l_1058
-.l_1059:
-.l_1058:
+    cbz     x0, .l_931
+    bl      f_3809
+    b       .l_930
+.l_931:
+.l_930:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -2480,45 +2347,45 @@ f_1031:
 f_1040:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-.l_907:
+.l_880:
     bl      f_8184
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_908
+    cbz     x0, .l_881
     bl      f_6218
-    b       .l_907
-.l_908:
-    add     x12, x12, 8
+    b       .l_880
+.l_881:
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_1041:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-.l_1012:
+.l_909:
     bl      f_8184
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1013
+    cbz     x0, .l_910
     bl      f_6219
-    b       .l_1012
-.l_1013:
-    add     x12, x12, 8
+    b       .l_909
+.l_910:
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_1042:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-.l_1117:
+.l_989:
     bl      f_8184
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1118
+    cbz     x0, .l_990
     bl      f_6220
-    b       .l_1117
-.l_1118:
-    add     x12, x12, 8
+    b       .l_989
+.l_990:
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -2574,8 +2441,9 @@ f_1050:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_68
 .l_69:
 .l_68:
@@ -2620,13 +2488,7 @@ f_1057:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     bl      f_6965
-    ldr     x0, [x12]
-    ldr     x2, [x12, #8]
-    ldr     x1, [x12, #16]
-    mov     x8, #63
-    svc     #0
-    str     x0, [x12, #16]
-    add     x12, x12, 16
+    bl      f_6042
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -2648,7 +2510,7 @@ f_1085:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_318
+    cbz     x0, .l_316
     bl      f_6138
     adrp    x0, b_8257
     add     x0, x0, :lo12:b_8257
@@ -2656,11 +2518,12 @@ f_1085:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_317
-.l_318:
-.l_317:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_315
+.l_316:
+.l_315:
     bl      f_6176
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
@@ -2669,9 +2532,7 @@ f_1085:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     adrp    x0, b_7731
     add     x0, x0, :lo12:b_7731
     str     x0, [x12, #-8]
@@ -2681,7 +2542,7 @@ f_1085:
     bl      f_880
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_320
+    cbz     x0, .l_318
     bl      f_6138
     adrp    x0, b_8258
     add     x0, x0, :lo12:b_8258
@@ -2696,11 +2557,12 @@ f_1085:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_319
-.l_320:
-.l_319:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_317
+.l_318:
+.l_317:
     adrp    x0, b_5800
     add     x0, x0, :lo12:b_5800
     str     x0, [x12, #-8]
@@ -2708,12 +2570,12 @@ f_1085:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_322
+    cbz     x0, .l_320
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_321
-.l_322:
+    b       .l_319
+.l_320:
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
     str     x0, [x12, #-8]
@@ -2721,10 +2583,8 @@ f_1085:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-.l_321:
+    bl      f_2606
+.l_319:
     sub     x0, x29, #8
     ldr     x1, [x12]
     str     x1, [x0]
@@ -2750,12 +2610,12 @@ f_1085:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
@@ -2764,29 +2624,29 @@ f_1085:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #24
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     mov     x0, #32
     ldr     x1, [x12]
@@ -2806,14 +2666,14 @@ f_1101:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_911:
+.l_884:
     bl      f_7285
     mov     x0, #8191
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 8
-    cbz     x0, .l_912
+    cbz     x0, .l_885
     bl      f_7285
     adrp    x0, b_300
     add     x0, x0, :lo12:b_300
@@ -2826,19 +2686,19 @@ f_1101:
     bl      f_275
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_914
+    cbz     x0, .l_887
     bl      f_2126
-    b       .l_913
-.l_914:
-    add     x12, x12, 8
-.l_913:
+    b       .l_886
+.l_887:
+    bl      f_6973
+.l_886:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_911
-.l_912:
-    add     x12, x12, 8
+    b       .l_884
+.l_885:
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -2848,14 +2708,14 @@ f_1102:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_1016:
+.l_913:
     bl      f_7285
     mov     x0, #8191
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 8
-    cbz     x0, .l_1017
+    cbz     x0, .l_914
     bl      f_7285
     adrp    x0, b_300
     add     x0, x0, :lo12:b_300
@@ -2868,19 +2728,19 @@ f_1102:
     bl      f_275
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1019
+    cbz     x0, .l_916
     bl      f_2127
-    b       .l_1018
-.l_1019:
-    add     x12, x12, 8
-.l_1018:
+    b       .l_915
+.l_916:
+    bl      f_6973
+.l_915:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_1016
-.l_1017:
-    add     x12, x12, 8
+    b       .l_913
+.l_914:
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -2890,14 +2750,14 @@ f_1103:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_1121:
+.l_993:
     bl      f_7285
     mov     x0, #8191
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 8
-    cbz     x0, .l_1122
+    cbz     x0, .l_994
     bl      f_7285
     adrp    x0, b_300
     add     x0, x0, :lo12:b_300
@@ -2910,19 +2770,19 @@ f_1103:
     bl      f_275
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1124
+    cbz     x0, .l_996
     bl      f_2129
-    b       .l_1123
-.l_1124:
-    add     x12, x12, 8
-.l_1123:
+    b       .l_995
+.l_996:
+    bl      f_6973
+.l_995:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_1121
-.l_1122:
-    add     x12, x12, 8
+    b       .l_993
+.l_994:
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -3053,8 +2913,8 @@ f_1274:
     mov     x0, #9
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -3090,12 +2950,10 @@ f_1339:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
+    bl      f_2382
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_724
+    cbz     x0, .l_675
     bl      f_6176
     adrp    x0, b_300
     add     x0, x0, :lo12:b_300
@@ -3107,19 +2965,9 @@ f_1339:
     mov     x0, #3
     str     x0, [x12, #-8]
     mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_725:
-    cmp     x0, x12
-    beq     .rbl_725
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_725
-    .rbl_725:
-    str     x1, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -3128,11 +2976,11 @@ f_1339:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_723
-.l_724:
-.l_723:
+    b       .l_674
+.l_675:
+.l_674:
     bl      f_6850
-    add     x12, x12, 8
+    bl      f_6973
     bl      f_3910
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -3155,78 +3003,8 @@ f_1351:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
-    bl      f_5070
-    bl      f_7804
-    mov     x0, #57
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_2002
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    and 	x0, x1, x0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_1352:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    bl      f_7285
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_5070
-    bl      f_7804
-    mov     x0, #57
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_2002
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    and 	x0, x1, x0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_1353:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    bl      f_7285
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_5070
     bl      f_7804
     mov     x0, #57
@@ -3253,12 +3031,12 @@ f_1431:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_676
+    cbz     x0, .l_627
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_675
-.l_676:
+    b       .l_626
+.l_627:
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
     str     x0, [x12, #-8]
@@ -3266,10 +3044,8 @@ f_1431:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-.l_675:
+    bl      f_2606
+.l_626:
     sub     x0, x29, #8
     ldr     x1, [x12]
     str     x1, [x0]
@@ -3280,7 +3056,7 @@ f_1431:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_678
+    cbz     x0, .l_629
     mov     x0, #1
     str     x0, [x12, #-8]
     sub     x0, x29, #9
@@ -3292,12 +3068,12 @@ f_1431:
     sub     x0, x29, #17
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-    b       .l_677
-.l_678:
+    b       .l_628
+.l_629:
     bl      f_6426
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_679
+    cbz     x0, .l_630
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x0, x29, #9
@@ -3311,8 +3087,8 @@ f_1431:
     sub     x0, x29, #17
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-    b       .l_677
-.l_679:
+    b       .l_628
+.l_630:
     bl      f_6138
     adrp    x0, b_8415
     add     x0, x0, :lo12:b_8415
@@ -3320,9 +3096,10 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_677:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_628:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -3341,7 +3118,7 @@ f_1431:
     bl      f_4466
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_681
+    cbz     x0, .l_632
     bl      f_1023
     sub     x0, x29, #25
     ldr     x1, [x12]
@@ -3353,28 +3130,28 @@ f_1431:
     ldr     x1, [x12, #16]
     str     x1, [x0]
     add     x12, x12, 24
-    b       .l_680
-.l_681:
+    b       .l_631
+.l_632:
     bl      f_2175
     mov     x0, #31
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_682
+    cbz     x0, .l_633
     bl      f_5600
     sub     x0, x29, #25
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-    b       .l_680
-.l_682:
+    b       .l_631
+.l_633:
     mov     x0, #-1
     str     x0, [x12, #-8]
     sub     x0, x29, #25
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-.l_680:
+.l_631:
     sub     x0, x29, #9
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -3382,15 +3159,15 @@ f_1431:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_684
+    cbz     x0, .l_635
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_7001
-    b       .l_683
-.l_684:
-.l_683:
+    b       .l_634
+.l_635:
+.l_634:
     bl      f_2175
     mov     x0, #4
     ldr     x1, [x12]
@@ -3401,7 +3178,7 @@ f_1431:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_686
+    cbz     x0, .l_637
     bl      f_6138
     adrp    x0, b_8416
     add     x0, x0, :lo12:b_8416
@@ -3409,11 +3186,12 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_685
-.l_686:
-.l_685:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_636
+.l_637:
+.l_636:
     bl      f_6176
     sub     x0, x29, #49
     ldr     x1, [x12]
@@ -3436,7 +3214,7 @@ f_1431:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_688
+    cbz     x0, .l_639
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -3447,14 +3225,14 @@ f_1431:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_690
+    cbz     x0, .l_641
     bl      f_2175
     mov     x0, #3
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_692
+    cbz     x0, .l_643
     bl      f_6176
     bl      f_1240
     mov     x0, #1
@@ -3468,20 +3246,20 @@ f_1431:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_694
+    cbz     x0, .l_645
     sub     x0, x29, #25
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-    b       .l_693
-.l_694:
+    b       .l_644
+.l_645:
     sub     x0, x29, #25
     ldr     x0, [x0]
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, gt
     add     x12, x12, 8
-    cbz     x0, .l_695
+    cbz     x0, .l_646
     bl      f_6138
     adrp    x0, b_8417
     add     x0, x0, :lo12:b_8417
@@ -3499,26 +3277,27 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_693
-.l_695:
-.l_693:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_644
+.l_646:
+.l_644:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x0, x29, #58
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-    b       .l_691
-.l_692:
+    b       .l_642
+.l_643:
     bl      f_2175
     mov     x0, #1
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_696
+    cbz     x0, .l_647
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -3526,14 +3305,14 @@ f_1431:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_698
+    cbz     x0, .l_649
     mov     x0, #8
     str     x0, [x12, #-8]
     sub     x0, x29, #25
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-    b       .l_697
-.l_698:
+    b       .l_648
+.l_649:
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -3541,9 +3320,9 @@ f_1431:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, eq
-    cbz     x0, .l_700
-    b       .l_699
-.l_700:
+    cbz     x0, .l_651
+    b       .l_650
+.l_651:
     bl      f_6176
     bl      f_7285
     mov     x0, #255
@@ -3577,9 +3356,9 @@ f_1431:
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_701
-    b       .l_699
-.l_701:
+    cbz     x0, .l_652
+    b       .l_650
+.l_652:
     bl      f_6138
     adrp    x0, b_8419
     add     x0, x0, :lo12:b_8419
@@ -3597,25 +3376,26 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_699:
-.l_697:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_650:
+.l_648:
     mov     x0, #1
     str     x0, [x12, #-8]
     sub     x0, x29, #58
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-    b       .l_691
-.l_696:
+    b       .l_642
+.l_647:
     bl      f_2175
     mov     x0, #2
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_702
+    cbz     x0, .l_653
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -3623,14 +3403,14 @@ f_1431:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_704
+    cbz     x0, .l_655
     mov     x0, #1
     str     x0, [x12, #-8]
     sub     x0, x29, #25
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-    b       .l_703
-.l_704:
+    b       .l_654
+.l_655:
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -3656,7 +3436,7 @@ f_1431:
     eor 	x0, x1, x0
     ldr     x1, [x12, #-8]
     and 	x0, x1, x0
-    cbz     x0, .l_706
+    cbz     x0, .l_657
     bl      f_6138
     adrp    x0, b_8421
     add     x0, x0, :lo12:b_8421
@@ -3674,20 +3454,21 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_705
-.l_706:
-.l_705:
-.l_703:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_656
+.l_657:
+.l_656:
+.l_654:
     mov     x0, #1
     str     x0, [x12, #-8]
     sub     x0, x29, #58
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-    b       .l_691
-.l_702:
+    b       .l_642
+.l_653:
     bl      f_6138
     adrp    x0, b_8423
     add     x0, x0, :lo12:b_8423
@@ -3705,9 +3486,10 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_691:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_642:
     bl      f_6176
     sub     x0, x29, #57
     ldr     x1, [x12]
@@ -3717,15 +3499,15 @@ f_1431:
     add 	x0, x1, x0
     str     x0, [x12, #8]
     add     x12, x12, 8
-    b       .l_689
-.l_690:
+    b       .l_640
+.l_641:
     bl      f_2175
     mov     x0, #29
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_708
+    cbz     x0, .l_659
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -3752,7 +3534,7 @@ f_1431:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_710
+    cbz     x0, .l_661
     bl      f_6138
     adrp    x0, b_8425
     add     x0, x0, :lo12:b_8425
@@ -3780,18 +3562,19 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_709
-.l_710:
-.l_709:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_660
+.l_661:
+.l_660:
     bl      f_4051
     bl      f_7285
     sub     x0, x29, #66
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_711:
+.l_662:
     bl      f_2175
     mov     x0, #30
     ldr     x1, [x12]
@@ -3802,12 +3585,12 @@ f_1431:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_712
+    cbz     x0, .l_663
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_714
+    cbz     x0, .l_665
     sub     x0, x29, #66
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -3835,16 +3618,17 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_713
-.l_714:
-.l_713:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_664
+.l_665:
+.l_664:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_711
-.l_712:
+    b       .l_662
+.l_663:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -3861,12 +3645,9 @@ f_1431:
     mov     x0, #15
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     sub     x0, x29, #25
     ldr     x0, [x0]
@@ -3875,29 +3656,26 @@ f_1431:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, eq
-    cbz     x0, .l_716
+    cbz     x0, .l_667
     adrp    x0, b_8431
     add     x0, x0, :lo12:b_8431
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2020
-    b       .l_715
-.l_716:
+    b       .l_666
+.l_667:
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #12
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-.l_715:
-    b       .l_707
-.l_708:
+.l_666:
+    b       .l_658
+.l_659:
     bl      f_6138
     adrp    x0, b_8432
     add     x0, x0, :lo12:b_8432
@@ -3905,12 +3683,13 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_707:
-.l_689:
-    b       .l_687
-.l_688:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_658:
+.l_640:
+    b       .l_638
+.l_639:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x0, x29, #57
@@ -3922,7 +3701,7 @@ f_1431:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-.l_687:
+.l_638:
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -3930,7 +3709,7 @@ f_1431:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_718
+    cbz     x0, .l_669
     bl      f_6138
     adrp    x0, b_8433
     add     x0, x0, :lo12:b_8433
@@ -3948,11 +3727,12 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_717
-.l_718:
-.l_717:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_668
+.l_669:
+.l_668:
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -3961,7 +3741,7 @@ f_1431:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_720
+    cbz     x0, .l_671
     bl      f_6138
     adrp    x0, b_8435
     add     x0, x0, :lo12:b_8435
@@ -3989,11 +3769,12 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_719
-.l_720:
-.l_719:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_670
+.l_671:
+.l_670:
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -4015,7 +3796,7 @@ f_1431:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_722
+    cbz     x0, .l_673
     bl      f_6138
     adrp    x0, b_8438
     add     x0, x0, :lo12:b_8438
@@ -4033,11 +3814,12 @@ f_1431:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_721
-.l_722:
-.l_721:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_672
+.l_673:
+.l_672:
     bl      f_3910
     sub     x0, x29, #49
     ldr     x0, [x0]
@@ -4064,12 +3846,12 @@ f_1431:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
@@ -4078,22 +3860,22 @@ f_1431:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #25
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #33
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #24
     ldr     x1, [x12]
@@ -4102,12 +3884,12 @@ f_1431:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #41
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #24
     ldr     x1, [x12]
@@ -4116,31 +3898,31 @@ f_1431:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #57
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #40
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #17
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #48
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #58
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_2002
     bl      f_6426
     mov     x0, #56
@@ -4190,6 +3972,41 @@ f_1526:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
+f_1531:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    adrp    x0, b_2010
+    add     x0, x0, :lo12:b_2010
+    str     x0, [x12, #-8]
+    mov     x0, #58
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3545
+    bl      f_7285
+    mov     x0, #0
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     x0, #0
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2606
+    bl      f_5070
+    bl      f_7804
+    mov     x0, #57
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2002
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
+    and 	x0, x1, x0
+    str     x0, [x12, #8]
+    add     x12, x12, 8
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
 f_1555:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
@@ -4207,12 +4024,10 @@ f_1555:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
+    bl      f_4481
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_378
+    cbz     x0, .l_376
     bl      f_6138
     adrp    x0, b_8291
     add     x0, x0, :lo12:b_8291
@@ -4230,11 +4045,12 @@ f_1555:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_377
-.l_378:
-.l_377:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_375
+.l_376:
+.l_375:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -4248,8 +4064,8 @@ f_1555:
     mov     x0, #24
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     sub     x0, x29, #16
     ldr     x1, [x12]
     str     x1, [x0]
@@ -4264,7 +4080,7 @@ f_1555:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_380
+    cbz     x0, .l_378
     bl      f_6138
     adrp    x0, b_8293
     add     x0, x0, :lo12:b_8293
@@ -4282,11 +4098,12 @@ f_1555:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_379
-.l_380:
-.l_379:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_377
+.l_378:
+.l_377:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -4301,43 +4118,48 @@ f_1555:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_381:
+.l_379:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
-    cbz     x0, .l_382
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_380
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     mov     x0, #8
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     sub     x0, x29, #40
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
     mov     x0, #0
-    ldr     x1, [x12, #-16]
+    ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_384
+    cbz     x0, .l_382
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -4348,24 +4170,18 @@ f_1555:
     mov     x0, #6
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #17
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     sub     x0, x29, #16
     ldr     x0, [x0]
@@ -4377,19 +4193,21 @@ f_1555:
     mov     x0, #8
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     sub     x0, x29, #48
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     str     x1, [x0]
-.l_385:
+    add     x12, x12, 8
+.l_383:
     bl      f_2175
     mov     x0, #31
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_386
+    cbz     x0, .l_384
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -4399,7 +4217,7 @@ f_1555:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_387:
+.l_385:
     bl      f_2175
     mov     x0, #32
     ldr     x1, [x12]
@@ -4410,12 +4228,12 @@ f_1555:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_388
+    cbz     x0, .l_386
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_390
+    cbz     x0, .l_388
     sub     x0, x29, #56
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -4443,38 +4261,39 @@ f_1555:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_389
-.l_390:
-.l_389:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_387
+.l_388:
+.l_387:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_387
-.l_388:
+    b       .l_385
+.l_386:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     sub     x0, x29, #48
     ldr     x0, [x0]
-    cbz     x0, .l_394
+    cbz     x0, .l_392
     sub     x0, x29, #48
-    ldr     x0, [x0]
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_2606
     bl      f_6709
-    b       .l_393
-.l_394:
+    b       .l_391
+.l_392:
     mov     x0, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_393:
+.l_391:
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_392
+    cbz     x0, .l_390
     bl      f_6138
     adrp    x0, b_8298
     add     x0, x0, :lo12:b_8298
@@ -4487,9 +4306,9 @@ f_1555:
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_2606
     bl      f_6317
     adrp    x0, b_8299
     add     x0, x0, :lo12:b_8299
@@ -4507,19 +4326,21 @@ f_1555:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_391
-.l_392:
-.l_391:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_389
+.l_390:
+.l_389:
     sub     x0, x29, #48
     ldr     x0, [x0]
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     sub     x0, x29, #40
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     ldr     x1, [x12]
     ldr     x0, [x12, #8]
@@ -4545,38 +4366,30 @@ f_1555:
     mov     x0, #6
     str     x0, [x12]
     mov     x0, #3
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_934
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #19
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #17
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_385
-.l_386:
+    b       .l_383
+.l_384:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -4587,9 +4400,9 @@ f_1555:
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_2606
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
@@ -4608,9 +4421,9 @@ f_1555:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_383
-.l_384:
-.l_383:
+    b       .l_381
+.l_382:
+.l_381:
     sub     x0, x29, #40
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -4632,8 +4445,8 @@ f_1555:
     sub     x0, x29, #16
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-    b       .l_381
-.l_382:
+    b       .l_379
+.l_380:
     bl      f_6138
     adrp    x0, b_8301
     add     x0, x0, :lo12:b_8301
@@ -4661,8 +4474,9 @@ f_1555:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -4670,41 +4484,33 @@ f_1604:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_465
     mov     x0, #8191
-    mov     x1, x0
-    ldr     x0, [x12]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12]
-    str     x3, [x12, #-8]
+    str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_675
     bl      f_3910
 .l_183:
     bl      f_5606
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_184
+    bl      f_6973
     mov     x0, #1
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #8]
+    str     x0, [x12]
     mov     x0, #8191
-    mov     x1, x0
-    ldr     x0, [x12, #8]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12, #8]
-    str     x3, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_675
     bl      f_3910
     b       .l_183
 .l_184:
-    add     x12, x12, 8
+    bl      f_6973
     bl      f_3910
     bl      f_3910
     bl      f_3910
@@ -4714,72 +4520,29 @@ f_1604:
 f_1612:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_195
-    add     x0, x0, :lo12:b_195
-    ldr     x0, [x0]
-    cbz     x0, .l_855
-    adrp    x0, b_195
-    add     x0, x0, :lo12:b_195
+    adrp    x0, b_196
+    add     x0, x0, :lo12:b_196
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_933
+    adrp    x0, b_196
+    add     x0, x0, :lo12:b_196
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_358
     mov     x0, #0
     str     x0, [x12, #-8]
-    adrp    x0, b_195
-    add     x0, x0, :lo12:b_195
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
-    b       .l_854
-.l_855:
-.l_854:
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_1613:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
     adrp    x0, b_196
     add     x0, x0, :lo12:b_196
-    ldr     x0, [x0]
-    cbz     x0, .l_955
-    adrp    x0, b_196
-    add     x0, x0, :lo12:b_196
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_359
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    adrp    x0, b_196
-    add     x0, x0, :lo12:b_196
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
-    b       .l_954
-.l_955:
-.l_954:
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_1614:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_197
-    add     x0, x0, :lo12:b_197
-    ldr     x0, [x0]
-    cbz     x0, .l_1061
-    adrp    x0, b_197
-    add     x0, x0, :lo12:b_197
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_360
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    adrp    x0, b_197
-    add     x0, x0, :lo12:b_197
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
-    b       .l_1060
-.l_1061:
-.l_1060:
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7702
+    b       .l_932
+.l_933:
+.l_932:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -4792,29 +4555,25 @@ f_1729:
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_7285
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_5764
+    bl      f_7702
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
-    str     x1, [x0]
-    ldr     x0, [x12, #16]
-    ldr     x1, [x12, #24]
     mul 	x0, x1, x0
-    ldr     x1, [x12, #32]
+    ldr     x1, [x12, #16]
     add 	x0, x1, x0
-    str     x0, [x12, #32]
+    str     x0, [x12, #16]
     mov     x0, #8
-    ldr     x1, [x12, #32]
+    ldr     x1, [x12, #16]
     add 	x0, x1, x0
-    str     x0, [x12, #32]
-    add     x12, x12, 32
+    str     x0, [x12, #16]
+    add     x12, x12, 16
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -4844,7 +4603,7 @@ f_1851:
     bl      f_275
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_370
+    cbz     x0, .l_368
     bl      f_6138
     adrp    x0, b_8283
     add     x0, x0, :lo12:b_8283
@@ -4862,11 +4621,12 @@ f_1851:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_369
-.l_370:
-.l_369:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_367
+.l_368:
+.l_367:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -4883,7 +4643,7 @@ f_1851:
     bl      f_275
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_372
+    cbz     x0, .l_370
     bl      f_6138
     adrp    x0, b_8285
     add     x0, x0, :lo12:b_8285
@@ -4901,11 +4661,12 @@ f_1851:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_371
-.l_372:
-.l_371:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_369
+.l_370:
+.l_369:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -4922,7 +4683,7 @@ f_1851:
     bl      f_275
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_374
+    cbz     x0, .l_372
     bl      f_6138
     adrp    x0, b_8287
     add     x0, x0, :lo12:b_8287
@@ -4940,11 +4701,12 @@ f_1851:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_373
-.l_374:
-.l_373:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_371
+.l_372:
+.l_371:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -5008,9 +4770,7 @@ f_2001:
 f_2002:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     mov     x0, #255
     ldr     x1, [x12]
     and 	x0, x1, x0
@@ -5034,8 +4794,8 @@ f_2019:
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     sub     x0, x29, #8
     ldr     x1, [x12]
     str     x1, [x0]
@@ -5054,15 +4814,12 @@ f_2019:
     ldr     x1, [x12]
     str     x1, [x0]
     mov     x0, #2
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
+    str     x0, [x12]
+    bl      f_7210
     adrp    x0, b_8223
     add     x0, x0, :lo12:b_8223
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
@@ -5074,32 +4831,35 @@ f_2019:
     mov     x0, #9
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    mov     x0, #3
+    str     x0, [x12, #-8]
+    sub     x0, x29, #17
+    ldr     x0, [x0]
+    str     x0, [x12, #-16]
+    mov     x0, #9
+    ldr     x1, [x12, #-16]
+    add 	x0, x1, x0
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_2606
+    sub     x0, x29, #17
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    mov     x0, #3
-    str     x0, [x12, #-16]
-    sub     x0, x29, #17
-    ldr     x0, [x0]
-    str     x0, [x12, #-24]
-    mov     x0, #9
-    ldr     x1, [x12, #-24]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-24]
-    sub     x0, x29, #17
-    ldr     x0, [x0]
-    str     x0, [x12, #-32]
     mov     x0, #17
-    ldr     x1, [x12, #-32]
+    ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-32]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     adrp    x0, b_8065
     add     x0, x0, :lo12:b_8065
-    str     x0, [x12, #-40]
-    sub     x12, x12, 40
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_5120
-    add     x12, x12, 8
+    bl      f_6973
     bl      f_3910
     mov     x0, #25
     ldr     x1, [x12]
@@ -5112,14 +4872,13 @@ f_2019:
 .l_215:
 .l_214:
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7210
     adrp    x0, b_8224
     add     x0, x0, :lo12:b_8224
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
@@ -5131,32 +4890,35 @@ f_2019:
     mov     x0, #17
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    mov     x0, #1
+    str     x0, [x12, #-8]
+    sub     x0, x29, #17
+    ldr     x0, [x0]
+    str     x0, [x12, #-16]
+    mov     x0, #9
+    ldr     x1, [x12, #-16]
+    add 	x0, x1, x0
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_2606
+    sub     x0, x29, #17
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    mov     x0, #1
-    str     x0, [x12, #-16]
-    sub     x0, x29, #17
-    ldr     x0, [x0]
-    str     x0, [x12, #-24]
-    mov     x0, #9
-    ldr     x1, [x12, #-24]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-24]
-    sub     x0, x29, #17
-    ldr     x0, [x0]
-    str     x0, [x12, #-32]
     mov     x0, #17
-    ldr     x1, [x12, #-32]
+    ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-32]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     adrp    x0, b_8065
     add     x0, x0, :lo12:b_8065
-    str     x0, [x12, #-40]
-    sub     x12, x12, 40
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_5120
-    add     x12, x12, 8
+    bl      f_6973
     bl      f_3910
     mov     x0, #25
     ldr     x1, [x12]
@@ -5178,14 +4940,14 @@ f_2019:
     mov     x0, #24
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7285
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_219
-    add     x12, x12, 8
+    bl      f_6973
     bl      f_6138
     adrp    x0, b_8225
     add     x0, x0, :lo12:b_8225
@@ -5200,8 +4962,9 @@ f_2019:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_218
 .l_219:
 .l_218:
@@ -5260,8 +5023,9 @@ f_2019:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_222
 .l_223:
 .l_222:
@@ -5354,7 +5118,7 @@ f_2019:
     bl      f_2212
     b       .l_226
 .l_227:
-    add     x12, x12, 8
+    bl      f_6973
     bl      f_3910
     mov     x0, #25
     ldr     x1, [x12]
@@ -5391,10 +5155,7 @@ f_2019:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    bl      f_7702
     bl      f_7804
     mov     x0, #25
     ldr     x1, [x12]
@@ -5427,11 +5188,9 @@ f_2019:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_6317
     adrp    x0, b_8230
     add     x0, x0, :lo12:b_8230
@@ -5439,8 +5198,9 @@ f_2019:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_233
 .l_234:
 .l_233:
@@ -5473,9 +5233,7 @@ f_2019:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     adrp    x0, b_7731
     add     x0, x0, :lo12:b_7731
     str     x0, [x12, #-8]
@@ -5487,8 +5245,8 @@ f_2019:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
@@ -5497,17 +5255,16 @@ f_2019:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
-    str     x0, [x12, #8]
+    str     x0, [x12, #-8]
     mov     x0, #8
-    str     x0, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
@@ -5516,33 +5273,30 @@ f_2019:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #2
-    add     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_6426
     mov     x0, #24
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #1
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     mov     x0, #32
     ldr     x1, [x12]
@@ -5579,11 +5333,9 @@ f_2019:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_6317
     adrp    x0, b_8232
     add     x0, x0, :lo12:b_8232
@@ -5591,8 +5343,9 @@ f_2019:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_239
 .l_240:
 .l_239:
@@ -5681,11 +5434,9 @@ f_2019:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_6317
     adrp    x0, b_8234
     add     x0, x0, :lo12:b_8234
@@ -5693,8 +5444,9 @@ f_2019:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_247
 .l_248:
 .l_247:
@@ -5808,11 +5560,9 @@ f_2019:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_6317
     adrp    x0, b_8236
     add     x0, x0, :lo12:b_8236
@@ -5820,8 +5570,9 @@ f_2019:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_257
 .l_258:
 .l_257:
@@ -5841,9 +5592,9 @@ f_2019:
     add     x12, x12, 8
     cbz     x0, .l_260
     bl      f_5764
-    add     x12, x12, 8
+    bl      f_6973
     bl      f_612
-    add     x12, x12, 8
+    bl      f_6973
     b       .l_259
 .l_260:
 .l_259:
@@ -5883,12 +5634,10 @@ f_2020:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
+    bl      f_4481
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_420
+    cbz     x0, .l_418
     bl      f_7804
     bl      f_6138
     bl      f_7804
@@ -5904,11 +5653,12 @@ f_2020:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_419
-.l_420:
-.l_419:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_417
+.l_418:
+.l_417:
     adrp    x0, b_300
     add     x0, x0, :lo12:b_300
     str     x0, [x12, #-8]
@@ -5919,168 +5669,24 @@ f_2020:
     mov     x0, #4
     str     x0, [x12, #-8]
     mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_934
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_2021:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    sub     sp, sp, #16
-    sub     x0, x29, #8
-    ldr     x1, [x12]
-    str     x1, [x0]
-    sub     x0, x29, #8
-    ldr     x0, [x0]
-    str     x0, [x12]
-    adrp    x0, b_300
-    add     x0, x0, :lo12:b_300
-    str     x0, [x12, #-8]
-    mov     x0, #24
     str     x0, [x12, #-16]
     sub     x12, x12, 16
-    bl      f_3972
-    sub     x0, x29, #16
-    ldr     x1, [x12]
-    str     x1, [x0]
-    sub     x0, x29, #16
-    ldr     x0, [x0]
-    str     x0, [x12]
-    mov     x0, #0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
-    add     x12, x12, 8
-    cbz     x0, .l_1044
-    adrp    x0, b_9170
-    add     x0, x0, :lo12:b_9170
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
-    sub     x0, x29, #8
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
-    adrp    x0, b_9171
-    add     x0, x0, :lo12:b_9171
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
-    mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1043
-.l_1044:
-.l_1043:
-    adrp    x0, b_9172
-    add     x0, x0, :lo12:b_9172
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    sub     x0, x29, #16
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    adrp    x0, b_9173
-    add     x0, x0, :lo12:b_9173
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
+    bl      f_7210
+    bl      f_934
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_2028:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_195
-    add     x0, x0, :lo12:b_195
-    ldr     x0, [x0]
-    cbz     x0, .l_861
-    bl      f_7285
-    adrp    x0, b_195
-    add     x0, x0, :lo12:b_195
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_863
-    adrp    x0, b_8514
-    add     x0, x0, :lo12:b_8514
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
-    adrp    x0, b_8515
-    add     x0, x0, :lo12:b_8515
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_195
-    add     x0, x0, :lo12:b_195
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8516
-    add     x0, x0, :lo12:b_8516
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_862
-.l_863:
-    add     x12, x12, 8
-.l_862:
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    adrp    x0, b_195
-    add     x0, x0, :lo12:b_195
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_860
-.l_861:
-.l_860:
-    adrp    x0, b_8517
-    add     x0, x0, :lo12:b_8517
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
-    adrp    x0, b_8518
-    add     x0, x0, :lo12:b_8518
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6752
-    adrp    x0, b_8519
-    add     x0, x0, :lo12:b_8519
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    mov     x0, #8
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1026
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_2029:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
     adrp    x0, b_196
     add     x0, x0, :lo12:b_196
-    ldr     x0, [x0]
-    cbz     x0, .l_961
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_939
     bl      f_7285
     adrp    x0, b_196
     add     x0, x0, :lo12:b_196
@@ -6089,15 +5695,15 @@ f_2029:
     bl      f_3887
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_963
-    adrp    x0, b_8803
-    add     x0, x0, :lo12:b_8803
+    cbz     x0, .l_941
+    adrp    x0, b_9020
+    add     x0, x0, :lo12:b_9020
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_6962
-    adrp    x0, b_8804
-    add     x0, x0, :lo12:b_8804
+    adrp    x0, b_9021
+    add     x0, x0, :lo12:b_9021
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -6106,41 +5712,42 @@ f_2029:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_8805
-    add     x0, x0, :lo12:b_8805
+    adrp    x0, b_9022
+    add     x0, x0, :lo12:b_9022
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_962
-.l_963:
-    add     x12, x12, 8
-.l_962:
+    b       .l_940
+.l_941:
+    bl      f_6973
+.l_940:
     mov     x0, #0
     str     x0, [x12, #-8]
     adrp    x0, b_196
     add     x0, x0, :lo12:b_196
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_960
-.l_961:
-.l_960:
-    adrp    x0, b_8806
-    add     x0, x0, :lo12:b_8806
+    b       .l_938
+.l_939:
+.l_938:
+    adrp    x0, b_9023
+    add     x0, x0, :lo12:b_9023
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_6962
-    adrp    x0, b_8807
-    add     x0, x0, :lo12:b_8807
+    adrp    x0, b_9024
+    add     x0, x0, :lo12:b_9024
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_6753
-    adrp    x0, b_8808
-    add     x0, x0, :lo12:b_8808
+    adrp    x0, b_9025
+    add     x0, x0, :lo12:b_9025
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -6148,83 +5755,6 @@ f_2029:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_1027
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_2030:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_197
-    add     x0, x0, :lo12:b_197
-    ldr     x0, [x0]
-    cbz     x0, .l_1067
-    bl      f_7285
-    adrp    x0, b_197
-    add     x0, x0, :lo12:b_197
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1069
-    adrp    x0, b_9207
-    add     x0, x0, :lo12:b_9207
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
-    adrp    x0, b_9208
-    add     x0, x0, :lo12:b_9208
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_197
-    add     x0, x0, :lo12:b_197
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9209
-    add     x0, x0, :lo12:b_9209
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1068
-.l_1069:
-    add     x12, x12, 8
-.l_1068:
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    adrp    x0, b_197
-    add     x0, x0, :lo12:b_197
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_1066
-.l_1067:
-.l_1066:
-    adrp    x0, b_9210
-    add     x0, x0, :lo12:b_9210
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
-    adrp    x0, b_9211
-    add     x0, x0, :lo12:b_9211
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6754
-    adrp    x0, b_9212
-    add     x0, x0, :lo12:b_9212
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    mov     x0, #8
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1028
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -6238,13 +5768,13 @@ f_2060:
     mul 	x0, x1, x0
     str     x0, [x12, #8]
     mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     str     x0, [x12]
+    bl      f_7210
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
+    add 	x0, x1, x0
+    str     x0, [x12, #8]
+    add     x12, x12, 8
     bl      f_7285
     bl      f_3804
     ldr     x0, [x12]
@@ -6256,15 +5786,11 @@ f_2060:
     b       .l_185
 .l_186:
     bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     mov     x0, #6
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
@@ -6274,20 +5800,22 @@ f_2060:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     mov     x0, #5
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    ldr     x1, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7210
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
     cmp     x1, x0
     cset    w0, eq
-    str     x0, [x12]
+    str     x0, [x12, #8]
     mov     x0, #1
-    ldr     x1, [x12]
+    ldr     x1, [x12, #8]
     eor 	x0, x1, x0
-    str     x0, [x12]
+    str     x0, [x12, #8]
+    add     x12, x12, 8
     b       .l_185
 .l_187:
     mov     x0, #1
@@ -6315,9 +5843,11 @@ f_2093:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_1057
+    bl      f_6973
     adrp    x0, b_7336
     add     x0, x0, :lo12:b_7336
-    str     x0, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_2002
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -6332,9 +5862,9 @@ f_2126:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_910
-    adrp    x0, b_8750
-    add     x0, x0, :lo12:b_8750
+    cbz     x0, .l_883
+    adrp    x0, b_8778
+    add     x0, x0, :lo12:b_8778
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -6346,44 +5876,44 @@ f_2126:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6962
-    adrp    x0, b_8751
-    add     x0, x0, :lo12:b_8751
+    adrp    x0, b_8779
+    add     x0, x0, :lo12:b_8779
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_909
-.l_910:
-.l_909:
-    adrp    x0, b_8752
-    add     x0, x0, :lo12:b_8752
+    b       .l_882
+.l_883:
+.l_882:
+    adrp    x0, b_8780
+    add     x0, x0, :lo12:b_8780
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_6426
     bl      f_3176
-    adrp    x0, b_8753
-    add     x0, x0, :lo12:b_8753
+    adrp    x0, b_8781
+    add     x0, x0, :lo12:b_8781
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_8754
-    add     x0, x0, :lo12:b_8754
+    adrp    x0, b_8782
+    add     x0, x0, :lo12:b_8782
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_8755
-    add     x0, x0, :lo12:b_8755
+    adrp    x0, b_8783
+    add     x0, x0, :lo12:b_8783
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_1040
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -6398,9 +5928,9 @@ f_2127:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1015
-    adrp    x0, b_9141
-    add     x0, x0, :lo12:b_9141
+    cbz     x0, .l_912
+    adrp    x0, b_8982
+    add     x0, x0, :lo12:b_8982
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -6412,44 +5942,44 @@ f_2127:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6962
-    adrp    x0, b_9142
-    add     x0, x0, :lo12:b_9142
+    adrp    x0, b_8983
+    add     x0, x0, :lo12:b_8983
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_1014
-.l_1015:
-.l_1014:
-    adrp    x0, b_9143
-    add     x0, x0, :lo12:b_9143
+    b       .l_911
+.l_912:
+.l_911:
+    adrp    x0, b_8984
+    add     x0, x0, :lo12:b_8984
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_6426
     bl      f_3176
-    adrp    x0, b_9144
-    add     x0, x0, :lo12:b_9144
+    adrp    x0, b_8985
+    add     x0, x0, :lo12:b_8985
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9145
-    add     x0, x0, :lo12:b_9145
+    adrp    x0, b_8986
+    add     x0, x0, :lo12:b_8986
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9146
-    add     x0, x0, :lo12:b_9146
+    adrp    x0, b_8987
+    add     x0, x0, :lo12:b_8987
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_1041
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -6492,8 +6022,9 @@ f_2128:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_109
 .l_110:
 .l_109:
@@ -6515,9 +6046,9 @@ f_2129:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1120
-    adrp    x0, b_9453
-    add     x0, x0, :lo12:b_9453
+    cbz     x0, .l_992
+    adrp    x0, b_9266
+    add     x0, x0, :lo12:b_9266
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -6529,44 +6060,44 @@ f_2129:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6962
-    adrp    x0, b_9454
-    add     x0, x0, :lo12:b_9454
+    adrp    x0, b_9267
+    add     x0, x0, :lo12:b_9267
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_1119
-.l_1120:
-.l_1119:
-    adrp    x0, b_9455
-    add     x0, x0, :lo12:b_9455
+    b       .l_991
+.l_992:
+.l_991:
+    adrp    x0, b_9268
+    add     x0, x0, :lo12:b_9268
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_6426
     bl      f_3176
-    adrp    x0, b_9456
-    add     x0, x0, :lo12:b_9456
+    adrp    x0, b_9269
+    add     x0, x0, :lo12:b_9269
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9457
-    add     x0, x0, :lo12:b_9457
+    adrp    x0, b_9270
+    add     x0, x0, :lo12:b_9270
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9458
-    add     x0, x0, :lo12:b_9458
+    adrp    x0, b_9271
+    add     x0, x0, :lo12:b_9271
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_1042
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -6589,13 +6120,7 @@ f_2182:
     bl      f_7804
     bl      f_7900
     bl      f_5764
-    ldr     x0, [x12]
-    ldr     x2, [x12, #8]
-    ldr     x1, [x12, #16]
-    mov     x8, #64
-    svc     #0
-    str     x0, [x12, #16]
-    add     x12, x12, 16
+    bl      f_7545
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -6617,27 +6142,27 @@ f_2212:
     ldr     x1, [x12, #8]
     orr 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_358
+    cbz     x0, .l_356
     bl      f_2420
-    b       .l_357
-.l_358:
+    b       .l_355
+.l_356:
     bl      f_2175
     mov     x0, #14
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_359
+    cbz     x0, .l_357
     bl      f_7479
-    b       .l_357
-.l_359:
+    b       .l_355
+.l_357:
     bl      f_2175
     mov     x0, #29
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_361
+    cbz     x0, .l_359
     mov     x0, #1
     str     x0, [x12, #-8]
     adrp    x0, b_847
@@ -6658,19 +6183,16 @@ f_2212:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
-    b       .l_360
-.l_361:
+    bl      f_7702
+    b       .l_358
+.l_359:
     bl      f_2175
     mov     x0, #30
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_362
+    cbz     x0, .l_360
     mov     x0, #1
     str     x0, [x12, #-8]
     adrp    x0, b_847
@@ -6692,9 +6214,9 @@ f_2212:
     str     x0, [x12, #8]
     add     x12, x12, 8
     bl      f_6555
-    b       .l_360
-.l_362:
+    b       .l_358
 .l_360:
+.l_358:
     bl      f_7285
     adrp    x0, b_8065
     add     x0, x0, :lo12:b_8065
@@ -6705,7 +6227,7 @@ f_2212:
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-.l_357:
+.l_355:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -6720,7 +6242,7 @@ f_2230:
     add 	x0, x1, x0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_835:
+.l_781:
     bl      f_2175
     mov     x0, #0
     ldr     x1, [x12]
@@ -6731,13 +6253,13 @@ f_2230:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_836
+    cbz     x0, .l_782
     bl      f_2175
     bl      f_6282
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_838
+    cbz     x0, .l_784
     bl      f_6138
     adrp    x0, b_8501
     add     x0, x0, :lo12:b_8501
@@ -6752,28 +6274,73 @@ f_2230:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_837
-.l_838:
-.l_837:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_783
+.l_784:
+.l_783:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_7804
     bl      f_6380
-    b       .l_835
-.l_836:
-    adrp    x0, b_1627
-    add     x0, x0, :lo12:b_1627
-    str     x0, [x12]
-    bl      f_7804
+    b       .l_781
+.l_782:
+    bl      f_6973
     adrp    x0, b_8503
     add     x0, x0, :lo12:b_8503
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_2550
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_786
+    adrp    x0, b_1627
+    add     x0, x0, :lo12:b_1627
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7804
+    adrp    x0, b_8504
+    add     x0, x0, :lo12:b_8504
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_2020
     bl      f_3910
+    b       .l_785
+.l_786:
+.l_785:
+    adrp    x0, b_1627
+    add     x0, x0, :lo12:b_1627
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7804
+    adrp    x0, b_8505
+    add     x0, x0, :lo12:b_8505
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2020
+    bl      f_3910
+    adrp    x0, b_8506
+    add     x0, x0, :lo12:b_8506
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2550
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_788
+    mov     x0, #8
+    str     x0, [x12, #-8]
+    mov     x0, #16
+    str     x0, [x12, #-16]
+    adrp    x0, b_1627
+    add     x0, x0, :lo12:b_1627
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_934
+    b       .l_787
+.l_788:
+.l_787:
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #6
@@ -6812,6 +6379,17 @@ f_2318:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
+f_2382:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    mov     x0, #-1
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, gt
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
 f_2420:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
@@ -6832,16 +6410,14 @@ f_2420:
     sub     x12, x12, 16
     bl      f_3972
     bl      f_7285
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
+    bl      f_2382
+    ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_262
     bl      f_2019
     b       .l_261
 .l_262:
-    add     x12, x12, 8
+    bl      f_6973
     bl      f_3910
     bl      f_7285
     adrp    x0, b_8065
@@ -6857,47 +6433,1137 @@ f_2420:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
+f_2448:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    sub     sp, sp, #32
+    bl      f_8184
+    mov     x0, #1
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_814
+    b       .l_813
+.l_814:
+    bl      f_8184
+    mov     x0, #2
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_815
+    adrp    x0, b_8531
+    add     x0, x0, :lo12:b_8531
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8532
+    add     x0, x0, :lo12:b_8532
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_798
+    adrp    x0, b_8533
+    add     x0, x0, :lo12:b_8533
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_813
+.l_815:
+    bl      f_8184
+    mov     x0, #3
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_816
+    adrp    x0, b_8534
+    add     x0, x0, :lo12:b_8534
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8535
+    add     x0, x0, :lo12:b_8535
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8536
+    add     x0, x0, :lo12:b_8536
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8537
+    add     x0, x0, :lo12:b_8537
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_816:
+    bl      f_8184
+    mov     x0, #4
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_817
+    bl      f_692
+    bl      f_798
+    adrp    x0, b_8538
+    add     x0, x0, :lo12:b_8538
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8539
+    add     x0, x0, :lo12:b_8539
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8540
+    add     x0, x0, :lo12:b_8540
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_813
+.l_817:
+    bl      f_8184
+    mov     x0, #5
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_818
+    bl      f_692
+    bl      f_798
+    adrp    x0, b_8541
+    add     x0, x0, :lo12:b_8541
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8542
+    add     x0, x0, :lo12:b_8542
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8543
+    add     x0, x0, :lo12:b_8543
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_813
+.l_818:
+    bl      f_8184
+    mov     x0, #6
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_819
+    adrp    x0, b_8544
+    add     x0, x0, :lo12:b_8544
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    bl      f_7283
+    bl      f_7285
+    mov     x0, #1
+    str     x0, [x12, #-8]
+    mov     x0, #31
+    ldr     x1, [x12, #-8]
+    lsl 	x0, x1, x0
+    str     x0, [x12, #-8]
+    mov     x0, #1
+    ldr     x1, [x12, #-8]
+    sub 	x0, x1, x0
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, gt
+    str     x0, [x12]
+    bl      f_7804
+    mov     x0, #1
+    str     x0, [x12, #-8]
+    mov     x0, #31
+    ldr     x1, [x12, #-8]
+    lsl 	x0, x1, x0
+    str     x0, [x12, #-8]
+    mov     x0, #-1
+    ldr     x1, [x12, #-8]
+    mul 	x0, x1, x0
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, lt
+    ldr     x1, [x12, #8]
+    orr 	x0, x1, x0
+    add     x12, x12, 16
+    cbz     x0, .l_821
+    bl      f_692
+    adrp    x0, b_8545
+    add     x0, x0, :lo12:b_8545
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8546
+    add     x0, x0, :lo12:b_8546
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8547
+    add     x0, x0, :lo12:b_8547
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_820
+.l_821:
+    bl      f_7283
+    sub     x0, x29, #32
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3562
+    sub     x0, x29, #32
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+.l_820:
+    b       .l_813
+.l_819:
+    bl      f_8184
+    mov     x0, #7
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_822
+    adrp    x0, b_8548
+    add     x0, x0, :lo12:b_8548
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    bl      f_610
+    b       .l_813
+.l_822:
+    bl      f_8184
+    mov     x0, #8
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_823
+    adrp    x0, b_8549
+    add     x0, x0, :lo12:b_8549
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8550
+    add     x0, x0, :lo12:b_8550
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_798
+    adrp    x0, b_8551
+    add     x0, x0, :lo12:b_8551
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8552
+    add     x0, x0, :lo12:b_8552
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_823:
+    bl      f_8184
+    mov     x0, #9
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_824
+    adrp    x0, b_8553
+    add     x0, x0, :lo12:b_8553
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8554
+    add     x0, x0, :lo12:b_8554
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_692
+    bl      f_798
+    adrp    x0, b_8555
+    add     x0, x0, :lo12:b_8555
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8556
+    add     x0, x0, :lo12:b_8556
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8557
+    add     x0, x0, :lo12:b_8557
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8558
+    add     x0, x0, :lo12:b_8558
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8559
+    add     x0, x0, :lo12:b_8559
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8560
+    add     x0, x0, :lo12:b_8560
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8561
+    add     x0, x0, :lo12:b_8561
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8562
+    add     x0, x0, :lo12:b_8562
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8563
+    add     x0, x0, :lo12:b_8563
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8564
+    add     x0, x0, :lo12:b_8564
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8565
+    add     x0, x0, :lo12:b_8565
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8566
+    add     x0, x0, :lo12:b_8566
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8567
+    add     x0, x0, :lo12:b_8567
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8568
+    add     x0, x0, :lo12:b_8568
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8569
+    add     x0, x0, :lo12:b_8569
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_813
+.l_824:
+    bl      f_8184
+    mov     x0, #10
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_825
+    bl      f_692
+    bl      f_798
+    adrp    x0, b_8570
+    add     x0, x0, :lo12:b_8570
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8571
+    add     x0, x0, :lo12:b_8571
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    movz    x0, #0
+    movk    x0, #1, lsl 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3176
+    adrp    x0, b_8572
+    add     x0, x0, :lo12:b_8572
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8573
+    add     x0, x0, :lo12:b_8573
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8574
+    add     x0, x0, :lo12:b_8574
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8575
+    add     x0, x0, :lo12:b_8575
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_825:
+    bl      f_8184
+    mov     x0, #11
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_826
+    bl      f_692
+    adrp    x0, b_8576
+    add     x0, x0, :lo12:b_8576
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8577
+    add     x0, x0, :lo12:b_8577
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8578
+    add     x0, x0, :lo12:b_8578
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8579
+    add     x0, x0, :lo12:b_8579
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_826:
+    bl      f_8184
+    mov     x0, #12
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_827
+    adrp    x0, b_8580
+    add     x0, x0, :lo12:b_8580
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8581
+    add     x0, x0, :lo12:b_8581
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8582
+    add     x0, x0, :lo12:b_8582
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8583
+    add     x0, x0, :lo12:b_8583
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_813
+.l_827:
+    bl      f_8184
+    mov     x0, #13
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_828
+    adrp    x0, b_8584
+    add     x0, x0, :lo12:b_8584
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8585
+    add     x0, x0, :lo12:b_8585
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8586
+    add     x0, x0, :lo12:b_8586
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8587
+    add     x0, x0, :lo12:b_8587
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_828:
+    bl      f_8184
+    mov     x0, #14
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_829
+    adrp    x0, b_8588
+    add     x0, x0, :lo12:b_8588
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8589
+    add     x0, x0, :lo12:b_8589
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8590
+    add     x0, x0, :lo12:b_8590
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8591
+    add     x0, x0, :lo12:b_8591
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8592
+    add     x0, x0, :lo12:b_8592
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8593
+    add     x0, x0, :lo12:b_8593
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_813
+.l_829:
+    bl      f_8184
+    mov     x0, #15
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_830
+    bl      f_692
+    adrp    x0, b_8594
+    add     x0, x0, :lo12:b_8594
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8595
+    add     x0, x0, :lo12:b_8595
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8596
+    add     x0, x0, :lo12:b_8596
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8597
+    add     x0, x0, :lo12:b_8597
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_830:
+    bl      f_8184
+    mov     x0, #16
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_831
+    adrp    x0, b_8598
+    add     x0, x0, :lo12:b_8598
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8599
+    add     x0, x0, :lo12:b_8599
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8600
+    add     x0, x0, :lo12:b_8600
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_813
+.l_831:
+    bl      f_8184
+    mov     x0, #17
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_832
+    adrp    x0, b_8601
+    add     x0, x0, :lo12:b_8601
+    str     x0, [x12, #-8]
+    adrp    x0, b_8602
+    add     x0, x0, :lo12:b_8602
+    str     x0, [x12, #-16]
+    adrp    x0, b_8603
+    add     x0, x0, :lo12:b_8603
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3330
+    b       .l_813
+.l_832:
+    bl      f_8184
+    mov     x0, #18
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_833
+    adrp    x0, b_8604
+    add     x0, x0, :lo12:b_8604
+    str     x0, [x12, #-8]
+    adrp    x0, b_8605
+    add     x0, x0, :lo12:b_8605
+    str     x0, [x12, #-16]
+    adrp    x0, b_8606
+    add     x0, x0, :lo12:b_8606
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3330
+    b       .l_813
+.l_833:
+    bl      f_8184
+    mov     x0, #19
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_834
+    adrp    x0, b_8607
+    add     x0, x0, :lo12:b_8607
+    str     x0, [x12, #-8]
+    adrp    x0, b_8608
+    add     x0, x0, :lo12:b_8608
+    str     x0, [x12, #-16]
+    adrp    x0, b_8609
+    add     x0, x0, :lo12:b_8609
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3330
+    b       .l_813
+.l_834:
+    bl      f_8184
+    mov     x0, #20
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_835
+    adrp    x0, b_8610
+    add     x0, x0, :lo12:b_8610
+    str     x0, [x12, #-8]
+    adrp    x0, b_8611
+    add     x0, x0, :lo12:b_8611
+    str     x0, [x12, #-16]
+    adrp    x0, b_8612
+    add     x0, x0, :lo12:b_8612
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3330
+    b       .l_813
+.l_835:
+    bl      f_8184
+    mov     x0, #21
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_836
+    adrp    x0, b_8613
+    add     x0, x0, :lo12:b_8613
+    str     x0, [x12, #-8]
+    adrp    x0, b_8614
+    add     x0, x0, :lo12:b_8614
+    str     x0, [x12, #-16]
+    adrp    x0, b_8615
+    add     x0, x0, :lo12:b_8615
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3330
+    b       .l_813
+.l_836:
+    bl      f_8184
+    mov     x0, #22
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_837
+    adrp    x0, b_8616
+    add     x0, x0, :lo12:b_8616
+    str     x0, [x12, #-8]
+    adrp    x0, b_8617
+    add     x0, x0, :lo12:b_8617
+    str     x0, [x12, #-16]
+    adrp    x0, b_8618
+    add     x0, x0, :lo12:b_8618
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3330
+    b       .l_813
+.l_837:
+    bl      f_8184
+    mov     x0, #23
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_838
+    adrp    x0, b_8619
+    add     x0, x0, :lo12:b_8619
+    str     x0, [x12, #-8]
+    adrp    x0, b_8620
+    add     x0, x0, :lo12:b_8620
+    str     x0, [x12, #-16]
+    adrp    x0, b_8621
+    add     x0, x0, :lo12:b_8621
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3330
+    b       .l_813
+.l_838:
+    bl      f_8184
+    mov     x0, #24
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_839
+    adrp    x0, b_8622
+    add     x0, x0, :lo12:b_8622
+    str     x0, [x12, #-8]
+    adrp    x0, b_8623
+    add     x0, x0, :lo12:b_8623
+    str     x0, [x12, #-16]
+    adrp    x0, b_8624
+    add     x0, x0, :lo12:b_8624
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3330
+    b       .l_813
+.l_839:
+    bl      f_8184
+    mov     x0, #25
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_840
+    adrp    x0, b_8625
+    add     x0, x0, :lo12:b_8625
+    str     x0, [x12, #-8]
+    adrp    x0, b_8626
+    add     x0, x0, :lo12:b_8626
+    str     x0, [x12, #-16]
+    adrp    x0, b_8627
+    add     x0, x0, :lo12:b_8627
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3330
+    b       .l_813
+.l_840:
+    bl      f_8184
+    mov     x0, #26
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_841
+    adrp    x0, b_8628
+    add     x0, x0, :lo12:b_8628
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8629
+    add     x0, x0, :lo12:b_8629
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8630
+    add     x0, x0, :lo12:b_8630
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8631
+    add     x0, x0, :lo12:b_8631
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_841:
+    bl      f_8184
+    mov     x0, #27
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_842
+    adrp    x0, b_8632
+    add     x0, x0, :lo12:b_8632
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8633
+    add     x0, x0, :lo12:b_8633
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8634
+    add     x0, x0, :lo12:b_8634
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8635
+    add     x0, x0, :lo12:b_8635
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8636
+    add     x0, x0, :lo12:b_8636
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8637
+    add     x0, x0, :lo12:b_8637
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8638
+    add     x0, x0, :lo12:b_8638
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_842:
+    bl      f_8184
+    mov     x0, #28
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_843
+    adrp    x0, b_8639
+    add     x0, x0, :lo12:b_8639
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8640
+    add     x0, x0, :lo12:b_8640
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8641
+    add     x0, x0, :lo12:b_8641
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8642
+    add     x0, x0, :lo12:b_8642
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8643
+    add     x0, x0, :lo12:b_8643
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8644
+    add     x0, x0, :lo12:b_8644
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8645
+    add     x0, x0, :lo12:b_8645
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_843:
+    bl      f_8184
+    mov     x0, #29
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_844
+    adrp    x0, b_8646
+    add     x0, x0, :lo12:b_8646
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8647
+    add     x0, x0, :lo12:b_8647
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8648
+    add     x0, x0, :lo12:b_8648
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8649
+    add     x0, x0, :lo12:b_8649
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8650
+    add     x0, x0, :lo12:b_8650
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8651
+    add     x0, x0, :lo12:b_8651
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8652
+    add     x0, x0, :lo12:b_8652
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_844:
+    bl      f_8184
+    mov     x0, #30
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_845
+    adrp    x0, b_8653
+    add     x0, x0, :lo12:b_8653
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8654
+    add     x0, x0, :lo12:b_8654
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8655
+    add     x0, x0, :lo12:b_8655
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8656
+    add     x0, x0, :lo12:b_8656
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8657
+    add     x0, x0, :lo12:b_8657
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8658
+    add     x0, x0, :lo12:b_8658
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    adrp    x0, b_8659
+    add     x0, x0, :lo12:b_8659
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_813
+.l_845:
+    bl      f_8184
+    mov     x0, #31
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_846
+    bl      f_692
+    bl      f_798
+    adrp    x0, b_8660
+    add     x0, x0, :lo12:b_8660
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8661
+    add     x0, x0, :lo12:b_8661
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_813
+.l_846:
+    bl      f_8184
+    mov     x0, #32
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_847
+    bl      f_692
+    bl      f_798
+    adrp    x0, b_8662
+    add     x0, x0, :lo12:b_8662
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8663
+    add     x0, x0, :lo12:b_8663
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8664
+    add     x0, x0, :lo12:b_8664
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_813
+.l_847:
+    bl      f_8184
+    mov     x0, #33
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_848
+    adrp    x0, b_8665
+    add     x0, x0, :lo12:b_8665
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8666
+    add     x0, x0, :lo12:b_8666
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_798
+    adrp    x0, b_8667
+    add     x0, x0, :lo12:b_8667
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8668
+    add     x0, x0, :lo12:b_8668
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8669
+    add     x0, x0, :lo12:b_8669
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_813
+.l_848:
+    adrp    x0, b_8670
+    add     x0, x0, :lo12:b_8670
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6317
+    bl      f_8184
+    bl      f_7036
+    adrp    x0, b_8671
+    add     x0, x0, :lo12:b_8671
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6317
+    mov     x0, #1
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_813:
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_2504:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x8, [x12]
+    ldr     x5, [x12, #8]
+    ldr     x4, [x12, #16]
+    ldr     x3, [x12, #24]
+    ldr     x2, [x12, #32]
+    ldr     x1, [x12, #40]
+    ldr     x0, [x12, #48]
+    svc     #0
+    str     x0, [x12, #48]
+    add     x12, x12, 48
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
 f_2520:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_9490
-    add     x0, x0, :lo12:b_9490
+    adrp    x0, b_9303
+    add     x0, x0, :lo12:b_9303
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9491
-    add     x0, x0, :lo12:b_9491
+    adrp    x0, b_9304
+    add     x0, x0, :lo12:b_9304
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9492
-    add     x0, x0, :lo12:b_9492
+    adrp    x0, b_9305
+    add     x0, x0, :lo12:b_9305
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_1103
-    adrp    x0, b_9493
-    add     x0, x0, :lo12:b_9493
+    adrp    x0, b_9306
+    add     x0, x0, :lo12:b_9306
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6412
-    adrp    x0, b_9494
-    add     x0, x0, :lo12:b_9494
+    adrp    x0, b_9307
+    add     x0, x0, :lo12:b_9307
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9495
-    add     x0, x0, :lo12:b_9495
+    adrp    x0, b_9308
+    add     x0, x0, :lo12:b_9308
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9496
-    add     x0, x0, :lo12:b_9496
+    adrp    x0, b_9309
+    add     x0, x0, :lo12:b_9309
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9497
-    add     x0, x0, :lo12:b_9497
+    adrp    x0, b_9310
+    add     x0, x0, :lo12:b_9310
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -6905,38 +7571,36 @@ f_2520:
     movk    x0, #1, lsl 16
     str     x0, [x12, #-8]
     mov     x0, #4096
-    mov     x1, x0
-    ldr     x0, [x12, #-8]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_675
+    bl      f_6973
     bl      f_3176
-    adrp    x0, b_9498
-    add     x0, x0, :lo12:b_9498
+    adrp    x0, b_9311
+    add     x0, x0, :lo12:b_9311
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9499
-    add     x0, x0, :lo12:b_9499
+    adrp    x0, b_9312
+    add     x0, x0, :lo12:b_9312
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9500
-    add     x0, x0, :lo12:b_9500
+    adrp    x0, b_9313
+    add     x0, x0, :lo12:b_9313
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_360
-    adrp    x0, b_9501
-    add     x0, x0, :lo12:b_9501
+    bl      f_358
+    adrp    x0, b_9314
+    add     x0, x0, :lo12:b_9314
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9502
-    add     x0, x0, :lo12:b_9502
+    adrp    x0, b_9315
+    add     x0, x0, :lo12:b_9315
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_360
+    bl      f_358
     adrp    x0, b_1627
     add     x0, x0, :lo12:b_1627
     str     x0, [x12, #-8]
@@ -6946,25 +7610,25 @@ f_2520:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_1042
-    adrp    x0, b_9503
-    add     x0, x0, :lo12:b_9503
+    adrp    x0, b_9316
+    add     x0, x0, :lo12:b_9316
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_1156:
+.l_1028:
     bl      f_7285
     mov     x0, #8191
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 8
-    cbz     x0, .l_1157
+    cbz     x0, .l_1029
     bl      f_7285
     bl      f_7285
-    bl      f_1353
+    bl      f_1351
     bl      f_7804
     adrp    x0, b_2010
     add     x0, x0, :lo12:b_2010
@@ -6976,46 +7640,46 @@ f_2520:
     mov     x0, #40
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_5070
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_1159
+    cbz     x0, .l_1031
     bl      f_7285
-    bl      f_3707
-    b       .l_1158
-.l_1159:
-.l_1158:
+    bl      f_3705
+    b       .l_1030
+.l_1031:
+.l_1030:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_1156
-.l_1157:
-    add     x12, x12, 8
-    bl      f_3274
-    adrp    x0, b_9504
-    add     x0, x0, :lo12:b_9504
+    b       .l_1028
+.l_1029:
+    bl      f_6973
+    bl      f_3271
+    adrp    x0, b_9317
+    add     x0, x0, :lo12:b_9317
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_1160:
+.l_1032:
     bl      f_7285
     mov     x0, #8191
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 8
-    cbz     x0, .l_1161
+    cbz     x0, .l_1033
     bl      f_7285
     bl      f_7285
-    bl      f_1353
+    bl      f_1351
     bl      f_7804
     adrp    x0, b_2010
     add     x0, x0, :lo12:b_2010
@@ -7027,36 +7691,38 @@ f_2520:
     mov     x0, #40
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6709
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_1163
+    cbz     x0, .l_1035
     bl      f_7285
-    bl      f_4742
-    b       .l_1162
-.l_1163:
-.l_1162:
+    bl      f_4740
+    b       .l_1034
+.l_1035:
+.l_1034:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_1160
-.l_1161:
-    adrp    x0, b_9505
-    add     x0, x0, :lo12:b_9505
-    str     x0, [x12]
+    b       .l_1032
+.l_1033:
+    bl      f_6973
+    adrp    x0, b_9318
+    add     x0, x0, :lo12:b_9318
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6962
     movz    x0, #0
     movk    x0, #1, lsl 16
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3176
-    adrp    x0, b_9506
-    add     x0, x0, :lo12:b_9506
+    adrp    x0, b_9319
+    add     x0, x0, :lo12:b_9319
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -7080,13 +7746,13 @@ f_2539:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1126
-    adrp    x0, b_9459
-    add     x0, x0, :lo12:b_9459
+    cbz     x0, .l_998
+    adrp    x0, b_9272
+    add     x0, x0, :lo12:b_9272
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_1125
-.l_1126:
+    b       .l_997
+.l_998:
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7096,13 +7762,13 @@ f_2539:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1127
-    adrp    x0, b_9460
-    add     x0, x0, :lo12:b_9460
+    cbz     x0, .l_999
+    adrp    x0, b_9273
+    add     x0, x0, :lo12:b_9273
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_1125
-.l_1127:
+    b       .l_997
+.l_999:
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7112,13 +7778,13 @@ f_2539:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1128
-    adrp    x0, b_9461
-    add     x0, x0, :lo12:b_9461
+    cbz     x0, .l_1000
+    adrp    x0, b_9274
+    add     x0, x0, :lo12:b_9274
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_1125
-.l_1128:
+    b       .l_997
+.l_1000:
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7128,13 +7794,13 @@ f_2539:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1129
-    adrp    x0, b_9462
-    add     x0, x0, :lo12:b_9462
+    cbz     x0, .l_1001
+    adrp    x0, b_9275
+    add     x0, x0, :lo12:b_9275
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_1125
-.l_1129:
+    b       .l_997
+.l_1001:
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7144,13 +7810,13 @@ f_2539:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1130
-    adrp    x0, b_9463
-    add     x0, x0, :lo12:b_9463
+    cbz     x0, .l_1002
+    adrp    x0, b_9276
+    add     x0, x0, :lo12:b_9276
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_1125
-.l_1130:
+    b       .l_997
+.l_1002:
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7160,13 +7826,13 @@ f_2539:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1131
-    adrp    x0, b_9464
-    add     x0, x0, :lo12:b_9464
+    cbz     x0, .l_1003
+    adrp    x0, b_9277
+    add     x0, x0, :lo12:b_9277
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_1125
-.l_1131:
+    b       .l_997
+.l_1003:
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7176,13 +7842,13 @@ f_2539:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1132
-    adrp    x0, b_9465
-    add     x0, x0, :lo12:b_9465
+    cbz     x0, .l_1004
+    adrp    x0, b_9278
+    add     x0, x0, :lo12:b_9278
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_1125
-.l_1132:
+    b       .l_997
+.l_1004:
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7192,13 +7858,13 @@ f_2539:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1133
-    adrp    x0, b_9466
-    add     x0, x0, :lo12:b_9466
+    cbz     x0, .l_1005
+    adrp    x0, b_9279
+    add     x0, x0, :lo12:b_9279
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_1125
-.l_1133:
+    b       .l_997
+.l_1005:
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7208,13 +7874,13 @@ f_2539:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1134
-    adrp    x0, b_9467
-    add     x0, x0, :lo12:b_9467
+    cbz     x0, .l_1006
+    adrp    x0, b_9280
+    add     x0, x0, :lo12:b_9280
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_1125
-.l_1134:
+    b       .l_997
+.l_1006:
     sub     x0, x29, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7223,7 +7889,7 @@ f_2539:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-.l_1125:
+.l_997:
     bl      f_6962
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -7238,11 +7904,7 @@ f_2550:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
-    str     x0, [x12]
+    bl      f_2382
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -7303,7 +7965,7 @@ f_2603:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_576
+    cbz     x0, .l_530
     bl      f_7285
     bl      f_7058
     bl      f_2175
@@ -7329,8 +7991,8 @@ f_2603:
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_578
-    add     x12, x12, 8
+    cbz     x0, .l_532
+    bl      f_6973
     bl      f_6138
     adrp    x0, b_8376
     add     x0, x0, :lo12:b_8376
@@ -7338,11 +8000,12 @@ f_2603:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_577
-.l_578:
-.l_577:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_531
+.l_532:
+.l_531:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -7357,23 +8020,23 @@ f_2603:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3552
-    b       .l_575
-.l_576:
-.l_575:
+    b       .l_529
+.l_530:
+.l_529:
     sub     x0, x29, #9
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_580
+    cbz     x0, .l_534
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_579
-.l_580:
-.l_579:
+    b       .l_533
+.l_534:
+.l_533:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -7384,17 +8047,14 @@ f_2603:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    bl      f_7702
     bl      f_4051
     bl      f_7285
     sub     x0, x29, #17
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_581:
+.l_535:
     bl      f_2175
     mov     x0, #15
     ldr     x1, [x12]
@@ -7405,12 +8065,12 @@ f_2603:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_582
+    cbz     x0, .l_536
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_584
+    cbz     x0, .l_538
     sub     x0, x29, #17
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -7438,16 +8098,17 @@ f_2603:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_583
-.l_584:
-.l_583:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_537
+.l_538:
+.l_537:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_581
-.l_582:
+    b       .l_535
+.l_536:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -7458,19 +8119,16 @@ f_2603:
     mov     x0, #31
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     bl      f_7285
     sub     x0, x29, #17
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_585:
+.l_539:
     bl      f_2175
     mov     x0, #15
     ldr     x1, [x12]
@@ -7481,12 +8139,12 @@ f_2603:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_586
+    cbz     x0, .l_540
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_588
+    cbz     x0, .l_542
     sub     x0, x29, #17
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -7514,16 +8172,17 @@ f_2603:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_587
-.l_588:
-.l_587:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_541
+.l_542:
+.l_541:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_585
-.l_586:
+    b       .l_539
+.l_540:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -7537,9 +8196,9 @@ f_2603:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_590
+    cbz     x0, .l_544
     bl      f_7285
-.l_591:
+.l_545:
     bl      f_2175
     mov     x0, #28
     ldr     x1, [x12]
@@ -7550,12 +8209,12 @@ f_2603:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_592
+    cbz     x0, .l_546
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_594
+    cbz     x0, .l_548
     bl      f_7804
     bl      f_6138
     adrp    x0, b_8383
@@ -7580,47 +8239,48 @@ f_2603:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_593
-.l_594:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_547
+.l_548:
     bl      f_2175
     mov     x0, #27
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_595
+    cbz     x0, .l_549
     bl      f_7058
-    b       .l_593
-.l_595:
+    b       .l_547
+.l_549:
     bl      f_2175
     mov     x0, #29
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_596
+    cbz     x0, .l_550
     bl      f_4957
-    b       .l_593
-.l_596:
+    b       .l_547
+.l_550:
     bl      f_2175
     mov     x0, #31
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_597
+    cbz     x0, .l_551
     bl      f_1050
-    b       .l_593
-.l_597:
+    b       .l_547
+.l_551:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-.l_593:
-    b       .l_591
-.l_592:
+.l_547:
+    b       .l_545
+.l_546:
     bl      f_3910
     mov     x0, #25
     ldr     x1, [x12]
@@ -7630,10 +8290,10 @@ f_2603:
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_589
-.l_590:
+    b       .l_543
+.l_544:
     bl      f_7285
-.l_598:
+.l_552:
     bl      f_2175
     mov     x0, #29
     ldr     x1, [x12]
@@ -7644,12 +8304,12 @@ f_2603:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_599
+    cbz     x0, .l_553
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_601
+    cbz     x0, .l_555
     bl      f_7804
     bl      f_6138
     adrp    x0, b_8386
@@ -7674,53 +8334,54 @@ f_2603:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_600
-.l_601:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_554
+.l_555:
     bl      f_2175
     mov     x0, #27
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_602
+    cbz     x0, .l_556
     bl      f_7058
-    b       .l_600
-.l_602:
+    b       .l_554
+.l_556:
     bl      f_2175
     mov     x0, #29
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_603
+    cbz     x0, .l_557
     bl      f_4957
-    b       .l_600
-.l_603:
+    b       .l_554
+.l_557:
     bl      f_2175
     mov     x0, #31
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_604
+    cbz     x0, .l_558
     bl      f_1050
-    b       .l_600
-.l_604:
+    b       .l_554
+.l_558:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-.l_600:
-    b       .l_598
-.l_599:
+.l_554:
+    b       .l_552
+.l_553:
     bl      f_3910
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-.l_589:
+.l_543:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -7731,19 +8392,16 @@ f_2603:
     mov     x0, #33
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     bl      f_7285
     sub     x0, x29, #25
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_605:
+.l_559:
     bl      f_2175
     mov     x0, #30
     ldr     x1, [x12]
@@ -7754,12 +8412,12 @@ f_2603:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_606
+    cbz     x0, .l_560
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_608
+    cbz     x0, .l_562
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -7787,16 +8445,17 @@ f_2603:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_607
-.l_608:
-.l_607:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_561
+.l_562:
+.l_561:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_605
-.l_606:
+    b       .l_559
+.l_560:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -7811,13 +8470,13 @@ f_2603:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_610
+    cbz     x0, .l_564
     bl      f_7285
     sub     x0, x29, #25
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_611:
+.l_565:
     bl      f_2175
     mov     x0, #28
     ldr     x1, [x12]
@@ -7828,12 +8487,12 @@ f_2603:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_612
+    cbz     x0, .l_566
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_614
+    cbz     x0, .l_568
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -7861,28 +8520,29 @@ f_2603:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_613
-.l_614:
-.l_613:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_567
+.l_568:
+.l_567:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_611
-.l_612:
+    b       .l_565
+.l_566:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_609
-.l_610:
+    b       .l_563
+.l_564:
     bl      f_7285
     sub     x0, x29, #25
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_615:
+.l_569:
     bl      f_2175
     mov     x0, #29
     ldr     x1, [x12]
@@ -7893,12 +8553,12 @@ f_2603:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_616
+    cbz     x0, .l_570
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_618
+    cbz     x0, .l_572
     sub     x0, x29, #25
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -7926,22 +8586,23 @@ f_2603:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_617
-.l_618:
-.l_617:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_571
+.l_572:
+.l_571:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_615
-.l_616:
+    b       .l_569
+.l_570:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-.l_609:
-    add     x12, x12, 8
+.l_563:
+    bl      f_6973
     bl      f_7804
     adrp    x0, b_3547
     add     x0, x0, :lo12:b_3547
@@ -7955,12 +8616,9 @@ f_2603:
     mov     x0, #32
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     sub     x0, x29, #8
     ldr     x0, [x0]
@@ -7972,20 +8630,19 @@ f_2603:
     mov     x0, #31
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_619:
-    cmp     x0, x12
-    beq     .rbl_619
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_619
-    .rbl_619:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_2606:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x0, [x12]
+    ldr     x0, [x0]
+    str     x0, [x12]
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -8000,40 +8657,30 @@ f_2654:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    bl      f_7702
     adrp    x0, b_8159
     add     x0, x0, :lo12:b_8159
-    str     x0, [x12, #8]
+    str     x0, [x12, #-8]
     mov     x0, #0
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #8]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     mov     x0, #1
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12]
     sub 	x0, x1, x0
-    str     x0, [x12, #8]
-    mov     x0, #8191
-    ldr     x1, [x12, #8]
-    add 	x0, x1, x0
-    str     x0, [x12, #8]
-    mov     x0, #11
     str     x0, [x12]
+    mov     x0, #8191
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     x0, #11
+    str     x0, [x12, #-8]
     mov     x0, #3
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_421:
-    cmp     x0, x12
-    beq     .rbl_421
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_421
-    .rbl_421:
-    str     x1, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -8060,7 +8707,7 @@ f_2695:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_771
+    cbz     x0, .l_720
     bl      f_6138
     adrp    x0, b_8478
     add     x0, x0, :lo12:b_8478
@@ -8068,15 +8715,16 @@ f_2695:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_770
-.l_771:
-.l_770:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_719
+.l_720:
+.l_719:
     bl      f_7804
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_773
+    cbz     x0, .l_722
     bl      f_6138
     adrp    x0, b_8479
     add     x0, x0, :lo12:b_8479
@@ -8091,11 +8739,12 @@ f_2695:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_772
-.l_773:
-.l_772:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_721
+.l_722:
+.l_721:
     adrp    x0, b_5800
     add     x0, x0, :lo12:b_5800
     str     x0, [x12, #-8]
@@ -8103,12 +8752,12 @@ f_2695:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_775
+    cbz     x0, .l_724
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_774
-.l_775:
+    b       .l_723
+.l_724:
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
     str     x0, [x12, #-8]
@@ -8116,10 +8765,8 @@ f_2695:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-.l_774:
+    bl      f_2606
+.l_723:
     sub     x0, x29, #8
     ldr     x1, [x12]
     str     x1, [x0]
@@ -8160,7 +8807,7 @@ f_2695:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_777
+    cbz     x0, .l_726
     bl      f_6138
     adrp    x0, b_8481
     add     x0, x0, :lo12:b_8481
@@ -8168,11 +8815,12 @@ f_2695:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_776
-.l_777:
-.l_776:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_725
+.l_726:
+.l_725:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -8182,7 +8830,7 @@ f_2695:
     sub     x0, x29, #32
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-.l_778:
+.l_727:
     bl      f_2175
     mov     x0, #30
     ldr     x1, [x12]
@@ -8193,7 +8841,7 @@ f_2695:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_779
+    cbz     x0, .l_728
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x0, x29, #48
@@ -8208,7 +8856,7 @@ f_2695:
     bl      f_4466
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_781
+    cbz     x0, .l_730
     bl      f_1023
     sub     x0, x29, #40
     ldr     x1, [x12]
@@ -8220,22 +8868,22 @@ f_2695:
     ldr     x1, [x12, #16]
     str     x1, [x0]
     add     x12, x12, 24
-    b       .l_780
-.l_781:
+    b       .l_729
+.l_730:
     bl      f_2175
     mov     x0, #31
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_782
+    cbz     x0, .l_731
     bl      f_5600
     sub     x0, x29, #40
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-    b       .l_780
-.l_782:
+    b       .l_729
+.l_731:
     bl      f_6138
     adrp    x0, b_8482
     add     x0, x0, :lo12:b_8482
@@ -8243,9 +8891,10 @@ f_2695:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_780:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_729:
     sub     x0, x29, #40
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -8265,8 +8914,8 @@ f_2695:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_784
-    add     x12, x12, 8
+    cbz     x0, .l_733
+    bl      f_6973
     bl      f_6138
     adrp    x0, b_8483
     add     x0, x0, :lo12:b_8483
@@ -8284,42 +8933,45 @@ f_2695:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_783
-.l_784:
-.l_783:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_732
+.l_733:
+.l_732:
     bl      f_6426
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     sub     x0, x29, #24
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_785:
+.l_734:
     bl      f_7285
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_2606
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_786
+    cbz     x0, .l_735
     bl      f_6426
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_788
-    add     x12, x12, 8
+    cbz     x0, .l_737
+    bl      f_6973
     bl      f_3910
     bl      f_7804
     bl      f_6138
@@ -8346,56 +8998,57 @@ f_2695:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_787
-.l_788:
-.l_787:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_736
+.l_737:
+.l_736:
     mov     x0, #32
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_785
-.l_786:
+    b       .l_734
+.l_735:
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x0, x29, #32
-    ldr     x0, [x0]
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    sub     x0, x29, #32
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
-    adrp    x0, b_7863
-    add     x0, x0, :lo12:b_7863
-    str     x0, [x12]
-    mov     x0, #32
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
+    sub     x0, x29, #32
+    ldr     x0, [x0]
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    sub     x0, x29, #32
+    ldr     x1, [x12]
+    str     x1, [x0]
+    add     x12, x12, 8
+    bl      f_6973
+    adrp    x0, b_7863
+    add     x0, x0, :lo12:b_7863
+    str     x0, [x12, #-8]
+    mov     x0, #32
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
     bl      f_1729
     bl      f_7804
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     bl      f_7804
     bl      f_6426
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #48
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #16
     ldr     x1, [x12]
@@ -8404,12 +9057,12 @@ f_2695:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #56
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     mov     x0, #16
     ldr     x1, [x12]
@@ -8418,15 +9071,14 @@ f_2695:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #25
-    ldr     x1, [x12, #16]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #16]
-    add     x12, x12, 16
-    b       .l_778
-.l_779:
+    str     x0, [x12]
+    b       .l_727
+.l_728:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -8443,20 +9095,20 @@ f_2695:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #8]
+    str     x0, [x12, #-8]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12]
+    str     x0, [x12, #-16]
     adrp    x0, b_2375
     add     x0, x0, :lo12:b_2375
-    str     x0, [x12, #-8]
+    str     x0, [x12, #-24]
     mov     x0, #32
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
+    str     x0, [x12, #-32]
+    sub     x12, x12, 32
     bl      f_728
     sub     x0, x29, #16
     ldr     x0, [x0]
@@ -8470,12 +9122,12 @@ f_2695:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
@@ -8484,29 +9136,28 @@ f_2695:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #32
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     mov     x0, #24
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -8646,8 +9297,9 @@ f_2739:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
 .l_99:
     b       .l_97
 .l_98:
@@ -8673,7 +9325,7 @@ f_2751:
     bl      f_3887
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_727
+    cbz     x0, .l_677
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -8681,9 +9333,11 @@ f_2751:
     bl      f_6426
     bl      f_7804
     bl      f_4662
+    bl      f_6973
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6176
     adrp    x0, b_8441
     add     x0, x0, :lo12:b_8441
@@ -8693,7 +9347,7 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_729
+    cbz     x0, .l_679
     adrp    x0, b_8442
     add     x0, x0, :lo12:b_8442
     str     x0, [x12, #-8]
@@ -8704,27 +9358,21 @@ f_2751:
     mov     x0, #30
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #7
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_728
-.l_729:
+    b       .l_678
+.l_679:
     bl      f_6176
     adrp    x0, b_8443
     add     x0, x0, :lo12:b_8443
@@ -8734,7 +9382,7 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_730
+    cbz     x0, .l_680
     adrp    x0, b_8444
     add     x0, x0, :lo12:b_8444
     str     x0, [x12, #-8]
@@ -8745,20 +9393,17 @@ f_2751:
     mov     x0, #30
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     adrp    x0, b_8445
     add     x0, x0, :lo12:b_8445
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2020
-    b       .l_728
-.l_730:
+    b       .l_678
+.l_680:
     bl      f_6176
     adrp    x0, b_8446
     add     x0, x0, :lo12:b_8446
@@ -8768,21 +9413,18 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_731
+    cbz     x0, .l_681
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #17
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_728
-.l_731:
+    b       .l_678
+.l_681:
     bl      f_6176
     adrp    x0, b_8447
     add     x0, x0, :lo12:b_8447
@@ -8792,7 +9434,7 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_732
+    cbz     x0, .l_682
     adrp    x0, b_8448
     add     x0, x0, :lo12:b_8448
     str     x0, [x12, #-8]
@@ -8803,15 +9445,12 @@ f_2751:
     mov     x0, #18
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_728
-.l_732:
+    b       .l_678
+.l_682:
     bl      f_6176
     adrp    x0, b_8449
     add     x0, x0, :lo12:b_8449
@@ -8821,21 +9460,18 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_733
+    cbz     x0, .l_683
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #19
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_728
-.l_733:
+    b       .l_678
+.l_683:
     bl      f_6176
     adrp    x0, b_8450
     add     x0, x0, :lo12:b_8450
@@ -8845,21 +9481,18 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_734
+    cbz     x0, .l_684
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #20
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_728
-.l_734:
+    b       .l_678
+.l_684:
     bl      f_6176
     adrp    x0, b_8451
     add     x0, x0, :lo12:b_8451
@@ -8869,21 +9502,18 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_735
+    cbz     x0, .l_685
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #21
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_728
-.l_735:
+    b       .l_678
+.l_685:
     bl      f_6176
     adrp    x0, b_8452
     add     x0, x0, :lo12:b_8452
@@ -8893,21 +9523,18 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_736
+    cbz     x0, .l_686
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #22
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_728
-.l_736:
+    b       .l_678
+.l_686:
     bl      f_6176
     adrp    x0, b_8453
     add     x0, x0, :lo12:b_8453
@@ -8917,7 +9544,7 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_737
+    cbz     x0, .l_687
     adrp    x0, b_8454
     add     x0, x0, :lo12:b_8454
     str     x0, [x12, #-8]
@@ -8928,15 +9555,12 @@ f_2751:
     mov     x0, #23
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_728
-.l_737:
+    b       .l_678
+.l_687:
     bl      f_6176
     adrp    x0, b_8455
     add     x0, x0, :lo12:b_8455
@@ -8946,7 +9570,7 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_738
+    cbz     x0, .l_688
     adrp    x0, b_8456
     add     x0, x0, :lo12:b_8456
     str     x0, [x12, #-8]
@@ -8957,15 +9581,12 @@ f_2751:
     mov     x0, #24
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_728
-.l_738:
+    b       .l_678
+.l_688:
     bl      f_6176
     adrp    x0, b_8457
     add     x0, x0, :lo12:b_8457
@@ -8975,7 +9596,7 @@ f_2751:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_739
+    cbz     x0, .l_689
     adrp    x0, b_8458
     add     x0, x0, :lo12:b_8458
     str     x0, [x12, #-8]
@@ -8986,15 +9607,12 @@ f_2751:
     mov     x0, #25
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_728
-.l_739:
+    b       .l_678
+.l_689:
     bl      f_6138
     adrp    x0, b_8459
     add     x0, x0, :lo12:b_8459
@@ -9009,12 +9627,13 @@ f_2751:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_728:
-    b       .l_726
-.l_727:
-.l_726:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_678:
+    b       .l_676
+.l_677:
+.l_676:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -9036,28 +9655,18 @@ f_2751:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_741
+    cbz     x0, .l_691
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #12
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_742:
-    cmp     x0, x12
-    beq     .rbl_742
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_742
-    .rbl_742:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
-    b       .l_740
-.l_741:
+    b       .l_690
+.l_691:
     sub     x0, x29, #24
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -9065,15 +9674,15 @@ f_2751:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, eq
-    cbz     x0, .l_743
+    cbz     x0, .l_692
     adrp    x0, b_8461
     add     x0, x0, :lo12:b_8461
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2020
     bl      f_3910
-    b       .l_740
-.l_743:
+    b       .l_690
+.l_692:
     bl      f_6138
     adrp    x0, b_8462
     add     x0, x0, :lo12:b_8462
@@ -9101,9 +9710,10 @@ f_2751:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_740:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_690:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -9125,7 +9735,7 @@ f_2870:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_627
+    cbz     x0, .l_578
     bl      f_6138
     adrp    x0, b_8400
     add     x0, x0, :lo12:b_8400
@@ -9133,15 +9743,16 @@ f_2870:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_626
-.l_627:
-.l_626:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_577
+.l_578:
+.l_577:
     bl      f_7804
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_629
+    cbz     x0, .l_580
     bl      f_6138
     adrp    x0, b_8401
     add     x0, x0, :lo12:b_8401
@@ -9156,11 +9767,12 @@ f_2870:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_628
-.l_629:
-.l_628:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_579
+.l_580:
+.l_579:
     adrp    x0, b_5800
     add     x0, x0, :lo12:b_5800
     str     x0, [x12, #-8]
@@ -9168,12 +9780,12 @@ f_2870:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_631
+    cbz     x0, .l_582
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_630
-.l_631:
+    b       .l_581
+.l_582:
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
     str     x0, [x12, #-8]
@@ -9181,10 +9793,8 @@ f_2870:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-.l_630:
+    bl      f_2606
+.l_581:
     sub     x0, x29, #8
     ldr     x1, [x12]
     str     x1, [x0]
@@ -9221,9 +9831,11 @@ f_2870:
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_2606
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_633
+    cbz     x0, .l_584
     bl      f_6138
     adrp    x0, b_8403
     add     x0, x0, :lo12:b_8403
@@ -9241,11 +9853,12 @@ f_2870:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_632
-.l_633:
-.l_632:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_583
+.l_584:
+.l_583:
     bl      f_2175
     mov     x0, #29
     ldr     x1, [x12]
@@ -9256,7 +9869,7 @@ f_2870:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_635
+    cbz     x0, .l_586
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -9282,12 +9895,12 @@ f_2870:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     mov     x0, #0
     ldr     x1, [x12]
@@ -9296,15 +9909,14 @@ f_2870:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_634
-.l_635:
-.l_634:
+    b       .l_585
+.l_586:
+.l_585:
     adrp    x0, b_7064
     add     x0, x0, :lo12:b_7064
     str     x0, [x12, #-8]
@@ -9340,12 +9952,12 @@ f_2870:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
@@ -9354,23 +9966,22 @@ f_2870:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #25
-    ldr     x1, [x12, #16]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #16]
-    add     x12, x12, 16
+    str     x0, [x12]
     bl      f_2556
     mov     x0, #0
     str     x0, [x12, #-8]
@@ -9382,7 +9993,7 @@ f_2870:
     sub     x12, x12, 24
     bl      f_934
     bl      f_4051
-.l_636:
+.l_587:
     bl      f_2175
     mov     x0, #30
     ldr     x1, [x12]
@@ -9393,15 +10004,15 @@ f_2870:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_637
+    cbz     x0, .l_588
     adrp    x0, b_7064
     add     x0, x0, :lo12:b_7064
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_7804
     bl      f_6380
-    b       .l_636
-.l_637:
+    b       .l_587
+.l_588:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -9427,7 +10038,7 @@ f_2870:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_639
+    cbz     x0, .l_590
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #5
@@ -9437,9 +10048,9 @@ f_2870:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_934
-    b       .l_638
-.l_639:
-.l_638:
+    b       .l_589
+.l_590:
+.l_589:
     adrp    x0, b_8405
     add     x0, x0, :lo12:b_8405
     str     x0, [x12, #-8]
@@ -9447,7 +10058,7 @@ f_2870:
     bl      f_2550
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_641
+    cbz     x0, .l_592
     mov     x0, #16
     str     x0, [x12, #-8]
     adrp    x0, b_1210
@@ -9459,25 +10070,17 @@ f_2870:
     add 	x0, x1, x0
     str     x0, [x12, #-16]
     mov     x0, #16
-    mov     x1, x0
-    ldr     x0, [x12, #-16]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12, #-16]
-    str     x3, [x12, #-24]
+    str     x0, [x12, #-24]
     sub     x12, x12, 24
+    bl      f_675
     bl      f_3910
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
     sub 	x0, x1, x0
     str     x0, [x12, #8]
     mov     x0, #16
-    mov     x1, x0
-    ldr     x0, [x12, #8]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12, #8]
-    str     x3, [x12]
+    str     x0, [x12]
+    bl      f_675
     bl      f_3910
     adrp    x0, b_1210
     add     x0, x0, :lo12:b_1210
@@ -9490,14 +10093,14 @@ f_2870:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-    b       .l_640
-.l_641:
-.l_640:
+    b       .l_591
+.l_592:
+.l_591:
     bl      f_3073
     adrp    x0, b_1210
     add     x0, x0, :lo12:b_1210
     ldr     x0, [x0]
-    cbz     x0, .l_643
+    cbz     x0, .l_594
     adrp    x0, b_1210
     add     x0, x0, :lo12:b_1210
     ldr     x0, [x0]
@@ -9508,10 +10111,11 @@ f_2870:
     mov     x0, #1
     ldr     x1, [x12, #-16]
     add 	x0, x1, x0
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
-    b       .l_642
-.l_643:
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7702
+    b       .l_593
+.l_594:
     mov     x0, #1
     str     x0, [x12, #-8]
     sub     x0, x29, #24
@@ -9523,7 +10127,7 @@ f_2870:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-.l_642:
+.l_593:
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #0
@@ -9533,6 +10137,16 @@ f_2870:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_934
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_2890:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x0, [x12]
+    mov     x8, #57
+    svc     #0
+    str     x0, [x12]
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -9553,7 +10167,7 @@ f_2930:
     cset    w0, eq
     add     x12, x12, 16
     cbz     x0, .l_51
-    add     x12, x12, 8
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -9568,9 +10182,12 @@ f_2930:
     bl      f_7804
     b       .l_48
 .l_49:
+    bl      f_6973
+    bl      f_6973
+    bl      f_6973
     mov     x0, #0
-    str     x0, [x12, #16]
-    add     x12, x12, 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -9581,8 +10198,8 @@ f_2950:
     mov     x0, #17
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -9726,22 +10343,23 @@ f_3028:
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_150
-    mov     x0, #0
-    str     x0, [x12]
+    bl      f_6973
     mov     x0, #0
     str     x0, [x12, #-8]
+    mov     x0, #0
+    str     x0, [x12, #-16]
     adrp    x0, b_4722
     add     x0, x0, :lo12:b_4722
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-24]
     adrp    x0, b_1082
     add     x0, x0, :lo12:b_1082
     ldr     x0, [x0]
-    str     x0, [x12, #-24]
+    str     x0, [x12, #-32]
     adrp    x0, b_2158
     add     x0, x0, :lo12:b_2158
-    str     x0, [x12, #-32]
-    sub     x12, x12, 32
+    str     x0, [x12, #-40]
+    sub     x12, x12, 40
     bl      f_5120
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -10436,22 +11054,23 @@ f_3028:
 .l_149:
     b       .l_143
 .l_144:
-    mov     x0, #0
-    str     x0, [x12]
+    bl      f_6973
     mov     x0, #0
     str     x0, [x12, #-8]
+    mov     x0, #0
+    str     x0, [x12, #-16]
     adrp    x0, b_4722
     add     x0, x0, :lo12:b_4722
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-24]
     adrp    x0, b_1082
     add     x0, x0, :lo12:b_1082
     ldr     x0, [x0]
-    str     x0, [x12, #-24]
+    str     x0, [x12, #-32]
     adrp    x0, b_2158
     add     x0, x0, :lo12:b_2158
-    str     x0, [x12, #-32]
-    sub     x12, x12, 32
+    str     x0, [x12, #-40]
+    sub     x12, x12, 40
     bl      f_5120
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -10495,9 +11114,7 @@ f_3073:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     adrp    x0, b_3364
     add     x0, x0, :lo12:b_3364
     ldr     x0, [x0]
@@ -10532,7 +11149,9 @@ f_3123:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_2606
+    ldr     x0, [x12]
     ldr     x1, [x12, #8]
     mul 	x0, x1, x0
     ldr     x1, [x12, #16]
@@ -10573,23 +11192,23 @@ f_3183:
     ldr     x0, [x0]
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_3271:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_8761
-    add     x0, x0, :lo12:b_8761
+    adrp    x0, b_9286
+    add     x0, x0, :lo12:b_9286
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6412
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_925:
+.l_1015:
     bl      f_7285
     adrp    x0, b_8159
     add     x0, x0, :lo12:b_8159
@@ -10597,14 +11216,17 @@ f_3271:
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
-    ldr     x1, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
     cmp     x1, x0
     cset    w0, lt
-    add     x12, x12, 8
-    cbz     x0, .l_926
-    adrp    x0, b_8762
-    add     x0, x0, :lo12:b_8762
+    add     x12, x12, 16
+    cbz     x0, .l_1016
+    adrp    x0, b_9287
+    add     x0, x0, :lo12:b_9287
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -10614,8 +11236,8 @@ f_3271:
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_3176
-    adrp    x0, b_8763
-    add     x0, x0, :lo12:b_8763
+    adrp    x0, b_9288
+    add     x0, x0, :lo12:b_9288
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -10627,80 +11249,15 @@ f_3271:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_7421
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_332
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    b       .l_925
-.l_926:
-    add     x12, x12, 8
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_3272:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_9152
-    add     x0, x0, :lo12:b_9152
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-.l_1030:
-    bl      f_7285
-    adrp    x0, b_8159
-    add     x0, x0, :lo12:b_8159
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
-    add     x12, x12, 8
-    cbz     x0, .l_1031
-    adrp    x0, b_9153
-    add     x0, x0, :lo12:b_9153
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    mov     x0, #8191
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_3176
-    adrp    x0, b_9154
-    add     x0, x0, :lo12:b_9154
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    adrp    x0, b_8159
-    add     x0, x0, :lo12:b_8159
-    str     x0, [x12, #-8]
-    mov     x0, #8
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_7421
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_333
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_1030
-.l_1031:
-    add     x12, x12, 8
+    b       .l_1015
+.l_1016:
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -10737,12 +11294,9 @@ f_3273:
     mov     x0, #31
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     sub     x0, x29, #8
     ldr     x0, [x0]
@@ -10754,17 +11308,14 @@ f_3273:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    bl      f_7702
     bl      f_4051
     bl      f_7285
     sub     x0, x29, #16
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_566:
+.l_521:
     bl      f_2175
     mov     x0, #29
     ldr     x1, [x12]
@@ -10775,12 +11326,12 @@ f_3273:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_567
+    cbz     x0, .l_522
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_569
+    cbz     x0, .l_524
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -10808,16 +11359,17 @@ f_3273:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_568
-.l_569:
-.l_568:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_523
+.l_524:
+.l_523:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_566
-.l_567:
+    b       .l_521
+.l_522:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -10832,19 +11384,16 @@ f_3273:
     mov     x0, #33
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     bl      f_7285
     sub     x0, x29, #16
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_570:
+.l_525:
     bl      f_2175
     mov     x0, #30
     ldr     x1, [x12]
@@ -10855,12 +11404,12 @@ f_3273:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_571
+    cbz     x0, .l_526
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_573
+    cbz     x0, .l_528
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -10888,16 +11437,17 @@ f_3273:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_572
-.l_573:
-.l_572:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_527
+.l_528:
+.l_527:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_570
-.l_571:
+    b       .l_525
+.l_526:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -10914,12 +11464,9 @@ f_3273:
     mov     x0, #32
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     sub     x0, x29, #8
     ldr     x0, [x0]
@@ -10931,83 +11478,10 @@ f_3273:
     mov     x0, #31
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_574:
-    cmp     x0, x12
-    beq     .rbl_574
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_574
-    .rbl_574:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_3274:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_9473
-    add     x0, x0, :lo12:b_9473
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-.l_1143:
-    bl      f_7285
-    adrp    x0, b_8159
-    add     x0, x0, :lo12:b_8159
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
-    add     x12, x12, 8
-    cbz     x0, .l_1144
-    adrp    x0, b_9474
-    add     x0, x0, :lo12:b_9474
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    mov     x0, #8191
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_3176
-    adrp    x0, b_9475
-    add     x0, x0, :lo12:b_9475
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    adrp    x0, b_8159
-    add     x0, x0, :lo12:b_8159
-    str     x0, [x12, #-8]
-    mov     x0, #8
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_7421
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_334
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    b       .l_1143
-.l_1144:
-    add     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -11109,17 +11583,19 @@ f_3289:
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     sub     x0, x29, #24
     ldr     x0, [x0]
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7702
     mov     x0, #0
     str     x0, [x12, #-8]
     adrp    x0, b_5194
@@ -11145,10 +11621,14 @@ f_3289:
     mov     x0, #0
     ldr     x1, [x12, #-16]
     add 	x0, x1, x0
-    ldr     x0, [x0]
-    ldr     x1, [x12, #-8]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_2606
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
     cmp     x1, x0
     cset    w0, lt
+    add     x12, x12, 16
     cbz     x0, .l_272
     sub     x0, x29, #40
     ldr     x0, [x0]
@@ -11160,9 +11640,7 @@ f_3289:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_7421
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     sub     x0, x29, #32
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -11200,151 +11678,99 @@ f_3289:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_3330:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_8520
-    add     x0, x0, :lo12:b_8520
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    bl      f_6412
-    adrp    x0, b_8521
-    add     x0, x0, :lo12:b_8521
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8522
-    add     x0, x0, :lo12:b_8522
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
     adrp    x0, b_8523
     add     x0, x0, :lo12:b_8523
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
+    bl      f_6412
+    bl      f_6412
     adrp    x0, b_8524
     add     x0, x0, :lo12:b_8524
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
+    bl      f_6412
     adrp    x0, b_8525
     add     x0, x0, :lo12:b_8525
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
+    bl      f_3567
     adrp    x0, b_8526
     add     x0, x0, :lo12:b_8526
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_3567
     adrp    x0, b_8527
     add     x0, x0, :lo12:b_8527
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1009
+    bl      f_6962
+    bl      f_6962
+    adrp    x0, b_8528
+    add     x0, x0, :lo12:b_8528
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_6962
+    adrp    x0, b_8529
+    add     x0, x0, :lo12:b_8529
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8530
+    add     x0, x0, :lo12:b_8530
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_3331:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_8809
-    add     x0, x0, :lo12:b_8809
+    adrp    x0, b_9026
+    add     x0, x0, :lo12:b_9026
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6412
     bl      f_6412
-    adrp    x0, b_8810
-    add     x0, x0, :lo12:b_8810
+    adrp    x0, b_9027
+    add     x0, x0, :lo12:b_9027
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6412
-    adrp    x0, b_8811
-    add     x0, x0, :lo12:b_8811
+    adrp    x0, b_9028
+    add     x0, x0, :lo12:b_9028
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    adrp    x0, b_8812
-    add     x0, x0, :lo12:b_8812
+    bl      f_2028
+    adrp    x0, b_9029
+    add     x0, x0, :lo12:b_9029
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    adrp    x0, b_8813
-    add     x0, x0, :lo12:b_8813
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
-    adrp    x0, b_8814
-    add     x0, x0, :lo12:b_8814
+    bl      f_2028
+    adrp    x0, b_9030
+    add     x0, x0, :lo12:b_9030
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_6962
-    adrp    x0, b_8815
-    add     x0, x0, :lo12:b_8815
+    adrp    x0, b_9031
+    add     x0, x0, :lo12:b_9031
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_8816
-    add     x0, x0, :lo12:b_8816
+    adrp    x0, b_9032
+    add     x0, x0, :lo12:b_9032
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_3332:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_9213
-    add     x0, x0, :lo12:b_9213
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    bl      f_6412
-    adrp    x0, b_9214
-    add     x0, x0, :lo12:b_9214
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9215
-    add     x0, x0, :lo12:b_9215
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9216
-    add     x0, x0, :lo12:b_9216
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9217
-    add     x0, x0, :lo12:b_9217
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_6962
-    adrp    x0, b_9218
-    add     x0, x0, :lo12:b_9218
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9219
-    add     x0, x0, :lo12:b_9219
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
+    bl      f_1009
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -11366,9 +11792,7 @@ f_3552:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     mov     x0, #255
     mvn     x0, x0
     ldr     x1, [x12]
@@ -11383,10 +11807,7 @@ f_3552:
     str     x0, [x12, #8]
     add     x12, x12, 8
     bl      f_7804
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -11397,23 +11818,22 @@ f_3562:
     bl      f_7900
     bl      f_7804
     bl      f_5764
-.l_17:
+.l_18:
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    cbz     x0, .l_18
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7210
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_19
     bl      f_6426
     bl      f_2002
     bl      f_6426
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    bl      f_7702
     mov     x0, #1
-    ldr     x1, [x12, #16]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #16]
-    add     x12, x12, 16
+    str     x0, [x12]
     bl      f_5764
     mov     x0, #1
     ldr     x1, [x12]
@@ -11425,466 +11845,101 @@ f_3562:
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_5764
-    b       .l_17
-.l_18:
+    b       .l_18
+.l_19:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_7804
     bl      f_3552
-    add     x12, x12, 16
+    bl      f_6973
+    bl      f_6973
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_3567:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    adrp    x0, b_195
+    add     x0, x0, :lo12:b_195
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_810
+    bl      f_7285
+    adrp    x0, b_195
+    add     x0, x0, :lo12:b_195
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_812
+    adrp    x0, b_8517
+    add     x0, x0, :lo12:b_8517
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_6962
+    adrp    x0, b_8518
+    add     x0, x0, :lo12:b_8518
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_195
+    add     x0, x0, :lo12:b_195
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8519
+    add     x0, x0, :lo12:b_8519
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_811
+.l_812:
+    bl      f_6973
+.l_811:
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    adrp    x0, b_195
+    add     x0, x0, :lo12:b_195
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7702
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_809
+.l_810:
+.l_809:
+    adrp    x0, b_8520
+    add     x0, x0, :lo12:b_8520
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_6962
+    adrp    x0, b_8521
+    add     x0, x0, :lo12:b_8521
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_6752
+    adrp    x0, b_8522
+    add     x0, x0, :lo12:b_8522
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    mov     x0, #8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_1026
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_3705:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    sub     sp, sp, #8
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #16
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    sub     x0, x29, #8
-    ldr     x1, [x12]
-    str     x1, [x0]
-    adrp    x0, b_4816
-    add     x0, x0, :lo12:b_4816
-    str     x0, [x12]
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_928
-    adrp    x0, b_8764
-    add     x0, x0, :lo12:b_8764
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_6962
-    adrp    x0, b_8765
-    add     x0, x0, :lo12:b_8765
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_927
-.l_928:
-.l_927:
-    adrp    x0, b_8766
-    add     x0, x0, :lo12:b_8766
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    bl      f_3176
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #56
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_930
-    sub     x0, x29, #8
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #1
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, eq
-    cbz     x0, .l_932
-    adrp    x0, b_8767
-    add     x0, x0, :lo12:b_8767
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #40
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_3176
-    adrp    x0, b_8768
-    add     x0, x0, :lo12:b_8768
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_931
-.l_932:
-    sub     x0, x29, #8
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #8
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, eq
-    cbz     x0, .l_933
-    adrp    x0, b_8769
-    add     x0, x0, :lo12:b_8769
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #40
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_3176
-    adrp    x0, b_8770
-    add     x0, x0, :lo12:b_8770
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_931
-.l_933:
-.l_931:
-    b       .l_929
-.l_930:
-    adrp    x0, b_8771
-    add     x0, x0, :lo12:b_8771
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #40
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_332
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #40
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_1240
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    sub     x0, x29, #8
-    ldr     x0, [x0]
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
-    add     x12, x12, 8
-    cbz     x0, .l_935
-    adrp    x0, b_8772
-    add     x0, x0, :lo12:b_8772
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    sub     x0, x29, #8
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    adrp    x0, b_8773
-    add     x0, x0, :lo12:b_8773
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    bl      f_3176
-    adrp    x0, b_8774
-    add     x0, x0, :lo12:b_8774
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_934
-.l_935:
-.l_934:
-    add     x12, x12, 8
-.l_929:
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_3706:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    sub     sp, sp, #8
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #16
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    sub     x0, x29, #8
-    ldr     x1, [x12]
-    str     x1, [x0]
-    adrp    x0, b_4816
-    add     x0, x0, :lo12:b_4816
-    str     x0, [x12]
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1033
-    adrp    x0, b_9155
-    add     x0, x0, :lo12:b_9155
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_6962
-    adrp    x0, b_9156
-    add     x0, x0, :lo12:b_9156
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1032
-.l_1033:
-.l_1032:
-    adrp    x0, b_9157
-    add     x0, x0, :lo12:b_9157
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    bl      f_3176
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #56
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1035
-    sub     x0, x29, #8
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #1
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, eq
-    cbz     x0, .l_1037
-    adrp    x0, b_9158
-    add     x0, x0, :lo12:b_9158
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #40
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_3176
-    adrp    x0, b_9159
-    add     x0, x0, :lo12:b_9159
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1036
-.l_1037:
-    sub     x0, x29, #8
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #8
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, eq
-    cbz     x0, .l_1038
-    adrp    x0, b_9160
-    add     x0, x0, :lo12:b_9160
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #40
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_3176
-    adrp    x0, b_9161
-    add     x0, x0, :lo12:b_9161
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1036
-.l_1038:
-.l_1036:
-    b       .l_1034
-.l_1035:
-    adrp    x0, b_9162
-    add     x0, x0, :lo12:b_9162
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #40
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_333
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #40
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_1240
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    sub     x0, x29, #8
-    ldr     x0, [x0]
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
-    add     x12, x12, 8
-    cbz     x0, .l_1040
-    adrp    x0, b_9163
-    add     x0, x0, :lo12:b_9163
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    sub     x0, x29, #8
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    adrp    x0, b_9164
-    add     x0, x0, :lo12:b_9164
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    bl      f_3176
-    adrp    x0, b_9165
-    add     x0, x0, :lo12:b_9165
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1039
-.l_1040:
-.l_1039:
-    add     x12, x12, 8
-.l_1034:
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_3707:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     sub     sp, sp, #24
@@ -11899,8 +11954,8 @@ f_3707:
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     sub     x0, x29, #8
     ldr     x1, [x12]
     str     x1, [x0]
@@ -11910,9 +11965,9 @@ f_3707:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1146
-    adrp    x0, b_9476
-    add     x0, x0, :lo12:b_9476
+    cbz     x0, .l_1018
+    adrp    x0, b_9289
+    add     x0, x0, :lo12:b_9289
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -11931,26 +11986,26 @@ f_3707:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6962
-    adrp    x0, b_9477
-    add     x0, x0, :lo12:b_9477
+    adrp    x0, b_9290
+    add     x0, x0, :lo12:b_9290
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_1145
-.l_1146:
-.l_1145:
-    adrp    x0, b_9478
-    add     x0, x0, :lo12:b_9478
+    b       .l_1017
+.l_1018:
+.l_1017:
+    adrp    x0, b_9291
+    add     x0, x0, :lo12:b_9291
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_7285
     bl      f_3176
-    adrp    x0, b_9479
-    add     x0, x0, :lo12:b_9479
+    adrp    x0, b_9292
+    add     x0, x0, :lo12:b_9292
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -11969,7 +12024,7 @@ f_3707:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1148
+    cbz     x0, .l_1020
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -11977,9 +12032,9 @@ f_3707:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, eq
-    cbz     x0, .l_1150
-    adrp    x0, b_9480
-    add     x0, x0, :lo12:b_9480
+    cbz     x0, .l_1022
+    adrp    x0, b_9293
+    add     x0, x0, :lo12:b_9293
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -11993,16 +12048,16 @@ f_3707:
     mov     x0, #40
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_3176
-    adrp    x0, b_9481
-    add     x0, x0, :lo12:b_9481
+    adrp    x0, b_9294
+    add     x0, x0, :lo12:b_9294
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_1149
-.l_1150:
+    b       .l_1021
+.l_1022:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -12010,9 +12065,9 @@ f_3707:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, eq
-    cbz     x0, .l_1151
-    adrp    x0, b_9482
-    add     x0, x0, :lo12:b_9482
+    cbz     x0, .l_1023
+    adrp    x0, b_9295
+    add     x0, x0, :lo12:b_9295
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -12026,19 +12081,19 @@ f_3707:
     mov     x0, #40
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_3176
-    adrp    x0, b_9483
-    add     x0, x0, :lo12:b_9483
+    adrp    x0, b_9296
+    add     x0, x0, :lo12:b_9296
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_1149
-.l_1151:
-.l_1149:
-    b       .l_1147
-.l_1148:
+    b       .l_1021
+.l_1023:
+.l_1021:
+    b       .l_1019
+.l_1020:
     bl      f_7285
     adrp    x0, b_2010
     add     x0, x0, :lo12:b_2010
@@ -12050,8 +12105,8 @@ f_3707:
     mov     x0, #40
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     sub     x0, x29, #16
     ldr     x1, [x12]
     str     x1, [x0]
@@ -12069,7 +12124,7 @@ f_3707:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12]
-    bl      f_334
+    bl      f_333
     sub     x0, x29, #24
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -12078,9 +12133,9 @@ f_3707:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_1153
-    adrp    x0, b_9484
-    add     x0, x0, :lo12:b_9484
+    cbz     x0, .l_1025
+    adrp    x0, b_9297
+    add     x0, x0, :lo12:b_9297
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -12094,25 +12149,23 @@ f_3707:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3176
-    adrp    x0, b_9485
-    add     x0, x0, :lo12:b_9485
+    adrp    x0, b_9298
+    add     x0, x0, :lo12:b_9298
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_1152
-.l_1153:
-.l_1152:
-    add     x12, x12, 8
-.l_1147:
+    b       .l_1024
+.l_1025:
+.l_1024:
+    bl      f_6973
+.l_1019:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_3804:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_6709
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -12120,77 +12173,6 @@ f_3804:
 f_3809:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_5843
-    add     x0, x0, :lo12:b_5843
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, gt
-    cbz     x0, .l_850
-    adrp    x0, b_8507
-    add     x0, x0, :lo12:b_8507
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_5843
-    add     x0, x0, :lo12:b_5843
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    adrp    x0, b_8508
-    add     x0, x0, :lo12:b_8508
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_849
-.l_850:
-    adrp    x0, b_5843
-    add     x0, x0, :lo12:b_5843
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, lt
-    cbz     x0, .l_851
-    adrp    x0, b_8509
-    add     x0, x0, :lo12:b_8509
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_5843
-    add     x0, x0, :lo12:b_5843
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #-1
-    ldr     x1, [x12, #-8]
-    mul 	x0, x1, x0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    adrp    x0, b_8510
-    add     x0, x0, :lo12:b_8510
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_849
-.l_851:
-.l_849:
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    adrp    x0, b_5843
-    add     x0, x0, :lo12:b_5843
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_3810:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
     adrp    x0, b_5844
     add     x0, x0, :lo12:b_5844
     ldr     x0, [x0]
@@ -12199,9 +12181,9 @@ f_3810:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_950
-    adrp    x0, b_8796
-    add     x0, x0, :lo12:b_8796
+    cbz     x0, .l_928
+    adrp    x0, b_9013
+    add     x0, x0, :lo12:b_9013
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -12211,13 +12193,13 @@ f_3810:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3176
-    adrp    x0, b_8797
-    add     x0, x0, :lo12:b_8797
+    adrp    x0, b_9014
+    add     x0, x0, :lo12:b_9014
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_949
-.l_950:
+    b       .l_927
+.l_928:
     adrp    x0, b_5844
     add     x0, x0, :lo12:b_5844
     ldr     x0, [x0]
@@ -12226,9 +12208,9 @@ f_3810:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_951
-    adrp    x0, b_8798
-    add     x0, x0, :lo12:b_8798
+    cbz     x0, .l_929
+    adrp    x0, b_9015
+    add     x0, x0, :lo12:b_9015
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -12242,89 +12224,18 @@ f_3810:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3176
-    adrp    x0, b_8799
-    add     x0, x0, :lo12:b_8799
+    adrp    x0, b_9016
+    add     x0, x0, :lo12:b_9016
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_949
-.l_951:
-.l_949:
+    b       .l_927
+.l_929:
+.l_927:
     mov     x0, #0
     str     x0, [x12, #-8]
     adrp    x0, b_5844
     add     x0, x0, :lo12:b_5844
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_3811:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_5845
-    add     x0, x0, :lo12:b_5845
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, gt
-    cbz     x0, .l_1056
-    adrp    x0, b_9200
-    add     x0, x0, :lo12:b_9200
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_5845
-    add     x0, x0, :lo12:b_5845
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    adrp    x0, b_9201
-    add     x0, x0, :lo12:b_9201
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1055
-.l_1056:
-    adrp    x0, b_5845
-    add     x0, x0, :lo12:b_5845
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, lt
-    cbz     x0, .l_1057
-    adrp    x0, b_9202
-    add     x0, x0, :lo12:b_9202
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_5845
-    add     x0, x0, :lo12:b_5845
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #-1
-    ldr     x1, [x12, #-8]
-    mul 	x0, x1, x0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    adrp    x0, b_9203
-    add     x0, x0, :lo12:b_9203
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1055
-.l_1057:
-.l_1055:
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    adrp    x0, b_5845
-    add     x0, x0, :lo12:b_5845
     ldr     x1, [x12, #-8]
     str     x1, [x0]
     mov     sp, x29
@@ -12345,6 +12256,21 @@ f_3838:
     mov     x29, sp
     bl      f_7285
     bl      f_2002
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_3851:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
+    ldr     x2, [x12, #16]
+    .cpyl_1:
+    ldrb    w3, [x2], #1
+    strb    w3, [x1], #1
+    subs    x0, x0, #1
+    b.ne    .cpyl_1
+    add     x12, x12, 24
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -12400,11 +12326,13 @@ f_3853:
     add     x12, x12, 16
     b       .l_38
 .l_39:
+    bl      f_6973
     mov     x0, #0
-    str     x0, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     bl      f_3552
-    add     x12, x12, 8
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -12436,18 +12364,19 @@ f_3887:
     cbz     x0, .l_43
     bl      f_5764
     bl      f_5764
-    add     x12, x12, 16
+    bl      f_6973
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
     b       .l_42
 .l_43:
 .l_42:
+    bl      f_6973
     mov     x0, #1
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12]
     bl      f_7804
     mov     x0, #1
     ldr     x1, [x12]
@@ -12456,9 +12385,11 @@ f_3887:
     bl      f_7804
     b       .l_40
 .l_41:
+    bl      f_6973
+    bl      f_6973
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -12466,25 +12397,25 @@ f_3910:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     bl      f_7804
-    add     x12, x12, 8
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_3915:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_9520
-    add     x0, x0, :lo12:b_9520
+    adrp    x0, b_9333
+    add     x0, x0, :lo12:b_9333
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9521
-    add     x0, x0, :lo12:b_9521
+    adrp    x0, b_9334
+    add     x0, x0, :lo12:b_9334
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9522
-    add     x0, x0, :lo12:b_9522
+    adrp    x0, b_9335
+    add     x0, x0, :lo12:b_9335
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -12508,7 +12439,7 @@ f_3967:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_290
+    cbz     x0, .l_288
     bl      f_6138
     adrp    x0, b_8243
     add     x0, x0, :lo12:b_8243
@@ -12516,19 +12447,18 @@ f_3967:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_289
-.l_290:
-.l_289:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_287
+.l_288:
+.l_287:
     bl      f_6176
     bl      f_7777
-    mov     x0, #0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
+    bl      f_4481
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_292
+    cbz     x0, .l_290
     bl      f_6138
     adrp    x0, b_8244
     add     x0, x0, :lo12:b_8244
@@ -12543,11 +12473,12 @@ f_3967:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_291
-.l_292:
-.l_291:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_289
+.l_290:
+.l_289:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -12568,22 +12499,23 @@ f_3970:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_294
+    cbz     x0, .l_292
     bl      f_6138
     bl      f_6176
     bl      f_6317
-    b       .l_293
-.l_294:
+    b       .l_291
+.l_292:
     bl      f_6138
     adrp    x0, b_8246
     add     x0, x0, :lo12:b_8246
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-.l_293:
+.l_291:
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -12597,95 +12529,79 @@ f_3972:
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     sub     x0, x29, #8
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     str     x1, [x0]
+    add     x12, x12, 8
 .l_192:
     sub     x0, x29, #8
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_7285
     mov     x0, #1
     ldr     x1, [x12]
     sub 	x0, x1, x0
     str     x0, [x12]
     bl      f_5764
+    bl      f_7702
     ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    ldr     x0, [x12, #16]
-    add     x12, x12, 24
+    add     x12, x12, 8
     cbz     x0, .l_193
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7210
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
-    str     x0, [x12, #-24]
+    str     x0, [x12, #-16]
     mov     x0, #8
-    str     x0, [x12, #-32]
-    sub     x12, x12, 32
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
     bl      f_7421
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     mov     x0, #3
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
+    mov     x0, #3
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7210
     bl      f_880
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_195
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7210
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
-    str     x0, [x12, #-24]
+    str     x0, [x12, #-16]
     mov     x0, #8
-    str     x0, [x12, #-32]
-    sub     x12, x12, 32
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
     bl      f_7421
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     mov     x0, #3
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
+    mov     x0, #3
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7210
     bl      f_7608
     bl      f_3910
     bl      f_3910
@@ -12698,9 +12614,12 @@ f_3972:
 .l_194:
     b       .l_192
 .l_193:
+    bl      f_6973
+    bl      f_6973
+    bl      f_6973
     mov     x0, #-1
-    str     x0, [x12, #16]
-    add     x12, x12, 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -12715,9 +12634,7 @@ f_4000:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     adrp    x0, b_7731
     add     x0, x0, :lo12:b_7731
     str     x0, [x12, #-8]
@@ -12736,29 +12653,29 @@ f_4000:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #24
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #32
     ldr     x1, [x12]
@@ -12772,9 +12689,8 @@ f_4000:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -12800,10 +12716,7 @@ f_4051:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    bl      f_7702
     bl      f_7285
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
@@ -12812,10 +12725,7 @@ f_4051:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -12833,7 +12743,7 @@ f_4062:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_659
+    cbz     x0, .l_610
     bl      f_6138
     adrp    x0, b_8411
     add     x0, x0, :lo12:b_8411
@@ -12841,17 +12751,18 @@ f_4062:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_658
-.l_659:
-.l_658:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_609
+.l_610:
+.l_609:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x0, x29, #8
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-.l_660:
+.l_611:
     bl      f_2175
     mov     x0, #32
     ldr     x1, [x12]
@@ -12862,7 +12773,7 @@ f_4062:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_661
+    cbz     x0, .l_612
     bl      f_2175
     mov     x0, #1
     ldr     x1, [x12]
@@ -12873,7 +12784,7 @@ f_4062:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_663
+    cbz     x0, .l_614
     bl      f_6138
     adrp    x0, b_8412
     add     x0, x0, :lo12:b_8412
@@ -12881,11 +12792,12 @@ f_4062:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_662
-.l_663:
-.l_662:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_613
+.l_614:
+.l_613:
     bl      f_6176
     sub     x0, x29, #16
     ldr     x1, [x12]
@@ -12895,14 +12807,14 @@ f_4062:
     add 	x0, x1, x0
     str     x0, [x12, #8]
     add     x12, x12, 8
-.l_664:
+.l_615:
     bl      f_2175
     mov     x0, #31
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_665
+    cbz     x0, .l_616
     bl      f_4062
     sub     x0, x29, #16
     ldr     x0, [x0]
@@ -12913,8 +12825,8 @@ f_4062:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-    b       .l_664
-.l_665:
+    b       .l_615
+.l_616:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -12926,8 +12838,8 @@ f_4062:
     sub     x0, x29, #8
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-    b       .l_660
-.l_661:
+    b       .l_611
+.l_612:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -12952,27 +12864,25 @@ f_4072:
     adrp    x0, b_1949
     add     x0, x0, :lo12:b_1949
     ldr     x0, [x0]
-    ldr     x2, [x12, #-16]
-    ldr     x1, [x12, #-8]
-    mov     x8, #64
-    svc     #0
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, lt
-    cbz     x0, .l_840
-    adrp    x0, b_8504
-    add     x0, x0, :lo12:b_8504
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7545
+    bl      f_4481
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_790
+    adrp    x0, b_8507
+    add     x0, x0, :lo12:b_8507
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_839
-.l_840:
-.l_839:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_789
+.l_790:
+.l_789:
     mov     x0, #0
     str     x0, [x12, #-8]
     adrp    x0, b_1144
@@ -13031,8 +12941,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13040,9 +12950,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13094,8 +13003,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13103,9 +13012,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13157,8 +13065,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13166,9 +13074,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13220,8 +13127,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13229,9 +13136,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13283,8 +13189,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13292,9 +13198,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13346,8 +13251,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13355,9 +13260,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13409,8 +13313,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13418,9 +13322,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13472,8 +13375,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13481,9 +13384,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13535,8 +13437,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13544,9 +13446,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13598,8 +13499,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13607,9 +13508,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13661,8 +13561,8 @@ f_4099:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -13670,9 +13570,8 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13701,12 +13600,8 @@ f_4228:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     bl      f_5128
-    ldr     x0, [x12]
-    ldr     x2, [x12, #8]
-    ldr     x1, [x12, #16]
-    mov     x8, #64
-    svc     #0
-    add     x12, x12, 24
+    bl      f_7545
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -13727,7 +13622,7 @@ f_4303:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_790
+    cbz     x0, .l_739
     bl      f_6138
     adrp    x0, b_8488
     add     x0, x0, :lo12:b_8488
@@ -13735,11 +13630,12 @@ f_4303:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_789
-.l_790:
-.l_789:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_738
+.l_739:
+.l_738:
     bl      f_6176
     bl      f_7804
     mov     x0, #25
@@ -13747,14 +13643,15 @@ f_4303:
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_7804
-.l_791:
+.l_740:
     bl      f_1555
-    ldr     x0, [x12, #8]
-    add     x12, x12, 16
-    cbz     x0, .l_792
-    b       .l_791
-.l_792:
+    bl      f_6973
+    ldr     x0, [x12]
     add     x12, x12, 8
+    cbz     x0, .l_741
+    b       .l_740
+.l_741:
+    bl      f_6973
     bl      f_3910
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -13770,424 +13667,403 @@ f_4359:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1213
+    cbz     x0, .l_1084
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_1212
-.l_1213:
-.l_1212:
+    b       .l_1083
+.l_1084:
+.l_1083:
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
     str     x0, [x12, #-8]
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     mov     x0, #1
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #4
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     movz    x0, #8
-    movk    x0, #4, lsl 16
-    ldr     x1, [x12, #-8]
+    movk    x0, #8, lsl 16
+    ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_1215
-    adrp    x0, b_9570
-    add     x0, x0, :lo12:b_9570
+    add     x12, x12, 8
+    cbz     x0, .l_1086
+    adrp    x0, b_9383
+    add     x0, x0, :lo12:b_9383
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9571
-    add     x0, x0, :lo12:b_9571
+    adrp    x0, b_9384
+    add     x0, x0, :lo12:b_9384
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9572
-    add     x0, x0, :lo12:b_9572
+    adrp    x0, b_9385
+    add     x0, x0, :lo12:b_9385
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_1214
-.l_1215:
-.l_1214:
+    b       .l_1085
+.l_1086:
+.l_1085:
     adrp    x0, b_2158
     add     x0, x0, :lo12:b_2158
     str     x0, [x12, #-8]
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     mov     x0, #25
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #4
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
-    movz    x0, #8
-    movk    x0, #25, lsl 16
-    ldr     x1, [x12, #-8]
+    str     x0, [x12]
+    movz    x0, #8200
+    movk    x0, #28, lsl 16
+    ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_1217
-    adrp    x0, b_9573
-    add     x0, x0, :lo12:b_9573
+    add     x12, x12, 8
+    cbz     x0, .l_1088
+    adrp    x0, b_9386
+    add     x0, x0, :lo12:b_9386
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9574
-    add     x0, x0, :lo12:b_9574
+    adrp    x0, b_9387
+    add     x0, x0, :lo12:b_9387
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9575
-    add     x0, x0, :lo12:b_9575
+    adrp    x0, b_9388
+    add     x0, x0, :lo12:b_9388
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_1216
-.l_1217:
-.l_1216:
+    b       .l_1087
+.l_1088:
+.l_1087:
     adrp    x0, b_8065
     add     x0, x0, :lo12:b_8065
     str     x0, [x12, #-8]
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     mov     x0, #25
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #4
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
-    movz    x0, #8
-    movk    x0, #25, lsl 16
-    ldr     x1, [x12, #-8]
+    str     x0, [x12]
+    movz    x0, #8200
+    movk    x0, #28, lsl 16
+    ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_1219
-    adrp    x0, b_9576
-    add     x0, x0, :lo12:b_9576
+    add     x12, x12, 8
+    cbz     x0, .l_1090
+    adrp    x0, b_9389
+    add     x0, x0, :lo12:b_9389
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9577
-    add     x0, x0, :lo12:b_9577
+    adrp    x0, b_9390
+    add     x0, x0, :lo12:b_9390
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9578
-    add     x0, x0, :lo12:b_9578
+    adrp    x0, b_9391
+    add     x0, x0, :lo12:b_9391
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_1218
-.l_1219:
-.l_1218:
+    b       .l_1089
+.l_1090:
+.l_1089:
     adrp    x0, b_7064
     add     x0, x0, :lo12:b_7064
     str     x0, [x12, #-8]
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     mov     x0, #9
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #4
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     movz    x0, #8
     movk    x0, #9, lsl 16
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_1221
-    adrp    x0, b_9579
-    add     x0, x0, :lo12:b_9579
+    add     x12, x12, 8
+    cbz     x0, .l_1092
+    adrp    x0, b_9392
+    add     x0, x0, :lo12:b_9392
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9580
-    add     x0, x0, :lo12:b_9580
+    adrp    x0, b_9393
+    add     x0, x0, :lo12:b_9393
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9581
-    add     x0, x0, :lo12:b_9581
+    adrp    x0, b_9394
+    add     x0, x0, :lo12:b_9394
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_1220
-.l_1221:
-.l_1220:
-    adrp    x0, b_1627
-    add     x0, x0, :lo12:b_1627
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #9
-    ldr     x1, [x12, #-8]
-    mul 	x0, x1, x0
-    str     x0, [x12, #-8]
-    mov     x0, #4
-    ldr     x1, [x12, #-8]
-    mul 	x0, x1, x0
-    str     x0, [x12, #-8]
-    mov     x0, #152
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, gt
-    cbz     x0, .l_1223
-    adrp    x0, b_9582
-    add     x0, x0, :lo12:b_9582
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
-    adrp    x0, b_9583
-    add     x0, x0, :lo12:b_9583
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
-    adrp    x0, b_9584
-    add     x0, x0, :lo12:b_9584
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
-    b       .l_1222
-.l_1223:
-.l_1222:
+    b       .l_1091
+.l_1092:
+.l_1091:
     adrp    x0, b_8159
     add     x0, x0, :lo12:b_8159
     str     x0, [x12, #-8]
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     mov     x0, #8
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #4
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     movz    x0, #8
     movk    x0, #1, lsl 16
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_1225
-    adrp    x0, b_9585
-    add     x0, x0, :lo12:b_9585
+    add     x12, x12, 8
+    cbz     x0, .l_1094
+    adrp    x0, b_9395
+    add     x0, x0, :lo12:b_9395
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9586
-    add     x0, x0, :lo12:b_9586
+    adrp    x0, b_9396
+    add     x0, x0, :lo12:b_9396
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9587
-    add     x0, x0, :lo12:b_9587
+    adrp    x0, b_9397
+    add     x0, x0, :lo12:b_9397
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_1224
-.l_1225:
-.l_1224:
+    b       .l_1093
+.l_1094:
+.l_1093:
     adrp    x0, b_3970
     add     x0, x0, :lo12:b_3970
     str     x0, [x12, #-8]
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     mov     x0, #16
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #4
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     movz    x0, #8
     movk    x0, #2, lsl 16
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_1227
-    adrp    x0, b_9588
-    add     x0, x0, :lo12:b_9588
+    add     x12, x12, 8
+    cbz     x0, .l_1096
+    adrp    x0, b_9398
+    add     x0, x0, :lo12:b_9398
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9589
-    add     x0, x0, :lo12:b_9589
+    adrp    x0, b_9399
+    add     x0, x0, :lo12:b_9399
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9590
-    add     x0, x0, :lo12:b_9590
+    adrp    x0, b_9400
+    add     x0, x0, :lo12:b_9400
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_1226
-.l_1227:
-.l_1226:
+    b       .l_1095
+.l_1096:
+.l_1095:
     adrp    x0, b_7863
     add     x0, x0, :lo12:b_7863
     str     x0, [x12, #-8]
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     mov     x0, #32
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #4
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     movz    x0, #8
     movk    x0, #4, lsl 16
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_1229
-    adrp    x0, b_9591
-    add     x0, x0, :lo12:b_9591
+    add     x12, x12, 8
+    cbz     x0, .l_1098
+    adrp    x0, b_9401
+    add     x0, x0, :lo12:b_9401
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9592
-    add     x0, x0, :lo12:b_9592
+    adrp    x0, b_9402
+    add     x0, x0, :lo12:b_9402
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9593
-    add     x0, x0, :lo12:b_9593
+    adrp    x0, b_9403
+    add     x0, x0, :lo12:b_9403
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_1228
-.l_1229:
-.l_1228:
+    b       .l_1097
+.l_1098:
+.l_1097:
     adrp    x0, b_4300
     add     x0, x0, :lo12:b_4300
     str     x0, [x12, #-8]
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     mov     x0, #8
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #4
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     movz    x0, #8
     movk    x0, #1, lsl 16
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_1231
-    adrp    x0, b_9594
-    add     x0, x0, :lo12:b_9594
+    add     x12, x12, 8
+    cbz     x0, .l_1100
+    adrp    x0, b_9404
+    add     x0, x0, :lo12:b_9404
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9595
-    add     x0, x0, :lo12:b_9595
+    adrp    x0, b_9405
+    add     x0, x0, :lo12:b_9405
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9596
-    add     x0, x0, :lo12:b_9596
+    adrp    x0, b_9406
+    add     x0, x0, :lo12:b_9406
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_1230
-.l_1231:
-.l_1230:
+    b       .l_1099
+.l_1100:
+.l_1099:
     adrp    x0, b_6503
     add     x0, x0, :lo12:b_6503
     str     x0, [x12, #-8]
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     mov     x0, #8
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #4
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     mul 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #8200
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_1233
-    adrp    x0, b_9597
-    add     x0, x0, :lo12:b_9597
+    add     x12, x12, 8
+    cbz     x0, .l_1102
+    adrp    x0, b_9407
+    add     x0, x0, :lo12:b_9407
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9598
-    add     x0, x0, :lo12:b_9598
+    adrp    x0, b_9408
+    add     x0, x0, :lo12:b_9408
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9599
-    add     x0, x0, :lo12:b_9599
+    adrp    x0, b_9409
+    add     x0, x0, :lo12:b_9409
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_1232
-.l_1233:
-.l_1232:
+    b       .l_1101
+.l_1102:
+.l_1101:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_4443:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_9517
-    add     x0, x0, :lo12:b_9517
+    adrp    x0, b_9330
+    add     x0, x0, :lo12:b_9330
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9518
-    add     x0, x0, :lo12:b_9518
+    adrp    x0, b_9331
+    add     x0, x0, :lo12:b_9331
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -14196,8 +14072,8 @@ f_4443:
     sub     x12, x12, 8
     bl      f_3183
     bl      f_6317
-    adrp    x0, b_9519
-    add     x0, x0, :lo12:b_9519
+    adrp    x0, b_9332
+    add     x0, x0, :lo12:b_9332
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -14217,20 +14093,22 @@ f_4466:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_366
+    cbz     x0, .l_364
+    bl      f_6973
     mov     x0, #0
-    str     x0, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_365
-.l_366:
-.l_365:
+    b       .l_363
+.l_364:
+.l_363:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     adrp    x0, b_2375
     add     x0, x0, :lo12:b_2375
     str     x0, [x12, #-8]
@@ -14238,10 +14116,17 @@ f_4466:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #-1
+    bl      f_2382
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_4481:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    mov     x0, #0
     ldr     x1, [x12]
     cmp     x1, x0
-    cset    w0, gt
+    cset    w0, lt
     str     x0, [x12]
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -14254,19 +14139,9 @@ f_4527:
     mov     x0, #2
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_797:
-    cmp     x0, x12
-    beq     .rbl_797
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_797
-    .rbl_797:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -14278,8 +14153,8 @@ f_4527:
 f_4535:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_9220
-    add     x0, x0, :lo12:b_9220
+    adrp    x0, b_9033
+    add     x0, x0, :lo12:b_9033
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -14289,13 +14164,13 @@ f_4535:
     and 	x0, x1, x0
     str     x0, [x12]
     bl      f_3176
-    adrp    x0, b_9221
-    add     x0, x0, :lo12:b_9221
+    adrp    x0, b_9034
+    add     x0, x0, :lo12:b_9034
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9222
-    add     x0, x0, :lo12:b_9222
+    adrp    x0, b_9035
+    add     x0, x0, :lo12:b_9035
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -14305,8 +14180,8 @@ f_4535:
     lsr 	x0, x1, x0
     str     x0, [x12]
     bl      f_3176
-    adrp    x0, b_9223
-    add     x0, x0, :lo12:b_9223
+    adrp    x0, b_9036
+    add     x0, x0, :lo12:b_9036
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -14334,28 +14209,18 @@ f_4662:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_423
+    cbz     x0, .l_420
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #13
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_424:
-    cmp     x0, x12
-    beq     .rbl_424
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_424
-    .rbl_424:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
-    b       .l_422
-.l_423:
+    b       .l_419
+.l_420:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -14363,15 +14228,15 @@ f_4662:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, eq
-    cbz     x0, .l_425
+    cbz     x0, .l_421
     adrp    x0, b_8315
     add     x0, x0, :lo12:b_8315
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2020
     bl      f_3910
-    b       .l_422
-.l_425:
+    b       .l_419
+.l_421:
     bl      f_6138
     adrp    x0, b_8316
     add     x0, x0, :lo12:b_8316
@@ -14399,24 +14264,25 @@ f_4662:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_422:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_419:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_4740:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_8775
-    add     x0, x0, :lo12:b_8775
+    adrp    x0, b_9299
+    add     x0, x0, :lo12:b_9299
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_7285
     bl      f_3176
-    adrp    x0, b_8776
-    add     x0, x0, :lo12:b_8776
+    adrp    x0, b_9300
+    add     x0, x0, :lo12:b_9300
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -14430,8 +14296,8 @@ f_4740:
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_3176
     adrp    x0, b_4816
     add     x0, x0, :lo12:b_4816
@@ -14440,9 +14306,9 @@ f_4740:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_937
-    adrp    x0, b_8777
-    add     x0, x0, :lo12:b_8777
+    cbz     x0, .l_1027
+    adrp    x0, b_9301
+    add     x0, x0, :lo12:b_9301
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -14461,154 +14327,14 @@ f_4740:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6962
-    b       .l_936
-.l_937:
-.l_936:
-    adrp    x0, b_8778
-    add     x0, x0, :lo12:b_8778
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_4741:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_9166
-    add     x0, x0, :lo12:b_9166
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    bl      f_3176
-    adrp    x0, b_9167
-    add     x0, x0, :lo12:b_9167
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #16
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_3176
-    adrp    x0, b_4816
-    add     x0, x0, :lo12:b_4816
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1042
-    adrp    x0, b_9168
-    add     x0, x0, :lo12:b_9168
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_6962
-    b       .l_1041
-.l_1042:
-.l_1041:
-    adrp    x0, b_9169
-    add     x0, x0, :lo12:b_9169
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_4742:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_9486
-    add     x0, x0, :lo12:b_9486
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    bl      f_3176
-    adrp    x0, b_9487
-    add     x0, x0, :lo12:b_9487
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #16
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_3176
-    adrp    x0, b_4816
-    add     x0, x0, :lo12:b_4816
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2002
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_1155
-    adrp    x0, b_9488
-    add     x0, x0, :lo12:b_9488
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7285
-    adrp    x0, b_2010
-    add     x0, x0, :lo12:b_2010
-    str     x0, [x12, #-8]
-    mov     x0, #58
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3545
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_6962
-    b       .l_1154
-.l_1155:
-.l_1154:
-    adrp    x0, b_9489
-    add     x0, x0, :lo12:b_9489
+    b       .l_1026
+.l_1027:
+.l_1026:
+    adrp    x0, b_9302
+    add     x0, x0, :lo12:b_9302
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -14667,8 +14393,9 @@ f_4957:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_54
 .l_55:
 .l_54:
@@ -14714,16 +14441,16 @@ f_5070:
     mov     x29, sp
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1
+    cbz     x0, .l_7
     mov     x0, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_0
-.l_1:
+    b       .l_6
+.l_7:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_0:
+.l_6:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -14736,13 +14463,13 @@ f_5096:
     mov     x0, #0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_2606
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_624
+    cbz     x0, .l_576
     bl      f_6138
     adrp    x0, b_8399
     add     x0, x0, :lo12:b_8399
@@ -14750,11 +14477,12 @@ f_5096:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_623
-.l_624:
-.l_623:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_575
+.l_576:
+.l_575:
     adrp    x0, b_3547
     add     x0, x0, :lo12:b_3547
     str     x0, [x12, #-8]
@@ -14762,9 +14490,7 @@ f_5096:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -14772,19 +14498,9 @@ f_5096:
     mov     x0, #32
     str     x0, [x12, #-8]
     mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_625:
-    cmp     x0, x12
-    beq     .rbl_625
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_625
-    .rbl_625:
-    str     x1, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -14805,17 +14521,15 @@ f_5120:
     mov     x0, #17
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     bl      f_7804
     bl      f_6426
     mov     x0, #9
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     bl      f_7804
     bl      f_6426
     mov     x0, #0
@@ -14826,9 +14540,8 @@ f_5120:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -14845,37 +14558,29 @@ f_5135:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_465
     mov     x0, #8191
-    mov     x1, x0
-    ldr     x0, [x12]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12]
-    str     x3, [x12, #-8]
+    str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_675
     bl      f_3910
 .l_181:
     bl      f_5606
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_182
+    bl      f_6973
     mov     x0, #1
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #8]
+    str     x0, [x12]
     mov     x0, #8191
-    mov     x1, x0
-    ldr     x0, [x12, #8]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12, #8]
-    str     x3, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_675
     bl      f_3910
     b       .l_181
 .l_182:
@@ -15006,8 +14711,8 @@ f_5282:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12]
-    adrp    x0, b_9556
-    add     x0, x0, :lo12:b_9556
+    adrp    x0, b_9369
+    add     x0, x0, :lo12:b_9369
     str     x0, [x12, #-8]
     mov     x0, #2
     str     x0, [x12, #-16]
@@ -15016,14 +14721,14 @@ f_5282:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1200
+    cbz     x0, .l_1071
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6267
-    b       .l_1199
-.l_1200:
+    b       .l_1070
+.l_1071:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -15037,8 +14742,8 @@ f_5282:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    adrp    x0, b_9557
-    add     x0, x0, :lo12:b_9557
+    adrp    x0, b_9370
+    add     x0, x0, :lo12:b_9370
     str     x0, [x12, #-16]
     mov     x0, #2
     str     x0, [x12, #-24]
@@ -15049,26 +14754,26 @@ f_5282:
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_1201
+    cbz     x0, .l_1072
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_7396
-    b       .l_1199
-.l_1201:
+    b       .l_1070
+.l_1072:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    adrp    x0, b_9558
-    add     x0, x0, :lo12:b_9558
+    adrp    x0, b_9371
+    add     x0, x0, :lo12:b_9371
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1202
+    cbz     x0, .l_1073
     adrp    x0, b_4816
     add     x0, x0, :lo12:b_4816
     str     x0, [x12, #-8]
@@ -15076,28 +14781,29 @@ f_5282:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1204
-    adrp    x0, b_9559
-    add     x0, x0, :lo12:b_9559
+    cbz     x0, .l_1075
+    adrp    x0, b_9372
+    add     x0, x0, :lo12:b_9372
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9560
-    add     x0, x0, :lo12:b_9560
+    adrp    x0, b_9373
+    add     x0, x0, :lo12:b_9373
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9561
-    add     x0, x0, :lo12:b_9561
+    adrp    x0, b_9374
+    add     x0, x0, :lo12:b_9374
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1203
-.l_1204:
-.l_1203:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_1074
+.l_1075:
+.l_1074:
     mov     x0, #1
     str     x0, [x12, #-8]
     adrp    x0, b_4816
@@ -15105,20 +14811,20 @@ f_5282:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-    b       .l_1199
-.l_1202:
+    b       .l_1070
+.l_1073:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    adrp    x0, b_9562
-    add     x0, x0, :lo12:b_9562
+    adrp    x0, b_9375
+    add     x0, x0, :lo12:b_9375
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1205
+    cbz     x0, .l_1076
     adrp    x0, b_2442
     add     x0, x0, :lo12:b_2442
     str     x0, [x12, #-8]
@@ -15126,28 +14832,29 @@ f_5282:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1207
-    adrp    x0, b_9563
-    add     x0, x0, :lo12:b_9563
+    cbz     x0, .l_1078
+    adrp    x0, b_9376
+    add     x0, x0, :lo12:b_9376
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9564
-    add     x0, x0, :lo12:b_9564
+    adrp    x0, b_9377
+    add     x0, x0, :lo12:b_9377
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9565
-    add     x0, x0, :lo12:b_9565
+    adrp    x0, b_9378
+    add     x0, x0, :lo12:b_9378
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1206
-.l_1207:
-.l_1206:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_1077
+.l_1078:
+.l_1077:
     mov     x0, #1
     str     x0, [x12, #-8]
     adrp    x0, b_2442
@@ -15155,10 +14862,10 @@ f_5282:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-    b       .l_1199
-.l_1205:
-    adrp    x0, b_9566
-    add     x0, x0, :lo12:b_9566
+    b       .l_1070
+.l_1076:
+    adrp    x0, b_9379
+    add     x0, x0, :lo12:b_9379
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -15167,16 +14874,17 @@ f_5282:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9567
-    add     x0, x0, :lo12:b_9567
+    adrp    x0, b_9380
+    add     x0, x0, :lo12:b_9380
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     bl      f_3915
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_1199:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_1070:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -15192,12 +14900,8 @@ f_5406:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     bl      f_1031
-    ldr     x0, [x12]
-    ldr     x2, [x12, #8]
-    ldr     x1, [x12, #16]
-    mov     x8, #64
-    svc     #0
-    add     x12, x12, 24
+    bl      f_7545
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -15280,7 +14984,7 @@ f_5600:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_667
+    cbz     x0, .l_618
     bl      f_6138
     adrp    x0, b_8413
     add     x0, x0, :lo12:b_8413
@@ -15288,17 +14992,18 @@ f_5600:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_666
-.l_667:
-.l_666:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_617
+.l_618:
+.l_617:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x0, x29, #8
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-.l_668:
+.l_619:
     bl      f_2175
     mov     x0, #32
     ldr     x1, [x12]
@@ -15309,35 +15014,35 @@ f_5600:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_669
+    cbz     x0, .l_620
     bl      f_2175
     mov     x0, #1
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_671
+    cbz     x0, .l_622
     bl      f_6176
     sub     x0, x29, #16
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-    b       .l_670
-.l_671:
+    b       .l_621
+.l_622:
     bl      f_2175
     mov     x0, #4
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_672
+    cbz     x0, .l_623
     bl      f_5809
     sub     x0, x29, #16
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-    b       .l_670
-.l_672:
+    b       .l_621
+.l_623:
     bl      f_6138
     adrp    x0, b_8414
     add     x0, x0, :lo12:b_8414
@@ -15345,21 +15050,22 @@ f_5600:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_670:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_621:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-.l_673:
+.l_624:
     bl      f_2175
     mov     x0, #31
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_674
+    cbz     x0, .l_625
     bl      f_4062
     sub     x0, x29, #16
     ldr     x0, [x0]
@@ -15370,8 +15076,8 @@ f_5600:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-    b       .l_673
-.l_674:
+    b       .l_624
+.l_625:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -15383,8 +15089,8 @@ f_5600:
     sub     x0, x29, #8
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-    b       .l_668
-.l_669:
+    b       .l_619
+.l_620:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -15406,13 +15112,13 @@ f_5606:
     mul 	x0, x1, x0
     str     x0, [x12, #8]
     mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     str     x0, [x12]
+    bl      f_7210
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
+    add 	x0, x1, x0
+    str     x0, [x12, #8]
+    add     x12, x12, 8
     bl      f_7285
     bl      f_3804
     ldr     x0, [x12]
@@ -15424,15 +15130,11 @@ f_5606:
     b       .l_179
 .l_180:
     bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     mov     x0, #5
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_3887
     bl      f_5070
 .l_179:
@@ -15454,15 +15156,13 @@ f_5614:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
+    bl      f_2382
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_794
+    cbz     x0, .l_743
     bl      f_5809
-    b       .l_793
-.l_794:
+    b       .l_742
+.l_743:
     bl      f_6176
     adrp    x0, b_2010
     add     x0, x0, :lo12:b_2010
@@ -15472,12 +15172,10 @@ f_5614:
     sub     x12, x12, 16
     bl      f_3972
     bl      f_7285
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
+    bl      f_2382
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_795
+    cbz     x0, .l_744
     adrp    x0, b_2010
     add     x0, x0, :lo12:b_2010
     str     x0, [x12, #-8]
@@ -15488,11 +15186,11 @@ f_5614:
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
-    b       .l_793
-.l_795:
-    add     x12, x12, 8
+    bl      f_2606
+    b       .l_742
+.l_744:
+    bl      f_6973
     bl      f_6138
     adrp    x0, b_8489
     add     x0, x0, :lo12:b_8489
@@ -15507,25 +15205,16 @@ f_5614:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_793:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_742:
     mov     x0, #6
     str     x0, [x12, #-8]
     mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_796:
-    cmp     x0, x12
-    beq     .rbl_796
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_796
-    .rbl_796:
-    str     x1, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -15600,9 +15289,9 @@ f_5761:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1169
-    adrp    x0, b_9523
-    add     x0, x0, :lo12:b_9523
+    cbz     x0, .l_1041
+    adrp    x0, b_9336
+    add     x0, x0, :lo12:b_9336
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -15611,18 +15300,19 @@ f_5761:
     sub     x12, x12, 8
     bl      f_3183
     bl      f_6317
-    adrp    x0, b_9524
-    add     x0, x0, :lo12:b_9524
+    adrp    x0, b_9337
+    add     x0, x0, :lo12:b_9337
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     bl      f_4443
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1168
-.l_1169:
-.l_1168:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_1040
+.l_1041:
+.l_1040:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -15646,9 +15336,9 @@ f_5761:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1171
-    adrp    x0, b_9525
-    add     x0, x0, :lo12:b_9525
+    cbz     x0, .l_1043
+    adrp    x0, b_9338
+    add     x0, x0, :lo12:b_9338
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -15657,18 +15347,19 @@ f_5761:
     sub     x12, x12, 8
     bl      f_3183
     bl      f_6317
-    adrp    x0, b_9526
-    add     x0, x0, :lo12:b_9526
+    adrp    x0, b_9339
+    add     x0, x0, :lo12:b_9339
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     bl      f_4443
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1170
-.l_1171:
-.l_1170:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_1042
+.l_1043:
+.l_1042:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -15684,8 +15375,8 @@ f_5761:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12]
-    adrp    x0, b_9527
-    add     x0, x0, :lo12:b_9527
+    adrp    x0, b_9340
+    add     x0, x0, :lo12:b_9340
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -15693,8 +15384,8 @@ f_5761:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    adrp    x0, b_9528
-    add     x0, x0, :lo12:b_9528
+    adrp    x0, b_9341
+    add     x0, x0, :lo12:b_9341
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3887
@@ -15703,35 +15394,35 @@ f_5761:
     ldr     x1, [x12, #8]
     orr 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_1173
-    adrp    x0, b_9529
-    add     x0, x0, :lo12:b_9529
+    cbz     x0, .l_1045
+    adrp    x0, b_9342
+    add     x0, x0, :lo12:b_9342
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_4000
-    b       .l_1172
-.l_1173:
+    b       .l_1044
+.l_1045:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    adrp    x0, b_9530
-    add     x0, x0, :lo12:b_9530
+    adrp    x0, b_9343
+    add     x0, x0, :lo12:b_9343
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1174
-    adrp    x0, b_9531
-    add     x0, x0, :lo12:b_9531
+    cbz     x0, .l_1046
+    adrp    x0, b_9344
+    add     x0, x0, :lo12:b_9344
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_4000
-    b       .l_1172
-.l_1174:
-    adrp    x0, b_9532
-    add     x0, x0, :lo12:b_9532
+    b       .l_1044
+.l_1046:
+    adrp    x0, b_9345
+    add     x0, x0, :lo12:b_9345
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -15740,55 +15431,56 @@ f_5761:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9533
-    add     x0, x0, :lo12:b_9533
+    adrp    x0, b_9346
+    add     x0, x0, :lo12:b_9346
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_1172:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_1044:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    adrp    x0, b_9534
-    add     x0, x0, :lo12:b_9534
+    adrp    x0, b_9347
+    add     x0, x0, :lo12:b_9347
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1176
-    adrp    x0, b_9535
-    add     x0, x0, :lo12:b_9535
+    cbz     x0, .l_1048
+    adrp    x0, b_9348
+    add     x0, x0, :lo12:b_9348
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_4000
-    b       .l_1175
-.l_1176:
+    b       .l_1047
+.l_1048:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    adrp    x0, b_9536
-    add     x0, x0, :lo12:b_9536
+    adrp    x0, b_9349
+    add     x0, x0, :lo12:b_9349
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1177
-    adrp    x0, b_9537
-    add     x0, x0, :lo12:b_9537
+    cbz     x0, .l_1049
+    adrp    x0, b_9350
+    add     x0, x0, :lo12:b_9350
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_4000
-    b       .l_1175
-.l_1177:
-    adrp    x0, b_9538
-    add     x0, x0, :lo12:b_9538
+    b       .l_1047
+.l_1049:
+    adrp    x0, b_9351
+    add     x0, x0, :lo12:b_9351
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -15797,55 +15489,56 @@ f_5761:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9539
-    add     x0, x0, :lo12:b_9539
+    adrp    x0, b_9352
+    add     x0, x0, :lo12:b_9352
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_1175:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_1047:
     sub     x0, x29, #24
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    adrp    x0, b_9540
-    add     x0, x0, :lo12:b_9540
+    adrp    x0, b_9353
+    add     x0, x0, :lo12:b_9353
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1179
-    adrp    x0, b_9541
-    add     x0, x0, :lo12:b_9541
+    cbz     x0, .l_1051
+    adrp    x0, b_9354
+    add     x0, x0, :lo12:b_9354
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_4000
-    b       .l_1178
-.l_1179:
+    b       .l_1050
+.l_1051:
     sub     x0, x29, #24
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    adrp    x0, b_9542
-    add     x0, x0, :lo12:b_9542
+    adrp    x0, b_9355
+    add     x0, x0, :lo12:b_9355
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1180
-    adrp    x0, b_9543
-    add     x0, x0, :lo12:b_9543
+    cbz     x0, .l_1052
+    adrp    x0, b_9356
+    add     x0, x0, :lo12:b_9356
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_4000
-    b       .l_1178
-.l_1180:
-    adrp    x0, b_9544
-    add     x0, x0, :lo12:b_9544
+    b       .l_1050
+.l_1052:
+    adrp    x0, b_9357
+    add     x0, x0, :lo12:b_9357
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -15854,15 +15547,16 @@ f_5761:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9545
-    add     x0, x0, :lo12:b_9545
+    adrp    x0, b_9358
+    add     x0, x0, :lo12:b_9358
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_1178:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_1050:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -15870,18 +15564,9 @@ f_5764:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_5:
-    cmp     x0, x12
-    beq     .rbl_5
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_5
-    .rbl_5:
-    str     x1, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_830
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -15898,7 +15583,7 @@ f_5809:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_645
+    cbz     x0, .l_596
     bl      f_6138
     adrp    x0, b_8406
     add     x0, x0, :lo12:b_8406
@@ -15906,11 +15591,12 @@ f_5809:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_644
-.l_645:
-.l_644:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_595
+.l_596:
+.l_595:
     bl      f_6176
     adrp    x0, b_2375
     add     x0, x0, :lo12:b_2375
@@ -15923,8 +15609,8 @@ f_5809:
     bl      f_3804
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_647
-    add     x12, x12, 8
+    cbz     x0, .l_598
+    bl      f_6973
     bl      f_6138
     adrp    x0, b_8407
     add     x0, x0, :lo12:b_8407
@@ -15939,16 +15625,17 @@ f_5809:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_646
-.l_647:
-.l_646:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_597
+.l_598:
+.l_597:
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -15983,7 +15670,7 @@ f_5818:
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_300
+    cbz     x0, .l_298
     bl      f_6138
     adrp    x0, b_8248
     add     x0, x0, :lo12:b_8248
@@ -15991,11 +15678,12 @@ f_5818:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_299
-.l_300:
-.l_299:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_297
+.l_298:
+.l_297:
     bl      f_6176
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
@@ -16004,9 +15692,7 @@ f_5818:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     adrp    x0, b_7731
     add     x0, x0, :lo12:b_7731
     str     x0, [x12, #-8]
@@ -16016,7 +15702,7 @@ f_5818:
     bl      f_880
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_302
+    cbz     x0, .l_300
     bl      f_6138
     adrp    x0, b_8249
     add     x0, x0, :lo12:b_8249
@@ -16031,11 +15717,12 @@ f_5818:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_301
-.l_302:
-.l_301:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_299
+.l_300:
+.l_299:
     bl      f_6176
     sub     x0, x29, #8
     ldr     x1, [x12]
@@ -16055,12 +15742,12 @@ f_5818:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_304
+    cbz     x0, .l_302
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_303
-.l_304:
+    b       .l_301
+.l_302:
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
     str     x0, [x12, #-8]
@@ -16068,10 +15755,8 @@ f_5818:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-.l_303:
+    bl      f_2606
+.l_301:
     sub     x0, x29, #24
     ldr     x1, [x12]
     str     x1, [x0]
@@ -16087,12 +15772,12 @@ f_5818:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_306
+    cbz     x0, .l_304
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-.l_307:
+.l_305:
     bl      f_2175
     mov     x0, #28
     ldr     x1, [x12]
@@ -16103,7 +15788,7 @@ f_5818:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_308
+    cbz     x0, .l_306
     mov     x0, #1
     str     x0, [x12, #-8]
     sub     x0, x29, #32
@@ -16124,7 +15809,7 @@ f_5818:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_310
+    cbz     x0, .l_308
     bl      f_6138
     adrp    x0, b_8251
     add     x0, x0, :lo12:b_8251
@@ -16142,11 +15827,12 @@ f_5818:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_309
-.l_310:
-.l_309:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_307
+.l_308:
+.l_307:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -16161,7 +15847,7 @@ f_5818:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_312
+    cbz     x0, .l_310
     bl      f_2175
     mov     x0, #15
     ldr     x1, [x12]
@@ -16172,7 +15858,7 @@ f_5818:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_314
+    cbz     x0, .l_312
     bl      f_6138
     adrp    x0, b_8253
     add     x0, x0, :lo12:b_8253
@@ -16190,27 +15876,28 @@ f_5818:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_313
-.l_314:
-.l_313:
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_311
 .l_312:
 .l_311:
-    b       .l_307
-.l_308:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
+    b       .l_309
+.l_310:
+.l_309:
     b       .l_305
 .l_306:
-.l_305:
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    b       .l_303
+.l_304:
+.l_303:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -16236,12 +15923,12 @@ f_5818:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
@@ -16250,31 +15937,31 @@ f_5818:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #32
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6426
     mov     x0, #24
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     mov     x0, #0
-    str     x0, [x12, #8]
-    add     x12, x12, 8
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     mov     x0, #32
     ldr     x1, [x12]
@@ -16291,7 +15978,7 @@ f_5818:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_316
+    cbz     x0, .l_314
     bl      f_6138
     adrp    x0, b_8255
     add     x0, x0, :lo12:b_8255
@@ -16309,11 +15996,12 @@ f_5818:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_315
-.l_316:
-.l_315:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_313
+.l_314:
+.l_313:
     bl      f_4957
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -16384,9 +16072,9 @@ f_5822:
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 16
-    cbz     x0, .l_1209
-    adrp    x0, b_9568
-    add     x0, x0, :lo12:b_9568
+    cbz     x0, .l_1080
+    adrp    x0, b_9381
+    add     x0, x0, :lo12:b_9381
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
@@ -16395,23 +16083,24 @@ f_5822:
     sub     x12, x12, 8
     bl      f_3183
     bl      f_6317
-    adrp    x0, b_9569
-    add     x0, x0, :lo12:b_9569
+    adrp    x0, b_9382
+    add     x0, x0, :lo12:b_9382
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     bl      f_4443
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1208
-.l_1209:
-.l_1208:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_1079
+.l_1080:
+.l_1079:
     bl      f_5761
     mov     x0, #4
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_1210:
+.l_1081:
     bl      f_7285
     adrp    x0, b_5161
     add     x0, x0, :lo12:b_5161
@@ -16420,11 +16109,11 @@ f_5822:
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 8
-    cbz     x0, .l_1211
+    cbz     x0, .l_1082
     bl      f_5282
-    b       .l_1210
-.l_1211:
-    add     x12, x12, 8
+    b       .l_1081
+.l_1082:
+    bl      f_6973
     bl      f_3814
     bl      f_3289
     mov     sp, x29
@@ -16437,8 +16126,8 @@ f_5825:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     mov     x0, #1
     ldr     x1, [x12]
     sub 	x0, x1, x0
@@ -16452,6 +16141,19 @@ f_5825:
     add 	x0, x1, x0
     str     x0, [x12, #16]
     add     x12, x12, 16
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_5844:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    adrp    x0, bsp
+    add     x0, x0, :lo12:bsp
+    add     x0, x0, #65536
+    sub     x0, x0, x12
+    lsr     x0, x0, #3
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -16531,44 +16233,6 @@ f_5860:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-f_5861:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    bl      f_7285
-    bl      f_6378
-    bl      f_7804
-    bl      f_7285
-    mov     x0, #92
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    str     x0, [x12]
-    mov     x0, #1
-    ldr     x1, [x12]
-    eor 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_7804
-    mov     x0, #34
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    str     x0, [x12]
-    mov     x0, #1
-    ldr     x1, [x12]
-    eor 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    and 	x0, x1, x0
-    ldr     x1, [x12, #16]
-    and 	x0, x1, x0
-    str     x0, [x12, #16]
-    mov     x0, #1
-    ldr     x1, [x12, #16]
-    and 	x0, x1, x0
-    str     x0, [x12, #16]
-    add     x12, x12, 16
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
 f_5916:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
@@ -16582,25 +16246,73 @@ f_5916:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_427
+    cbz     x0, .l_423
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #1
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_428:
-    cmp     x0, x12
-    beq     .rbl_428
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_428
-    .rbl_428:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_422
+.l_423:
+.l_422:
+    bl      f_6176
+    adrp    x0, b_8320
+    add     x0, x0, :lo12:b_8320
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_425
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #5
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_424
+.l_425:
+.l_424:
+    bl      f_6176
+    adrp    x0, b_8321
+    add     x0, x0, :lo12:b_8321
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_427
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #7
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -16613,33 +16325,23 @@ f_5916:
 .l_427:
 .l_426:
     bl      f_6176
-    adrp    x0, b_8320
-    add     x0, x0, :lo12:b_8320
+    adrp    x0, b_8322
+    add     x0, x0, :lo12:b_8322
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_430
+    cbz     x0, .l_429
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #5
+    mov     x0, #8
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_431:
-    cmp     x0, x12
-    beq     .rbl_431
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_431
-    .rbl_431:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -16648,12 +16350,52 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_429
-.l_430:
+    b       .l_428
 .l_429:
+.l_428:
     bl      f_6176
-    adrp    x0, b_8321
-    add     x0, x0, :lo12:b_8321
+    adrp    x0, b_8323
+    add     x0, x0, :lo12:b_8323
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_431
+    adrp    x0, b_6266
+    add     x0, x0, :lo12:b_6266
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7285
+    bl      f_2606
+    bl      f_7285
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_5764
+    bl      f_7702
+    mov     x0, #9
+    str     x0, [x12, #-8]
+    mov     x0, #3
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_430
+.l_431:
+.l_430:
+    bl      f_6176
+    adrp    x0, b_8324
+    add     x0, x0, :lo12:b_8324
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -16663,22 +16405,12 @@ f_5916:
     cbz     x0, .l_433
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #7
+    mov     x0, #10
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_434:
-    cmp     x0, x12
-    beq     .rbl_434
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_434
-    .rbl_434:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -16691,33 +16423,23 @@ f_5916:
 .l_433:
 .l_432:
     bl      f_6176
-    adrp    x0, b_8322
-    add     x0, x0, :lo12:b_8322
+    adrp    x0, b_8325
+    add     x0, x0, :lo12:b_8325
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_436
+    cbz     x0, .l_435
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #8
+    mov     x0, #12
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_437:
-    cmp     x0, x12
-    beq     .rbl_437
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_437
-    .rbl_437:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -16726,12 +16448,41 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_435
-.l_436:
+    b       .l_434
 .l_435:
+.l_434:
     bl      f_6176
-    adrp    x0, b_8323
-    add     x0, x0, :lo12:b_8323
+    adrp    x0, b_8326
+    add     x0, x0, :lo12:b_8326
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_437
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #13
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_436
+.l_437:
+.l_436:
+    bl      f_6176
+    adrp    x0, b_8327
+    add     x0, x0, :lo12:b_8327
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -16744,34 +16495,20 @@ f_5916:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_7285
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    mov     x0, #9
-    str     x0, [x12, #8]
+    bl      f_7702
+    mov     x0, #14
+    str     x0, [x12, #-8]
     mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_440:
-    cmp     x0, x12
-    beq     .rbl_440
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_440
-    .rbl_440:
-    str     x1, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -16784,33 +16521,23 @@ f_5916:
 .l_439:
 .l_438:
     bl      f_6176
-    adrp    x0, b_8324
-    add     x0, x0, :lo12:b_8324
+    adrp    x0, b_8328
+    add     x0, x0, :lo12:b_8328
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_442
+    cbz     x0, .l_441
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #10
+    mov     x0, #17
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_443:
-    cmp     x0, x12
-    beq     .rbl_443
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_443
-    .rbl_443:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -16819,12 +16546,41 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_441
-.l_442:
+    b       .l_440
 .l_441:
+.l_440:
     bl      f_6176
-    adrp    x0, b_8325
-    add     x0, x0, :lo12:b_8325
+    adrp    x0, b_8329
+    add     x0, x0, :lo12:b_8329
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_443
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #18
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_442
+.l_443:
+.l_442:
+    bl      f_6176
+    adrp    x0, b_8330
+    add     x0, x0, :lo12:b_8330
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -16834,22 +16590,12 @@ f_5916:
     cbz     x0, .l_445
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #12
+    mov     x0, #19
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_446:
-    cmp     x0, x12
-    beq     .rbl_446
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_446
-    .rbl_446:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -16862,33 +16608,23 @@ f_5916:
 .l_445:
 .l_444:
     bl      f_6176
-    adrp    x0, b_8326
-    add     x0, x0, :lo12:b_8326
+    adrp    x0, b_8331
+    add     x0, x0, :lo12:b_8331
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_448
+    cbz     x0, .l_447
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #13
+    mov     x0, #20
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_449:
-    cmp     x0, x12
-    beq     .rbl_449
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_449
-    .rbl_449:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -16897,12 +16633,41 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_447
-.l_448:
+    b       .l_446
 .l_447:
+.l_446:
     bl      f_6176
-    adrp    x0, b_8327
-    add     x0, x0, :lo12:b_8327
+    adrp    x0, b_8332
+    add     x0, x0, :lo12:b_8332
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_449
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #21
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_448
+.l_449:
+.l_448:
+    bl      f_6176
+    adrp    x0, b_8333
+    add     x0, x0, :lo12:b_8333
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -16910,39 +16675,14 @@ f_5916:
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_451
-    adrp    x0, b_6266
-    add     x0, x0, :lo12:b_6266
+    mov     x0, #0
     str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_7285
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    mov     x0, #14
-    str     x0, [x12, #8]
+    mov     x0, #22
+    str     x0, [x12, #-16]
     mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_452:
-    cmp     x0, x12
-    beq     .rbl_452
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_452
-    .rbl_452:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -16955,33 +16695,23 @@ f_5916:
 .l_451:
 .l_450:
     bl      f_6176
-    adrp    x0, b_8328
-    add     x0, x0, :lo12:b_8328
+    adrp    x0, b_8334
+    add     x0, x0, :lo12:b_8334
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_454
+    cbz     x0, .l_453
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #17
+    mov     x0, #23
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_455:
-    cmp     x0, x12
-    beq     .rbl_455
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_455
-    .rbl_455:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -16990,12 +16720,41 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_453
-.l_454:
+    b       .l_452
 .l_453:
+.l_452:
     bl      f_6176
-    adrp    x0, b_8329
-    add     x0, x0, :lo12:b_8329
+    adrp    x0, b_8335
+    add     x0, x0, :lo12:b_8335
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_455
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #24
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_454
+.l_455:
+.l_454:
+    bl      f_6176
+    adrp    x0, b_8336
+    add     x0, x0, :lo12:b_8336
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -17005,22 +16764,12 @@ f_5916:
     cbz     x0, .l_457
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #18
+    mov     x0, #25
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_458:
-    cmp     x0, x12
-    beq     .rbl_458
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_458
-    .rbl_458:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17033,33 +16782,23 @@ f_5916:
 .l_457:
 .l_456:
     bl      f_6176
-    adrp    x0, b_8330
-    add     x0, x0, :lo12:b_8330
+    adrp    x0, b_8337
+    add     x0, x0, :lo12:b_8337
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_460
+    cbz     x0, .l_459
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #19
+    mov     x0, #26
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_461:
-    cmp     x0, x12
-    beq     .rbl_461
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_461
-    .rbl_461:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17068,12 +16807,41 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_459
-.l_460:
+    b       .l_458
 .l_459:
+.l_458:
     bl      f_6176
-    adrp    x0, b_8331
-    add     x0, x0, :lo12:b_8331
+    adrp    x0, b_8338
+    add     x0, x0, :lo12:b_8338
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_461
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #27
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_460
+.l_461:
+.l_460:
+    bl      f_6176
+    adrp    x0, b_8339
+    add     x0, x0, :lo12:b_8339
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -17083,22 +16851,12 @@ f_5916:
     cbz     x0, .l_463
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #20
+    mov     x0, #28
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_464:
-    cmp     x0, x12
-    beq     .rbl_464
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_464
-    .rbl_464:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17111,33 +16869,23 @@ f_5916:
 .l_463:
 .l_462:
     bl      f_6176
-    adrp    x0, b_8332
-    add     x0, x0, :lo12:b_8332
+    adrp    x0, b_8340
+    add     x0, x0, :lo12:b_8340
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_466
+    cbz     x0, .l_465
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #21
+    mov     x0, #29
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_467:
-    cmp     x0, x12
-    beq     .rbl_467
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_467
-    .rbl_467:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17146,12 +16894,41 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_465
-.l_466:
+    b       .l_464
 .l_465:
+.l_464:
     bl      f_6176
-    adrp    x0, b_8333
-    add     x0, x0, :lo12:b_8333
+    adrp    x0, b_8341
+    add     x0, x0, :lo12:b_8341
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_467
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #30
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_466
+.l_467:
+.l_466:
+    bl      f_6176
+    adrp    x0, b_8342
+    add     x0, x0, :lo12:b_8342
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -17161,22 +16938,12 @@ f_5916:
     cbz     x0, .l_469
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #22
+    mov     x0, #34
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_470:
-    cmp     x0, x12
-    beq     .rbl_470
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_470
-    .rbl_470:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17189,33 +16956,34 @@ f_5916:
 .l_469:
 .l_468:
     bl      f_6176
-    adrp    x0, b_8334
-    add     x0, x0, :lo12:b_8334
+    adrp    x0, b_8343
+    add     x0, x0, :lo12:b_8343
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_472
-    mov     x0, #0
+    cbz     x0, .l_471
+    adrp    x0, b_6266
+    add     x0, x0, :lo12:b_6266
     str     x0, [x12, #-8]
-    mov     x0, #23
-    str     x0, [x12, #-16]
+    sub     x12, x12, 8
+    bl      f_7285
+    bl      f_2606
+    bl      f_7285
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_5764
+    bl      f_7702
+    mov     x0, #35
+    str     x0, [x12, #-8]
     mov     x0, #3
+    str     x0, [x12, #-16]
     sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_473:
-    cmp     x0, x12
-    beq     .rbl_473
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_473
-    .rbl_473:
-    str     x1, [x12]
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17224,12 +16992,52 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_471
-.l_472:
+    b       .l_470
 .l_471:
+.l_470:
     bl      f_6176
-    adrp    x0, b_8335
-    add     x0, x0, :lo12:b_8335
+    adrp    x0, b_8344
+    add     x0, x0, :lo12:b_8344
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_473
+    adrp    x0, b_6266
+    add     x0, x0, :lo12:b_6266
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7285
+    bl      f_2606
+    bl      f_7285
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_5764
+    bl      f_7702
+    mov     x0, #36
+    str     x0, [x12, #-8]
+    mov     x0, #3
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_472
+.l_473:
+.l_472:
+    bl      f_6176
+    adrp    x0, b_8345
+    add     x0, x0, :lo12:b_8345
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -17237,24 +17045,25 @@ f_5916:
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_475
-    mov     x0, #0
+    adrp    x0, b_6266
+    add     x0, x0, :lo12:b_6266
     str     x0, [x12, #-8]
-    mov     x0, #24
-    str     x0, [x12, #-16]
+    sub     x12, x12, 8
+    bl      f_7285
+    bl      f_2606
+    bl      f_7285
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_5764
+    bl      f_7702
+    mov     x0, #37
+    str     x0, [x12, #-8]
     mov     x0, #3
+    str     x0, [x12, #-16]
     sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_476:
-    cmp     x0, x12
-    beq     .rbl_476
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_476
-    .rbl_476:
-    str     x1, [x12]
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17267,33 +17076,23 @@ f_5916:
 .l_475:
 .l_474:
     bl      f_6176
-    adrp    x0, b_8336
-    add     x0, x0, :lo12:b_8336
+    adrp    x0, b_8346
+    add     x0, x0, :lo12:b_8346
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_478
+    cbz     x0, .l_477
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #25
+    mov     x0, #38
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_479:
-    cmp     x0, x12
-    beq     .rbl_479
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_479
-    .rbl_479:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17302,12 +17101,52 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_477
-.l_478:
+    b       .l_476
 .l_477:
+.l_476:
     bl      f_6176
-    adrp    x0, b_8337
-    add     x0, x0, :lo12:b_8337
+    adrp    x0, b_8347
+    add     x0, x0, :lo12:b_8347
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_479
+    adrp    x0, b_6266
+    add     x0, x0, :lo12:b_6266
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7285
+    bl      f_2606
+    bl      f_7285
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_5764
+    bl      f_7702
+    mov     x0, #39
+    str     x0, [x12, #-8]
+    mov     x0, #3
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_478
+.l_479:
+.l_478:
+    bl      f_6176
+    adrp    x0, b_8348
+    add     x0, x0, :lo12:b_8348
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -17317,22 +17156,12 @@ f_5916:
     cbz     x0, .l_481
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #26
+    mov     x0, #40
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_482:
-    cmp     x0, x12
-    beq     .rbl_482
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_482
-    .rbl_482:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17345,33 +17174,23 @@ f_5916:
 .l_481:
 .l_480:
     bl      f_6176
-    adrp    x0, b_8338
-    add     x0, x0, :lo12:b_8338
+    adrp    x0, b_8349
+    add     x0, x0, :lo12:b_8349
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_484
+    cbz     x0, .l_483
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #27
+    mov     x0, #41
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_485:
-    cmp     x0, x12
-    beq     .rbl_485
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_485
-    .rbl_485:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17380,12 +17199,52 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_483
-.l_484:
+    b       .l_482
 .l_483:
+.l_482:
     bl      f_6176
-    adrp    x0, b_8339
-    add     x0, x0, :lo12:b_8339
+    adrp    x0, b_8350
+    add     x0, x0, :lo12:b_8350
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_485
+    adrp    x0, b_6266
+    add     x0, x0, :lo12:b_6266
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7285
+    bl      f_2606
+    bl      f_7285
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_5764
+    bl      f_7702
+    mov     x0, #42
+    str     x0, [x12, #-8]
+    mov     x0, #3
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_484
+.l_485:
+.l_484:
+    bl      f_6176
+    adrp    x0, b_8351
+    add     x0, x0, :lo12:b_8351
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -17393,24 +17252,25 @@ f_5916:
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_487
-    mov     x0, #0
+    adrp    x0, b_6266
+    add     x0, x0, :lo12:b_6266
     str     x0, [x12, #-8]
-    mov     x0, #28
-    str     x0, [x12, #-16]
+    sub     x12, x12, 8
+    bl      f_7285
+    bl      f_2606
+    bl      f_7285
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_5764
+    bl      f_7702
+    mov     x0, #43
+    str     x0, [x12, #-8]
     mov     x0, #3
+    str     x0, [x12, #-16]
     sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_488:
-    cmp     x0, x12
-    beq     .rbl_488
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_488
-    .rbl_488:
-    str     x1, [x12]
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17423,33 +17283,34 @@ f_5916:
 .l_487:
 .l_486:
     bl      f_6176
-    adrp    x0, b_8340
-    add     x0, x0, :lo12:b_8340
+    adrp    x0, b_8352
+    add     x0, x0, :lo12:b_8352
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_490
-    mov     x0, #0
+    cbz     x0, .l_489
+    adrp    x0, b_6266
+    add     x0, x0, :lo12:b_6266
     str     x0, [x12, #-8]
-    mov     x0, #29
-    str     x0, [x12, #-16]
+    sub     x12, x12, 8
+    bl      f_7285
+    bl      f_2606
+    bl      f_7285
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_5764
+    bl      f_7702
+    mov     x0, #44
+    str     x0, [x12, #-8]
     mov     x0, #3
+    str     x0, [x12, #-16]
     sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_491:
-    cmp     x0, x12
-    beq     .rbl_491
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_491
-    .rbl_491:
-    str     x1, [x12]
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17458,12 +17319,41 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_489
-.l_490:
+    b       .l_488
 .l_489:
+.l_488:
     bl      f_6176
-    adrp    x0, b_8341
-    add     x0, x0, :lo12:b_8341
+    adrp    x0, b_8353
+    add     x0, x0, :lo12:b_8353
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3887
+    bl      f_6709
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_491
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    mov     x0, #45
+    str     x0, [x12, #-16]
+    mov     x0, #3
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
+    bl      f_934
+    mov     x0, #25
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_490
+.l_491:
+.l_490:
+    bl      f_6176
+    adrp    x0, b_8354
+    add     x0, x0, :lo12:b_8354
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3887
@@ -17473,22 +17363,12 @@ f_5916:
     cbz     x0, .l_493
     mov     x0, #0
     str     x0, [x12, #-8]
-    mov     x0, #30
+    mov     x0, #46
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_494:
-    cmp     x0, x12
-    beq     .rbl_494
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_494
-    .rbl_494:
-    str     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -17501,618 +17381,6 @@ f_5916:
 .l_493:
 .l_492:
     bl      f_6176
-    adrp    x0, b_8342
-    add     x0, x0, :lo12:b_8342
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_496
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #34
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_497:
-    cmp     x0, x12
-    beq     .rbl_497
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_497
-    .rbl_497:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_495
-.l_496:
-.l_495:
-    bl      f_6176
-    adrp    x0, b_8343
-    add     x0, x0, :lo12:b_8343
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_499
-    adrp    x0, b_6266
-    add     x0, x0, :lo12:b_6266
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_7285
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    mov     x0, #35
-    str     x0, [x12, #8]
-    mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_500:
-    cmp     x0, x12
-    beq     .rbl_500
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_500
-    .rbl_500:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_498
-.l_499:
-.l_498:
-    bl      f_6176
-    adrp    x0, b_8344
-    add     x0, x0, :lo12:b_8344
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_502
-    adrp    x0, b_6266
-    add     x0, x0, :lo12:b_6266
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_7285
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    mov     x0, #36
-    str     x0, [x12, #8]
-    mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_503:
-    cmp     x0, x12
-    beq     .rbl_503
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_503
-    .rbl_503:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_501
-.l_502:
-.l_501:
-    bl      f_6176
-    adrp    x0, b_8345
-    add     x0, x0, :lo12:b_8345
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_505
-    adrp    x0, b_6266
-    add     x0, x0, :lo12:b_6266
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_7285
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    mov     x0, #37
-    str     x0, [x12, #8]
-    mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_506:
-    cmp     x0, x12
-    beq     .rbl_506
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_506
-    .rbl_506:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_504
-.l_505:
-.l_504:
-    bl      f_6176
-    adrp    x0, b_8346
-    add     x0, x0, :lo12:b_8346
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_508
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #38
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_509:
-    cmp     x0, x12
-    beq     .rbl_509
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_509
-    .rbl_509:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_507
-.l_508:
-.l_507:
-    bl      f_6176
-    adrp    x0, b_8347
-    add     x0, x0, :lo12:b_8347
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_511
-    adrp    x0, b_6266
-    add     x0, x0, :lo12:b_6266
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_7285
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    mov     x0, #39
-    str     x0, [x12, #8]
-    mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_512:
-    cmp     x0, x12
-    beq     .rbl_512
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_512
-    .rbl_512:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_510
-.l_511:
-.l_510:
-    bl      f_6176
-    adrp    x0, b_8348
-    add     x0, x0, :lo12:b_8348
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_514
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #40
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_515:
-    cmp     x0, x12
-    beq     .rbl_515
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_515
-    .rbl_515:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_513
-.l_514:
-.l_513:
-    bl      f_6176
-    adrp    x0, b_8349
-    add     x0, x0, :lo12:b_8349
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_517
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #41
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_518:
-    cmp     x0, x12
-    beq     .rbl_518
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_518
-    .rbl_518:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_516
-.l_517:
-.l_516:
-    bl      f_6176
-    adrp    x0, b_8350
-    add     x0, x0, :lo12:b_8350
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_520
-    adrp    x0, b_6266
-    add     x0, x0, :lo12:b_6266
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_7285
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    mov     x0, #42
-    str     x0, [x12, #8]
-    mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_521:
-    cmp     x0, x12
-    beq     .rbl_521
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_521
-    .rbl_521:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_519
-.l_520:
-.l_519:
-    bl      f_6176
-    adrp    x0, b_8351
-    add     x0, x0, :lo12:b_8351
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_523
-    adrp    x0, b_6266
-    add     x0, x0, :lo12:b_6266
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_7285
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    mov     x0, #43
-    str     x0, [x12, #8]
-    mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_524:
-    cmp     x0, x12
-    beq     .rbl_524
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_524
-    .rbl_524:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_522
-.l_523:
-.l_522:
-    bl      f_6176
-    adrp    x0, b_8352
-    add     x0, x0, :lo12:b_8352
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_526
-    adrp    x0, b_6266
-    add     x0, x0, :lo12:b_6266
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_7285
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    mov     x0, #44
-    str     x0, [x12, #8]
-    mov     x0, #3
-    add     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_527:
-    cmp     x0, x12
-    beq     .rbl_527
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_527
-    .rbl_527:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_525
-.l_526:
-.l_525:
-    bl      f_6176
-    adrp    x0, b_8353
-    add     x0, x0, :lo12:b_8353
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_529
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #45
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_530:
-    cmp     x0, x12
-    beq     .rbl_530
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_530
-    .rbl_530:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_528
-.l_529:
-.l_528:
-    bl      f_6176
-    adrp    x0, b_8354
-    add     x0, x0, :lo12:b_8354
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3887
-    bl      f_6709
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_532
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    mov     x0, #45
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_533:
-    cmp     x0, x12
-    beq     .rbl_533
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_533
-    .rbl_533:
-    str     x1, [x12]
-    bl      f_934
-    mov     x0, #25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-    b       .l_531
-.l_532:
-.l_531:
-    bl      f_6176
     adrp    x0, b_300
     add     x0, x0, :lo12:b_300
     str     x0, [x12, #-8]
@@ -18120,12 +17388,10 @@ f_5916:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
+    bl      f_2382
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_535
+    cbz     x0, .l_495
     bl      f_6176
     adrp    x0, b_300
     add     x0, x0, :lo12:b_300
@@ -18137,19 +17403,9 @@ f_5916:
     mov     x0, #4
     str     x0, [x12, #-8]
     mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_536:
-    cmp     x0, x12
-    beq     .rbl_536
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_536
-    .rbl_536:
-    str     x1, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -18158,9 +17414,9 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_534
-.l_535:
-.l_534:
+    b       .l_494
+.l_495:
+.l_494:
     bl      f_6176
     adrp    x0, b_359
     add     x0, x0, :lo12:b_359
@@ -18169,12 +17425,10 @@ f_5916:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
+    bl      f_2382
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_538
+    cbz     x0, .l_497
     bl      f_6176
     sub     x0, x29, #8
     ldr     x1, [x12]
@@ -18192,8 +17446,8 @@ f_5916:
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     mov     x0, #25
     ldr     x1, [x12]
@@ -18209,7 +17463,7 @@ f_5916:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_540
+    cbz     x0, .l_499
     bl      f_6138
     adrp    x0, b_8355
     add     x0, x0, :lo12:b_8355
@@ -18227,59 +17481,52 @@ f_5916:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_539
-.l_540:
-.l_539:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_498
+.l_499:
+.l_498:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_6176
     bl      f_5764
-.l_541:
+.l_500:
     bl      f_7285
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_2606
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_542
+    cbz     x0, .l_501
     bl      f_6426
     bl      f_6426
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_3887
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_544
+    cbz     x0, .l_503
     bl      f_3910
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     mov     x0, #6
     str     x0, [x12, #-8]
     mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_545:
-    cmp     x0, x12
-    beq     .rbl_545
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_545
-    .rbl_545:
-    str     x1, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
@@ -18288,16 +17535,16 @@ f_5916:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_543
-.l_544:
-.l_543:
+    b       .l_502
+.l_503:
+.l_502:
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_541
-.l_542:
-    add     x12, x12, 8
+    b       .l_500
+.l_501:
+    bl      f_6973
     bl      f_7804
     bl      f_6138
     bl      f_7804
@@ -18323,11 +17570,12 @@ f_5916:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_537
-.l_538:
-.l_537:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_496
+.l_497:
+.l_496:
     bl      f_4662
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -18349,6 +17597,20 @@ f_6002:
     str     x0, [x12]
     b       .l_22
 .l_23:
+    bl      f_6973
+    bl      f_6973
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_6042:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x0, [x12]
+    ldr     x2, [x12, #8]
+    ldr     x1, [x12, #16]
+    mov     x8, #63
+    svc     #0
+    str     x0, [x12, #16]
     add     x12, x12, 16
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -18380,1264 +17642,31 @@ f_6176:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_6218:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    sub     sp, sp, #32
-    bl      f_8184
-    mov     x0, #1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_865
-    b       .l_864
-.l_865:
-    bl      f_8184
-    mov     x0, #2
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_866
-    adrp    x0, b_8528
-    add     x0, x0, :lo12:b_8528
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8529
-    add     x0, x0, :lo12:b_8529
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    bl      f_3809
-    adrp    x0, b_8530
-    add     x0, x0, :lo12:b_8530
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_866:
-    bl      f_8184
-    mov     x0, #3
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_867
-    adrp    x0, b_8531
-    add     x0, x0, :lo12:b_8531
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8532
-    add     x0, x0, :lo12:b_8532
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8533
-    add     x0, x0, :lo12:b_8533
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8534
-    add     x0, x0, :lo12:b_8534
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_867:
-    bl      f_8184
-    mov     x0, #4
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_868
-    bl      f_1612
-    bl      f_3809
-    adrp    x0, b_8535
-    add     x0, x0, :lo12:b_8535
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8536
-    add     x0, x0, :lo12:b_8536
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8537
-    add     x0, x0, :lo12:b_8537
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_868:
-    bl      f_8184
-    mov     x0, #5
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_869
-    bl      f_1612
-    bl      f_3809
-    adrp    x0, b_8538
-    add     x0, x0, :lo12:b_8538
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8539
-    add     x0, x0, :lo12:b_8539
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8540
-    add     x0, x0, :lo12:b_8540
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_869:
-    bl      f_8184
-    mov     x0, #6
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_870
-    adrp    x0, b_8541
-    add     x0, x0, :lo12:b_8541
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    bl      f_7283
-    bl      f_7285
-    mov     x0, #1
-    str     x0, [x12, #-8]
-    mov     x0, #31
-    ldr     x1, [x12, #-8]
-    lsl 	x0, x1, x0
-    str     x0, [x12, #-8]
-    mov     x0, #1
-    ldr     x1, [x12, #-8]
-    sub 	x0, x1, x0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
-    str     x0, [x12]
-    bl      f_7804
-    mov     x0, #1
-    str     x0, [x12, #-8]
-    mov     x0, #31
-    ldr     x1, [x12, #-8]
-    lsl 	x0, x1, x0
-    str     x0, [x12, #-8]
-    mov     x0, #-1
-    ldr     x1, [x12, #-8]
-    mul 	x0, x1, x0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
-    ldr     x1, [x12, #8]
-    orr 	x0, x1, x0
-    add     x12, x12, 16
-    cbz     x0, .l_872
-    bl      f_1612
-    adrp    x0, b_8542
-    add     x0, x0, :lo12:b_8542
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8543
-    add     x0, x0, :lo12:b_8543
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8544
-    add     x0, x0, :lo12:b_8544
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_871
-.l_872:
-    bl      f_7283
-    sub     x0, x29, #32
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3562
-    sub     x0, x29, #32
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-.l_871:
-    b       .l_864
-.l_870:
-    bl      f_8184
-    mov     x0, #7
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_873
-    adrp    x0, b_8545
-    add     x0, x0, :lo12:b_8545
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    bl      f_610
-    b       .l_864
-.l_873:
-    bl      f_8184
-    mov     x0, #8
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_874
-    adrp    x0, b_8546
-    add     x0, x0, :lo12:b_8546
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8547
-    add     x0, x0, :lo12:b_8547
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    bl      f_3809
-    adrp    x0, b_8548
-    add     x0, x0, :lo12:b_8548
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8549
-    add     x0, x0, :lo12:b_8549
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_874:
-    bl      f_8184
-    mov     x0, #9
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_875
-    adrp    x0, b_8550
-    add     x0, x0, :lo12:b_8550
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8551
-    add     x0, x0, :lo12:b_8551
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    bl      f_1612
-    bl      f_3809
-    adrp    x0, b_8552
-    add     x0, x0, :lo12:b_8552
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8553
-    add     x0, x0, :lo12:b_8553
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8554
-    add     x0, x0, :lo12:b_8554
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8555
-    add     x0, x0, :lo12:b_8555
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8556
-    add     x0, x0, :lo12:b_8556
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8557
-    add     x0, x0, :lo12:b_8557
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8558
-    add     x0, x0, :lo12:b_8558
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8559
-    add     x0, x0, :lo12:b_8559
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8560
-    add     x0, x0, :lo12:b_8560
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8561
-    add     x0, x0, :lo12:b_8561
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8562
-    add     x0, x0, :lo12:b_8562
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8563
-    add     x0, x0, :lo12:b_8563
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8564
-    add     x0, x0, :lo12:b_8564
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8565
-    add     x0, x0, :lo12:b_8565
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8566
-    add     x0, x0, :lo12:b_8566
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_875:
-    bl      f_8184
-    mov     x0, #10
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_876
-    bl      f_1612
-    bl      f_3809
-    adrp    x0, b_8567
-    add     x0, x0, :lo12:b_8567
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8568
-    add     x0, x0, :lo12:b_8568
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    movz    x0, #0
-    movk    x0, #1, lsl 16
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    adrp    x0, b_8569
-    add     x0, x0, :lo12:b_8569
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8570
-    add     x0, x0, :lo12:b_8570
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8571
-    add     x0, x0, :lo12:b_8571
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8572
-    add     x0, x0, :lo12:b_8572
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_876:
-    bl      f_8184
-    mov     x0, #11
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_877
-    adrp    x0, b_8573
-    add     x0, x0, :lo12:b_8573
-    str     x0, [x12, #-8]
-    sub     x0, x29, #32
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_7518
-    bl      f_7283
-    sub     x0, x29, #32
-    str     x0, [x12, #-8]
-    mov     x0, #2
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3562
-    adrp    x0, b_8574
-    add     x0, x0, :lo12:b_8574
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    sub     x0, x29, #32
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_877:
-    bl      f_8184
-    mov     x0, #12
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_878
-    adrp    x0, b_8575
-    add     x0, x0, :lo12:b_8575
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8576
-    add     x0, x0, :lo12:b_8576
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8577
-    add     x0, x0, :lo12:b_8577
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8578
-    add     x0, x0, :lo12:b_8578
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_878:
-    bl      f_8184
-    mov     x0, #13
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_879
-    adrp    x0, b_8579
-    add     x0, x0, :lo12:b_8579
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8580
-    add     x0, x0, :lo12:b_8580
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8581
-    add     x0, x0, :lo12:b_8581
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8582
-    add     x0, x0, :lo12:b_8582
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_879:
-    bl      f_8184
-    mov     x0, #14
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_880
-    adrp    x0, b_8583
-    add     x0, x0, :lo12:b_8583
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8584
-    add     x0, x0, :lo12:b_8584
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8585
-    add     x0, x0, :lo12:b_8585
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8586
-    add     x0, x0, :lo12:b_8586
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8587
-    add     x0, x0, :lo12:b_8587
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8588
-    add     x0, x0, :lo12:b_8588
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_880:
-    bl      f_8184
-    mov     x0, #15
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_881
-    bl      f_1612
-    adrp    x0, b_8589
-    add     x0, x0, :lo12:b_8589
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8590
-    add     x0, x0, :lo12:b_8590
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8591
-    add     x0, x0, :lo12:b_8591
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8592
-    add     x0, x0, :lo12:b_8592
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_881:
-    bl      f_8184
-    mov     x0, #16
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_882
-    adrp    x0, b_8593
-    add     x0, x0, :lo12:b_8593
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8594
-    add     x0, x0, :lo12:b_8594
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8595
-    add     x0, x0, :lo12:b_8595
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_882:
-    bl      f_8184
-    mov     x0, #17
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_883
-    adrp    x0, b_8596
-    add     x0, x0, :lo12:b_8596
-    str     x0, [x12, #-8]
-    adrp    x0, b_8597
-    add     x0, x0, :lo12:b_8597
-    str     x0, [x12, #-16]
-    adrp    x0, b_8598
-    add     x0, x0, :lo12:b_8598
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3330
-    b       .l_864
-.l_883:
-    bl      f_8184
-    mov     x0, #18
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_884
-    adrp    x0, b_8599
-    add     x0, x0, :lo12:b_8599
-    str     x0, [x12, #-8]
-    adrp    x0, b_8600
-    add     x0, x0, :lo12:b_8600
-    str     x0, [x12, #-16]
-    adrp    x0, b_8601
-    add     x0, x0, :lo12:b_8601
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3330
-    b       .l_864
-.l_884:
-    bl      f_8184
-    mov     x0, #19
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_885
-    adrp    x0, b_8602
-    add     x0, x0, :lo12:b_8602
-    str     x0, [x12, #-8]
-    adrp    x0, b_8603
-    add     x0, x0, :lo12:b_8603
-    str     x0, [x12, #-16]
-    adrp    x0, b_8604
-    add     x0, x0, :lo12:b_8604
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3330
-    b       .l_864
-.l_885:
-    bl      f_8184
-    mov     x0, #20
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_886
-    adrp    x0, b_8605
-    add     x0, x0, :lo12:b_8605
-    str     x0, [x12, #-8]
-    adrp    x0, b_8606
-    add     x0, x0, :lo12:b_8606
-    str     x0, [x12, #-16]
-    adrp    x0, b_8607
-    add     x0, x0, :lo12:b_8607
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3330
-    b       .l_864
-.l_886:
-    bl      f_8184
-    mov     x0, #21
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_887
-    adrp    x0, b_8608
-    add     x0, x0, :lo12:b_8608
-    str     x0, [x12, #-8]
-    adrp    x0, b_8609
-    add     x0, x0, :lo12:b_8609
-    str     x0, [x12, #-16]
-    adrp    x0, b_8610
-    add     x0, x0, :lo12:b_8610
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3330
-    b       .l_864
-.l_887:
-    bl      f_8184
-    mov     x0, #22
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_888
-    adrp    x0, b_8611
-    add     x0, x0, :lo12:b_8611
-    str     x0, [x12, #-8]
-    adrp    x0, b_8612
-    add     x0, x0, :lo12:b_8612
-    str     x0, [x12, #-16]
-    adrp    x0, b_8613
-    add     x0, x0, :lo12:b_8613
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3330
-    b       .l_864
-.l_888:
-    bl      f_8184
-    mov     x0, #23
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_889
-    adrp    x0, b_8614
-    add     x0, x0, :lo12:b_8614
-    str     x0, [x12, #-8]
-    adrp    x0, b_8615
-    add     x0, x0, :lo12:b_8615
-    str     x0, [x12, #-16]
-    adrp    x0, b_8616
-    add     x0, x0, :lo12:b_8616
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3330
-    b       .l_864
-.l_889:
-    bl      f_8184
-    mov     x0, #24
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_890
-    adrp    x0, b_8617
-    add     x0, x0, :lo12:b_8617
-    str     x0, [x12, #-8]
-    adrp    x0, b_8618
-    add     x0, x0, :lo12:b_8618
-    str     x0, [x12, #-16]
-    adrp    x0, b_8619
-    add     x0, x0, :lo12:b_8619
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3330
-    b       .l_864
-.l_890:
-    bl      f_8184
-    mov     x0, #25
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_891
-    adrp    x0, b_8620
-    add     x0, x0, :lo12:b_8620
-    str     x0, [x12, #-8]
-    adrp    x0, b_8621
-    add     x0, x0, :lo12:b_8621
-    str     x0, [x12, #-16]
-    adrp    x0, b_8622
-    add     x0, x0, :lo12:b_8622
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3330
-    b       .l_864
-.l_891:
-    bl      f_8184
-    mov     x0, #26
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_892
-    adrp    x0, b_8623
-    add     x0, x0, :lo12:b_8623
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8624
-    add     x0, x0, :lo12:b_8624
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8625
-    add     x0, x0, :lo12:b_8625
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8626
-    add     x0, x0, :lo12:b_8626
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_892:
-    bl      f_8184
-    mov     x0, #27
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_893
-    adrp    x0, b_8627
-    add     x0, x0, :lo12:b_8627
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8628
-    add     x0, x0, :lo12:b_8628
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8629
-    add     x0, x0, :lo12:b_8629
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8630
-    add     x0, x0, :lo12:b_8630
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8631
-    add     x0, x0, :lo12:b_8631
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8632
-    add     x0, x0, :lo12:b_8632
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8633
-    add     x0, x0, :lo12:b_8633
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_893:
-    bl      f_8184
-    mov     x0, #28
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_894
-    adrp    x0, b_8634
-    add     x0, x0, :lo12:b_8634
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8635
-    add     x0, x0, :lo12:b_8635
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8636
-    add     x0, x0, :lo12:b_8636
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8637
-    add     x0, x0, :lo12:b_8637
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8638
-    add     x0, x0, :lo12:b_8638
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8639
-    add     x0, x0, :lo12:b_8639
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8640
-    add     x0, x0, :lo12:b_8640
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_894:
-    bl      f_8184
-    mov     x0, #29
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_895
-    adrp    x0, b_8641
-    add     x0, x0, :lo12:b_8641
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8642
-    add     x0, x0, :lo12:b_8642
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8643
-    add     x0, x0, :lo12:b_8643
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8644
-    add     x0, x0, :lo12:b_8644
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8645
-    add     x0, x0, :lo12:b_8645
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8646
-    add     x0, x0, :lo12:b_8646
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8647
-    add     x0, x0, :lo12:b_8647
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_895:
-    bl      f_8184
-    mov     x0, #30
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_896
-    adrp    x0, b_8648
-    add     x0, x0, :lo12:b_8648
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8649
-    add     x0, x0, :lo12:b_8649
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8650
-    add     x0, x0, :lo12:b_8650
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8651
-    add     x0, x0, :lo12:b_8651
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8652
-    add     x0, x0, :lo12:b_8652
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8653
-    add     x0, x0, :lo12:b_8653
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    adrp    x0, b_8654
-    add     x0, x0, :lo12:b_8654
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_896:
-    bl      f_8184
-    mov     x0, #31
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_897
-    bl      f_1612
-    bl      f_3809
-    adrp    x0, b_8655
-    add     x0, x0, :lo12:b_8655
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8656
-    add     x0, x0, :lo12:b_8656
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_897:
-    bl      f_8184
-    mov     x0, #32
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_898
-    bl      f_1612
-    bl      f_3809
-    adrp    x0, b_8657
-    add     x0, x0, :lo12:b_8657
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8658
-    add     x0, x0, :lo12:b_8658
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8659
-    add     x0, x0, :lo12:b_8659
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_898:
-    bl      f_8184
-    mov     x0, #33
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_899
-    adrp    x0, b_8660
-    add     x0, x0, :lo12:b_8660
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8661
-    add     x0, x0, :lo12:b_8661
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    bl      f_3809
-    adrp    x0, b_8662
-    add     x0, x0, :lo12:b_8662
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8663
-    add     x0, x0, :lo12:b_8663
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8664
-    add     x0, x0, :lo12:b_8664
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_899:
     bl      f_8184
     mov     x0, #34
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_900
-    adrp    x0, b_8665
-    add     x0, x0, :lo12:b_8665
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8666
-    add     x0, x0, :lo12:b_8666
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8667
-    add     x0, x0, :lo12:b_8667
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8668
-    add     x0, x0, :lo12:b_8668
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_864
-.l_900:
-    bl      f_8184
-    mov     x0, #35
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_901
-    adrp    x0, b_8669
-    add     x0, x0, :lo12:b_8669
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8670
-    add     x0, x0, :lo12:b_8670
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8671
-    add     x0, x0, :lo12:b_8671
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2028
-    bl      f_1612
-    adrp    x0, b_8672
-    add     x0, x0, :lo12:b_8672
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8673
-    add     x0, x0, :lo12:b_8673
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8674
-    add     x0, x0, :lo12:b_8674
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8675
-    add     x0, x0, :lo12:b_8675
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8676
-    add     x0, x0, :lo12:b_8676
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8677
-    add     x0, x0, :lo12:b_8677
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8678
-    add     x0, x0, :lo12:b_8678
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8679
-    add     x0, x0, :lo12:b_8679
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8680
-    add     x0, x0, :lo12:b_8680
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8681
-    add     x0, x0, :lo12:b_8681
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8682
-    add     x0, x0, :lo12:b_8682
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8683
-    add     x0, x0, :lo12:b_8683
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8684
-    add     x0, x0, :lo12:b_8684
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8685
-    add     x0, x0, :lo12:b_8685
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8686
-    add     x0, x0, :lo12:b_8686
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8687
-    add     x0, x0, :lo12:b_8687
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8688
-    add     x0, x0, :lo12:b_8688
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8689
-    add     x0, x0, :lo12:b_8689
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8690
-    add     x0, x0, :lo12:b_8690
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8691
-    add     x0, x0, :lo12:b_8691
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8692
-    add     x0, x0, :lo12:b_8692
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8693
-    add     x0, x0, :lo12:b_8693
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8694
-    add     x0, x0, :lo12:b_8694
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
+    cbz     x0, .l_873
     adrp    x0, b_8695
     add     x0, x0, :lo12:b_8695
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
     adrp    x0, b_8696
     add     x0, x0, :lo12:b_8696
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    bl      f_3567
     adrp    x0, b_8697
     add     x0, x0, :lo12:b_8697
     str     x0, [x12, #-8]
@@ -19648,23 +17677,31 @@ f_6218:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    b       .l_872
+.l_873:
+    bl      f_8184
+    mov     x0, #35
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_874
     adrp    x0, b_8699
     add     x0, x0, :lo12:b_8699
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
     adrp    x0, b_8700
     add     x0, x0, :lo12:b_8700
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_3567
     adrp    x0, b_8701
     add     x0, x0, :lo12:b_8701
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_3567
+    bl      f_692
     adrp    x0, b_8702
     add     x0, x0, :lo12:b_8702
     str     x0, [x12, #-8]
@@ -19675,31 +17712,30 @@ f_6218:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8704
     add     x0, x0, :lo12:b_8704
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_358
-    bl      f_3809
+    bl      f_6962
     adrp    x0, b_8705
     add     x0, x0, :lo12:b_8705
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_8706
     add     x0, x0, :lo12:b_8706
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8707
     add     x0, x0, :lo12:b_8707
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_8708
     add     x0, x0, :lo12:b_8708
     str     x0, [x12, #-8]
@@ -19710,12 +17746,13 @@ f_6218:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8710
     add     x0, x0, :lo12:b_8710
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_358
-    bl      f_3809
+    bl      f_6962
     adrp    x0, b_8711
     add     x0, x0, :lo12:b_8711
     str     x0, [x12, #-8]
@@ -19728,36 +17765,30 @@ f_6218:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_864
-.l_901:
-    bl      f_8184
-    mov     x0, #36
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_902
     adrp    x0, b_8713
     add     x0, x0, :lo12:b_8713
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8714
     add     x0, x0, :lo12:b_8714
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
+    bl      f_6962
     adrp    x0, b_8715
     add     x0, x0, :lo12:b_8715
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
+    bl      f_6962
     adrp    x0, b_8716
     add     x0, x0, :lo12:b_8716
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    bl      f_1612
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8717
     add     x0, x0, :lo12:b_8717
     str     x0, [x12, #-8]
@@ -19768,41 +17799,37 @@ f_6218:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8719
     add     x0, x0, :lo12:b_8719
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_902:
-    bl      f_8184
-    mov     x0, #37
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_903
+    bl      f_6962
     adrp    x0, b_8720
     add     x0, x0, :lo12:b_8720
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8721
     add     x0, x0, :lo12:b_8721
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8722
     add     x0, x0, :lo12:b_8722
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
+    bl      f_6962
     adrp    x0, b_8723
     add     x0, x0, :lo12:b_8723
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    bl      f_1612
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8724
     add     x0, x0, :lo12:b_8724
     str     x0, [x12, #-8]
@@ -19817,27 +17844,21 @@ f_6218:
     add     x0, x0, :lo12:b_8726
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_903:
-    bl      f_8184
-    mov     x0, #38
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_904
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8727
     add     x0, x0, :lo12:b_8727
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8728
     add     x0, x0, :lo12:b_8728
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    bl      f_1612
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8729
     add     x0, x0, :lo12:b_8729
     str     x0, [x12, #-8]
@@ -19852,37 +17873,30 @@ f_6218:
     add     x0, x0, :lo12:b_8731
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_904:
-    bl      f_8184
-    mov     x0, #39
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_905
+    bl      f_6962
     adrp    x0, b_8732
     add     x0, x0, :lo12:b_8732
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8733
     add     x0, x0, :lo12:b_8733
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
+    bl      f_6962
     adrp    x0, b_8734
     add     x0, x0, :lo12:b_8734
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    bl      f_1612
+    bl      f_983
+    bl      f_798
     adrp    x0, b_8735
     add     x0, x0, :lo12:b_8735
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8736
     add     x0, x0, :lo12:b_8736
     str     x0, [x12, #-8]
@@ -19892,84 +17906,265 @@ f_6218:
     add     x0, x0, :lo12:b_8737
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_905:
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8738
+    add     x0, x0, :lo12:b_8738
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8739
+    add     x0, x0, :lo12:b_8739
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8740
+    add     x0, x0, :lo12:b_8740
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_983
+    bl      f_798
+    adrp    x0, b_8741
+    add     x0, x0, :lo12:b_8741
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8742
+    add     x0, x0, :lo12:b_8742
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_872
+.l_874:
+    bl      f_8184
+    mov     x0, #36
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_875
+    adrp    x0, b_8743
+    add     x0, x0, :lo12:b_8743
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8744
+    add     x0, x0, :lo12:b_8744
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8745
+    add     x0, x0, :lo12:b_8745
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8746
+    add     x0, x0, :lo12:b_8746
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_692
+    adrp    x0, b_8747
+    add     x0, x0, :lo12:b_8747
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8748
+    add     x0, x0, :lo12:b_8748
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8749
+    add     x0, x0, :lo12:b_8749
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_872
+.l_875:
+    bl      f_8184
+    mov     x0, #37
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_876
+    adrp    x0, b_8750
+    add     x0, x0, :lo12:b_8750
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8751
+    add     x0, x0, :lo12:b_8751
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8752
+    add     x0, x0, :lo12:b_8752
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8753
+    add     x0, x0, :lo12:b_8753
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_692
+    adrp    x0, b_8754
+    add     x0, x0, :lo12:b_8754
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8755
+    add     x0, x0, :lo12:b_8755
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8756
+    add     x0, x0, :lo12:b_8756
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_872
+.l_876:
+    bl      f_8184
+    mov     x0, #38
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_877
+    adrp    x0, b_8757
+    add     x0, x0, :lo12:b_8757
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8758
+    add     x0, x0, :lo12:b_8758
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_692
+    adrp    x0, b_8759
+    add     x0, x0, :lo12:b_8759
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8760
+    add     x0, x0, :lo12:b_8760
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8761
+    add     x0, x0, :lo12:b_8761
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_872
+.l_877:
+    bl      f_8184
+    mov     x0, #39
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_878
+    adrp    x0, b_8762
+    add     x0, x0, :lo12:b_8762
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8763
+    add     x0, x0, :lo12:b_8763
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8764
+    add     x0, x0, :lo12:b_8764
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_692
+    adrp    x0, b_8765
+    add     x0, x0, :lo12:b_8765
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8766
+    add     x0, x0, :lo12:b_8766
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8767
+    add     x0, x0, :lo12:b_8767
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_872
+.l_878:
     bl      f_8184
     mov     x0, #40
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_906
-    adrp    x0, b_8738
-    add     x0, x0, :lo12:b_8738
+    cbz     x0, .l_879
+    adrp    x0, b_8768
+    add     x0, x0, :lo12:b_8768
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6412
-    adrp    x0, b_8739
-    add     x0, x0, :lo12:b_8739
+    adrp    x0, b_8769
+    add     x0, x0, :lo12:b_8769
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8740
-    add     x0, x0, :lo12:b_8740
+    bl      f_3567
+    adrp    x0, b_8770
+    add     x0, x0, :lo12:b_8770
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8741
-    add     x0, x0, :lo12:b_8741
+    bl      f_3567
+    adrp    x0, b_8771
+    add     x0, x0, :lo12:b_8771
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8742
-    add     x0, x0, :lo12:b_8742
+    bl      f_3567
+    adrp    x0, b_8772
+    add     x0, x0, :lo12:b_8772
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8743
-    add     x0, x0, :lo12:b_8743
+    bl      f_3567
+    adrp    x0, b_8773
+    add     x0, x0, :lo12:b_8773
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8744
-    add     x0, x0, :lo12:b_8744
+    bl      f_3567
+    adrp    x0, b_8774
+    add     x0, x0, :lo12:b_8774
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8745
-    add     x0, x0, :lo12:b_8745
+    bl      f_3567
+    adrp    x0, b_8775
+    add     x0, x0, :lo12:b_8775
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2028
-    adrp    x0, b_8746
-    add     x0, x0, :lo12:b_8746
+    bl      f_3567
+    adrp    x0, b_8776
+    add     x0, x0, :lo12:b_8776
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_8747
-    add     x0, x0, :lo12:b_8747
+    adrp    x0, b_8777
+    add     x0, x0, :lo12:b_8777
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1009
-    b       .l_864
-.l_906:
-    adrp    x0, b_8748
-    add     x0, x0, :lo12:b_8748
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
-    bl      f_8184
-    bl      f_7036
-    adrp    x0, b_8749
-    add     x0, x0, :lo12:b_8749
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
-    mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_864:
+    bl      f_7161
+    b       .l_872
+.l_879:
+    bl      f_2448
+.l_872:
     mov     x0, #9
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -19980,53 +18175,143 @@ f_6218:
 f_6219:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    sub     sp, sp, #32
     bl      f_8184
-    mov     x0, #1
+    mov     x0, #34
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_965
-    b       .l_964
-.l_965:
+    cbz     x0, .l_897
+    adrp    x0, b_8803
+    add     x0, x0, :lo12:b_8803
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8804
+    add     x0, x0, :lo12:b_8804
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8805
+    add     x0, x0, :lo12:b_8805
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6918
+    b       .l_896
+.l_897:
     bl      f_8184
-    mov     x0, #2
+    mov     x0, #35
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_966
+    cbz     x0, .l_898
+    adrp    x0, b_8806
+    add     x0, x0, :lo12:b_8806
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8807
+    add     x0, x0, :lo12:b_8807
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8808
+    add     x0, x0, :lo12:b_8808
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_692
+    adrp    x0, b_8809
+    add     x0, x0, :lo12:b_8809
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8810
+    add     x0, x0, :lo12:b_8810
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8811
+    add     x0, x0, :lo12:b_8811
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8812
+    add     x0, x0, :lo12:b_8812
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8813
+    add     x0, x0, :lo12:b_8813
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8814
+    add     x0, x0, :lo12:b_8814
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8815
+    add     x0, x0, :lo12:b_8815
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8816
+    add     x0, x0, :lo12:b_8816
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8817
+    add     x0, x0, :lo12:b_8817
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8818
+    add     x0, x0, :lo12:b_8818
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8819
+    add     x0, x0, :lo12:b_8819
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_8820
+    add     x0, x0, :lo12:b_8820
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8821
     add     x0, x0, :lo12:b_8821
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8822
     add     x0, x0, :lo12:b_8822
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_3810
+    bl      f_6962
     adrp    x0, b_8823
     add     x0, x0, :lo12:b_8823
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_964
-.l_966:
-    bl      f_8184
-    mov     x0, #3
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_967
     adrp    x0, b_8824
     add     x0, x0, :lo12:b_8824
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8825
     add     x0, x0, :lo12:b_8825
     str     x0, [x12, #-8]
@@ -20043,51 +18328,31 @@ f_6219:
     add     x0, x0, :lo12:b_8827
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_967:
-    bl      f_8184
-    mov     x0, #4
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_968
-    bl      f_1613
-    bl      f_3810
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8828
     add     x0, x0, :lo12:b_8828
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8829
     add     x0, x0, :lo12:b_8829
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_8830
     add     x0, x0, :lo12:b_8830
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_964
-.l_968:
-    bl      f_8184
-    mov     x0, #5
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_969
-    bl      f_1613
-    bl      f_3810
     adrp    x0, b_8831
     add     x0, x0, :lo12:b_8831
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8832
     add     x0, x0, :lo12:b_8832
     str     x0, [x12, #-8]
@@ -20098,60 +18363,18 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_964
-.l_969:
-    bl      f_8184
-    mov     x0, #6
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_970
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8834
     add     x0, x0, :lo12:b_8834
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
-    bl      f_7283
-    bl      f_7285
-    mov     x0, #1
-    str     x0, [x12, #-8]
-    mov     x0, #31
-    ldr     x1, [x12, #-8]
-    lsl 	x0, x1, x0
-    str     x0, [x12, #-8]
-    mov     x0, #1
-    ldr     x1, [x12, #-8]
-    sub 	x0, x1, x0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
-    str     x0, [x12]
-    bl      f_7804
-    mov     x0, #1
-    str     x0, [x12, #-8]
-    mov     x0, #31
-    ldr     x1, [x12, #-8]
-    lsl 	x0, x1, x0
-    str     x0, [x12, #-8]
-    mov     x0, #-1
-    ldr     x1, [x12, #-8]
-    mul 	x0, x1, x0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
-    ldr     x1, [x12, #8]
-    orr 	x0, x1, x0
-    add     x12, x12, 16
-    cbz     x0, .l_972
-    bl      f_1613
+    bl      f_6962
     adrp    x0, b_8835
     add     x0, x0, :lo12:b_8835
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_8836
     add     x0, x0, :lo12:b_8836
     str     x0, [x12, #-8]
@@ -20161,54 +18384,26 @@ f_6219:
     add     x0, x0, :lo12:b_8837
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_971
-.l_972:
+    bl      f_6962
     bl      f_7283
-    sub     x0, x29, #32
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3562
-    sub     x0, x29, #32
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1010
-.l_971:
-    b       .l_964
-.l_970:
-    bl      f_8184
-    mov     x0, #7
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_973
+    bl      f_3176
     adrp    x0, b_8838
     add     x0, x0, :lo12:b_8838
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
-    bl      f_611
-    b       .l_964
-.l_973:
-    bl      f_8184
-    mov     x0, #8
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_974
+    bl      f_6962
     adrp    x0, b_8839
     add     x0, x0, :lo12:b_8839
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8840
     add     x0, x0, :lo12:b_8840
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_3810
+    bl      f_6962
     adrp    x0, b_8841
     add     x0, x0, :lo12:b_8841
     str     x0, [x12, #-8]
@@ -20218,28 +18413,17 @@ f_6219:
     add     x0, x0, :lo12:b_8842
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_974:
-    bl      f_8184
-    mov     x0, #9
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_975
+    bl      f_6962
     adrp    x0, b_8843
     add     x0, x0, :lo12:b_8843
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8844
     add     x0, x0, :lo12:b_8844
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
-    bl      f_3810
+    bl      f_6962
     adrp    x0, b_8845
     add     x0, x0, :lo12:b_8845
     str     x0, [x12, #-8]
@@ -20249,7 +18433,8 @@ f_6219:
     add     x0, x0, :lo12:b_8846
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_983
+    bl      f_798
     adrp    x0, b_8847
     add     x0, x0, :lo12:b_8847
     str     x0, [x12, #-8]
@@ -20267,13 +18452,13 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8850
     add     x0, x0, :lo12:b_8850
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_8851
     add     x0, x0, :lo12:b_8851
     str     x0, [x12, #-8]
@@ -20283,12 +18468,15 @@ f_6219:
     add     x0, x0, :lo12:b_8852
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_983
+    bl      f_798
     adrp    x0, b_8853
     add     x0, x0, :lo12:b_8853
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8854
     add     x0, x0, :lo12:b_8854
     str     x0, [x12, #-8]
@@ -20299,56 +18487,46 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8856
-    add     x0, x0, :lo12:b_8856
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8857
-    add     x0, x0, :lo12:b_8857
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8858
-    add     x0, x0, :lo12:b_8858
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8859
-    add     x0, x0, :lo12:b_8859
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_964
-.l_975:
+    b       .l_896
+.l_898:
     bl      f_8184
-    mov     x0, #10
+    mov     x0, #36
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_976
-    bl      f_1613
-    bl      f_3810
+    cbz     x0, .l_899
+    adrp    x0, b_8856
+    add     x0, x0, :lo12:b_8856
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8857
+    add     x0, x0, :lo12:b_8857
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8858
+    add     x0, x0, :lo12:b_8858
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    adrp    x0, b_8859
+    add     x0, x0, :lo12:b_8859
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_692
     adrp    x0, b_8860
     add     x0, x0, :lo12:b_8860
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8861
     add     x0, x0, :lo12:b_8861
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    movz    x0, #0
-    movk    x0, #1, lsl 16
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
     adrp    x0, b_8862
     add     x0, x0, :lo12:b_8862
     str     x0, [x12, #-8]
@@ -20368,29 +18546,19 @@ f_6219:
     add     x0, x0, :lo12:b_8865
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_976:
-    bl      f_8184
-    mov     x0, #11
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_977
-    bl      f_1613
+    bl      f_6962
     adrp    x0, b_8866
     add     x0, x0, :lo12:b_8866
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8867
-    add     x0, x0, :lo12:b_8867
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_7283
     bl      f_3176
+    adrp    x0, b_8867
+    add     x0, x0, :lo12:b_8867
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8868
     add     x0, x0, :lo12:b_8868
     str     x0, [x12, #-8]
@@ -20400,94 +18568,83 @@ f_6219:
     add     x0, x0, :lo12:b_8869
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_977:
-    bl      f_8184
-    mov     x0, #12
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_978
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8870
     add     x0, x0, :lo12:b_8870
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8871
     add     x0, x0, :lo12:b_8871
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8872
     add     x0, x0, :lo12:b_8872
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
     adrp    x0, b_8873
     add     x0, x0, :lo12:b_8873
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_964
-.l_978:
-    bl      f_8184
-    mov     x0, #13
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_979
     adrp    x0, b_8874
     add     x0, x0, :lo12:b_8874
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8875
     add     x0, x0, :lo12:b_8875
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
     adrp    x0, b_8876
     add     x0, x0, :lo12:b_8876
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8877
-    add     x0, x0, :lo12:b_8877
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_979:
+    bl      f_7161
+    b       .l_896
+.l_899:
     bl      f_8184
-    mov     x0, #14
+    mov     x0, #37
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_980
+    cbz     x0, .l_900
+    adrp    x0, b_8877
+    add     x0, x0, :lo12:b_8877
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
     adrp    x0, b_8878
     add     x0, x0, :lo12:b_8878
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_3567
     adrp    x0, b_8879
     add     x0, x0, :lo12:b_8879
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_3567
     adrp    x0, b_8880
     add     x0, x0, :lo12:b_8880
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_3567
+    bl      f_692
     adrp    x0, b_8881
     add     x0, x0, :lo12:b_8881
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
     adrp    x0, b_8882
     add     x0, x0, :lo12:b_8882
     str     x0, [x12, #-8]
@@ -20498,28 +18655,16 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_964
-.l_980:
-    bl      f_8184
-    mov     x0, #15
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_981
-    bl      f_1613
     adrp    x0, b_8884
     add     x0, x0, :lo12:b_8884
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8885
     add     x0, x0, :lo12:b_8885
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_8886
     add     x0, x0, :lo12:b_8886
     str     x0, [x12, #-8]
@@ -20529,232 +18674,205 @@ f_6219:
     add     x0, x0, :lo12:b_8887
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_981:
-    bl      f_8184
-    mov     x0, #16
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_982
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8888
     add     x0, x0, :lo12:b_8888
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8889
     add     x0, x0, :lo12:b_8889
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_8890
     add     x0, x0, :lo12:b_8890
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_964
-.l_982:
-    bl      f_8184
-    mov     x0, #17
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_983
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8891
     add     x0, x0, :lo12:b_8891
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8892
     add     x0, x0, :lo12:b_8892
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8893
     add     x0, x0, :lo12:b_8893
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3331
-    b       .l_964
-.l_983:
-    bl      f_8184
-    mov     x0, #18
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_984
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8894
     add     x0, x0, :lo12:b_8894
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8895
     add     x0, x0, :lo12:b_8895
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8896
     add     x0, x0, :lo12:b_8896
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3331
-    b       .l_964
-.l_984:
-    bl      f_8184
-    mov     x0, #19
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_985
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8897
     add     x0, x0, :lo12:b_8897
     str     x0, [x12, #-8]
-    adrp    x0, b_8898
-    add     x0, x0, :lo12:b_8898
-    str     x0, [x12, #-16]
-    adrp    x0, b_8899
-    add     x0, x0, :lo12:b_8899
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3331
-    b       .l_964
-.l_985:
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_896
+.l_900:
     bl      f_8184
-    mov     x0, #20
+    mov     x0, #38
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_986
+    cbz     x0, .l_901
+    adrp    x0, b_8898
+    add     x0, x0, :lo12:b_8898
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8899
+    add     x0, x0, :lo12:b_8899
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_692
     adrp    x0, b_8900
     add     x0, x0, :lo12:b_8900
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6918
     adrp    x0, b_8901
     add     x0, x0, :lo12:b_8901
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8902
     add     x0, x0, :lo12:b_8902
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3331
-    b       .l_964
-.l_986:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7161
+    b       .l_896
+.l_901:
     bl      f_8184
-    mov     x0, #21
+    mov     x0, #39
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_987
+    cbz     x0, .l_902
     adrp    x0, b_8903
     add     x0, x0, :lo12:b_8903
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
     adrp    x0, b_8904
     add     x0, x0, :lo12:b_8904
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
     adrp    x0, b_8905
     add     x0, x0, :lo12:b_8905
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3331
-    b       .l_964
-.l_987:
-    bl      f_8184
-    mov     x0, #22
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_988
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
+    bl      f_692
     adrp    x0, b_8906
     add     x0, x0, :lo12:b_8906
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8907
     add     x0, x0, :lo12:b_8907
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6918
     adrp    x0, b_8908
     add     x0, x0, :lo12:b_8908
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3331
-    b       .l_964
-.l_988:
-    bl      f_8184
-    mov     x0, #23
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_989
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8909
     add     x0, x0, :lo12:b_8909
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8910
     add     x0, x0, :lo12:b_8910
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8911
     add     x0, x0, :lo12:b_8911
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3331
-    b       .l_964
-.l_989:
-    bl      f_8184
-    mov     x0, #24
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_990
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8912
     add     x0, x0, :lo12:b_8912
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8913
     add     x0, x0, :lo12:b_8913
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8914
     add     x0, x0, :lo12:b_8914
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3331
-    b       .l_964
-.l_990:
-    bl      f_8184
-    mov     x0, #25
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_991
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8915
     add     x0, x0, :lo12:b_8915
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8916
     add     x0, x0, :lo12:b_8916
-    str     x0, [x12, #-16]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8917
     add     x0, x0, :lo12:b_8917
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3331
-    b       .l_964
-.l_991:
-    bl      f_8184
-    mov     x0, #26
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_992
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_8918
     add     x0, x0, :lo12:b_8918
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8919
     add     x0, x0, :lo12:b_8919
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8920
     add     x0, x0, :lo12:b_8920
     str     x0, [x12, #-8]
@@ -20764,31 +18882,26 @@ f_6219:
     add     x0, x0, :lo12:b_8921
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_992:
-    bl      f_8184
-    mov     x0, #27
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_993
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8922
     add     x0, x0, :lo12:b_8922
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8923
     add     x0, x0, :lo12:b_8923
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
     adrp    x0, b_8924
     add     x0, x0, :lo12:b_8924
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8925
     add     x0, x0, :lo12:b_8925
     str     x0, [x12, #-8]
@@ -20798,51 +18911,62 @@ f_6219:
     add     x0, x0, :lo12:b_8926
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8927
-    add     x0, x0, :lo12:b_8927
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8928
-    add     x0, x0, :lo12:b_8928
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_993:
+    bl      f_7161
+    b       .l_896
+.l_902:
     bl      f_8184
-    mov     x0, #28
+    mov     x0, #41
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_994
+    cbz     x0, .l_903
+    adrp    x0, b_8927
+    add     x0, x0, :lo12:b_8927
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    bl      f_692
+    adrp    x0, b_8928
+    add     x0, x0, :lo12:b_8928
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6918
     adrp    x0, b_8929
     add     x0, x0, :lo12:b_8929
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_7161
+    b       .l_896
+.l_903:
+    bl      f_8184
+    mov     x0, #42
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_904
     adrp    x0, b_8930
     add     x0, x0, :lo12:b_8930
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6412
     adrp    x0, b_8931
     add     x0, x0, :lo12:b_8931
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_3567
     adrp    x0, b_8932
     add     x0, x0, :lo12:b_8932
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_3567
+    bl      f_692
     adrp    x0, b_8933
     add     x0, x0, :lo12:b_8933
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6918
     adrp    x0, b_8934
     add     x0, x0, :lo12:b_8934
     str     x0, [x12, #-8]
@@ -20852,31 +18976,26 @@ f_6219:
     add     x0, x0, :lo12:b_8935
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_994:
-    bl      f_8184
-    mov     x0, #29
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_995
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8936
     add     x0, x0, :lo12:b_8936
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8937
     add     x0, x0, :lo12:b_8937
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
     adrp    x0, b_8938
     add     x0, x0, :lo12:b_8938
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8939
     add     x0, x0, :lo12:b_8939
     str     x0, [x12, #-8]
@@ -20886,41 +19005,42 @@ f_6219:
     add     x0, x0, :lo12:b_8940
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8941
-    add     x0, x0, :lo12:b_8941
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8942
-    add     x0, x0, :lo12:b_8942
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_995:
+    bl      f_7161
+    b       .l_896
+.l_904:
     bl      f_8184
-    mov     x0, #30
+    mov     x0, #43
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_996
+    cbz     x0, .l_905
+    adrp    x0, b_8941
+    add     x0, x0, :lo12:b_8941
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_8942
+    add     x0, x0, :lo12:b_8942
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3567
     adrp    x0, b_8943
     add     x0, x0, :lo12:b_8943
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_3567
     adrp    x0, b_8944
     add     x0, x0, :lo12:b_8944
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_3567
+    bl      f_692
     adrp    x0, b_8945
     add     x0, x0, :lo12:b_8945
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
     adrp    x0, b_8946
     add     x0, x0, :lo12:b_8946
     str     x0, [x12, #-8]
@@ -20935,83 +19055,49 @@ f_6219:
     add     x0, x0, :lo12:b_8948
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
+    bl      f_6962
     adrp    x0, b_8949
     add     x0, x0, :lo12:b_8949
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_996:
-    bl      f_8184
-    mov     x0, #31
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_997
-    bl      f_1613
-    bl      f_3810
+    bl      f_6962
     adrp    x0, b_8950
     add     x0, x0, :lo12:b_8950
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_8951
     add     x0, x0, :lo12:b_8951
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_964
-.l_997:
-    bl      f_8184
-    mov     x0, #32
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_998
-    bl      f_1613
-    bl      f_3810
     adrp    x0, b_8952
     add     x0, x0, :lo12:b_8952
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8953
     add     x0, x0, :lo12:b_8953
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_8954
     add     x0, x0, :lo12:b_8954
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_964
-.l_998:
-    bl      f_8184
-    mov     x0, #33
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_999
     adrp    x0, b_8955
     add     x0, x0, :lo12:b_8955
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8956
     add     x0, x0, :lo12:b_8956
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_3810
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8957
     add     x0, x0, :lo12:b_8957
     str     x0, [x12, #-8]
@@ -21022,62 +19108,53 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_8959
     add     x0, x0, :lo12:b_8959
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    b       .l_964
-.l_999:
-    bl      f_8184
-    mov     x0, #34
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1000
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_8960
     add     x0, x0, :lo12:b_8960
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_8961
     add     x0, x0, :lo12:b_8961
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    adrp    x0, b_8962
-    add     x0, x0, :lo12:b_8962
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6918
-    b       .l_964
-.l_1000:
+    bl      f_7161
+    b       .l_896
+.l_905:
     bl      f_8184
-    mov     x0, #35
+    mov     x0, #44
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1001
+    cbz     x0, .l_906
+    adrp    x0, b_8962
+    add     x0, x0, :lo12:b_8962
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
     adrp    x0, b_8963
     add     x0, x0, :lo12:b_8963
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_3567
+    bl      f_692
     adrp    x0, b_8964
     add     x0, x0, :lo12:b_8964
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
     adrp    x0, b_8965
     add     x0, x0, :lo12:b_8965
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
+    bl      f_6918
     adrp    x0, b_8966
     add     x0, x0, :lo12:b_8966
     str     x0, [x12, #-8]
@@ -21116,26 +19193,32 @@ f_6219:
     add     x0, x0, :lo12:b_8972
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_7161
+    b       .l_896
+.l_906:
+    bl      f_8184
+    mov     x0, #45
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_907
     adrp    x0, b_8973
     add     x0, x0, :lo12:b_8973
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    bl      f_6412
     adrp    x0, b_8974
     add     x0, x0, :lo12:b_8974
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_3567
+    bl      f_692
     adrp    x0, b_8975
     add     x0, x0, :lo12:b_8975
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    bl      f_6918
     adrp    x0, b_8976
     add     x0, x0, :lo12:b_8976
     str     x0, [x12, #-8]
@@ -21145,377 +19228,106 @@ f_6219:
     add     x0, x0, :lo12:b_8977
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_7161
+    b       .l_896
+.l_907:
+    bl      f_8184
+    mov     x0, #46
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_908
     adrp    x0, b_8978
     add     x0, x0, :lo12:b_8978
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    bl      f_6412
     adrp    x0, b_8979
     add     x0, x0, :lo12:b_8979
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_3567
+    bl      f_692
     adrp    x0, b_8980
     add     x0, x0, :lo12:b_8980
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6918
     adrp    x0, b_8981
     add     x0, x0, :lo12:b_8981
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8982
-    add     x0, x0, :lo12:b_8982
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8983
-    add     x0, x0, :lo12:b_8983
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8984
-    add     x0, x0, :lo12:b_8984
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8985
-    add     x0, x0, :lo12:b_8985
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8986
-    add     x0, x0, :lo12:b_8986
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8987
-    add     x0, x0, :lo12:b_8987
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8988
-    add     x0, x0, :lo12:b_8988
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8989
-    add     x0, x0, :lo12:b_8989
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8990
-    add     x0, x0, :lo12:b_8990
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8991
-    add     x0, x0, :lo12:b_8991
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8992
-    add     x0, x0, :lo12:b_8992
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8993
-    add     x0, x0, :lo12:b_8993
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8994
-    add     x0, x0, :lo12:b_8994
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8995
-    add     x0, x0, :lo12:b_8995
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8996
-    add     x0, x0, :lo12:b_8996
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_8997
-    add     x0, x0, :lo12:b_8997
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8998
-    add     x0, x0, :lo12:b_8998
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8999
-    add     x0, x0, :lo12:b_8999
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9000
-    add     x0, x0, :lo12:b_9000
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9001
-    add     x0, x0, :lo12:b_9001
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9002
-    add     x0, x0, :lo12:b_9002
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9003
-    add     x0, x0, :lo12:b_9003
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9004
-    add     x0, x0, :lo12:b_9004
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_359
-    bl      f_3810
-    adrp    x0, b_9005
-    add     x0, x0, :lo12:b_9005
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9006
-    add     x0, x0, :lo12:b_9006
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9007
-    add     x0, x0, :lo12:b_9007
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9008
-    add     x0, x0, :lo12:b_9008
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9009
-    add     x0, x0, :lo12:b_9009
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9010
-    add     x0, x0, :lo12:b_9010
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_359
-    bl      f_3810
-    adrp    x0, b_9011
-    add     x0, x0, :lo12:b_9011
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9012
-    add     x0, x0, :lo12:b_9012
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_964
-.l_1001:
+    bl      f_7161
+    b       .l_896
+.l_908:
+    bl      f_2448
+.l_896:
+    mov     x0, #9
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_6220:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    sub     sp, sp, #32
     bl      f_8184
-    mov     x0, #36
+    mov     x0, #1
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1002
-    adrp    x0, b_9013
-    add     x0, x0, :lo12:b_9013
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9014
-    add     x0, x0, :lo12:b_9014
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2029
-    adrp    x0, b_9015
-    add     x0, x0, :lo12:b_9015
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2029
-    adrp    x0, b_9016
-    add     x0, x0, :lo12:b_9016
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
-    adrp    x0, b_9017
-    add     x0, x0, :lo12:b_9017
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9018
-    add     x0, x0, :lo12:b_9018
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9019
-    add     x0, x0, :lo12:b_9019
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9020
-    add     x0, x0, :lo12:b_9020
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9021
-    add     x0, x0, :lo12:b_9021
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9022
-    add     x0, x0, :lo12:b_9022
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9023
-    add     x0, x0, :lo12:b_9023
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9024
-    add     x0, x0, :lo12:b_9024
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9025
-    add     x0, x0, :lo12:b_9025
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9026
-    add     x0, x0, :lo12:b_9026
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9027
-    add     x0, x0, :lo12:b_9027
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9028
-    add     x0, x0, :lo12:b_9028
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9029
-    add     x0, x0, :lo12:b_9029
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9030
-    add     x0, x0, :lo12:b_9030
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9031
-    add     x0, x0, :lo12:b_9031
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9032
-    add     x0, x0, :lo12:b_9032
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9033
-    add     x0, x0, :lo12:b_9033
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_1002:
+    cbz     x0, .l_943
+    b       .l_942
+.l_943:
     bl      f_8184
-    mov     x0, #37
+    mov     x0, #2
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1003
-    adrp    x0, b_9034
-    add     x0, x0, :lo12:b_9034
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9035
-    add     x0, x0, :lo12:b_9035
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2029
-    adrp    x0, b_9036
-    add     x0, x0, :lo12:b_9036
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2029
+    cbz     x0, .l_944
     adrp    x0, b_9037
     add     x0, x0, :lo12:b_9037
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
+    bl      f_6412
     adrp    x0, b_9038
     add     x0, x0, :lo12:b_9038
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
+    bl      f_3809
     adrp    x0, b_9039
     add     x0, x0, :lo12:b_9039
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    b       .l_942
+.l_944:
+    bl      f_8184
+    mov     x0, #3
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_945
+    bl      f_1612
     adrp    x0, b_9040
     add     x0, x0, :lo12:b_9040
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
     adrp    x0, b_9041
     add     x0, x0, :lo12:b_9041
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9042
     add     x0, x0, :lo12:b_9042
     str     x0, [x12, #-8]
@@ -21526,23 +19338,34 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9044
     add     x0, x0, :lo12:b_9044
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_9045
     add     x0, x0, :lo12:b_9045
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_1009
+    b       .l_942
+.l_945:
+    bl      f_8184
+    mov     x0, #4
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_946
+    bl      f_1612
+    bl      f_3809
     adrp    x0, b_9046
     add     x0, x0, :lo12:b_9046
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
     adrp    x0, b_9047
     add     x0, x0, :lo12:b_9047
     str     x0, [x12, #-8]
@@ -21555,13 +19378,22 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    b       .l_942
+.l_946:
+    bl      f_8184
+    mov     x0, #5
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_947
+    bl      f_1612
+    bl      f_3809
     adrp    x0, b_9049
     add     x0, x0, :lo12:b_9049
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    bl      f_6412
     adrp    x0, b_9050
     add     x0, x0, :lo12:b_9050
     str     x0, [x12, #-8]
@@ -21577,100 +19409,130 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    b       .l_942
+.l_947:
+    bl      f_8184
+    mov     x0, #6
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_948
+    bl      f_1612
     adrp    x0, b_9053
     add     x0, x0, :lo12:b_9053
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
+    bl      f_7283
+    mov     x0, #65535
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, gt
+    add     x12, x12, 8
+    cbz     x0, .l_950
+    bl      f_4535
+    b       .l_949
+.l_950:
     adrp    x0, b_9054
     add     x0, x0, :lo12:b_9054
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_1003:
-    bl      f_8184
-    mov     x0, #38
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1004
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9055
     add     x0, x0, :lo12:b_9055
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
+.l_949:
     adrp    x0, b_9056
     add     x0, x0, :lo12:b_9056
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
-    adrp    x0, b_9057
-    add     x0, x0, :lo12:b_9057
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6918
-    adrp    x0, b_9058
-    add     x0, x0, :lo12:b_9058
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9059
-    add     x0, x0, :lo12:b_9059
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_1004:
+    bl      f_1009
+    b       .l_942
+.l_948:
     bl      f_8184
-    mov     x0, #39
+    mov     x0, #7
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1005
+    cbz     x0, .l_951
+    adrp    x0, b_9057
+    add     x0, x0, :lo12:b_9057
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    bl      f_611
+    b       .l_942
+.l_951:
+    bl      f_8184
+    mov     x0, #8
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_952
+    adrp    x0, b_9058
+    add     x0, x0, :lo12:b_9058
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_9059
+    add     x0, x0, :lo12:b_9059
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    bl      f_3809
     adrp    x0, b_9060
     add     x0, x0, :lo12:b_9060
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_9061
     add     x0, x0, :lo12:b_9061
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
     adrp    x0, b_9062
     add     x0, x0, :lo12:b_9062
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
+    bl      f_6962
     adrp    x0, b_9063
     add     x0, x0, :lo12:b_9063
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_1009
+    b       .l_942
+.l_952:
+    bl      f_8184
+    mov     x0, #9
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_953
     adrp    x0, b_9064
     add     x0, x0, :lo12:b_9064
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6918
+    bl      f_6412
     adrp    x0, b_9065
     add     x0, x0, :lo12:b_9065
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
+    bl      f_1612
+    bl      f_3809
     adrp    x0, b_9066
     add     x0, x0, :lo12:b_9066
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_9067
     add     x0, x0, :lo12:b_9067
     str     x0, [x12, #-8]
@@ -21698,20 +19560,18 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_9072
     add     x0, x0, :lo12:b_9072
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9073
     add     x0, x0, :lo12:b_9073
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_9074
     add     x0, x0, :lo12:b_9074
     str     x0, [x12, #-8]
@@ -21727,25 +19587,25 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_9077
     add     x0, x0, :lo12:b_9077
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9078
     add     x0, x0, :lo12:b_9078
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_9079
     add     x0, x0, :lo12:b_9079
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9080
     add     x0, x0, :lo12:b_9080
     str     x0, [x12, #-8]
@@ -21756,85 +19616,102 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    b       .l_942
+.l_953:
+    bl      f_8184
+    mov     x0, #10
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_954
+    bl      f_1612
+    bl      f_3809
     adrp    x0, b_9082
     add     x0, x0, :lo12:b_9082
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
     adrp    x0, b_9083
     add     x0, x0, :lo12:b_9083
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_1005:
-    bl      f_8184
-    mov     x0, #41
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1006
+    bl      f_6962
     adrp    x0, b_9084
     add     x0, x0, :lo12:b_9084
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
-    bl      f_1613
+    bl      f_6962
     adrp    x0, b_9085
     add     x0, x0, :lo12:b_9085
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6918
+    bl      f_6962
+    movz    x0, #0
+    movk    x0, #1, lsl 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3176
     adrp    x0, b_9086
     add     x0, x0, :lo12:b_9086
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_1006:
-    bl      f_8184
-    mov     x0, #42
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1007
+    bl      f_6962
     adrp    x0, b_9087
     add     x0, x0, :lo12:b_9087
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_9088
     add     x0, x0, :lo12:b_9088
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
     adrp    x0, b_9089
     add     x0, x0, :lo12:b_9089
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
+    bl      f_1009
+    b       .l_942
+.l_954:
+    bl      f_8184
+    mov     x0, #11
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_955
     adrp    x0, b_9090
     add     x0, x0, :lo12:b_9090
     str     x0, [x12, #-8]
+    sub     x0, x29, #32
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7518
+    bl      f_7283
+    sub     x0, x29, #32
+    str     x0, [x12, #-8]
+    mov     x0, #2
+    ldr     x1, [x12, #-8]
+    add 	x0, x1, x0
+    str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6918
+    bl      f_3562
+    bl      f_1612
     adrp    x0, b_9091
     add     x0, x0, :lo12:b_9091
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
     adrp    x0, b_9092
     add     x0, x0, :lo12:b_9092
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    sub     x0, x29, #32
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_9093
     add     x0, x0, :lo12:b_9093
     str     x0, [x12, #-8]
@@ -21845,58 +19722,68 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    sub     x0, x29, #32
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     adrp    x0, b_9095
     add     x0, x0, :lo12:b_9095
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_9096
     add     x0, x0, :lo12:b_9096
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9097
-    add     x0, x0, :lo12:b_9097
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_1007:
+    bl      f_1009
+    b       .l_942
+.l_955:
     bl      f_8184
-    mov     x0, #43
+    mov     x0, #12
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1008
+    cbz     x0, .l_956
+    adrp    x0, b_9097
+    add     x0, x0, :lo12:b_9097
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
     adrp    x0, b_9098
     add     x0, x0, :lo12:b_9098
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_2028
     adrp    x0, b_9099
     add     x0, x0, :lo12:b_9099
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_2028
     adrp    x0, b_9100
     add     x0, x0, :lo12:b_9100
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
+    bl      f_6962
+    b       .l_942
+.l_956:
+    bl      f_8184
+    mov     x0, #13
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_957
     adrp    x0, b_9101
     add     x0, x0, :lo12:b_9101
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
+    bl      f_6412
     adrp    x0, b_9102
     add     x0, x0, :lo12:b_9102
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
     adrp    x0, b_9103
     add     x0, x0, :lo12:b_9103
     str     x0, [x12, #-8]
@@ -21906,32 +19793,44 @@ f_6219:
     add     x0, x0, :lo12:b_9104
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_1009
+    b       .l_942
+.l_957:
+    bl      f_8184
+    mov     x0, #14
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_958
     adrp    x0, b_9105
     add     x0, x0, :lo12:b_9105
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
     adrp    x0, b_9106
     add     x0, x0, :lo12:b_9106
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
     adrp    x0, b_9107
     add     x0, x0, :lo12:b_9107
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
     adrp    x0, b_9108
     add     x0, x0, :lo12:b_9108
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
+    bl      f_1612
     adrp    x0, b_9109
     add     x0, x0, :lo12:b_9109
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9110
     add     x0, x0, :lo12:b_9110
     str     x0, [x12, #-8]
@@ -21952,313 +19851,876 @@ f_6219:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_9114
     add     x0, x0, :lo12:b_9114
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9115
     add     x0, x0, :lo12:b_9115
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    b       .l_942
+.l_958:
+    bl      f_8184
+    mov     x0, #15
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_959
+    bl      f_1612
     adrp    x0, b_9116
     add     x0, x0, :lo12:b_9116
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
     bl      f_7283
-    bl      f_3176
+    mov     x0, #65535
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, gt
+    add     x12, x12, 8
+    cbz     x0, .l_961
+    bl      f_4535
     adrp    x0, b_9117
     add     x0, x0, :lo12:b_9117
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    b       .l_960
+.l_961:
     adrp    x0, b_9118
     add     x0, x0, :lo12:b_9118
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_1008:
-    bl      f_8184
-    mov     x0, #44
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1009
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9119
     add     x0, x0, :lo12:b_9119
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
+.l_960:
     adrp    x0, b_9120
     add     x0, x0, :lo12:b_9120
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
+    bl      f_1009
+    b       .l_942
+.l_959:
+    bl      f_8184
+    mov     x0, #16
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_962
     adrp    x0, b_9121
     add     x0, x0, :lo12:b_9121
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
+    bl      f_7283
+    mov     x0, #65535
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, gt
+    add     x12, x12, 8
+    cbz     x0, .l_964
+    bl      f_1612
+    bl      f_4535
     adrp    x0, b_9122
     add     x0, x0, :lo12:b_9122
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6918
+    bl      f_6962
+    b       .l_963
+.l_964:
     adrp    x0, b_9123
     add     x0, x0, :lo12:b_9123
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9124
     add     x0, x0, :lo12:b_9124
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
+.l_963:
+    b       .l_942
+.l_962:
+    bl      f_8184
+    mov     x0, #17
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_965
     adrp    x0, b_9125
     add     x0, x0, :lo12:b_9125
     str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
     adrp    x0, b_9126
     add     x0, x0, :lo12:b_9126
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3331
+    b       .l_942
+.l_965:
+    bl      f_8184
+    mov     x0, #18
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_966
+    adrp    x0, b_9127
+    add     x0, x0, :lo12:b_9127
+    str     x0, [x12, #-8]
+    adrp    x0, b_9128
+    add     x0, x0, :lo12:b_9128
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3331
+    b       .l_942
+.l_966:
+    bl      f_8184
+    mov     x0, #19
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_967
+    adrp    x0, b_9129
+    add     x0, x0, :lo12:b_9129
+    str     x0, [x12, #-8]
+    adrp    x0, b_9130
+    add     x0, x0, :lo12:b_9130
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3331
+    b       .l_942
+.l_967:
+    bl      f_8184
+    mov     x0, #20
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_968
+    adrp    x0, b_9131
+    add     x0, x0, :lo12:b_9131
+    str     x0, [x12, #-8]
+    adrp    x0, b_9132
+    add     x0, x0, :lo12:b_9132
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3331
+    b       .l_942
+.l_968:
+    bl      f_8184
+    mov     x0, #21
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_969
+    adrp    x0, b_9133
+    add     x0, x0, :lo12:b_9133
+    str     x0, [x12, #-8]
+    adrp    x0, b_9134
+    add     x0, x0, :lo12:b_9134
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3331
+    b       .l_942
+.l_969:
+    bl      f_8184
+    mov     x0, #22
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_970
+    adrp    x0, b_9135
+    add     x0, x0, :lo12:b_9135
+    str     x0, [x12, #-8]
+    adrp    x0, b_9136
+    add     x0, x0, :lo12:b_9136
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3331
+    b       .l_942
+.l_970:
+    bl      f_8184
+    mov     x0, #23
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_971
+    adrp    x0, b_9137
+    add     x0, x0, :lo12:b_9137
+    str     x0, [x12, #-8]
+    adrp    x0, b_9138
+    add     x0, x0, :lo12:b_9138
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3331
+    b       .l_942
+.l_971:
+    bl      f_8184
+    mov     x0, #24
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_972
+    adrp    x0, b_9139
+    add     x0, x0, :lo12:b_9139
+    str     x0, [x12, #-8]
+    adrp    x0, b_9140
+    add     x0, x0, :lo12:b_9140
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3331
+    b       .l_942
+.l_972:
+    bl      f_8184
+    mov     x0, #25
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_973
+    adrp    x0, b_9141
+    add     x0, x0, :lo12:b_9141
+    str     x0, [x12, #-8]
+    adrp    x0, b_9142
+    add     x0, x0, :lo12:b_9142
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3331
+    b       .l_942
+.l_973:
+    bl      f_8184
+    mov     x0, #26
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_974
+    adrp    x0, b_9143
+    add     x0, x0, :lo12:b_9143
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_9144
+    add     x0, x0, :lo12:b_9144
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9145
+    add     x0, x0, :lo12:b_9145
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9127
-    add     x0, x0, :lo12:b_9127
+    adrp    x0, b_9146
+    add     x0, x0, :lo12:b_9146
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_1009
+    b       .l_942
+.l_974:
+    bl      f_8184
+    mov     x0, #27
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_975
+    adrp    x0, b_9147
+    add     x0, x0, :lo12:b_9147
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_9148
+    add     x0, x0, :lo12:b_9148
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9149
+    add     x0, x0, :lo12:b_9149
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9150
+    add     x0, x0, :lo12:b_9150
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9151
+    add     x0, x0, :lo12:b_9151
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9152
+    add     x0, x0, :lo12:b_9152
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_1009
+    b       .l_942
+.l_975:
+    bl      f_8184
+    mov     x0, #28
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_976
+    adrp    x0, b_9153
+    add     x0, x0, :lo12:b_9153
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_9154
+    add     x0, x0, :lo12:b_9154
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9155
+    add     x0, x0, :lo12:b_9155
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9156
+    add     x0, x0, :lo12:b_9156
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9157
+    add     x0, x0, :lo12:b_9157
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9158
+    add     x0, x0, :lo12:b_9158
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_1009
+    b       .l_942
+.l_976:
+    bl      f_8184
+    mov     x0, #29
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_977
+    adrp    x0, b_9159
+    add     x0, x0, :lo12:b_9159
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_9160
+    add     x0, x0, :lo12:b_9160
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9161
+    add     x0, x0, :lo12:b_9161
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9162
+    add     x0, x0, :lo12:b_9162
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9163
+    add     x0, x0, :lo12:b_9163
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9164
+    add     x0, x0, :lo12:b_9164
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_1009
+    b       .l_942
+.l_977:
+    bl      f_8184
+    mov     x0, #30
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_978
+    adrp    x0, b_9165
+    add     x0, x0, :lo12:b_9165
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_9166
+    add     x0, x0, :lo12:b_9166
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9167
+    add     x0, x0, :lo12:b_9167
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9168
+    add     x0, x0, :lo12:b_9168
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9169
+    add     x0, x0, :lo12:b_9169
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9170
+    add     x0, x0, :lo12:b_9170
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_1009
+    adrp    x0, b_9171
+    add     x0, x0, :lo12:b_9171
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_1009
+    b       .l_942
+.l_978:
+    bl      f_8184
+    mov     x0, #31
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_979
+    bl      f_1612
+    bl      f_3809
+    adrp    x0, b_9172
+    add     x0, x0, :lo12:b_9172
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_7283
     bl      f_3176
-    adrp    x0, b_9128
-    add     x0, x0, :lo12:b_9128
+    adrp    x0, b_9173
+    add     x0, x0, :lo12:b_9173
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9129
-    add     x0, x0, :lo12:b_9129
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_1009:
+    b       .l_942
+.l_979:
     bl      f_8184
-    mov     x0, #45
+    mov     x0, #32
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1010
-    adrp    x0, b_9130
-    add     x0, x0, :lo12:b_9130
+    cbz     x0, .l_980
+    bl      f_1612
+    bl      f_3809
+    adrp    x0, b_9174
+    add     x0, x0, :lo12:b_9174
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6412
-    adrp    x0, b_9131
-    add     x0, x0, :lo12:b_9131
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
-    adrp    x0, b_9132
-    add     x0, x0, :lo12:b_9132
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6918
-    adrp    x0, b_9133
-    add     x0, x0, :lo12:b_9133
+    adrp    x0, b_9175
+    add     x0, x0, :lo12:b_9175
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_9134
-    add     x0, x0, :lo12:b_9134
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9176
+    add     x0, x0, :lo12:b_9176
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_1010:
+    bl      f_6962
+    b       .l_942
+.l_980:
     bl      f_8184
-    mov     x0, #46
+    mov     x0, #33
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1011
-    adrp    x0, b_9135
-    add     x0, x0, :lo12:b_9135
+    cbz     x0, .l_981
+    adrp    x0, b_9177
+    add     x0, x0, :lo12:b_9177
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6412
-    adrp    x0, b_9136
-    add     x0, x0, :lo12:b_9136
+    adrp    x0, b_9178
+    add     x0, x0, :lo12:b_9178
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2029
-    bl      f_1613
-    adrp    x0, b_9137
-    add     x0, x0, :lo12:b_9137
+    bl      f_2028
+    bl      f_3809
+    adrp    x0, b_9179
+    add     x0, x0, :lo12:b_9179
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6918
-    adrp    x0, b_9138
-    add     x0, x0, :lo12:b_9138
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9180
+    add     x0, x0, :lo12:b_9180
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1010
-    b       .l_964
-.l_1011:
-    adrp    x0, b_9139
-    add     x0, x0, :lo12:b_9139
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
+    bl      f_6962
+    b       .l_942
+.l_981:
     bl      f_8184
-    bl      f_7036
-    adrp    x0, b_9140
-    add     x0, x0, :lo12:b_9140
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
-    mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_964:
-    mov     x0, #9
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_6220:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    sub     sp, sp, #32
-    bl      f_8184
-    mov     x0, #1
+    mov     x0, #34
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1071
-    b       .l_1070
-.l_1071:
+    cbz     x0, .l_982
+    adrp    x0, b_9181
+    add     x0, x0, :lo12:b_9181
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_9182
+    add     x0, x0, :lo12:b_9182
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9183
+    add     x0, x0, :lo12:b_9183
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9184
+    add     x0, x0, :lo12:b_9184
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_942
+.l_982:
     bl      f_8184
-    mov     x0, #2
+    mov     x0, #35
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1072
+    cbz     x0, .l_983
+    adrp    x0, b_9185
+    add     x0, x0, :lo12:b_9185
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_9186
+    add     x0, x0, :lo12:b_9186
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9187
+    add     x0, x0, :lo12:b_9187
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9188
+    add     x0, x0, :lo12:b_9188
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9189
+    add     x0, x0, :lo12:b_9189
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9190
+    add     x0, x0, :lo12:b_9190
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9191
+    add     x0, x0, :lo12:b_9191
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9192
+    add     x0, x0, :lo12:b_9192
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9193
+    add     x0, x0, :lo12:b_9193
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9194
+    add     x0, x0, :lo12:b_9194
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9195
+    add     x0, x0, :lo12:b_9195
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9196
+    add     x0, x0, :lo12:b_9196
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9197
+    add     x0, x0, :lo12:b_9197
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9198
+    add     x0, x0, :lo12:b_9198
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9199
+    add     x0, x0, :lo12:b_9199
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9200
+    add     x0, x0, :lo12:b_9200
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9201
+    add     x0, x0, :lo12:b_9201
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9202
+    add     x0, x0, :lo12:b_9202
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9203
+    add     x0, x0, :lo12:b_9203
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9204
+    add     x0, x0, :lo12:b_9204
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9205
+    add     x0, x0, :lo12:b_9205
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9206
+    add     x0, x0, :lo12:b_9206
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9207
+    add     x0, x0, :lo12:b_9207
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9208
+    add     x0, x0, :lo12:b_9208
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9209
+    add     x0, x0, :lo12:b_9209
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9210
+    add     x0, x0, :lo12:b_9210
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9211
+    add     x0, x0, :lo12:b_9211
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9212
+    add     x0, x0, :lo12:b_9212
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9213
+    add     x0, x0, :lo12:b_9213
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9214
+    add     x0, x0, :lo12:b_9214
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9215
+    add     x0, x0, :lo12:b_9215
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9216
+    add     x0, x0, :lo12:b_9216
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9217
+    add     x0, x0, :lo12:b_9217
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9218
+    add     x0, x0, :lo12:b_9218
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9219
+    add     x0, x0, :lo12:b_9219
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9220
+    add     x0, x0, :lo12:b_9220
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_358
+    bl      f_3809
+    adrp    x0, b_9221
+    add     x0, x0, :lo12:b_9221
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
+    adrp    x0, b_9222
+    add     x0, x0, :lo12:b_9222
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_9223
+    add     x0, x0, :lo12:b_9223
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9224
     add     x0, x0, :lo12:b_9224
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_9225
     add     x0, x0, :lo12:b_9225
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2030
-    bl      f_3811
+    bl      f_6962
     adrp    x0, b_9226
     add     x0, x0, :lo12:b_9226
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1072:
-    bl      f_8184
-    mov     x0, #3
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1073
-    bl      f_1614
+    bl      f_358
+    bl      f_3809
     adrp    x0, b_9227
     add     x0, x0, :lo12:b_9227
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
+    bl      f_7283
+    bl      f_3176
     adrp    x0, b_9228
     add     x0, x0, :lo12:b_9228
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9229
-    add     x0, x0, :lo12:b_9229
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9230
-    add     x0, x0, :lo12:b_9230
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9231
-    add     x0, x0, :lo12:b_9231
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9232
-    add     x0, x0, :lo12:b_9232
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1073:
+    b       .l_942
+.l_983:
     bl      f_8184
-    mov     x0, #4
+    mov     x0, #36
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1074
-    bl      f_1614
-    bl      f_3811
+    cbz     x0, .l_984
+    adrp    x0, b_9229
+    add     x0, x0, :lo12:b_9229
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_9230
+    add     x0, x0, :lo12:b_9230
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9231
+    add     x0, x0, :lo12:b_9231
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9232
+    add     x0, x0, :lo12:b_9232
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
     adrp    x0, b_9233
     add     x0, x0, :lo12:b_9233
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_9234
     add     x0, x0, :lo12:b_9234
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_9235
     add     x0, x0, :lo12:b_9235
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1074:
+    bl      f_1009
+    b       .l_942
+.l_984:
     bl      f_8184
-    mov     x0, #5
+    mov     x0, #37
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1075
-    bl      f_1614
-    bl      f_3811
+    cbz     x0, .l_985
     adrp    x0, b_9236
     add     x0, x0, :lo12:b_9236
     str     x0, [x12, #-8]
@@ -22268,185 +20730,154 @@ f_6220:
     add     x0, x0, :lo12:b_9237
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
     adrp    x0, b_9238
     add     x0, x0, :lo12:b_9238
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
     adrp    x0, b_9239
     add     x0, x0, :lo12:b_9239
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1075:
-    bl      f_8184
-    mov     x0, #6
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1076
-    bl      f_1614
+    bl      f_2028
     adrp    x0, b_9240
     add     x0, x0, :lo12:b_9240
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
-    bl      f_7283
-    mov     x0, #65535
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
-    add     x12, x12, 8
-    cbz     x0, .l_1078
-    bl      f_4535
-    b       .l_1077
-.l_1078:
+    bl      f_6962
     adrp    x0, b_9241
     add     x0, x0, :lo12:b_9241
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    bl      f_7283
-    bl      f_3176
     adrp    x0, b_9242
     add     x0, x0, :lo12:b_9242
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-.l_1077:
+    bl      f_1009
+    b       .l_942
+.l_985:
+    bl      f_8184
+    mov     x0, #38
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_986
     adrp    x0, b_9243
     add     x0, x0, :lo12:b_9243
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1076:
-    bl      f_8184
-    mov     x0, #7
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1079
+    bl      f_6412
     adrp    x0, b_9244
     add     x0, x0, :lo12:b_9244
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
-    bl      f_613
-    b       .l_1070
-.l_1079:
-    bl      f_8184
-    mov     x0, #8
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1080
+    bl      f_2028
     adrp    x0, b_9245
     add     x0, x0, :lo12:b_9245
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_9246
     add     x0, x0, :lo12:b_9246
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2030
-    bl      f_3811
+    bl      f_6962
     adrp    x0, b_9247
     add     x0, x0, :lo12:b_9247
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9248
-    add     x0, x0, :lo12:b_9248
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9249
-    add     x0, x0, :lo12:b_9249
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9250
-    add     x0, x0, :lo12:b_9250
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1080:
+    bl      f_1009
+    b       .l_942
+.l_986:
     bl      f_8184
-    mov     x0, #9
+    mov     x0, #39
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1081
+    cbz     x0, .l_987
+    adrp    x0, b_9248
+    add     x0, x0, :lo12:b_9248
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6412
+    adrp    x0, b_9249
+    add     x0, x0, :lo12:b_9249
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
+    adrp    x0, b_9250
+    add     x0, x0, :lo12:b_9250
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2028
     adrp    x0, b_9251
     add     x0, x0, :lo12:b_9251
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6412
+    bl      f_6962
     adrp    x0, b_9252
     add     x0, x0, :lo12:b_9252
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_2030
-    bl      f_1614
-    bl      f_3811
+    bl      f_6962
     adrp    x0, b_9253
     add     x0, x0, :lo12:b_9253
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_1009
+    b       .l_942
+.l_987:
+    bl      f_8184
+    mov     x0, #40
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, eq
+    add     x12, x12, 8
+    cbz     x0, .l_988
     adrp    x0, b_9254
     add     x0, x0, :lo12:b_9254
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_6412
     adrp    x0, b_9255
     add     x0, x0, :lo12:b_9255
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
     adrp    x0, b_9256
     add     x0, x0, :lo12:b_9256
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    bl      f_2028
     adrp    x0, b_9257
     add     x0, x0, :lo12:b_9257
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
     adrp    x0, b_9258
     add     x0, x0, :lo12:b_9258
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
     adrp    x0, b_9259
     add     x0, x0, :lo12:b_9259
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
+    bl      f_2028
     adrp    x0, b_9260
     add     x0, x0, :lo12:b_9260
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
     adrp    x0, b_9261
     add     x0, x0, :lo12:b_9261
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_2028
     adrp    x0, b_9262
     add     x0, x0, :lo12:b_9262
     str     x0, [x12, #-8]
@@ -22456,1326 +20887,26 @@ f_6220:
     add     x0, x0, :lo12:b_9263
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_6962
+    bl      f_1009
+    b       .l_942
+.l_988:
     adrp    x0, b_9264
     add     x0, x0, :lo12:b_9264
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9265
-    add     x0, x0, :lo12:b_9265
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9266
-    add     x0, x0, :lo12:b_9266
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9267
-    add     x0, x0, :lo12:b_9267
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9268
-    add     x0, x0, :lo12:b_9268
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1081:
-    bl      f_8184
-    mov     x0, #10
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1082
-    bl      f_1614
-    bl      f_3811
-    adrp    x0, b_9269
-    add     x0, x0, :lo12:b_9269
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9270
-    add     x0, x0, :lo12:b_9270
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9271
-    add     x0, x0, :lo12:b_9271
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9272
-    add     x0, x0, :lo12:b_9272
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    movz    x0, #0
-    movk    x0, #1, lsl 16
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    adrp    x0, b_9273
-    add     x0, x0, :lo12:b_9273
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9274
-    add     x0, x0, :lo12:b_9274
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9275
-    add     x0, x0, :lo12:b_9275
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9276
-    add     x0, x0, :lo12:b_9276
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1082:
-    bl      f_8184
-    mov     x0, #11
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1083
-    adrp    x0, b_9277
-    add     x0, x0, :lo12:b_9277
-    str     x0, [x12, #-8]
-    sub     x0, x29, #32
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_7518
-    bl      f_7283
-    sub     x0, x29, #32
-    str     x0, [x12, #-8]
-    mov     x0, #2
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3562
-    bl      f_1614
-    adrp    x0, b_9278
-    add     x0, x0, :lo12:b_9278
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9279
-    add     x0, x0, :lo12:b_9279
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    sub     x0, x29, #32
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9280
-    add     x0, x0, :lo12:b_9280
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9281
-    add     x0, x0, :lo12:b_9281
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    sub     x0, x29, #32
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9282
-    add     x0, x0, :lo12:b_9282
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9283
-    add     x0, x0, :lo12:b_9283
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1083:
-    bl      f_8184
-    mov     x0, #12
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1084
-    adrp    x0, b_9284
-    add     x0, x0, :lo12:b_9284
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9285
-    add     x0, x0, :lo12:b_9285
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9286
-    add     x0, x0, :lo12:b_9286
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9287
-    add     x0, x0, :lo12:b_9287
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1084:
-    bl      f_8184
-    mov     x0, #13
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1085
-    adrp    x0, b_9288
-    add     x0, x0, :lo12:b_9288
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9289
-    add     x0, x0, :lo12:b_9289
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9290
-    add     x0, x0, :lo12:b_9290
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9291
-    add     x0, x0, :lo12:b_9291
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1085:
-    bl      f_8184
-    mov     x0, #14
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1086
-    adrp    x0, b_9292
-    add     x0, x0, :lo12:b_9292
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9293
-    add     x0, x0, :lo12:b_9293
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9294
-    add     x0, x0, :lo12:b_9294
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9295
-    add     x0, x0, :lo12:b_9295
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    bl      f_1614
-    adrp    x0, b_9296
-    add     x0, x0, :lo12:b_9296
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9297
-    add     x0, x0, :lo12:b_9297
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9298
-    add     x0, x0, :lo12:b_9298
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9299
-    add     x0, x0, :lo12:b_9299
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9300
-    add     x0, x0, :lo12:b_9300
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9301
-    add     x0, x0, :lo12:b_9301
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9302
-    add     x0, x0, :lo12:b_9302
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1086:
-    bl      f_8184
-    mov     x0, #15
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1087
-    bl      f_1614
-    adrp    x0, b_9303
-    add     x0, x0, :lo12:b_9303
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    bl      f_7283
-    mov     x0, #65535
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
-    add     x12, x12, 8
-    cbz     x0, .l_1089
-    bl      f_4535
-    adrp    x0, b_9304
-    add     x0, x0, :lo12:b_9304
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1088
-.l_1089:
-    adrp    x0, b_9305
-    add     x0, x0, :lo12:b_9305
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9306
-    add     x0, x0, :lo12:b_9306
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-.l_1088:
-    adrp    x0, b_9307
-    add     x0, x0, :lo12:b_9307
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1087:
-    bl      f_8184
-    mov     x0, #16
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1090
-    adrp    x0, b_9308
-    add     x0, x0, :lo12:b_9308
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    bl      f_7283
-    mov     x0, #65535
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
-    add     x12, x12, 8
-    cbz     x0, .l_1092
-    bl      f_1614
-    bl      f_4535
-    adrp    x0, b_9309
-    add     x0, x0, :lo12:b_9309
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1091
-.l_1092:
-    adrp    x0, b_9310
-    add     x0, x0, :lo12:b_9310
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9311
-    add     x0, x0, :lo12:b_9311
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-.l_1091:
-    b       .l_1070
-.l_1090:
-    bl      f_8184
-    mov     x0, #17
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1093
-    adrp    x0, b_9312
-    add     x0, x0, :lo12:b_9312
-    str     x0, [x12, #-8]
-    adrp    x0, b_9313
-    add     x0, x0, :lo12:b_9313
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3332
-    b       .l_1070
-.l_1093:
-    bl      f_8184
-    mov     x0, #18
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1094
-    adrp    x0, b_9314
-    add     x0, x0, :lo12:b_9314
-    str     x0, [x12, #-8]
-    adrp    x0, b_9315
-    add     x0, x0, :lo12:b_9315
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3332
-    b       .l_1070
-.l_1094:
-    bl      f_8184
-    mov     x0, #19
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1095
-    adrp    x0, b_9316
-    add     x0, x0, :lo12:b_9316
-    str     x0, [x12, #-8]
-    adrp    x0, b_9317
-    add     x0, x0, :lo12:b_9317
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3332
-    b       .l_1070
-.l_1095:
-    bl      f_8184
-    mov     x0, #20
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1096
-    adrp    x0, b_9318
-    add     x0, x0, :lo12:b_9318
-    str     x0, [x12, #-8]
-    adrp    x0, b_9319
-    add     x0, x0, :lo12:b_9319
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3332
-    b       .l_1070
-.l_1096:
-    bl      f_8184
-    mov     x0, #21
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1097
-    adrp    x0, b_9320
-    add     x0, x0, :lo12:b_9320
-    str     x0, [x12, #-8]
-    adrp    x0, b_9321
-    add     x0, x0, :lo12:b_9321
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3332
-    b       .l_1070
-.l_1097:
-    bl      f_8184
-    mov     x0, #22
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1098
-    adrp    x0, b_9322
-    add     x0, x0, :lo12:b_9322
-    str     x0, [x12, #-8]
-    adrp    x0, b_9323
-    add     x0, x0, :lo12:b_9323
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3332
-    b       .l_1070
-.l_1098:
-    bl      f_8184
-    mov     x0, #23
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1099
-    adrp    x0, b_9324
-    add     x0, x0, :lo12:b_9324
-    str     x0, [x12, #-8]
-    adrp    x0, b_9325
-    add     x0, x0, :lo12:b_9325
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3332
-    b       .l_1070
-.l_1099:
-    bl      f_8184
-    mov     x0, #24
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1100
-    adrp    x0, b_9326
-    add     x0, x0, :lo12:b_9326
-    str     x0, [x12, #-8]
-    adrp    x0, b_9327
-    add     x0, x0, :lo12:b_9327
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3332
-    b       .l_1070
-.l_1100:
-    bl      f_8184
-    mov     x0, #25
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1101
-    adrp    x0, b_9328
-    add     x0, x0, :lo12:b_9328
-    str     x0, [x12, #-8]
-    adrp    x0, b_9329
-    add     x0, x0, :lo12:b_9329
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
-    bl      f_3332
-    b       .l_1070
-.l_1101:
-    bl      f_8184
-    mov     x0, #26
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1102
-    adrp    x0, b_9330
-    add     x0, x0, :lo12:b_9330
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9331
-    add     x0, x0, :lo12:b_9331
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9332
-    add     x0, x0, :lo12:b_9332
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9333
-    add     x0, x0, :lo12:b_9333
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1102:
-    bl      f_8184
-    mov     x0, #27
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1103
-    adrp    x0, b_9334
-    add     x0, x0, :lo12:b_9334
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9335
-    add     x0, x0, :lo12:b_9335
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9336
-    add     x0, x0, :lo12:b_9336
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9337
-    add     x0, x0, :lo12:b_9337
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9338
-    add     x0, x0, :lo12:b_9338
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9339
-    add     x0, x0, :lo12:b_9339
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1103:
-    bl      f_8184
-    mov     x0, #28
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1104
-    adrp    x0, b_9340
-    add     x0, x0, :lo12:b_9340
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9341
-    add     x0, x0, :lo12:b_9341
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9342
-    add     x0, x0, :lo12:b_9342
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9343
-    add     x0, x0, :lo12:b_9343
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9344
-    add     x0, x0, :lo12:b_9344
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9345
-    add     x0, x0, :lo12:b_9345
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1104:
-    bl      f_8184
-    mov     x0, #29
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1105
-    adrp    x0, b_9346
-    add     x0, x0, :lo12:b_9346
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9347
-    add     x0, x0, :lo12:b_9347
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9348
-    add     x0, x0, :lo12:b_9348
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9349
-    add     x0, x0, :lo12:b_9349
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9350
-    add     x0, x0, :lo12:b_9350
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9351
-    add     x0, x0, :lo12:b_9351
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1105:
-    bl      f_8184
-    mov     x0, #30
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1106
-    adrp    x0, b_9352
-    add     x0, x0, :lo12:b_9352
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9353
-    add     x0, x0, :lo12:b_9353
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9354
-    add     x0, x0, :lo12:b_9354
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9355
-    add     x0, x0, :lo12:b_9355
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9356
-    add     x0, x0, :lo12:b_9356
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9357
-    add     x0, x0, :lo12:b_9357
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    adrp    x0, b_9358
-    add     x0, x0, :lo12:b_9358
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1106:
-    bl      f_8184
-    mov     x0, #31
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1107
-    bl      f_1614
-    bl      f_3811
-    adrp    x0, b_9359
-    add     x0, x0, :lo12:b_9359
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9360
-    add     x0, x0, :lo12:b_9360
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1107:
-    bl      f_8184
-    mov     x0, #32
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1108
-    bl      f_1614
-    bl      f_3811
-    adrp    x0, b_9361
-    add     x0, x0, :lo12:b_9361
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9362
-    add     x0, x0, :lo12:b_9362
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9363
-    add     x0, x0, :lo12:b_9363
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1108:
-    bl      f_8184
-    mov     x0, #33
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1109
-    adrp    x0, b_9364
-    add     x0, x0, :lo12:b_9364
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9365
-    add     x0, x0, :lo12:b_9365
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    bl      f_3811
-    adrp    x0, b_9366
-    add     x0, x0, :lo12:b_9366
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9367
-    add     x0, x0, :lo12:b_9367
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1109:
-    bl      f_8184
-    mov     x0, #34
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1110
-    adrp    x0, b_9368
-    add     x0, x0, :lo12:b_9368
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9369
-    add     x0, x0, :lo12:b_9369
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9370
-    add     x0, x0, :lo12:b_9370
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9371
-    add     x0, x0, :lo12:b_9371
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1110:
-    bl      f_8184
-    mov     x0, #35
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1111
-    adrp    x0, b_9372
-    add     x0, x0, :lo12:b_9372
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9373
-    add     x0, x0, :lo12:b_9373
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9374
-    add     x0, x0, :lo12:b_9374
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9375
-    add     x0, x0, :lo12:b_9375
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9376
-    add     x0, x0, :lo12:b_9376
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9377
-    add     x0, x0, :lo12:b_9377
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9378
-    add     x0, x0, :lo12:b_9378
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9379
-    add     x0, x0, :lo12:b_9379
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9380
-    add     x0, x0, :lo12:b_9380
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9381
-    add     x0, x0, :lo12:b_9381
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9382
-    add     x0, x0, :lo12:b_9382
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9383
-    add     x0, x0, :lo12:b_9383
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9384
-    add     x0, x0, :lo12:b_9384
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9385
-    add     x0, x0, :lo12:b_9385
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9386
-    add     x0, x0, :lo12:b_9386
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9387
-    add     x0, x0, :lo12:b_9387
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9388
-    add     x0, x0, :lo12:b_9388
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9389
-    add     x0, x0, :lo12:b_9389
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9390
-    add     x0, x0, :lo12:b_9390
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9391
-    add     x0, x0, :lo12:b_9391
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9392
-    add     x0, x0, :lo12:b_9392
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9393
-    add     x0, x0, :lo12:b_9393
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9394
-    add     x0, x0, :lo12:b_9394
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9395
-    add     x0, x0, :lo12:b_9395
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9396
-    add     x0, x0, :lo12:b_9396
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9397
-    add     x0, x0, :lo12:b_9397
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9398
-    add     x0, x0, :lo12:b_9398
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9399
-    add     x0, x0, :lo12:b_9399
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9400
-    add     x0, x0, :lo12:b_9400
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9401
-    add     x0, x0, :lo12:b_9401
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9402
-    add     x0, x0, :lo12:b_9402
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9403
-    add     x0, x0, :lo12:b_9403
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9404
-    add     x0, x0, :lo12:b_9404
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9405
-    add     x0, x0, :lo12:b_9405
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9406
-    add     x0, x0, :lo12:b_9406
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9407
-    add     x0, x0, :lo12:b_9407
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_360
-    bl      f_3811
-    adrp    x0, b_9408
-    add     x0, x0, :lo12:b_9408
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9409
-    add     x0, x0, :lo12:b_9409
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9410
-    add     x0, x0, :lo12:b_9410
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9411
-    add     x0, x0, :lo12:b_9411
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9412
-    add     x0, x0, :lo12:b_9412
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9413
-    add     x0, x0, :lo12:b_9413
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_360
-    bl      f_3811
-    adrp    x0, b_9414
-    add     x0, x0, :lo12:b_9414
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_7283
-    bl      f_3176
-    adrp    x0, b_9415
-    add     x0, x0, :lo12:b_9415
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    b       .l_1070
-.l_1111:
-    bl      f_8184
-    mov     x0, #36
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1112
-    adrp    x0, b_9416
-    add     x0, x0, :lo12:b_9416
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9417
-    add     x0, x0, :lo12:b_9417
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9418
-    add     x0, x0, :lo12:b_9418
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9419
-    add     x0, x0, :lo12:b_9419
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9420
-    add     x0, x0, :lo12:b_9420
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9421
-    add     x0, x0, :lo12:b_9421
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9422
-    add     x0, x0, :lo12:b_9422
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1112:
-    bl      f_8184
-    mov     x0, #37
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1113
-    adrp    x0, b_9423
-    add     x0, x0, :lo12:b_9423
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9424
-    add     x0, x0, :lo12:b_9424
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9425
-    add     x0, x0, :lo12:b_9425
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9426
-    add     x0, x0, :lo12:b_9426
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9427
-    add     x0, x0, :lo12:b_9427
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9428
-    add     x0, x0, :lo12:b_9428
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9429
-    add     x0, x0, :lo12:b_9429
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1113:
-    bl      f_8184
-    mov     x0, #38
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1114
-    adrp    x0, b_9430
-    add     x0, x0, :lo12:b_9430
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9431
-    add     x0, x0, :lo12:b_9431
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9432
-    add     x0, x0, :lo12:b_9432
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9433
-    add     x0, x0, :lo12:b_9433
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9434
-    add     x0, x0, :lo12:b_9434
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1114:
-    bl      f_8184
-    mov     x0, #39
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1115
-    adrp    x0, b_9435
-    add     x0, x0, :lo12:b_9435
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9436
-    add     x0, x0, :lo12:b_9436
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9437
-    add     x0, x0, :lo12:b_9437
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9438
-    add     x0, x0, :lo12:b_9438
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9439
-    add     x0, x0, :lo12:b_9439
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9440
-    add     x0, x0, :lo12:b_9440
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1115:
-    bl      f_8184
-    mov     x0, #40
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, eq
-    add     x12, x12, 8
-    cbz     x0, .l_1116
-    adrp    x0, b_9441
-    add     x0, x0, :lo12:b_9441
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_9442
-    add     x0, x0, :lo12:b_9442
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9443
-    add     x0, x0, :lo12:b_9443
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9444
-    add     x0, x0, :lo12:b_9444
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9445
-    add     x0, x0, :lo12:b_9445
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9446
-    add     x0, x0, :lo12:b_9446
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9447
-    add     x0, x0, :lo12:b_9447
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9448
-    add     x0, x0, :lo12:b_9448
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_2030
-    adrp    x0, b_9449
-    add     x0, x0, :lo12:b_9449
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_9450
-    add     x0, x0, :lo12:b_9450
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_1011
-    b       .l_1070
-.l_1116:
-    adrp    x0, b_9451
-    add     x0, x0, :lo12:b_9451
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     bl      f_8184
     bl      f_7036
-    adrp    x0, b_9452
-    add     x0, x0, :lo12:b_9452
+    adrp    x0, b_9265
+    add     x0, x0, :lo12:b_9265
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_1070:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_942:
     mov     x0, #9
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -23817,43 +20948,41 @@ f_6267:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_1191
+    cbz     x0, .l_1063
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     mov     x0, #4096
-    mov     x1, x0
-    ldr     x0, [x12, #-8]
-    mov     x8, #17
-    svc     #0
-    str     x0, [x12, #-8]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_415
     sub     x0, x29, #24
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, lt
-    cbz     x0, .l_1194
-    adrp    x0, b_9554
-    add     x0, x0, :lo12:b_9554
+    str     x0, [x12]
+    bl      f_4481
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_1065
+    adrp    x0, b_9367
+    add     x0, x0, :lo12:b_9367
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1193
-.l_1194:
-.l_1193:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_1064
+.l_1065:
+.l_1064:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    adrp    x0, b_9555
-    add     x0, x0, :lo12:b_9555
+    adrp    x0, b_9368
+    add     x0, x0, :lo12:b_9368
     str     x0, [x12, #-16]
     mov     x0, #2
     str     x0, [x12, #-24]
@@ -23862,7 +20991,7 @@ f_6267:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1196
+    cbz     x0, .l_1067
     mov     x0, #2
     str     x0, [x12, #-8]
     sub     x0, x29, #8
@@ -23873,26 +21002,28 @@ f_6267:
     sub     x0, x29, #8
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-    b       .l_1195
-.l_1196:
-.l_1195:
+    b       .l_1066
+.l_1067:
+.l_1066:
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     sub     x0, x29, #24
     ldr     x0, [x0]
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     mov     x0, #1
-    ldr     x1, [x12, #-8]
+    ldr     x1, [x12]
     sub 	x0, x1, x0
-    str     x0, [x12, #-8]
+    str     x0, [x12]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7702
     mov     x0, #47
     str     x0, [x12, #-8]
     adrp    x0, b_5194
@@ -23903,9 +21034,9 @@ f_6267:
     sub     x12, x12, 24
     bl      f_1729
     bl      f_3552
-    b       .l_1190
-.l_1191:
-.l_1190:
+    b       .l_1062
+.l_1063:
+.l_1062:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -23919,12 +21050,13 @@ f_6267:
     bl      f_7518
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_1240
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
@@ -23932,13 +21064,14 @@ f_6267:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    str     x0, [x12]
+    bl      f_7702
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12, #8]
+    str     x0, [x12, #-8]
     mov     x0, #1
-    str     x0, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
     bl      f_5825
     bl      f_2002
     mov     x0, #47
@@ -23950,7 +21083,7 @@ f_6267:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_1198
+    cbz     x0, .l_1069
     mov     x0, #47
     str     x0, [x12, #-8]
     adrp    x0, b_5194
@@ -23961,9 +21094,9 @@ f_6267:
     sub     x12, x12, 24
     bl      f_1729
     bl      f_3552
-    b       .l_1197
-.l_1198:
-.l_1197:
+    b       .l_1068
+.l_1069:
+.l_1068:
     mov     x0, #0
     str     x0, [x12, #-8]
     adrp    x0, b_5194
@@ -23984,10 +21117,7 @@ f_6267:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -24095,7 +21225,8 @@ f_6317:
     str     x0, [x12]
     b       .l_20
 .l_21:
-    add     x12, x12, 16
+    bl      f_6973
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -24122,41 +21253,38 @@ f_6343:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6426
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     bl      f_6426
     mov     x0, #9
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6426
     mov     x0, #9
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
-    bl      f_7804
-    mov     x0, #17
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_7702
     bl      f_7804
     mov     x0, #17
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_2606
+    bl      f_7804
+    mov     x0, #17
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -24206,11 +21334,11 @@ f_6380:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_799
+    cbz     x0, .l_746
     bl      f_6426
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_801
+    cbz     x0, .l_748
     bl      f_6138
     adrp    x0, b_8491
     add     x0, x0, :lo12:b_8491
@@ -24218,11 +21346,12 @@ f_6380:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_800
-.l_801:
-.l_800:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_747
+.l_748:
+.l_747:
     mov     x0, #1
     str     x0, [x12, #-8]
     adrp    x0, b_5800
@@ -24240,50 +21369,50 @@ f_6380:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_803
+    cbz     x0, .l_750
     bl      f_2870
-    b       .l_802
-.l_803:
+    b       .l_749
+.l_750:
     bl      f_2175
     mov     x0, #16
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_804
+    cbz     x0, .l_751
     bl      f_1431
-    b       .l_802
-.l_804:
+    b       .l_749
+.l_751:
     bl      f_2175
     mov     x0, #17
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_805
+    cbz     x0, .l_752
     bl      f_1431
-    b       .l_802
-.l_805:
+    b       .l_749
+.l_752:
     bl      f_2175
     mov     x0, #20
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_806
+    cbz     x0, .l_753
     bl      f_229
-    b       .l_802
-.l_806:
+    b       .l_749
+.l_753:
     bl      f_2175
     mov     x0, #21
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_807
+    cbz     x0, .l_754
     bl      f_2695
-    b       .l_802
-.l_807:
+    b       .l_749
+.l_754:
     bl      f_6138
     adrp    x0, b_8492
     add     x0, x0, :lo12:b_8492
@@ -24298,18 +21427,19 @@ f_6380:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_802:
-    b       .l_798
-.l_799:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_749:
+    b       .l_745
+.l_746:
     bl      f_2175
     mov     x0, #5
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_808
+    cbz     x0, .l_755
     bl      f_6138
     adrp    x0, b_8494
     add     x0, x0, :lo12:b_8494
@@ -24324,10 +21454,11 @@ f_6380:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_798
-.l_808:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_745
+.l_755:
     bl      f_2175
     bl      f_7285
     mov     x0, #1
@@ -24343,38 +21474,28 @@ f_6380:
     ldr     x1, [x12, #8]
     orr 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_809
+    cbz     x0, .l_756
     bl      f_6176
     mov     x0, #6
     str     x0, [x12, #-8]
     mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_810:
-    cmp     x0, x12
-    beq     .rbl_810
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_810
-    .rbl_810:
-    str     x1, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
     bl      f_934
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_798
-.l_809:
+    b       .l_745
+.l_756:
     bl      f_2175
     mov     x0, #27
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_811
+    cbz     x0, .l_757
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -24385,7 +21506,7 @@ f_6380:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_812:
+.l_758:
     bl      f_2175
     mov     x0, #28
     ldr     x1, [x12]
@@ -24396,12 +21517,12 @@ f_6380:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_813
+    cbz     x0, .l_759
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_815
+    cbz     x0, .l_761
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -24429,201 +21550,202 @@ f_6380:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_814
-.l_815:
-.l_814:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_760
+.l_761:
+.l_760:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_812
-.l_813:
+    b       .l_758
+.l_759:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_3073
     bl      f_3910
-    b       .l_798
-.l_811:
+    b       .l_745
+.l_757:
     bl      f_2175
     mov     x0, #3
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_816
+    cbz     x0, .l_762
     bl      f_2654
-    b       .l_798
-.l_816:
+    b       .l_745
+.l_762:
     bl      f_2175
     mov     x0, #4
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_817
+    cbz     x0, .l_763
     bl      f_5916
-    b       .l_798
-.l_817:
+    b       .l_745
+.l_763:
     bl      f_2175
     mov     x0, #7
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_818
+    cbz     x0, .l_764
     bl      f_7498
-    b       .l_798
-.l_818:
+    b       .l_745
+.l_764:
     bl      f_2175
     mov     x0, #9
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_819
+    cbz     x0, .l_765
     bl      f_3273
-    b       .l_798
-.l_819:
+    b       .l_745
+.l_765:
     bl      f_2175
     mov     x0, #10
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_820
+    cbz     x0, .l_766
     bl      f_2603
-    b       .l_798
-.l_820:
+    b       .l_745
+.l_766:
     bl      f_2175
     mov     x0, #11
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_821
+    cbz     x0, .l_767
     bl      f_242
-    b       .l_798
-.l_821:
+    b       .l_745
+.l_767:
     bl      f_2175
     mov     x0, #12
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_822
+    cbz     x0, .l_768
     bl      f_5096
-    b       .l_798
-.l_822:
+    b       .l_745
+.l_768:
     bl      f_2175
     mov     x0, #6
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_823
+    cbz     x0, .l_769
     bl      f_2870
-    b       .l_798
-.l_823:
+    b       .l_745
+.l_769:
     bl      f_2175
     mov     x0, #16
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_824
+    cbz     x0, .l_770
     bl      f_1431
-    b       .l_798
-.l_824:
+    b       .l_745
+.l_770:
     bl      f_2175
     mov     x0, #17
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_825
+    cbz     x0, .l_771
     bl      f_1431
-    b       .l_798
-.l_825:
+    b       .l_745
+.l_771:
     bl      f_2175
     mov     x0, #18
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_826
+    cbz     x0, .l_772
     bl      f_1339
-    b       .l_798
-.l_826:
+    b       .l_745
+.l_772:
     bl      f_2175
     mov     x0, #19
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_827
+    cbz     x0, .l_773
     bl      f_2751
-    b       .l_798
-.l_827:
+    b       .l_745
+.l_773:
     bl      f_2175
     mov     x0, #20
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_828
+    cbz     x0, .l_774
     bl      f_229
-    b       .l_798
-.l_828:
+    b       .l_745
+.l_774:
     bl      f_2175
     mov     x0, #21
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_829
+    cbz     x0, .l_775
     bl      f_2695
-    b       .l_798
-.l_829:
+    b       .l_745
+.l_775:
     bl      f_2175
     mov     x0, #22
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_830
+    cbz     x0, .l_776
     bl      f_4303
-    b       .l_798
-.l_830:
+    b       .l_745
+.l_776:
     bl      f_2175
     mov     x0, #24
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_831
+    cbz     x0, .l_777
     bl      f_5614
-    b       .l_798
-.l_831:
+    b       .l_745
+.l_777:
     bl      f_2175
     mov     x0, #25
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_832
+    cbz     x0, .l_778
     bl      f_4527
-    b       .l_798
-.l_832:
+    b       .l_745
+.l_778:
     bl      f_2175
     mov     x0, #33
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_833
+    cbz     x0, .l_779
     bl      f_7285
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
@@ -24632,24 +21754,21 @@ f_6380:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    bl      f_7702
     bl      f_3910
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_798
-.l_833:
+    b       .l_745
+.l_779:
     bl      f_2175
     mov     x0, #34
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_834
+    cbz     x0, .l_780
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
     str     x0, [x12, #-8]
@@ -24660,8 +21779,8 @@ f_6380:
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_798
-.l_834:
+    b       .l_745
+.l_780:
     bl      f_6138
     adrp    x0, b_8499
     add     x0, x0, :lo12:b_8499
@@ -24676,9 +21795,10 @@ f_6380:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_798:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_745:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -24692,12 +21812,12 @@ f_6412:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_845
+    cbz     x0, .l_794
     bl      f_6962
-    b       .l_844
-.l_845:
-    add     x12, x12, 8
-.l_844:
+    b       .l_793
+.l_794:
+    bl      f_6973
+.l_793:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -24705,11 +21825,9 @@ f_6426:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     mov     x0, #1
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -24721,19 +21839,15 @@ f_6555:
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_7285
     mov     x0, #1
     ldr     x1, [x12]
     sub 	x0, x1, x0
     str     x0, [x12]
     bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 24
+    bl      f_7702
+    bl      f_6973
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -24797,8 +21911,9 @@ f_6639:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_75
 .l_77:
     bl      f_3838
@@ -24834,16 +21949,16 @@ f_6709:
     mov     x29, sp
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_3
+    cbz     x0, .l_9
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    b       .l_2
-.l_3:
+    b       .l_8
+.l_9:
     mov     x0, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_2:
+.l_8:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -24942,8 +22057,9 @@ f_6737:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_81
 .l_84:
     bl      f_3838
@@ -24985,9 +22101,9 @@ f_6752:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_847
-    adrp    x0, b_8505
-    add     x0, x0, :lo12:b_8505
+    cbz     x0, .l_796
+    adrp    x0, b_8508
+    add     x0, x0, :lo12:b_8508
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -24997,8 +22113,8 @@ f_6752:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3176
-    b       .l_846
-.l_847:
+    b       .l_795
+.l_796:
     adrp    x0, b_5843
     add     x0, x0, :lo12:b_5843
     ldr     x0, [x0]
@@ -25007,9 +22123,9 @@ f_6752:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_848
-    adrp    x0, b_8506
-    add     x0, x0, :lo12:b_8506
+    cbz     x0, .l_797
+    adrp    x0, b_8509
+    add     x0, x0, :lo12:b_8509
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -25023,9 +22139,9 @@ f_6752:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3176
-    b       .l_846
-.l_848:
-.l_846:
+    b       .l_795
+.l_797:
+.l_795:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -25035,14 +22151,9 @@ f_6753:
     adrp    x0, b_5844
     add     x0, x0, :lo12:b_5844
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, gt
-    cbz     x0, .l_947
-    adrp    x0, b_8794
-    add     x0, x0, :lo12:b_8794
+    cbz     x0, .l_926
+    adrp    x0, b_9012
+    add     x0, x0, :lo12:b_9012
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -25052,59 +22163,9 @@ f_6753:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3176
-    b       .l_946
-.l_947:
-    adrp    x0, b_5844
-    add     x0, x0, :lo12:b_5844
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, lt
-    cbz     x0, .l_948
-    adrp    x0, b_8795
-    add     x0, x0, :lo12:b_8795
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_5844
-    add     x0, x0, :lo12:b_5844
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #-1
-    ldr     x1, [x12, #-8]
-    mul 	x0, x1, x0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    b       .l_946
-.l_948:
-.l_946:
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_6754:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_5845
-    add     x0, x0, :lo12:b_5845
-    ldr     x0, [x0]
-    cbz     x0, .l_1054
-    adrp    x0, b_9199
-    add     x0, x0, :lo12:b_9199
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_5845
-    add     x0, x0, :lo12:b_5845
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    b       .l_1053
-.l_1054:
-.l_1053:
+    b       .l_925
+.l_926:
+.l_925:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -25121,36 +22182,37 @@ f_6797:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_296
+    cbz     x0, .l_294
     adrp    x0, b_3575
     add     x0, x0, :lo12:b_3575
     ldr     x0, [x0]
-    cbz     x0, .l_298
+    cbz     x0, .l_296
     adrp    x0, b_4763
     add     x0, x0, :lo12:b_4763
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6138
-    add     x12, x12, 8
-    b       .l_297
-.l_298:
-    bl      f_6138
-.l_297:
-    bl      f_6176
-    bl      f_6317
+    bl      f_6973
     b       .l_295
 .l_296:
+    bl      f_6138
+.l_295:
+    bl      f_6176
+    bl      f_6317
+    b       .l_293
+.l_294:
     bl      f_6138
     adrp    x0, b_8247
     add     x0, x0, :lo12:b_8247
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-.l_295:
+.l_293:
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -25201,12 +22263,10 @@ f_6850:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12]
-    mov     x0, #0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
+    bl      f_4481
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_396
+    cbz     x0, .l_394
     bl      f_6138
     adrp    x0, b_8304
     add     x0, x0, :lo12:b_8304
@@ -25224,11 +22284,12 @@ f_6850:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_395
-.l_396:
-.l_395:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_393
+.l_394:
+.l_393:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -25246,8 +22307,8 @@ f_6850:
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     sub     x0, x29, #24
     ldr     x1, [x12]
     str     x1, [x0]
@@ -25261,7 +22322,7 @@ f_6850:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_398
+    cbz     x0, .l_396
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -25279,30 +22340,30 @@ f_6850:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
-.l_399:
+    bl      f_2606
+.l_397:
     bl      f_1555
     sub     x0, x29, #24
     ldr     x1, [x12]
     str     x1, [x0]
     ldr     x0, [x12, #8]
     add     x12, x12, 16
-    cbz     x0, .l_400
-    b       .l_399
-.l_400:
-    add     x12, x12, 8
+    cbz     x0, .l_398
     b       .l_397
 .l_398:
-.l_397:
-.l_401:
+    bl      f_6973
+    b       .l_395
+.l_396:
+.l_395:
+.l_399:
     bl      f_2175
     mov     x0, #31
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_402
+    cbz     x0, .l_400
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -25320,12 +22381,12 @@ f_6850:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_404
+    cbz     x0, .l_402
     bl      f_6138
     adrp    x0, b_8306
     add     x0, x0, :lo12:b_8306
@@ -25343,11 +22404,12 @@ f_6850:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_403
-.l_404:
-.l_403:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_401
+.l_402:
+.l_401:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -25365,20 +22427,20 @@ f_6850:
     mov     x0, #8
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     sub     x0, x29, #32
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_405:
+.l_403:
     bl      f_2175
     mov     x0, #31
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_406
+    cbz     x0, .l_404
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -25388,7 +22450,7 @@ f_6850:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_407:
+.l_405:
     bl      f_2175
     mov     x0, #32
     ldr     x1, [x12]
@@ -25399,12 +22461,12 @@ f_6850:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_408
+    cbz     x0, .l_406
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_410
+    cbz     x0, .l_408
     sub     x0, x29, #40
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -25432,38 +22494,39 @@ f_6850:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_409
-.l_410:
-.l_409:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_407
+.l_408:
+.l_407:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_407
-.l_408:
+    b       .l_405
+.l_406:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     sub     x0, x29, #32
     ldr     x0, [x0]
-    cbz     x0, .l_414
+    cbz     x0, .l_412
     sub     x0, x29, #32
-    ldr     x0, [x0]
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_2606
     bl      f_6709
-    b       .l_413
-.l_414:
+    b       .l_411
+.l_412:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_413:
+.l_411:
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_412
+    cbz     x0, .l_410
     bl      f_6138
     adrp    x0, b_8311
     add     x0, x0, :lo12:b_8311
@@ -25481,19 +22544,21 @@ f_6850:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_411
-.l_412:
-.l_411:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_409
+.l_410:
+.l_409:
     sub     x0, x29, #32
     ldr     x0, [x0]
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2606
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    sub     x12, x12, 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     ldr     x1, [x12]
     ldr     x0, [x12, #8]
@@ -25519,45 +22584,37 @@ f_6850:
     mov     x0, #6
     str     x0, [x12]
     mov     x0, #3
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_934
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #19
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #17
     str     x0, [x12, #-16]
     mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
     bl      f_934
-    b       .l_405
-.l_406:
+    b       .l_403
+.l_404:
     bl      f_2175
     mov     x0, #23
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_416
+    cbz     x0, .l_414
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -25575,24 +22632,24 @@ f_6850:
     mov     x0, #0
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
-.l_417:
+    bl      f_2606
+.l_415:
     bl      f_1555
     sub     x0, x29, #24
     ldr     x1, [x12]
     str     x1, [x0]
     ldr     x0, [x12, #8]
     add     x12, x12, 16
-    cbz     x0, .l_418
-    b       .l_417
-.l_418:
-    add     x12, x12, 8
+    cbz     x0, .l_416
     b       .l_415
 .l_416:
-.l_415:
-    b       .l_401
-.l_402:
+    bl      f_6973
+    b       .l_413
+.l_414:
+.l_413:
+    b       .l_399
+.l_400:
     sub     x0, x29, #24
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -25610,9 +22667,11 @@ f_6851:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_1057
+    bl      f_6973
     adrp    x0, b_7336
     add     x0, x0, :lo12:b_7336
-    str     x0, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7285
     bl      f_2002
     mov     x0, #45
@@ -25669,7 +22728,8 @@ f_6851:
     str     x0, [x12]
     b       .l_26
 .l_27:
-    add     x12, x12, 16
+    bl      f_6973
+    bl      f_6973
     bl      f_7804
     ldr     x0, [x12]
     add     x12, x12, 8
@@ -25693,45 +22753,22 @@ f_6852:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_7285
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    bl      f_7702
     mov     x0, #3
-    add     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_546:
-    cmp     x0, x12
-    beq     .rbl_546
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_546
-    .rbl_546:
-    str     x1, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_830
     mov     x0, #3
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_547:
-    cmp     x0, x12
-    beq     .rbl_547
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_547
-    .rbl_547:
-    str     x1, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_830
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -25742,7 +22779,7 @@ f_6852:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_548:
+.l_504:
     bl      f_2175
     mov     x0, #29
     ldr     x1, [x12]
@@ -25753,12 +22790,12 @@ f_6852:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_549
+    cbz     x0, .l_505
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_551
+    cbz     x0, .l_507
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -25786,35 +22823,32 @@ f_6852:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_550
-.l_551:
-.l_550:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_506
+.l_507:
+.l_506:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_548
-.l_549:
+    b       .l_504
+.l_505:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_3073
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #33
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
+    mov     x0, #33
+    str     x0, [x12, #-8]
+    mov     x0, #3
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7210
     bl      f_934
     bl      f_4051
     bl      f_7285
@@ -25822,7 +22856,7 @@ f_6852:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_552:
+.l_508:
     bl      f_2175
     mov     x0, #30
     ldr     x1, [x12]
@@ -25833,12 +22867,12 @@ f_6852:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_553
+    cbz     x0, .l_509
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_555
+    cbz     x0, .l_511
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -25866,53 +22900,46 @@ f_6852:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_554
-.l_555:
-.l_554:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_510
+.l_511:
+.l_510:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_552
-.l_553:
+    b       .l_508
+.l_509:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_3073
     mov     x0, #3
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #32
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
+    mov     x0, #32
+    str     x0, [x12, #-8]
+    mov     x0, #3
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7210
     bl      f_934
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    mov     x0, #31
-    str     x0, [x12, #-16]
-    mov     x0, #3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
+    mov     x0, #31
+    str     x0, [x12, #-8]
+    mov     x0, #3
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7210
     bl      f_934
     bl      f_5764
-    add     x12, x12, 8
+    bl      f_6973
     bl      f_2175
     mov     x0, #8
     ldr     x1, [x12]
@@ -25923,15 +22950,15 @@ f_6852:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_557
+    cbz     x0, .l_513
     bl      f_3910
     bl      f_3910
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_556
-.l_557:
-.l_556:
+    b       .l_512
+.l_513:
+.l_512:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -25942,7 +22969,7 @@ f_6852:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_559
+    cbz     x0, .l_515
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -25953,7 +22980,7 @@ f_6852:
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
-.l_560:
+.l_516:
     bl      f_2175
     mov     x0, #30
     ldr     x1, [x12]
@@ -25964,12 +22991,12 @@ f_6852:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_561
+    cbz     x0, .l_517
     bl      f_2175
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_563
+    cbz     x0, .l_519
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -25997,16 +23024,17 @@ f_6852:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_562
-.l_563:
-.l_562:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_518
+.l_519:
+.l_518:
     bl      f_6426
     bl      f_7804
     bl      f_6380
-    b       .l_560
-.l_561:
+    b       .l_516
+.l_517:
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -26014,19 +23042,19 @@ f_6852:
     bl      f_3073
     bl      f_3910
     bl      f_3910
-    b       .l_558
-.l_559:
+    b       .l_514
+.l_515:
     bl      f_2175
     mov     x0, #7
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_564
+    cbz     x0, .l_520
     bl      f_5764
     bl      f_6852
-    b       .l_558
-.l_564:
+    b       .l_514
+.l_520:
     bl      f_6138
     adrp    x0, b_8369
     add     x0, x0, :lo12:b_8369
@@ -26034,9 +23062,10 @@ f_6852:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_558:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_514:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -26071,24 +23100,24 @@ f_6871:
 f_6918:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_8817
-    add     x0, x0, :lo12:b_8817
+    adrp    x0, b_8799
+    add     x0, x0, :lo12:b_8799
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_8818
-    add     x0, x0, :lo12:b_8818
+    adrp    x0, b_8800
+    add     x0, x0, :lo12:b_8800
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     bl      f_6962
-    adrp    x0, b_8819
-    add     x0, x0, :lo12:b_8819
+    adrp    x0, b_8801
+    add     x0, x0, :lo12:b_8801
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    adrp    x0, b_8820
-    add     x0, x0, :lo12:b_8820
+    adrp    x0, b_8802
+    add     x0, x0, :lo12:b_8802
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
@@ -26113,19 +23142,16 @@ f_6927:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_368
+    cbz     x0, .l_366
     mov     x0, #11
     str     x0, [x12, #-8]
     mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7210
     bl      f_934
-    b       .l_367
-.l_368:
+    b       .l_365
+.l_366:
     adrp    x0, b_2010
     add     x0, x0, :lo12:b_2010
     str     x0, [x12, #-8]
@@ -26137,26 +23163,26 @@ f_6927:
     mov     x0, #48
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_7804
     mov     x0, #16
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_2606
+    ldr     x0, [x12]
     ldr     x1, [x12, #8]
     add 	x0, x1, x0
     str     x0, [x12, #8]
     mov     x0, #15
     str     x0, [x12]
     mov     x0, #3
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_934
-.l_367:
+.l_365:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -26188,11 +23214,11 @@ f_6962:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_843
+    cbz     x0, .l_792
     bl      f_4072
-    b       .l_842
-.l_843:
-.l_842:
+    b       .l_791
+.l_792:
+.l_791:
     adrp    x0, b_3232
     add     x0, x0, :lo12:b_3232
     str     x0, [x12, #-8]
@@ -26229,6 +23255,13 @@ f_6965:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
+f_6973:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    add     x12, x12, 8
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
 f_7001:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
@@ -26255,7 +23288,7 @@ f_7001:
     cmp     x1, x0
     cset    w0, gt
     add     x12, x12, 8
-    cbz     x0, .l_364
+    cbz     x0, .l_362
     adrp    x0, b_3364
     add     x0, x0, :lo12:b_3364
     ldr     x0, [x0]
@@ -26264,9 +23297,9 @@ f_7001:
     add     x0, x0, :lo12:b_1210
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-    b       .l_363
-.l_364:
-.l_363:
+    b       .l_361
+.l_362:
+.l_361:
     adrp    x0, b_2452
     add     x0, x0, :lo12:b_2452
     str     x0, [x12, #-8]
@@ -26279,15 +23312,16 @@ f_7001:
     str     x1, [x0]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_2606
+    ldr     x0, [x12]
     ldr     x1, [x12, #8]
     add 	x0, x1, x0
     str     x0, [x12, #8]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    str     x0, [x12]
+    bl      f_7702
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -26333,9 +23367,11 @@ f_7022:
     str     x0, [x12]
     b       .l_263
 .l_264:
+    bl      f_6973
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -26392,8 +23428,9 @@ f_7054:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_88
 .l_90:
     bl      f_3838
@@ -26476,8 +23513,9 @@ f_7058:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
     b       .l_61
 .l_62:
 .l_61:
@@ -26533,7 +23571,7 @@ f_7138:
     bl      f_275
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_376
+    cbz     x0, .l_374
     bl      f_6138
     adrp    x0, b_8289
     add     x0, x0, :lo12:b_8289
@@ -26548,79 +23586,121 @@ f_7138:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_375
-.l_376:
-.l_375:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_373
+.l_374:
+.l_373:
     bl      f_1851
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_7161:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    adrp    x0, b_2442
+    add     x0, x0, :lo12:b_2442
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2002
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_806
+    bl      f_692
+    adrp    x0, b_195
+    add     x0, x0, :lo12:b_195
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7518
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+    b       .l_805
+.l_806:
+.l_805:
+    bl      f_983
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_7175:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_9507
-    add     x0, x0, :lo12:b_9507
+    adrp    x0, b_9320
+    add     x0, x0, :lo12:b_9320
     str     x0, [x12, #-8]
-    adrp    x0, b_9508
-    add     x0, x0, :lo12:b_9508
+    adrp    x0, b_9321
+    add     x0, x0, :lo12:b_9321
     str     x0, [x12, #-16]
-    adrp    x0, b_9509
-    add     x0, x0, :lo12:b_9509
+    adrp    x0, b_9322
+    add     x0, x0, :lo12:b_9322
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_15
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1165
+    cbz     x0, .l_1037
     bl      f_7315
-    b       .l_1164
-.l_1165:
-    adrp    x0, b_9510
-    add     x0, x0, :lo12:b_9510
+    b       .l_1036
+.l_1037:
+    adrp    x0, b_9323
+    add     x0, x0, :lo12:b_9323
     str     x0, [x12, #-8]
-    adrp    x0, b_9511
-    add     x0, x0, :lo12:b_9511
+    adrp    x0, b_9324
+    add     x0, x0, :lo12:b_9324
     str     x0, [x12, #-16]
-    adrp    x0, b_9512
-    add     x0, x0, :lo12:b_9512
+    adrp    x0, b_9325
+    add     x0, x0, :lo12:b_9325
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_15
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1166
+    cbz     x0, .l_1038
     bl      f_2520
-    b       .l_1164
-.l_1166:
-    adrp    x0, b_9513
-    add     x0, x0, :lo12:b_9513
+    b       .l_1036
+.l_1038:
+    adrp    x0, b_9326
+    add     x0, x0, :lo12:b_9326
     str     x0, [x12, #-8]
-    adrp    x0, b_9514
-    add     x0, x0, :lo12:b_9514
+    adrp    x0, b_9327
+    add     x0, x0, :lo12:b_9327
     str     x0, [x12, #-16]
-    adrp    x0, b_9515
-    add     x0, x0, :lo12:b_9515
+    adrp    x0, b_9328
+    add     x0, x0, :lo12:b_9328
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_15
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1167
+    cbz     x0, .l_1039
     bl      f_90
-    b       .l_1164
-.l_1167:
-    adrp    x0, b_9516
-    add     x0, x0, :lo12:b_9516
+    b       .l_1036
+.l_1039:
+    adrp    x0, b_9329
+    add     x0, x0, :lo12:b_9329
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_1164:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_1036:
     bl      f_4072
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_7210:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    lsl     x0, x0, #3
+    add     x0, x12, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -26713,8 +23793,8 @@ f_7283:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -26722,53 +23802,20 @@ f_7285:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     mov     x0, #0
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
 f_7315:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_8779
-    add     x0, x0, :lo12:b_8779
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8780
-    add     x0, x0, :lo12:b_8780
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    adrp    x0, b_8781
-    add     x0, x0, :lo12:b_8781
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    bl      f_1101
-    adrp    x0, b_8782
-    add     x0, x0, :lo12:b_8782
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    adrp    x0, b_8783
-    add     x0, x0, :lo12:b_8783
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
     adrp    x0, b_8784
     add     x0, x0, :lo12:b_8784
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
-    movz    x0, #0
-    movk    x0, #1, lsl 16
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
     adrp    x0, b_8785
     add     x0, x0, :lo12:b_8785
     str     x0, [x12, #-8]
@@ -26779,11 +23826,12 @@ f_7315:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
+    bl      f_1101
     adrp    x0, b_8787
     add     x0, x0, :lo12:b_8787
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_358
+    bl      f_6412
     adrp    x0, b_8788
     add     x0, x0, :lo12:b_8788
     str     x0, [x12, #-8]
@@ -26793,7 +23841,37 @@ f_7315:
     add     x0, x0, :lo12:b_8789
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-    bl      f_358
+    bl      f_6962
+    movz    x0, #0
+    movk    x0, #1, lsl 16
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3176
+    adrp    x0, b_8790
+    add     x0, x0, :lo12:b_8790
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8791
+    add     x0, x0, :lo12:b_8791
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8792
+    add     x0, x0, :lo12:b_8792
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_983
+    adrp    x0, b_8793
+    add     x0, x0, :lo12:b_8793
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_8794
+    add     x0, x0, :lo12:b_8794
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_983
     adrp    x0, b_1627
     add     x0, x0, :lo12:b_1627
     str     x0, [x12, #-8]
@@ -26803,25 +23881,25 @@ f_7315:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_1040
-    adrp    x0, b_8790
-    add     x0, x0, :lo12:b_8790
+    adrp    x0, b_8795
+    add     x0, x0, :lo12:b_8795
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_938:
+.l_888:
     bl      f_7285
     mov     x0, #8191
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 8
-    cbz     x0, .l_939
+    cbz     x0, .l_889
     bl      f_7285
     bl      f_7285
-    bl      f_1351
+    bl      f_1531
     bl      f_7804
     adrp    x0, b_2010
     add     x0, x0, :lo12:b_2010
@@ -26833,46 +23911,46 @@ f_7315:
     mov     x0, #40
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_5070
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_941
+    cbz     x0, .l_891
     bl      f_7285
-    bl      f_3705
-    b       .l_940
-.l_941:
-.l_940:
+    bl      f_8089
+    b       .l_890
+.l_891:
+.l_890:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_938
-.l_939:
-    add     x12, x12, 8
-    bl      f_3271
-    adrp    x0, b_8791
-    add     x0, x0, :lo12:b_8791
+    b       .l_888
+.l_889:
+    bl      f_6973
+    bl      f_756
+    adrp    x0, b_8796
+    add     x0, x0, :lo12:b_8796
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
-.l_942:
+.l_892:
     bl      f_7285
     mov     x0, #8191
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, lt
     add     x12, x12, 8
-    cbz     x0, .l_943
+    cbz     x0, .l_893
     bl      f_7285
     bl      f_7285
-    bl      f_1351
+    bl      f_1531
     bl      f_7804
     adrp    x0, b_2010
     add     x0, x0, :lo12:b_2010
@@ -26884,46 +23962,85 @@ f_7315:
     mov     x0, #40
     ldr     x1, [x12]
     add 	x0, x1, x0
-    ldr     x0, [x0]
     str     x0, [x12]
+    bl      f_2606
     bl      f_6709
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_945
+    cbz     x0, .l_895
     bl      f_7285
-    bl      f_4740
-    b       .l_944
-.l_945:
-.l_944:
+    bl      f_7952
+    b       .l_894
+.l_895:
+.l_894:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_942
-.l_943:
-    adrp    x0, b_8792
-    add     x0, x0, :lo12:b_8792
-    str     x0, [x12]
+    b       .l_892
+.l_893:
+    bl      f_6973
+    adrp    x0, b_8797
+    add     x0, x0, :lo12:b_8797
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_6962
     movz    x0, #0
     movk    x0, #1, lsl 16
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3176
-    adrp    x0, b_8793
-    add     x0, x0, :lo12:b_8793
+    adrp    x0, b_8798
+    add     x0, x0, :lo12:b_8798
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6962
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
+f_7332:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
+    cmp     x0, #0
+    beq     .frl_2
+    cmp     x0, #1
+    beq     .fwl_2
+    cmp     x0, #2
+    beq     .fal_2
+    b       .ffl_2
+    .frl_2:
+    mov     x2, #0
+    b       .fdl_2
+    .fwl_2:
+    mov     x2, #577
+    b       .fdl_2
+    .fal_2:
+    mov     x2, #1089
+    b       .fdl_2
+    .fdl_2:
+    mov     x8, #56
+    mov     x0, #-100
+    mov     x3, #420
+    svc     #0
+    str     x0, [x12, #8]
+    add     x12, x12, 8
+    b       .fel_2
+    .ffl_2:
+    mov     x0, #-1
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    .fel_2:
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
 f_7396:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-.l_1181:
+.l_1053:
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -26932,7 +24049,7 @@ f_7396:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1182
+    cbz     x0, .l_1054
     bl      f_7285
     bl      f_2002
     mov     x0, #100
@@ -26940,7 +24057,7 @@ f_7396:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1184
+    cbz     x0, .l_1056
     adrp    x0, b_4816
     add     x0, x0, :lo12:b_4816
     str     x0, [x12, #-8]
@@ -26948,28 +24065,29 @@ f_7396:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1186
-    adrp    x0, b_9546
-    add     x0, x0, :lo12:b_9546
+    cbz     x0, .l_1058
+    adrp    x0, b_9359
+    add     x0, x0, :lo12:b_9359
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9547
-    add     x0, x0, :lo12:b_9547
+    adrp    x0, b_9360
+    add     x0, x0, :lo12:b_9360
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9548
-    add     x0, x0, :lo12:b_9548
+    adrp    x0, b_9361
+    add     x0, x0, :lo12:b_9361
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1185
-.l_1186:
-.l_1185:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_1057
+.l_1058:
+.l_1057:
     mov     x0, #1
     str     x0, [x12, #-8]
     adrp    x0, b_4816
@@ -26977,8 +24095,8 @@ f_7396:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-    b       .l_1183
-.l_1184:
+    b       .l_1055
+.l_1056:
     bl      f_7285
     bl      f_2002
     mov     x0, #79
@@ -26986,7 +24104,7 @@ f_7396:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_1187
+    cbz     x0, .l_1059
     adrp    x0, b_2442
     add     x0, x0, :lo12:b_2442
     str     x0, [x12, #-8]
@@ -26994,28 +24112,29 @@ f_7396:
     bl      f_2002
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_1189
-    adrp    x0, b_9549
-    add     x0, x0, :lo12:b_9549
+    cbz     x0, .l_1061
+    adrp    x0, b_9362
+    add     x0, x0, :lo12:b_9362
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9550
-    add     x0, x0, :lo12:b_9550
+    adrp    x0, b_9363
+    add     x0, x0, :lo12:b_9363
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    adrp    x0, b_9551
-    add     x0, x0, :lo12:b_9551
+    adrp    x0, b_9364
+    add     x0, x0, :lo12:b_9364
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_1188
-.l_1189:
-.l_1188:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_1060
+.l_1061:
+.l_1060:
     mov     x0, #1
     str     x0, [x12, #-8]
     adrp    x0, b_2442
@@ -27023,28 +24142,41 @@ f_7396:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3552
-    b       .l_1183
-.l_1187:
-    adrp    x0, b_9552
-    add     x0, x0, :lo12:b_9552
+    b       .l_1055
+.l_1059:
+    adrp    x0, b_9365
+    add     x0, x0, :lo12:b_9365
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     bl      f_7285
     bl      f_2002
     bl      f_8056
-    adrp    x0, b_9553
-    add     x0, x0, :lo12:b_9553
+    adrp    x0, b_9366
+    add     x0, x0, :lo12:b_9366
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
     bl      f_3915
     mov     x0, #1
-    mov     x8, 93
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_1055:
+    b       .l_1053
+.l_1054:
+    bl      f_6973
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_7417:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x1, [x12]
+    ldr     x0, [x12, #8]
+    mov     x8, #17
     svc     #0
-.l_1183:
-    b       .l_1181
-.l_1182:
+    str     x0, [x12, #8]
     add     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -27080,11 +24212,11 @@ f_7479:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_328
+    cbz     x0, .l_326
     adrp    x0, b_847
     add     x0, x0, :lo12:b_847
     ldr     x0, [x0]
-    cbz     x0, .l_330
+    cbz     x0, .l_328
     bl      f_6138
     adrp    x0, b_8263
     add     x0, x0, :lo12:b_8263
@@ -27092,11 +24224,12 @@ f_7479:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_329
-.l_330:
-.l_329:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_327
+.l_328:
+.l_327:
     mov     x0, #1
     str     x0, [x12, #-8]
     adrp    x0, b_5800
@@ -27117,10 +24250,10 @@ f_7479:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_332
+    cbz     x0, .l_330
     bl      f_5818
-    b       .l_331
-.l_332:
+    b       .l_329
+.l_330:
     bl      f_6176
     adrp    x0, b_8265
     add     x0, x0, :lo12:b_8265
@@ -27130,10 +24263,10 @@ f_7479:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_333
+    cbz     x0, .l_331
     bl      f_1085
-    b       .l_331
-.l_333:
+    b       .l_329
+.l_331:
     bl      f_6138
     adrp    x0, b_8266
     add     x0, x0, :lo12:b_8266
@@ -27148,9 +24281,10 @@ f_7479:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_331:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_329:
     mov     x0, #0
     str     x0, [x12, #-8]
     adrp    x0, b_5800
@@ -27161,9 +24295,9 @@ f_7479:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_327
-.l_328:
-.l_327:
+    b       .l_325
+.l_326:
+.l_325:
     bl      f_2175
     mov     x0, #4
     ldr     x1, [x12]
@@ -27174,7 +24308,7 @@ f_7479:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_335
+    cbz     x0, .l_333
     bl      f_6138
     adrp    x0, b_8268
     add     x0, x0, :lo12:b_8268
@@ -27182,11 +24316,12 @@ f_7479:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_334
-.l_335:
-.l_334:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_332
+.l_333:
+.l_332:
     bl      f_6176
     adrp    x0, b_8269
     add     x0, x0, :lo12:b_8269
@@ -27196,10 +24331,10 @@ f_7479:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_337
+    cbz     x0, .l_335
     bl      f_3967
-    b       .l_336
-.l_337:
+    b       .l_334
+.l_335:
     bl      f_6176
     adrp    x0, b_8270
     add     x0, x0, :lo12:b_8270
@@ -27209,10 +24344,10 @@ f_7479:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_338
+    cbz     x0, .l_336
     bl      f_3970
-    b       .l_336
-.l_338:
+    b       .l_334
+.l_336:
     bl      f_6176
     adrp    x0, b_8271
     add     x0, x0, :lo12:b_8271
@@ -27222,10 +24357,10 @@ f_7479:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_339
+    cbz     x0, .l_337
     bl      f_6797
-    b       .l_336
-.l_339:
+    b       .l_334
+.l_337:
     bl      f_6176
     adrp    x0, b_8272
     add     x0, x0, :lo12:b_8272
@@ -27235,10 +24370,10 @@ f_7479:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_340
+    cbz     x0, .l_338
     bl      f_5818
-    b       .l_336
-.l_340:
+    b       .l_334
+.l_338:
     bl      f_6176
     adrp    x0, b_8273
     add     x0, x0, :lo12:b_8273
@@ -27248,10 +24383,10 @@ f_7479:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_341
+    cbz     x0, .l_339
     bl      f_1085
-    b       .l_336
-.l_341:
+    b       .l_334
+.l_339:
     bl      f_6176
     adrp    x0, b_8274
     add     x0, x0, :lo12:b_8274
@@ -27261,10 +24396,10 @@ f_7479:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_342
+    cbz     x0, .l_340
     bl      f_803
-    b       .l_336
-.l_342:
+    b       .l_334
+.l_340:
     bl      f_6176
     adrp    x0, b_8275
     add     x0, x0, :lo12:b_8275
@@ -27274,7 +24409,7 @@ f_7479:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_343
+    cbz     x0, .l_341
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -27302,7 +24437,7 @@ f_7479:
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_345
+    cbz     x0, .l_343
     bl      f_6138
     adrp    x0, b_8276
     add     x0, x0, :lo12:b_8276
@@ -27310,11 +24445,12 @@ f_7479:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_344
-.l_345:
-.l_344:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_342
+.l_343:
+.l_342:
     bl      f_6176
     bl      f_7804
     mov     x0, #25
@@ -27331,7 +24467,7 @@ f_7479:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_347
+    cbz     x0, .l_345
     bl      f_6138
     adrp    x0, b_8277
     add     x0, x0, :lo12:b_8277
@@ -27339,11 +24475,12 @@ f_7479:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_346
-.l_347:
-.l_346:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_344
+.l_345:
+.l_344:
     bl      f_7804
     adrp    x0, b_7731
     add     x0, x0, :lo12:b_7731
@@ -27352,19 +24489,17 @@ f_7479:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
+    bl      f_2382
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_349
+    cbz     x0, .l_347
     bl      f_612
-    b       .l_348
-.l_349:
+    b       .l_346
+.l_347:
     bl      f_4957
-.l_348:
-    b       .l_336
-.l_343:
+.l_346:
+    b       .l_334
+.l_341:
     bl      f_6176
     adrp    x0, b_8278
     add     x0, x0, :lo12:b_8278
@@ -27374,7 +24509,7 @@ f_7479:
     bl      f_6709
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_350
+    cbz     x0, .l_348
     mov     x0, #25
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -27402,7 +24537,7 @@ f_7479:
     ldr     x1, [x12, #8]
     and 	x0, x1, x0
     add     x12, x12, 16
-    cbz     x0, .l_352
+    cbz     x0, .l_350
     bl      f_6138
     adrp    x0, b_8279
     add     x0, x0, :lo12:b_8279
@@ -27410,11 +24545,12 @@ f_7479:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_351
-.l_352:
-.l_351:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_349
+.l_350:
+.l_349:
     bl      f_6176
     bl      f_7804
     mov     x0, #25
@@ -27431,7 +24567,7 @@ f_7479:
     ldr     x1, [x12]
     eor 	x0, x1, x0
     add     x12, x12, 8
-    cbz     x0, .l_354
+    cbz     x0, .l_352
     bl      f_6138
     adrp    x0, b_8280
     add     x0, x0, :lo12:b_8280
@@ -27439,11 +24575,12 @@ f_7479:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-    b       .l_353
-.l_354:
-.l_353:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+    b       .l_351
+.l_352:
+.l_351:
     bl      f_7804
     adrp    x0, b_7731
     add     x0, x0, :lo12:b_7731
@@ -27452,19 +24589,17 @@ f_7479:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_3972
-    mov     x0, #-1
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, gt
+    bl      f_2382
+    ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_356
+    cbz     x0, .l_354
     bl      f_4957
-    b       .l_355
-.l_356:
+    b       .l_353
+.l_354:
     bl      f_612
-.l_355:
-    b       .l_336
-.l_350:
+.l_353:
+    b       .l_334
+.l_348:
     bl      f_6138
     adrp    x0, b_8281
     add     x0, x0, :lo12:b_8281
@@ -27479,9 +24614,10 @@ f_7479:
     sub     x12, x12, 8
     bl      f_6317
     mov     x0, #1
-    mov     x8, 93
-    svc     #0
-.l_336:
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_7655
+.l_334:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -27493,51 +24629,32 @@ f_7498:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_7285
-    ldr     x0, [x12]
-    ldr     x0, [x0]
-    str     x0, [x12]
+    bl      f_2606
     bl      f_7285
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_5764
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
-    add     x12, x12, 16
+    bl      f_7702
     bl      f_7804
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_7804
     mov     x0, #2
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_6852
     bl      f_7804
     mov     x0, #31
     str     x0, [x12, #-8]
     mov     x0, #3
-    sub     x12, x12, 8
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_565:
-    cmp     x0, x12
-    beq     .rbl_565
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_565
-    .rbl_565:
-    str     x1, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_830
     bl      f_934
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -27566,11 +24683,26 @@ f_7518:
     bl      f_7804
     b       .l_36
 .l_37:
+    bl      f_6973
     mov     x0, #0
-    str     x0, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
     bl      f_7804
     bl      f_3552
-    add     x12, x12, 8
+    bl      f_6973
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_7545:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x0, [x12]
+    ldr     x2, [x12, #8]
+    ldr     x1, [x12, #16]
+    mov     x8, #64
+    svc     #0
+    str     x0, [x12, #16]
+    add     x12, x12, 16
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -27578,45 +24710,57 @@ f_7608:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     mov     x0, #3
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7210
     bl      f_465
     mov     x0, #8191
-    mov     x1, x0
-    ldr     x0, [x12]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12]
-    str     x3, [x12, #-8]
+    str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_675
     bl      f_3910
 .l_190:
     bl      f_2060
     ldr     x0, [x12]
     add     x12, x12, 8
     cbz     x0, .l_191
+    bl      f_6973
     mov     x0, #1
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12, #8]
+    str     x0, [x12]
     mov     x0, #8191
-    mov     x1, x0
-    ldr     x0, [x12, #8]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12, #8]
-    str     x3, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_675
     bl      f_3910
     b       .l_190
 .l_191:
+    bl      f_6973
+    bl      f_3910
+    bl      f_3910
+    bl      f_3910
+    bl      f_3910
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_7655:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x0, [x12]
+    mov     x8, 93
+    svc     #0
     add     x12, x12, 8
-    bl      f_3910
-    bl      f_3910
-    bl      f_3910
-    bl      f_3910
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_7702:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
+    str     x1, [x0]
+    add     x12, x12, 16
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -27625,14 +24769,15 @@ f_7741:
     mov     x29, sp
     adrp    x0, b_7336
     add     x0, x0, :lo12:b_7336
-    ldr     x1, [x12]
-    str     x1, [x0]
-    adrp    x0, b_7336
-    add     x0, x0, :lo12:b_7336
-    str     x0, [x12]
-    mov     x0, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7702
+    adrp    x0, b_7336
+    add     x0, x0, :lo12:b_7336
+    str     x0, [x12, #-8]
+    mov     x0, #1
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
     bl      f_4228
     mov     sp, x29
     ldp     x29, x30, [sp], #16
@@ -27674,16 +24819,16 @@ f_7777:
     bl      f_2077
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_281
+    cbz     x0, .l_280
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_280
-.l_281:
+    b       .l_279
 .l_280:
+.l_279:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -27698,12 +24843,11 @@ f_7777:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #8]
-    mov     x0, #0
-    ldr     x1, [x12, #8]
-    cmp     x1, x0
-    cset    w0, lt
-    add     x12, x12, 16
-    cbz     x0, .l_283
+    add     x12, x12, 8
+    bl      f_4481
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_282
     adrp    x0, b_8237
     add     x0, x0, :lo12:b_8237
     str     x0, [x12, #-8]
@@ -27725,9 +24869,9 @@ f_7777:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_282
-.l_283:
+    b       .l_281
 .l_282:
+.l_281:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -27741,34 +24885,28 @@ f_7777:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5135
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    bl      f_7702
     adrp    x0, b_3232
     add     x0, x0, :lo12:b_3232
-    str     x0, [x12, #8]
+    str     x0, [x12, #-8]
     movz    x0, #53392
     movk    x0, #3, lsl 16
-    str     x0, [x12]
+    str     x0, [x12, #-16]
     sub     x0, x29, #16
     ldr     x0, [x0]
-    ldr     x2, [x12]
-    ldr     x1, [x12, #8]
-    mov     x8, #63
-    svc     #0
-    str     x0, [x12, #8]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_6042
     sub     x0, x29, #32
-    ldr     x1, [x12, #8]
+    ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #32
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    mov     x0, #0
-    ldr     x1, [x12, #8]
-    cmp     x1, x0
-    cset    w0, lt
-    add     x12, x12, 16
-    cbz     x0, .l_286
+    str     x0, [x12]
+    bl      f_4481
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_284
     adrp    x0, b_8239
     add     x0, x0, :lo12:b_8239
     str     x0, [x12, #-8]
@@ -27790,9 +24928,9 @@ f_7777:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_285
-.l_286:
-.l_285:
+    b       .l_283
+.l_284:
+.l_283:
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x0, x29, #32
@@ -27807,14 +24945,13 @@ f_7777:
     bl      f_3552
     sub     x0, x29, #16
     ldr     x0, [x0]
-    mov     x8, #57
-    svc     #0
     str     x0, [x12, #-8]
-    mov     x0, #0
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, lt
-    cbz     x0, .l_288
+    sub     x12, x12, 8
+    bl      f_2890
+    bl      f_4481
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_286
     adrp    x0, b_8241
     add     x0, x0, :lo12:b_8241
     str     x0, [x12, #-8]
@@ -27836,9 +24973,9 @@ f_7777:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_287
-.l_288:
-.l_287:
+    b       .l_285
+.l_286:
+.l_285:
     bl      f_7285
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
@@ -27847,14 +24984,13 @@ f_7777:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_1729
-    ldr     x0, [x12]
-    ldr     x1, [x12, #8]
-    str     x1, [x0]
+    bl      f_7702
     adrp    x0, b_2158
     add     x0, x0, :lo12:b_2158
-    str     x0, [x12, #8]
+    str     x0, [x12, #-8]
     mov     x0, #25
-    str     x0, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
     bl      f_3123
     adrp    x0, b_3232
     add     x0, x0, :lo12:b_3232
@@ -27908,18 +25044,9 @@ f_7804:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     mov     x0, #1
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x1, [x0]
-    .ral_4:
-    cmp     x0, x12
-    beq     .rbl_4
-    ldr     x2, [x0, #-8]
-    str     x2, [x0]
-    sub     x0, x0, #8
-    b       .ral_4
-    .rbl_4:
-    str     x1, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_830
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -27932,19 +25059,20 @@ f_7900:
     cmp     x1, x0
     cset    w0, eq
     add     x12, x12, 8
-    cbz     x0, .l_10
+    cbz     x0, .l_11
+    bl      f_6973
     adrp    x0, b_774
     add     x0, x0, :lo12:b_774
-    str     x0, [x12]
-    mov     x0, #20
     str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    mov     x0, #20
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
-    b       .l_9
+    b       .l_10
+.l_11:
 .l_10:
-.l_9:
     mov     x0, #0
     str     x0, [x12, #-8]
     adrp    x0, b_7336
@@ -27953,8 +25081,9 @@ f_7900:
     mov     x0, #16
     ldr     x1, [x12, #-16]
     add 	x0, x1, x0
-    ldr     x1, [x12, #-8]
-    str     x1, [x0]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_7702
     bl      f_7285
     mov     x0, #0
     ldr     x1, [x12]
@@ -27965,23 +25094,23 @@ f_7900:
     bl      f_6426
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_12
+    cbz     x0, .l_13
     mov     x0, #-1
     ldr     x1, [x12]
     mul 	x0, x1, x0
     str     x0, [x12]
-    b       .l_11
+    b       .l_12
+.l_13:
 .l_12:
-.l_11:
     mov     x0, #0
     str     x0, [x12, #-8]
     mov     x0, #1
     str     x0, [x12, #-16]
     sub     x12, x12, 16
-.l_13:
+.l_14:
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_14
+    cbz     x0, .l_15
     adrp    x0, b_7336
     add     x0, x0, :lo12:b_7336
     str     x0, [x12, #-8]
@@ -27999,13 +25128,9 @@ f_7900:
     bl      f_5764
     bl      f_7285
     mov     x0, #10
-    mov     x1, x0
-    ldr     x0, [x12]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12]
-    str     x3, [x12, #-8]
+    str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_675
     bl      f_3910
     mov     x0, #48
     ldr     x1, [x12]
@@ -28014,23 +25139,22 @@ f_7900:
     bl      f_5764
     bl      f_3552
     mov     x0, #10
-    mov     x1, x0
-    ldr     x0, [x12]
-    sdiv    x2, x0, x1
-    msub    x3, x2, x1, x0
-    str     x2, [x12]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_675
+    bl      f_6973
     bl      f_7804
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
     bl      f_6426
-    b       .l_13
-.l_14:
+    b       .l_14
+.l_15:
     bl      f_5764
     ldr     x0, [x12]
     add     x12, x12, 8
-    cbz     x0, .l_16
+    cbz     x0, .l_17
     mov     x0, #45
     str     x0, [x12, #-8]
     adrp    x0, b_7336
@@ -28041,21 +25165,22 @@ f_7900:
     add 	x0, x1, x0
     str     x0, [x12, #-16]
     mov     x0, #2
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    ldr     x1, [x12]
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_7210
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
     sub 	x0, x1, x0
-    str     x0, [x12]
+    str     x0, [x12, #8]
+    add     x12, x12, 8
     bl      f_3552
     mov     x0, #1
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    b       .l_15
+    b       .l_16
+.l_17:
 .l_16:
-.l_15:
     adrp    x0, b_7336
     add     x0, x0, :lo12:b_7336
     str     x0, [x12, #-8]
@@ -28072,7 +25197,77 @@ f_7900:
     add     x12, x12, 8
     bl      f_7804
     bl      f_5764
+    bl      f_6973
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_7952:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    adrp    x0, b_8691
+    add     x0, x0, :lo12:b_8691
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7285
+    bl      f_3176
+    adrp    x0, b_8692
+    add     x0, x0, :lo12:b_8692
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_2010
+    add     x0, x0, :lo12:b_2010
+    str     x0, [x12, #-8]
+    mov     x0, #58
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3545
+    mov     x0, #16
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2606
+    bl      f_3176
+    adrp    x0, b_4816
+    add     x0, x0, :lo12:b_4816
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_2002
+    ldr     x0, [x12]
     add     x12, x12, 8
+    cbz     x0, .l_871
+    adrp    x0, b_8693
+    add     x0, x0, :lo12:b_8693
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7285
+    adrp    x0, b_2010
+    add     x0, x0, :lo12:b_2010
+    str     x0, [x12, #-8]
+    mov     x0, #58
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3545
+    mov     x0, #0
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     x0, #0
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2606
+    bl      f_6962
+    b       .l_870
+.l_871:
+.l_870:
+    adrp    x0, b_8694
+    add     x0, x0, :lo12:b_8694
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -28081,15 +25276,240 @@ f_8056:
     mov     x29, sp
     adrp    x0, b_7336
     add     x0, x0, :lo12:b_7336
-    ldr     x1, [x12]
-    str     x1, [x0]
-    adrp    x0, b_7336
-    add     x0, x0, :lo12:b_7336
-    str     x0, [x12]
-    mov     x0, #1
     str     x0, [x12, #-8]
     sub     x12, x12, 8
+    bl      f_7702
+    adrp    x0, b_7336
+    add     x0, x0, :lo12:b_7336
+    str     x0, [x12, #-8]
+    mov     x0, #1
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
     bl      f_5406
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
+f_8089:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    sub     sp, sp, #8
+    bl      f_7285
+    adrp    x0, b_2010
+    add     x0, x0, :lo12:b_2010
+    str     x0, [x12, #-8]
+    mov     x0, #58
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3545
+    mov     x0, #16
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2606
+    sub     x0, x29, #8
+    ldr     x1, [x12]
+    str     x1, [x0]
+    adrp    x0, b_4816
+    add     x0, x0, :lo12:b_4816
+    str     x0, [x12]
+    bl      f_2002
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_862
+    adrp    x0, b_8680
+    add     x0, x0, :lo12:b_8680
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7285
+    adrp    x0, b_2010
+    add     x0, x0, :lo12:b_2010
+    str     x0, [x12, #-8]
+    mov     x0, #58
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3545
+    mov     x0, #0
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    mov     x0, #0
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2606
+    bl      f_6962
+    adrp    x0, b_8681
+    add     x0, x0, :lo12:b_8681
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_861
+.l_862:
+.l_861:
+    adrp    x0, b_8682
+    add     x0, x0, :lo12:b_8682
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7285
+    bl      f_3176
+    bl      f_7285
+    adrp    x0, b_2010
+    add     x0, x0, :lo12:b_2010
+    str     x0, [x12, #-8]
+    mov     x0, #58
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3545
+    mov     x0, #56
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2002
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_864
+    sub     x0, x29, #8
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    mov     x0, #1
+    ldr     x1, [x12, #-8]
+    cmp     x1, x0
+    cset    w0, eq
+    cbz     x0, .l_866
+    adrp    x0, b_8683
+    add     x0, x0, :lo12:b_8683
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_2010
+    add     x0, x0, :lo12:b_2010
+    str     x0, [x12, #-8]
+    mov     x0, #58
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3545
+    mov     x0, #40
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2606
+    bl      f_3176
+    adrp    x0, b_8684
+    add     x0, x0, :lo12:b_8684
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_865
+.l_866:
+    sub     x0, x29, #8
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    mov     x0, #8
+    ldr     x1, [x12, #-8]
+    cmp     x1, x0
+    cset    w0, eq
+    cbz     x0, .l_867
+    adrp    x0, b_8685
+    add     x0, x0, :lo12:b_8685
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    adrp    x0, b_2010
+    add     x0, x0, :lo12:b_2010
+    str     x0, [x12, #-8]
+    mov     x0, #58
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3545
+    mov     x0, #40
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2606
+    bl      f_3176
+    adrp    x0, b_8686
+    add     x0, x0, :lo12:b_8686
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_865
+.l_867:
+.l_865:
+    b       .l_863
+.l_864:
+    adrp    x0, b_8687
+    add     x0, x0, :lo12:b_8687
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7285
+    adrp    x0, b_2010
+    add     x0, x0, :lo12:b_2010
+    str     x0, [x12, #-8]
+    mov     x0, #58
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3545
+    mov     x0, #40
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2606
+    bl      f_332
+    bl      f_7285
+    adrp    x0, b_2010
+    add     x0, x0, :lo12:b_2010
+    str     x0, [x12, #-8]
+    mov     x0, #58
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3545
+    mov     x0, #40
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    bl      f_2606
+    bl      f_1240
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    sub     x0, x29, #8
+    ldr     x0, [x0]
+    ldr     x1, [x12]
+    cmp     x1, x0
+    cset    w0, lt
+    add     x12, x12, 8
+    cbz     x0, .l_869
+    adrp    x0, b_8688
+    add     x0, x0, :lo12:b_8688
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    sub     x0, x29, #8
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3176
+    adrp    x0, b_8689
+    add     x0, x0, :lo12:b_8689
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_7285
+    bl      f_3176
+    adrp    x0, b_8690
+    add     x0, x0, :lo12:b_8690
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    b       .l_868
+.l_869:
+.l_868:
+    bl      f_6973
+.l_863:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -28466,1113 +25886,922 @@ _start:
     b_8500: .ascii "\n\0"
     b_8501: .ascii "Unexpected token of type \0"
     b_8502: .ascii " outside of 'main'\n\0"
-    b_8503: .ascii "main\0"
-    b_8504: .ascii "ERROR: Failed to write string to output file\n\0"
-    b_8505: .ascii " + \0"
-    b_8506: .ascii " - \0"
-    b_8507: .ascii "    add     r12, \0"
-    b_8508: .ascii "\n\0"
-    b_8509: .ascii "    sub     r12, \0"
-    b_8510: .ascii "\n\0"
-    b_8511: .ascii "    mov     qword [r12\0"
-    b_8512: .ascii "], \0"
+    b_8503: .ascii "OS_WINDOWS\0"
+    b_8504: .ascii "__parse_args\0"
+    b_8505: .ascii "main\0"
+    b_8506: .ascii "OS_WINDOWS\0"
+    b_8507: .ascii "ERROR: Failed to write string to output file\n\0"
+    b_8508: .ascii " + \0"
+    b_8509: .ascii " - \0"
+    b_8510: .ascii "    add     r12, \0"
+    b_8511: .ascii "\n\0"
+    b_8512: .ascii "    sub     r12, \0"
     b_8513: .ascii "\n\0"
-    b_8514: .ascii "    mov     \0"
-    b_8515: .ascii ", \0"
+    b_8514: .ascii "    mov     qword [r12\0"
+    b_8515: .ascii "], \0"
     b_8516: .ascii "\n\0"
     b_8517: .ascii "    mov     \0"
-    b_8518: .ascii ", qword [r12\0"
-    b_8519: .ascii "]\n\0"
-    b_8520: .ascii "    ; \0"
-    b_8521: .ascii "\n\0"
-    b_8522: .ascii "rcx\0"
-    b_8523: .ascii "rax\0"
-    b_8524: .ascii "    \0"
-    b_8525: .ascii " \trax, \0"
-    b_8526: .ascii "\n\0"
-    b_8527: .ascii "rax\0"
-    b_8528: .ascii "    ; OP_CALL\n\0"
-    b_8529: .ascii "rax\0"
-    b_8530: .ascii "    call    rax\n\0"
-    b_8531: .ascii "    ; OP_PUSH_FN\n\0"
-    b_8532: .ascii "    lea     rax, [f_\0"
-    b_8533: .ascii "]\n\0"
-    b_8534: .ascii "rax\0"
-    b_8535: .ascii "    ; OP_CALL_FN\n\0"
-    b_8536: .ascii "    call    f_\0"
-    b_8537: .ascii "\n\0"
-    b_8538: .ascii "    ; OP_RET\n\0"
-    b_8539: .ascii "    leave\n\0"
-    b_8540: .ascii "    ret\n\0"
-    b_8541: .ascii "    ; OP_PUSH_INT\n\0"
-    b_8542: .ascii "    mov     rax, \0"
-    b_8543: .ascii "\n\0"
-    b_8544: .ascii "rax\0"
-    b_8545: .ascii "    ; OP_DROP\n\0"
-    b_8546: .ascii "    ; OP_PICK\n\0"
+    b_8518: .ascii ", \0"
+    b_8519: .ascii "\n\0"
+    b_8520: .ascii "    mov     \0"
+    b_8521: .ascii ", qword [r12\0"
+    b_8522: .ascii "]\n\0"
+    b_8523: .ascii "    ; \0"
+    b_8524: .ascii "\n\0"
+    b_8525: .ascii "rcx\0"
+    b_8526: .ascii "rax\0"
+    b_8527: .ascii "    \0"
+    b_8528: .ascii " \trax, \0"
+    b_8529: .ascii "\n\0"
+    b_8530: .ascii "rax\0"
+    b_8531: .ascii "    ; OP_CALL\n\0"
+    b_8532: .ascii "rax\0"
+    b_8533: .ascii "    call    rax\n\0"
+    b_8534: .ascii "    ; OP_PUSH_FN\n\0"
+    b_8535: .ascii "    lea     rax, [f_\0"
+    b_8536: .ascii "]\n\0"
+    b_8537: .ascii "rax\0"
+    b_8538: .ascii "    ; OP_CALL_FN\n\0"
+    b_8539: .ascii "    call    f_\0"
+    b_8540: .ascii "\n\0"
+    b_8541: .ascii "    ; OP_RET\n\0"
+    b_8542: .ascii "    leave\n\0"
+    b_8543: .ascii "    ret\n\0"
+    b_8544: .ascii "    ; OP_PUSH_INT\n\0"
+    b_8545: .ascii "    mov     rax, \0"
+    b_8546: .ascii "\n\0"
     b_8547: .ascii "rax\0"
-    b_8548: .ascii "    mov     rax, [r12 + rax*8]\n\0"
-    b_8549: .ascii "rax\0"
-    b_8550: .ascii "    ; OP_ROLL\n\0"
-    b_8551: .ascii "rax\0"
-    b_8552: .ascii "    mov     rcx, [r12 + rax*8]\n\0"
-    b_8553: .ascii "    lea     rbx, [r12 + rax*8]\n\0"
-    b_8554: .ascii "    .ral_\0"
-    b_8555: .ascii ":\n\0"
-    b_8556: .ascii "    cmp     rbx, r12\n\0"
-    b_8557: .ascii "    je      .rbl_\0"
-    b_8558: .ascii "\n\0"
-    b_8559: .ascii "    mov     rdx, [rbx - 8]\n\0"
-    b_8560: .ascii "    mov     [rbx], rdx\n\0"
-    b_8561: .ascii "    sub     rbx, 8\n\0"
-    b_8562: .ascii "    jmp     .ral_\0"
-    b_8563: .ascii "\n\0"
-    b_8564: .ascii "    .rbl_\0"
-    b_8565: .ascii ":\n\0"
-    b_8566: .ascii "    mov     [r12], rcx\n\0"
-    b_8567: .ascii "    ; OP_DEPTH\n\0"
-    b_8568: .ascii "    mov     rax, bsp + \0"
-    b_8569: .ascii "\n\0"
-    b_8570: .ascii "    sub     rax, r12\n\0"
-    b_8571: .ascii "    shr     rax, 3\n\0"
-    b_8572: .ascii "rax\0"
-    b_8573: .ascii "b_\0"
-    b_8574: .ascii "    ; OP_PUSH_BUF\n\0"
-    b_8575: .ascii "    ; OP_STORE\n\0"
-    b_8576: .ascii "rax\0"
-    b_8577: .ascii "rcx\0"
-    b_8578: .ascii "    mov     [rax], rcx\n\0"
-    b_8579: .ascii "    ; OP_FETCH\n\0"
-    b_8580: .ascii "rax\0"
-    b_8581: .ascii "    mov     rax, qword [rax]\n\0"
-    b_8582: .ascii "rax\0"
-    b_8583: .ascii "    ; OP_MEMCPY\n\0"
-    b_8584: .ascii "rcx\0"
-    b_8585: .ascii "rdi\0"
-    b_8586: .ascii "rsi\0"
-    b_8587: .ascii "    cld\n\0"
-    b_8588: .ascii "    rep     movsb\n\0"
-    b_8589: .ascii "    ; OP_PUSH_VAR\n\0"
-    b_8590: .ascii "    lea     rax, [rbp - \0"
-    b_8591: .ascii "]\n\0"
-    b_8592: .ascii "rax\0"
-    b_8593: .ascii "    ; OP_ALLOC\n\0"
-    b_8594: .ascii "    sub     rsp, \0"
-    b_8595: .ascii "\n\0"
-    b_8596: .ascii "rcx\0"
-    b_8597: .ascii "add\0"
-    b_8598: .ascii "OP_ADD\0"
-    b_8599: .ascii "rcx\0"
-    b_8600: .ascii "sub\0"
-    b_8601: .ascii "OP_SUB\0"
-    b_8602: .ascii "rcx\0"
-    b_8603: .ascii "imul\0"
-    b_8604: .ascii "OP_MUL\0"
-    b_8605: .ascii "rcx\0"
-    b_8606: .ascii "and\0"
-    b_8607: .ascii "OP_AND\0"
-    b_8608: .ascii "rcx\0"
-    b_8609: .ascii "or\0"
-    b_8610: .ascii "OP_OR\0"
-    b_8611: .ascii "rcx\0"
-    b_8612: .ascii "xor\0"
-    b_8613: .ascii "OP_XOR\0"
-    b_8614: .ascii "cl\0"
-    b_8615: .ascii "shl\0"
-    b_8616: .ascii "OP_SHL\0"
-    b_8617: .ascii "cl\0"
-    b_8618: .ascii "shr\0"
-    b_8619: .ascii "OP_SHR\0"
-    b_8620: .ascii "cl\0"
-    b_8621: .ascii "sar\0"
-    b_8622: .ascii "OP_SAR\0"
-    b_8623: .ascii "    ; OP_NOT\n\0"
-    b_8624: .ascii "rax\0"
-    b_8625: .ascii "    not     rax\n\0"
-    b_8626: .ascii "rax\0"
-    b_8627: .ascii "    ; OP_EQ\n\0"
-    b_8628: .ascii "rax\0"
-    b_8629: .ascii "rbx\0"
-    b_8630: .ascii "    cmp     rbx, rax\n\0"
-    b_8631: .ascii "    sete    al\n\0"
-    b_8632: .ascii "    movzx   rax, al\n\0"
+    b_8548: .ascii "    ; OP_DROP\n\0"
+    b_8549: .ascii "    ; OP_PICK\n\0"
+    b_8550: .ascii "rax\0"
+    b_8551: .ascii "    mov     rax, [r12 + rax*8]\n\0"
+    b_8552: .ascii "rax\0"
+    b_8553: .ascii "    ; OP_ROLL\n\0"
+    b_8554: .ascii "rax\0"
+    b_8555: .ascii "    mov     rcx, [r12 + rax*8]\n\0"
+    b_8556: .ascii "    lea     rbx, [r12 + rax*8]\n\0"
+    b_8557: .ascii "    .ral_\0"
+    b_8558: .ascii ":\n\0"
+    b_8559: .ascii "    cmp     rbx, r12\n\0"
+    b_8560: .ascii "    je      .rbl_\0"
+    b_8561: .ascii "\n\0"
+    b_8562: .ascii "    mov     rdx, [rbx - 8]\n\0"
+    b_8563: .ascii "    mov     [rbx], rdx\n\0"
+    b_8564: .ascii "    sub     rbx, 8\n\0"
+    b_8565: .ascii "    jmp     .ral_\0"
+    b_8566: .ascii "\n\0"
+    b_8567: .ascii "    .rbl_\0"
+    b_8568: .ascii ":\n\0"
+    b_8569: .ascii "    mov     [r12], rcx\n\0"
+    b_8570: .ascii "    ; OP_DEPTH\n\0"
+    b_8571: .ascii "    mov     rax, bsp + \0"
+    b_8572: .ascii "\n\0"
+    b_8573: .ascii "    sub     rax, r12\n\0"
+    b_8574: .ascii "    shr     rax, 3\n\0"
+    b_8575: .ascii "rax\0"
+    b_8576: .ascii "    ; OP_PUSH_BUF\n\0"
+    b_8577: .ascii "    lea     rax, [rel b_\0"
+    b_8578: .ascii "]\n\0"
+    b_8579: .ascii "rax\0"
+    b_8580: .ascii "    ; OP_STORE\n\0"
+    b_8581: .ascii "rax\0"
+    b_8582: .ascii "rcx\0"
+    b_8583: .ascii "    mov     [rax], rcx\n\0"
+    b_8584: .ascii "    ; OP_FETCH\n\0"
+    b_8585: .ascii "rax\0"
+    b_8586: .ascii "    mov     rax, qword [rax]\n\0"
+    b_8587: .ascii "rax\0"
+    b_8588: .ascii "    ; OP_MEMCPY\n\0"
+    b_8589: .ascii "rcx\0"
+    b_8590: .ascii "rdi\0"
+    b_8591: .ascii "rsi\0"
+    b_8592: .ascii "    cld\n\0"
+    b_8593: .ascii "    rep     movsb\n\0"
+    b_8594: .ascii "    ; OP_PUSH_VAR\n\0"
+    b_8595: .ascii "    lea     rax, [rbp - \0"
+    b_8596: .ascii "]\n\0"
+    b_8597: .ascii "rax\0"
+    b_8598: .ascii "    ; OP_ALLOC\n\0"
+    b_8599: .ascii "    sub     rsp, \0"
+    b_8600: .ascii "\n\0"
+    b_8601: .ascii "rcx\0"
+    b_8602: .ascii "add\0"
+    b_8603: .ascii "OP_ADD\0"
+    b_8604: .ascii "rcx\0"
+    b_8605: .ascii "sub\0"
+    b_8606: .ascii "OP_SUB\0"
+    b_8607: .ascii "rcx\0"
+    b_8608: .ascii "imul\0"
+    b_8609: .ascii "OP_MUL\0"
+    b_8610: .ascii "rcx\0"
+    b_8611: .ascii "and\0"
+    b_8612: .ascii "OP_AND\0"
+    b_8613: .ascii "rcx\0"
+    b_8614: .ascii "or\0"
+    b_8615: .ascii "OP_OR\0"
+    b_8616: .ascii "rcx\0"
+    b_8617: .ascii "xor\0"
+    b_8618: .ascii "OP_XOR\0"
+    b_8619: .ascii "cl\0"
+    b_8620: .ascii "shl\0"
+    b_8621: .ascii "OP_SHL\0"
+    b_8622: .ascii "cl\0"
+    b_8623: .ascii "shr\0"
+    b_8624: .ascii "OP_SHR\0"
+    b_8625: .ascii "cl\0"
+    b_8626: .ascii "sar\0"
+    b_8627: .ascii "OP_SAR\0"
+    b_8628: .ascii "    ; OP_NOT\n\0"
+    b_8629: .ascii "rax\0"
+    b_8630: .ascii "    not     rax\n\0"
+    b_8631: .ascii "rax\0"
+    b_8632: .ascii "    ; OP_EQ\n\0"
     b_8633: .ascii "rax\0"
-    b_8634: .ascii "    ; OP_GT\n\0"
-    b_8635: .ascii "rax\0"
-    b_8636: .ascii "rbx\0"
-    b_8637: .ascii "    cmp     rbx, rax\n\0"
-    b_8638: .ascii "    setg    al\n\0"
-    b_8639: .ascii "    movzx   rax, al\n\0"
+    b_8634: .ascii "rbx\0"
+    b_8635: .ascii "    cmp     rbx, rax\n\0"
+    b_8636: .ascii "    sete    al\n\0"
+    b_8637: .ascii "    movzx   rax, al\n\0"
+    b_8638: .ascii "rax\0"
+    b_8639: .ascii "    ; OP_GT\n\0"
     b_8640: .ascii "rax\0"
-    b_8641: .ascii "    ; OP_LT\n\0"
-    b_8642: .ascii "rax\0"
-    b_8643: .ascii "rbx\0"
-    b_8644: .ascii "    cmp     rbx, rax\n\0"
-    b_8645: .ascii "    setl    al\n\0"
-    b_8646: .ascii "    movzx   rax, al\n\0"
+    b_8641: .ascii "rbx\0"
+    b_8642: .ascii "    cmp     rbx, rax\n\0"
+    b_8643: .ascii "    setg    al\n\0"
+    b_8644: .ascii "    movzx   rax, al\n\0"
+    b_8645: .ascii "rax\0"
+    b_8646: .ascii "    ; OP_LT\n\0"
     b_8647: .ascii "rax\0"
-    b_8648: .ascii "    ; OP_DIVMOD\n\0"
-    b_8649: .ascii "rbx\0"
-    b_8650: .ascii "rax\0"
-    b_8651: .ascii "    cqo\n\0"
-    b_8652: .ascii "    idiv    rbx\n\0"
-    b_8653: .ascii "rax\0"
-    b_8654: .ascii "rdx\0"
-    b_8655: .ascii ".l_\0"
-    b_8656: .ascii ":\n\0"
-    b_8657: .ascii "    ; OP_JMP\n\0"
-    b_8658: .ascii "    jmp     .l_\0"
-    b_8659: .ascii "\n\0"
-    b_8660: .ascii "    ; OP_JZ\n\0"
-    b_8661: .ascii "rax\0"
-    b_8662: .ascii "    test    rax, rax\n\0"
-    b_8663: .ascii "    jz      .l_\0"
+    b_8648: .ascii "rbx\0"
+    b_8649: .ascii "    cmp     rbx, rax\n\0"
+    b_8650: .ascii "    setl    al\n\0"
+    b_8651: .ascii "    movzx   rax, al\n\0"
+    b_8652: .ascii "rax\0"
+    b_8653: .ascii "    ; OP_DIVMOD\n\0"
+    b_8654: .ascii "rbx\0"
+    b_8655: .ascii "rax\0"
+    b_8656: .ascii "    cqo\n\0"
+    b_8657: .ascii "    idiv    rbx\n\0"
+    b_8658: .ascii "rax\0"
+    b_8659: .ascii "rdx\0"
+    b_8660: .ascii ".l_\0"
+    b_8661: .ascii ":\n\0"
+    b_8662: .ascii "    ; OP_JMP\n\0"
+    b_8663: .ascii "    jmp     .l_\0"
     b_8664: .ascii "\n\0"
-    b_8665: .ascii "    ; OP_EXIT\n\0"
-    b_8666: .ascii "rdi\0"
-    b_8667: .ascii "    mov     eax, 60\n\0"
-    b_8668: .ascii "    syscall\n\0"
-    b_8669: .ascii "    ; OP_FOPEN\n\0"
-    b_8670: .ascii "rax\0"
-    b_8671: .ascii "rsi\0"
-    b_8672: .ascii "    cmp     rax, 0\n\0"
-    b_8673: .ascii "    je      .frl_\0"
-    b_8674: .ascii "\n\0"
-    b_8675: .ascii "    cmp     rax, 1\n\0"
-    b_8676: .ascii "    je      .fwl_\0"
-    b_8677: .ascii "\n\0"
-    b_8678: .ascii "    cmp     rax, 2\n\0"
-    b_8679: .ascii "    je      .fal_\0"
-    b_8680: .ascii "\n\0"
-    b_8681: .ascii "    jmp     .ffl_\0"
-    b_8682: .ascii "\n\0"
-    b_8683: .ascii "    .frl_\0"
-    b_8684: .ascii ":\n\0"
-    b_8685: .ascii "    mov     rdx, 0\n\0"
-    b_8686: .ascii "    jmp     .fdl_\0"
-    b_8687: .ascii "\n\0"
-    b_8688: .ascii "    .fwl_\0"
-    b_8689: .ascii ":\n\0"
-    b_8690: .ascii "    mov     rdx, 577\n\0"
-    b_8691: .ascii "    jmp     .fdl_\0"
-    b_8692: .ascii "\n\0"
-    b_8693: .ascii "    .fal_\0"
-    b_8694: .ascii ":\n\0"
-    b_8695: .ascii "    mov     rdx, 1089\n\0"
-    b_8696: .ascii "    jmp     .fdl_\0"
-    b_8697: .ascii "\n\0"
-    b_8698: .ascii "    .fdl_\0"
-    b_8699: .ascii ":\n\0"
-    b_8700: .ascii "    mov     rax, 257\n\0"
-    b_8701: .ascii "    mov     rdi, -100\n\0"
-    b_8702: .ascii "    mov     r10, 420\n\0"
-    b_8703: .ascii "    syscall\n\0"
-    b_8704: .ascii "rax\0"
-    b_8705: .ascii "    jmp     .fel_\0"
-    b_8706: .ascii "\n\0"
-    b_8707: .ascii "    .ffl_\0"
-    b_8708: .ascii ":\n\0"
-    b_8709: .ascii "    mov     rax, -1\n\0"
-    b_8710: .ascii "rax\0"
-    b_8711: .ascii "    .fel_\0"
-    b_8712: .ascii ":\n\0"
-    b_8713: .ascii "    ; OP_FREAD\n\0"
-    b_8714: .ascii "rdi\0"
-    b_8715: .ascii "rdx\0"
-    b_8716: .ascii "rsi\0"
-    b_8717: .ascii "    mov     rax, 0\n\0"
-    b_8718: .ascii "    syscall\n\0"
-    b_8719: .ascii "rax\0"
-    b_8720: .ascii "    ; OP_FWRITE\n\0"
-    b_8721: .ascii "rdi\0"
-    b_8722: .ascii "rdx\0"
-    b_8723: .ascii "rsi\0"
-    b_8724: .ascii "    mov     rax, 1\n\0"
-    b_8725: .ascii "    syscall\n\0"
-    b_8726: .ascii "rax\0"
-    b_8727: .ascii "    ; OP_FCLOSE\n\0"
-    b_8728: .ascii "rdi\0"
-    b_8729: .ascii "    mov     rax, 3\n\0"
-    b_8730: .ascii "    syscall\n\0"
-    b_8731: .ascii "rax\0"
-    b_8732: .ascii "    ; OP_GETCWD\n\0"
-    b_8733: .ascii "rsi\0"
-    b_8734: .ascii "rdi\0"
-    b_8735: .ascii "    mov     rax, 79\n\0"
-    b_8736: .ascii "    syscall\n\0"
-    b_8737: .ascii "rax\0"
-    b_8738: .ascii "    ; LIN_syscall\n\0"
-    b_8739: .ascii "rax\0"
-    b_8740: .ascii "r9\0"
-    b_8741: .ascii "r8\0"
-    b_8742: .ascii "r10\0"
-    b_8743: .ascii "rdx\0"
-    b_8744: .ascii "rsi\0"
-    b_8745: .ascii "rdi\0"
-    b_8746: .ascii "    syscall\n\0"
-    b_8747: .ascii "rax\0"
-    b_8748: .ascii "ERROR: Invalid opcode of type \0"
-    b_8749: .ascii "\n\0"
-    b_8750: .ascii "; \0"
-    b_8751: .ascii "\n\0"
-    b_8752: .ascii "f_\0"
-    b_8753: .ascii ":\n\0"
-    b_8754: .ascii "    push    rbp\n\0"
-    b_8755: .ascii "    mov     rbp, rsp\n\0"
-    b_8756: .ascii "\"\0"
-    b_8757: .ascii "\",\0"
-    b_8758: .ascii ",\0"
-    b_8759: .ascii "\",\0"
-    b_8760: .ascii "0\n\0"
-    b_8761: .ascii "    ; Inline Buffers\n\0"
-    b_8762: .ascii "    b_\0"
-    b_8763: .ascii " db \0"
-    b_8764: .ascii "    ; \0"
-    b_8765: .ascii "\n\0"
-    b_8766: .ascii "    b_\0"
-    b_8767: .ascii " db \0"
-    b_8768: .ascii "\n\0"
-    b_8769: .ascii " dq \0"
-    b_8770: .ascii "\n\0"
-    b_8771: .ascii " db \0"
-    b_8772: .ascii "        times \0"
-    b_8773: .ascii " - ($ - b_\0"
-    b_8774: .ascii ") db 0\n\0"
-    b_8775: .ascii "    b_\0"
-    b_8776: .ascii " resb \0"
-    b_8777: .ascii " ; \0"
-    b_8778: .ascii "\n\0"
-    b_8779: .ascii "BITS 64\n\0"
-    b_8780: .ascii "global _start\n\0"
-    b_8781: .ascii "section .text\n\0"
-    b_8782: .ascii "; start\n\0"
-    b_8783: .ascii "_start:\n\0"
-    b_8784: .ascii "    lea     r12, [bsp + \0"
-    b_8785: .ascii "]\n\0"
-    b_8786: .ascii "    lea     rax, [rsp + 8]\n\0"
-    b_8787: .ascii "rax\0"
-    b_8788: .ascii "    mov     rax, [rsp]\n\0"
-    b_8789: .ascii "rax\0"
-    b_8790: .ascii "section .data\n\0"
-    b_8791: .ascii "section .bss\n\0"
-    b_8792: .ascii "    bsp: resb \0"
-    b_8793: .ascii "\n\0"
-    b_8794: .ascii " + \0"
-    b_8795: .ascii " - \0"
-    b_8796: .ascii "    add     r12, \0"
-    b_8797: .ascii "\n\0"
-    b_8798: .ascii "    sub     r12, \0"
-    b_8799: .ascii "\n\0"
-    b_8800: .ascii "    mov     qword [r12\0"
-    b_8801: .ascii "], \0"
-    b_8802: .ascii "\n\0"
-    b_8803: .ascii "    mov     \0"
-    b_8804: .ascii ", \0"
-    b_8805: .ascii "\n\0"
-    b_8806: .ascii "    mov     \0"
-    b_8807: .ascii ", qword [r12\0"
-    b_8808: .ascii "]\n\0"
-    b_8809: .ascii "    ; \0"
-    b_8810: .ascii "\n\0"
-    b_8811: .ascii "rcx\0"
-    b_8812: .ascii "rax\0"
-    b_8813: .ascii "    \0"
-    b_8814: .ascii " \trax, \0"
+    b_8665: .ascii "    ; OP_JZ\n\0"
+    b_8666: .ascii "rax\0"
+    b_8667: .ascii "    test    rax, rax\n\0"
+    b_8668: .ascii "    jz      .l_\0"
+    b_8669: .ascii "\n\0"
+    b_8670: .ascii "ERROR: Invalid opcode of type \0"
+    b_8671: .ascii "\n\0"
+    b_8672: .ascii "\"\0"
+    b_8673: .ascii "\",\0"
+    b_8674: .ascii ",\0"
+    b_8675: .ascii "\",\0"
+    b_8676: .ascii "0\n\0"
+    b_8677: .ascii "    ; Inline Buffers\n\0"
+    b_8678: .ascii "    b_\0"
+    b_8679: .ascii " db \0"
+    b_8680: .ascii "    ; \0"
+    b_8681: .ascii "\n\0"
+    b_8682: .ascii "    b_\0"
+    b_8683: .ascii " db \0"
+    b_8684: .ascii "\n\0"
+    b_8685: .ascii " dq \0"
+    b_8686: .ascii "\n\0"
+    b_8687: .ascii " db \0"
+    b_8688: .ascii "        times \0"
+    b_8689: .ascii " - ($ - b_\0"
+    b_8690: .ascii ") db 0\n\0"
+    b_8691: .ascii "    b_\0"
+    b_8692: .ascii " resb \0"
+    b_8693: .ascii " ; \0"
+    b_8694: .ascii "\n\0"
+    b_8695: .ascii "    ; OP_EXIT\n\0"
+    b_8696: .ascii "rdi\0"
+    b_8697: .ascii "    mov     eax, 60\n\0"
+    b_8698: .ascii "    syscall\n\0"
+    b_8699: .ascii "    ; OP_FOPEN\n\0"
+    b_8700: .ascii "rax\0"
+    b_8701: .ascii "rsi\0"
+    b_8702: .ascii "    cmp     rax, 0\n\0"
+    b_8703: .ascii "    je      .frl_\0"
+    b_8704: .ascii "\n\0"
+    b_8705: .ascii "    cmp     rax, 1\n\0"
+    b_8706: .ascii "    je      .fwl_\0"
+    b_8707: .ascii "\n\0"
+    b_8708: .ascii "    cmp     rax, 2\n\0"
+    b_8709: .ascii "    je      .fal_\0"
+    b_8710: .ascii "\n\0"
+    b_8711: .ascii "    jmp     .ffl_\0"
+    b_8712: .ascii "\n\0"
+    b_8713: .ascii "    .frl_\0"
+    b_8714: .ascii ":\n\0"
+    b_8715: .ascii "    mov     rdx, 0\n\0"
+    b_8716: .ascii "    jmp     .fdl_\0"
+    b_8717: .ascii "\n\0"
+    b_8718: .ascii "    .fwl_\0"
+    b_8719: .ascii ":\n\0"
+    b_8720: .ascii "    mov     rdx, 577\n\0"
+    b_8721: .ascii "    jmp     .fdl_\0"
+    b_8722: .ascii "\n\0"
+    b_8723: .ascii "    .fal_\0"
+    b_8724: .ascii ":\n\0"
+    b_8725: .ascii "    mov     rdx, 1089\n\0"
+    b_8726: .ascii "    jmp     .fdl_\0"
+    b_8727: .ascii "\n\0"
+    b_8728: .ascii "    .fdl_\0"
+    b_8729: .ascii ":\n\0"
+    b_8730: .ascii "    mov     rax, 257\n\0"
+    b_8731: .ascii "    mov     rdi, -100\n\0"
+    b_8732: .ascii "    mov     r10, 420\n\0"
+    b_8733: .ascii "    syscall\n\0"
+    b_8734: .ascii "rax\0"
+    b_8735: .ascii "    jmp     .fel_\0"
+    b_8736: .ascii "\n\0"
+    b_8737: .ascii "    .ffl_\0"
+    b_8738: .ascii ":\n\0"
+    b_8739: .ascii "    mov     rax, -1\n\0"
+    b_8740: .ascii "rax\0"
+    b_8741: .ascii "    .fel_\0"
+    b_8742: .ascii ":\n\0"
+    b_8743: .ascii "    ; OP_FREAD\n\0"
+    b_8744: .ascii "rdi\0"
+    b_8745: .ascii "rdx\0"
+    b_8746: .ascii "rsi\0"
+    b_8747: .ascii "    mov     rax, 0\n\0"
+    b_8748: .ascii "    syscall\n\0"
+    b_8749: .ascii "rax\0"
+    b_8750: .ascii "    ; OP_FWRITE\n\0"
+    b_8751: .ascii "rdi\0"
+    b_8752: .ascii "rdx\0"
+    b_8753: .ascii "rsi\0"
+    b_8754: .ascii "    mov     rax, 1\n\0"
+    b_8755: .ascii "    syscall\n\0"
+    b_8756: .ascii "rax\0"
+    b_8757: .ascii "    ; OP_FCLOSE\n\0"
+    b_8758: .ascii "rdi\0"
+    b_8759: .ascii "    mov     rax, 3\n\0"
+    b_8760: .ascii "    syscall\n\0"
+    b_8761: .ascii "rax\0"
+    b_8762: .ascii "    ; OP_GETCWD\n\0"
+    b_8763: .ascii "rsi\0"
+    b_8764: .ascii "rdi\0"
+    b_8765: .ascii "    mov     rax, 79\n\0"
+    b_8766: .ascii "    syscall\n\0"
+    b_8767: .ascii "rax\0"
+    b_8768: .ascii "    ; LIN_syscall\n\0"
+    b_8769: .ascii "rax\0"
+    b_8770: .ascii "r9\0"
+    b_8771: .ascii "r8\0"
+    b_8772: .ascii "r10\0"
+    b_8773: .ascii "rdx\0"
+    b_8774: .ascii "rsi\0"
+    b_8775: .ascii "rdi\0"
+    b_8776: .ascii "    syscall\n\0"
+    b_8777: .ascii "rax\0"
+    b_8778: .ascii "; \0"
+    b_8779: .ascii "\n\0"
+    b_8780: .ascii "f_\0"
+    b_8781: .ascii ":\n\0"
+    b_8782: .ascii "    push    rbp\n\0"
+    b_8783: .ascii "    mov     rbp, rsp\n\0"
+    b_8784: .ascii "BITS 64\n\0"
+    b_8785: .ascii "global _start\n\0"
+    b_8786: .ascii "section .text\n\0"
+    b_8787: .ascii "; start\n\0"
+    b_8788: .ascii "_start:\n\0"
+    b_8789: .ascii "    lea     r12, [bsp + \0"
+    b_8790: .ascii "]\n\0"
+    b_8791: .ascii "    lea     rax, [rsp + 8]\n\0"
+    b_8792: .ascii "rax\0"
+    b_8793: .ascii "    mov     rax, [rsp]\n\0"
+    b_8794: .ascii "rax\0"
+    b_8795: .ascii "section .data\n\0"
+    b_8796: .ascii "section .bss\n\0"
+    b_8797: .ascii "    bsp: resb \0"
+    b_8798: .ascii "\n\0"
+    b_8799: .ascii "    sub     rsp, 32\n\0"
+    b_8800: .ascii "    call    \0"
+    b_8801: .ascii "\n\0"
+    b_8802: .ascii "    add     rsp, 32\n\0"
+    b_8803: .ascii "    ; OP_EXIT\n\0"
+    b_8804: .ascii "rcx\0"
+    b_8805: .ascii "ExitProcess\0"
+    b_8806: .ascii "    ; OP_FOPEN\n\0"
+    b_8807: .ascii "rax\0"
+    b_8808: .ascii "rcx\0"
+    b_8809: .ascii "    sub     rsp, 32+24\n\0"
+    b_8810: .ascii "    cmp     rax, 0\n\0"
+    b_8811: .ascii "    je      .frl_\0"
+    b_8812: .ascii "\n\0"
+    b_8813: .ascii "    cmp     rax, 1\n\0"
+    b_8814: .ascii "    je      .fwl_\0"
     b_8815: .ascii "\n\0"
-    b_8816: .ascii "rax\0"
-    b_8817: .ascii "    sub     rsp, 32\n\0"
-    b_8818: .ascii "    call    \0"
-    b_8819: .ascii "\n\0"
-    b_8820: .ascii "    add     rsp, 32\n\0"
-    b_8821: .ascii "    ; OP_CALL\n\0"
-    b_8822: .ascii "rax\0"
-    b_8823: .ascii "    call    rax\n\0"
-    b_8824: .ascii "    ; OP_PUSH_FN\n\0"
-    b_8825: .ascii "    lea     rax, [f_\0"
-    b_8826: .ascii "]\n\0"
-    b_8827: .ascii "rax\0"
-    b_8828: .ascii "    ; OP_CALL_FN\n\0"
-    b_8829: .ascii "    call    f_\0"
-    b_8830: .ascii "\n\0"
-    b_8831: .ascii "    ; OP_RET\n\0"
-    b_8832: .ascii "    leave\n\0"
-    b_8833: .ascii "    ret\n\0"
-    b_8834: .ascii "    ; OP_PUSH_INT\n\0"
-    b_8835: .ascii "    mov     rax, \0"
-    b_8836: .ascii "\n\0"
-    b_8837: .ascii "rax\0"
-    b_8838: .ascii "    ; OP_DROP\n\0"
-    b_8839: .ascii "    ; OP_PICK\n\0"
-    b_8840: .ascii "rax\0"
-    b_8841: .ascii "    mov     rax, [r12 + rax*8]\n\0"
-    b_8842: .ascii "rax\0"
-    b_8843: .ascii "    ; OP_ROLL\n\0"
-    b_8844: .ascii "rax\0"
-    b_8845: .ascii "    mov     rcx, [r12 + rax*8]\n\0"
-    b_8846: .ascii "    lea     rbx, [r12 + rax*8]\n\0"
-    b_8847: .ascii "    .ral_\0"
-    b_8848: .ascii ":\n\0"
-    b_8849: .ascii "    cmp     rbx, r12\n\0"
-    b_8850: .ascii "    je      .rbl_\0"
-    b_8851: .ascii "\n\0"
-    b_8852: .ascii "    mov     rdx, [rbx - 8]\n\0"
-    b_8853: .ascii "    mov     [rbx], rdx\n\0"
-    b_8854: .ascii "    sub     rbx, 8\n\0"
-    b_8855: .ascii "    jmp     .ral_\0"
-    b_8856: .ascii "\n\0"
-    b_8857: .ascii "    .rbl_\0"
-    b_8858: .ascii ":\n\0"
-    b_8859: .ascii "    mov     [r12], rcx\n\0"
-    b_8860: .ascii "    ; OP_DEPTH\n\0"
-    b_8861: .ascii "    mov     rax, bsp + \0"
-    b_8862: .ascii "\n\0"
-    b_8863: .ascii "    sub     rax, r12\n\0"
-    b_8864: .ascii "    shr     rax, 3\n\0"
-    b_8865: .ascii "rax\0"
-    b_8866: .ascii "    ; OP_PUSH_BUF\n\0"
-    b_8867: .ascii "    lea     rax, [rel b_\0"
-    b_8868: .ascii "]\n\0"
-    b_8869: .ascii "rax\0"
-    b_8870: .ascii "    ; OP_STORE\n\0"
-    b_8871: .ascii "rax\0"
-    b_8872: .ascii "rcx\0"
-    b_8873: .ascii "    mov     [rax], rcx\n\0"
-    b_8874: .ascii "    ; OP_FETCH\n\0"
-    b_8875: .ascii "rax\0"
-    b_8876: .ascii "    mov     rax, qword [rax]\n\0"
-    b_8877: .ascii "rax\0"
-    b_8878: .ascii "    ; OP_MEMCPY\n\0"
-    b_8879: .ascii "rcx\0"
-    b_8880: .ascii "rdi\0"
-    b_8881: .ascii "rsi\0"
-    b_8882: .ascii "    cld\n\0"
-    b_8883: .ascii "    rep     movsb\n\0"
-    b_8884: .ascii "    ; OP_PUSH_VAR\n\0"
-    b_8885: .ascii "    lea     rax, [rbp - \0"
-    b_8886: .ascii "]\n\0"
-    b_8887: .ascii "rax\0"
-    b_8888: .ascii "    ; OP_ALLOC\n\0"
-    b_8889: .ascii "    sub     rsp, \0"
-    b_8890: .ascii "\n\0"
-    b_8891: .ascii "rcx\0"
-    b_8892: .ascii "add\0"
-    b_8893: .ascii "OP_ADD\0"
-    b_8894: .ascii "rcx\0"
-    b_8895: .ascii "sub\0"
-    b_8896: .ascii "OP_SUB\0"
-    b_8897: .ascii "rcx\0"
-    b_8898: .ascii "imul\0"
-    b_8899: .ascii "OP_MUL\0"
-    b_8900: .ascii "rcx\0"
-    b_8901: .ascii "and\0"
-    b_8902: .ascii "OP_AND\0"
-    b_8903: .ascii "rcx\0"
-    b_8904: .ascii "or\0"
-    b_8905: .ascii "OP_OR\0"
-    b_8906: .ascii "rcx\0"
-    b_8907: .ascii "xor\0"
-    b_8908: .ascii "OP_XOR\0"
-    b_8909: .ascii "cl\0"
-    b_8910: .ascii "shl\0"
-    b_8911: .ascii "OP_SHL\0"
-    b_8912: .ascii "cl\0"
-    b_8913: .ascii "shr\0"
-    b_8914: .ascii "OP_SHR\0"
-    b_8915: .ascii "cl\0"
-    b_8916: .ascii "sar\0"
-    b_8917: .ascii "OP_SAR\0"
-    b_8918: .ascii "    ; OP_NOT\n\0"
-    b_8919: .ascii "rax\0"
-    b_8920: .ascii "    not     rax\n\0"
-    b_8921: .ascii "rax\0"
-    b_8922: .ascii "    ; OP_EQ\n\0"
-    b_8923: .ascii "rax\0"
-    b_8924: .ascii "rbx\0"
-    b_8925: .ascii "    cmp     rbx, rax\n\0"
-    b_8926: .ascii "    sete    al\n\0"
-    b_8927: .ascii "    movzx   rax, al\n\0"
-    b_8928: .ascii "rax\0"
-    b_8929: .ascii "    ; OP_GT\n\0"
-    b_8930: .ascii "rax\0"
-    b_8931: .ascii "rbx\0"
-    b_8932: .ascii "    cmp     rbx, rax\n\0"
-    b_8933: .ascii "    setg    al\n\0"
-    b_8934: .ascii "    movzx   rax, al\n\0"
-    b_8935: .ascii "rax\0"
-    b_8936: .ascii "    ; OP_LT\n\0"
-    b_8937: .ascii "rax\0"
-    b_8938: .ascii "rbx\0"
-    b_8939: .ascii "    cmp     rbx, rax\n\0"
-    b_8940: .ascii "    setl    al\n\0"
-    b_8941: .ascii "    movzx   rax, al\n\0"
+    b_8816: .ascii "    cmp     rax, 2\n\0"
+    b_8817: .ascii "    je      .fal_\0"
+    b_8818: .ascii "\n\0"
+    b_8819: .ascii "    jmp     .ffl_\0"
+    b_8820: .ascii "\n\0"
+    b_8821: .ascii "    .frl_\0"
+    b_8822: .ascii ":\n\0"
+    b_8823: .ascii "    mov     rdx, 80000000h\n\0"
+    b_8824: .ascii "    mov     qword [rsp+32], 3\n\0"
+    b_8825: .ascii "    jmp     .fdl_\0"
+    b_8826: .ascii "\n\0"
+    b_8827: .ascii "    .fwl_\0"
+    b_8828: .ascii ":\n\0"
+    b_8829: .ascii "    mov     rdx, 40000000h\n\0"
+    b_8830: .ascii "    mov     qword [rsp+32], 2\n\0"
+    b_8831: .ascii "    jmp     .fdl_\0"
+    b_8832: .ascii "\n\0"
+    b_8833: .ascii "    .fal_\0"
+    b_8834: .ascii ":\n\0"
+    b_8835: .ascii "    mov     rdx, 00000004h\n\0"
+    b_8836: .ascii "    mov     qword [rsp+32], 4\n\0"
+    b_8837: .ascii "    jmp     .fdl_\0"
+    b_8838: .ascii "\n\0"
+    b_8839: .ascii "    .fdl_\0"
+    b_8840: .ascii ":\n\0"
+    b_8841: .ascii "    mov     r8, 0\n\0"
+    b_8842: .ascii "    mov     r9, 0\n\0"
+    b_8843: .ascii "    mov     qword [rsp+40], 80h\n\0"
+    b_8844: .ascii "    mov     qword [rsp+48], 0\n\0"
+    b_8845: .ascii "    call    CreateFileA\n\0"
+    b_8846: .ascii "rax\0"
+    b_8847: .ascii "    jmp     .fel_\0"
+    b_8848: .ascii "\n\0"
+    b_8849: .ascii "    .ffl_\0"
+    b_8850: .ascii ":\n\0"
+    b_8851: .ascii "    mov     rax, -1\n\0"
+    b_8852: .ascii "rax\0"
+    b_8853: .ascii "    .fel_\0"
+    b_8854: .ascii ":\n\0"
+    b_8855: .ascii "    add     rsp, 32+24\n\0"
+    b_8856: .ascii "    ; OP_FREAD\n\0"
+    b_8857: .ascii "rcx\0"
+    b_8858: .ascii "r8\0"
+    b_8859: .ascii "rdx\0"
+    b_8860: .ascii "    lea     r9, [rel windata]\n\0"
+    b_8861: .ascii "    sub     rsp, 32+8\n\0"
+    b_8862: .ascii "    mov     qword [rsp+32], 0\n\0"
+    b_8863: .ascii "    call    ReadFile\n\0"
+    b_8864: .ascii "    add     rsp, 32+8\n\0"
+    b_8865: .ascii "    cmp     eax, 0\n\0"
+    b_8866: .ascii "    jne     .frl_\0"
+    b_8867: .ascii "\n\0"
+    b_8868: .ascii "    mov     rax, -1\n\0"
+    b_8869: .ascii "    jmp     .ffl_\0"
+    b_8870: .ascii "\n\0"
+    b_8871: .ascii "    .frl_\0"
+    b_8872: .ascii ":\n\0"
+    b_8873: .ascii "    mov     rax, [rel windata]\n\0"
+    b_8874: .ascii "    .ffl_\0"
+    b_8875: .ascii ":\n\0"
+    b_8876: .ascii "rax\0"
+    b_8877: .ascii "    ; OP_FWRITE\n\0"
+    b_8878: .ascii "rcx\0"
+    b_8879: .ascii "r8\0"
+    b_8880: .ascii "rdx\0"
+    b_8881: .ascii "    lea     r9, [rel windata]\n\0"
+    b_8882: .ascii "    sub     rsp, 32+8\n\0"
+    b_8883: .ascii "    mov     qword [rsp+32], 0\n\0"
+    b_8884: .ascii "    call    WriteFile\n\0"
+    b_8885: .ascii "    add     rsp, 32+8\n\0"
+    b_8886: .ascii "    cmp     eax, 0\n\0"
+    b_8887: .ascii "    jne     .fwl_\0"
+    b_8888: .ascii "\n\0"
+    b_8889: .ascii "    mov     rax, -1\n\0"
+    b_8890: .ascii "    jmp     .ffl_\0"
+    b_8891: .ascii "\n\0"
+    b_8892: .ascii "    .fwl_\0"
+    b_8893: .ascii ":\n\0"
+    b_8894: .ascii "    mov     rax, [rel windata]\n\0"
+    b_8895: .ascii "    .ffl_\0"
+    b_8896: .ascii ":\n\0"
+    b_8897: .ascii "rax\0"
+    b_8898: .ascii "    ; OP_FCLOSE\n\0"
+    b_8899: .ascii "rcx\0"
+    b_8900: .ascii "CloseHandle\0"
+    b_8901: .ascii "    sub     rax, 1\n\0"
+    b_8902: .ascii "rax\0"
+    b_8903: .ascii "    ; OP_GETCWD\n\0"
+    b_8904: .ascii "rcx\0"
+    b_8905: .ascii "rdx\0"
+    b_8906: .ascii "    mov     r11, rcx\n\0"
+    b_8907: .ascii "GetCurrentDirectoryA\0"
+    b_8908: .ascii "    cmp     rax, r11\n\0"
+    b_8909: .ascii "    jg      .csl_\0"
+    b_8910: .ascii "\n\0"
+    b_8911: .ascii "    test    rax, rax\n\0"
+    b_8912: .ascii "    jz      .czl_\0"
+    b_8913: .ascii "\n\0"
+    b_8914: .ascii "    jmp     .cfl_\0"
+    b_8915: .ascii "\n\0"
+    b_8916: .ascii "    .csl_\0"
+    b_8917: .ascii ":\n\0"
+    b_8918: .ascii "    neg     rax\n\0"
+    b_8919: .ascii "    jmp     .cfl_\0"
+    b_8920: .ascii "\n\0"
+    b_8921: .ascii "    .czl_\0"
+    b_8922: .ascii ":\n\0"
+    b_8923: .ascii "    mov     rax, -1\n\0"
+    b_8924: .ascii "    .cfl_\0"
+    b_8925: .ascii ":\n\0"
+    b_8926: .ascii "rax\0"
+    b_8927: .ascii "    ; WIN_GetCommandLineW\n\0"
+    b_8928: .ascii "GetCommandLineW\0"
+    b_8929: .ascii "rax\0"
+    b_8930: .ascii "    ; WIN_CommandLineToArgvW\n\0"
+    b_8931: .ascii "rdx\0"
+    b_8932: .ascii "rcx\0"
+    b_8933: .ascii "CommandLineToArgvW\0"
+    b_8934: .ascii "    test    rax, rax\n\0"
+    b_8935: .ascii "    jnz     .cll_\0"
+    b_8936: .ascii "\n\0"
+    b_8937: .ascii "    mov     rax, -1\n\0"
+    b_8938: .ascii "    .cll_\0"
+    b_8939: .ascii ":\n\0"
+    b_8940: .ascii "rax\0"
+    b_8941: .ascii "    ; WIN_WideCharToMultiByte\n\0"
     b_8942: .ascii "rax\0"
-    b_8943: .ascii "    ; OP_DIVMOD\n\0"
-    b_8944: .ascii "rbx\0"
-    b_8945: .ascii "rax\0"
-    b_8946: .ascii "    cqo\n\0"
-    b_8947: .ascii "    idiv    rbx\n\0"
-    b_8948: .ascii "rax\0"
-    b_8949: .ascii "rdx\0"
-    b_8950: .ascii ".l_\0"
-    b_8951: .ascii ":\n\0"
-    b_8952: .ascii "    ; OP_JMP\n\0"
-    b_8953: .ascii "    jmp     .l_\0"
-    b_8954: .ascii "\n\0"
-    b_8955: .ascii "    ; OP_JZ\n\0"
-    b_8956: .ascii "rax\0"
-    b_8957: .ascii "    test    rax, rax\n\0"
-    b_8958: .ascii "    jz      .l_\0"
-    b_8959: .ascii "\n\0"
-    b_8960: .ascii "    ; OP_EXIT\n\0"
-    b_8961: .ascii "rcx\0"
-    b_8962: .ascii "ExitProcess\0"
-    b_8963: .ascii "    ; OP_FOPEN\n\0"
-    b_8964: .ascii "rax\0"
-    b_8965: .ascii "rcx\0"
-    b_8966: .ascii "    cmp     rax, 0\n\0"
-    b_8967: .ascii "    je      .frl_\0"
+    b_8943: .ascii "rbx\0"
+    b_8944: .ascii "r8\0"
+    b_8945: .ascii "    mov     r9, -1\n\0"
+    b_8946: .ascii "    mov     rcx, 65001\n\0"
+    b_8947: .ascii "    mov     rdx, 0\n\0"
+    b_8948: .ascii "    sub     rsp, 32+32\n\0"
+    b_8949: .ascii "    mov     qword [rsp+32], rbx\n\0"
+    b_8950: .ascii "    mov     qword [rsp+40], rax\n\0"
+    b_8951: .ascii "    mov     qword [rsp+48], 0\n\0"
+    b_8952: .ascii "    mov     qword [rsp+56], 0\n\0"
+    b_8953: .ascii "    call    WideCharToMultiByte\n\0"
+    b_8954: .ascii "    add     rsp, 32+32\n\0"
+    b_8955: .ascii "    test    rax, rax\n\0"
+    b_8956: .ascii "    jnz     .wcl_\0"
+    b_8957: .ascii "\n\0"
+    b_8958: .ascii "    mov     rax, -1\n\0"
+    b_8959: .ascii "    .wcl_\0"
+    b_8960: .ascii ":\n\0"
+    b_8961: .ascii "rax\0"
+    b_8962: .ascii "    ; WIN_LocalAlloc\n\0"
+    b_8963: .ascii "rdx\0"
+    b_8964: .ascii "    mov     rcx, 64\n\0"
+    b_8965: .ascii "LocalAlloc\0"
+    b_8966: .ascii "    test    rax, rax\n\0"
+    b_8967: .ascii "    jnz     .lal_\0"
     b_8968: .ascii "\n\0"
-    b_8969: .ascii "    cmp     rax, 1\n\0"
-    b_8970: .ascii "    je      .fwl_\0"
-    b_8971: .ascii "\n\0"
-    b_8972: .ascii "    cmp     rax, 2\n\0"
-    b_8973: .ascii "    je      .fal_\0"
-    b_8974: .ascii "\n\0"
-    b_8975: .ascii "    jmp     .ffl_\0"
-    b_8976: .ascii "\n\0"
-    b_8977: .ascii "    sub     rsp, 32+24\n\0"
-    b_8978: .ascii "    .frl_\0"
-    b_8979: .ascii ":\n\0"
-    b_8980: .ascii "    mov     rdx, 80000000h\n\0"
-    b_8981: .ascii "    mov     qword [rsp+32], 3\n\0"
-    b_8982: .ascii "    jmp     .fdl_\0"
+    b_8969: .ascii "    mov     rax, -1\n\0"
+    b_8970: .ascii "    .lal_\0"
+    b_8971: .ascii ":\n\0"
+    b_8972: .ascii "rax\0"
+    b_8973: .ascii "    ; WIN_LocalFree\n\0"
+    b_8974: .ascii "rcx\0"
+    b_8975: .ascii "LocalFree\0"
+    b_8976: .ascii "    neg     rax\n\0"
+    b_8977: .ascii "rax\0"
+    b_8978: .ascii "    ; WIN_GetStdHandle\n\0"
+    b_8979: .ascii "rcx\0"
+    b_8980: .ascii "GetStdHandle\0"
+    b_8981: .ascii "rax\0"
+    b_8982: .ascii "; \0"
     b_8983: .ascii "\n\0"
-    b_8984: .ascii "    .fwl_\0"
+    b_8984: .ascii "f_\0"
     b_8985: .ascii ":\n\0"
-    b_8986: .ascii "    mov     rdx, 40000000h\n\0"
-    b_8987: .ascii "    mov     qword [rsp+32], 2\n\0"
-    b_8988: .ascii "    jmp     .fdl_\0"
-    b_8989: .ascii "\n\0"
-    b_8990: .ascii "    .fal_\0"
-    b_8991: .ascii ":\n\0"
-    b_8992: .ascii "    mov     rdx, 00000004h\n\0"
-    b_8993: .ascii "    mov     qword [rsp+32], 4\n\0"
-    b_8994: .ascii "    jmp     .fdl_\0"
-    b_8995: .ascii "\n\0"
-    b_8996: .ascii "    .fdl_\0"
-    b_8997: .ascii ":\n\0"
-    b_8998: .ascii "    mov     r8, 0\n\0"
-    b_8999: .ascii "    mov     r9, 0\n\0"
-    b_9000: .ascii "    mov     qword [rsp+40], 80h\n\0"
-    b_9001: .ascii "    mov     qword [rsp+48], 0\n\0"
-    b_9002: .ascii "    call    CreateFileA\n\0"
-    b_9003: .ascii "    add     rsp, 32+24\n\0"
-    b_9004: .ascii "rax\0"
-    b_9005: .ascii "    jmp     .fel_\0"
-    b_9006: .ascii "\n\0"
-    b_9007: .ascii "    .ffl_\0"
-    b_9008: .ascii ":\n\0"
-    b_9009: .ascii "    mov     rax, -1\n\0"
-    b_9010: .ascii "rax\0"
-    b_9011: .ascii "    .fel_\0"
-    b_9012: .ascii ":\n\0"
-    b_9013: .ascii "    ; OP_FREAD\n\0"
-    b_9014: .ascii "rcx\0"
-    b_9015: .ascii "r8\0"
-    b_9016: .ascii "rdx\0"
-    b_9017: .ascii "    lea     r9, [rel windata]\n\0"
-    b_9018: .ascii "    sub     rsp, 32+8\n\0"
-    b_9019: .ascii "    mov     qword [rsp+32], 0\n\0"
-    b_9020: .ascii "    call    ReadFile\n\0"
-    b_9021: .ascii "    add     rsp, 32+8\n\0"
-    b_9022: .ascii "    cmp     eax, 0\n\0"
-    b_9023: .ascii "    jne     .frl_\0"
-    b_9024: .ascii "\n\0"
-    b_9025: .ascii "    mov     rax, -1\n\0"
-    b_9026: .ascii "    jmp     .ffl_\0"
+    b_8986: .ascii "    push    rbp\n\0"
+    b_8987: .ascii "    mov     rbp, rsp\n\0"
+    b_8988: .ascii "BITS 64\n\0"
+    b_8989: .ascii "extern ExitProcess\n\0"
+    b_8990: .ascii "extern CreateFileA\n\0"
+    b_8991: .ascii "extern ReadFile\n\0"
+    b_8992: .ascii "extern WriteFile\n\0"
+    b_8993: .ascii "extern CloseHandle\n\0"
+    b_8994: .ascii "extern GetCurrentDirectoryA\n\0"
+    b_8995: .ascii "extern GetCommandLineW\n\0"
+    b_8996: .ascii "extern CommandLineToArgvW\n\0"
+    b_8997: .ascii "extern WideCharToMultiByte\n\0"
+    b_8998: .ascii "extern LocalAlloc\n\0"
+    b_8999: .ascii "extern LocalFree\n\0"
+    b_9000: .ascii "extern GetStdHandle\n\0"
+    b_9001: .ascii "global _start\n\0"
+    b_9002: .ascii "section .text\n\0"
+    b_9003: .ascii "; start\n\0"
+    b_9004: .ascii "_start:\n\0"
+    b_9005: .ascii "    lea     r12, [rel bsp + \0"
+    b_9006: .ascii "]\n\0"
+    b_9007: .ascii "section .data\n\0"
+    b_9008: .ascii "section .bss\n\0"
+    b_9009: .ascii "    windata resd 1\n\0"
+    b_9010: .ascii "    bsp: resb \0"
+    b_9011: .ascii "\n\0"
+    b_9012: .ascii ", #\0"
+    b_9013: .ascii "    add     x12, x12, \0"
+    b_9014: .ascii "\n\0"
+    b_9015: .ascii "    sub     x12, x12, \0"
+    b_9016: .ascii "\n\0"
+    b_9017: .ascii "    str     \0"
+    b_9018: .ascii ", [x12\0"
+    b_9019: .ascii "]\n\0"
+    b_9020: .ascii "    mov     \0"
+    b_9021: .ascii ", \0"
+    b_9022: .ascii "\n\0"
+    b_9023: .ascii "    ldr     \0"
+    b_9024: .ascii ", [x12\0"
+    b_9025: .ascii "]\n\0"
+    b_9026: .ascii "    // \0"
     b_9027: .ascii "\n\0"
-    b_9028: .ascii "    .frl_\0"
-    b_9029: .ascii ":\n\0"
-    b_9030: .ascii "    mov     rax, [rel windata]\n\0"
-    b_9031: .ascii "    .ffl_\0"
-    b_9032: .ascii ":\n\0"
-    b_9033: .ascii "rax\0"
-    b_9034: .ascii "    ; OP_FWRITE\n\0"
-    b_9035: .ascii "rcx\0"
-    b_9036: .ascii "r8\0"
-    b_9037: .ascii "rdx\0"
-    b_9038: .ascii "    lea     r9, [rel windata]\n\0"
-    b_9039: .ascii "    sub     rsp, 32+8\n\0"
-    b_9040: .ascii "    mov     qword [rsp+32], 0\n\0"
-    b_9041: .ascii "    call    WriteFile\n\0"
-    b_9042: .ascii "    add     rsp, 32+8\n\0"
-    b_9043: .ascii "    cmp     eax, 0\n\0"
-    b_9044: .ascii "    jne     .fwl_\0"
-    b_9045: .ascii "\n\0"
-    b_9046: .ascii "    mov     rax, -1\n\0"
-    b_9047: .ascii "    jmp     .ffl_\0"
+    b_9028: .ascii "x0\0"
+    b_9029: .ascii "x1\0"
+    b_9030: .ascii "    \0"
+    b_9031: .ascii " \tx0, x1, x0\n\0"
+    b_9032: .ascii "x0\0"
+    b_9033: .ascii "    movz    x0, #\0"
+    b_9034: .ascii "\n\0"
+    b_9035: .ascii "    movk    x0, #\0"
+    b_9036: .ascii ", lsl 16\n\0"
+    b_9037: .ascii "    // OP_CALL\n\0"
+    b_9038: .ascii "x0\0"
+    b_9039: .ascii "    blr     x0\n\0"
+    b_9040: .ascii "    // OP_PUSH_FN\n\0"
+    b_9041: .ascii "    adrp    x0, f_\0"
+    b_9042: .ascii "@PAGE\n\0"
+    b_9043: .ascii "    add     x0, x0, f_\0"
+    b_9044: .ascii "@PAGEOFF\n\0"
+    b_9045: .ascii "x0\0"
+    b_9046: .ascii "    // OP_CALL_FN\n\0"
+    b_9047: .ascii "    bl      f_\0"
     b_9048: .ascii "\n\0"
-    b_9049: .ascii "    .fwl_\0"
-    b_9050: .ascii ":\n\0"
-    b_9051: .ascii "    mov     rax, [rel windata]\n\0"
-    b_9052: .ascii "    .ffl_\0"
-    b_9053: .ascii ":\n\0"
-    b_9054: .ascii "rax\0"
-    b_9055: .ascii "    ; OP_FCLOSE\n\0"
-    b_9056: .ascii "rcx\0"
-    b_9057: .ascii "CloseHandle\0"
-    b_9058: .ascii "    sub     rax, 1\n\0"
-    b_9059: .ascii "rax\0"
-    b_9060: .ascii "    ; OP_GETCWD\n\0"
-    b_9061: .ascii "rcx\0"
-    b_9062: .ascii "rdx\0"
-    b_9063: .ascii "    mov     r11, rcx\n\0"
-    b_9064: .ascii "GetCurrentDirectoryA\0"
-    b_9065: .ascii "    cmp     rax, r11\n\0"
-    b_9066: .ascii "    jg      .csl_\0"
-    b_9067: .ascii "\n\0"
-    b_9068: .ascii "    test    rax, rax\n\0"
-    b_9069: .ascii "    jz      .czl_\0"
-    b_9070: .ascii "\n\0"
-    b_9071: .ascii "    jmp     .cfl_\0"
-    b_9072: .ascii "\n\0"
-    b_9073: .ascii "    .csl_\0"
-    b_9074: .ascii ":\n\0"
-    b_9075: .ascii "    neg     rax\n\0"
-    b_9076: .ascii "    jmp     .cfl_\0"
-    b_9077: .ascii "\n\0"
-    b_9078: .ascii "    .czl_\0"
-    b_9079: .ascii ":\n\0"
-    b_9080: .ascii "    mov     rax, -1\n\0"
-    b_9081: .ascii "    .cfl_\0"
-    b_9082: .ascii ":\n\0"
-    b_9083: .ascii "rax\0"
-    b_9084: .ascii "    ; WIN_GetCommandLineW\n\0"
-    b_9085: .ascii "GetCommandLineW\0"
-    b_9086: .ascii "rax\0"
-    b_9087: .ascii "    ; WIN_CommandLineToArgvW\n\0"
-    b_9088: .ascii "rdx\0"
-    b_9089: .ascii "rcx\0"
-    b_9090: .ascii "CommandLineToArgvW\0"
-    b_9091: .ascii "    test    rax, rax\n\0"
-    b_9092: .ascii "    jnz     .cll_\0"
+    b_9049: .ascii "    // OP_RET\n\0"
+    b_9050: .ascii "    mov     sp, x29\n\0"
+    b_9051: .ascii "    ldp     x29, x30, [sp], #16\n\0"
+    b_9052: .ascii "    ret\n\0"
+    b_9053: .ascii "    // OP_PUSH_INT\n\0"
+    b_9054: .ascii "    mov     x0, #\0"
+    b_9055: .ascii "\n\0"
+    b_9056: .ascii "x0\0"
+    b_9057: .ascii "    // OP_DROP\n\0"
+    b_9058: .ascii "    // OP_PICK\n\0"
+    b_9059: .ascii "x0\0"
+    b_9060: .ascii "    lsl     x0, x0, #3\n\0"
+    b_9061: .ascii "    add     x0, x12, x0\n\0"
+    b_9062: .ascii "    ldr     x0, [x0]\n\0"
+    b_9063: .ascii "x0\0"
+    b_9064: .ascii "    // OP_ROLL\n\0"
+    b_9065: .ascii "x0\0"
+    b_9066: .ascii "    lsl     x0, x0, #3\n\0"
+    b_9067: .ascii "    add     x0, x12, x0\n\0"
+    b_9068: .ascii "    ldr     x1, [x0]\n\0"
+    b_9069: .ascii "    .ral_\0"
+    b_9070: .ascii ":\n\0"
+    b_9071: .ascii "    cmp     x0, x12\n\0"
+    b_9072: .ascii "    beq     .rbl_\0"
+    b_9073: .ascii "\n\0"
+    b_9074: .ascii "    ldr     x2, [x0, #-8]\n\0"
+    b_9075: .ascii "    str     x2, [x0]\n\0"
+    b_9076: .ascii "    sub     x0, x0, #8\n\0"
+    b_9077: .ascii "    b       .ral_\0"
+    b_9078: .ascii "\n\0"
+    b_9079: .ascii "    .rbl_\0"
+    b_9080: .ascii ":\n\0"
+    b_9081: .ascii "    str     x1, [x12]\n\0"
+    b_9082: .ascii "    // OP_DEPTH\n\0"
+    b_9083: .ascii "    adrp    x0, bsp\n\0"
+    b_9084: .ascii "    add     x0, x0, :lo12:bsp\n\0"
+    b_9085: .ascii "    add     x0, x0, #\0"
+    b_9086: .ascii "\n\0"
+    b_9087: .ascii "    sub     x0, x0, x12\n\0"
+    b_9088: .ascii "    lsr     x0, x0, #3\n\0"
+    b_9089: .ascii "x0\0"
+    b_9090: .ascii "b_\0"
+    b_9091: .ascii "    // OP_PUSH_BUF\n\0"
+    b_9092: .ascii "    adrp    x0, \0"
     b_9093: .ascii "\n\0"
-    b_9094: .ascii "    mov     rax, -1\n\0"
-    b_9095: .ascii "    .cll_\0"
-    b_9096: .ascii ":\n\0"
-    b_9097: .ascii "rax\0"
-    b_9098: .ascii "    ; WIN_WideCharToMultiByte\n\0"
-    b_9099: .ascii "rax\0"
-    b_9100: .ascii "rbx\0"
-    b_9101: .ascii "r8\0"
-    b_9102: .ascii "    mov     r9, -1\n\0"
-    b_9103: .ascii "    mov     rcx, 65001\n\0"
-    b_9104: .ascii "    mov     rdx, 0\n\0"
-    b_9105: .ascii "    sub     rsp, 32+32\n\0"
-    b_9106: .ascii "    mov     qword [rsp+32], rbx\n\0"
-    b_9107: .ascii "    mov     qword [rsp+40], rax\n\0"
-    b_9108: .ascii "    mov     qword [rsp+48], 0\n\0"
-    b_9109: .ascii "    mov     qword [rsp+56], 0\n\0"
-    b_9110: .ascii "    call    WideCharToMultiByte\n\0"
-    b_9111: .ascii "    add     rsp, 32+32\n\0"
-    b_9112: .ascii "    test    rax, rax\n\0"
-    b_9113: .ascii "    jnz     .wcl_\0"
-    b_9114: .ascii "\n\0"
-    b_9115: .ascii "    mov     rax, -1\n\0"
-    b_9116: .ascii "    .wcl_\0"
-    b_9117: .ascii ":\n\0"
-    b_9118: .ascii "rax\0"
-    b_9119: .ascii "    ; WIN_LocalAlloc\n\0"
-    b_9120: .ascii "rdx\0"
-    b_9121: .ascii "    mov     rcx, 64\n\0"
-    b_9122: .ascii "LocalAlloc\0"
-    b_9123: .ascii "    test    rax, rax\n\0"
-    b_9124: .ascii "    jnz     .lal_\0"
-    b_9125: .ascii "\n\0"
-    b_9126: .ascii "    mov     rax, -1\n\0"
-    b_9127: .ascii "    .lal_\0"
-    b_9128: .ascii ":\n\0"
-    b_9129: .ascii "rax\0"
-    b_9130: .ascii "    ; WIN_LocalFree\n\0"
-    b_9131: .ascii "rcx\0"
-    b_9132: .ascii "LocalFree\0"
-    b_9133: .ascii "    neg     rax\n\0"
-    b_9134: .ascii "rax\0"
-    b_9135: .ascii "    ; WIN_GetStdHandle\n\0"
-    b_9136: .ascii "rcx\0"
-    b_9137: .ascii "GetStdHandle\0"
-    b_9138: .ascii "rax\0"
-    b_9139: .ascii "ERROR: Invalid opcode of type \0"
-    b_9140: .ascii "\n\0"
-    b_9141: .ascii "; \0"
-    b_9142: .ascii "\n\0"
-    b_9143: .ascii "f_\0"
-    b_9144: .ascii ":\n\0"
-    b_9145: .ascii "    push    rbp\n\0"
-    b_9146: .ascii "    mov     rbp, rsp\n\0"
-    b_9147: .ascii "\"\0"
-    b_9148: .ascii "\",\0"
-    b_9149: .ascii ",\0"
-    b_9150: .ascii "\",\0"
-    b_9151: .ascii "0\n\0"
-    b_9152: .ascii "    ; Inline Buffers\n\0"
-    b_9153: .ascii "    b_\0"
-    b_9154: .ascii " db \0"
-    b_9155: .ascii "    ; \0"
-    b_9156: .ascii "\n\0"
-    b_9157: .ascii "    b_\0"
-    b_9158: .ascii " db \0"
-    b_9159: .ascii "\n\0"
-    b_9160: .ascii " dq \0"
-    b_9161: .ascii "\n\0"
-    b_9162: .ascii " db \0"
-    b_9163: .ascii "        times \0"
-    b_9164: .ascii " - ($ - b_\0"
-    b_9165: .ascii ") db 0\n\0"
-    b_9166: .ascii "    b_\0"
-    b_9167: .ascii " resb \0"
-    b_9168: .ascii " ; \0"
-    b_9169: .ascii "\n\0"
-    b_9170: .ascii "ERROR: Function '\0"
-    b_9171: .ascii "' not defined\n\0"
-    b_9172: .ascii "    call    f_\0"
-    b_9173: .ascii "\n\0"
-    b_9174: .ascii "BITS 64\n\0"
-    b_9175: .ascii "extern ExitProcess\n\0"
-    b_9176: .ascii "extern CreateFileA\n\0"
-    b_9177: .ascii "extern ReadFile\n\0"
-    b_9178: .ascii "extern WriteFile\n\0"
-    b_9179: .ascii "extern CloseHandle\n\0"
-    b_9180: .ascii "extern GetCurrentDirectoryA\n\0"
-    b_9181: .ascii "extern GetCommandLineW\n\0"
-    b_9182: .ascii "extern CommandLineToArgvW\n\0"
-    b_9183: .ascii "extern WideCharToMultiByte\n\0"
-    b_9184: .ascii "extern LocalAlloc\n\0"
-    b_9185: .ascii "extern LocalFree\n\0"
-    b_9186: .ascii "extern GetStdHandle\n\0"
-    b_9187: .ascii "global _start\n\0"
-    b_9188: .ascii "section .text\n\0"
-    b_9189: .ascii "; start\n\0"
-    b_9190: .ascii "_start:\n\0"
-    b_9191: .ascii "    lea     r12, [rel bsp + \0"
-    b_9192: .ascii "]\n\0"
-    b_9193: .ascii "__parse_args\0"
-    b_9194: .ascii "section .data\n\0"
-    b_9195: .ascii "section .bss\n\0"
-    b_9196: .ascii "    windata resd 1\n\0"
-    b_9197: .ascii "    bsp: resb \0"
+    b_9094: .ascii "    add     x0, x0, :lo12:\0"
+    b_9095: .ascii "\n\0"
+    b_9096: .ascii "x0\0"
+    b_9097: .ascii "    // OP_STORE\n\0"
+    b_9098: .ascii "x0\0"
+    b_9099: .ascii "x1\0"
+    b_9100: .ascii "    str     x1, [x0]\n\0"
+    b_9101: .ascii "    // OP_FETCH\n\0"
+    b_9102: .ascii "x0\0"
+    b_9103: .ascii "    ldr     x0, [x0]\n\0"
+    b_9104: .ascii "x0\0"
+    b_9105: .ascii "    // OP_MEMCPY\n\0"
+    b_9106: .ascii "x0\0"
+    b_9107: .ascii "x1\0"
+    b_9108: .ascii "x2\0"
+    b_9109: .ascii "    .cpyl_\0"
+    b_9110: .ascii ":\n\0"
+    b_9111: .ascii "    ldrb    w3, [x2], #1\n\0"
+    b_9112: .ascii "    strb    w3, [x1], #1\n\0"
+    b_9113: .ascii "    subs    x0, x0, #1\n\0"
+    b_9114: .ascii "    b.ne    .cpyl_\0"
+    b_9115: .ascii "\n\0"
+    b_9116: .ascii "    // OP_PUSH_VAR\n\0"
+    b_9117: .ascii "    sub     x0, x29, x0\n\0"
+    b_9118: .ascii "    sub     x0, x29, #\0"
+    b_9119: .ascii "\n\0"
+    b_9120: .ascii "x0\0"
+    b_9121: .ascii "    // OP_ALLOC\n\0"
+    b_9122: .ascii "    sub     sp, sp, x0\n\0"
+    b_9123: .ascii "    sub     sp, sp, #\0"
+    b_9124: .ascii "\n\0"
+    b_9125: .ascii "add\0"
+    b_9126: .ascii "OP_ADD\0"
+    b_9127: .ascii "sub\0"
+    b_9128: .ascii "OP_SUB\0"
+    b_9129: .ascii "mul\0"
+    b_9130: .ascii "OP_MUL\0"
+    b_9131: .ascii "and\0"
+    b_9132: .ascii "OP_AND\0"
+    b_9133: .ascii "orr\0"
+    b_9134: .ascii "OP_OR\0"
+    b_9135: .ascii "eor\0"
+    b_9136: .ascii "OP_XOR\0"
+    b_9137: .ascii "lsl\0"
+    b_9138: .ascii "OP_SHL\0"
+    b_9139: .ascii "lsr\0"
+    b_9140: .ascii "OP_SHR\0"
+    b_9141: .ascii "asr\0"
+    b_9142: .ascii "OP_SAR\0"
+    b_9143: .ascii "    // OP_NOT\n\0"
+    b_9144: .ascii "x0\0"
+    b_9145: .ascii "    mvn     x0, x0\n\0"
+    b_9146: .ascii "x0\0"
+    b_9147: .ascii "    // OP_EQ\n\0"
+    b_9148: .ascii "x0\0"
+    b_9149: .ascii "x1\0"
+    b_9150: .ascii "    cmp     x1, x0\n\0"
+    b_9151: .ascii "    cset    w0, eq\n\0"
+    b_9152: .ascii "x0\0"
+    b_9153: .ascii "    // OP_GT\n\0"
+    b_9154: .ascii "x0\0"
+    b_9155: .ascii "x1\0"
+    b_9156: .ascii "    cmp     x1, x0\n\0"
+    b_9157: .ascii "    cset    w0, gt\n\0"
+    b_9158: .ascii "x0\0"
+    b_9159: .ascii "    // OP_LT\n\0"
+    b_9160: .ascii "x0\0"
+    b_9161: .ascii "x1\0"
+    b_9162: .ascii "    cmp     x1, x0\n\0"
+    b_9163: .ascii "    cset    w0, lt\n\0"
+    b_9164: .ascii "x0\0"
+    b_9165: .ascii "    // OP_DIVMOD\n\0"
+    b_9166: .ascii "x1\0"
+    b_9167: .ascii "x0\0"
+    b_9168: .ascii "    sdiv    x2, x0, x1\n\0"
+    b_9169: .ascii "    msub    x3, x2, x1, x0\n\0"
+    b_9170: .ascii "x2\0"
+    b_9171: .ascii "x3\0"
+    b_9172: .ascii ".l_\0"
+    b_9173: .ascii ":\n\0"
+    b_9174: .ascii "    // OP_JMP\n\0"
+    b_9175: .ascii "    b       .l_\0"
+    b_9176: .ascii "\n\0"
+    b_9177: .ascii "    // OP_JZ\n\0"
+    b_9178: .ascii "x0\0"
+    b_9179: .ascii "    cbz     x0, .l_\0"
+    b_9180: .ascii "\n\0"
+    b_9181: .ascii "    // OP_EXIT\n\0"
+    b_9182: .ascii "x0\0"
+    b_9183: .ascii "    mov     x8, 93\n\0"
+    b_9184: .ascii "    svc     #0\n\0"
+    b_9185: .ascii "    // OP_FOPEN\n\0"
+    b_9186: .ascii "x0\0"
+    b_9187: .ascii "x1\0"
+    b_9188: .ascii "    cmp     x0, #0\n\0"
+    b_9189: .ascii "    beq     .frl_\0"
+    b_9190: .ascii "\n\0"
+    b_9191: .ascii "    cmp     x0, #1\n\0"
+    b_9192: .ascii "    beq     .fwl_\0"
+    b_9193: .ascii "\n\0"
+    b_9194: .ascii "    cmp     x0, #2\n\0"
+    b_9195: .ascii "    beq     .fal_\0"
+    b_9196: .ascii "\n\0"
+    b_9197: .ascii "    b       .ffl_\0"
     b_9198: .ascii "\n\0"
-    b_9199: .ascii ", #\0"
-    b_9200: .ascii "    add     x12, x12, \0"
-    b_9201: .ascii "\n\0"
-    b_9202: .ascii "    sub     x12, x12, \0"
+    b_9199: .ascii "    .frl_\0"
+    b_9200: .ascii ":\n\0"
+    b_9201: .ascii "    mov     x2, #0\n\0"
+    b_9202: .ascii "    b       .fdl_\0"
     b_9203: .ascii "\n\0"
-    b_9204: .ascii "    str     \0"
-    b_9205: .ascii ", [x12\0"
-    b_9206: .ascii "]\n\0"
-    b_9207: .ascii "    mov     \0"
-    b_9208: .ascii ", \0"
-    b_9209: .ascii "\n\0"
-    b_9210: .ascii "    ldr     \0"
-    b_9211: .ascii ", [x12\0"
-    b_9212: .ascii "]\n\0"
-    b_9213: .ascii "    // \0"
-    b_9214: .ascii "\n\0"
-    b_9215: .ascii "x0\0"
-    b_9216: .ascii "x1\0"
-    b_9217: .ascii "    \0"
-    b_9218: .ascii " \tx0, x1, x0\n\0"
-    b_9219: .ascii "x0\0"
-    b_9220: .ascii "    movz    x0, #\0"
-    b_9221: .ascii "\n\0"
-    b_9222: .ascii "    movk    x0, #\0"
-    b_9223: .ascii ", lsl 16\n\0"
-    b_9224: .ascii "    // OP_CALL\n\0"
-    b_9225: .ascii "x0\0"
-    b_9226: .ascii "    blr     x0\n\0"
-    b_9227: .ascii "    // OP_PUSH_FN\n\0"
-    b_9228: .ascii "    adrp    x0, f_\0"
-    b_9229: .ascii "@PAGE\n\0"
-    b_9230: .ascii "    add     x0, x0, f_\0"
-    b_9231: .ascii "@PAGEOFF\n\0"
-    b_9232: .ascii "x0\0"
-    b_9233: .ascii "    // OP_CALL_FN\n\0"
-    b_9234: .ascii "    bl      f_\0"
-    b_9235: .ascii "\n\0"
-    b_9236: .ascii "    // OP_RET\n\0"
-    b_9237: .ascii "    mov     sp, x29\n\0"
-    b_9238: .ascii "    ldp     x29, x30, [sp], #16\n\0"
-    b_9239: .ascii "    ret\n\0"
-    b_9240: .ascii "    // OP_PUSH_INT\n\0"
-    b_9241: .ascii "    mov     x0, #\0"
-    b_9242: .ascii "\n\0"
-    b_9243: .ascii "x0\0"
-    b_9244: .ascii "    // OP_DROP\n\0"
-    b_9245: .ascii "    // OP_PICK\n\0"
-    b_9246: .ascii "x0\0"
-    b_9247: .ascii "    lsl     x0, x0, #3\n\0"
-    b_9248: .ascii "    add     x0, x12, x0\n\0"
-    b_9249: .ascii "    ldr     x0, [x0]\n\0"
+    b_9204: .ascii "    .fwl_\0"
+    b_9205: .ascii ":\n\0"
+    b_9206: .ascii "    mov     x2, #577\n\0"
+    b_9207: .ascii "    b       .fdl_\0"
+    b_9208: .ascii "\n\0"
+    b_9209: .ascii "    .fal_\0"
+    b_9210: .ascii ":\n\0"
+    b_9211: .ascii "    mov     x2, #1089\n\0"
+    b_9212: .ascii "    b       .fdl_\0"
+    b_9213: .ascii "\n\0"
+    b_9214: .ascii "    .fdl_\0"
+    b_9215: .ascii ":\n\0"
+    b_9216: .ascii "    mov     x8, #56\n\0"
+    b_9217: .ascii "    mov     x0, #-100\n\0"
+    b_9218: .ascii "    mov     x3, #420\n\0"
+    b_9219: .ascii "    svc     #0\n\0"
+    b_9220: .ascii "x0\0"
+    b_9221: .ascii "    b       .fel_\0"
+    b_9222: .ascii "\n\0"
+    b_9223: .ascii "    .ffl_\0"
+    b_9224: .ascii ":\n\0"
+    b_9225: .ascii "    mov     x0, #-1\n\0"
+    b_9226: .ascii "x0\0"
+    b_9227: .ascii "    .fel_\0"
+    b_9228: .ascii ":\n\0"
+    b_9229: .ascii "    // OP_FREAD\n\0"
+    b_9230: .ascii "x0\0"
+    b_9231: .ascii "x2\0"
+    b_9232: .ascii "x1\0"
+    b_9233: .ascii "    mov     x8, #63\n\0"
+    b_9234: .ascii "    svc     #0\n\0"
+    b_9235: .ascii "x0\0"
+    b_9236: .ascii "    // OP_FWRITE\n\0"
+    b_9237: .ascii "x0\0"
+    b_9238: .ascii "x2\0"
+    b_9239: .ascii "x1\0"
+    b_9240: .ascii "    mov     x8, #64\n\0"
+    b_9241: .ascii "    svc     #0\n\0"
+    b_9242: .ascii "x0\0"
+    b_9243: .ascii "    // OP_FCLOSE\n\0"
+    b_9244: .ascii "x0\0"
+    b_9245: .ascii "    mov     x8, #57\n\0"
+    b_9246: .ascii "    svc     #0\n\0"
+    b_9247: .ascii "x0\0"
+    b_9248: .ascii "    // OP_GETCWD\n\0"
+    b_9249: .ascii "x1\0"
     b_9250: .ascii "x0\0"
-    b_9251: .ascii "    // OP_ROLL\n\0"
-    b_9252: .ascii "x0\0"
-    b_9253: .ascii "    lsl     x0, x0, #3\n\0"
-    b_9254: .ascii "    add     x0, x12, x0\n\0"
-    b_9255: .ascii "    ldr     x1, [x0]\n\0"
-    b_9256: .ascii "    .ral_\0"
-    b_9257: .ascii ":\n\0"
-    b_9258: .ascii "    cmp     x0, x12\n\0"
-    b_9259: .ascii "    beq     .rbl_\0"
-    b_9260: .ascii "\n\0"
-    b_9261: .ascii "    ldr     x2, [x0, #-8]\n\0"
-    b_9262: .ascii "    str     x2, [x0]\n\0"
-    b_9263: .ascii "    sub     x0, x0, #8\n\0"
-    b_9264: .ascii "    b       .ral_\0"
+    b_9251: .ascii "    mov     x8, #17\n\0"
+    b_9252: .ascii "    svc     #0\n\0"
+    b_9253: .ascii "x0\0"
+    b_9254: .ascii "    // LIN_syscall\n\0"
+    b_9255: .ascii "x8\0"
+    b_9256: .ascii "x5\0"
+    b_9257: .ascii "x4\0"
+    b_9258: .ascii "x3\0"
+    b_9259: .ascii "x2\0"
+    b_9260: .ascii "x1\0"
+    b_9261: .ascii "x0\0"
+    b_9262: .ascii "    svc     #0\n\0"
+    b_9263: .ascii "x0\0"
+    b_9264: .ascii "ERROR: Invalid opcode of type \0"
     b_9265: .ascii "\n\0"
-    b_9266: .ascii "    .rbl_\0"
-    b_9267: .ascii ":\n\0"
-    b_9268: .ascii "    str     x1, [x12]\n\0"
-    b_9269: .ascii "    // OP_DEPTH\n\0"
-    b_9270: .ascii "    adrp    x0, bsp\n\0"
-    b_9271: .ascii "    add     x0, x0, :lo12:bsp\n\0"
-    b_9272: .ascii "    add     x0, x0, #\0"
-    b_9273: .ascii "\n\0"
-    b_9274: .ascii "    sub     x0, x0, x12\n\0"
-    b_9275: .ascii "    lsr     x0, x0, #3\n\0"
-    b_9276: .ascii "x0\0"
-    b_9277: .ascii "b_\0"
-    b_9278: .ascii "    // OP_PUSH_BUF\n\0"
-    b_9279: .ascii "    adrp    x0, \0"
-    b_9280: .ascii "\n\0"
-    b_9281: .ascii "    add     x0, x0, :lo12:\0"
-    b_9282: .ascii "\n\0"
-    b_9283: .ascii "x0\0"
-    b_9284: .ascii "    // OP_STORE\n\0"
-    b_9285: .ascii "x0\0"
-    b_9286: .ascii "x1\0"
-    b_9287: .ascii "    str     x1, [x0]\n\0"
-    b_9288: .ascii "    // OP_FETCH\n\0"
-    b_9289: .ascii "x0\0"
-    b_9290: .ascii "    ldr     x0, [x0]\n\0"
-    b_9291: .ascii "x0\0"
-    b_9292: .ascii "    // OP_MEMCPY\n\0"
-    b_9293: .ascii "x0\0"
-    b_9294: .ascii "x1\0"
-    b_9295: .ascii "x2\0"
-    b_9296: .ascii "    .cpyl_\0"
-    b_9297: .ascii ":\n\0"
-    b_9298: .ascii "    ldrb    w3, [x2], #1\n\0"
-    b_9299: .ascii "    strb    w3, [x1], #1\n\0"
-    b_9300: .ascii "    subs    x0, x0, #1\n\0"
-    b_9301: .ascii "    b.ne    .cpyl_\0"
+    b_9266: .ascii "// \0"
+    b_9267: .ascii "\n\0"
+    b_9268: .ascii "f_\0"
+    b_9269: .ascii ":\n\0"
+    b_9270: .ascii "    stp     x29, x30, [sp, #-16]!\n\0"
+    b_9271: .ascii "    mov     x29, sp\n\0"
+    b_9272: .ascii "\\0\0"
+    b_9273: .ascii "\\n\0"
+    b_9274: .ascii "\\t\0"
+    b_9275: .ascii "\\v\0"
+    b_9276: .ascii "\\f\0"
+    b_9277: .ascii "\\r\0"
+    b_9278: .ascii "'\0"
+    b_9279: .ascii "\\\"\0"
+    b_9280: .ascii "\\\\\0"
+    b_9281: .ascii ".ascii \"\0"
+    b_9282: .ascii ".byte \0"
+    b_9283: .ascii ",\0"
+    b_9284: .ascii "\\0\"\n\0"
+    b_9285: .ascii "0\n\0"
+    b_9286: .ascii "    // Inline Buffers\n\0"
+    b_9287: .ascii "    b_\0"
+    b_9288: .ascii ": \0"
+    b_9289: .ascii "    // \0"
+    b_9290: .ascii "\n\0"
+    b_9291: .ascii "    b_\0"
+    b_9292: .ascii ": \0"
+    b_9293: .ascii ".byte \0"
+    b_9294: .ascii "\n\0"
+    b_9295: .ascii ".quad \0"
+    b_9296: .ascii "\n\0"
+    b_9297: .ascii "        .skip \0"
+    b_9298: .ascii "\n\0"
+    b_9299: .ascii "    b_\0"
+    b_9300: .ascii ": .skip \0"
+    b_9301: .ascii " // \0"
     b_9302: .ascii "\n\0"
-    b_9303: .ascii "    // OP_PUSH_VAR\n\0"
-    b_9304: .ascii "    sub     x0, x29, x0\n\0"
-    b_9305: .ascii "    sub     x0, x29, #\0"
-    b_9306: .ascii "\n\0"
-    b_9307: .ascii "x0\0"
-    b_9308: .ascii "    // OP_ALLOC\n\0"
-    b_9309: .ascii "    sub     sp, sp, x0\n\0"
-    b_9310: .ascii "    sub     sp, sp, #\0"
-    b_9311: .ascii "\n\0"
-    b_9312: .ascii "add\0"
-    b_9313: .ascii "OP_ADD\0"
-    b_9314: .ascii "sub\0"
-    b_9315: .ascii "OP_SUB\0"
-    b_9316: .ascii "mul\0"
-    b_9317: .ascii "OP_MUL\0"
-    b_9318: .ascii "and\0"
-    b_9319: .ascii "OP_AND\0"
-    b_9320: .ascii "orr\0"
-    b_9321: .ascii "OP_OR\0"
-    b_9322: .ascii "eor\0"
-    b_9323: .ascii "OP_XOR\0"
-    b_9324: .ascii "lsl\0"
-    b_9325: .ascii "OP_SHL\0"
-    b_9326: .ascii "lsr\0"
-    b_9327: .ascii "OP_SHR\0"
-    b_9328: .ascii "asr\0"
-    b_9329: .ascii "OP_SAR\0"
-    b_9330: .ascii "    // OP_NOT\n\0"
-    b_9331: .ascii "x0\0"
-    b_9332: .ascii "    mvn     x0, x0\n\0"
-    b_9333: .ascii "x0\0"
-    b_9334: .ascii "    // OP_EQ\n\0"
-    b_9335: .ascii "x0\0"
-    b_9336: .ascii "x1\0"
-    b_9337: .ascii "    cmp     x1, x0\n\0"
-    b_9338: .ascii "    cset    w0, eq\n\0"
-    b_9339: .ascii "x0\0"
-    b_9340: .ascii "    // OP_GT\n\0"
-    b_9341: .ascii "x0\0"
-    b_9342: .ascii "x1\0"
-    b_9343: .ascii "    cmp     x1, x0\n\0"
-    b_9344: .ascii "    cset    w0, gt\n\0"
-    b_9345: .ascii "x0\0"
-    b_9346: .ascii "    // OP_LT\n\0"
-    b_9347: .ascii "x0\0"
-    b_9348: .ascii "x1\0"
-    b_9349: .ascii "    cmp     x1, x0\n\0"
-    b_9350: .ascii "    cset    w0, lt\n\0"
-    b_9351: .ascii "x0\0"
-    b_9352: .ascii "    // OP_DIVMOD\n\0"
-    b_9353: .ascii "x1\0"
-    b_9354: .ascii "x0\0"
-    b_9355: .ascii "    sdiv    x2, x0, x1\n\0"
-    b_9356: .ascii "    msub    x3, x2, x1, x0\n\0"
-    b_9357: .ascii "x2\0"
-    b_9358: .ascii "x3\0"
-    b_9359: .ascii ".l_\0"
-    b_9360: .ascii ":\n\0"
-    b_9361: .ascii "    // OP_JMP\n\0"
-    b_9362: .ascii "    b       .l_\0"
-    b_9363: .ascii "\n\0"
-    b_9364: .ascii "    // OP_JZ\n\0"
-    b_9365: .ascii "x0\0"
-    b_9366: .ascii "    cbz     x0, .l_\0"
-    b_9367: .ascii "\n\0"
-    b_9368: .ascii "    // OP_EXIT\n\0"
-    b_9369: .ascii "x0\0"
-    b_9370: .ascii "    mov     x8, 93\n\0"
-    b_9371: .ascii "    svc     #0\n\0"
-    b_9372: .ascii "    // OP_FOPEN\n\0"
-    b_9373: .ascii "x0\0"
-    b_9374: .ascii "x1\0"
-    b_9375: .ascii "    cmp     x0, #0\n\0"
-    b_9376: .ascii "    beq     .frl_\0"
-    b_9377: .ascii "\n\0"
-    b_9378: .ascii "    cmp     x0, #1\n\0"
-    b_9379: .ascii "    beq     .fwl_\0"
-    b_9380: .ascii "\n\0"
-    b_9381: .ascii "    cmp     x0, #2\n\0"
-    b_9382: .ascii "    beq     .fal_\0"
-    b_9383: .ascii "\n\0"
-    b_9384: .ascii "    b       .ffl_\0"
-    b_9385: .ascii "\n\0"
-    b_9386: .ascii "    .frl_\0"
-    b_9387: .ascii ":\n\0"
-    b_9388: .ascii "    mov     x2, #0\n\0"
-    b_9389: .ascii "    b       .fdl_\0"
-    b_9390: .ascii "\n\0"
-    b_9391: .ascii "    .fwl_\0"
-    b_9392: .ascii ":\n\0"
-    b_9393: .ascii "    mov     x2, #577\n\0"
-    b_9394: .ascii "    b       .fdl_\0"
-    b_9395: .ascii "\n\0"
-    b_9396: .ascii "    .fal_\0"
-    b_9397: .ascii ":\n\0"
-    b_9398: .ascii "    mov     x2, #1089\n\0"
-    b_9399: .ascii "    b       .fdl_\0"
-    b_9400: .ascii "\n\0"
-    b_9401: .ascii "    .fdl_\0"
-    b_9402: .ascii ":\n\0"
-    b_9403: .ascii "    mov     x8, #56\n\0"
-    b_9404: .ascii "    mov     x0, #-100\n\0"
-    b_9405: .ascii "    mov     x3, #420\n\0"
-    b_9406: .ascii "    svc     #0\n\0"
-    b_9407: .ascii "x0\0"
-    b_9408: .ascii "    b       .fel_\0"
-    b_9409: .ascii "\n\0"
-    b_9410: .ascii "    .ffl_\0"
-    b_9411: .ascii ":\n\0"
-    b_9412: .ascii "    mov     x0, #-1\n\0"
-    b_9413: .ascii "x0\0"
-    b_9414: .ascii "    .fel_\0"
-    b_9415: .ascii ":\n\0"
-    b_9416: .ascii "    // OP_FREAD\n\0"
-    b_9417: .ascii "x0\0"
-    b_9418: .ascii "x2\0"
-    b_9419: .ascii "x1\0"
-    b_9420: .ascii "    mov     x8, #63\n\0"
-    b_9421: .ascii "    svc     #0\n\0"
-    b_9422: .ascii "x0\0"
-    b_9423: .ascii "    // OP_FWRITE\n\0"
-    b_9424: .ascii "x0\0"
-    b_9425: .ascii "x2\0"
-    b_9426: .ascii "x1\0"
-    b_9427: .ascii "    mov     x8, #64\n\0"
-    b_9428: .ascii "    svc     #0\n\0"
-    b_9429: .ascii "x0\0"
-    b_9430: .ascii "    // OP_FCLOSE\n\0"
-    b_9431: .ascii "x0\0"
-    b_9432: .ascii "    mov     x8, #57\n\0"
-    b_9433: .ascii "    svc     #0\n\0"
-    b_9434: .ascii "x0\0"
-    b_9435: .ascii "    // OP_GETCWD\n\0"
-    b_9436: .ascii "x1\0"
-    b_9437: .ascii "x0\0"
-    b_9438: .ascii "    mov     x8, #17\n\0"
-    b_9439: .ascii "    svc     #0\n\0"
-    b_9440: .ascii "x0\0"
-    b_9441: .ascii "    // LIN_syscall\n\0"
-    b_9442: .ascii "x8\0"
-    b_9443: .ascii "x5\0"
-    b_9444: .ascii "x4\0"
-    b_9445: .ascii "x3\0"
-    b_9446: .ascii "x2\0"
-    b_9447: .ascii "x1\0"
-    b_9448: .ascii "x0\0"
-    b_9449: .ascii "    svc     #0\n\0"
-    b_9450: .ascii "x0\0"
-    b_9451: .ascii "ERROR: Invalid opcode of type \0"
-    b_9452: .ascii "\n\0"
-    b_9453: .ascii "// \0"
-    b_9454: .ascii "\n\0"
-    b_9455: .ascii "f_\0"
-    b_9456: .ascii ":\n\0"
-    b_9457: .ascii "    stp     x29, x30, [sp, #-16]!\n\0"
-    b_9458: .ascii "    mov     x29, sp\n\0"
-    b_9459: .ascii "\\0\0"
-    b_9460: .ascii "\\n\0"
-    b_9461: .ascii "\\t\0"
-    b_9462: .ascii "\\v\0"
-    b_9463: .ascii "\\f\0"
-    b_9464: .ascii "\\r\0"
-    b_9465: .ascii "'\0"
-    b_9466: .ascii "\\\"\0"
-    b_9467: .ascii "\\\\\0"
-    b_9468: .ascii ".ascii \"\0"
-    b_9469: .ascii ".byte \0"
-    b_9470: .ascii ",\0"
-    b_9471: .ascii "\\0\"\n\0"
-    b_9472: .ascii "0\n\0"
-    b_9473: .ascii "    // Inline Buffers\n\0"
-    b_9474: .ascii "    b_\0"
-    b_9475: .ascii ": \0"
-    b_9476: .ascii "    // \0"
-    b_9477: .ascii "\n\0"
-    b_9478: .ascii "    b_\0"
-    b_9479: .ascii ": \0"
-    b_9480: .ascii ".byte \0"
-    b_9481: .ascii "\n\0"
-    b_9482: .ascii ".quad \0"
-    b_9483: .ascii "\n\0"
-    b_9484: .ascii "        .skip \0"
-    b_9485: .ascii "\n\0"
-    b_9486: .ascii "    b_\0"
-    b_9487: .ascii ": .skip \0"
-    b_9488: .ascii " // \0"
-    b_9489: .ascii "\n\0"
-    b_9490: .ascii ".section .text\n\0"
-    b_9491: .ascii ".global _start\n\0"
-    b_9492: .ascii ".align  2\n\0"
-    b_9493: .ascii "// start\n\0"
-    b_9494: .ascii "_start:\n\0"
-    b_9495: .ascii "    adrp    x0, bsp\n\0"
-    b_9496: .ascii "    add     x0, x0, :lo12:bsp\n\0"
-    b_9497: .ascii "    add     x12, x0, #\0"
-    b_9498: .ascii ", lsl #12\n\0"
-    b_9499: .ascii "    add     x0, sp,  #8\n\0"
-    b_9500: .ascii "x0\0"
-    b_9501: .ascii "    ldr     x0, [sp]\n\0"
-    b_9502: .ascii "x0\0"
-    b_9503: .ascii ".section .data\n\0"
-    b_9504: .ascii ".section .bss\n\0"
-    b_9505: .ascii "    bsp: .skip \0"
-    b_9506: .ascii "\n\0"
-    b_9507: .ascii "ARCH_X86_64\0"
-    b_9508: .ascii "OS_LINUX\0"
-    b_9509: .ascii "TOOLCHAIN_NASM\0"
-    b_9510: .ascii "ARCH_AARCH64\0"
-    b_9511: .ascii "OS_LINUX\0"
-    b_9512: .ascii "TOOLCHAIN_GCC\0"
-    b_9513: .ascii "ARCH_X86_64\0"
-    b_9514: .ascii "OS_WINDOWS\0"
-    b_9515: .ascii "TOOLCHAIN_NASM\0"
-    b_9516: .ascii "ERROR: Unsupported platform\n\0"
-    b_9517: .ascii "Example:\n\0"
-    b_9518: .ascii "\t\0"
-    b_9519: .ascii " ./src/main.4c ./target/output.asm x86_64-linux-nasm\n\0"
-    b_9520: .ascii "Options:\n\0"
-    b_9521: .ascii "\t-d, --debug\t\tcompile with debug information\n\0"
-    b_9522: .ascii "\t-O, --optimize\t\tenable optimizations\n\0"
-    b_9523: .ascii "ERROR: Invalid target '\0"
-    b_9524: .ascii "', expected <architecture>-<OS>-<toolchain>\n\0"
-    b_9525: .ascii "ERROR: Invalid target '\0"
-    b_9526: .ascii "', expected <architecture>-<OS>-<toolchain>\n\0"
-    b_9527: .ascii "x86_64\0"
-    b_9528: .ascii "x64\0"
-    b_9529: .ascii "ARCH_X86_64\0"
-    b_9530: .ascii "aarch64\0"
-    b_9531: .ascii "ARCH_AARCH64\0"
-    b_9532: .ascii "ERROR: Unsupported architecture '\0"
-    b_9533: .ascii "'\n\0"
-    b_9534: .ascii "linux\0"
-    b_9535: .ascii "OS_LINUX\0"
-    b_9536: .ascii "windows\0"
-    b_9537: .ascii "OS_WINDOWS\0"
-    b_9538: .ascii "ERROR: Unsupported OS '\0"
-    b_9539: .ascii "'\n\0"
-    b_9540: .ascii "nasm\0"
-    b_9541: .ascii "TOOLCHAIN_NASM\0"
-    b_9542: .ascii "gcc\0"
-    b_9543: .ascii "TOOLCHAIN_GCC\0"
-    b_9544: .ascii "ERROR: Unsupported toolchain '\0"
-    b_9545: .ascii "'\n\0"
-    b_9546: .ascii "ERROR: flag '\0"
-    b_9547: .ascii "debug\0"
-    b_9548: .ascii "' already set\n\0"
-    b_9549: .ascii "ERROR: flag '\0"
-    b_9550: .ascii "optimize\0"
-    b_9551: .ascii "' already set\n\0"
-    b_9552: .ascii "ERROR: Unrecognized switch '-\0"
-    b_9553: .ascii "'\n\0"
-    b_9554: .ascii "ERROR: Failed to obtain current working directory\n\0"
-    b_9555: .ascii "./\0"
-    b_9556: .ascii "-I\0"
-    b_9557: .ascii "--\0"
-    b_9558: .ascii "--debug\0"
-    b_9559: .ascii "ERROR: flag '\0"
-    b_9560: .ascii "debug\0"
-    b_9561: .ascii "' already set\n\0"
-    b_9562: .ascii "--optimize\0"
-    b_9563: .ascii "ERROR: flag '\0"
-    b_9564: .ascii "optimize\0"
-    b_9565: .ascii "' already set\n\0"
-    b_9566: .ascii "ERROR: Unrecognized option '\0"
-    b_9567: .ascii "'\n\0"
-    b_9568: .ascii "Usage: \0"
-    b_9569: .ascii " <source_file> <output_file> <platform> [options]\n\0"
-    b_9570: .ascii "WARNING: \0"
-    b_9571: .ascii "strs_mem\0"
-    b_9572: .ascii " is more than 25% full\n\0"
-    b_9573: .ascii "WARNING: \0"
-    b_9574: .ascii "toks_mem\0"
-    b_9575: .ascii " is more than 25% full\n\0"
-    b_9576: .ascii "WARNING: \0"
-    b_9577: .ascii "out_toks_mem\0"
-    b_9578: .ascii " is more than 25% full\n\0"
-    b_9579: .ascii "WARNING: \0"
-    b_9580: .ascii "fn_ops_mem\0"
-    b_9581: .ascii " is more than 25% full\n\0"
-    b_9582: .ascii "WARNING: \0"
-    b_9583: .ascii "start_ops_mem\0"
-    b_9584: .ascii " is more than 25% full\n\0"
-    b_9585: .ascii "WARNING: \0"
-    b_9586: .ascii "inline_bufs\0"
-    b_9587: .ascii " is more than 25% full\n\0"
-    b_9588: .ascii "WARNING: \0"
-    b_9589: .ascii "enum_variants_mem\0"
-    b_9590: .ascii " is more than 25% full\n\0"
-    b_9591: .ascii "WARNING: \0"
-    b_9592: .ascii "struct_fields_mem\0"
-    b_9593: .ascii " is more than 25% full\n\0"
-    b_9594: .ascii "WARNING: \0"
-    b_9595: .ascii "dims_mem\0"
-    b_9596: .ascii " is more than 25% full\n\0"
-    b_9597: .ascii "WARNING: \0"
-    b_9598: .ascii "dirs_mem\0"
-    b_9599: .ascii " is more than 25% full\n\0"
-    b_9600: .ascii "ERROR: File '\0"
-    b_9601: .ascii "' not found\n\0"
-    b_9602: .ascii "__core.4c\0"
-    b_9603: .ascii "ERROR: standard library not found\n\0"
-    b_9604: .ascii "WARNING: Compilation completed with a stack depth of \0"
-    b_9605: .ascii "\n\0"
+    b_9303: .ascii ".section .text\n\0"
+    b_9304: .ascii ".global _start\n\0"
+    b_9305: .ascii ".align  2\n\0"
+    b_9306: .ascii "// start\n\0"
+    b_9307: .ascii "_start:\n\0"
+    b_9308: .ascii "    adrp    x0, bsp\n\0"
+    b_9309: .ascii "    add     x0, x0, :lo12:bsp\n\0"
+    b_9310: .ascii "    add     x12, x0, #\0"
+    b_9311: .ascii ", lsl #12\n\0"
+    b_9312: .ascii "    add     x0, sp,  #8\n\0"
+    b_9313: .ascii "x0\0"
+    b_9314: .ascii "    ldr     x0, [sp]\n\0"
+    b_9315: .ascii "x0\0"
+    b_9316: .ascii ".section .data\n\0"
+    b_9317: .ascii ".section .bss\n\0"
+    b_9318: .ascii "    bsp: .skip \0"
+    b_9319: .ascii "\n\0"
+    b_9320: .ascii "ARCH_X86_64\0"
+    b_9321: .ascii "OS_LINUX\0"
+    b_9322: .ascii "TOOLCHAIN_NASM\0"
+    b_9323: .ascii "ARCH_AARCH64\0"
+    b_9324: .ascii "OS_LINUX\0"
+    b_9325: .ascii "TOOLCHAIN_GCC\0"
+    b_9326: .ascii "ARCH_X86_64\0"
+    b_9327: .ascii "OS_WINDOWS\0"
+    b_9328: .ascii "TOOLCHAIN_NASM\0"
+    b_9329: .ascii "ERROR: Unsupported platform\n\0"
+    b_9330: .ascii "Example:\n\0"
+    b_9331: .ascii "\t\0"
+    b_9332: .ascii " ./src/main.4c ./target/output.asm x86_64-linux-nasm\n\0"
+    b_9333: .ascii "Options:\n\0"
+    b_9334: .ascii "\t-d, --debug\t\tcompile with debug information\n\0"
+    b_9335: .ascii "\t-O, --optimize\t\tenable optimizations\n\0"
+    b_9336: .ascii "ERROR: Invalid target '\0"
+    b_9337: .ascii "', expected <architecture>-<OS>-<toolchain>\n\0"
+    b_9338: .ascii "ERROR: Invalid target '\0"
+    b_9339: .ascii "', expected <architecture>-<OS>-<toolchain>\n\0"
+    b_9340: .ascii "x86_64\0"
+    b_9341: .ascii "x64\0"
+    b_9342: .ascii "ARCH_X86_64\0"
+    b_9343: .ascii "aarch64\0"
+    b_9344: .ascii "ARCH_AARCH64\0"
+    b_9345: .ascii "ERROR: Unsupported architecture '\0"
+    b_9346: .ascii "'\n\0"
+    b_9347: .ascii "linux\0"
+    b_9348: .ascii "OS_LINUX\0"
+    b_9349: .ascii "windows\0"
+    b_9350: .ascii "OS_WINDOWS\0"
+    b_9351: .ascii "ERROR: Unsupported OS '\0"
+    b_9352: .ascii "'\n\0"
+    b_9353: .ascii "nasm\0"
+    b_9354: .ascii "TOOLCHAIN_NASM\0"
+    b_9355: .ascii "gcc\0"
+    b_9356: .ascii "TOOLCHAIN_GCC\0"
+    b_9357: .ascii "ERROR: Unsupported toolchain '\0"
+    b_9358: .ascii "'\n\0"
+    b_9359: .ascii "ERROR: flag '\0"
+    b_9360: .ascii "debug\0"
+    b_9361: .ascii "' already set\n\0"
+    b_9362: .ascii "ERROR: flag '\0"
+    b_9363: .ascii "optimize\0"
+    b_9364: .ascii "' already set\n\0"
+    b_9365: .ascii "ERROR: Unrecognized switch '-\0"
+    b_9366: .ascii "'\n\0"
+    b_9367: .ascii "ERROR: Failed to obtain current working directory\n\0"
+    b_9368: .ascii "./\0"
+    b_9369: .ascii "-I\0"
+    b_9370: .ascii "--\0"
+    b_9371: .ascii "--debug\0"
+    b_9372: .ascii "ERROR: flag '\0"
+    b_9373: .ascii "debug\0"
+    b_9374: .ascii "' already set\n\0"
+    b_9375: .ascii "--optimize\0"
+    b_9376: .ascii "ERROR: flag '\0"
+    b_9377: .ascii "optimize\0"
+    b_9378: .ascii "' already set\n\0"
+    b_9379: .ascii "ERROR: Unrecognized option '\0"
+    b_9380: .ascii "'\n\0"
+    b_9381: .ascii "Usage: \0"
+    b_9382: .ascii " <source_file> <output_file> <platform> [options]\n\0"
+    b_9383: .ascii "WARNING: \0"
+    b_9384: .ascii "strs_mem\0"
+    b_9385: .ascii " is more than 25% full\n\0"
+    b_9386: .ascii "WARNING: \0"
+    b_9387: .ascii "toks_mem\0"
+    b_9388: .ascii " is more than 25% full\n\0"
+    b_9389: .ascii "WARNING: \0"
+    b_9390: .ascii "out_toks_mem\0"
+    b_9391: .ascii " is more than 25% full\n\0"
+    b_9392: .ascii "WARNING: \0"
+    b_9393: .ascii "fn_ops_mem\0"
+    b_9394: .ascii " is more than 25% full\n\0"
+    b_9395: .ascii "WARNING: \0"
+    b_9396: .ascii "inline_bufs\0"
+    b_9397: .ascii " is more than 25% full\n\0"
+    b_9398: .ascii "WARNING: \0"
+    b_9399: .ascii "enum_variants_mem\0"
+    b_9400: .ascii " is more than 25% full\n\0"
+    b_9401: .ascii "WARNING: \0"
+    b_9402: .ascii "struct_fields_mem\0"
+    b_9403: .ascii " is more than 25% full\n\0"
+    b_9404: .ascii "WARNING: \0"
+    b_9405: .ascii "dims_mem\0"
+    b_9406: .ascii " is more than 25% full\n\0"
+    b_9407: .ascii "WARNING: \0"
+    b_9408: .ascii "dirs_mem\0"
+    b_9409: .ascii " is more than 25% full\n\0"
+    b_9410: .ascii "ERROR: File '\0"
+    b_9411: .ascii "' not found\n\0"
+    b_9412: .ascii "__core.4c\0"
+    b_9413: .ascii "ERROR: standard library not found\n\0"
+    b_9414: .ascii "WARNING: Compilation completed with a stack depth of \0"
+    b_9415: .ascii "\n\0"
 .section .bss
     b_195: .skip 32
     b_196: .skip 32
-    b_197: .skip 32
     b_261: .skip 8200
     b_300: .skip 196584
     b_359: .skip 196584
@@ -29584,7 +26813,7 @@ _start:
     b_1627: .skip 152
     b_1949: .skip 8
     b_2010: .skip 475078
-    b_2158: .skip 1638408
+    b_2158: .skip 1843208
     b_2375: .skip 262112
     b_2442: .skip 1
     b_2452: .skip 8200
@@ -29598,11 +26827,10 @@ _start:
     b_4763: .skip 8
     b_4816: .skip 1
     b_5161: .skip 8
-    b_5194: .skip 262152
+    b_5194: .skip 524296
     b_5800: .skip 1
     b_5843: .skip 8
     b_5844: .skip 8
-    b_5845: .skip 8
     b_6062: .skip 8
     b_6246: .skip 65528
     b_6266: .skip 8
@@ -29611,6 +26839,6 @@ _start:
     b_7336: .skip 24
     b_7731: .skip 270303
     b_7863: .skip 262152
-    b_8065: .skip 1638408
+    b_8065: .skip 1843208
     b_8159: .skip 65544
     bsp: .skip 65536

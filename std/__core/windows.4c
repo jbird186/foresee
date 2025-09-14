@@ -4,7 +4,7 @@ pub :STDERR_FD {-12 win_GetStdHandle}
 
 // -- argv argc
 pub :__parse_args {
-    #macro ptr_idx {%ptr* + @}
+    #macro ptr_idx {%ptr* +}
     #macro wstrlen {NULL 0 win_WideCharToMultiByte}
 
     $int argc
@@ -13,7 +13,7 @@ pub :__parse_args {
 
     $int total_size: {argc %ptr*}
     for $int i: {0}, i argc <, 1+=i {
-        (argv_wide i ptr_idx) wstrlen +=total_size
+        (argv_wide i ptr_idx@) wstrlen +=total_size
     }
 
     $ptr argv_char: {total_size win_LocalAlloc}
@@ -21,8 +21,8 @@ pub :__parse_args {
 
     $ptr str_ptr: {argv_char (argc %ptr*)+}
     for $int i: {0}, i argc <, 1+=i {
-        $int len: {(argv_wide i ptr_idx) wstrlen}
-        if (argv_wide i ptr_idx) str_ptr len win_WideCharToMultiByte is_failure {
+        $int len: {(argv_wide i ptr_idx@) wstrlen}
+        if (argv_wide i ptr_idx@) str_ptr len win_WideCharToMultiByte is_failure {
             1 exit
         }
         str_ptr (argv_char i ptr_idx)!

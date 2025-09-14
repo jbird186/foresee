@@ -15,8 +15,8 @@ pub struct bool {[1] __inner}
 #pub macro != {== 1 ^}
 #pub macro <= {> 1 ^}
 #pub macro >= {< 1 ^}
-#pub macro is_success {-1 >}
-#pub macro is_failure {0 <}
+pub :is_success {-1 >}
+pub :is_failure {0 <}
 pub :flag {if {true} else {false}}
 pub :not {if {false} else {true}}
 
@@ -67,3 +67,19 @@ pub :stdin{STDIN_FD fread}
 pub :stdout{STDOUT_FD fwrite drop}
 // ptr len --
 pub :stderr{STDERR_FD fwrite drop}
+
+// ptr len -- [bytes_written, -err]
+pub :getcwd {
+    #ifndef OS_WINDOWS { __getcwd }
+    #ifdef OS_WINDOWS {
+        $ptr cwd: {over}
+        $int res: {__getcwd}
+        if res is_success {
+            '/' cwd res+ !c
+            0 cwd res+ 1+ !c
+            res 1+
+        } else {
+            res
+        }
+    }
+}

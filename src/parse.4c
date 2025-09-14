@@ -301,7 +301,7 @@ static int TOTAL_DATA_SIZE
     define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.WIN_WideCharToMultiByte, "__WIN_WideCharToMultiByte")
     define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.WIN_LocalAlloc, "__WIN_LocalAlloc")
     define_intrinsic_opcode(0, OKind.WIN_LocalFree, "__WIN_LocalFree")
-    define_intrinsic_opcode(0, OKind.WIN_LocalFree, "__WIN_GetStdHandle")
+    define_intrinsic_opcode(0, OKind.WIN_GetStdHandle, "__WIN_GetStdHandle")
 
     ////////// Functions //////////
     if viewtd FN_MAP scoped_map_find_idx is_success {
@@ -1162,7 +1162,13 @@ pub :parse_out_toks {
     }
     drop
 
+    if "OS_WINDOWS" has_builtin_flag {
+        &start_ops_mem swap "__parse_args" call_fn nip
+    }
     &start_ops_mem swap "main" call_fn nip
+    if "OS_WINDOWS" has_builtin_flag {
+        8 OKind.ALLOC &start_ops_mem op_push
+    }
     0 OKind.PUSH_INT &start_ops_mem op_push
     0 OKind.EXIT &start_ops_mem op_push
     0 OKind.EOF &start_ops_mem op_push
