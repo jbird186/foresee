@@ -25,8 +25,8 @@ pub :memcpy{__OP_MEMCPY}
 #pub macro <{__OP_LT}
 pub :divmod{__OP_DIVMOD}
 pub :fopen{__OP_FOPEN}
-pub :fread{__OP_FREAD}
-pub :fwrite{__OP_FWRITE}
+pub :__fread{__OP_FREAD}
+pub :__fwrite{__OP_FWRITE}
 pub :fclose{__OP_FCLOSE}
 pub :__getcwd{__OP_GETCWD}
 

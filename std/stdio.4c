@@ -1,5 +1,14 @@
 #use "stdconv.4c"
 
+// buf len -- bytes_read
+pub :stdinln {
+    $ptr buf: {over}
+    $int res: {stdin}
+    if res is_failure { res return }
+    0 (buf res+ 1-)!c
+    res 1-
+}
+
 // int fd -- [bytes_written, -1]
 pub :fwrite_int { swap __write_int_to_temp rot fwrite }
 
@@ -41,30 +50,5 @@ pub :readc {
 // -- int
 pub :read {
     &__std_buf 24 stdin drop
-
-    // -- buf
-    &__std_buf
-    // -- is_neg buf
-    dup@c '-' == swap
-    if over { 1+ }
-
-    // -- is_neg total buf
-    0 swap
-
-    // -- is_neg total buf c
-    while dup@c dup '\n' != {
-        '0' -
-        rot 10* +
-        swap 1+
-    }
-    // -- is_neg total
-    drop drop
-    if swap { -1* }
-}
-
-pub :stdinln {
-    over swap stdin
-    1 -
-    dup rot +
-    0 swap !c
+    &__std_buf atoi
 }

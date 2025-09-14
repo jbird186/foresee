@@ -47,3 +47,18 @@ pub :itoa {
     0 swap !c
     drop drop
 }
+
+// buf -- int
+pub :atoi {
+    $ptr buf: {}
+    $bool is_neg: {buf@c '-' ==}
+    if is_neg { 1 +=buf }
+
+    $int total: {0}
+    while buf@c {
+        (total 10*) (buf@c '0' -)+ =total
+        1 +=buf
+    }
+
+    total if is_neg { -1* }
+}

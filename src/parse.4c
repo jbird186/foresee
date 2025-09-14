@@ -431,7 +431,7 @@ static int TOTAL_DATA_SIZE
 :parse_for {
     %Token+
     $int label_id: {ASM_LABEL_ID}
-    2 +=ASM_LABEL_ID
+    3 +=ASM_LABEL_ID
 
     $char has_paren: {false}
     if viewtk TKind.PAREN_START == {
@@ -444,7 +444,7 @@ static int TOTAL_DATA_SIZE
     }
     if has_paren { %Token+ }
 
-    label_id LOOP_STACK stack_push!
+    label_id 2+ LOOP_STACK stack_push!
     new_local_scope
 
     // Initialization
@@ -460,6 +460,8 @@ static int TOTAL_DATA_SIZE
 
     // Operations
     parse_until(TKind.BRACE_END)
+
+    label_id 2+ OKind.LABEL 3 pick op_push
 
     // Iteration
     swap iter
