@@ -45,19 +45,19 @@
     }
     else if viewok OKind.FREAD == {
         "    ; OP_FREAD\n"coms_dbg
-        "rdi" x64n_compile_pop           // file descriptor
-        "rdx" x64n_compile_pop           // length
-        "rsi" x64n_compile_pop           // buffer pointer
+        "rdi" x64n_compile_pop      // file descriptor
+        "rdx" x64n_compile_pop      // length
+        "rsi" x64n_compile_pop      // buffer pointer
         x64n_flush_push_cache
         "    mov     rax, 0\n"coms  // sys_read
         "    syscall\n"coms
-        "rax" x64n_compile_push          // bytes read or -1
+        "rax" x64n_compile_push     // bytes read or -1
     }
     else if viewok OKind.FWRITE == {
         "    ; OP_FWRITE\n"coms_dbg
-        "rdi" x64n_compile_pop           // file descriptor
-        "rdx" x64n_compile_pop           // length
-        "rsi" x64n_compile_pop           // buffer pointer
+        "rdi" x64n_compile_pop      // file descriptor
+        "rdx" x64n_compile_pop      // length
+        "rsi" x64n_compile_pop      // buffer pointer
         x64n_flush_push_cache
         "    mov     rax, 1\n"coms  // sys_write
         "    syscall\n"coms
@@ -65,20 +65,20 @@
     }
     else if viewok OKind.FCLOSE == {
         "    ; OP_FCLOSE\n"coms_dbg
-        "rdi" x64n_compile_pop           // file descriptor
+        "rdi" x64n_compile_pop      // file descriptor
         x64n_flush_push_cache
         "    mov     rax, 3\n"coms  // sys_close
         "    syscall\n"coms
-        "rax" x64n_compile_push          // 0 or -1
+        "rax" x64n_compile_push     // 0 or -1
     }
     else if viewok OKind.GETCWD == {
         "    ; OP_GETCWD\n"coms_dbg
-        "rsi" x64n_compile_pop           // length
-        "rdi" x64n_compile_pop           // buffer pointer
+        "rsi" x64n_compile_pop      // length
+        "rdi" x64n_compile_pop      // buffer pointer
         x64n_flush_push_cache
         "    mov     rax, 79\n"coms // sys_getcwd
         "    syscall\n"coms
-        "rax" x64n_compile_push          // bytes written or error
+        "rax" x64n_compile_push     // bytes written or error
     }
     // Linux Only
     else if viewok OKind.LIN_syscall == {

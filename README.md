@@ -22,9 +22,17 @@ Output: `0 1 4 9 16 25 36 49 64 81 `
 
 ## Basic Stack Manipulation
 
-Foresee inherits many of Forth's standard keywords, including `drop`, `nip`, `dup`, `swap`, `over`, `rot`, `pick`, `roll`, and `depth`.
+Foresee is a stack-based language, meaning that all operations interact with a central stack data structure. For this reason, Foresee uses postfix notation. For example, instead of `sqrt(9 + (5 * 8))`, you would have `9 5 8 * + sqrt`.
+* `9`: pushes the integer `9` to the stack. The stack is now `[9]`.
+* `5`: pushes the integer `5` to the stack. The stack is now `[9, 5]`.
+* `8`: pushes the integer `8` to the stack. The stack is now `[9, 5, 8]`.
+* `*`: pops the top two items off the stack, multiplies them, and pushes the result back to the stack. The stack is now `[9, 40]`.
+* `+`: pops the top two items off the stack, adds them, and pushes the result back to the stack. The stack is now `[49]`.
+* `sqrt`: an example function that would pop the top item off the stack, find the square root, and push the result back to the stack. The stack is now `[7]`.
 
-Being a stack based language, Foresee uses postfix notation. So instead of `3 + (5 * 8)`, you would say `3 5 8 * +`.
+Values on the stack do not have an associated type. All stack items are 8-byte values that can represent an integer, a pointer, or any other form of data.
+
+Foresee inherits many of Forth's standard instructions, including `drop`, `nip`, `dup`, `swap`, `over`, `rot`, `pick`, `roll`, and `depth`.
 
 ## Variables
 
@@ -73,6 +81,23 @@ Complex Types cannot be used intelligently by the compiler. Their purpose is onl
 * `$[int[2] char[4] ptr] item` would allocate 28 bytes for `item`.
 * `$[ptr[2 8[12]] 50[2]] item` would allocate 884 bytes for `item`.
 
+### Store and Fetch
+
+Much like Forth, values can be manually stored and fetched from memory. Use `fetch`/`@` to read data from memory, and `store`/`!` to write data to memory. Example:
+
+```
+$int year
+2025 &year! // sets `year` to 2025
+&year@      // pushes the value of `year` to the stack
+```
+
+* `fetch`/`@` is a function that pops one item off the stack, reads the value from memory at that address, and pushes it to the stack.
+* `store`/`!` is a function that pops two items off the stack, and returns nothing. The first item is the data to be written, and the second item is the memory address where that data will be stored.
+
+Attempting to read to, or write from, an invalid memory address may cause an error.
+
+`fetchc`/`@c` and `storec`/`!c` can be used to read and write single bytes to and from memory, respectively.
+
 ### Variables Example
 
 ```
@@ -117,6 +142,8 @@ hello
 
 Functions can be defined by using Forth's colon notation followed by a brace block, like `:fn_name { [stuff] }`. Function prototypes can be defined by omitting the block, like `:fn_name`. Functions can be shared across files by changing `:fn_name` to `pub :fn_name`.
 
+The `return` keyword can be used to immediately return from a function. Function arguments are passed implicitly by pushing them onto the stack before calling the function. Likewise, function return values are pushed to the stack once the function returns.
+
 A `main` function must be defined for all programs, and will be automatically executed when the program is run. `argv` and `argc` will be pushed to the stack, in that order, at the start of the program.
 
 To call a function, simply use its name. A function pointer can be pushed to the stack by prepending an ampersand to the function name, and can be called with the `call` keyword.
@@ -145,6 +172,24 @@ To call a function, simply use its name. A function pointer can be pushed to the
 ```
 
 Output: `6 12 9 81`
+
+## Control Flow
+
+Loops and conditionals will check a condition by executing the given instructions, then popping the top value from the stack. If the value is true (non-zero), then the condition is considered to be met. Otherwise, if the value is false (zero), then the condition is considered to not be met.
+
+### Conditionals
+
+Conditional statements can be defined like `if condition {stuff}`. Else (`else`) and else-if (`else if condition {stuff}`) statements are also supported.
+
+### Loops
+
+Foresee currently supports `while` and `for` loops.
+* `while` loops can be defined like `while condition {stuff}`.
+* `for` loops can be defined like `for init, condition, iteration {}`.
+
+The `break` and `continue` keywords can be used to modify the normal behavior of a loop.
+* `break` can be used to prematurely exit the innermost loop.
+* `continue` can be used to prematurely skip to the next iteration of the innermost loop.
 
 ## Preprocessor
 
@@ -188,20 +233,20 @@ Exits compilation immediately, and displays an error message in the form of a st
 
 ### Conditional Compilation
 
-**ifdef**
+#### ifdef
 
 Conditionally compiles code depending on whether certain macros/flags are defined.
 * `#ifdef item {stuff}`: compiles `stuff` if `item` is defined. Otherwise does nothing.
 * `#ifndef item {stuff}`: compiles `stuff` if `item` is *not* defined. Otherwise does nothing.
 
-**Built-in Conditions**
+#### Built-in Conditions
 
 Some built-in flags will be injected during compilation, depending on which platform is specified.
 * Architecture: `ARCH_AARCH64` or `ARCH_X86_64`
 * Operating System: `OS_LINUX` or `OS_WINDOWS`
 * Toolchain: `TOOLCHAIN_GCC` or `TOOLCHAIN_NASM`
 
-### Standard Libraries
+## Standard Library
 
 Foresee's standard library is a very trimmed-down port of C's standard libraries. It currently includes:
 
@@ -212,12 +257,49 @@ Foresee's standard library is a very trimmed-down port of C's standard libraries
 
 Other important constructs are defined in `__core.4c`, which is imported automatically to all Foresee programs.
 
+## I/O
+
+### Terminal
+
+* `stdin` (`buffer len -- bytes_read`): Reads `len` bytes from `stdin`, and stores the result in `buffer`.
+* `stdout` (`buffer len --`): Displays `len` bytes of `buffer` to `stdout`.
+* `stderr` (`buffer len --`): Displays `len` bytes of `buffer` to `stderr`.
+
+Many convenient terminal I/O functions are included in `stdio.4c`. Examples:
+* `put`, `puts`, `putc`: Displays an integer, string, or character, respectively, to `stdout`.
+* `sp`, `cr`: Displays a space or newline, respectively, to `stdout`.
+* `read`, `readc`: Reads an integer or character, respectively, from `stdin`.
+
+### Files
+
+* `fopen` (`path mode -- result`): Attempts to open a file at the given path. Returns either a file handle (if successful) or `-1` (if unsuccessful).
+    * `mode`=0: Read mode
+    * `mode`=1: Write mode
+    * `mode`=2: Append mode
+* `fread` (`buffer length file -- result`): Attempts to read `length` bytes from `file`, and stores the result in `buffer`. Returns either the number of bytes read (if successful), or `-1` (if unsuccessful).
+* `fwrite` (`buffer length file -- result`): Attempts to write `length` bytes of `buffer` to `file`. Returns either the number of bytes written (if successful), or `-1` (if unsuccessful).
+* `fclose` (`file -- result`): Attempts to close the given file handle. Returns either `0` (if successful), or `-1` (if unsuccessful).
+
 # Compiling
 
-**Bootstrap (x86_64-linux-nasm):** `nasm -f elf64 ./bootstrap/x86_64-linux-nasm.asm -o ./target/compiler.o && ld ./target/compiler.o -o ./target/compiler`
+Foresee currently supports x86-64 Windows (nasm), x86-64 Linux (nasm), and arm64 Linux (gcc). It is a self-hosted language, meaning that the Foresee compiler is itself written in Foresee, and can compile itself.
 
-**Bootstrap (aarch64-linux-gcc):** `aarch64-linux-gnu-gcc -static ./bootstrap/aarch64-linux-gcc.s -nostartfiles -o ./target/compiler`
+## Bootstrapping
 
-**Bootstrap (x86_64-windows-nasm):** `nasm -f win64 ./bootstrap/x86_64-windows-nasm.asm -o ./target/compiler.o && x86_64-w64-mingw32-gcc ./target/compiler.o -o ./target/compiler.exe -nostdlib -e _start -lkernel32 -lshell32`
+The Foresee compiler can be built from the included assembly files in `bootstrap/` to produce a working `compiler` binary. Below are examples of commands that could be used to compile these assembly files into working binaries.
 
-**Self-compile:** `./target/compiler ./src/main.4c ./target/compiler.asm <platform> -Istd/ -O`
+#### x86_64-windows-nasm (TODO)
+
+`nasm -f win64 ./bootstrap/x86_64-windows-nasm.asm -o ./target/compiler.o && x86_64-w64-mingw32-gcc ./target/compiler.o -o ./target/compiler.exe -nostdlib -e _start -lkernel32 -lshell32`
+
+#### x86_64-linux-nasm
+
+`nasm -f elf64 ./bootstrap/x86_64-linux-nasm.asm -o ./target/compiler.o && ld ./target/compiler.o -o ./target/compiler`
+
+#### aarch64-linux-gcc (TODO)
+
+`aarch64-linux-gnu-gcc -static ./bootstrap/aarch64-linux-gcc.s -nostartfiles -o ./target/compiler`
+
+### Self-compilation
+
+After the compiler has been bootstrapped, it can re-compile itself into assembly. Example for x86-64 Linux: `./target/compiler ./src/main.4c ./target/compiler.asm x86_64-linux-nasm -Istd/ -O`

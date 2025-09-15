@@ -1,6 +1,6 @@
 #use "types.4c"
 
-#pub macro SRC_STR_SIZE { 250_000 }
+#pub macro SRC_STR_SIZE { 300_000 }
 pub static char[SRC_STR_SIZE] src_str
 #pub macro WRITE_BUFFER_SIZE { SRC_STR_SIZE }
 #pub macro out_fd_buffer { src_str }

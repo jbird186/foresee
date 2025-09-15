@@ -988,8 +988,8 @@ f_288:
     adrp    x0, b_3232
     add     x0, x0, :lo12:b_3232
     str     x0, [x12, #-8]
-    movz    x0, #53392
-    movk    x0, #3, lsl 16
+    movz    x0, #37856
+    movk    x0, #4, lsl 16
     str     x0, [x12, #-16]
     sub     x0, x29, #24
     ldr     x0, [x0]
@@ -23304,8 +23304,8 @@ f_6962:
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    movz    x0, #53392
-    movk    x0, #3, lsl 16
+    movz    x0, #37856
+    movk    x0, #4, lsl 16
     ldr     x1, [x12]
     cmp     x1, x0
     cset    w0, lt
@@ -24983,8 +24983,8 @@ f_7777:
     adrp    x0, b_3232
     add     x0, x0, :lo12:b_3232
     str     x0, [x12, #-8]
-    movz    x0, #53392
-    movk    x0, #3, lsl 16
+    movz    x0, #37856
+    movk    x0, #4, lsl 16
     str     x0, [x12, #-16]
     sub     x0, x29, #16
     ldr     x0, [x0]
@@ -26924,7 +26924,7 @@ _start:
     b_2375: .skip 262112
     b_2442: .skip 1
     b_2452: .skip 8200
-    b_3232: .skip 250000
+    b_3232: .skip 300000
     b_3364: .skip 8
     b_3547: .skip 8200
     b_3575: .skip 8

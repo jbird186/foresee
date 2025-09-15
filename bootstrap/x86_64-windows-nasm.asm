@@ -930,7 +930,7 @@ f_288:
 .l_1146:
     lea     rax, [rel b_3232]
     mov     qword [r12 - 8], rax
-    mov     qword [r12 - 16], 250000
+    mov     qword [r12 - 16], 300000
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 24], rax
@@ -22404,7 +22404,7 @@ f_6962:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    mov     rax, 250000
+    mov     rax, 300000
     mov     rbx, qword [r12]
     cmp     rbx, rax
     setl    al
@@ -24320,7 +24320,7 @@ f_7777:
     call    f_7702
     lea     rax, [rel b_3232]
     mov     qword [r12 - 8], rax
-    mov     qword [r12 - 16], 250000
+    mov     qword [r12 - 16], 300000
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 24], rax
@@ -26206,7 +26206,7 @@ section .bss
     b_2375 resb 262112
     b_2442 resb 1
     b_2452 resb 8200
-    b_3232 resb 250000
+    b_3232 resb 300000
     b_3364 resb 8
     b_3547 resb 8200
     b_3575 resb 8
