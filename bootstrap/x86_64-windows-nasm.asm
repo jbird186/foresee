@@ -21833,7 +21833,7 @@ f_6850:
     call    f_6709
     jmp     .l_454
 .l_455:
-    mov     qword [r12 - 8], 0
+    mov     qword [r12 - 8], 1
     sub     r12, 8
 .l_454:
     mov     rax, qword [r12]

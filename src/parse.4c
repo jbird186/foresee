@@ -192,7 +192,7 @@ static int TOTAL_DATA_SIZE
             %Token+
             parse_until(TKind.BRACKET_END)
 
-            if (if dims {dims@ not} else {false}) {
+            if (if dims {dims@ not} else {true}) {
                 error "Buffer '"puts name puts "' cannot be indexed to this depth\n"puts
                 1 exit
             }

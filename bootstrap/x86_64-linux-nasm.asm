@@ -21123,7 +21123,7 @@ f_6850:
     call    f_6709
     jmp     .l_414
 .l_415:
-    mov     qword [r12 - 8], 0
+    mov     qword [r12 - 8], 1
     sub     r12, 8
 .l_414:
     mov     rax, qword [r12]
