@@ -4,7 +4,7 @@ Foresee is a stack-based compiled programming language inspired by Forth and C.
 
 Foresee files use the `.4c` file extension.
 
-See [docs/reference.md](docs/reference.md) for more information.
+See [`docs/reference.md`](docs/reference.md) for more information.
 
 ### Example
 
@@ -28,7 +28,7 @@ Hello, World!
 
 # Compiling
 
-Foresee currently supports x86-64 Windows (nasm), x86-64 Linux (nasm or fasm), and arm64 Linux (gcc).
+Foresee currently supports x86-64 Linux, arm64 Linux, and x86-64 Windows (through [Wine](https://www.winehq.org/)).
 
 `./compiler <src> <output> <platform> [options]`
 
@@ -49,11 +49,7 @@ Foresee currently supports x86-64 Windows (nasm), x86-64 Linux (nasm or fasm), a
 
 Foresee is a self-hosted language, meaning that the compiler is itself written in Foresee, and can compile itself.
 
-The Foresee compiler can be built from the included assembly files in `bootstrap/` to produce a working `compiler` binary. Below are examples of commands that could be used to compile these assembly files into working binaries.
-
-#### x86_64-windows-nasm (TODO)
-
-`nasm -f win64 ./bootstrap/x86_64-windows-nasm.asm -o ./target/compiler.o && x86_64-w64-mingw32-gcc ./target/compiler.o -o ./target/compiler.exe -nostdlib -e _start -lkernel32 -lshell32`
+The Foresee compiler can be built initially from the included assembly files in [`bootstrap/`](bootstrap/) to produce a working `compiler` binary. Below are commands that could be used to turn these assembly files into working binaries on various platforms.
 
 #### x86_64-linux-nasm
 
@@ -63,9 +59,15 @@ The Foresee compiler can be built from the included assembly files in `bootstrap
 
 `fasm ./bootstrap/x86_64-linux-fasm.asm ./target/compiler.o && ld ./target/compiler.o -o ./target/compiler`
 
-#### aarch64-linux-gcc (TODO)
+#### aarch64-linux-gcc
 
 `aarch64-linux-gnu-gcc -static ./bootstrap/aarch64-linux-gcc.s -nostartfiles -o ./target/compiler`
+
+#### x86_64-windows-nasm
+
+For Wine: `nasm -f win64 ./bootstrap/x86_64-windows-nasm.asm -o ./target/compiler.o && x86_64-w64-mingw32-gcc ./target/compiler.o -o ./target/compiler.exe -nostdlib -e _start -lkernel32 -lshell32`
+
+Native Windows support has [not yet](https://github.com/jbird186/foresee/issues/1) been tested and documented.
 
 ### Self-compilation
 
