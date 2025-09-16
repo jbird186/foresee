@@ -30,13 +30,13 @@ Hello, World!
 
 Foresee currently supports x86-64 Linux, arm64 Linux, and x86-64 Windows (through [Wine](https://www.winehq.org/)).
 
-`./compiler <src> <output> <platform> [options]`
+`./compiler <src> <output> <target> [options]`
 
 * `src` is the source file that will be compiled.
 * `output` is the output file where assembly will be generated.
-* `platform` (`<architecture-OS-toolchain>`) is the platform to target for compilation
+* `target` (`<architecture-OS-toolchain>`) is the platform to target for compilation
     * `architecture` is the CPU architecture to target: `x86_64`/`x64` or `aarch64`.
-    * `OS` is the operating system to target: `windows` or `linux`.
+    * `OS` is the operating system to target: `linux` or `windows`.
     * `toolchain` is the toolchain to target: `nasm`, `fasm`, or `gcc`.
 
 ### Options
@@ -44,6 +44,17 @@ Foresee currently supports x86-64 Linux, arm64 Linux, and x86-64 Windows (throug
 * `-I<dir>`: Allow files from `dir` to be included during compilation. This is typically used for `-Istd`, which allows access to the standard library.
 * `--debug`/`-d`: Enable debug mode.
 * `--optimize`/`-O`: Enable optimizations
+
+### Supported Targets
+
+Currently, only the following targets are supported:
+
+* `x86_64-linux-nasm`
+* `x86_64-linux-fasm`
+* `aarch64-linux-gcc`
+* `x86_64-windows-nasm` (through Wine)
+
+Native Windows support has [not yet](https://github.com/jbird186/foresee/issues/1) been tested and documented.
 
 ## Bootstrapping
 
@@ -66,8 +77,6 @@ The Foresee compiler can be built initially from the included assembly files in 
 #### x86_64-windows-nasm
 
 For Wine: `nasm -f win64 ./bootstrap/x86_64-windows-nasm.asm -o ./target/compiler.o && x86_64-w64-mingw32-gcc ./target/compiler.o -o ./target/compiler.exe -nostdlib -e _start -lkernel32 -lshell32`
-
-Native Windows support has [not yet](https://github.com/jbird186/foresee/issues/1) been tested and documented.
 
 ### Self-compilation
 
