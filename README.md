@@ -28,9 +28,26 @@ Hello, World!
 
 # Compiling
 
-Foresee currently supports x86-64 Windows (nasm), x86-64 Linux (nasm), and arm64 Linux (gcc). It is a self-hosted language, meaning that the Foresee compiler is itself written in Foresee, and can compile itself.
+Foresee currently supports x86-64 Windows (nasm), x86-64 Linux (nasm or fasm), and arm64 Linux (gcc).
+
+`./compiler <src> <output> <platform> [options]`
+
+* `src` is the source file that will be compiled.
+* `output` is the output file where assembly will be generated.
+* `platform` (`<architecture-OS-toolchain>`) is the platform to target for compilation
+    * `architecture` is the CPU architecture to target: `x86_64`/`x64` or `aarch64`.
+    * `OS` is the operating system to target: `windows` or `linux`.
+    * `toolchain` is the toolchain to target: `nasm`, `fasm`, or `gcc`.
+
+### Options
+
+* `-I<dir>`: Allow files from `dir` to be included during compilation. This is typically used for `-Istd`, which allows access to the standard library.
+* `--debug`/`-d`: Enable debug mode.
+* `--optimize`/`-O`: Enable optimizations
 
 ## Bootstrapping
+
+Foresee is a self-hosted language, meaning that the compiler is itself written in Foresee, and can compile itself.
 
 The Foresee compiler can be built from the included assembly files in `bootstrap/` to produce a working `compiler` binary. Below are examples of commands that could be used to compile these assembly files into working binaries.
 
@@ -42,10 +59,14 @@ The Foresee compiler can be built from the included assembly files in `bootstrap
 
 `nasm -f elf64 ./bootstrap/x86_64-linux-nasm.asm -o ./target/compiler.o && ld ./target/compiler.o -o ./target/compiler`
 
+#### x86_64-linux-fasm
+
+`fasm ./bootstrap/x86_64-linux-fasm.asm ./target/compiler.o && ld ./target/compiler.o -o ./target/compiler`
+
 #### aarch64-linux-gcc (TODO)
 
 `aarch64-linux-gnu-gcc -static ./bootstrap/aarch64-linux-gcc.s -nostartfiles -o ./target/compiler`
 
 ### Self-compilation
 
-After the compiler has been bootstrapped, it can re-compile itself into assembly. Example for x86-64 Linux: `./target/compiler ./src/main.4c ./target/compiler.asm x86_64-linux-nasm -Istd/ -O`
+After the compiler has been bootstrapped, it can re-compile itself into assembly. Example for x86-64 Linux (nasm): `./target/compiler ./src/main.4c ./target/compiler.asm x86_64-linux-nasm -Istd/ -O`

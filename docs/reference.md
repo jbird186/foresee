@@ -376,7 +376,7 @@ Conditionally compiles code depending on whether certain macros/flags are define
 * `#ifdef item {stuff}`: compiles `stuff` if `item` is defined. Otherwise does nothing.
 * `#ifndef item {stuff}`: compiles `stuff` if `item` is *not* defined. Otherwise does nothing.
 
-#### Built-in Conditions
+#### Built-in Flags
 
 Some built-in flags will be injected during compilation, depending on which platform is specified.
 * Architecture: `ARCH_AARCH64` or `ARCH_X86_64`

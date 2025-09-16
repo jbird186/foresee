@@ -87,6 +87,12 @@ pub :x64n_compile_pop {
     "rax" x64n_compile_push
 }
 
+:compile_nasm_rel {
+    if "TOOLCHAIN_NASM" has_builtin_flag {
+        "rel "coms
+    }
+}
+
 // op_ptr -- new_op_ptr
 pub :x64n_compile_generic_op {
     if viewok OKind.NOOP == {}
@@ -166,7 +172,7 @@ pub :x64n_compile_generic_op {
     else if viewok OKind.PUSH_BUF == {
         x64n_flush_push_cache
         "    ; OP_PUSH_BUF\n"coms_dbg
-        "    lea     rax, [rel b_"coms viewod com "]\n"coms
+        "    lea     rax, ["coms compile_nasm_rel "b_"coms viewod com "]\n"coms
         "rax" x64n_compile_push
     }
     else if viewok OKind.STORE == {
@@ -391,9 +397,18 @@ pub :x64n_compile_buf_data {
     }
 }
 
+pub :x64n_compile_resb {
+    if "TOOLCHAIN_NASM" has_builtin_flag {
+        " resb "
+    } else {
+        " rb "
+    }
+    coms
+}
+
 // idx --
 pub :x64n_compile_buf_bss {
-    "    b_"coms dup com " resb "coms BUF_MAP map_idx->Buffer.size@ com
+    "    b_"coms dup com x64n_compile_resb BUF_MAP map_idx->Buffer.size@ com
     if debug_mode {
         " ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms
     }

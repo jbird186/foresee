@@ -243,5 +243,5 @@ pub :compile_program_x86_64_windows_nasm {
         1+
     } drop
     "    windata resd 1\n"coms
-    "    bsp: resb "coms ASM_STACK_SIZE com "\n"coms
+    "    bsp:"coms x64n_compile_resb ASM_STACK_SIZE com "\n"coms
 }

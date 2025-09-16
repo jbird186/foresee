@@ -10,11 +10,12 @@ pub :get_argv {
 
 :put_example {
     "Example:\n"puts
-    "\t"puts 0 get_argv puts " ./src/main.4c ./target/output.asm x86_64-linux-nasm\n"puts
+    "\t"puts 0 get_argv puts " ./src/main.4c ./target/output.asm x86_64-linux-nasm -Istd -O\n"puts
 }
 
 :put_options {
     "Options:\n"puts
+    "\t-I<dir>    \t\tallow files from `dir` to be included during compilation\n"puts
     "\t-d, --debug\t\tcompile with debug information\n"puts
     "\t-O, --optimize\t\tenable optimizations\n"puts
 }
@@ -60,6 +61,8 @@ pub :get_argv {
 
     if tool "nasm" strcmp not {
         "TOOLCHAIN_NASM" define_builtin_flag
+    } else if tool "fasm" strcmp not {
+        "TOOLCHAIN_FASM" define_builtin_flag
     } else if tool "gcc" strcmp not {
         "TOOLCHAIN_GCC" define_builtin_flag
     } else {
@@ -156,6 +159,7 @@ pub :parse_args {
     if argc 4 < {
         "Usage: "puts 0 get_argv puts " <source_file> <output_file> <platform> [options]\n"puts
         put_example
+        put_options
         1 exit
     }
     parse_platform

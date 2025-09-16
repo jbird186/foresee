@@ -99,10 +99,7 @@
 
 x64n_compile_text_fns
 
-pub :compile_program_x86_64_linux_nasm {
-    "BITS 64\n"coms
-    "global _start\n"coms
-    "section .text\n"coms
+:text_x86_64_linux_nasm_generic {
     compile_functions
 
     "; start\n"coms_dbg
@@ -113,9 +110,9 @@ pub :compile_program_x86_64_linux_nasm {
     "    mov     rax, [rsp]\n"coms
     "rax" x64n_force_compile_push
     &start_ops_mem->StackHead.data compile_ops
+}
 
-    "section .data\n"coms
-
+:data_x86_64_linux_nasm_generic {
     // -- idx
     0 while dup MAP_SIZE < {
         if dup dup (x64n_is_valid_static_buffer) swap (BUF_MAP map_idx->Buffer.init@ flag) & {
@@ -124,8 +121,9 @@ pub :compile_program_x86_64_linux_nasm {
         1+
     } drop
     x64n_compile_inline_bufs
+}
 
-    "section .bss\n"coms
+:bss_x86_64_linux_nasm_generic {
     // -- idx
     0 while dup MAP_SIZE < {
         if dup dup (x64n_is_valid_static_buffer) swap (BUF_MAP map_idx->Buffer.init@ not) & {
@@ -133,5 +131,27 @@ pub :compile_program_x86_64_linux_nasm {
         }
         1+
     } drop
-    "    bsp: resb "coms ASM_STACK_SIZE com "\n"coms
+    "    bsp:"coms x64n_compile_resb ASM_STACK_SIZE com "\n"coms
+}
+
+pub :compile_program_x86_64_linux_nasm {
+    "BITS 64\n"coms
+    "global _start\n"coms
+    "section .text\n"coms
+    text_x86_64_linux_nasm_generic
+    "section .data\n"coms
+    data_x86_64_linux_nasm_generic
+    "section .bss\n"coms
+    bss_x86_64_linux_nasm_generic
+}
+
+pub :compile_program_x86_64_linux_fasm {
+    "format ELF64\n"coms
+    "public _start\n"coms
+    "section '.text' executable\n"coms
+    text_x86_64_linux_nasm_generic
+    "section '.data' writeable\n"coms
+    data_x86_64_linux_nasm_generic
+    "section '.bss' writeable\n"coms
+    bss_x86_64_linux_nasm_generic
 }
