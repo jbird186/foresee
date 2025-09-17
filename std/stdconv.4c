@@ -1,7 +1,7 @@
 pub static char[24] __std_buf
 static int_min_buf: "-9223372036854775808"
 
-// int -- ptr len
+// int -- &buf len
 pub :__write_int_to_temp {
     if dup INT_MIN == {
         drop &int_min_buf 20 return
@@ -29,16 +29,16 @@ pub :__write_int_to_temp {
         1+
     }
 
-    // -- int ptr len
+    // -- int &buf len
     &__std_buf 23+ over - swap
     rot drop
 }
 
-// int buf --
+// int &buf --
 pub :itoa {
-    // -- buf ptr len
+    // -- buf &buf len
     swap __write_int_to_temp
-    // -- len ptr buf
+    // -- len &buf buf
     swap rot
     while 2 pick {
         over@c over!
@@ -48,7 +48,7 @@ pub :itoa {
     drop drop
 }
 
-// buf -- int
+// &buf -- int
 pub :atoi {
     $ptr buf: {}
     $bool is_neg: {buf@c '-' ==}

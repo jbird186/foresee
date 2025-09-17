@@ -61,7 +61,7 @@ pub :fetchc {fetch 0xff &}
     #use "__core/windows.4c"
 }
 
-// ptr len fd -- [bytes_read, -1]
+// &ptr len fd -- [bytes_read, -1]
 pub :fread {
     #ifndef OS_WINDOWS { __fread }
     #ifdef OS_WINDOWS {
@@ -81,7 +81,7 @@ pub :fread {
     }
 }
 
-// ptr len fd -- [bytes_written, -1]
+// &ptr len fd -- [bytes_written, -1]
 pub :fwrite {
     #ifndef OS_WINDOWS { __fwrite }
     #ifdef OS_WINDOWS {
@@ -115,7 +115,7 @@ pub :fwrite {
     }
 }
 
-// ptr len -- [bytes_written, -err]
+// &buf len -- [bytes_written, -err]
 pub :getcwd {
     #ifndef OS_WINDOWS { __getcwd }
     #ifdef OS_WINDOWS {
@@ -131,9 +131,9 @@ pub :getcwd {
     }
 }
 
-// buf len -- bytes_read
+// &buf len -- bytes_read
 pub :stdin {STDIN_FD fread}
-// ptr len --
+// &ptr len --
 pub :stdout {STDOUT_FD fwrite drop}
-// ptr len --
+// &ptr len --
 pub :stderr {STDERR_FD fwrite drop}

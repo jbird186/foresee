@@ -23,7 +23,7 @@
     check_buf(dirs_mem, %ptr, "dirs_mem")
 }
 
-// argv argc --
+// &argv argc --
 :main {
     parse_args
     $ptr src_file: {get_src_file}

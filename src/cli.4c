@@ -3,7 +3,7 @@
 pub static int argc
 pub static ptr argv
 
-// idx -- ptr
+// idx -- &ptr
 pub :get_argv {
     %ptr* argv+ @
 }
@@ -79,7 +79,7 @@ pub :get_argv {
     true =var
 }
 
-// arg_ptr --
+// &arg_ptr --
 :parse_switches {
     while %char+ dup@c {
         if dup@c 'd' == {
@@ -95,7 +95,7 @@ pub :get_argv {
     drop
 }
 
-// arg_ptr --
+// &arg_ptr --
 :parse_include_option {
     $ptr arg: {2+}
     $ptr path: {STRS_MEM stack_top}
@@ -143,17 +143,17 @@ pub :get_argv {
     idx 1+
 }
 
-// -- src_file
+// -- &src_file
 pub :get_src_file {
     1 get_argv
 }
 
-// -- out_file
+// -- &out_file
 pub :get_out_file {
     2 get_argv
 }
 
-// argv argc --
+// &argv argc --
 pub :parse_args {
     =argc =argv
     if argc 4 < {

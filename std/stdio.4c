@@ -1,6 +1,6 @@
 #use "stdconv.4c"
 
-// buf len -- bytes_read
+// &buf len -- bytes_read
 pub :stdinln {
     $ptr buf: {over}
     $int res: {stdin}

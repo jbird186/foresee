@@ -2,7 +2,7 @@
 
 ## Basic Stack Manipulation
 
-Foresee is a stack-based language, meaning that all operations interact with a central stack data structure. For this reason, Foresee uses postfix notation. For example, instead of `sqrt(9 + (5 * 8))`, you would have `9 5 8 * + sqrt`.
+Foresee is a stack-based language, meaning that all operations interact with a central stack data structure. For this reason, Foresee uses postfix notation. For example, instead of `sqrt(9 + (5 * 8))`, you could say `9 5 8 * + sqrt`.
 * `9`: pushes the integer `9` to the stack. The stack is now `[9]`.
 * `5`: pushes the integer `5` to the stack. The stack is now `[9, 5]`.
 * `8`: pushes the integer `8` to the stack. The stack is now `[9, 5, 8]`.
@@ -13,6 +13,22 @@ Foresee is a stack-based language, meaning that all operations interact with a c
 Values on the stack do not have an associated type. All stack items are 8-byte values that can represent an integer, a pointer, or any other form of data.
 
 Foresee inherits many of Forth's standard instructions, including `drop`, `nip`, `dup`, `swap`, `over`, `rot`, `pick`, `roll`, and `depth`.
+
+### Stack Effect Notation
+
+A stack effect comment shows how a keyword or function transforms the stack. They are regular comments that serve as documentation, and have no special functionality. Items separated by spaces, and input items are separated from output items with `--`.
+
+`input1 input2 input3 ... -- output1 output2 output3 ...`
+
+* Items to the left of `--` are consumed ("popped") from the stack.
+* Items to the right of `--` are produced ("pushed") onto the stack.
+
+Examples:
+* A function `hypotenuse` that calculates $\sqrt{a^2 + b^2}$ could be described with `a b -- hypotenuse`.
+* A function `sum3` that finds the sum of 3 integers could be described with `a b c -- sum`.
+* A function `inc_each` that adds 1 to each of two intgers could be described with `n1 n2 -- (n1+1) (n1+2)`.
+
+Pointer values are often signified with an ampersand. So a function that copies 8 bytes from pointer `A` to pointer `B`, and returns the value that was copied, could be described with `// &ptrA &ptrB -- value`.
 
 ## Variables
 
@@ -71,12 +87,12 @@ $int year
 &year@      // pushes the value of `year` to the stack
 ```
 
-* `fetch`/`@` is a function that pops one item off the stack, reads the value from memory at that address, and pushes it to the stack.
-* `store`/`!` is a function that pops two items off the stack, and returns nothing. The first item is the data to be written, and the second item is the memory address where that data will be stored.
+* `fetch`/`@` (`&buffer -- value`): Reads an 8-byte `value` from `&buffer`.
+* `store`/`!` (`value &buffer --`): Writes an 8-byte `value` to `&buffer`.
 
 Attempting to read to, or write from, an invalid memory address may cause an error.
 
-`fetchc`/`@c` and `storec`/`!c` can be used to read and write single bytes to and from memory, respectively.
+`fetchc`/`@c` (`&buffer -- value`) and `storec`/`!c` (`value &buffer --`) can be used to read and write 1-byte `value`s to and from memory, respectively.
 
 ### Variables Example
 
@@ -124,7 +140,7 @@ Functions can be defined by using Forth's colon notation followed by a brace blo
 
 The `return` keyword can be used to immediately return from a function. Function arguments are passed implicitly by pushing them onto the stack before calling the function. Likewise, function return values are pushed to the stack once the function returns.
 
-A `main` function must be defined for all programs, and will be automatically executed when the program is run. `argv` and `argc` will be pushed to the stack, in that order, at the start of the program.
+A `main` function must be defined for all programs, and will be automatically executed when the program is run. `&argv` and `argc` will be pushed to the stack, in that order, at the start of the program.
 
 To call a function, simply use its name. A function pointer can be pushed to the stack by prepending an ampersand to the function name, and can be called with the `call` keyword.
 
@@ -378,10 +394,10 @@ Conditionally compiles code depending on whether certain macros/flags are define
 
 #### Built-in Flags
 
-Some built-in flags will be injected during compilation, depending on which platform is specified.
-* Architecture: `ARCH_AARCH64` or `ARCH_X86_64`
+Some built-in flags will be injected during compilation, depending on which target is specified. Exactly one flag from each of these categories will be injected.
+* Architecture: `ARCH_X86_64` or `ARCH_AARCH64`
 * Operating System: `OS_LINUX` or `OS_WINDOWS`
-* Toolchain: `TOOLCHAIN_GCC` or `TOOLCHAIN_NASM`
+* Toolchain: `TOOLCHAIN_NASM`, `TOOLCHAIN_FASM`, or `TOOLCHAIN_GCC`
 
 ## Standard Library
 
@@ -398,9 +414,9 @@ Other important constructs are defined in `__core.4c`, which is imported automat
 
 ### Terminal
 
-* `stdin` (`buffer len -- bytes_read`): Reads `len` bytes from `stdin`, and stores the result in `buffer`.
-* `stdout` (`buffer len --`): Displays `len` bytes of `buffer` to `stdout`.
-* `stderr` (`buffer len --`): Displays `len` bytes of `buffer` to `stderr`.
+* `stdin` (`&buffer len -- bytes_read`): Reads `len` bytes from `stdin`, and stores the result in `&buffer`.
+* `stdout` (`&buffer len --`): Displays `len` bytes of `&buffer` to `stdout`.
+* `stderr` (`&buffer len --`): Displays `len` bytes of `&buffer` to `stderr`.
 
 Many convenient terminal I/O functions are included in `stdio.4c`. Examples:
 * `put`, `puts`, `putc`: Displays an integer, string, or character, respectively, to `stdout`.
@@ -409,10 +425,10 @@ Many convenient terminal I/O functions are included in `stdio.4c`. Examples:
 
 ### Files
 
-* `fopen` (`path mode -- result`): Attempts to open a file at the given path. Returns either a file handle (if successful) or `-1` (if unsuccessful).
+* `fopen` (`&path mode -- result`): Attempts to open a file at the given path. Returns either a file handle (if successful) or `-1` (if unsuccessful).
     * `mode`=0: Read mode
     * `mode`=1: Write mode
     * `mode`=2: Append mode
-* `fread` (`buffer length file -- result`): Attempts to read `length` bytes from `file`, and stores the result in `buffer`. Returns either the number of bytes read (if successful), or `-1` (if unsuccessful).
-* `fwrite` (`buffer length file -- result`): Attempts to write `length` bytes of `buffer` to `file`. Returns either the number of bytes written (if successful), or `-1` (if unsuccessful).
+* `fread` (`&buffer length file -- result`): Attempts to read `length` bytes from `file`, and stores the result in `&buffer`. Returns either the number of bytes read (if successful), or `-1` (if unsuccessful).
+* `fwrite` (`&buffer length file -- result`): Attempts to write `length` bytes of `&buffer` to `file`. Returns either the number of bytes written (if successful), or `-1` (if unsuccessful).
 * `fclose` (`file -- result`): Attempts to close the given file handle. Returns either `0` (if successful), or `-1` (if unsuccessful).

@@ -2,7 +2,7 @@ pub :STDIN_FD {-10 win_GetStdHandle}
 pub :STDOUT_FD {-11 win_GetStdHandle}
 pub :STDERR_FD {-12 win_GetStdHandle}
 
-// -- argv argc
+// -- &argv argc
 pub :__parse_args {
     #macro ptr_idx {%ptr* +}
     #macro wstrlen {NULL 0 win_WideCharToMultiByte}
