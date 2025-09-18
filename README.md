@@ -80,4 +80,4 @@ For Wine: `nasm -f win64 ./bootstrap/x86_64-windows-nasm.asm -o ./target/compile
 
 ### Self-compilation
 
-After the compiler has been bootstrapped, it can re-compile itself into assembly. Example for x86-64 Linux (nasm): `./target/compiler ./src/main.4c ./target/compiler.asm x86_64-linux-nasm -Istd/ -O`
+After the compiler has been bootstrapped, it can re-compile itself into assembly. Example for x86-64 Linux (fasm): `./target/compiler ./src/main.4c ./target/compiler.asm x86_64-linux-fasm -Istd/ -O`

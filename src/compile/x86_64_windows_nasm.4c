@@ -108,9 +108,9 @@
         "rcx" x64n_compile_pop      // length
         "rdx" x64n_compile_pop      // buffer pointer
         x64n_flush_push_cache
-        "    mov     r11, rcx\n"coms
+        "    mov     rbx, rcx\n"coms
         "GetCurrentDirectoryA" win_call
-        "    cmp     rax, r11\n"coms
+        "    cmp     rax, rbx\n"coms
         "    jg      .csl_"coms viewod com "\n"coms
         "    test    rax, rax\n"coms
         "    jz      .czl_"coms viewod com "\n"coms

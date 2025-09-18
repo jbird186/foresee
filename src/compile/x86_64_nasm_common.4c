@@ -288,6 +288,7 @@ pub :x64n_compile_generic_op {
     else if viewok OKind.JZ == {
         "    ; OP_JZ\n"coms_dbg
         "rax" x64n_compile_pop
+        x64n_flush_push_cache
         x64n_flush_stack_ptr_delta
         "    test    rax, rax\n"coms
         "    jz      .l_"coms viewod com "\n"coms

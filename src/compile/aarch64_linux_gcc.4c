@@ -321,6 +321,7 @@ static char[32] push_cache
         "    // OP_FOPEN\n"coms_dbg
         "x0" compile_pop           // mode (0 = read, 1 = write, 2 = append)
         "x1" compile_pop           // filename pointer
+        flush_push_cache
         "    cmp     x0, #0\n"coms
         "    beq     .frl_"coms viewod com "\n"coms
         "    cmp     x0, #1\n"coms
@@ -356,6 +357,7 @@ static char[32] push_cache
         "x0" compile_pop            // file descriptor
         "x2" compile_pop            // length
         "x1" compile_pop            // buffer pointer
+        flush_push_cache
         "    mov     x8, #63\n"coms // sys_read
         "    svc     #0\n"coms
         "x0" compile_push           // bytes read or -1
@@ -365,6 +367,7 @@ static char[32] push_cache
         "x0" compile_pop            // file descriptor
         "x2" compile_pop            // length
         "x1" compile_pop            // buffer pointer
+        flush_push_cache
         "    mov     x8, #64\n"coms // sys_write
         "    svc     #0\n"coms
         "x0" compile_push           // bytes written or -1
@@ -372,6 +375,7 @@ static char[32] push_cache
     else if viewok OKind.FCLOSE == {
         "    // OP_FCLOSE\n"coms_dbg
         "x0" compile_pop            // file descriptor
+        flush_push_cache
         "    mov     x8, #57\n"coms // sys_close
         "    svc     #0\n"coms
         "x0" compile_push           // 0 or -1
@@ -380,6 +384,7 @@ static char[32] push_cache
         "    // OP_GETCWD\n"coms_dbg
         "x1" compile_pop            // length
         "x0" compile_pop            // buffer pointer
+        flush_push_cache
         "    mov     x8, #17\n"coms // sys_getcwd
         "    svc     #0\n"coms
         "x0" compile_push           // bytes written or error
@@ -394,6 +399,7 @@ static char[32] push_cache
         "x2" compile_pop    // arg 3
         "x1" compile_pop    // arg 2
         "x0" compile_pop    // arg 1
+        flush_push_cache
         "    svc     #0\n"coms
         "x0" compile_push   // return value
     }

@@ -7445,6 +7445,7 @@ f_2448:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
+    call    f_692
     call    f_798
     lea     rax, [rel b_8670]
     mov     qword [r12 - 8], rax
@@ -17625,6 +17626,7 @@ f_6218:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
+    call    f_692
     lea     rax, [rel b_8781]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19672,6 +19674,7 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
+    call    f_1612
     lea     rax, [rel b_9198]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19893,6 +19896,7 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
+    call    f_1612
     lea     rax, [rel b_9243]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19932,6 +19936,7 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
+    call    f_1612
     lea     rax, [rel b_9250]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19963,6 +19968,7 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
+    call    f_1612
     lea     rax, [rel b_9255]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19998,6 +20004,7 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
+    call    f_1612
     lea     rax, [rel b_9261]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20053,6 +20060,7 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
+    call    f_1612
     lea     rax, [rel b_9272]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -23477,11 +23485,11 @@ f_7417:
     sub     rsp, 8
     mov     rcx, qword [r12]
     mov     rdx, qword [r12 + 8]
-    mov     r11, rcx
+    mov     rbx, rcx
     sub     rsp, 32
     call    GetCurrentDirectoryA
     add     rsp, 32
-    cmp     rax, r11
+    cmp     rax, rbx
     jg      .csl_5
     test    rax, rax
     jz      .czl_5
@@ -25825,9 +25833,9 @@ section .data
     b_8913 db "    ; OP_GETCWD",10,0
     b_8914 db "rcx",0
     b_8915 db "rdx",0
-    b_8916 db "    mov     r11, rcx",10,0
+    b_8916 db "    mov     rbx, rcx",10,0
     b_8917 db "GetCurrentDirectoryA",0
-    b_8918 db "    cmp     rax, r11",10,0
+    b_8918 db "    cmp     rax, rbx",10,0
     b_8919 db "    jg      .csl_",0
     b_8920 db 10,0
     b_8921 db "    test    rax, rax",10,0

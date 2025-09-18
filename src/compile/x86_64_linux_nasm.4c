@@ -90,6 +90,7 @@
         "rdx" x64n_compile_pop   // arg 3
         "rsi" x64n_compile_pop   // arg 2
         "rdi" x64n_compile_pop   // arg 1
+        x64n_flush_push_cache
         "    syscall\n"coms
         "rax" x64n_compile_push  // return value
     }

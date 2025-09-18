@@ -7734,6 +7734,7 @@ f_2448:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3567
+    bl      f_692
     bl      f_798
     adrp    x0, b_8670
     add     x0, x0, :lo12:b_8670
@@ -18512,6 +18513,7 @@ f_6218:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3567
+    bl      f_692
     adrp    x0, b_8781
     add     x0, x0, :lo12:b_8781
     str     x0, [x12, #-8]
@@ -20794,6 +20796,7 @@ f_6220:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2028
+    bl      f_1612
     adrp    x0, b_9198
     add     x0, x0, :lo12:b_9198
     str     x0, [x12, #-8]
@@ -21058,6 +21061,7 @@ f_6220:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2028
+    bl      f_1612
     adrp    x0, b_9243
     add     x0, x0, :lo12:b_9243
     str     x0, [x12, #-8]
@@ -21102,6 +21106,7 @@ f_6220:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2028
+    bl      f_1612
     adrp    x0, b_9250
     add     x0, x0, :lo12:b_9250
     str     x0, [x12, #-8]
@@ -21136,6 +21141,7 @@ f_6220:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2028
+    bl      f_1612
     adrp    x0, b_9255
     add     x0, x0, :lo12:b_9255
     str     x0, [x12, #-8]
@@ -21175,6 +21181,7 @@ f_6220:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2028
+    bl      f_1612
     adrp    x0, b_9261
     add     x0, x0, :lo12:b_9261
     str     x0, [x12, #-8]
@@ -21239,6 +21246,7 @@ f_6220:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_2028
+    bl      f_1612
     adrp    x0, b_9272
     add     x0, x0, :lo12:b_9272
     str     x0, [x12, #-8]
@@ -26555,9 +26563,9 @@ _start:
     b_8913: .ascii "    ; OP_GETCWD\n\0"
     b_8914: .ascii "rcx\0"
     b_8915: .ascii "rdx\0"
-    b_8916: .ascii "    mov     r11, rcx\n\0"
+    b_8916: .ascii "    mov     rbx, rcx\n\0"
     b_8917: .ascii "GetCurrentDirectoryA\0"
-    b_8918: .ascii "    cmp     rax, r11\n\0"
+    b_8918: .ascii "    cmp     rax, rbx\n\0"
     b_8919: .ascii "    jg      .csl_\0"
     b_8920: .ascii "\n\0"
     b_8921: .ascii "    test    rax, rax\n\0"
