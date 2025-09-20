@@ -1,3 +1,4 @@
+#use "stdchar.4c"
 #use "types.4c"
 #use "stack.4c"
 
@@ -63,6 +64,72 @@ pub :viewtk { dup->Token.kind@c }
 pub :viewtd { dup->Token.data@ }
 pub :viewtf { dup->Token.file@ }
 pub :viewtl { dup->Token.line@ }
+
+// tok_ptr -- tok_ptr
+pub :show_tok {
+    if viewtk TKind.EOF == { "EOF" puts }
+    if viewtk TKind.INT == { viewtd put }
+    if viewtk TKind.CHAR == {
+        viewtd
+        if dup isprint {
+            "'" puts putc "'" puts
+        } else {
+            "char " puts put
+        }
+    }
+    if viewtk TKind.STR == {
+        "\"" puts
+        $ptr c: {viewtd}
+        while c@c {
+            if c@c isprint { c@c putc }
+            else if c@c '\0' == { "\\0" puts }     // null
+            else if c@c '\t' == { "\\t" puts }     // tab
+            else if c@c '\a' == { "\\a" puts }     // bell
+            else if c@c '\b' == { "\\b" puts }     // backspace
+            else if c@c '\n' == { "\\n" puts }     // newline
+            else if c@c '\v' == { "\\v" puts }     // vertical tab
+            else if c@c '\f' == { "\\f" puts }     // form feed
+            else if c@c '\r' == { "\\r" puts }     // return
+            else if c@c '\'' == { "\'" puts }      // single quote
+            else if c@c '\"' == { "\\\"" puts }    // double quote
+            else if c@c '\\' == { "\\\\" puts }    // backslash
+            else { "\\?" puts }
+            1 +=c
+        }
+        "\"" puts
+    }
+    if viewtk TKind.IDENT == { "identifier \""puts viewtd puts "\"" puts }
+    if viewtk TKind.WORD == { "word \""puts viewtd puts "\"" puts }
+    if viewtk TKind.FN == { ":fn" puts }
+    if viewtk TKind.IF == { "if" puts }
+    if viewtk TKind.ELSE == { "else" puts }
+    if viewtk TKind.WHILE == { "while" puts }
+    if viewtk TKind.FOR == { "for" puts }
+    if viewtk TKind.CONTINUE == { "continue" puts }
+    if viewtk TKind.BREAK == { "break" puts }
+    if viewtk TKind.COLON == { ":" puts }
+    if viewtk TKind.POUND == { "#" puts }
+    if viewtk TKind.COMMA == { "," puts }
+    if viewtk TKind.STATIC == { "static" puts }
+    if viewtk TKind.VAR == { "$" puts }
+    if viewtk TKind.REF == { "&" puts }
+    if viewtk TKind.EQ == { viewtd puts }
+    if viewtk TKind.ENUM == { "enum" puts }
+    if viewtk TKind.STRUCT == { "struct" puts }
+    if viewtk TKind.ARROW == { "->" puts }
+    if viewtk TKind.FIELD == { "." puts }
+    if viewtk TKind.SIZE == { "%" puts }
+    if viewtk TKind.CALL == { "call" puts }
+    if viewtk TKind.PUB == { "pub" puts }
+    if viewtk TKind.PAREN_START == { "(" puts }
+    if viewtk TKind.PAREN_END == { ")" puts }
+    if viewtk TKind.BRACE_START == { "{" puts }
+    if viewtk TKind.BRACE_END == { "}" puts }
+    if viewtk TKind.BRACKET_START == { "[" puts }
+    if viewtk TKind.BRACKET_END == { "]" puts }
+    if viewtk TKind.FILE_START == { "FILE_START" puts }
+    if viewtk TKind.FILE_END == { "FILE_END" puts }
+}
 
 // tok_ptr -- tok_ptr
 pub :error {

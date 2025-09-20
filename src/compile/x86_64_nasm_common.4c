@@ -294,7 +294,7 @@ pub :x64n_compile_generic_op {
         "    jz      .l_"coms viewod com "\n"coms
     }
     else {
-        "ERROR: Invalid opcode of type "puts viewok put "\n"puts
+        "ERROR: Invalid opcode (#"puts viewok put ")\n"puts
         1 exit
     }
 }
@@ -331,7 +331,7 @@ pub :x64n_compile_generic_op {
 
 // char -- bool
 :should_print_char {
-    dup is_print
+    dup isprint
     swap (dup ('\\' !=) swap ('"' !=) &) &
     USE_ASM_STRINGS &
 }

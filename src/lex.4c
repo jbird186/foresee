@@ -24,7 +24,7 @@ static ptr file
         if viewc dup ('0' ==) swap ('1' ==) | {
             viewc '0' -
             rot 2* + swap
-        } else if viewc is_alnum {
+        } else if viewc isalnum {
             lex_error "Invalid binary integer literal\n"puts
             1 exit
         } else if viewc '_' != {
@@ -41,13 +41,13 @@ static ptr file
     0 swap
     2+
     while viewc {
-        if viewc is_digit {
+        if viewc isdigit {
             viewc '0' -
             rot 16* + swap
-        } else if viewc to_lower dup ('a' >=) swap ('f' <=) & {
-            viewc to_lower 'a' - 10 +
+        } else if viewc tolower dup ('a' >=) swap ('f' <=) & {
+            viewc tolower 'a' - 10 +
             rot 16* + swap
-        } else if viewc is_alpha {
+        } else if viewc isalpha {
             lex_error "Invalid hexadecimal integer literal\n"puts
             1 exit
         } else if viewc '_' != {
@@ -63,10 +63,10 @@ static ptr file
     // -- total src_ptr
     0 swap
     while viewc {
-        if viewc is_digit {
+        if viewc isdigit {
             viewc '0' -
             rot 10* + swap
-        } else if viewc is_alpha {
+        } else if viewc isalpha {
             lex_error "Invalid integer literal\n"puts
             1 exit
         } else if viewc '_' != {
@@ -100,8 +100,10 @@ static ptr file
     if viewc '\\' == {
         1+
         if viewc '0' == { '\0' }       // null
-        else if viewc 'n' == { '\n' }  // newline
+        else if viewc 'a' == { '\a' }  // bell
+        else if viewc 'b' == { '\b' }  // backspace
         else if viewc 't' == { '\t' }  // tab
+        else if viewc 'n' == { '\n' }  // newline
         else if viewc 'v' == { '\v' }  // vertical tab
         else if viewc 'f' == { '\f' }  // form feed
         else if viewc 'r' == { '\r' }  // return
@@ -145,10 +147,10 @@ static ptr file
 }
 
 :is_ident_first_char {
-    dup (is_alpha) swap ('_' ==) |
+    dup (isalpha) swap ('_' ==) |
 }
 :is_ident_any_char {
-    dup (is_alnum) swap ('_' ==) |
+    dup (isalnum) swap ('_' ==) |
 }
 
 // src_ptr -- new_src_ptr ref
@@ -199,7 +201,7 @@ static ptr file
 :continue_lexing_word {
     $char c: {viewc}
     ("(){}[]," c strchr not)
-    (c is_space not) &
+    (c isspace not) &
     (c flag) &
     ((STRS_MEM stack_last@c '=' !=) (c '=' ==) |) &
 }
@@ -235,7 +237,7 @@ pub :lex_src {
     =file
     1 =line
     while viewc {
-        while viewc is_space {
+        while viewc isspace {
             if viewc '\n' == { 1 +=line }
             1+
         }
@@ -243,7 +245,7 @@ pub :lex_src {
             drop
             0 TKind.EOF file line &toks_mem tok_push
             return
-        } else if ((viewc '-' ==) (over 1+ @c is_digit) &) (over@c is_digit) | {
+        } else if ((viewc '-' ==) (over 1+ @c isdigit) &) (over@c isdigit) | {
             view_int TKind.INT file line &toks_mem tok_push
         } else if viewc '\'' == {
             view_char TKind.CHAR file line &toks_mem tok_push

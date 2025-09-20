@@ -1,24 +1,23 @@
 # Foresee Reference
 
+This reference assumes some background knowledge in the C programming language.
+
 ## Basic Stack Manipulation
 
-Foresee is a stack-based language, meaning that all operations interact with a central stack data structure. For this reason, Foresee uses postfix notation. For example, instead of `sqrt(9 + (5 * 8))`, you could say `9 5 8 * + sqrt`.
+Foresee is a stack-based language, meaning that all operations interact with a central stack data structure. Due to this, Foresee uses postfix notation. For example, instead of (C) `(9 + (5 * 8)) / 7`, you could say `(9 (5 8 *) +) 7 /`. Notice that parenthesis do *not* change the order of execution, and are purely for organizational purposes.
 * `9`: pushes the integer `9` to the stack. The stack is now `[9]`.
 * `5`: pushes the integer `5` to the stack. The stack is now `[9, 5]`.
 * `8`: pushes the integer `8` to the stack. The stack is now `[9, 5, 8]`.
 * `*`: pops the top two items off the stack, multiplies them, and pushes the result back to the stack. The stack is now `[9, 40]`.
 * `+`: pops the top two items off the stack, adds them, and pushes the result back to the stack. The stack is now `[49]`.
-* `sqrt`: an example function that would pop the top item off the stack, find the square root, and push the result back to the stack. The stack is now `[7]`.
+* `7`: pushes the integer `7` to the stack. The stack is now `[49, 7]`.
+* `/`: pops the top two items off the stack, divides them, and pushes the result back to the stack. The stack is now `[7]`.
 
-Values on the stack do not have an associated type. All stack items are 8-byte values that can represent an integer, a pointer, or any other form of data.
+`8 5 * 9 + 7 /`, `(5 8*) 9+ 7/`, and many other combinations would also work.
 
-Foresee inherits many of Forth's standard instructions, including `drop`, `nip`, `dup`, `swap`, `over`, `rot`, `pick`, `roll`, and `depth`.
+A "stack effect comment" shows how a keyword or function transforms the stack. They are regular comments (indicated by `//`) that serve as documentation, and have no special functionality. Individual items are separated by spaces, and input items are separated from output items with `--`.
 
-### Stack Effect Notation
-
-A stack effect comment shows how a keyword or function transforms the stack. They are regular comments that serve as documentation, and have no special functionality. Items separated by spaces, and input items are separated from output items with `--`.
-
-`input1 input2 input3 ... -- output1 output2 output3 ...`
+`// input1 input2 input3 ... -- output1 output2 output3 ...`
 
 * Items to the left of `--` are consumed ("popped") from the stack.
 * Items to the right of `--` are produced ("pushed") onto the stack.
@@ -26,9 +25,24 @@ A stack effect comment shows how a keyword or function transforms the stack. The
 Examples:
 * A function `hypotenuse` that calculates $\sqrt{a^2 + b^2}$ could be described with `a b -- hypotenuse`.
 * A function `sum3` that finds the sum of 3 integers could be described with `a b c -- sum`.
-* A function `inc_each` that adds 1 to each of two intgers could be described with `n1 n2 -- (n1+1) (n1+2)`.
+* A function `inc_each` that adds 1 to each of two integers could be described with `n1 n2 -- (n1+1) (n2+1)`.
 
-Pointer values are often signified with an ampersand. So a function that copies 8 bytes from pointer `A` to pointer `B`, and returns the value that was copied, could be described with `// &ptrA &ptrB -- value`.
+Values on the stack do not have an associated type. All stack items are 8-byte values that can represent an integer, a pointer, or any other form of data. In stack effect comments, pointer values are often signified with an ampersand. For example, a function that copies 8 bytes from pointer `ptrA` to pointer `ptrB`, and returns the value that was copied, could be described with `&ptrA &ptrB -- value`.
+
+String literals push a pointer to that string to the stack. Instead of (C) `printf("Hello, World!\n");`, you could say `"Hello, World!\n" puts`.
+* `"Hello, World!\n"`: pushes a pointer the string `"Hello, World!\n"` to the stack. The stack is now `[&str]`.
+* `puts`: pops a string pointer off the stack, and displays the string in the terminal. The stack is now empty, and a line reading `Hello, World!` is displayed in the terminal.
+
+Foresee inherits many of Forth's standard instructions.
+* `dup` (`a -- a a`): Duplicates the last stack item.
+* `over` (`a b -- a b a`): Duplicates the second-to-last stack item.
+* `swap` (`a b -- b a`): Switches the order of the last two stack items.
+* `rot` (`a b c -- b c a`): Moves the third-to-last stack item to the top of the stack.
+* `drop` (`a --`): Deletes the last stack item.
+* `nip` (`a b -- b`): Deletes the second-to-last stack item.
+* `n pick` Duplicates the `n`th-to-last stack item, not counting `n`. For example, `a b c d e f 2 pick` would cause the stack to be `[a, b, c, d, e, f, d]`.
+* `n roll` Moves the `n`th-to-last stack item to the top of the stack. For example, `a b c d e f 3 roll` would cause the stack to be `[a, b, d, e, f, c]`.
+* `depth` (`-- n`): Pushes the current length of the stack, to the stack.
 
 ## Variables
 
@@ -317,7 +331,7 @@ enum EnumName {
 }
 ```
 
-Enum variants can be accessed by using the `.variantname` syntax. By default, the first variant will be assigned `0`, the next `1`, and so on. However, the `variantname: id` syntax can be used to set each variant to a certain value. The assigned number will continue automatically increasing by one for the following variants.
+Enum variants can be accessed by using the `.variantname` syntax. By default, the first variant will be assigned `0`, the next `1`, and so on. However, the `variantname: id` syntax can be used to set each variant to a certain value. The assigned number will continue automatically increasing by one for each of the following variants.
 
 #### Example
 
@@ -354,11 +368,7 @@ Includes a file's contents during compilation. Unlike C's `include`, `use` will 
 
 ### Macros
 
-C-style macros can be defined like ```#macro name(args) {stuff}```. `(args)` is optional. Unlike C macros, Foresee macros use braces for macro definitions.
-
-Macro names do not need to be alphanumeric, as many non-alphanumeric characters are also supported. For example, `?/_@@+2+thing~&` is a valid macro name. However, due to quirks in how this language is parsed, it is recommended to stick to alphanumeric names. If you wish to define a macro with some non-alphanumeric characters in its name, make sure that the *first* character of the name is also non-alphanumeric. Underscores are the only exception to this.
-
-`#macro` can be changed to `#pub macro` to export the macro across files.
+C-style macros can be defined like ```#macro name(arg1, arg2, ...) {stuff}```. The parenthesis after `name` are optional if there are zero arguments. Unlike C macros, Foresee macros use braces for macro definitions.
 
 ```
 #macro say_hi {
@@ -366,11 +376,13 @@ Macro names do not need to be alphanumeric, as many non-alphanumeric characters 
 }
 ```
 
+Macro names do not need to be alphanumeric, as many non-alphanumeric characters are also supported. For example, `?/_@@+2+thing~&` is a valid macro name. However, due to quirks in how this language is parsed, it is recommended to only use alphanumeric names. If you wish to define a macro with some non-alphanumeric characters in its name, make sure that the *first* character of the name is also non-alphanumeric. Underscores are the only exception to this.
+
+`#macro` can be changed to `#pub macro` to export the macro across files.
+
 ### Flags
 
-Preprocessor flags can be defined like `#flag name`. This is equivalent to `#macro name {}`.
-
-Like macros, flags can also have non-alphanumeric names. The same rules apply.
+Preprocessor flags can be defined like `#flag name`. This is effectively equivalent to `#macro name {}`. Unlike macros, flags must have alphanumeric names.
 
 `#flag` can be changed to `#pub flag` to export the flag across files.
 
@@ -414,7 +426,7 @@ Other important constructs are defined in `__core.4c`, which is imported automat
 
 ### Terminal
 
-* `stdin` (`&buffer len -- bytes_read`): Reads `len` bytes from `stdin`, and stores the result in `&buffer`.
+* `stdin` (`&buffer len -- n_bytes_read`): Reads `len` bytes from `stdin`, and stores the result in `&buffer`.
 * `stdout` (`&buffer len --`): Displays `len` bytes of `&buffer` to `stdout`.
 * `stderr` (`&buffer len --`): Displays `len` bytes of `&buffer` to `stderr`.
 

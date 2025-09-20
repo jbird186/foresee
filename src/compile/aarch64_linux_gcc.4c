@@ -404,7 +404,7 @@ static char[32] push_cache
         "x0" compile_push   // return value
     }
     else {
-        "ERROR: Invalid opcode of type "puts viewok put "\n"puts
+        "ERROR: Invalid opcode (#"puts viewok put ")\n"puts
         1 exit
     }
     %Op+
@@ -438,34 +438,18 @@ static char[32] push_cache
     } drop
 }
 
-// char -- bool
-:should_print_char {
-    dup is_print
-    swap (dup ('\\' !=) swap ('"' !=) &) &
-    USE_ASM_STRINGS &
-}
-
 // char --
 :com_char_literal {
     $char c: {}
-    // null
-    if c '\0' == { "\\0" }
-    // newline
-    else if c '\n' == { "\\n" }
-    // tab
-    else if c '\t' == { "\\t" }
-    // vertical tab
-    else if c '\v' == { "\\v" }
-    // form feed
-    else if c '\f' == { "\\f" }
-    // return
-    else if c '\r' == { "\\r" }
-    // single quote
-    else if c '\'' == { "\'" }
-    // double quote
-    else if c '\"' == { "\\\"" }
-    // backslash
-    else if c '\\' == { "\\\\" }
+    if c '\0' == { "\\0" }          // null
+    else if c '\n' == { "\\n" }     // newline
+    else if c '\t' == { "\\t" }     // tab
+    else if c '\v' == { "\\v" }     // vertical tab
+    else if c '\f' == { "\\f" }     // form feed
+    else if c '\r' == { "\\r" }     // return
+    else if c '\'' == { "\'" }      // single quote
+    else if c '\"' == { "\\\"" }    // double quote
+    else if c '\\' == { "\\\\" }    // backslash
     else { c comc return }
     coms
 }

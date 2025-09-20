@@ -1,24 +1,24 @@
-pub :is_digit {
+pub :isdigit {
     dup ('0' >=) swap ('9' <=) &
 }
 
-pub :is_upper {
+pub :isupper {
     dup ('A' >=) swap ('Z' <=) &
 }
 
-pub :is_lower {
+pub :islower {
     dup ('a' >=) swap ('z' <=) &
 }
 
-pub :is_alpha {
-    dup is_upper swap is_lower |
+pub :isalpha {
+    dup isupper swap islower |
 }
 
-pub :is_alnum {
-    dup is_alpha swap is_digit |
+pub :isalnum {
+    dup isalpha swap isdigit |
 }
 
-pub :is_space {
+pub :isspace {
     dup ' ' == swap
     dup '\t' == swap
     dup '\n' == swap
@@ -28,14 +28,18 @@ pub :is_space {
     | | | | |
 }
 
-pub :is_print {
+pub :isprint {
     dup (0x20 >=) swap (0x7e <=) &
 }
 
-pub :to_lower {
-    if dup is_upper { 32+ }
+pub :iscntrl {
+    dup (0x20 <) swap (0x7f ==) |
 }
 
-pub :to_upper {
-    if dup is_lower { 32- }
+pub :tolower {
+    if dup isupper { 32+ }
+}
+
+pub :toupper {
+    if dup islower { 32- }
 }

@@ -71,12 +71,12 @@ pub :get_argv {
     }
 }
 
-#macro set_compiler_flag(var, name) {
-    if var {
+#macro set_compiler_flag(variable, name) {
+    if variable {
         "ERROR: flag '"puts name puts "' already set\n"puts
         1 exit
     }
-    true =var
+    true =variable
 }
 
 // &arg_ptr --
