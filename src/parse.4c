@@ -21,7 +21,7 @@ static int TOTAL_DATA_SIZE
         CURRENT_ALLOC_SIZE =FN_ALLOC_SIZE
     }
 
-    $ptr scope: {ALLOC_STACK stack_last}
+    var ptr scope: {ALLOC_STACK stack_last}
     scope@ + scope!
 }
 
@@ -41,7 +41,7 @@ static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- ops_dest tok_ptr
 #macro parse_until(until_tok_kind) {(
-    $ptr original_tok_ptr: {dup}
+    var ptr original_tok_ptr: {dup}
     while viewtk until_tok_kind != {
         if viewtk not {
             original_tok_ptr error
@@ -77,8 +77,8 @@ static int TOTAL_DATA_SIZE
 
 // name scope --
 :check_name_availability_fn {
-    $ptr scope: {}
-    $ptr name: {}
+    var ptr scope: {}
+    var ptr name: {}
     if name scope BUF_MAP scoped_map_get slot_is_used {
         error "Buffer '"puts name puts "' already defined in this scope\n"puts
         1 exit
@@ -105,30 +105,30 @@ static int TOTAL_DATA_SIZE
 // ops_dest tok_ptr struct_name -- ops_dest new_tok_ptr type_name should_chain field_size
 :view_field_access {
     // -- ops_dest tok_ptr
-    $ptr struct_name: {}
+    var ptr struct_name: {}
     if struct_name STRUCT_MAP scoped_map_find_idx is_failure {
         error "Unrecognized struct '"puts struct_name puts "'\n"puts
         1 exit
     }
 
-    $ptr fields_ptr: {struct_name STRUCT_MAP scoped_map_find->Struct.fields@}
+    var ptr fields_ptr: {struct_name STRUCT_MAP scoped_map_find->Struct.fields@}
     if viewtk TKind.FIELD != {
         error "Expected field access after '->"puts struct_name puts "'\n"puts
         1 exit
     }
     %Token+
 
-    $ptr field_name: {viewtd}
-    $int field_offset: {0}
+    var ptr field_name: {viewtd}
+    var int field_offset: {0}
     while fields_ptr->StructField.name@ {
-        $int field_size: {fields_ptr->StructField.size@}
+        var int field_size: {fields_ptr->StructField.size@}
         if field_name fields_ptr->StructField.name@ strcmp not {
             %Token+
 
             field_offset OKind.PUSH_INT 3 pick op_push
             0 OKind.ADD 3 pick op_push
 
-            $ptr dims: {fields_ptr->StructField.type.dims@}
+            var ptr dims: {fields_ptr->StructField.type.dims@}
             while viewtk TKind.BRACKET_START == {
                 %Token+
                 parse_until(TKind.BRACKET_END)
@@ -163,15 +163,15 @@ static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- ops_dest new_tok_ptr size
 :view_buffer_access {
-    $ptr name: {viewtd}
-    $int idx: {name BUF_MAP scoped_map_find_idx}
+    var ptr name: {viewtd}
+    var int idx: {name BUF_MAP scoped_map_find_idx}
     if idx is_failure {
         error "Buffer '"puts name puts "' not defined in this scope\n"puts
         1 exit
     }
 
     %Token+
-    $int size: {idx BUF_MAP map_idx->Buffer.size@}
+    var int size: {idx BUF_MAP map_idx->Buffer.size@}
     idx push_buf_ptr
 
     if viewtk TKind.FIELD == {
@@ -187,7 +187,7 @@ static int TOTAL_DATA_SIZE
             1 exit
         }
 
-        $ptr dims: {idx BUF_MAP map_idx->Buffer.type.dims@}
+        var ptr dims: {idx BUF_MAP map_idx->Buffer.type.dims@}
         while viewtk TKind.BRACKET_START == {
             %Token+
             parse_until(TKind.BRACKET_END)
@@ -234,8 +234,8 @@ static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_buffer_ident {
-    $ptr name: {viewtd}
-    $ptr size: {view_buffer_access}
+    var ptr name: {viewtd}
+    var ptr size: {view_buffer_access}
     if size 8 == {
         0 OKind.FETCH 3 roll op_push
     } else if size 1 == {
@@ -312,7 +312,7 @@ static int TOTAL_DATA_SIZE
 
     ////////// Enums //////////
     if viewtd ENUM_MAP scoped_map_find_idx is_success {
-        $int name: {viewtd}
+        var int name: {viewtd}
 
         // -- ops_dest tok_ptr variants
         name ENUM_MAP scoped_map_find->Enum.variants@
@@ -405,7 +405,7 @@ static int TOTAL_DATA_SIZE
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_while {
     %Token+
-    $int label_id: {ASM_LABEL_ID}
+    var int label_id: {ASM_LABEL_ID}
     2 +=ASM_LABEL_ID
 
     label_id OKind.LABEL 3 pick op_push
@@ -430,10 +430,10 @@ static int TOTAL_DATA_SIZE
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_for {
     %Token+
-    $int label_id: {ASM_LABEL_ID}
+    var int label_id: {ASM_LABEL_ID}
     3 +=ASM_LABEL_ID
 
-    $char has_paren: {false}
+    var char has_paren: {false}
     if viewtk TKind.PAREN_START == {
         dup skip_paren
         if viewtk dup (TKind.COMMA !=) swap (TKind.BRACE_START !=) & {
@@ -453,7 +453,7 @@ static int TOTAL_DATA_SIZE
 
     // Condition
     parse_until(TKind.COMMA)
-    $ptr iter: {dup}
+    var ptr iter: {dup}
     if has_paren { skip_until(TKind.PAREN_END) %Token+ }
     else { skip_until(TKind.BRACE_START) }
     label_id 1+ OKind.JZ 3 pick op_push
@@ -509,8 +509,8 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
 
-    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
-    $ptr name: {viewtd}
+    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var ptr name: {viewtd}
     %Token+
 
     name scope check_name_availability_fn
@@ -527,7 +527,7 @@ static int TOTAL_DATA_SIZE
         return
     }
 
-    $ptr fn_ptr: {&fn_ops_mem %Op stack_top}
+    var ptr fn_ptr: {&fn_ops_mem %Op stack_top}
     name scope FN_MAP scoped_map_get
     name over->Function.key.name!
     scope over->Function.key.scope!
@@ -578,14 +578,14 @@ static int TOTAL_DATA_SIZE
 
 // tok_ptr -- new_tok_ptr name dims size
 :view_simple_type {
-    $ptr type_name: {viewtd}
-    $ptr dims: {0}
-    $int total: {view_type_size}
+    var ptr type_name: {viewtd}
+    var ptr dims: {0}
+    var int total: {view_type_size}
     %Token+
     if viewtk TKind.BRACKET_START == {
         DIMS_MEM stack_top =dims
         while viewtk TKind.BRACKET_START == {
-            $int subtotal: {0}
+            var int subtotal: {0}
 
             if %Token+ viewtk TKind.INT != {
                 error "Invalid array size\n"puts
@@ -616,13 +616,13 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
 
-    $int total: {0}
+    var int total: {0}
     while viewtk TKind.BRACKET_END != {
         if viewtk TKind.INT != {
             error "Invalid buffer size\n"puts
             1 exit
         }
-        $int subtotal: {viewtd}
+        var int subtotal: {viewtd}
         %Token+
 
         while viewtk TKind.BRACKET_START == {
@@ -642,9 +642,9 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
 
-    $int total: {0}
+    var int total: {0}
     while viewtk TKind.BRACKET_END != {
-        $int subtotal
+        var int subtotal
         if viewtk TKind.INT == {
             viewtd =subtotal
         } else if viewtk TKind.IDENT == {
@@ -732,9 +732,9 @@ static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_buffer_def {
-    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
-    $char is_static
-    $int alloc_offset
+    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var char is_static
+    var int alloc_offset
     if viewtk TKind.STATIC == {
         true =is_static
         0 =alloc_offset
@@ -747,9 +747,9 @@ static int TOTAL_DATA_SIZE
     }
     %Token+
 
-    $int size
-    $ptr type_name: {NULL}
-    $ptr type_dims: {NULL}
+    var int size
+    var ptr type_name: {NULL}
+    var ptr type_dims: {NULL}
     if dup tok_is_type {
         view_simple_type =size =type_dims =type_name
     } else if viewtk TKind.BRACKET_START == {
@@ -766,12 +766,12 @@ static int TOTAL_DATA_SIZE
         error "Invalid buffer name\n"puts
         1 exit
     }
-    $ptr name: {viewtd}
+    var ptr name: {viewtd}
     name scope check_name_availability
 
     %Token+
-    $ptr init
-    $char init_int
+    var ptr init
+    var char init_int
     if viewtk TKind.COLON == {
         %Token+
         if is_static {
@@ -826,7 +826,7 @@ static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_eq {
-    $ptr original_tok_ptr: {dup}
+    var ptr original_tok_ptr: {dup}
     if viewtd "=" strcmp {
         %Token+
         over swap parse_buffer_ident
@@ -864,8 +864,8 @@ static int TOTAL_DATA_SIZE
     }
 
     %Token+
-    $ptr name: {viewtd}
-    $ptr size: {view_buffer_access}
+    var ptr name: {viewtd}
+    var ptr size: {view_buffer_access}
     if size 8 == {
         0 OKind.STORE 3 roll op_push
     } else if size 1 == {
@@ -889,9 +889,9 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
 
-    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
-    $ptr enum_name: {viewtd}
-    $ptr variants_ptr: {ENUM_MEM stack_top}
+    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var ptr enum_name: {viewtd}
+    var ptr variants_ptr: {ENUM_MEM stack_top}
     enum_name scope check_name_availability
 
     %Token+
@@ -970,9 +970,9 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
 
-    $int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
-    $ptr struct_name: {viewtd}
-    $ptr fields_ptr: {STRUCT_MEM stack_top}
+    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var ptr struct_name: {viewtd}
+    var ptr fields_ptr: {STRUCT_MEM stack_top}
     struct_name scope check_name_availability
 
     %Token+
@@ -982,11 +982,11 @@ static int TOTAL_DATA_SIZE
     }
 
     %Token+
-    $int struct_size: {0}
+    var int struct_size: {0}
     while viewtk TKind.BRACE_END != {
-        $int size
-        $ptr type_name: {NULL}
-        $ptr type_dims: {NULL}
+        var int size
+        var ptr type_name: {NULL}
+        var ptr type_dims: {NULL}
         if dup tok_is_type {
             view_simple_type =size =type_dims =type_name
         } else if viewtk TKind.BRACKET_START == {
@@ -1141,7 +1141,7 @@ static int TOTAL_DATA_SIZE
 
 // kind -- bool
 :is_tok_allowed_outside_main {
-    $char kind: {}
+    var char kind: {}
     (kind TKind.FN ==)
     (kind TKind.STATIC ==)
     (kind TKind.ENUM ==)

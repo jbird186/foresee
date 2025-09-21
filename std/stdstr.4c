@@ -11,7 +11,7 @@ pub :strcpy {
 
 // &src &dest n --
 pub :strncpy {
-    $int n: {}
+    var int n: {}
     if over strlen n < { over strlen =n }
     0 over n+ 1+ !c
     n memcpy
@@ -37,7 +37,7 @@ pub :strcmp {
 
 // &str1 &str2 n -- diff
 pub :strncmp {
-    $int n: {}
+    var int n: {}
     while (over@c over@c | flag) (n flag) & {
         if over@c over@c - dup {
             rot rot drop drop
@@ -63,8 +63,8 @@ pub :strchr {
 
 // &str &substr -- [ptr, 0]
 pub :strstr {
-    $ptr src: {swap}
-    $int sub_len: {dup strlen}
+    var ptr src: {swap}
+    var int sub_len: {dup strlen}
     while src@c {
         if src over sub_len strncmp not {
             drop src return

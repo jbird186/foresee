@@ -21,9 +21,9 @@ pub :get_argv {
 }
 
 :parse_platform {
-    $ptr arch: {3 get_argv}
-    $ptr os
-    $ptr tool
+    var ptr arch: {3 get_argv}
+    var ptr os
+    var ptr tool
 
     arch '-' strchr
     if dup not {
@@ -97,11 +97,11 @@ pub :get_argv {
 
 // &arg_ptr --
 :parse_include_option {
-    $ptr arg: {2+}
-    $ptr path: {STRS_MEM stack_top}
+    var ptr arg: {2+}
+    var ptr path: {STRS_MEM stack_top}
 
     if arg@c '/' != {
-        $int cwd_res: {path 4096 getcwd}
+        var int cwd_res: {path 4096 getcwd}
         if cwd_res is_failure {
             "ERROR: Failed to obtain current working directory\n"puts
             1 exit
@@ -124,8 +124,8 @@ pub :get_argv {
 
 // idx -- new_idx
 :parse_option {
-    $int idx: {}
-    $ptr arg: {idx get_argv}
+    var int idx: {}
+    var ptr arg: {idx get_argv}
 
     if arg "-I" 2 strncmp not {
         arg parse_include_option

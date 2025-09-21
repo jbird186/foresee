@@ -127,7 +127,7 @@ pub :x64n_compile_generic_op {
             "    mov     rax, "coms viewod com "\n"coms
             "rax" x64n_compile_push
         } else {
-            $char[32] buf_name
+            var char[32] buf_name
             viewod &buf_name itoa
             &buf_name x64n_compile_push
         }
@@ -338,7 +338,7 @@ pub :x64n_compile_generic_op {
 
 // init --
 :compile_buf_str {
-    $char is_quote: {false}
+    var char is_quote: {false}
     while dup@c {
         if dup@c should_print_char {
             if is_quote not {
@@ -375,7 +375,7 @@ pub :x64n_compile_inline_bufs {
 
 // idx --
 pub :x64n_compile_buf_data {
-    $int buf_size: {dup BUF_MAP map_idx->Buffer.size@}
+    var int buf_size: {dup BUF_MAP map_idx->Buffer.size@}
 
     if debug_mode {
         "    ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms

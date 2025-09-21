@@ -189,6 +189,7 @@ static ptr file
     match_ident_token("continue", TKind.CONTINUE)
     match_ident_token("break", TKind.BREAK)
     match_ident_token("static", TKind.STATIC)
+    match_ident_token("var", TKind.VAR)
     match_ident_token("enum", TKind.ENUM)
     match_ident_token("struct", TKind.STRUCT)
     match_ident_token("call", TKind.CALL)
@@ -199,7 +200,7 @@ static ptr file
 
 // src_ptr -- src_ptr bool
 :continue_lexing_word {
-    $char c: {viewc}
+    var char c: {viewc}
     ("(){}[]," c strchr not)
     (c isspace not) &
     (c flag) &
@@ -209,7 +210,7 @@ static ptr file
 // src_ptr -- new_src_ptr ref
 :view_word {
     STRS_MEM stack_top swap
-    $char c
+    var char c
     while continue_lexing_word {
         viewc STRS_MEM stack_push!c
         1+
@@ -265,7 +266,6 @@ pub :lex_src {
         lex_single(':', TKind.COLON)
         lex_single('#', TKind.POUND)
         lex_single(',', TKind.COMMA)
-        lex_single('$', TKind.VAR)
         lex_single('(', TKind.PAREN_START)
         lex_single(')', TKind.PAREN_END)
         lex_single('{', TKind.BRACE_START)

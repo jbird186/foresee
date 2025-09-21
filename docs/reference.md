@@ -56,26 +56,26 @@ Global static variables are private by default, but can be shared across files b
 
 ### Local Variables
 
-Local variables can be defined like `$type name: {init}`. Local variables **cannot** be defined at the global scope, and can only be used within functions. `{init}` is optional, and sets the variable to the top stack item after the block has finished executing. `type` **must** be specified for local variables.
+Local variables can be defined like `var type name: {init}`. Local variables **cannot** be defined at the global scope, and can only be used within functions. `{init}` is optional, and sets the variable to the top stack item after the block has finished executing. `type` **must** be specified for local variables.
 
 Accessing an uninitialized local variable leads to undefined behavior.
 
 ### Using variables
 
-* `&var` pushes a pointer to `var` to the stack.
-* `%var` pushes the size of `var`, in bytes, to the stack.
+* `&item` pushes a pointer to `item` to the stack.
+* `%item` pushes the size of `item`, in bytes, to the stack.
+* `item` pushes the value of `item` to the stack. This only works if `item` has an appropriate size.
+* `=item` sets `item` to the top stack item. This only works if `item` has an appropriate size.
+* `/=item` divides `item` by the top stack item, and sets `item` to that value. This only works if `item` has an appropriate size. `+=item`, `*=item`, `&=item`, `>>=item`, etc behave similarly.
 * Variables are *only* accessible within the scope where they are defined.
-* `var` pushes the value of `var` to the stack. This only works if `var` has an appropriate size.
-* `=var` sets `var` to the top stack item. This only works if `var` has an appropriate size.
-* `/=var` divides `var` by the top stack item, and sets `var` to that value. This only works if `var` has an appropriate size. `+=var`, `*=var`, `&=var`, `>>=var`, etc behave similarly.
 
 ### Simple Types
 
 Simple types are comprised of a base type, optionally followed by any number of array dimensions. Base types include any built-in type, such was `int`, `char`, etc, or any user-defined struct. An array dimension is a pair of brackets containing the size of the array.
 
-For example, `$char letter` would define `letter` to be a single character. `$ptr[4] items` would define `items` to be an array of 4 pointers. `$int[5][8] matrix` would define `matrix` to be a 5x8 matrix of integers.
+For example, `var char letter` would define `letter` to be a single character. `var ptr[4] items` would define `items` to be an array of 4 pointers. `var int[5][8] matrix` would define `matrix` to be a 5x8 matrix of integers.
 
-An array dimension can also be defined by a list of spaced integers, where the integers are summed up to obtain the total size. So `$int[5][8] matrix` behaves the exact same as `$int[1 4][2 2 4] matrix`.
+An array dimension can also be defined by a list of spaced integers, where the integers are summed up to obtain the total size. So `var int[5][8] matrix` behaves the exact same as `var int[1 4][2 2 4] matrix`.
 
 Simple types can be used intelligently by the compiler, such as for array indexing and to directly access struct fields without casting.
 
@@ -85,18 +85,18 @@ A variable can alternatively be defined with a complex type by surrounding the t
 
 Complex Types cannot be used intelligently by the compiler. Their purpose is only to specify how much memory to allocate for that variable. Examples:
 
-* `$[int] item` would allocate 8 bytes for `item`.
-* `$[40] item` would allocate 40 bytes for `item`.
-* `$[int ptr[8]] item` would allocate 72 bytes for `item`.
-* `$[int[2] char[4] ptr] item` would allocate 28 bytes for `item`.
-* `$[ptr[2 8[12]] 50[2]] item` would allocate 884 bytes for `item`.
+* `var [int] item` would allocate 8 bytes for `item`.
+* `var [40] item` would allocate 40 bytes for `item`.
+* `var [int ptr[8]] item` would allocate 72 bytes for `item`.
+* `var [int[2] char[4] ptr] item` would allocate 28 bytes for `item`.
+* `var [ptr[2 8[12]] 50[2]] item` would allocate 884 bytes for `item`.
 
 ### Store and Fetch
 
 Much like Forth, values can be manually stored and fetched from memory. Use `fetch`/`@` to read data from memory, and `store`/`!` to write data to memory. Example:
 
 ```
-$int year
+var int year
 2025 &year! // sets `year` to 2025
 &year@      // pushes the value of `year` to the stack
 ```
@@ -123,14 +123,14 @@ static int value
     &hello puts
     &world puts
 
-    $int n: {2 2*}
+    var int n: {2 2*}
     n *=value
     value put cr
 
     %world +=value
     value put cr
 
-    $ptr hello: { "hello\n" }
+    var ptr hello: { "hello\n" }
     hello puts
 
     %value /=value
@@ -197,7 +197,7 @@ Conditional statements can be defined like `if condition {stuff}`. Else (`else`)
 #use "stdio.4c"
 
 :main {
-    $int n: {3}
+    var int n: {3}
     if n {
         "True!\n" puts
         if 9 n < {
@@ -223,7 +223,7 @@ Something else!
 
 Foresee currently supports `while` and `for` loops.
 * `while` loops can be defined like `while condition {stuff}`.
-* `for` loops can be defined like `for init, condition, iteration {}`.
+* `for` loops can be defined like `for (init, condition, iteration) {}`. The parenthesis are optional.
 
 The `break` and `continue` keywords can be used to modify the normal behavior of a loop.
 * `break` can be used to prematurely exit the innermost loop.
@@ -235,10 +235,10 @@ The `break` and `continue` keywords can be used to modify the normal behavior of
 #use "stdio.4c"
 
 :main {
-    for $int i: {0}, i 5 <, 1 +=i {
+    for var int i: {0}, i 5 <, 1 +=i {
         if i 2 == { continue }
 
-        $int j: {0}
+        var int j: {0}
         while j i <= {
             j put sp
             1 +=j
@@ -289,7 +289,7 @@ struct Points {
 
 // &point --
 :double_point {
-    $ptr p: {}
+    var ptr p: {}
     p->Point.x@ 2* p->Point.x!
     p->Point.y@ 2* p->Point.y!
 }
@@ -300,13 +300,13 @@ struct Points {
 }
 
 :main {
-    $Point p
+    var Point p
     5 =p.x
     3 =p.y
     &p double_point
     &p show_point
 
-    $Points ps
+    var Points ps
     1 =ps.points[0].x
     -4 =ps.points[0].y
     &ps.points[0] show_point

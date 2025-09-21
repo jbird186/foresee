@@ -4,7 +4,7 @@
 // FNV-1a
 // str_ptr -- int
 :hash {
-    $int res: {2166136261}
+    var int res: {2166136261}
     while dup@c {
         dup@c res^ 16777619* =res
         1+
@@ -93,7 +93,7 @@ pub :scoped_map_contains {
 }
 // name map_ref slot_size -- [idx, -1]
 pub :scoped_map_find_idx {
-    $int scope_idx: {&scope_stack stack_len}
+    var int scope_idx: {&scope_stack stack_len}
     while &scope_idx@-- {
         #macro map_lookup {
             2 pick scope_idx SCOPE_STACK stack_get@ 3 pick 3 pick

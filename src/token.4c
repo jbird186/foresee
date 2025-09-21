@@ -79,7 +79,7 @@ pub :show_tok {
     }
     if viewtk TKind.STR == {
         "\"" puts
-        $ptr c: {viewtd}
+        var ptr c: {viewtd}
         while c@c {
             if c@c isprint { c@c putc }
             else if c@c '\0' == { "\\0" puts }     // null
@@ -137,7 +137,7 @@ pub :error {
 }
 
 #macro skip_delim(start, end) {(
-    $ptr original_tok_ptr: {dup}
+    var ptr original_tok_ptr: {dup}
     // -- depth tok_ptr
     1 swap while %Token+ over {
         if viewtk not {

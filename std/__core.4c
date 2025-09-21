@@ -65,13 +65,13 @@ pub :fetchc {fetch 0xff &}
 pub :fread {
     #ifndef OS_WINDOWS { __fread }
     #ifdef OS_WINDOWS {
-        $ptr buf: {2 pick}
-        $int res: {__fread}
+        var ptr buf: {2 pick}
+        var int res: {__fread}
         if res is_failure { res return }
 
-        $int new_i: {0}
-        for $int i: {0}, (i res <) (buf i+ @c flag) &, 1 +=i {
-            $ptr ch: {buf i+}
+        var int new_i: {0}
+        for var int i: {0}, (i res <) (buf i+ @c flag) &, 1 +=i {
+            var ptr ch: {buf i+}
             if (ch@c '\r' ==) (ch 1+ @c '\n' ==) & { continue }
             ch@c (buf new_i+)!c
             1 +=new_i
@@ -85,12 +85,12 @@ pub :fread {
 pub :fwrite {
     #ifndef OS_WINDOWS { __fwrite }
     #ifdef OS_WINDOWS {
-        $ptr fd: {}
-        $int len: {}
-        $ptr buf: {}
+        var ptr fd: {}
+        var int len: {}
+        var ptr buf: {}
 
-        $int n_newlines: {0}
-        $int i: {0}
+        var int n_newlines: {0}
+        var int i: {0}
         for , (i len <) (buf i+ @c flag) &, 1 +=i {
             if (buf i+ @c) ('\n') == {
                 1 +=n_newlines
@@ -99,10 +99,10 @@ pub :fwrite {
 
         i n_newlines+ =len
 
-        $ptr new_buf: { len win_LocalAlloc }
+        var ptr new_buf: { len win_LocalAlloc }
         if new_buf is_failure { 1 exit }
 
-        for $int j: {0} $int new_i: {0}, j i <, 1 +=j 1+=new_i {
+        for var int j: {0} var int new_i: {0}, j i <, 1 +=j 1+=new_i {
             if (buf j+ @c) ('\n') == {
                 '\r' (new_buf new_i+)!c
                 1+=new_i
@@ -119,8 +119,8 @@ pub :fwrite {
 pub :getcwd {
     #ifndef OS_WINDOWS { __getcwd }
     #ifdef OS_WINDOWS {
-        $ptr cwd: {over}
-        $int res: {__getcwd}
+        var ptr cwd: {over}
+        var int res: {__getcwd}
         if res is_success {
             '\\' cwd res+ !c
             0 cwd res+ 1+ !c

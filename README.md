@@ -13,7 +13,7 @@ See [`docs/reference.md`](docs/reference.md) for more information.
 
 :main {
     "Hello, World!\n" puts
-    for $int i: {0}, i 10 <, 1 +=i {
+    for (var int i: {0}, i 10 <, 1 +=i) {
         i i * put sp
     }
     cr

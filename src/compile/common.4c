@@ -11,7 +11,7 @@ pub :flush_out_fd {
 
 // ptr --
 pub :coms {
-    $int ptr_len: {dup strlen}
+    var int ptr_len: {dup strlen}
     if out_fd_buffer_len ptr_len+ WRITE_BUFFER_SIZE >= {
         flush_out_fd
     }
@@ -28,14 +28,14 @@ pub :coms_dbg {
 
 // int --
 pub :com {
-    $char[32] buf
+    var char[32] buf
     &buf itoa
     &buf coms
 }
 
 // char --
 pub :comc {
-    $char[2] buf
+    var char[2] buf
     &buf!c
     &buf coms
 }

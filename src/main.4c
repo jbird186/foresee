@@ -26,12 +26,12 @@
 // &argv argc --
 :main {
     parse_args
-    $ptr src_file: {get_src_file}
-    $ptr out_file: {get_out_file}
+    var ptr src_file: {get_src_file}
+    var ptr out_file: {get_out_file}
 
     0 SCOPE_STACK stack_push!
 
-    $ptr src_fd: {src_file 0 fopen}
+    var ptr src_fd: {src_file 0 fopen}
     if src_fd is_failure {
         "ERROR: File '"puts src_file puts "' not found\n"puts
         1 exit

@@ -93,7 +93,7 @@ static char[32] push_cache
 
 // op_ptr -- new_op_ptr
 :compile_op {
-    $char[32] buf_name
+    var char[32] buf_name
     if viewok OKind.NOOP == {}
     else if viewok OKind.CALL == {
         "    // OP_CALL\n"coms_dbg
@@ -440,7 +440,7 @@ static char[32] push_cache
 
 // char --
 :com_char_literal {
-    $char c: {}
+    var char c: {}
     if c '\0' == { "\\0" }          // null
     else if c '\n' == { "\\n" }     // newline
     else if c '\t' == { "\\t" }     // tab
@@ -456,7 +456,7 @@ static char[32] push_cache
 
 // init --
 :compile_buf_str {
-    $char is_quote: {false}
+    var char is_quote: {false}
 
     if USE_ASM_STRINGS {
         ".ascii \""coms
@@ -493,7 +493,7 @@ static char[32] push_cache
 
 // idx --
 :compile_buf_data {
-    $int buf_size: {dup BUF_MAP map_idx->Buffer.size@}
+    var int buf_size: {dup BUF_MAP map_idx->Buffer.size@}
 
     if debug_mode {
         "    // "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
@@ -507,8 +507,8 @@ static char[32] push_cache
             ".quad "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
         }
     } else {
-        $ptr init: {dup BUF_MAP map_idx->Buffer.init@}
-        $int init_size: {init strlen 1+}
+        var ptr init: {dup BUF_MAP map_idx->Buffer.init@}
+        var int init_size: {init strlen 1+}
         init compile_buf_str
         if init_size buf_size < {
             "        .skip "coms buf_size init_size- com "\n"coms
