@@ -69,8 +69,8 @@ pub :fread {
         var int res: {__fread}
         if res is_failure { res return }
 
-        var int new_i: {0}
-        for var int i: {0}, (i res <) (buf i+ @c flag) &, 1 +=i {
+        var int new_i: 0
+        for var int i: 0, (i res <) (buf i+ @c flag) &, 1 +=i {
             var ptr ch: {buf i+}
             if (ch@c '\r' ==) (ch 1+ @c '\n' ==) & { continue }
             ch@c (buf new_i+)!c
@@ -89,8 +89,8 @@ pub :fwrite {
         var int len: {}
         var ptr buf: {}
 
-        var int n_newlines: {0}
-        var int i: {0}
+        var int n_newlines: 0
+        var int i: 0
         for , (i len <) (buf i+ @c flag) &, 1 +=i {
             if (buf i+ @c) ('\n') == {
                 1 +=n_newlines
@@ -102,7 +102,7 @@ pub :fwrite {
         var ptr new_buf: { len win_LocalAlloc }
         if new_buf is_failure { 1 exit }
 
-        for var int j: {0} var int new_i: {0}, j i <, 1 +=j 1+=new_i {
+        for var int j: 0 var int new_i: 0, j i <, 1 +=j 1+=new_i {
             if (buf j+ @c) ('\n') == {
                 '\r' (new_buf new_i+)!c
                 1+=new_i

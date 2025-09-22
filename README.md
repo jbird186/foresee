@@ -4,7 +4,15 @@ Foresee is a stack-based compiled programming language inspired by Forth and C.
 
 Foresee files use the `.4c` file extension.
 
-See [`docs/reference.md`](docs/reference.md) for more information.
+See [`docs/reference.md`](docs/reference.md) for an overview of Foresee’s syntax and language features.
+
+### Design
+
+What if C had been designed as a stack-based language? Foresee explores this question.
+
+Foresee inherits C's general constructs and philosophy, while taking inspiration from Forth on how to interact with the stack. Though C and Forth have completely different styles, Foresee tackles the challenge of combining them into a single cohesive language.
+
+The compiler was originally written in C to enable Foresee's initial development. Foresee now has a self-hosted compiler, meaning that the compiler is itself written in Foresee, and can compile its own source code into assembly.
 
 ### Example
 
@@ -13,7 +21,7 @@ See [`docs/reference.md`](docs/reference.md) for more information.
 
 :main {
     "Hello, World!\n" puts
-    for (var int i: {0}, i 10 <, 1 +=i) {
+    for (var int i: 0, i 10 <, 1 +=i) {
         i i * put sp
     }
     cr
@@ -21,6 +29,7 @@ See [`docs/reference.md`](docs/reference.md) for more information.
 ```
 
 Output:
+
 ```
 Hello, World!
 0 1 4 9 16 25 36 49 64 81

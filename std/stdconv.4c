@@ -54,7 +54,7 @@ pub :atoi {
     var bool is_neg: {buf@c '-' ==}
     if is_neg { 1 +=buf }
 
-    var int total: {0}
+    var int total: 0
     while buf@c {
         (total 10*) (buf@c '0' -)+ =total
         1 +=buf

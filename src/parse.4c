@@ -119,7 +119,7 @@ static int TOTAL_DATA_SIZE
     %Token+
 
     var ptr field_name: {viewtd}
-    var int field_offset: {0}
+    var int field_offset: 0
     while fields_ptr->StructField.name@ {
         var int field_size: {fields_ptr->StructField.size@}
         if field_name fields_ptr->StructField.name@ strcmp not {
@@ -579,13 +579,13 @@ static int TOTAL_DATA_SIZE
 // tok_ptr -- new_tok_ptr name dims size
 :view_simple_type {
     var ptr type_name: {viewtd}
-    var ptr dims: {0}
+    var ptr dims: 0
     var int total: {view_type_size}
     %Token+
     if viewtk TKind.BRACKET_START == {
         DIMS_MEM stack_top =dims
         while viewtk TKind.BRACKET_START == {
-            var int subtotal: {0}
+            var int subtotal: 0
 
             if %Token+ viewtk TKind.INT != {
                 error "Invalid array size\n"puts
@@ -616,7 +616,7 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
 
-    var int total: {0}
+    var int total: 0
     while viewtk TKind.BRACKET_END != {
         if viewtk TKind.INT != {
             error "Invalid buffer size\n"puts
@@ -642,7 +642,7 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
 
-    var int total: {0}
+    var int total: 0
     while viewtk TKind.BRACKET_END != {
         var int subtotal
         if viewtk TKind.INT == {
@@ -666,26 +666,38 @@ static int TOTAL_DATA_SIZE
 }
 
 #macro _parse_buffer_non_static_init {
-    if viewtk TKind.BRACE_START == {
-        %Token+
-        if (size 1 ==) (size 8 ==) | not {
-            error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
-            1 exit
-        }
+    if (size 1 ==) (size 8 ==) | not {
+        error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
+        1 exit
+    }
 
+    if viewtk TKind.INT == {
+        if size 1 == {
+            if viewtd dup (0xff <=) swap (0 >=) & not {
+                error "Invalid size for buffer '"puts name puts "'\n"puts
+                1 exit
+            }
+        }
+        viewtd OKind.PUSH_INT 3 pick op_push
+        %Token+
+    } else if viewtk TKind.CHAR == {
+        viewtd OKind.PUSH_INT 3 pick op_push
+        %Token+
+    } else if viewtk TKind.BRACE_START == {
+        %Token+
         new_local_scope
         parse_until(TKind.BRACE_END)
         pop_local_scope
-
-        alloc_offset size+ OKind.PUSH_VAR 3 pick op_push
-        if size 1 == {
-            "storec" call_fn
-        } else {
-            0 OKind.STORE 3 pick op_push
-        }
     } else {
         error "Non-static buffers can only utilize block initialization\n"puts
         1 exit
+    }
+
+    alloc_offset size+ OKind.PUSH_VAR 3 pick op_push
+    if size 1 == {
+        "storec" call_fn
+    } else {
+        0 OKind.STORE 3 pick op_push
     }
 }
 
@@ -982,7 +994,7 @@ static int TOTAL_DATA_SIZE
     }
 
     %Token+
-    var int struct_size: {0}
+    var int struct_size: 0
     while viewtk TKind.BRACE_END != {
         var int size
         var ptr type_name: {NULL}

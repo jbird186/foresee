@@ -48,7 +48,7 @@ Foresee inherits many of Forth's standard instructions.
 
 ### Static Variables
 
-Static variables can be defined like `static type name: init`. `init` is optional, and must be a literal integer or string. If `init` is not specified, static variables will be automatically initialized with zero'd bytes. `type` can be inferred if an initialization value is used.
+Static variables can be defined like `static type name: init`. `init` is optional, and must be a literal integer, character, or string. If `init` is not specified, static variables will be automatically initialized with zero'd bytes. `type` can be inferred if an initialization value is used.
 
 The value of a static variable *always* persists across function calls, even when declared and initialized within a function.
 
@@ -56,7 +56,7 @@ Global static variables are private by default, but can be shared across files b
 
 ### Local Variables
 
-Local variables can be defined like `var type name: {init}`. Local variables **cannot** be defined at the global scope, and can only be used within functions. `{init}` is optional, and sets the variable to the top stack item after the block has finished executing. `type` **must** be specified for local variables.
+Local variables can be defined like `var type name: {init}`. Local variables **cannot** be defined at the global scope, and can only be used within functions. `{init}` is optional, and sets the variable to the top stack item after the block has finished executing. If `init` is a literal integer or character, the braces are optional. `type` **must** be specified for local variables.
 
 Accessing an uninitialized local variable leads to undefined behavior.
 
@@ -197,7 +197,7 @@ Conditional statements can be defined like `if condition {stuff}`. Else (`else`)
 #use "stdio.4c"
 
 :main {
-    var int n: {3}
+    var int n: 3
     if n {
         "True!\n" puts
         if 9 n < {
@@ -235,10 +235,10 @@ The `break` and `continue` keywords can be used to modify the normal behavior of
 #use "stdio.4c"
 
 :main {
-    for var int i: {0}, i 5 <, 1 +=i {
+    for var int i: 0, i 5 <, 1 +=i {
         if i 2 == { continue }
 
-        var int j: {0}
+        var int j: 0
         while j i <= {
             j put sp
             1 +=j

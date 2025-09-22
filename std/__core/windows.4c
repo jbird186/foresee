@@ -12,7 +12,7 @@ pub :__parse_args {
     if argv_wide is_failure { 1 exit }
 
     var int total_size: {argc %ptr*}
-    for var int i: {0}, i argc <, 1+=i {
+    for var int i: 0, i argc <, 1+=i {
         (argv_wide i ptr_idx@) wstrlen +=total_size
     }
 
@@ -20,7 +20,7 @@ pub :__parse_args {
     if argv_char is_failure { 1 exit }
 
     var ptr str_ptr: {argv_char (argc %ptr*)+}
-    for var int i: {0}, i argc <, 1+=i {
+    for var int i: 0, i argc <, 1+=i {
         var int len: {(argv_wide i ptr_idx@) wstrlen}
         if (argv_wide i ptr_idx@) str_ptr len win_WideCharToMultiByte is_failure {
             1 exit
