@@ -20,17 +20,6 @@ pub :is_failure {0 <}
 pub :flag {if {true} else {false}}
 pub :not {if {false} else {true}}
 
-// a -- a a
-pub :dup {0 pick}
-// a b -- a b a
-pub :over {1 pick}
-// a b -- b a
-pub :swap {1 roll}
-// a b c -- b c a
-pub :rot {2 roll}
-// a b -- b
-pub :nip {swap drop}
-
 #pub macro / {divmod drop}
 #pub macro % {divmod nip}
 

@@ -1,55 +1,60 @@
 #pub flag HERE_FILE
 #pub flag HERE_LINE
 
-pub :exit{__OP_EXIT}
-#pub macro return{__OP_RET}
-pub :drop{__OP_DROP}
-pub :pick{__OP_PICK}
-pub :roll{__OP_ROLL}
-pub :depth{__OP_DEPTH}
-pub :store{__OP_STORE}
-pub :fetch{__OP_FETCH}
-pub :memcpy{__OP_MEMCPY}
-#pub macro +{__OP_ADD}
-#pub macro -{__OP_SUB}
-#pub macro *{__OP_MUL}
-#pub macro &{__OP_AND}
-#pub macro |{__OP_OR}
-#pub macro ^{__OP_XOR}
-#pub macro <<{__OP_SHL}
-#pub macro >>{__OP_SHR}
-#pub macro >>:{__OP_SAR}
-#pub macro ~{__OP_NOT}
-#pub macro =={__OP_EQ}
-#pub macro >{__OP_GT}
-#pub macro <{__OP_LT}
-pub :divmod{__OP_DIVMOD}
-pub :fopen{__OP_FOPEN}
-pub :__fread{__OP_FREAD}
-pub :__fwrite{__OP_FWRITE}
-pub :fclose{__OP_FCLOSE}
-pub :__getcwd{__OP_GETCWD}
+#pub macro exit { __OP_EXIT }
+#pub macro return { __OP_RET }
+#pub macro drop { __OP_DROP }
+#pub macro pick { __OP_PICK }
+#pub macro roll { __OP_ROLL }
+#pub macro dup { __OP_DUP }
+#pub macro over { __OP_OVER }
+#pub macro swap { __OP_SWAP }
+#pub macro rot { __OP_ROT }
+#pub macro nip { __OP_NIP }
+#pub macro depth { __OP_DEPTH }
+#pub macro store { __OP_STORE }
+#pub macro fetch { __OP_FETCH }
+#pub macro memcpy { __OP_MEMCPY }
+#pub macro + { __OP_ADD }
+#pub macro - { __OP_SUB }
+#pub macro * { __OP_MUL }
+#pub macro & { __OP_AND }
+#pub macro | { __OP_OR }
+#pub macro ^ { __OP_XOR }
+#pub macro << { __OP_SHL }
+#pub macro >> { __OP_SHR }
+#pub macro >>: { __OP_SAR }
+#pub macro ~ { __OP_NOT }
+#pub macro == { __OP_EQ }
+#pub macro > { __OP_GT }
+#pub macro < { __OP_LT }
+#pub macro divmod { __OP_DIVMOD }
+#pub macro fopen { __OP_FOPEN }
+#pub macro __fread { __OP_FREAD }
+#pub macro __fwrite { __OP_FWRITE }
+#pub macro fclose { __OP_FCLOSE }
+#pub macro __getcwd { __OP_GETCWD }
 
 #ifdef OS_LINUX {
-    pub :syscall{__LIN_syscall}
+    #pub macro syscall { __LIN_syscall }
 }
 #ifndef OS_LINUX {
     #pub macro syscall{ #raise "Syscalls can only be used on Linux\n" }
 }
 
 #ifdef OS_WINDOWS {
-    pub :win_GetCommandLineW{__WIN_GetCommandLineW}
-    pub :win_CommandLineToArgvW{__WIN_CommandLineToArgvW}
-    pub :win_WideCharToMultiByte{__WIN_WideCharToMultiByte}
-    pub :win_LocalAlloc{__WIN_LocalAlloc}
-    pub :win_LocalFree{__WIN_LocalFree}
-    pub :win_GetStdHandle{__WIN_GetStdHandle}
+    #pub macro win_GetCommandLineW { __WIN_GetCommandLineW }
+    #pub macro win_CommandLineToArgvW { __WIN_CommandLineToArgvW }
+    #pub macro win_WideCharToMultiByte { __WIN_WideCharToMultiByte }
+    #pub macro win_LocalAlloc { __WIN_LocalAlloc }
+    #pub macro win_LocalFree { __WIN_LocalFree }
+    #pub macro win_GetStdHandle { __WIN_GetStdHandle }
 }
 #ifndef OS_WINDOWS {
-    #pub macro win_GetCommandLineW{ #raise "GetCommandLineW() can only be called on Windows\n" }
-    #pub macro win_CommandLineToArgvW{ #raise "CommandLineToArgvW() can only be called on Windows\n" }
-    #pub macro win_WideCharToMultiByte{ #raise "WideCharToMultiByte() can only be called on Windows\n" }
-    #pub macro win_LocalAlloc{ #raise "LocalAlloc() can only be called on Windows\n" }
-    #pub macro win_LocalFree{ #raise "LocalFree() can only be called on Windows\n" }
-    #pub macro win_GetStdHandle{ #raise "GetStdHandle() can only be called on Windows\n" }
+    #pub macro win_GetCommandLineW { #raise "GetCommandLineW() can only be called on Windows\n" }
+    #pub macro win_CommandLineToArgvW { #raise "CommandLineToArgvW() can only be called on Windows\n" }
+    #pub macro win_WideCharToMultiByte { #raise "WideCharToMultiByte() can only be called on Windows\n" }
+    #pub macro win_LocalAlloc { #raise "LocalAlloc() can only be called on Windows\n" }
+    #pub macro win_LocalFree { #raise "LocalFree() can only be called on Windows\n" }
+    #pub macro win_GetStdHandle { #raise "GetStdHandle() can only be called on Windows\n" }
 }

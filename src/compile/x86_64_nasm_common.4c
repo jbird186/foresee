@@ -93,7 +93,7 @@ pub :x64n_compile_pop {
     }
 }
 
-// op_ptr -- new_op_ptr
+// op_ptr -- op_ptr
 pub :x64n_compile_generic_op {
     if viewok OKind.NOOP == {}
     else if viewok OKind.CALL == {
@@ -159,6 +159,42 @@ pub :x64n_compile_generic_op {
         "    jmp     .ral_"coms viewod com "\n"coms
         "    .rbl_"coms viewod com ":\n"coms
         "    mov     [r12], rcx\n"coms
+    }
+    else if viewok OKind.DUP == {
+        "    ; OP_DUP\n"coms_dbg
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
+        "    mov     rax, [r12]\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.OVER == {
+        "    ; OP_OVER\n"coms_dbg
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
+        "    mov     rax, [r12 + 8]\n"coms
+        "rax" x64n_compile_push
+    }
+    else if viewok OKind.SWAP == {
+        "    ; OP_SWAP\n"coms_dbg
+        "rax" x64n_compile_pop
+        "rbx" x64n_compile_pop
+        "rax" x64n_compile_push
+        "rbx" x64n_compile_push
+    }
+    else if viewok OKind.ROT == {
+        "    ; OP_ROT\n"coms_dbg
+        "rax" x64n_compile_pop
+        "rbx" x64n_compile_pop
+        "rcx" x64n_compile_pop
+        "rbx" x64n_compile_push
+        "rax" x64n_compile_push
+        "rcx" x64n_compile_push
+    }
+    else if viewok OKind.NIP == {
+        "    ; OP_NIP\n"coms_dbg
+        "rax" x64n_compile_pop
+        compile_stack_shrink
+        "rax" x64n_compile_push
     }
     else if viewok OKind.DEPTH == {
         x64n_flush_push_cache

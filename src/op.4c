@@ -11,9 +11,14 @@ pub enum OKind {
     RET
     // Stack Primitives
     PUSH_INT
-    DROP    // item --
+    DROP    // a --
     PICK    // n -- item
     ROLL    // n -- item
+    DUP     // a -- a a
+    OVER    // a b -- a b a
+    SWAP    // a b -- b a
+    ROT     // a b c -- b c a
+    NIP     // a b -- b
     DEPTH   // -- depth
     // Reference Primitives
     PUSH_BUF

@@ -163,6 +163,43 @@ static char[32] push_cache
         "    .rbl_"coms viewod com ":\n"coms
         "    str     x1, [x12]\n"coms
     }
+    else if viewok OKind.DUP == {
+        "    // OP_DUP\n"coms_dbg
+        flush_push_cache
+        flush_stack_ptr_delta
+        "    ldr     x0, [x12]\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.OVER == {
+        "    // OP_OVER\n"coms_dbg
+        flush_push_cache
+        flush_stack_ptr_delta
+        "    add     x0, x12, #8\n"coms
+        "    ldr     x0, [x0]\n"coms
+        "x0" compile_push
+    }
+    else if viewok OKind.SWAP == {
+        "    // OP_SWAP\n"coms_dbg
+        "x0" compile_pop
+        "x1" compile_pop
+        "x0" compile_push
+        "x1" compile_push
+    }
+    else if viewok OKind.ROT == {
+        "    // OP_ROT\n"coms_dbg
+        "x0" compile_pop
+        "x1" compile_pop
+        "x2" compile_pop
+        "x1" compile_push
+        "x0" compile_push
+        "x2" compile_push
+    }
+    else if viewok OKind.NIP == {
+        "    // OP_NIP\n"coms_dbg
+        "x0" compile_pop
+        compile_stack_shrink
+        "x0" compile_push
+    }
     else if viewok OKind.DEPTH == {
         flush_push_cache
         flush_stack_ptr_delta

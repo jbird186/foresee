@@ -266,6 +266,11 @@ static int TOTAL_DATA_SIZE
     define_intrinsic_opcode(0, OKind.DROP, "__OP_DROP")
     define_intrinsic_opcode(0, OKind.PICK, "__OP_PICK")
     define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.ROLL, "__OP_ROLL")
+    define_intrinsic_opcode(0, OKind.DUP, "__OP_DUP")
+    define_intrinsic_opcode(0, OKind.OVER, "__OP_OVER")
+    define_intrinsic_opcode(0, OKind.SWAP, "__OP_SWAP")
+    define_intrinsic_opcode(0, OKind.ROT, "__OP_ROT")
+    define_intrinsic_opcode(0, OKind.NIP, "__OP_NIP")
     define_intrinsic_opcode(0, OKind.DEPTH, "__OP_DEPTH")
     // Reference Primitives
     define_intrinsic_opcode(0, OKind.STORE, "__OP_STORE")
@@ -851,24 +856,24 @@ static int TOTAL_DATA_SIZE
             }
         }
         if viewtd "/=" strcmp not {
-            "swap" call_fn
+            0 OKind.SWAP 3 pick op_push
             0 OKind.DIVMOD 3 pick op_push
             0 OKind.DROP 3 pick op_push
         }
         else if viewtd "%=" strcmp not {
-            "swap" call_fn
+            0 OKind.SWAP 3 pick op_push
             0 OKind.DIVMOD 3 pick op_push
-            "nip" call_fn
+            0 OKind.NIP 3 pick op_push
         }
         parse_simple_eq("+=", OKind.ADD,)
-        parse_simple_eq("-=", OKind.SUB, "swap" call_fn)
+        parse_simple_eq("-=", OKind.SUB, 0 OKind.SWAP 3 pick op_push)
         parse_simple_eq("*=", OKind.MUL,)
         parse_simple_eq("&=", OKind.AND,)
         parse_simple_eq("|=", OKind.OR,)
         parse_simple_eq("^=", OKind.XOR,)
-        parse_simple_eq("<<=", OKind.SHL, "swap" call_fn)
-        parse_simple_eq(">>=", OKind.SHR, "swap" call_fn)
-        parse_simple_eq(">>:=", OKind.SAR, "swap" call_fn)
+        parse_simple_eq("<<=", OKind.SHL, 0 OKind.SWAP 3 pick op_push)
+        parse_simple_eq(">>=", OKind.SHR, 0 OKind.SWAP 3 pick op_push)
+        parse_simple_eq(">>:=", OKind.SAR, 0 OKind.SWAP 3 pick op_push)
         else {
             error "Unknown assignment operator '"puts viewtd puts "'\n"puts
             1 exit
