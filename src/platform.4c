@@ -4,11 +4,11 @@
 // name --
 pub :define_builtin_flag {
     dup SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
-    NULL over->Macro.key.scope!
-    0 over->Macro.n_args!
-    NULL over->Macro.toks!
-    false over->Macro.is_arg!c
-    ->Macro.key.name!
+    NULL over as Macro.key.scope!
+    0 over as Macro.n_args!
+    NULL over as Macro.toks!
+    false over as Macro.is_arg!c
+    as Macro.key.name!
 }
 
 // name -- bool

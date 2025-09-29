@@ -456,12 +456,12 @@ static char[32] push_cache
 // idx map_slot_ptr -- idx
 :compile_function {
     if debug_mode {
-        "// "coms dup->Function.key.name@ coms "\n"coms
+        "// "coms dup as Function.key.name@ coms "\n"coms
     }
     "f_"coms over com ":\n"coms
     "    stp     x29, x30, [sp, #-16]!\n"coms
     "    mov     x29, sp\n"coms
-    ->Function.def@ compile_ops
+    as Function.def@ compile_ops
 }
 
 :compile_functions {
@@ -530,21 +530,21 @@ static char[32] push_cache
 
 // idx --
 :compile_buf_data {
-    var int buf_size: {dup BUF_MAP map_idx->Buffer.size@}
+    var int buf_size: {dup BUF_MAP map_idx as Buffer.size@}
 
     if debug_mode {
-        "    // "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
+        "    // "coms dup BUF_MAP map_idx as Buffer.key.name@ coms "\n"coms
     }
     "    b_"coms dup com ": "coms
 
-    if dup BUF_MAP map_idx->Buffer.init_int@c {
+    if dup BUF_MAP map_idx as Buffer.init_int@c {
         if buf_size 1 == {
-            ".byte "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
+            ".byte "coms BUF_MAP map_idx as Buffer.init@ com "\n"coms
         } else if buf_size 8 == {
-            ".quad "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
+            ".quad "coms BUF_MAP map_idx as Buffer.init@ com "\n"coms
         }
     } else {
-        var ptr init: {dup BUF_MAP map_idx->Buffer.init@}
+        var ptr init: {dup BUF_MAP map_idx as Buffer.init@}
         var int init_size: {init strlen 1+}
         init compile_buf_str
         if init_size buf_size < {
@@ -556,9 +556,9 @@ static char[32] push_cache
 
 // idx --
 :compile_buf_bss {
-    "    b_"coms dup com ": .skip "coms BUF_MAP map_idx->Buffer.size@ com
+    "    b_"coms dup com ": .skip "coms BUF_MAP map_idx as Buffer.size@ com
     if debug_mode {
-        " // "coms dup BUF_MAP map_idx->Buffer.key.name@ coms
+        " // "coms dup BUF_MAP map_idx as Buffer.key.name@ coms
     }
     "\n"coms
 }
@@ -566,8 +566,8 @@ static char[32] push_cache
 // idx -- bool
 :is_valid_static_buffer {
     BUF_MAP map_idx
-    dup->Buffer.key.name@ flag
-    swap->Buffer.is_static@c
+    dup as Buffer.key.name@ flag
+    swap as Buffer.is_static@c
     &
 }
 
@@ -586,13 +586,13 @@ pub :compile_program_aarch64_linux_gcc {
     "x0" force_compile_push
     "    ldr     x0, [sp]\n"coms
     "x0" force_compile_push
-    &start_ops_mem->StackHead.data compile_ops
+    &start_ops_mem as StackHead.data compile_ops
 
     ".section .data\n"coms
 
     // -- idx
     0 while dup MAP_SIZE < {
-        if dup dup (is_valid_static_buffer) swap (BUF_MAP map_idx->Buffer.init@ flag) & {
+        if dup dup (is_valid_static_buffer) swap (BUF_MAP map_idx as Buffer.init@ flag) & {
             dup compile_buf_data
         }
         1+
@@ -602,7 +602,7 @@ pub :compile_program_aarch64_linux_gcc {
     ".section .bss\n"coms
     // -- idx
     0 while dup MAP_SIZE < {
-        if dup dup (is_valid_static_buffer) swap (BUF_MAP map_idx->Buffer.init@ not) & {
+        if dup dup (is_valid_static_buffer) swap (BUF_MAP map_idx as Buffer.init@ not) & {
             dup compile_buf_bss
         }
         1+

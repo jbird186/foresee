@@ -271,7 +271,7 @@ struct StructName {
 }
 ```
 
-Struct fields generally follow the same rules as variables. Fields can be accessed by using the `.fieldname` syntax. To cast a pointer to a struct, use the `->StructName` syntax.
+Struct fields generally follow the same rules as variables. Fields can be accessed by using the `.fieldname` syntax. To cast a pointer to a struct, use the `as` keyword.
 
 #### Example
 
@@ -290,13 +290,13 @@ struct Points {
 // &point --
 :double_point {
     var ptr p: {}
-    p->Point.x@ 2* p->Point.x!
-    p->Point.y@ 2* p->Point.y!
+    p as Point.x@ 2* p as Point.x!
+    p as Point.y@ 2* p as Point.y!
 }
 
 // &point --
 :show_point {
-    "(" puts dup->Point.x@ put ", " puts ->Point.y@ put ")\n" puts
+    "(" puts dup as Point.x@ put ", " puts as Point.y@ put ")\n" puts
 }
 
 :main {

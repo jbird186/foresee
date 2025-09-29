@@ -221,13 +221,13 @@ pub :compile_program_x86_64_windows_nasm {
     "; start\n"coms_dbg
     "_start:\n"coms
     "    lea     r12, [rel bsp + "coms ASM_STACK_SIZE com "]\n"coms
-    &start_ops_mem->StackHead.data compile_ops
+    &start_ops_mem as StackHead.data compile_ops
 
     "section .data\n"coms
 
     // -- idx
     0 while dup MAP_SIZE < {
-        if dup dup (x64n_is_valid_static_buffer) swap (BUF_MAP map_idx->Buffer.init@ flag) & {
+        if dup dup (x64n_is_valid_static_buffer) swap (BUF_MAP map_idx as Buffer.init@ flag) & {
             dup x64n_compile_buf_data
         }
         1+
@@ -237,7 +237,7 @@ pub :compile_program_x86_64_windows_nasm {
     "section .bss\n"coms
     // -- idx
     0 while dup MAP_SIZE < {
-        if dup dup (x64n_is_valid_static_buffer) swap (BUF_MAP map_idx->Buffer.init@ not) & {
+        if dup dup (x64n_is_valid_static_buffer) swap (BUF_MAP map_idx as Buffer.init@ not) & {
             dup x64n_compile_buf_bss
         }
         1+

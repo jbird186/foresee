@@ -25,7 +25,7 @@ pub enum TKind {
     EQ
     ENUM
     STRUCT
-    ARROW
+    AS
     FIELD
     SIZE
     CALL
@@ -44,26 +44,26 @@ pub enum TKind {
 pub :tok_push {
     // -- data kind file line ptr
     %Token stack_push
-    swap over->Token.line!
-    swap over->Token.file!
-    swap over->Token.kind!c
-    ->Token.data!
+    swap over as Token.line!
+    swap over as Token.file!
+    swap over as Token.kind!c
+    as Token.data!
 }
 
 // src dest --
 pub :tok_push_clone {
     // -- src ptr
     %Token stack_push
-    over->Token.kind@c over->Token.kind!c
-    over->Token.data@ over->Token.data!
-    over->Token.file@ over->Token.file!
-    swap->Token.line@ swap->Token.line!
+    over as Token.kind@c over as Token.kind!c
+    over as Token.data@ over as Token.data!
+    over as Token.file@ over as Token.file!
+    swap as Token.line@ swap as Token.line!
 }
 
-pub :viewtk { dup->Token.kind@c }
-pub :viewtd { dup->Token.data@ }
-pub :viewtf { dup->Token.file@ }
-pub :viewtl { dup->Token.line@ }
+pub :viewtk { dup as Token.kind@c }
+pub :viewtd { dup as Token.data@ }
+pub :viewtf { dup as Token.file@ }
+pub :viewtl { dup as Token.line@ }
 
 // tok_ptr -- tok_ptr
 pub :show_tok {
@@ -116,7 +116,7 @@ pub :show_tok {
     if viewtk TKind.EQ == { viewtd puts }
     if viewtk TKind.ENUM == { "enum" puts }
     if viewtk TKind.STRUCT == { "struct" puts }
-    if viewtk TKind.ARROW == { "->" puts }
+    if viewtk TKind.AS == { "as" puts }
     if viewtk TKind.FIELD == { "." puts }
     if viewtk TKind.SIZE == { "%" puts }
     if viewtk TKind.CALL == { "call" puts }

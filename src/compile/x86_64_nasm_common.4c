@@ -345,12 +345,12 @@ pub :x64n_compile_generic_op {
     // idx map_slot_ptr -- idx
     :compile_function {
         if debug_mode {
-            "; "coms dup->Function.key.name@ coms "\n"coms
+            "; "coms dup as Function.key.name@ coms "\n"coms
         }
         "f_"coms over com ":\n"coms
         "    push    rbp\n"coms
         "    mov     rbp, rsp\n"coms
-        ->Function.def@ compile_ops
+        as Function.def@ compile_ops
     }
 
     :compile_functions {
@@ -411,23 +411,23 @@ pub :x64n_compile_inline_bufs {
 
 // idx --
 pub :x64n_compile_buf_data {
-    var int buf_size: {dup BUF_MAP map_idx->Buffer.size@}
+    var int buf_size: {dup BUF_MAP map_idx as Buffer.size@}
 
     if debug_mode {
-        "    ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms "\n"coms
+        "    ; "coms dup BUF_MAP map_idx as Buffer.key.name@ coms "\n"coms
     }
     "    b_"coms dup com
 
-    if dup BUF_MAP map_idx->Buffer.init_int@c {
+    if dup BUF_MAP map_idx as Buffer.init_int@c {
         if buf_size 1 == {
-            " db "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
+            " db "coms BUF_MAP map_idx as Buffer.init@ com "\n"coms
         } else if buf_size 8 == {
-            " dq "coms BUF_MAP map_idx->Buffer.init@ com "\n"coms
+            " dq "coms BUF_MAP map_idx as Buffer.init@ com "\n"coms
         }
     } else {
         " db "coms
-        dup BUF_MAP map_idx->Buffer.init@ compile_buf_str
-        if (dup BUF_MAP map_idx->Buffer.init@ strlen 1+) (buf_size) < {
+        dup BUF_MAP map_idx as Buffer.init@ compile_buf_str
+        if (dup BUF_MAP map_idx as Buffer.init@ strlen 1+) (buf_size) < {
             "        times "coms buf_size com " - ($ - b_"coms dup com ") db 0\n"coms
         }
         drop
@@ -445,9 +445,9 @@ pub :x64n_compile_resb {
 
 // idx --
 pub :x64n_compile_buf_bss {
-    "    b_"coms dup com x64n_compile_resb BUF_MAP map_idx->Buffer.size@ com
+    "    b_"coms dup com x64n_compile_resb BUF_MAP map_idx as Buffer.size@ com
     if debug_mode {
-        " ; "coms dup BUF_MAP map_idx->Buffer.key.name@ coms
+        " ; "coms dup BUF_MAP map_idx as Buffer.key.name@ coms
     }
     "\n"coms
 }
@@ -455,7 +455,7 @@ pub :x64n_compile_buf_bss {
 // idx -- bool
 pub :x64n_is_valid_static_buffer {
     BUF_MAP map_idx
-    dup->Buffer.key.name@ flag
-    swap->Buffer.is_static@c
+    dup as Buffer.key.name@ flag
+    swap as Buffer.is_static@c
     &
 }

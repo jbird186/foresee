@@ -69,9 +69,9 @@ pub enum OKind {
 pub :op_push {
     // -- data kind ptr
     %Op stack_push
-    swap over->Op.kind!
-    ->Op.data!
+    swap over as Op.kind!
+    as Op.data!
 }
 
-pub :viewok { dup->Op.kind@c }
-pub :viewod { dup->Op.data@ }
+pub :viewok { dup as Op.kind@c }
+pub :viewod { dup as Op.data@ }

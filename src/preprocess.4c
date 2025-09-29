@@ -45,13 +45,17 @@ static int scope_depth
 // name tok_ptr macro_idx -- new_tok_ptr
 :preprocess_macro_call {
     dup MACRO_MAP map_idx
-    var int n_args: {dup->Macro.n_args@}
-    var bool is_arg: {->Macro.is_arg@c}
+    var int n_args: {dup as Macro.n_args@}
+    var bool is_arg: {as Macro.is_arg@c}
     var ptr src: {over}
 
     #macro parse_here_macro(name, access, tkind) {
         if 2 pick name strcmp not {
-            src->Token.access@ TKind.tkind src->Token.file@ src->Token.line@ &out_toks_mem tok_push
+            (src as Token.access@)
+            (TKind.tkind src as Token.file@)
+            (src as Token.line@)
+            &out_toks_mem tok_push
+
             drop nip %Token+ return
         }
     }
@@ -59,7 +63,7 @@ static int scope_depth
     parse_here_macro("HERE_LINE", line, INT)
 
     // name tok_ptr macro_def
-    MACRO_MAP map_idx->Macro.toks@
+    MACRO_MAP map_idx as Macro.toks@
     if dup not {
         drop
         error "Attempted to expand preprocessor flag '"puts swap puts "'\n"puts
@@ -107,16 +111,16 @@ static int scope_depth
         while viewtk TKind.PAREN_END != {
             // -- name tok_ptr def_tok_ptr slot_ptr
             viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
-            over->Token.data@ over->Macro.key.name!
-            SCOPE_STACK stack_last@ over->Macro.key.scope!
-            0 over->Macro.n_args!
-            2 pick over->Macro.toks!
-            true swap->Macro.is_arg!c
+            over as Token.data@ over as Macro.key.name!
+            SCOPE_STACK stack_last@ over as Macro.key.scope!
+            0 over as Macro.n_args!
+            2 pick over as Macro.toks!
+            true swap as Macro.is_arg!c
 
             // -- name def_tok_ptr tok_ptr
             swap
             if viewtk TKind.PAREN_END == {
-                if dup %Token- ->Token.kind TKind.COMMA == {
+                if dup %Token- as Token.kind TKind.COMMA == {
                     error "Invalid number of arguments supplied to macro '"puts 2 pick puts "'\n"puts
                     1 exit
                 }
@@ -364,11 +368,11 @@ pub :use_file {
     }
 
     name scope MACRO_MAP scoped_map_get
-    name over->Macro.key.name!
-    scope over->Macro.key.scope!
-    n_args over->Macro.n_args!
-    macro_toks over->Macro.toks!
-    false swap->Macro.is_arg!c
+    name over as Macro.key.name!
+    scope over as Macro.key.scope!
+    n_args over as Macro.n_args!
+    macro_toks over as Macro.toks!
+    false swap as Macro.is_arg!c
 
     if viewtk TKind.BRACE_START != {
         error "Invalid body for macro '"puts name puts "'\n"puts
@@ -392,11 +396,11 @@ pub :use_file {
     var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
     viewtd
     dup scope MACRO_MAP scoped_map_get
-    swap over->Macro.key.name!
-    scope over->Macro.key.scope!
-    0 over->Macro.n_args!
-    NULL over->Macro.toks!
-    false swap->Macro.is_arg!c
+    swap over as Macro.key.name!
+    scope over as Macro.key.scope!
+    0 over as Macro.n_args!
+    NULL over as Macro.toks!
+    false swap as Macro.is_arg!c
     %Token+
 }
 
@@ -413,9 +417,9 @@ pub :use_file {
     }
 
     viewtd MACRO_MAP scoped_map_find_idx MACRO_MAP map_idx
-    NULL over->Macro.key.name!
-    NULL over->Macro.key.scope!
-    NULL swap->Macro.toks!
+    NULL over as Macro.key.name!
+    NULL over as Macro.key.scope!
+    NULL swap as Macro.toks!
     %Token+
 }
 
@@ -501,6 +505,6 @@ pub :use_file {
 
 pub :preprocess_src {
     0 =scope_depth
-    &toks_mem->StackHead.data preprocess
+    &toks_mem as StackHead.data preprocess
     0 TKind.EOF NULL 0 &out_toks_mem tok_push
 }

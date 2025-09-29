@@ -60,17 +60,17 @@ static int TOTAL_DATA_SIZE
     if viewtk TKind.IDENT != {
         drop false return
     }
-    ->Token.data@ STRUCT_MAP scoped_map_find_idx is_success
+    as Token.data@ STRUCT_MAP scoped_map_find_idx is_success
 }
 
 // ops_dest tok_ptr idx -- ops_dest tok_ptr
 :push_buf_ptr {
-    if dup BUF_MAP map_idx->Buffer.is_static@c {
+    if dup BUF_MAP map_idx as Buffer.is_static@c {
         OKind.PUSH_BUF 3 pick op_push
     } else {
         BUF_MAP map_idx
-        dup->Buffer.alloc_offset@
-        swap->Buffer.size@ +
+        dup as Buffer.alloc_offset@
+        swap as Buffer.size@ +
         OKind.PUSH_VAR 3 pick op_push
     }
 }
@@ -111,31 +111,31 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
 
-    var ptr fields_ptr: {struct_name STRUCT_MAP scoped_map_find->Struct.fields@}
+    var ptr fields_ptr: {struct_name STRUCT_MAP scoped_map_find as Struct.fields@}
     if viewtk TKind.FIELD != {
-        error "Expected field access after '->"puts struct_name puts "'\n"puts
+        error "Expected field access after 'as"puts struct_name puts "'\n"puts
         1 exit
     }
     %Token+
 
     var ptr field_name: {viewtd}
     var int field_offset: 0
-    while fields_ptr->StructField.name@ {
-        var int field_size: {fields_ptr->StructField.size@}
-        if field_name fields_ptr->StructField.name@ strcmp not {
+    while fields_ptr as StructField.name@ {
+        var int field_size: {fields_ptr as StructField.size@}
+        if field_name fields_ptr as StructField.name@ strcmp not {
             %Token+
 
             field_offset OKind.PUSH_INT 3 pick op_push
             0 OKind.ADD 3 pick op_push
 
-            var ptr dims: {fields_ptr->StructField.type.dims@}
+            var ptr dims: {fields_ptr as StructField.type.dims@}
             while viewtk TKind.BRACKET_START == {
                 %Token+
                 parse_until(TKind.BRACKET_END)
 
                 if (if dims {dims@ not} else {true}) {
                     error
-                    "Field '"puts fields_ptr->StructField.name@ puts
+                    "Field '"puts fields_ptr as StructField.name@ puts
                     "' of struct '"puts struct_name puts
                     "' cannot be indexed to this depth\n"puts
                     1 exit
@@ -148,8 +148,8 @@ static int TOTAL_DATA_SIZE
                 0 OKind.ADD 3 pick op_push
             }
 
-            fields_ptr->StructField.type.name@
-            over->Token.kind@c TKind.FIELD ==
+            fields_ptr as StructField.type.name@
+            over as Token.kind@c TKind.FIELD ==
             field_size
             return
         }
@@ -171,23 +171,23 @@ static int TOTAL_DATA_SIZE
     }
 
     %Token+
-    var int size: {idx BUF_MAP map_idx->Buffer.size@}
+    var int size: {idx BUF_MAP map_idx as Buffer.size@}
     idx push_buf_ptr
 
     if viewtk TKind.FIELD == {
         // -- ops_dest new_tok_ptr type_name
-        idx BUF_MAP map_idx->Buffer.type.name@
+        idx BUF_MAP map_idx as Buffer.type.name@
         while view_field_access =size {}
         drop
     }
 
     while viewtk TKind.BRACKET_START == {
-        if (idx BUF_MAP map_idx->Buffer.type.name@ not) {
+        if (idx BUF_MAP map_idx as Buffer.type.name@ not) {
             error "Buffer '"puts name puts "' cannot be indexed to this depth\n"puts
             1 exit
         }
 
-        var ptr dims: {idx BUF_MAP map_idx->Buffer.type.dims@}
+        var ptr dims: {idx BUF_MAP map_idx as Buffer.type.dims@}
         while viewtk TKind.BRACKET_START == {
             %Token+
             parse_until(TKind.BRACKET_END)
@@ -206,7 +206,7 @@ static int TOTAL_DATA_SIZE
 
         if viewtk TKind.FIELD == {
             // -- ops_dest new_tok_ptr type_name
-            idx BUF_MAP map_idx->Buffer.type.name@
+            idx BUF_MAP map_idx as Buffer.type.name@
             while view_field_access =size {}
             drop
         }
@@ -320,7 +320,7 @@ static int TOTAL_DATA_SIZE
         var int name: {viewtd}
 
         // -- ops_dest tok_ptr variants
-        name ENUM_MAP scoped_map_find->Enum.variants@
+        name ENUM_MAP scoped_map_find as Enum.variants@
         // -- ops_dest variants tok_ptr
         swap %Token+
         if viewtk TKind.FIELD != {
@@ -330,9 +330,9 @@ static int TOTAL_DATA_SIZE
         %Token+
         // -- ops_dest tok_ptr name variants
         viewtd rot
-        while dup->EnumVariant.name@ {
-            if over over->EnumVariant.name@ strcmp not {
-                nip->EnumVariant.value@ OKind.PUSH_INT 3 roll op_push
+        while dup as EnumVariant.name@ {
+            if over over as EnumVariant.name@ strcmp not {
+                nip as EnumVariant.value@ OKind.PUSH_INT 3 roll op_push
                 %Token+
                 return
             }
@@ -445,7 +445,7 @@ static int TOTAL_DATA_SIZE
             drop error "Invalid 'for' loop\n"puts
             1 exit
         }
-        ->Token.kind@c TKind.BRACE_START == =has_paren
+        as Token.kind@c TKind.BRACE_START == =has_paren
     }
     if has_paren { %Token+ }
 
@@ -519,7 +519,7 @@ static int TOTAL_DATA_SIZE
     %Token+
 
     name scope check_name_availability_fn
-    if name scope FN_MAP scoped_map_get->Function.def@ {
+    if name scope FN_MAP scoped_map_get as Function.def@ {
         error "Function '"puts name puts "' already defined in this scope\n"puts
         1 exit
     }
@@ -527,16 +527,16 @@ static int TOTAL_DATA_SIZE
     // Function prototype
     if viewtk TKind.BRACE_START != {
         name scope FN_MAP scoped_map_get
-        name over->Function.key.name!
-        scope swap->Function.key.scope!
+        name over as Function.key.name!
+        scope swap as Function.key.scope!
         return
     }
 
     var ptr fn_ptr: {&fn_ops_mem %Op stack_top}
     name scope FN_MAP scoped_map_get
-    name over->Function.key.name!
-    scope over->Function.key.scope!
-    fn_ptr swap->Function.def!
+    name over as Function.key.name!
+    scope over as Function.key.scope!
+    fn_ptr swap as Function.def!
     %Token+
 
     reset_fn_alloc
@@ -548,7 +548,7 @@ static int TOTAL_DATA_SIZE
     }
     %Token+
 
-    if &fn_ops_mem %Op stack_last->Token.kind@c OKind.RET != {
+    if &fn_ops_mem %Op stack_last as Token.kind@c OKind.RET != {
         0 OKind.RET &fn_ops_mem op_push
     }
 
@@ -560,9 +560,9 @@ static int TOTAL_DATA_SIZE
     // fn_ops tok_ptr
     pop_local_scope
     if FN_ALLOC_SIZE {
-        FN_ALLOC_SIZE fn_ptr->Op.data!
+        FN_ALLOC_SIZE fn_ptr as Op.data!
     } else {
-        OKind.NOOP fn_ptr->Op.kind!c
+        OKind.NOOP fn_ptr as Op.kind!c
     }
     0 OKind.EOF &fn_ops_mem op_push
 }
@@ -578,7 +578,7 @@ static int TOTAL_DATA_SIZE
         error "Type '"puts viewtd puts "' not found\n"puts
         1 exit
     }
-    ->Struct.size@
+    as Struct.size@
 }
 
 // tok_ptr -- new_tok_ptr name dims size
@@ -817,15 +817,15 @@ static int TOTAL_DATA_SIZE
 
     nip
     name scope BUF_MAP scoped_map_get
-    name over->Buffer.key.name!
-    scope over->Buffer.key.scope!
-    size over->Buffer.size!
-    type_name over->Buffer.type.name!
-    type_dims over->Buffer.type.dims!
-    init over->Buffer.init!
-    alloc_offset over->Buffer.alloc_offset!
-    init_int over->Buffer.init_int!c
-    is_static swap->Buffer.is_static!c
+    name over as Buffer.key.name!
+    scope over as Buffer.key.scope!
+    size over as Buffer.size!
+    type_name over as Buffer.type.name!
+    type_dims over as Buffer.type.dims!
+    init over as Buffer.init!
+    alloc_offset over as Buffer.alloc_offset!
+    init_int over as Buffer.init_int!c
+    is_static swap as Buffer.is_static!c
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -926,8 +926,8 @@ static int TOTAL_DATA_SIZE
 
         // -- tok_ptr name variants
         viewtd variants_ptr
-        while dup->EnumVariant.name@ {
-            if over over->EnumVariant.name@ strcmp not {
+        while dup as EnumVariant.name@ {
+            if over over as EnumVariant.name@ strcmp not {
                 // -- name tok_ptr
                 drop swap
                 error "Variant '"puts over puts "' already defined for enum '"puts enum_name puts "'\n"puts
@@ -946,8 +946,8 @@ static int TOTAL_DATA_SIZE
             }
             // -- name tok_ptr value
             viewtd
-            if ENUM_MEM stack_last->EnumVariant.name@ {
-                if dup ENUM_MEM stack_last->EnumVariant.value@ <= {
+            if ENUM_MEM stack_last as EnumVariant.name@ {
+                if dup ENUM_MEM stack_last as EnumVariant.value@ <= {
                     drop
                     error "Enum '"puts enum_name puts "' must have values in ascending order\n"puts
                     1 exit
@@ -955,23 +955,23 @@ static int TOTAL_DATA_SIZE
             }
             swap %Token+ swap
         } else {
-            if ENUM_MEM stack_last->EnumVariant.name@ {
-                ENUM_MEM stack_last->EnumVariant.value@ 1+
+            if ENUM_MEM stack_last as EnumVariant.name@ {
+                ENUM_MEM stack_last as EnumVariant.value@ 1+
             } else { 0 }
             // -- name tok_ptr value
         }
         // -- tok_ptr value name slot_ptr
         rot ENUM_MEM stack_push
-        swap over->EnumVariant.name! ->EnumVariant.value!
+        swap over as EnumVariant.name!  as EnumVariant.value!
     }
     %Token+
 
-    NULL ENUM_MEM stack_push->EnumVariant.name!
+    NULL ENUM_MEM stack_push as EnumVariant.name!
 
     enum_name scope ENUM_MAP scoped_map_get
-    enum_name over->Enum.key.name!
-    scope over->Enum.key.scope!
-    variants_ptr swap->Enum.variants!
+    enum_name over as Enum.key.name!
+    scope over as Enum.key.scope!
+    variants_ptr swap as Enum.variants!
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -1015,16 +1015,16 @@ static int TOTAL_DATA_SIZE
 
         // -- tok_ptr size
         size
-        if over->Token.kind@c TKind.IDENT != {
+        if over as Token.kind@c TKind.IDENT != {
             drop
             error "Invalid field for struct '"puts struct_name puts "'\n"puts
             1 exit
         }
 
         // -- tok_ptr size name field
-        over->Token.data@ fields_ptr
-        while dup->StructField.name@ {
-            if over over->StructField.name@ strcmp not {
+        over as Token.data@ fields_ptr
+        while dup as StructField.name@ {
+            if over over as StructField.name@ strcmp not {
                 // -- name tok_ptr
                 drop nip swap
                 error "Field '"puts over puts "' already defined for struct '"puts struct_name puts "'\n"puts
@@ -1036,27 +1036,27 @@ static int TOTAL_DATA_SIZE
 
         // -- tok_ptr size name slot_ptr
         drop STRUCT_MEM stack_push
-        swap over->StructField.name!
-        swap over->StructField.size!
-        type_name over->StructField.type.name!
-        type_dims swap->StructField.type.dims!
+        swap over as StructField.name!
+        swap over as StructField.size!
+        type_name over as StructField.type.name!
+        type_dims swap as StructField.type.dims!
         %Token+
     }
     %Token+
-    NULL STRUCT_MEM stack_push->StructField.name!
+    NULL STRUCT_MEM stack_push as StructField.name!
 
     struct_name scope STRUCT_MAP scoped_map_get
-    struct_name over->Struct.key.name!
-    scope over->Struct.key.scope!
-    struct_size over->Struct.size!
-    fields_ptr swap->Struct.fields!
+    struct_name over as Struct.key.name!
+    scope over as Struct.key.scope!
+    struct_size over as Struct.size!
+    fields_ptr swap as Struct.fields!
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
-:parse_arrow {
+:parse_as {
     %Token+
     if viewtk TKind.IDENT != {
-        error "Invalid struct name after '->'\n"puts
+        error "Invalid struct name after 'as'\n"puts
         1 exit
     }
 
@@ -1073,7 +1073,7 @@ static int TOTAL_DATA_SIZE
         view_type_size
     // -- ops_dest tok_ptr idx
     } else if viewtd BUF_MAP scoped_map_find_idx dup is_success {
-        BUF_MAP map_idx->Buffer.size@
+        BUF_MAP map_idx as Buffer.size@
     } else {
         drop
         error "Buffer '"puts viewtd puts "' not defined\n"puts
@@ -1139,7 +1139,7 @@ static int TOTAL_DATA_SIZE
     else if viewtk TKind.EQ == { parse_eq }
     else if viewtk TKind.ENUM == { parse_enum }
     else if viewtk TKind.STRUCT == { parse_struct }
-    else if viewtk TKind.ARROW == { parse_arrow }
+    else if viewtk TKind.AS == { parse_as }
     else if viewtk TKind.SIZE == { parse_size }
     else if viewtk TKind.CALL == { parse_call }
     else if viewtk TKind.FILE_START == {
@@ -1171,7 +1171,7 @@ static int TOTAL_DATA_SIZE
 
 pub :parse_out_toks {
     // -- tok_ptr
-    &out_toks_mem->StackHead.data
+    &out_toks_mem as StackHead.data
     while viewtk TKind.EOF != {
         if viewtk is_tok_allowed_outside_main not {
             error "Unexpected token of type "puts viewtk put " outside of 'main'\n"puts
