@@ -22,8 +22,9 @@
 #pub macro | { __OP_OR }
 #pub macro ^ { __OP_XOR }
 #pub macro << { __OP_SHL }
+#pub macro <<< { __OP_SHL }
 #pub macro >> { __OP_SHR }
-#pub macro >>: { __OP_SAR }
+#pub macro >>> { __OP_SAR }
 #pub macro ~ { __OP_NOT }
 #pub macro == { __OP_EQ }
 #pub macro > { __OP_GT }

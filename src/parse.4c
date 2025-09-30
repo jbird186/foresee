@@ -872,8 +872,9 @@ static int TOTAL_DATA_SIZE
         parse_simple_eq("|=", OKind.OR,)
         parse_simple_eq("^=", OKind.XOR,)
         parse_simple_eq("<<=", OKind.SHL, 0 OKind.SWAP 3 pick op_push)
+        parse_simple_eq("<<<=", OKind.SHL, 0 OKind.SWAP 3 pick op_push)
         parse_simple_eq(">>=", OKind.SHR, 0 OKind.SWAP 3 pick op_push)
-        parse_simple_eq(">>:=", OKind.SAR, 0 OKind.SWAP 3 pick op_push)
+        parse_simple_eq(">>>=", OKind.SAR, 0 OKind.SWAP 3 pick op_push)
         else {
             error "Unknown assignment operator '"puts viewtd puts "'\n"puts
             1 exit

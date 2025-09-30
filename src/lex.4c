@@ -21,11 +21,39 @@ static ptr file
     0 swap
     2+
     while viewc {
-        if viewc dup ('0' ==) swap ('1' ==) | {
+        if viewc isdigit {
+            if viewc '1' > {
+                lex_error "Invalid octal integer literal\n"puts
+                1 exit
+            }
             viewc '0' -
             rot 2* + swap
         } else if viewc isalnum {
             lex_error "Invalid binary integer literal\n"puts
+            1 exit
+        } else if viewc '_' != {
+            swap return
+        }
+        1+
+    }
+    swap
+}
+
+// src_ptr -- new_src_ptr int
+:view_octal_int {
+    // -- total src_ptr
+    0 swap
+    2+
+    while viewc {
+        if viewc isdigit {
+            if viewc '7' > {
+                lex_error "Invalid octal integer literal\n"puts
+                1 exit
+            }
+            viewc '0' -
+            rot 8* + swap
+        } else if viewc isalpha {
+            lex_error "Invalid octal integer literal\n"puts
             1 exit
         } else if viewc '_' != {
             swap return
@@ -87,6 +115,8 @@ static ptr file
 
     if (viewc '0' ==) (over 1+ @c 'b' ==) & {
         view_binary_int
+    } else if (viewc '0' ==) (over 1+ @c 'o' ==) & {
+        view_octal_int
     } else if (viewc '0' ==) (over 1+ @c 'x' ==) & {
         view_hex_int
     } else {
