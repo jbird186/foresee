@@ -2,8 +2,8 @@
 #use "token.4c"
 #use "map.4c"
 
-static ptr expansion_origin
-static ptr expansion_depth
+static &Token expansion_origin
+static int expansion_depth
 static int scope_depth
 
 // tok_ptr -- new_tok_ptr
@@ -47,15 +47,11 @@ static int scope_depth
     dup MACRO_MAP map_idx
     var int n_args: {dup as Macro.n_args@}
     var bool is_arg: {as Macro.is_arg@c}
-    var ptr src: {over}
+    var &Token src: {over}
 
     #macro parse_here_macro(name, access, tkind) {
         if 2 pick name strcmp not {
-            (src as Token.access@)
-            (TKind.tkind src as Token.file@)
-            (src as Token.line@)
-            &out_toks_mem tok_push
-
+            (src->access) (TKind.tkind src->file) (src->line) &out_toks_mem tok_push
             drop nip %Token+ return
         }
     }
@@ -110,12 +106,12 @@ static int scope_depth
         // -- name tok_ptr def_tok_ptr
         while viewtk TKind.PAREN_END != {
             // -- name tok_ptr def_tok_ptr slot_ptr
-            viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
-            over as Token.data@ over as Macro.key.name!
-            SCOPE_STACK stack_last@ over as Macro.key.scope!
-            0 over as Macro.n_args!
-            2 pick over as Macro.toks!
-            true swap as Macro.is_arg!c
+            var &Macro entry: {viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get}
+            dup as Token.data@ =entry->key.name
+            SCOPE_STACK stack_last@ =entry->key.scope
+            0 =entry->n_args
+            over =entry->toks
+            true =entry->is_arg
 
             // -- name def_tok_ptr tok_ptr
             swap
@@ -185,7 +181,7 @@ static int scope_depth
 
 // file_path --
 pub :add_file_dir {
-    var ptr name: {}
+    var &char name: {}
     var int n: 0
     var int size: 0
 
@@ -194,7 +190,7 @@ pub :add_file_dir {
         if c '/' == { n =size }
     }
 
-    var ptr dir_ptr: {STRS_MEM stack_top}
+    var &char dir_ptr: {STRS_MEM stack_top}
 
     name dir_ptr size strncpy
     &strs_mem stack_len size+ &strs_mem!
@@ -210,7 +206,7 @@ pub :add_file_dir {
 
 // name -- file_path fd
 :_open_file {
-    var ptr name: {}
+    var &char name: {}
     var int idx: 0
     while idx &dirs_mem stack_len < {
         var char[256] file_path
@@ -221,7 +217,7 @@ pub :add_file_dir {
         if fd is_success {
             &file_path add_file_dir
 
-            var ptr path: {STRS_MEM stack_top}
+            var &char path: {STRS_MEM stack_top}
             &file_path path strcpy
             (&strs_mem stack_len) (&file_path strlen)+ &strs_mem!
             0 STRS_MEM stack_push!c
@@ -236,11 +232,16 @@ pub :add_file_dir {
 
 // name -- result
 pub :use_file {
-    var ptr name: {}
+    var &char name: {}
 
     name _open_file
     var ptr fd: {}
-    var ptr path: {}
+    var &char path: {}
+
+    if path not {
+        "WARNING: 'use' directive failed to locate file '"puts name puts "'\n"puts
+        -1 return
+    }
 
     if path FILE_SET map_contains {
         if fd fclose is_failure {
@@ -342,8 +343,8 @@ pub :use_file {
         1 exit
     }
 
-    var ptr name: {viewtd} %Token+
-    var ptr macro_toks: {dup}
+    var &char name: {viewtd} %Token+
+    var &Token macro_toks: {dup}
     var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
 
     // Arguments (optional)
@@ -367,12 +368,12 @@ pub :use_file {
         %Token+
     }
 
-    name scope MACRO_MAP scoped_map_get
-    name over as Macro.key.name!
-    scope over as Macro.key.scope!
-    n_args over as Macro.n_args!
-    macro_toks over as Macro.toks!
-    false swap as Macro.is_arg!c
+    var &Macro entry: {name scope MACRO_MAP scoped_map_get}
+    name =entry->key.name
+    scope =entry->key.scope
+    n_args =entry->n_args
+    macro_toks =entry->toks
+    false =entry->is_arg
 
     if viewtk TKind.BRACE_START != {
         error "Invalid body for macro '"puts name puts "'\n"puts
@@ -394,13 +395,12 @@ pub :use_file {
     }
 
     var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
-    viewtd
-    dup scope MACRO_MAP scoped_map_get
-    swap over as Macro.key.name!
-    scope over as Macro.key.scope!
-    0 over as Macro.n_args!
-    NULL over as Macro.toks!
-    false swap as Macro.is_arg!c
+    var &Macro entry: {viewtd scope MACRO_MAP scoped_map_get}
+    viewtd =entry->key.name
+    scope =entry->key.scope
+    0 =entry->n_args
+    NULL =entry->toks
+    false =entry->is_arg
     %Token+
 }
 
@@ -416,10 +416,10 @@ pub :use_file {
         1 exit
     }
 
-    viewtd MACRO_MAP scoped_map_find_idx MACRO_MAP map_idx
-    NULL over as Macro.key.name!
-    NULL over as Macro.key.scope!
-    NULL swap as Macro.toks!
+    var &Macro entry: {viewtd MACRO_MAP scoped_map_find_idx MACRO_MAP map_idx}
+    NULL =entry->key.name
+    NULL =entry->key.scope
+    NULL =entry->toks
     %Token+
 }
 

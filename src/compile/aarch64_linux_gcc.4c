@@ -530,45 +530,45 @@ static char[32] push_cache
 
 // idx --
 :compile_buf_data {
-    var int buf_size: {dup BUF_MAP map_idx as Buffer.size@}
+    var int idx: {}
+    var &Buffer entry: {idx BUF_MAP map_idx}
+    var int buf_size: {entry->size}
 
     if debug_mode {
-        "    // "coms dup BUF_MAP map_idx as Buffer.key.name@ coms "\n"coms
+        "    // "coms entry->key.name coms "\n"coms
     }
-    "    b_"coms dup com ": "coms
+    "    b_"coms idx com ": "coms
 
-    if dup BUF_MAP map_idx as Buffer.init_int@c {
+    if entry->init_int {
         if buf_size 1 == {
-            ".byte "coms BUF_MAP map_idx as Buffer.init@ com "\n"coms
+            ".byte "coms entry->init com "\n"coms
         } else if buf_size 8 == {
-            ".quad "coms BUF_MAP map_idx as Buffer.init@ com "\n"coms
+            ".quad "coms entry->init com "\n"coms
         }
     } else {
-        var ptr init: {dup BUF_MAP map_idx as Buffer.init@}
+        var [8] init: {entry->init}
         var int init_size: {init strlen 1+}
         init compile_buf_str
         if init_size buf_size < {
             "        .skip "coms buf_size init_size- com "\n"coms
         }
-        drop
     }
 }
 
 // idx --
 :compile_buf_bss {
-    "    b_"coms dup com ": .skip "coms BUF_MAP map_idx as Buffer.size@ com
+    var &Buffer entry: {dup BUF_MAP map_idx}
+    "    b_"coms com ": .skip "coms entry->size com
     if debug_mode {
-        " // "coms dup BUF_MAP map_idx as Buffer.key.name@ coms
+        " // "coms entry->key.name coms
     }
     "\n"coms
 }
 
 // idx -- bool
 :is_valid_static_buffer {
-    BUF_MAP map_idx
-    dup as Buffer.key.name@ flag
-    swap as Buffer.is_static@c
-    &
+    var &Buffer entry: {BUF_MAP map_idx}
+    (entry->key.name flag) (entry->is_static) &
 }
 
 pub :compile_program_aarch64_linux_gcc {
@@ -589,23 +589,18 @@ pub :compile_program_aarch64_linux_gcc {
     &start_ops_mem as StackHead.data compile_ops
 
     ".section .data\n"coms
-
-    // -- idx
-    0 while dup MAP_SIZE < {
-        if dup dup (is_valid_static_buffer) swap (BUF_MAP map_idx as Buffer.init@ flag) & {
-            dup compile_buf_data
+    for (var int i: 0, i MAP_SIZE <, 1 +=i) {
+        if (i is_valid_static_buffer) (i BUF_MAP map_idx as Buffer.init@ flag) & {
+            i compile_buf_data
         }
-        1+
-    } drop
+    }
     compile_inline_bufs
 
     ".section .bss\n"coms
-    // -- idx
-    0 while dup MAP_SIZE < {
-        if dup dup (is_valid_static_buffer) swap (BUF_MAP map_idx as Buffer.init@ not) & {
-            dup compile_buf_bss
+    for (var int i: 0, i MAP_SIZE <, 1 +=i) {
+        if (i is_valid_static_buffer) (i BUF_MAP map_idx as Buffer.init@ not) & {
+            i compile_buf_bss
         }
-        1+
-    } drop
+    }
     "    bsp: .skip "coms ASM_STACK_SIZE com "\n"coms
 }

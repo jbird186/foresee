@@ -7,14 +7,14 @@ pub static char[SRC_STR_SIZE] src_str
 
 pub static [int char[1024][512]] strs_mem
 pub static [int Token[1024][72]] toks_mem
-pub static [int Token[1024][72]] out_toks_mem
+pub static [int Token[1024][80]] out_toks_mem
 pub static [int Op[1024][64]] fn_ops_mem
 pub static [int Op[16]] start_ops_mem
-pub static [int ptr[1024][8]] inline_bufs
+pub static [int &char[1024][8]] inline_bufs
 pub static [int EnumVariant[1024][8]] enum_variants_mem
 pub static [int StructField[1024][8]] struct_fields_mem
 pub static [int int[1024][8]] dims_mem
-pub static [int ptr[1024]] dirs_mem
+pub static [int &char[1024]] dirs_mem
 #pub macro STRS_MEM { &strs_mem %char }
 #pub macro ENUM_MEM { &enum_variants_mem %EnumVariant }
 #pub macro STRUCT_MEM { &struct_fields_mem %StructField }
@@ -22,7 +22,7 @@ pub static [int ptr[1024]] dirs_mem
 #pub macro DIRS_MEM { &dirs_mem %ptr }
 
 pub static [int int[1024]] alloc_stack
-pub static [int ptr[1024]] scope_stack
+pub static [int int[1024]] scope_stack
 pub static [int int[1024]] loop_stack
 #pub macro ALLOC_STACK { &alloc_stack %int }
 #pub macro SCOPE_STACK { &scope_stack %ptr }

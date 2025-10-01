@@ -224,24 +224,10 @@ pub :compile_program_x86_64_windows_nasm {
     &start_ops_mem as StackHead.data compile_ops
 
     "section .data\n"coms
-
-    // -- idx
-    0 while dup MAP_SIZE < {
-        if dup dup (x64n_is_valid_static_buffer) swap (BUF_MAP map_idx as Buffer.init@ flag) & {
-            dup x64n_compile_buf_data
-        }
-        1+
-    } drop
-    x64n_compile_inline_bufs
+    data_x86_64_nasm_generic
 
     "section .bss\n"coms
-    // -- idx
-    0 while dup MAP_SIZE < {
-        if dup dup (x64n_is_valid_static_buffer) swap (BUF_MAP map_idx as Buffer.init@ not) & {
-            dup x64n_compile_buf_bss
-        }
-        1+
-    } drop
+    bss_x86_64_nasm_generic
     "    windata resd 1\n"coms
     "    bsp:"coms x64n_compile_resb ASM_STACK_SIZE com "\n"coms
 }

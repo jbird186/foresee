@@ -71,9 +71,9 @@ Accessing an uninitialized local variable leads to undefined behavior.
 
 ### Simple Types
 
-Simple types are comprised of a base type, optionally followed by any number of array dimensions. Base types include any built-in type, such was `int`, `char`, etc, or any user-defined struct. An array dimension is a pair of brackets containing the size of the array.
+Simple types are comprised of a base type, optionally followed by any number of array dimensions. Base types include any built-in type, such was `int`, `char`, etc, or any user-defined struct. Base types also include pointers to other base types. An array dimension is a pair of brackets containing the size of the array.
 
-For example, `var char letter` would define `letter` to be a single character. `var ptr[4] items` would define `items` to be an array of 4 pointers. `var int[5][8] matrix` would define `matrix` to be a 5x8 matrix of integers.
+For example, `var char letter` would define `letter` to be a single character. `var &int number` would define `number` to be a pointer to an integer. `var ptr[4] items` would define `items` to be an array of 4 pointers. `var int[5][8] matrix` would define `matrix` to be a 5x8 matrix of integers.
 
 An array dimension can also be defined by a list of spaced integers, where the integers are summed up to obtain the total size. So `var int[5][8] matrix` behaves the exact same as `var int[1 4][2 2 4] matrix`.
 
@@ -87,9 +87,9 @@ Complex Types cannot be used intelligently by the compiler. Their purpose is onl
 
 * `var [int] item` would allocate 8 bytes for `item`.
 * `var [40] item` would allocate 40 bytes for `item`.
-* `var [int ptr[8]] item` would allocate 72 bytes for `item`.
+* `var [int &int[8]] item` would allocate 72 bytes for `item`.
 * `var [int[2] char[4] ptr] item` would allocate 28 bytes for `item`.
-* `var [ptr[2 8[12]] 50[2]] item` would allocate 884 bytes for `item`.
+* `var [&int[2 8[12]] 50[2]] item` would allocate 884 bytes for `item`.
 
 ### Store and Fetch
 
@@ -271,7 +271,7 @@ struct StructName {
 }
 ```
 
-Struct fields generally follow the same rules as variables. Fields can be accessed by using the `.fieldname` syntax. To cast a pointer to a struct, use the `as` keyword.
+Struct fields are generally defined like variables. Like in C, fields can be accessed directly by using the `.fieldname` or, if you have a pointer to a struct, with `->fieldname`. To cast a pointer to a given type, use the `as Type` syntax.
 
 #### Example
 
@@ -289,14 +289,15 @@ struct Points {
 
 // &point --
 :double_point {
-    var ptr p: {}
-    p as Point.x@ 2* p as Point.x!
-    p as Point.y@ 2* p as Point.y!
+    var &Point p: {}
+    p->x 2* =p->x
+    p->y 2* =p->y
 }
 
 // &point --
 :show_point {
-    "(" puts dup as Point.x@ put ", " puts as Point.y@ put ")\n" puts
+    var &Point p: {}
+    "(" puts p->x put ", " puts p->y put ")\n" puts
 }
 
 :main {
@@ -310,6 +311,8 @@ struct Points {
     1 =ps.points[0].x
     -4 =ps.points[0].y
     &ps.points[0] show_point
+
+    &p as Point.x@ put cr
 }
 ```
 
@@ -317,6 +320,7 @@ Output:
 ```
 (10, 6)
 (1, -4)
+10
 ```
 
 ### Enums

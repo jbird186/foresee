@@ -445,9 +445,11 @@ pub :x64n_compile_resb {
 
 // idx --
 pub :x64n_compile_buf_bss {
-    "    b_"coms dup com x64n_compile_resb BUF_MAP map_idx as Buffer.size@ com
+    var int idx: {}
+    var &Buffer buf: {idx BUF_MAP map_idx}
+    "    b_"coms idx com x64n_compile_resb buf->size com
     if debug_mode {
-        " ; "coms dup BUF_MAP map_idx as Buffer.key.name@ coms
+        " ; "coms buf->key.name coms
     }
     "\n"coms
 }
@@ -458,4 +460,21 @@ pub :x64n_is_valid_static_buffer {
     dup as Buffer.key.name@ flag
     swap as Buffer.is_static@c
     &
+}
+
+pub :data_x86_64_nasm_generic {
+    for (var int i: 0, i MAP_SIZE <, 1 +=i) {
+        if (i x64n_is_valid_static_buffer) (i BUF_MAP map_idx as Buffer.init@ flag) & {
+            i x64n_compile_buf_data
+        }
+    }
+    x64n_compile_inline_bufs
+}
+
+pub :bss_x86_64_nasm_generic {
+    for (var int i: 0, i MAP_SIZE <, 1 +=i) {
+        if (i x64n_is_valid_static_buffer) (i BUF_MAP map_idx as Buffer.init@ not) & {
+            i x64n_compile_buf_bss
+        }
+    }
 }

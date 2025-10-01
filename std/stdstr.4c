@@ -63,7 +63,7 @@ pub :strchr {
 
 // &str &substr -- [ptr, 0]
 pub :strstr {
-    var ptr src: {swap}
+    var &char src: {swap}
     var int sub_len: {dup strlen}
     while src@c {
         if src over sub_len strncmp not {

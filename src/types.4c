@@ -1,22 +1,35 @@
 pub struct File {
-    ptr name
+    &char name
 }
 
 pub struct ScopedKey {
-    ptr name
+    &char name
     int scope
 }
 
 pub struct Type {
-    ptr name
-    ptr dims
+    &char name
+    &int dims
+    int indir
+}
+
+pub struct Op {
+    char kind
+    [8] data
+}
+
+pub struct Token {
+    char kind
+    [8] data
+    &char file
+    int line
 }
 
 pub struct Buffer {
     ScopedKey key
     int size
     Type type
-    ptr init
+    [8] init
     int alloc_offset
     bool init_int
     bool is_static
@@ -25,47 +38,33 @@ pub struct Buffer {
 pub struct Macro {
     ScopedKey key
     int n_args
-    ptr toks
+    &Token toks
     bool is_arg
 }
 
 pub struct Function {
     ScopedKey key
-    ptr def
-}
-
-pub struct Enum {
-    ScopedKey key
-    ptr variants
+    &Op def
 }
 
 pub struct EnumVariant {
-    ptr name
+    &char name
     int value
 }
-
-pub struct Struct {
+pub struct Enum {
     ScopedKey key
-    int size
-    ptr fields
+    &int variants
 }
 
 pub struct StructField {
-    ptr name
+    &char name
     int size
     Type type
 }
-
-pub struct Op {
-    char kind
-    ptr data
-}
-
-pub struct Token {
-    char kind
-    ptr data
-    ptr file
-    int line
+pub struct Struct {
+    ScopedKey key
+    int size
+    &StructField fields
 }
 
 pub static bool IS_PUBLIC

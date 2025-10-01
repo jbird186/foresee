@@ -6,7 +6,7 @@
 #use "token.4c"
 
 static int line
-static ptr file
+static &char file
 
 :lex_error {
     file puts ":"puts line put ": ERROR: "puts
@@ -250,6 +250,14 @@ static ptr file
     swap
 }
 
+// src_ptr -- src_ptr bool
+:should_lex_ref {
+    if viewc '&' != { false return }
+    var &char src: {dup}
+    while src@c '&' == { 1 +=src }
+    src@c is_ident_first_char
+}
+
 #macro lex_tagged_ident(tag_char, token_id) {
     else if (viewc tag_char ==) (over 1+ @c is_ident_first_char) & {
         0 token_id file line &toks_mem tok_push
@@ -273,6 +281,7 @@ pub :lex_src {
             if viewc '\n' == { 1 +=line }
             1+
         }
+
         if viewc not {
             drop
             0 TKind.EOF file line &toks_mem tok_push
@@ -284,7 +293,6 @@ pub :lex_src {
         } else if viewc '\"' == {
             view_str TKind.STR file line &toks_mem tok_push
         }
-        lex_tagged_ident('&', TKind.REF)
         lex_tagged_ident(':', TKind.FN)
         lex_tagged_ident('.', TKind.FIELD)
         lex_tagged_ident('%', TKind.SIZE)
@@ -300,9 +308,22 @@ pub :lex_src {
         lex_single('}', TKind.BRACE_END)
         lex_single('[', TKind.BRACKET_START)
         lex_single(']', TKind.BRACKET_END)
+        else if (viewc '-' ==) (over 1+ @c '>' ==) & {
+            0 TKind.DEREF file line &toks_mem tok_push
+            2+
+        }
+        else if should_lex_ref {
+            var int indir: 0
+            while dup@c '&' == {
+                1 +=indir
+                1+
+            }
+            indir TKind.REF file line &toks_mem tok_push
+        }
         else if viewc is_ident_first_char {
             lex_ident
-        } else {
+        }
+        else {
             view_word
             if over@c is_ident_first_char { TKind.EQ } else { TKind.WORD }
             file line &toks_mem tok_push

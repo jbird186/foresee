@@ -50,7 +50,7 @@ pub :itoa {
 
 // &buf -- int
 pub :atoi {
-    var ptr buf: {}
+    var &char buf: {}
     var bool is_neg: {buf@c '-' ==}
     if is_neg { 1 +=buf }
 

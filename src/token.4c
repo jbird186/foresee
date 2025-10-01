@@ -27,6 +27,7 @@ pub enum TKind {
     STRUCT
     AS
     FIELD
+    DEREF
     SIZE
     CALL
     PUB
@@ -42,22 +43,21 @@ pub enum TKind {
 
 // data kind file line ref --
 pub :tok_push {
-    // -- data kind file line ptr
-    %Token stack_push
-    swap over as Token.line!
-    swap over as Token.file!
-    swap over as Token.kind!c
-    as Token.data!
+    var &Token entry: {%Token stack_push}
+    =entry->line
+    =entry->file
+    =entry->kind
+    =entry->data
 }
 
 // src dest --
 pub :tok_push_clone {
-    // -- src ptr
-    %Token stack_push
-    over as Token.kind@c over as Token.kind!c
-    over as Token.data@ over as Token.data!
-    over as Token.file@ over as Token.file!
-    swap as Token.line@ swap as Token.line!
+    var &Token entry: {%Token stack_push}
+    var &Token src: {}
+    src->kind =entry->kind
+    src->data =entry->data
+    src->file =entry->file
+    src->line =entry->line
 }
 
 pub :viewtk { dup as Token.kind@c }
@@ -68,18 +68,18 @@ pub :viewtl { dup as Token.line@ }
 // tok_ptr -- tok_ptr
 pub :show_tok {
     if viewtk TKind.EOF == { "EOF" puts }
-    if viewtk TKind.INT == { viewtd put }
-    if viewtk TKind.CHAR == {
+    else if viewtk TKind.INT == { viewtd put }
+    else if viewtk TKind.CHAR == {
         viewtd
         if dup isprint {
             "'" puts putc "'" puts
         } else {
-            "char " puts put
+            "char(" puts put ")" puts
         }
     }
-    if viewtk TKind.STR == {
+    else if viewtk TKind.STR == {
         "\"" puts
-        var ptr c: {viewtd}
+        var &char c: {viewtd}
         while c@c {
             if c@c isprint { c@c putc }
             else if c@c '\0' == { "\\0" puts }     // null
@@ -98,37 +98,39 @@ pub :show_tok {
         }
         "\"" puts
     }
-    if viewtk TKind.IDENT == { "identifier \""puts viewtd puts "\"" puts }
-    if viewtk TKind.WORD == { "word \""puts viewtd puts "\"" puts }
-    if viewtk TKind.FN == { ":fn" puts }
-    if viewtk TKind.IF == { "if" puts }
-    if viewtk TKind.ELSE == { "else" puts }
-    if viewtk TKind.WHILE == { "while" puts }
-    if viewtk TKind.FOR == { "for" puts }
-    if viewtk TKind.CONTINUE == { "continue" puts }
-    if viewtk TKind.BREAK == { "break" puts }
-    if viewtk TKind.COLON == { ":" puts }
-    if viewtk TKind.POUND == { "#" puts }
-    if viewtk TKind.COMMA == { "," puts }
-    if viewtk TKind.STATIC == { "static" puts }
-    if viewtk TKind.VAR == { "$" puts }
-    if viewtk TKind.REF == { "&" puts }
-    if viewtk TKind.EQ == { viewtd puts }
-    if viewtk TKind.ENUM == { "enum" puts }
-    if viewtk TKind.STRUCT == { "struct" puts }
-    if viewtk TKind.AS == { "as" puts }
-    if viewtk TKind.FIELD == { "." puts }
-    if viewtk TKind.SIZE == { "%" puts }
-    if viewtk TKind.CALL == { "call" puts }
-    if viewtk TKind.PUB == { "pub" puts }
-    if viewtk TKind.PAREN_START == { "(" puts }
-    if viewtk TKind.PAREN_END == { ")" puts }
-    if viewtk TKind.BRACE_START == { "{" puts }
-    if viewtk TKind.BRACE_END == { "}" puts }
-    if viewtk TKind.BRACKET_START == { "[" puts }
-    if viewtk TKind.BRACKET_END == { "]" puts }
-    if viewtk TKind.FILE_START == { "FILE_START" puts }
-    if viewtk TKind.FILE_END == { "FILE_END" puts }
+    else if viewtk TKind.IDENT == { viewtd puts }
+    else if viewtk TKind.WORD == { viewtd puts }
+    else if viewtk TKind.FN == { ":fn" puts }
+    else if viewtk TKind.IF == { "if" puts }
+    else if viewtk TKind.ELSE == { "else" puts }
+    else if viewtk TKind.WHILE == { "while" puts }
+    else if viewtk TKind.FOR == { "for" puts }
+    else if viewtk TKind.CONTINUE == { "continue" puts }
+    else if viewtk TKind.BREAK == { "break" puts }
+    else if viewtk TKind.COLON == { ":" puts }
+    else if viewtk TKind.POUND == { "#" puts }
+    else if viewtk TKind.COMMA == { "," puts }
+    else if viewtk TKind.STATIC == { "static" puts }
+    else if viewtk TKind.VAR == { "$" puts }
+    else if viewtk TKind.REF == { for (var int i: 0, viewtd i >, 1 +=i) { "&" puts } }
+    else if viewtk TKind.EQ == { viewtd puts }
+    else if viewtk TKind.ENUM == { "enum" puts }
+    else if viewtk TKind.STRUCT == { "struct" puts }
+    else if viewtk TKind.AS == { "as" puts }
+    else if viewtk TKind.FIELD == { "." puts }
+    else if viewtk TKind.DEREF == { "->" puts }
+    else if viewtk TKind.SIZE == { "%" puts }
+    else if viewtk TKind.CALL == { "call" puts }
+    else if viewtk TKind.PUB == { "pub" puts }
+    else if viewtk TKind.PAREN_START == { "(" puts }
+    else if viewtk TKind.PAREN_END == { ")" puts }
+    else if viewtk TKind.BRACE_START == { "{" puts }
+    else if viewtk TKind.BRACE_END == { "}" puts }
+    else if viewtk TKind.BRACKET_START == { "[" puts }
+    else if viewtk TKind.BRACKET_END == { "]" puts }
+    else if viewtk TKind.FILE_START == { "FILE_START" puts }
+    else if viewtk TKind.FILE_END == { "FILE_END" puts }
+    else { "TKind(" puts viewtk put ")" puts }
 }
 
 // tok_ptr -- tok_ptr
@@ -137,7 +139,7 @@ pub :error {
 }
 
 #macro skip_delim(start, end) {(
-    var ptr original_tok_ptr: {dup}
+    var &Token original_tok_ptr: {dup}
     // -- depth tok_ptr
     1 swap while %Token+ over {
         if viewtk not {

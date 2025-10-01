@@ -54,13 +54,13 @@ pub :fetchc {fetch 0xff &}
 pub :fread {
     #ifndef OS_WINDOWS { __fread }
     #ifdef OS_WINDOWS {
-        var ptr buf: {2 pick}
+        var &char buf: {2 pick}
         var int res: {__fread}
         if res is_failure { res return }
 
         var int new_i: 0
         for var int i: 0, (i res <) (buf i+ @c flag) &, 1 +=i {
-            var ptr ch: {buf i+}
+            var &char ch: {buf i+}
             if (ch@c '\r' ==) (ch 1+ @c '\n' ==) & { continue }
             ch@c (buf new_i+)!c
             1 +=new_i
@@ -76,7 +76,7 @@ pub :fwrite {
     #ifdef OS_WINDOWS {
         var ptr fd: {}
         var int len: {}
-        var ptr buf: {}
+        var &char buf: {}
 
         var int n_newlines: 0
         var int i: 0
@@ -88,7 +88,7 @@ pub :fwrite {
 
         i n_newlines+ =len
 
-        var ptr new_buf: { len win_LocalAlloc }
+        var &char new_buf: { len win_LocalAlloc }
         if new_buf is_failure { 1 exit }
 
         for var int j: 0 var int new_i: 0, j i <, 1 +=j 1+=new_i {
@@ -108,7 +108,7 @@ pub :fwrite {
 pub :getcwd {
     #ifndef OS_WINDOWS { __getcwd }
     #ifdef OS_WINDOWS {
-        var ptr cwd: {over}
+        var &char cwd: {over}
         var int res: {__getcwd}
         if res is_success {
             '\\' cwd res+ !c

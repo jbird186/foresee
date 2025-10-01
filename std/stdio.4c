@@ -2,7 +2,7 @@
 
 // &buf len -- bytes_read
 pub :stdinln {
-    var ptr buf: {over}
+    var &char buf: {over}
     var int res: {stdin}
     if res is_failure { res return }
     0 (buf res+ 1-)!c
