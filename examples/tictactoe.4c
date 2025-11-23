@@ -1,6 +1,5 @@
 #use "stdio.4c"
 #use "stdchar.4c"
-#use "stdstr.4c"
 
 struct Board {
     char[9] squares
@@ -122,7 +121,7 @@ struct Board {
     while board.player_turn not {
         "Do you want to play first? (y/n): " puts
 
-        var char answer: {readc tolower}
+        var char answer: { readc }
         while readc '\n' != {}
 
         if answer 'y' == { 1 =board.player_turn }

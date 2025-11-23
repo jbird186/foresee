@@ -9,6 +9,7 @@ check_build() {
         exit 1
     fi
 }
+
 nasm -f elf64 ./bootstrap/x86_64-linux-nasm.asm -o target/compiler.o && ld target/compiler.o -o target/compiler
 target/compiler ./src/main.4c target/compiler.s x86_64-linux-nasm -Istd/ -O
 check_build "x86_64-linux-nasm" "asm"
