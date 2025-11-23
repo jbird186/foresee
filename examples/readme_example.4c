@@ -1,0 +1,9 @@
+#use "stdio.4c"
+
+:main {
+    "Hello, World!\n" puts
+    for (var int i: 0, i 10 <, 1 +=i) {
+        i i * put sp
+    }
+    cr
+}

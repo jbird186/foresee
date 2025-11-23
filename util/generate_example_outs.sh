@@ -36,3 +36,6 @@ for src in ./examples/*.4c; do
 
     rm -f "${base}.o" "$exe" "$asm_out"
 done
+
+echo "Testing example outputs..."
+./tests/test_examples.sh
