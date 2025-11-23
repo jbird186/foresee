@@ -1,0 +1,14 @@
+#use "stdio.4c"
+
+// n -- n!
+:factorial {
+    var int x: {}
+    if x 2 < { 1 }
+    else { (x 1- factorial) (x) * }
+}
+
+:main {
+    for (var int i: 1, i 10 <, 1+=i) {
+        i put "! = " puts i factorial put cr
+    }
+}

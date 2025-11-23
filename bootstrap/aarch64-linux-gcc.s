@@ -26422,7 +26422,7 @@ f_6851:
     mov     x0, #24
     str     x0, [x12, #-16]
     sub     x12, x12, 16
-    bl      f_1057
+    bl      f_6823
     adrp    x0, b_7336
     add     x0, x0, :lo12:b_7336
     str     x0, [x12]

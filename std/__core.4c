@@ -25,6 +25,9 @@ pub :not {if {false} else {true}}
 
 #pub macro ! {store}
 #pub macro @ {fetch}
+#pub macro @@ {fetch fetch}
+#pub macro @@@ {fetch fetch fetch}
+#pub macro @@@@ {fetch fetch fetch fetch}
 #pub macro @++ {dup@ dup 1+ rot!}
 #pub macro ++@ {dup@ 1+ dup rot!}
 #pub macro @-- {dup@ dup 1- rot!}
@@ -38,6 +41,9 @@ pub :storec {
 #pub macro !c {storec}
 pub :fetchc {fetch 0xff &}
 #pub macro @c {fetchc}
+#pub macro @@c {fetch fetchc}
+#pub macro @@@c {fetch fetch fetchc}
+#pub macro @@@@c {fetch fetch fetch fetchc}
 #pub macro @c++ {dup@c dup 1+ rot!c}
 #pub macro ++@c {dup@c 1+ dup rot!c}
 #pub macro @c-- {dup@c dup 1- rot!c}

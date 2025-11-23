@@ -49,6 +49,6 @@ pub :readc {
 
 // -- int
 pub :read {
-    &__std_buf 24 stdin drop
+    &__std_buf 24 stdinln drop
     &__std_buf atoi
 }

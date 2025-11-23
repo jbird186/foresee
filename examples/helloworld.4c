@@ -1,0 +1,5 @@
+#use "stdio.4c"
+
+:main {
+    "Hello, World!\n" puts
+}

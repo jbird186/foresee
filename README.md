@@ -35,6 +35,8 @@ Hello, World!
 0 1 4 9 16 25 36 49 64 81
 ```
 
+More examples can be found in the [`examples/`](examples/) directory.
+
 # Compiling
 
 Foresee currently supports x86-64 Linux, arm64 Linux, and x86-64 Windows (through [Wine](https://www.winehq.org/)).

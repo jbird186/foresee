@@ -24803,7 +24803,7 @@ f_6851:
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 24
     sub     r12, 16
-    call    f_1057
+    call    f_6823
     lea     rax, [rel b_7336]
     mov     qword [r12], rax
     call    f_2227

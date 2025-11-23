@@ -1,0 +1,162 @@
+#use "stdio.4c"
+#use "stdchar.4c"
+#use "stdstr.4c"
+
+struct Board {
+    char[9] squares
+    char player_turn
+}
+
+// &board -- player
+:next_player {
+    as Board.player_turn@ 0b1& 1+
+}
+
+// value -- char
+:square_char {
+    var char val: {}
+    if val 1 == { 'X' }
+    else if val 2 == { 'O' }
+    else { ' ' }
+}
+
+// &board --
+:show_board {
+    #macro SHOW_ROW(a,b,c) {
+        " " puts
+        board->squares[a] square_char putc
+        " | " puts
+        board->squares[b] square_char putc
+        " | " puts
+        board->squares[c] square_char putc
+        cr
+    }
+
+    var &Board board: {}
+    SHOW_ROW(0,1,2)
+    "-----------\n" puts
+    SHOW_ROW(3,4,5)
+    "-----------\n" puts
+    SHOW_ROW(6,7,8)
+}
+
+// &board -- winner
+:check_winner {
+    #macro CHECK_CASE(a, b, c) {
+        if board->squares[a] {
+            if (board->squares[a] board->squares[b] ==) (board->squares[b] board->squares[c] ==) & {
+                board->squares[a] return
+            }
+        }
+    }
+
+    var &Board board: {}
+    CHECK_CASE(0,1,2)
+    CHECK_CASE(3,4,5)
+    CHECK_CASE(6,7,8)
+    CHECK_CASE(0,3,6)
+    CHECK_CASE(1,4,7)
+    CHECK_CASE(2,5,8)
+    CHECK_CASE(0,4,8)
+    CHECK_CASE(2,4,6)
+    0
+}
+
+// &board -- bool
+:has_open_sqares {
+    var &Board board: {}
+    for (var int i: 0, i 9 <, 1+=i) {
+        if board->squares[i] not {
+            true return
+        }
+    }
+    false
+}
+
+// &board -- index score
+:_get_best_move {
+    var &Board board: {}
+    var Board branch
+
+    var int best_score: -999
+    var int best_move: -1
+
+    for (var int i: 0, i 9 <, 1+=i) {
+        if board->squares[i] { continue }
+
+        board &branch %Board memcpy
+        branch.player_turn =branch.squares[i]
+        &branch next_player =branch.player_turn
+
+        var int score
+        var char winner: {&branch check_winner}
+        if (&branch has_open_sqares) (winner not) & {
+            &branch _get_best_move -1* =score drop
+        } else {
+            if branch.player_turn winner == { -99 =score }
+            else if (&branch next_player) winner == { 99 =score }
+            else { 0 =score }
+        }
+
+        if score best_score > {
+            score =best_score
+            i =best_move
+        }
+    }
+
+    best_move best_score
+}
+
+// &board -- index
+:get_best_move {
+    _get_best_move drop
+}
+
+:main {
+    var Board board
+    0 =board.player_turn
+    for (var int i: 0, i 9 <, 1+=i) {
+        0 =board.squares[i]
+    }
+
+    while board.player_turn not {
+        "Do you want to play first? (y/n): " puts
+
+        var char answer: {readc tolower}
+        while readc '\n' != {}
+
+        if answer 'y' == { 1 =board.player_turn }
+        else if answer 'n' == { 2 =board.player_turn }
+        else { "Invalid input.\n" puts }
+    }
+
+    while (&board has_open_sqares) (&board check_winner not) & {
+        &board show_board cr
+
+        var int index: -1
+        if board.player_turn 1 == {
+            "Enter a square (1-9): " puts
+            read 1- =index
+            if (index 0 <) (index 8 >) | {
+                "Invalid move.\n" puts
+                continue
+            }
+        } else {
+            "The computer is thinking...\n" puts
+            &board get_best_move =index
+        }
+
+        board.player_turn =board.squares[index]
+        &board next_player =board.player_turn
+    }
+
+    &board show_board cr
+    var int winner: { &board check_winner }
+    if winner 1 == {
+        "You won!\n" puts
+    } else if winner 2 == {
+        "The computer wins.\n" puts
+    } else {
+        "The game is a tie.\n" puts
+    }
+}
