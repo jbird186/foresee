@@ -1,3 +1,25 @@
+// &dest byte len --
+pub :memset {
+    var int len: {}
+    var char value: {}
+    var ptr dest: {}
+    #macro USE_MEMCPY_MINIMUM { 16 }
+    #macro MIN(a,b) { if ((a) (b) <) {a} else {b} }
+
+    var int fill_to: { MIN(len, USE_MEMCPY_MINIMUM) }
+    for (var int i: 0, i fill_to <, 1+=i) {
+        value (dest i+) !c
+    }
+    if fill_to len == { return }
+
+    var int filled: USE_MEMCPY_MINIMUM
+    while filled len < {
+        var int chunk: { MIN(filled, len filled-) }
+        dest (dest filled+) chunk memcpy
+        chunk +=filled
+    }
+}
+
 // &str -- len
 pub :strlen {
     dup while dup@c { 1+ }

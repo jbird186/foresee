@@ -56,60 +56,6 @@ pub :fetchc {fetch 0xff &}
     #use "__core/windows.4c"
 }
 
-// &ptr len fd -- [bytes_read, -1]
-pub :fread {
-    #ifndef OS_WINDOWS { __fread }
-    #ifdef OS_WINDOWS {
-        var &char buf: {2 pick}
-        var int res: {__fread}
-        if res is_failure { res return }
-
-        var int new_i: 0
-        for var int i: 0, (i res <) (buf i+ @c flag) &, 1 +=i {
-            var &char ch: {buf i+}
-            if (ch@c '\r' ==) (ch 1+ @c '\n' ==) & { continue }
-            ch@c (buf new_i+)!c
-            1 +=new_i
-        }
-        0 (buf new_i+)!c
-        new_i
-    }
-}
-
-// &ptr len fd -- [bytes_written, -1]
-pub :fwrite {
-    #ifndef OS_WINDOWS { __fwrite }
-    #ifdef OS_WINDOWS {
-        var ptr fd: {}
-        var int len: {}
-        var &char buf: {}
-
-        var int n_newlines: 0
-        var int i: 0
-        for , (i len <) (buf i+ @c flag) &, 1 +=i {
-            if (buf i+ @c) ('\n') == {
-                1 +=n_newlines
-            }
-        }
-
-        i n_newlines+ =len
-
-        var &char new_buf: { len win_LocalAlloc }
-        if new_buf is_failure { 1 exit }
-
-        for var int j: 0 var int new_i: 0, j i <, 1 +=j 1+=new_i {
-            if (buf j+ @c) ('\n') == {
-                '\r' (new_buf new_i+)!c
-                1+=new_i
-            }
-            (buf j+ @c) (new_buf new_i+)!c
-        }
-
-        new_buf len fd __fwrite
-        if new_buf win_LocalFree is_failure { 1 exit }
-    }
-}
-
 // &buf len -- [bytes_written, -err]
 pub :getcwd {
     #ifndef OS_WINDOWS { __getcwd }
@@ -125,10 +71,3 @@ pub :getcwd {
         }
     }
 }
-
-// &buf len -- bytes_read
-pub :stdin {STDIN_FD fread}
-// &ptr len --
-pub :stdout {STDOUT_FD fwrite drop}
-// &ptr len --
-pub :stderr {STDERR_FD fwrite drop}

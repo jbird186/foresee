@@ -76,10 +76,14 @@ static int TOTAL_DATA_SIZE
     }
 }
 
-// name scope --
+// tok_ptr name scope -- tok_ptr
 :check_name_availability_fn {
     var int scope: {}
     var &char name: {}
+    if name "__OP_" 5 strncmp not {
+        %Token- error "Item cannot overwrite intrinsic opcode.\n"puts
+        1 exit
+    }
     if name scope BUF_MAP scoped_map_get slot_is_used {
         error "Buffer '"puts name puts "' already defined in this scope\n"puts
         1 exit
@@ -94,7 +98,7 @@ static int TOTAL_DATA_SIZE
     }
 }
 
-// name scope --
+// tok_ptr name scope -- tok_ptr
 :check_name_availability {
     if over over FN_MAP scoped_map_get slot_is_used {
         error "Function '"puts over puts "' already defined in this scope\n"puts
@@ -424,10 +428,10 @@ static int TOTAL_DATA_SIZE
     var int label_id: {ASM_LABEL_ID}
     2 +=ASM_LABEL_ID
 
-    label_id OKind.LABEL 3 pick op_push
-
     label_id LOOP_STACK stack_push!
     new_local_scope
+
+    label_id OKind.LABEL 3 pick op_push
 
     // Condition
     parse_until(TKind.BRACE_START)
@@ -460,12 +464,13 @@ static int TOTAL_DATA_SIZE
     }
     if has_paren { %Token+ }
 
-    label_id 2+ LOOP_STACK stack_push!
+    label_id LOOP_STACK stack_push!
     new_local_scope
 
     // Initialization
     parse_until(TKind.COMMA)
-    label_id OKind.LABEL 3 pick op_push
+
+    label_id 2+ OKind.LABEL 3 pick op_push
 
     // Condition
     parse_until(TKind.COMMA)
@@ -477,7 +482,7 @@ static int TOTAL_DATA_SIZE
     // Operations
     parse_until(TKind.BRACE_END)
 
-    label_id 2+ OKind.LABEL 3 pick op_push
+    label_id OKind.LABEL 3 pick op_push
 
     // Iteration
     swap iter
@@ -488,7 +493,7 @@ static int TOTAL_DATA_SIZE
     &loop_stack stack_shrink
     pop_local_scope
 
-    label_id OKind.JMP 3 pick op_push
+    label_id 2+ OKind.JMP 3 pick op_push
     label_id 1+ OKind.LABEL 3 roll op_push
 }
 
