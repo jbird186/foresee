@@ -290,8 +290,8 @@ struct Points {
 // &point --
 :double_point {
     var &Point p: {}
-    p->x 2* =p->x
-    p->y 2* =p->y
+    2 *=p->x
+    2 *=p->y
 }
 
 // &point --

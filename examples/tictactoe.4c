@@ -8,7 +8,7 @@ struct Board {
 
 // &board -- player
 :next_player {
-    as Board.player_turn@ 0b1& 1+
+    as Board.player_turn@ 2% 1+
 }
 
 // value -- char
