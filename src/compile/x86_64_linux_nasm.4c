@@ -14,34 +14,34 @@
         "rsi" x64n_compile_pop           // filename pointer
         x64n_flush_push_cache
         "    cmp     rax, 0\n"coms
-        "    je      .frl_"coms viewod com "\n"coms
+        "    je      .frl_"coms viewod com_label "\n"coms
         "    cmp     rax, 1\n"coms
-        "    je      .fwl_"coms viewod com "\n"coms
+        "    je      .fwl_"coms viewod com_label "\n"coms
         "    cmp     rax, 2\n"coms
-        "    je      .fal_"coms viewod com "\n"coms
-        "    jmp     .ffl_"coms viewod com "\n"coms
-        "    .frl_"coms viewod com ":\n"coms
+        "    je      .fal_"coms viewod com_label "\n"coms
+        "    jmp     .ffl_"coms viewod com_label "\n"coms
+        "    .frl_"coms viewod com_label ":\n"coms
         "    mov     rdx, 0\n"coms
-        "    jmp     .fdl_"coms viewod com "\n"coms
-        "    .fwl_"coms viewod com ":\n"coms
+        "    jmp     .fdl_"coms viewod com_label "\n"coms
+        "    .fwl_"coms viewod com_label ":\n"coms
         "    mov     rdx, 577\n"coms
-        "    jmp     .fdl_"coms viewod com "\n"coms
-        "    .fal_"coms viewod com ":\n"coms
+        "    jmp     .fdl_"coms viewod com_label "\n"coms
+        "    .fal_"coms viewod com_label ":\n"coms
         "    mov     rdx, 1089\n"coms
-        "    jmp     .fdl_"coms viewod com "\n"coms
-        "    .fdl_"coms viewod com ":\n"coms
+        "    jmp     .fdl_"coms viewod com_label "\n"coms
+        "    .fdl_"coms viewod com_label ":\n"coms
         "    mov     rax, 257\n"coms
         "    mov     rdi, -100\n"coms
         "    mov     r10, 420\n"coms
         "    syscall\n"coms
         "rax" x64n_force_compile_push    // push FD (or -1 on error)
         x64n_flush_stack_ptr_delta
-        "    jmp     .fel_"coms viewod com "\n"coms
-        "    .ffl_"coms viewod com ":\n"coms
+        "    jmp     .fel_"coms viewod com_label "\n"coms
+        "    .ffl_"coms viewod com_label ":\n"coms
         "    mov     rax, -1\n"coms
         "rax" x64n_force_compile_push
         x64n_flush_stack_ptr_delta
-        "    .fel_"coms viewod com ":\n"coms
+        "    .fel_"coms viewod com_label ":\n"coms
     }
     else if viewok OKind.FREAD == {
         "    ; OP_FREAD\n"coms_dbg

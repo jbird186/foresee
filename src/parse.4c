@@ -9,11 +9,6 @@ static int FN_ALLOC_SIZE
 static int CURRENT_ALLOC_SIZE
 static int TOTAL_DATA_SIZE
 
-:reset_fn_alloc {
-    0 =FN_ALLOC_SIZE
-    0 =CURRENT_ALLOC_SIZE
-}
-
 // n --
 :alloc_bytes {
     dup +=CURRENT_ALLOC_SIZE
@@ -576,7 +571,9 @@ static int TOTAL_DATA_SIZE
     fn_ptr =entry->def
     %Token+
 
-    reset_fn_alloc
+    0 =ASM_LABEL_ID
+    0 =FN_ALLOC_SIZE
+    0 =CURRENT_ALLOC_SIZE
     0 OKind.ALLOC &fn_ops_mem op_push
     new_local_scope
 

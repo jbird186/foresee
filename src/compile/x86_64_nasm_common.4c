@@ -150,14 +150,14 @@ pub :x64n_compile_generic_op {
         x64n_flush_stack_ptr_delta
         "    mov     rcx, [r12 + rax*8]\n"coms
         "    lea     rbx, [r12 + rax*8]\n"coms
-        "    .ral_"coms viewod com ":\n"coms
+        "    .ral_"coms viewod com_label ":\n"coms
         "    cmp     rbx, r12\n"coms
-        "    je      .rbl_"coms viewod com "\n"coms
+        "    je      .rbl_"coms viewod com_label "\n"coms
         "    mov     rdx, [rbx - 8]\n"coms
         "    mov     [rbx], rdx\n"coms
         "    sub     rbx, 8\n"coms
-        "    jmp     .ral_"coms viewod com "\n"coms
-        "    .rbl_"coms viewod com ":\n"coms
+        "    jmp     .ral_"coms viewod com_label "\n"coms
+        "    .rbl_"coms viewod com_label ":\n"coms
         "    mov     [r12], rcx\n"coms
     }
     else if viewok OKind.DUP == {
@@ -313,13 +313,13 @@ pub :x64n_compile_generic_op {
     else if viewok OKind.LABEL == {
         x64n_flush_push_cache
         x64n_flush_stack_ptr_delta
-        ".l_"coms viewod com ":\n"coms
+        ".l_"coms viewod com_label ":\n"coms
     }
     else if viewok OKind.JMP == {
         x64n_flush_push_cache
         x64n_flush_stack_ptr_delta
         "    ; OP_JMP\n"coms_dbg
-        "    jmp     .l_"coms viewod com "\n"coms
+        "    jmp     .l_"coms viewod com_label "\n"coms
     }
     else if viewok OKind.JZ == {
         "    ; OP_JZ\n"coms_dbg
@@ -327,7 +327,7 @@ pub :x64n_compile_generic_op {
         x64n_flush_push_cache
         x64n_flush_stack_ptr_delta
         "    test    rax, rax\n"coms
-        "    jz      .l_"coms viewod com "\n"coms
+        "    jz      .l_"coms viewod com_label "\n"coms
     }
     else {
         "ERROR: Invalid opcode (#"puts viewok put ")\n"puts
@@ -352,6 +352,7 @@ pub :x64n_compile_generic_op {
         if optimize_mode {
             if f->is_used not { return }
         }
+        dup =FN_IDX
         if debug_mode {
             "; "coms f->key.name coms "\n"coms
         }

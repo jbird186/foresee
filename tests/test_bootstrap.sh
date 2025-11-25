@@ -3,9 +3,9 @@ set -e
 
 check_build() {
     if diff --strip-trailing-cr "./bootstrap/$1.$2" target/compiler.s; then
-        echo "PASSED: $1"
+        echo "PASSED $1."
     else
-        echo "FAILED: $1"
+        echo "FAILED $1."
         exit 1
     fi
 }

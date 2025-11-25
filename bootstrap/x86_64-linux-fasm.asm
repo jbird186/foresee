@@ -30,10 +30,6 @@ f_15:
 f_90:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_9094]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9095]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -90,23 +86,27 @@ f_90:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_1102
     lea     rax, [b_9109]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6412
+    call    f_6962
+    call    f_1102
     lea     rax, [b_9110]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6412
     lea     rax, [b_9111]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9112]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     mov     qword [r12 - 8], 65536
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9112]
+    lea     rax, [b_9113]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -118,21 +118,21 @@ f_90:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_1041
-    lea     rax, [b_9113]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    call    f_7813
     lea     rax, [b_9114]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_2875
+    call    f_7813
     lea     rax, [b_9115]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_2875
     lea     rax, [b_9116]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9117]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -140,7 +140,7 @@ f_90:
     mov     qword [r12 - 8], 65536
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9117]
+    lea     rax, [b_9118]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -158,7 +158,7 @@ f_209:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-.l_366:
+.l_209_0:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -173,7 +173,7 @@ f_209:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_367
+    jz      .l_209_1
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -201,34 +201,34 @@ f_209:
     mov     rax, 0
     mov     rsi, qword [r12 - 8]
     cmp     rax, 0
-    je      .frl_368
+    je      .frl_209_2
     cmp     rax, 1
-    je      .fwl_368
+    je      .fwl_209_2
     cmp     rax, 2
-    je      .fal_368
-    jmp     .ffl_368
-    .frl_368:
+    je      .fal_209_2
+    jmp     .ffl_209_2
+    .frl_209_2:
     mov     rdx, 0
-    jmp     .fdl_368
-    .fwl_368:
+    jmp     .fdl_209_2
+    .fwl_209_2:
     mov     rdx, 577
-    jmp     .fdl_368
-    .fal_368:
+    jmp     .fdl_209_2
+    .fal_209_2:
     mov     rdx, 1089
-    jmp     .fdl_368
-    .fdl_368:
+    jmp     .fdl_209_2
+    .fdl_209_2:
     mov     rax, 257
     mov     rdi, -100
     mov     r10, 420
     syscall
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .fel_368
-    .ffl_368:
+    jmp     .fel_209_2
+    .ffl_209_2:
     mov     rax, -1
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    .fel_368:
+    .fel_209_2:
     lea     rax, [rbp - 280]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -239,7 +239,7 @@ f_209:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_370
+    jz      .l_209_4
     lea     rax, [rbp - 272]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -293,9 +293,9 @@ f_209:
     sub     r12, 16
     leave
     ret
-    jmp     .l_369
-.l_370:
-.l_369:
+    jmp     .l_209_3
+.l_209_4:
+.l_209_3:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
@@ -306,8 +306,8 @@ f_209:
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_366
-.l_367:
+    jmp     .l_209_0
+.l_209_1:
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], -1
     sub     r12, 16
@@ -333,7 +333,7 @@ f_229:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_883
+    jz      .l_229_1
     call    f_6138
     lea     rax, [b_8534]
     mov     qword [r12 - 8], rax
@@ -342,16 +342,16 @@ f_229:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_882
-.l_883:
-.l_882:
+    jmp     .l_229_0
+.l_229_1:
+.l_229_0:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     rax, rbx
     add     r12, 8
     test    rax, rax
-    jz      .l_885
+    jz      .l_229_3
     call    f_6138
     lea     rax, [b_8535]
     mov     qword [r12 - 8], rax
@@ -366,9 +366,9 @@ f_229:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_884
-.l_885:
-.l_884:
+    jmp     .l_229_2
+.l_229_3:
+.l_229_2:
     lea     rax, [b_5800]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -376,11 +376,11 @@ f_229:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_887
+    jz      .l_229_5
     mov     qword [r12 - 8], 0
     sub     r12, 8
-    jmp     .l_886
-.l_887:
+    jmp     .l_229_4
+.l_229_5:
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
@@ -389,7 +389,7 @@ f_229:
     mov     rax, qword [r12]
     mov     rax, qword [rax]
     mov     qword [r12], rax
-.l_886:
+.l_229_4:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -430,7 +430,7 @@ f_229:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_889
+    jz      .l_229_7
     call    f_6138
     lea     rax, [b_8537]
     mov     qword [r12 - 8], rax
@@ -439,14 +439,14 @@ f_229:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_888
-.l_889:
-.l_888:
+    jmp     .l_229_6
+.l_229_7:
+.l_229_6:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_890:
+.l_229_8:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -459,7 +459,7 @@ f_229:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_891
+    jz      .l_229_9
     call    f_2175
     mov     rax, 4
     mov     rbx, qword [r12]
@@ -472,7 +472,7 @@ f_229:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_893
+    jz      .l_229_11
     call    f_6138
     lea     rax, [b_8538]
     mov     qword [r12 - 8], rax
@@ -490,15 +490,15 @@ f_229:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_892
-.l_893:
-.l_892:
+    jmp     .l_229_10
+.l_229_11:
+.l_229_10:
     call    f_6176
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_894:
+.l_229_12:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -506,7 +506,7 @@ f_229:
     add 	rax, rcx
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_895
+    jz      .l_229_13
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -523,7 +523,7 @@ f_229:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_897
+    jz      .l_229_15
     mov     rax, qword [r12 + 8]
     mov     rbx, qword [r12 + 16]
     mov     qword [r12 + 16], rax
@@ -554,15 +554,15 @@ f_229:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_896
-.l_897:
-.l_896:
+    jmp     .l_229_14
+.l_229_15:
+.l_229_14:
     mov     rcx, 16
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_894
-.l_895:
+    jmp     .l_229_12
+.l_229_13:
     mov     rax, qword [r12 + 8]
     mov     rbx, qword [r12 + 16]
     mov     qword [r12 + 16], rax
@@ -580,7 +580,7 @@ f_229:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_899
+    jz      .l_229_17
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -597,7 +597,7 @@ f_229:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_901
+    jz      .l_229_19
     call    f_6138
     lea     rax, [b_8543]
     mov     qword [r12 - 8], rax
@@ -614,9 +614,9 @@ f_229:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_900
-.l_901:
-.l_900:
+    jmp     .l_229_18
+.l_229_19:
+.l_229_18:
     call    f_6176
     lea     rax, [b_3970]
     mov     qword [r12 - 8], rax
@@ -629,7 +629,7 @@ f_229:
     mov     rax, qword [rax]
     add     r12, 8
     test    rax, rax
-    jz      .l_903
+    jz      .l_229_21
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_3970]
@@ -651,7 +651,7 @@ f_229:
     xor 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_905
+    jz      .l_229_23
     add     r12, 8
     call    f_6138
     lea     rax, [b_8545]
@@ -670,12 +670,12 @@ f_229:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_904
-.l_905:
-.l_904:
-    jmp     .l_902
-.l_903:
-.l_902:
+    jmp     .l_229_22
+.l_229_23:
+.l_229_22:
+    jmp     .l_229_20
+.l_229_21:
+.l_229_20:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -686,8 +686,8 @@ f_229:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_898
-.l_899:
+    jmp     .l_229_16
+.l_229_17:
     lea     rax, [b_3970]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 16
@@ -699,7 +699,7 @@ f_229:
     mov     rax, qword [rax]
     add     r12, 8
     test    rax, rax
-    jz      .l_907
+    jz      .l_229_25
     lea     rax, [b_3970]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 16
@@ -714,12 +714,12 @@ f_229:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_906
-.l_907:
+    jmp     .l_229_24
+.l_229_25:
     mov     qword [r12 - 8], 0
     sub     r12, 8
-.l_906:
-.l_898:
+.l_229_24:
+.l_229_16:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     rcx, qword [r12 + 16]
@@ -748,8 +748,8 @@ f_229:
     mov     rcx, qword [r12 + 16]
     mov     [rax], rcx
     add     r12, 24
-    jmp     .l_890
-.l_891:
+    jmp     .l_229_8
+.l_229_9:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -838,7 +838,7 @@ f_242:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_743
+    jz      .l_242_1
     call    f_6138
     lea     rax, [b_8470]
     mov     qword [r12 - 8], rax
@@ -847,9 +847,9 @@ f_242:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_742
-.l_743:
-.l_742:
+    jmp     .l_242_0
+.l_242_1:
+.l_242_0:
     lea     rax, [b_3547]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
@@ -863,14 +863,14 @@ f_242:
     sub     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_744:
+    .ral_242_2:
     cmp     rbx, r12
-    je      .rbl_744
+    je      .rbl_242_2
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_744
-    .rbl_744:
+    jmp     .ral_242_2
+    .rbl_242_2:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -917,34 +917,34 @@ f_288:
     mov     rax, 0
     mov     rsi, qword [r12 + 8]
     cmp     rax, 0
-    je      .frl_1325
+    je      .frl_288_0
     cmp     rax, 1
-    je      .fwl_1325
+    je      .fwl_288_0
     cmp     rax, 2
-    je      .fal_1325
-    jmp     .ffl_1325
-    .frl_1325:
+    je      .fal_288_0
+    jmp     .ffl_288_0
+    .frl_288_0:
     mov     rdx, 0
-    jmp     .fdl_1325
-    .fwl_1325:
+    jmp     .fdl_288_0
+    .fwl_288_0:
     mov     rdx, 577
-    jmp     .fdl_1325
-    .fal_1325:
+    jmp     .fdl_288_0
+    .fal_288_0:
     mov     rdx, 1089
-    jmp     .fdl_1325
-    .fdl_1325:
+    jmp     .fdl_288_0
+    .fdl_288_0:
     mov     rax, 257
     mov     rdi, -100
     mov     r10, 420
     syscall
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .fel_1325
-    .ffl_1325:
+    jmp     .fel_288_0
+    .ffl_288_0:
     mov     rax, -1
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    .fel_1325:
+    .fel_288_0:
     lea     rax, [rbp - 24]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -955,8 +955,8 @@ f_288:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1327
-    lea     rax, [b_9546]
+    jz      .l_288_2
+    lea     rax, [b_9547]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -965,16 +965,16 @@ f_288:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    lea     rax, [b_9547]
+    lea     rax, [b_9548]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1326
-.l_1327:
-.l_1326:
+    jmp     .l_288_1
+.l_288_2:
+.l_288_1:
     lea     rax, [b_3232]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 300000
@@ -995,7 +995,7 @@ f_288:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3028
-    lea     rax, [b_9548]
+    lea     rax, [b_9549]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7777
@@ -1003,17 +1003,17 @@ f_288:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1329
-    lea     rax, [b_9549]
+    jz      .l_288_4
+    lea     rax, [b_9550]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1328
-.l_1329:
-.l_1328:
+    jmp     .l_288_3
+.l_288_4:
+.l_288_3:
     call    f_8163
     call    f_2230
     lea     rax, [rbp - 16]
@@ -1022,34 +1022,34 @@ f_288:
     mov     rax, 1
     mov     rsi, qword [r12 - 8]
     cmp     rax, 0
-    je      .frl_1330
+    je      .frl_288_5
     cmp     rax, 1
-    je      .fwl_1330
+    je      .fwl_288_5
     cmp     rax, 2
-    je      .fal_1330
-    jmp     .ffl_1330
-    .frl_1330:
+    je      .fal_288_5
+    jmp     .ffl_288_5
+    .frl_288_5:
     mov     rdx, 0
-    jmp     .fdl_1330
-    .fwl_1330:
+    jmp     .fdl_288_5
+    .fwl_288_5:
     mov     rdx, 577
-    jmp     .fdl_1330
-    .fal_1330:
+    jmp     .fdl_288_5
+    .fal_288_5:
     mov     rdx, 1089
-    jmp     .fdl_1330
-    .fdl_1330:
+    jmp     .fdl_288_5
+    .fdl_288_5:
     mov     rax, 257
     mov     rdi, -100
     mov     r10, 420
     syscall
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .fel_1330
-    .ffl_1330:
+    jmp     .fel_288_5
+    .ffl_288_5:
     mov     rax, -1
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    .fel_1330:
+    .fel_288_5:
     lea     rax, [b_1949]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -1065,8 +1065,8 @@ f_288:
     sub     rax, r12
     shr     rax, 3
     test    rax, rax
-    jz      .l_1332
-    lea     rax, [b_9550]
+    jz      .l_288_7
+    lea     rax, [b_9551]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -1076,13 +1076,13 @@ f_288:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7036
-    lea     rax, [b_9551]
+    lea     rax, [b_9552]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_1331
-.l_1332:
-.l_1331:
+    jmp     .l_288_6
+.l_288_7:
+.l_288_6:
     leave
     ret
 f_332:
@@ -1094,7 +1094,7 @@ f_332:
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-.l_1048:
+.l_332_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1102,7 +1102,7 @@ f_332:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1049
+    jz      .l_332_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1111,7 +1111,7 @@ f_332:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1051
+    jz      .l_332_3
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1120,8 +1120,8 @@ f_332:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1053
-    lea     rax, [b_8765]
+    jz      .l_332_5
+    lea     rax, [b_8766]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -1130,16 +1130,16 @@ f_332:
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-    jmp     .l_1052
-.l_1053:
-.l_1052:
+    jmp     .l_332_4
+.l_332_5:
+.l_332_4:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2002
     call    f_5223
-    jmp     .l_1050
-.l_1051:
+    jmp     .l_332_2
+.l_332_3:
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1147,8 +1147,8 @@ f_332:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1055
-    lea     rax, [b_8766]
+    jz      .l_332_7
+    lea     rax, [b_8767]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -1157,40 +1157,40 @@ f_332:
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-    jmp     .l_1054
-.l_1055:
-.l_1054:
+    jmp     .l_332_6
+.l_332_7:
+.l_332_6:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2002
     call    f_3176
-    lea     rax, [b_8767]
+    lea     rax, [b_8768]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-.l_1050:
+.l_332_2:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_1048
-.l_1049:
+    jmp     .l_332_0
+.l_332_1:
     lea     rax, [rbp - 1]
     mov     qword [r12], rax
     call    f_2002
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1057
-    lea     rax, [b_8768]
+    jz      .l_332_9
+    lea     rax, [b_8769]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1056
-.l_1057:
-.l_1056:
-    lea     rax, [b_8769]
+    jmp     .l_332_8
+.l_332_9:
+.l_332_8:
+    lea     rax, [b_8770]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -1207,19 +1207,19 @@ f_333:
     call    f_3552
     mov     rax, 1
     test    rax, rax
-    jz      .l_1226
-    lea     rax, [b_9411]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    jmp     .l_1225
-.l_1226:
+    jz      .l_333_1
     lea     rax, [b_9412]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-.l_1225:
-.l_1227:
+    jmp     .l_333_0
+.l_333_1:
+    lea     rax, [b_9413]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+.l_333_0:
+.l_333_2:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1227,48 +1227,48 @@ f_333:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1228
+    jz      .l_333_3
     mov     rax, 1
     test    rax, rax
-    jz      .l_1230
+    jz      .l_333_5
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2002
     call    f_2539
-    jmp     .l_1229
-.l_1230:
+    jmp     .l_333_4
+.l_333_5:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2002
     call    f_3176
-    lea     rax, [b_9413]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-.l_1229:
-    mov     rcx, 1
-    mov     rax, qword [r12]
-    add 	rax, rcx
-    mov     qword [r12], rax
-    jmp     .l_1227
-.l_1228:
-    mov     rax, 1
-    add     r12, 8
-    test    rax, rax
-    jz      .l_1232
     lea     rax, [b_9414]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1231
-.l_1232:
+.l_333_4:
+    mov     rcx, 1
+    mov     rax, qword [r12]
+    add 	rax, rcx
+    mov     qword [r12], rax
+    jmp     .l_333_2
+.l_333_3:
+    mov     rax, 1
+    add     r12, 8
+    test    rax, rax
+    jz      .l_333_7
     lea     rax, [b_9415]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-.l_1231:
+    jmp     .l_333_6
+.l_333_7:
+    lea     rax, [b_9416]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+.l_333_6:
     leave
     ret
 f_358:
@@ -1277,17 +1277,17 @@ f_358:
     mov     qword [r12 - 8], -8
     sub     r12, 8
     call    f_1027
-    lea     rax, [b_9123]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    call    f_6962
     lea     rax, [b_9124]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_6753
+    call    f_6962
     lea     rax, [b_9125]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_6753
+    lea     rax, [b_9126]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -1297,25 +1297,21 @@ f_367:
     push    rbp
     mov     rbp, rsp
     call    f_1101
-    lea     rax, [b_8881]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
     lea     rax, [b_8882]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6412
     lea     rax, [b_8883]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8884]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     mov     qword [r12 - 8], 65536
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_8884]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8885]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1323,12 +1319,16 @@ f_367:
     lea     rax, [b_8886]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_983
+    call    f_6962
     lea     rax, [b_8887]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_983
     lea     rax, [b_8888]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8889]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_983
@@ -1362,7 +1362,7 @@ f_465:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_269:
+.l_465_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1370,7 +1370,7 @@ f_465:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_270
+    jz      .l_465_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1393,8 +1393,8 @@ f_465:
     add 	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_269
-.l_270:
+    jmp     .l_465_0
+.l_465_1:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12], rax
@@ -1406,14 +1406,14 @@ f_465:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_272
+    jz      .l_465_3
     mov     rcx, -1
     mov     rax, qword [r12]
     imul 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_271
-.l_272:
-.l_271:
+    jmp     .l_465_2
+.l_465_3:
+.l_465_2:
     leave
     ret
 f_467:
@@ -1471,7 +1471,7 @@ f_509:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-.l_55:
+.l_509_0:
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1496,7 +1496,7 @@ f_509:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_56
+    jz      .l_509_1
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1512,7 +1512,7 @@ f_509:
     add     r12, 8
     mov     rax, [r12]
     test    rax, rax
-    jz      .l_58
+    jz      .l_509_3
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     rcx, qword [r12 + 16]
@@ -1526,9 +1526,9 @@ f_509:
     add     r12, 16
     leave
     ret
-    jmp     .l_57
-.l_58:
-.l_57:
+    jmp     .l_509_2
+.l_509_3:
+.l_509_2:
     mov     rcx, 1
     mov     rax, qword [r12 + 8]
     add 	rax, rcx
@@ -1554,8 +1554,8 @@ f_509:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-    jmp     .l_55
-.l_56:
+    jmp     .l_509_0
+.l_509_1:
     mov     qword [r12 + 8], 0
     add     r12, 8
     leave
@@ -1566,16 +1566,16 @@ f_610:
     lea     rax, [b_195]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_1000
+    jz      .l_610_1
     mov     qword [r12 - 8], 0
     lea     rax, [b_195]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
     leave
     ret
-    jmp     .l_999
-.l_1000:
-.l_999:
+    jmp     .l_610_0
+.l_610_1:
+.l_610_0:
     mov     qword [r12 - 8], 8
     sub     r12, 8
     call    f_1026
@@ -1587,16 +1587,16 @@ f_611:
     lea     rax, [b_196]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_1144
+    jz      .l_611_1
     mov     qword [r12 - 8], 0
     lea     rax, [b_196]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
     leave
     ret
-    jmp     .l_1143
-.l_1144:
-.l_1143:
+    jmp     .l_611_0
+.l_611_1:
+.l_611_0:
     mov     qword [r12 - 8], 8
     sub     r12, 8
     call    f_1027
@@ -1614,10 +1614,10 @@ f_612:
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
-.l_294:
+.l_612_0:
     mov     rax, [r12 + 8]
     test    rax, rax
-    jz      .l_295
+    jz      .l_612_1
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -1626,7 +1626,7 @@ f_612:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_297
+    jz      .l_612_3
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -1637,8 +1637,8 @@ f_612:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_296
-.l_297:
+    jmp     .l_612_2
+.l_612_3:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -1647,7 +1647,7 @@ f_612:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_298
+    jz      .l_612_4
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -1658,18 +1658,18 @@ f_612:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_296
-.l_298:
-.l_296:
+    jmp     .l_612_2
+.l_612_4:
+.l_612_2:
     mov     rax, [r12 + 8]
     test    rax, rax
-    jz      .l_300
+    jz      .l_612_6
     call    f_2212
-    jmp     .l_299
-.l_300:
-.l_299:
-    jmp     .l_294
-.l_295:
+    jmp     .l_612_5
+.l_612_6:
+.l_612_5:
+    jmp     .l_612_0
+.l_612_1:
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     mov     rcx, 25
@@ -1682,15 +1682,15 @@ f_612:
 f_624:
     push    rbp
     mov     rbp, rsp
-.l_292:
+.l_624_0:
     call    f_2175
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_293
+    jz      .l_624_1
     call    f_2212
-    jmp     .l_292
-.l_293:
+    jmp     .l_624_0
+.l_624_1:
     add     r12, 8
     leave
     ret
@@ -1700,7 +1700,7 @@ f_692:
     lea     rax, [b_195]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_996
+    jz      .l_692_1
     lea     rax, [b_195]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1709,9 +1709,9 @@ f_692:
     lea     rax, [b_195]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_995
-.l_996:
-.l_995:
+    jmp     .l_692_0
+.l_692_1:
+.l_692_0:
     leave
     ret
 f_728:
@@ -1729,12 +1729,12 @@ f_728:
     mov     qword [r12], rax
     mov     rax, rdx
     mov     qword [r12], rax
-.l_282:
+.l_728_0:
     call    f_2060
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_283
+    jz      .l_728_1
     mov     rcx, 1
     mov     rax, qword [r12 + 8]
     add 	rax, rcx
@@ -1747,8 +1747,8 @@ f_728:
     mov     rax, rdx
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_282
-.l_283:
+    jmp     .l_728_0
+.l_728_1:
     mov     rax, qword [r12]
     mov     qword [r12 + 40], rax
     add     r12, 40
@@ -1770,20 +1770,20 @@ f_730:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_233
+    jz      .l_730_1
     mov     qword [r12 - 8], 0
     sub     r12, 8
     leave
     ret
-    jmp     .l_232
-.l_233:
-.l_232:
+    jmp     .l_730_0
+.l_730_1:
+.l_730_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_234:
+.l_730_2:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -1796,7 +1796,7 @@ f_730:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_235
+    jz      .l_730_3
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -1807,8 +1807,8 @@ f_730:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_234
-.l_235:
+    jmp     .l_730_2
+.l_730_3:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -1842,7 +1842,7 @@ f_742:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_291
+    jz      .l_742_1
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     rcx, qword [r12 + 16]
@@ -1855,23 +1855,23 @@ f_742:
     mov     qword [r12 + 8], rax
     mov     qword [r12], rcx
     call    f_3545
-    jmp     .l_290
-.l_291:
+    jmp     .l_742_0
+.l_742_1:
     mov     qword [r12 + 16], 0
     add     r12, 16
-.l_290:
+.l_742_0:
     leave
     ret
 f_756:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_8770]
+    lea     rax, [b_8771]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
     mov     qword [r12 - 8], 0
     sub     r12, 8
-.l_1058:
+.l_756_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8159]
@@ -1885,8 +1885,8 @@ f_756:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1059
-    lea     rax, [b_8771]
+    jz      .l_756_1
+    lea     rax, [b_8772]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -1898,7 +1898,7 @@ f_756:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_8772]
+    lea     rax, [b_8773]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -1917,8 +1917,8 @@ f_756:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_1058
-.l_1059:
+    jmp     .l_756_0
+.l_756_1:
     add     r12, 8
     leave
     ret
@@ -1934,8 +1934,8 @@ f_798:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_991
-    lea     rax, [b_8579]
+    jz      .l_798_1
+    lea     rax, [b_8580]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -1944,12 +1944,12 @@ f_798:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_8580]
+    lea     rax, [b_8581]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_990
-.l_991:
+    jmp     .l_798_0
+.l_798_1:
     lea     rax, [b_5843]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -1959,8 +1959,8 @@ f_798:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_992
-    lea     rax, [b_8581]
+    jz      .l_798_2
+    lea     rax, [b_8582]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -1973,13 +1973,13 @@ f_798:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_8582]
+    lea     rax, [b_8583]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_990
-.l_992:
-.l_990:
+    jmp     .l_798_0
+.l_798_2:
+.l_798_0:
     mov     qword [r12 - 8], 0
     lea     rax, [b_5843]
     mov     rcx, qword [r12 - 8]
@@ -2023,7 +2023,7 @@ f_803:
     and 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_422
+    jz      .l_803_1
     call    f_6138
     lea     rax, [b_8323]
     mov     qword [r12 - 8], rax
@@ -2032,9 +2032,9 @@ f_803:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_421
-.l_422:
-.l_421:
+    jmp     .l_803_0
+.l_803_1:
+.l_803_0:
     call    f_6176
     lea     rax, [b_7731]
     mov     qword [r12 - 8], rax
@@ -2045,7 +2045,7 @@ f_803:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_424
+    jz      .l_803_3
     call    f_6138
     lea     rax, [b_8324]
     mov     qword [r12 - 8], rax
@@ -2060,9 +2060,9 @@ f_803:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_423
-.l_424:
-.l_423:
+    jmp     .l_803_2
+.l_803_3:
+.l_803_2:
     call    f_6176
     lea     rax, [b_7731]
     mov     qword [r12 - 8], rax
@@ -2146,7 +2146,7 @@ f_932:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-.l_63:
+.l_932_0:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -2155,7 +2155,7 @@ f_932:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_64
+    jz      .l_932_1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -2171,15 +2171,15 @@ f_932:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_66
+    jz      .l_932_3
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_65
-.l_66:
-.l_65:
+    jmp     .l_932_2
+.l_932_3:
+.l_932_2:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -2190,8 +2190,8 @@ f_932:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_63
-.l_64:
+    jmp     .l_932_0
+.l_932_1:
     mov     qword [r12], 0
     leave
     ret
@@ -2230,17 +2230,17 @@ f_983:
     mov     qword [r12 - 8], -8
     sub     r12, 8
     call    f_1026
-    lea     rax, [b_8583]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    call    f_6752
     lea     rax, [b_8584]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_6962
+    call    f_6752
     lea     rax, [b_8585]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_6962
+    lea     rax, [b_8586]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -2256,7 +2256,7 @@ f_1009:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1142
+    jz      .l_1009_1
     call    f_1612
     lea     rax, [b_196]
     mov     qword [r12 - 8], rax
@@ -2264,9 +2264,9 @@ f_1009:
     call    f_7518
     leave
     ret
-    jmp     .l_1141
-.l_1142:
-.l_1141:
+    jmp     .l_1009_0
+.l_1009_1:
+.l_1009_0:
     call    f_358
     leave
     ret
@@ -2286,7 +2286,7 @@ f_1023:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_769
+    jz      .l_1023_1
     call    f_6176
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12]
@@ -2296,9 +2296,9 @@ f_1023:
     add 	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_768
-.l_769:
-.l_768:
+    jmp     .l_1023_0
+.l_1023_1:
+.l_1023_0:
     call    f_2175
     mov     rax, 4
     mov     rbx, qword [r12]
@@ -2311,7 +2311,7 @@ f_1023:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_771
+    jz      .l_1023_3
     call    f_6138
     lea     rax, [b_8478]
     mov     qword [r12 - 8], rax
@@ -2320,9 +2320,9 @@ f_1023:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_770
-.l_771:
-.l_770:
+    jmp     .l_1023_2
+.l_1023_3:
+.l_1023_2:
     call    f_6176
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12]
@@ -2331,13 +2331,13 @@ f_1023:
     mov     rax, qword [rax]
     add     r12, 8
     test    rax, rax
-    jz      .l_773
+    jz      .l_1023_5
     mov     qword [r12 - 8], 8
     sub     r12, 8
-    jmp     .l_772
-.l_773:
+    jmp     .l_1023_4
+.l_1023_5:
     call    f_5809
-.l_772:
+.l_1023_4:
     lea     rax, [rbp - 24]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -2358,7 +2358,7 @@ f_1023:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_775
+    jz      .l_1023_7
     lea     rax, [b_4300]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
@@ -2368,7 +2368,7 @@ f_1023:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-.l_776:
+.l_1023_8:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -2377,7 +2377,7 @@ f_1023:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_777
+    jz      .l_1023_9
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 40]
     mov     rcx, qword [r12 - 8]
@@ -2398,7 +2398,7 @@ f_1023:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_779
+    jz      .l_1023_11
     call    f_6138
     lea     rax, [b_8479]
     mov     qword [r12 - 8], rax
@@ -2407,10 +2407,10 @@ f_1023:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_778
-.l_779:
-.l_778:
-.l_780:
+    jmp     .l_1023_10
+.l_1023_11:
+.l_1023_10:
+.l_1023_12:
     call    f_2175
     mov     rax, 1
     mov     rbx, qword [r12]
@@ -2419,7 +2419,7 @@ f_1023:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_781
+    jz      .l_1023_13
     call    f_6176
     lea     rax, [rbp - 40]
     mov     rax, qword [rax]
@@ -2435,8 +2435,8 @@ f_1023:
     add 	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_780
-.l_781:
+    jmp     .l_1023_12
+.l_1023_13:
     call    f_2175
     mov     rax, 33
     mov     rbx, qword [r12]
@@ -2449,7 +2449,7 @@ f_1023:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_783
+    jz      .l_1023_15
     call    f_6138
     lea     rax, [b_8480]
     mov     qword [r12 - 8], rax
@@ -2458,9 +2458,9 @@ f_1023:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_782
-.l_783:
-.l_782:
+    jmp     .l_1023_14
+.l_1023_15:
+.l_1023_14:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -2489,8 +2489,8 @@ f_1023:
     mov     rcx, qword [r12 + 8]
     mov     [rax], rcx
     add     r12, 16
-    jmp     .l_776
-.l_777:
+    jmp     .l_1023_8
+.l_1023_9:
     mov     qword [r12 - 8], 0
     lea     rax, [b_4300]
     mov     qword [r12 - 16], rax
@@ -2501,9 +2501,9 @@ f_1023:
     mov     rcx, qword [r12 + 8]
     mov     [rax], rcx
     add     r12, 16
-    jmp     .l_774
-.l_775:
-.l_774:
+    jmp     .l_1023_6
+.l_1023_7:
+.l_1023_6:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -2538,11 +2538,11 @@ f_1026:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_994
+    jz      .l_1026_1
     call    f_798
-    jmp     .l_993
-.l_994:
-.l_993:
+    jmp     .l_1026_0
+.l_1026_1:
+.l_1026_0:
     leave
     ret
 f_1027:
@@ -2564,55 +2564,55 @@ f_1027:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1138
+    jz      .l_1027_1
     call    f_3809
-    jmp     .l_1137
-.l_1138:
-.l_1137:
+    jmp     .l_1027_0
+.l_1027_1:
+.l_1027_0:
     leave
     ret
 f_1040:
     push    rbp
     mov     rbp, rsp
-.l_1091:
+.l_1040_0:
     call    f_8184
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1092
+    jz      .l_1040_1
     call    f_6218
-    jmp     .l_1091
-.l_1092:
+    jmp     .l_1040_0
+.l_1040_1:
     add     r12, 8
     leave
     ret
 f_1041:
     push    rbp
     mov     rbp, rsp
-.l_1118:
+.l_1041_0:
     call    f_8184
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1119
+    jz      .l_1041_1
     call    f_6219
-    jmp     .l_1118
-.l_1119:
+    jmp     .l_1041_0
+.l_1041_1:
     add     r12, 8
     leave
     ret
 f_1042:
     push    rbp
     mov     rbp, rsp
-.l_1201:
+.l_1042_0:
     call    f_8184
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1202
+    jz      .l_1042_1
     call    f_6220
-    jmp     .l_1201
-.l_1202:
+    jmp     .l_1042_0
+.l_1042_1:
     add     r12, 8
     leave
     ret
@@ -2630,20 +2630,20 @@ f_1050:
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
-.l_138:
+.l_1050_0:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
     mov     rax, [r12 + 8]
     test    rax, rax
-    jz      .l_139
+    jz      .l_1050_1
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_141
+    jz      .l_1050_3
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -2669,9 +2669,9 @@ f_1050:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_140
-.l_141:
-.l_140:
+    jmp     .l_1050_2
+.l_1050_3:
+.l_1050_2:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -2680,7 +2680,7 @@ f_1050:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_143
+    jz      .l_1050_5
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -2691,8 +2691,8 @@ f_1050:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_142
-.l_143:
+    jmp     .l_1050_4
+.l_1050_5:
     call    f_2175
     mov     rax, 33
     mov     rbx, qword [r12]
@@ -2701,7 +2701,7 @@ f_1050:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_144
+    jz      .l_1050_6
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -2712,11 +2712,11 @@ f_1050:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_142
-.l_144:
-.l_142:
-    jmp     .l_138
-.l_139:
+    jmp     .l_1050_4
+.l_1050_6:
+.l_1050_4:
+    jmp     .l_1050_0
+.l_1050_1:
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     add     r12, 8
@@ -2750,7 +2750,7 @@ f_1085:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_416
+    jz      .l_1085_1
     call    f_6138
     lea     rax, [b_8320]
     mov     qword [r12 - 8], rax
@@ -2759,9 +2759,9 @@ f_1085:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_415
-.l_416:
-.l_415:
+    jmp     .l_1085_0
+.l_1085_1:
+.l_1085_0:
     call    f_6176
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
@@ -2779,7 +2779,7 @@ f_1085:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_418
+    jz      .l_1085_3
     call    f_6138
     lea     rax, [b_8321]
     mov     qword [r12 - 8], rax
@@ -2794,9 +2794,9 @@ f_1085:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_417
-.l_418:
-.l_417:
+    jmp     .l_1085_2
+.l_1085_3:
+.l_1085_2:
     lea     rax, [b_5800]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -2804,11 +2804,11 @@ f_1085:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_420
+    jz      .l_1085_5
     mov     qword [r12 - 8], 0
     sub     r12, 8
-    jmp     .l_419
-.l_420:
+    jmp     .l_1085_4
+.l_1085_5:
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
@@ -2817,7 +2817,7 @@ f_1085:
     mov     rax, qword [r12]
     mov     rax, qword [rax]
     mov     qword [r12], rax
-.l_419:
+.l_1085_4:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -2902,7 +2902,7 @@ f_1101:
     mov     rbp, rsp
     mov     qword [r12 - 8], 0
     sub     r12, 8
-.l_1101:
+.l_1101_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     mov     rax, 8191
@@ -2911,7 +2911,7 @@ f_1101:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1102
+    jz      .l_1101_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_300]
@@ -2926,18 +2926,18 @@ f_1101:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1104
+    jz      .l_1101_3
     call    f_2126
-    jmp     .l_1103
-.l_1104:
+    jmp     .l_1101_2
+.l_1101_3:
     add     r12, 8
-.l_1103:
+.l_1101_2:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_1101
-.l_1102:
+    jmp     .l_1101_0
+.l_1101_1:
     add     r12, 8
     leave
     ret
@@ -2946,7 +2946,7 @@ f_1102:
     mov     rbp, rsp
     mov     qword [r12 - 8], 0
     sub     r12, 8
-.l_1128:
+.l_1102_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     mov     rax, 8191
@@ -2955,7 +2955,7 @@ f_1102:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1129
+    jz      .l_1102_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_300]
@@ -2970,18 +2970,18 @@ f_1102:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1131
+    jz      .l_1102_3
     call    f_2127
-    jmp     .l_1130
-.l_1131:
+    jmp     .l_1102_2
+.l_1102_3:
     add     r12, 8
-.l_1130:
+.l_1102_2:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_1128
-.l_1129:
+    jmp     .l_1102_0
+.l_1102_1:
     add     r12, 8
     leave
     ret
@@ -2990,7 +2990,7 @@ f_1103:
     mov     rbp, rsp
     mov     qword [r12 - 8], 0
     sub     r12, 8
-.l_1211:
+.l_1103_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     mov     rax, 8191
@@ -2999,7 +2999,7 @@ f_1103:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1212
+    jz      .l_1103_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_300]
@@ -3014,18 +3014,18 @@ f_1103:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1214
+    jz      .l_1103_3
     call    f_2129
-    jmp     .l_1213
-.l_1214:
+    jmp     .l_1103_2
+.l_1103_3:
     add     r12, 8
-.l_1213:
+.l_1103_2:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_1211
-.l_1212:
+    jmp     .l_1103_0
+.l_1103_1:
     add     r12, 8
     leave
     ret
@@ -3048,7 +3048,7 @@ f_1140:
     sub     r12, 16
     call    f_1729
     call    f_3552
-.l_200:
+.l_1140_0:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -3057,14 +3057,14 @@ f_1140:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_201
+    jz      .l_1140_1
     call    f_3838
     call    f_1310
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_203
+    jz      .l_1140_3
     mov     qword [r12 - 8], 0
     lea     rax, [b_5194]
     mov     qword [r12 - 16], rax
@@ -3078,9 +3078,9 @@ f_1140:
     mov     qword [r12], rbx
     leave
     ret
-    jmp     .l_202
-.l_203:
-.l_202:
+    jmp     .l_1140_2
+.l_1140_3:
+.l_1140_2:
     call    f_3838
     lea     rax, [b_5194]
     mov     qword [r12 - 8], rax
@@ -3088,8 +3088,8 @@ f_1140:
     sub     r12, 16
     call    f_1729
     call    f_3552
-    jmp     .l_200
-.l_201:
+    jmp     .l_1140_0
+.l_1140_1:
     mov     qword [r12 - 8], 0
     lea     rax, [b_5194]
     mov     qword [r12 - 16], rax
@@ -3109,7 +3109,7 @@ f_1240:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_45:
+.l_1240_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -3117,13 +3117,13 @@ f_1240:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_46
+    jz      .l_1240_1
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_45
-.l_46:
+    jmp     .l_1240_0
+.l_1240_1:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -3186,7 +3186,7 @@ f_1339:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_859
+    jz      .l_1339_1
     call    f_6138
     lea     rax, [b_8513]
     mov     qword [r12 - 8], rax
@@ -3201,9 +3201,9 @@ f_1339:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_858
-.l_859:
-.l_858:
+    jmp     .l_1339_0
+.l_1339_1:
+.l_1339_0:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -3224,7 +3224,7 @@ f_1339:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_861
+    jz      .l_1339_3
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -3233,14 +3233,14 @@ f_1339:
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_862:
+    .ral_1339_4:
     cmp     rbx, r12
-    je      .rbl_862
+    je      .rbl_1339_4
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_862
-    .rbl_862:
+    jmp     .ral_1339_4
+    .rbl_1339_4:
     mov     [r12], rcx
     call    f_934
     lea     rax, [rbp - 8]
@@ -3254,9 +3254,9 @@ f_1339:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_860
-.l_861:
-.l_860:
+    jmp     .l_1339_2
+.l_1339_3:
+.l_1339_2:
     call    f_6850
     mov     rax, qword [r12 + 8]
     mov     qword [r12 + 16], rax
@@ -3315,11 +3315,11 @@ f_1431:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_805
+    jz      .l_1431_1
     mov     qword [r12 - 8], 0
     sub     r12, 8
-    jmp     .l_804
-.l_805:
+    jmp     .l_1431_0
+.l_1431_1:
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
@@ -3328,7 +3328,7 @@ f_1431:
     mov     rax, qword [r12]
     mov     rax, qword [rax]
     mov     qword [r12], rax
-.l_804:
+.l_1431_0:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -3341,7 +3341,7 @@ f_1431:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_807
+    jz      .l_1431_3
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 9]
     mov     qword [r12 - 16], rax
@@ -3351,11 +3351,11 @@ f_1431:
     lea     rax, [rbp - 17]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_806
-.l_807:
+    jmp     .l_1431_2
+.l_1431_3:
     mov     rax, [r12 + 8]
     test    rax, rax
-    jz      .l_808
+    jz      .l_1431_4
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 9]
     mov     qword [r12 - 16], rax
@@ -3367,8 +3367,8 @@ f_1431:
     lea     rax, [rbp - 17]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_806
-.l_808:
+    jmp     .l_1431_2
+.l_1431_4:
     call    f_6138
     lea     rax, [b_8486]
     mov     qword [r12 - 8], rax
@@ -3377,7 +3377,7 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_806:
+.l_1431_2:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -3401,7 +3401,7 @@ f_1431:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_810
+    jz      .l_1431_6
     call    f_1023
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12]
@@ -3416,8 +3416,8 @@ f_1431:
     mov     rcx, qword [r12 + 24]
     mov     [rax], rcx
     add     r12, 32
-    jmp     .l_809
-.l_810:
+    jmp     .l_1431_5
+.l_1431_6:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -3426,19 +3426,19 @@ f_1431:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_811
+    jz      .l_1431_7
     call    f_5600
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-    jmp     .l_809
-.l_811:
+    jmp     .l_1431_5
+.l_1431_7:
     mov     qword [r12 - 8], -1
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_809:
+.l_1431_5:
     lea     rax, [rbp - 9]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -3447,15 +3447,15 @@ f_1431:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_813
+    jz      .l_1431_9
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7001
-    jmp     .l_812
-.l_813:
-.l_812:
+    jmp     .l_1431_8
+.l_1431_9:
+.l_1431_8:
     call    f_2175
     mov     rax, 4
     mov     rbx, qword [r12]
@@ -3468,7 +3468,7 @@ f_1431:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_815
+    jz      .l_1431_11
     call    f_6138
     lea     rax, [b_8487]
     mov     qword [r12 - 8], rax
@@ -3477,9 +3477,9 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_814
-.l_815:
-.l_814:
+    jmp     .l_1431_10
+.l_1431_11:
+.l_1431_10:
     call    f_6176
     lea     rax, [rbp - 57]
     mov     rcx, qword [r12]
@@ -3504,7 +3504,7 @@ f_1431:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_817
+    jz      .l_1431_13
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -3516,7 +3516,7 @@ f_1431:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_819
+    jz      .l_1431_15
     call    f_2175
     mov     rax, 3
     mov     rbx, qword [r12]
@@ -3525,7 +3525,7 @@ f_1431:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_821
+    jz      .l_1431_17
     call    f_6176
     call    f_1240
     mov     rcx, 1
@@ -3541,13 +3541,13 @@ f_1431:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_823
+    jz      .l_1431_19
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-    jmp     .l_822
-.l_823:
+    jmp     .l_1431_18
+.l_1431_19:
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     rbx, qword [r12]
@@ -3556,7 +3556,7 @@ f_1431:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_824
+    jz      .l_1431_20
     call    f_6138
     lea     rax, [b_8488]
     mov     qword [r12 - 8], rax
@@ -3574,16 +3574,16 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_822
-.l_824:
-.l_822:
+    jmp     .l_1431_18
+.l_1431_20:
+.l_1431_18:
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 66]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-    jmp     .l_820
-.l_821:
+    jmp     .l_1431_16
+.l_1431_17:
     call    f_2175
     mov     rax, 1
     mov     rbx, qword [r12]
@@ -3592,7 +3592,7 @@ f_1431:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_825
+    jz      .l_1431_21
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -3602,13 +3602,13 @@ f_1431:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_827
+    jz      .l_1431_23
     mov     qword [r12 - 8], 8
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_826
-.l_827:
+    jmp     .l_1431_22
+.l_1431_23:
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -3618,9 +3618,9 @@ f_1431:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_829
-    jmp     .l_828
-.l_829:
+    jz      .l_1431_25
+    jmp     .l_1431_24
+.l_1431_25:
     call    f_6176
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
@@ -3662,9 +3662,9 @@ f_1431:
     and 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_830
-    jmp     .l_828
-.l_830:
+    jz      .l_1431_26
+    jmp     .l_1431_24
+.l_1431_26:
     call    f_6138
     lea     rax, [b_8490]
     mov     qword [r12 - 8], rax
@@ -3682,15 +3682,15 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_828:
-.l_826:
+.l_1431_24:
+.l_1431_22:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 66]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-    jmp     .l_820
-.l_825:
+    jmp     .l_1431_16
+.l_1431_21:
     call    f_2175
     mov     rax, 2
     mov     rbx, qword [r12]
@@ -3699,7 +3699,7 @@ f_1431:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_831
+    jz      .l_1431_27
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -3709,13 +3709,13 @@ f_1431:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_833
+    jz      .l_1431_29
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_832
-.l_833:
+    jmp     .l_1431_28
+.l_1431_29:
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -3745,7 +3745,7 @@ f_1431:
     mov     rax, qword [r12 - 8]
     and 	rax, rcx
     test    rax, rax
-    jz      .l_835
+    jz      .l_1431_31
     call    f_6138
     lea     rax, [b_8492]
     mov     qword [r12 - 8], rax
@@ -3763,17 +3763,17 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_834
-.l_835:
-.l_834:
-.l_832:
+    jmp     .l_1431_30
+.l_1431_31:
+.l_1431_30:
+.l_1431_28:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 66]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-    jmp     .l_820
-.l_831:
+    jmp     .l_1431_16
+.l_1431_27:
     call    f_6138
     lea     rax, [b_8494]
     mov     qword [r12 - 8], rax
@@ -3791,7 +3791,7 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_820:
+.l_1431_16:
     call    f_6176
     lea     rax, [rbp - 65]
     mov     rcx, qword [r12]
@@ -3801,8 +3801,8 @@ f_1431:
     add 	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_818
-.l_819:
+    jmp     .l_1431_14
+.l_1431_15:
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -3829,7 +3829,7 @@ f_1431:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_837
+    jz      .l_1431_33
     call    f_6138
     lea     rax, [b_8496]
     mov     qword [r12 - 8], rax
@@ -3856,9 +3856,9 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_836
-.l_837:
-.l_836:
+    jmp     .l_1431_32
+.l_1431_33:
+.l_1431_32:
     call    f_2175
     mov     rax, 1
     mov     rbx, qword [r12]
@@ -3867,7 +3867,7 @@ f_1431:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_839
+    jz      .l_1431_35
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -3877,7 +3877,7 @@ f_1431:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_841
+    jz      .l_1431_37
     call    f_6176
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
@@ -3910,7 +3910,7 @@ f_1431:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_843
+    jz      .l_1431_39
     call    f_6138
     lea     rax, [b_8499]
     mov     qword [r12 - 8], rax
@@ -3928,12 +3928,12 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_842
-.l_843:
-.l_842:
-    jmp     .l_840
-.l_841:
-.l_840:
+    jmp     .l_1431_38
+.l_1431_39:
+.l_1431_38:
+    jmp     .l_1431_36
+.l_1431_37:
+.l_1431_36:
     call    f_6176
     mov     qword [r12 - 8], 6
     mov     rax, 3
@@ -3946,8 +3946,8 @@ f_1431:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_838
-.l_839:
+    jmp     .l_1431_34
+.l_1431_35:
     call    f_2175
     mov     rax, 2
     mov     rbx, qword [r12]
@@ -3956,7 +3956,7 @@ f_1431:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_844
+    jz      .l_1431_40
     call    f_6176
     mov     qword [r12 - 8], 6
     mov     rax, 3
@@ -3969,8 +3969,8 @@ f_1431:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_838
-.l_844:
+    jmp     .l_1431_34
+.l_1431_40:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -3979,7 +3979,7 @@ f_1431:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_845
+    jz      .l_1431_41
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -3990,7 +3990,7 @@ f_1431:
     lea     rax, [rbp - 74]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_846:
+.l_1431_42:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -4003,13 +4003,13 @@ f_1431:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_847
+    jz      .l_1431_43
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_849
+    jz      .l_1431_45
     lea     rax, [rbp - 74]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4035,24 +4035,24 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_848
-.l_849:
-.l_848:
+    jmp     .l_1431_44
+.l_1431_45:
+.l_1431_44:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_846
-.l_847:
+    jmp     .l_1431_42
+.l_1431_43:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
     call    f_3073
-    jmp     .l_838
-.l_845:
+    jmp     .l_1431_34
+.l_1431_41:
     call    f_6138
     lea     rax, [b_8504]
     mov     qword [r12 - 8], rax
@@ -4061,7 +4061,7 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_838:
+.l_1431_34:
     lea     rax, [rbp - 17]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4087,13 +4087,13 @@ f_1431:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_851
+    jz      .l_1431_47
     lea     rax, [b_8505]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2020
-    jmp     .l_850
-.l_851:
+    jmp     .l_1431_46
+.l_1431_47:
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 17
     mov     rax, 3
@@ -4102,10 +4102,10 @@ f_1431:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-.l_850:
-.l_818:
-    jmp     .l_816
-.l_817:
+.l_1431_46:
+.l_1431_14:
+    jmp     .l_1431_12
+.l_1431_13:
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 65]
     mov     rcx, qword [r12 - 8]
@@ -4115,7 +4115,7 @@ f_1431:
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-.l_816:
+.l_1431_12:
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4125,7 +4125,7 @@ f_1431:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_853
+    jz      .l_1431_49
     call    f_6138
     lea     rax, [b_8506]
     mov     qword [r12 - 8], rax
@@ -4143,9 +4143,9 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_852
-.l_853:
-.l_852:
+    jmp     .l_1431_48
+.l_1431_49:
+.l_1431_48:
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4155,7 +4155,7 @@ f_1431:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_855
+    jz      .l_1431_51
     call    f_6138
     lea     rax, [b_8508]
     mov     qword [r12 - 8], rax
@@ -4180,9 +4180,9 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_854
-.l_855:
-.l_854:
+    jmp     .l_1431_50
+.l_1431_51:
+.l_1431_50:
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4204,7 +4204,7 @@ f_1431:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_857
+    jz      .l_1431_53
     call    f_6138
     lea     rax, [b_8511]
     mov     qword [r12 - 8], rax
@@ -4220,9 +4220,9 @@ f_1431:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_856
-.l_857:
-.l_856:
+    jmp     .l_1431_52
+.l_1431_53:
+.l_1431_52:
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     lea     rax, [rbp - 57]
@@ -4454,7 +4454,7 @@ f_1555:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_480
+    jz      .l_1555_1
     call    f_6138
     lea     rax, [b_8356]
     mov     qword [r12 - 8], rax
@@ -4472,9 +4472,9 @@ f_1555:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_479
-.l_480:
-.l_479:
+    jmp     .l_1555_0
+.l_1555_1:
+.l_1555_0:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4500,8 +4500,8 @@ f_1555:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_482
-.l_483:
+    jz      .l_1555_3
+.l_1555_4:
     call    f_2175
     mov     rax, 24
     mov     rbx, qword [r12]
@@ -4510,7 +4510,7 @@ f_1555:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_484
+    jz      .l_1555_5
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 18
     mov     rax, 3
@@ -4523,10 +4523,10 @@ f_1555:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_483
-.l_484:
-    jmp     .l_481
-.l_482:
+    jmp     .l_1555_4
+.l_1555_5:
+    jmp     .l_1555_2
+.l_1555_3:
     call    f_2175
     mov     rax, 23
     mov     rbx, qword [r12]
@@ -4535,13 +4535,13 @@ f_1555:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_485
+    jz      .l_1555_6
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_481
-.l_485:
+    jmp     .l_1555_2
+.l_1555_6:
     call    f_6138
     lea     rax, [b_8358]
     mov     qword [r12 - 8], rax
@@ -4559,7 +4559,7 @@ f_1555:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_481:
+.l_1555_2:
     call    f_6176
     lea     rax, [rbp - 24]
     mov     rcx, qword [r12]
@@ -4569,7 +4569,7 @@ f_1555:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-.l_486:
+.l_1555_7:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4578,7 +4578,7 @@ f_1555:
     add 	rax, rcx
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_487
+    jz      .l_1555_8
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4607,7 +4607,7 @@ f_1555:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_489
+    jz      .l_1555_10
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -4645,7 +4645,7 @@ f_1555:
     lea     rax, [rbp - 48]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_490:
+.l_1555_11:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -4654,7 +4654,7 @@ f_1555:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_491
+    jz      .l_1555_12
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -4664,7 +4664,7 @@ f_1555:
     lea     rax, [rbp - 56]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_492:
+.l_1555_13:
     call    f_2175
     mov     rax, 33
     mov     rbx, qword [r12]
@@ -4677,13 +4677,13 @@ f_1555:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_493
+    jz      .l_1555_14
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_495
+    jz      .l_1555_16
     lea     rax, [rbp - 56]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4709,17 +4709,17 @@ f_1555:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_494
-.l_495:
-.l_494:
+    jmp     .l_1555_15
+.l_1555_16:
+.l_1555_15:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_492
-.l_493:
+    jmp     .l_1555_13
+.l_1555_14:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -4727,22 +4727,22 @@ f_1555:
     lea     rax, [rbp - 48]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_499
+    jz      .l_1555_20
     lea     rax, [rbp - 48]
     mov     rax, qword [rax]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6709
-    jmp     .l_498
-.l_499:
+    jmp     .l_1555_19
+.l_1555_20:
     mov     qword [r12 - 8], 1
     sub     r12, 8
-.l_498:
+.l_1555_19:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_497
+    jz      .l_1555_18
     call    f_6138
     lea     rax, [b_8363]
     mov     qword [r12 - 8], rax
@@ -4774,9 +4774,9 @@ f_1555:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_496
-.l_497:
-.l_496:
+    jmp     .l_1555_17
+.l_1555_18:
+.l_1555_17:
     lea     rax, [rbp - 48]
     mov     rax, qword [rax]
     mov     rax, qword [rax]
@@ -4828,8 +4828,8 @@ f_1555:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_490
-.l_491:
+    jmp     .l_1555_11
+.l_1555_12:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4876,9 +4876,9 @@ f_1555:
     sub     r12, 8
     leave
     ret
-    jmp     .l_488
-.l_489:
-.l_488:
+    jmp     .l_1555_9
+.l_1555_10:
+.l_1555_9:
     lea     rax, [rbp - 40]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -4901,8 +4901,8 @@ f_1555:
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_486
-.l_487:
+    jmp     .l_1555_7
+.l_1555_8:
     call    f_6138
     lea     rax, [b_8366]
     mov     qword [r12 - 8], rax
@@ -4937,7 +4937,7 @@ f_1612:
     lea     rax, [b_196]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_1140
+    jz      .l_1612_1
     lea     rax, [b_196]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -4946,9 +4946,9 @@ f_1612:
     lea     rax, [b_196]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_1139
-.l_1140:
-.l_1139:
+    jmp     .l_1612_0
+.l_1612_1:
+.l_1612_0:
     leave
     ret
 f_1729:
@@ -5032,7 +5032,7 @@ f_1851:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_470
+    jz      .l_1851_1
     mov     rcx, 25
     mov     rax, qword [r12]
     sub 	rax, rcx
@@ -5045,9 +5045,9 @@ f_1851:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_469
-.l_470:
-.l_469:
+    jmp     .l_1851_0
+.l_1851_1:
+.l_1851_0:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -5063,7 +5063,7 @@ f_1851:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_472
+    jz      .l_1851_3
     call    f_6138
     lea     rax, [b_8348]
     mov     qword [r12 - 8], rax
@@ -5081,9 +5081,9 @@ f_1851:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_471
-.l_472:
-.l_471:
+    jmp     .l_1851_2
+.l_1851_3:
+.l_1851_2:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -5099,7 +5099,7 @@ f_1851:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_474
+    jz      .l_1851_5
     call    f_6138
     lea     rax, [b_8350]
     mov     qword [r12 - 8], rax
@@ -5117,9 +5117,9 @@ f_1851:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_473
-.l_474:
-.l_473:
+    jmp     .l_1851_4
+.l_1851_5:
+.l_1851_4:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -5135,7 +5135,7 @@ f_1851:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_476
+    jz      .l_1851_7
     call    f_6138
     lea     rax, [b_8352]
     mov     qword [r12 - 8], rax
@@ -5153,9 +5153,9 @@ f_1851:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_475
-.l_476:
-.l_475:
+    jmp     .l_1851_6
+.l_1851_7:
+.l_1851_6:
     leave
     ret
 f_2002:
@@ -5216,7 +5216,7 @@ f_2019:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_309
+    jz      .l_2019_1
     lea     rax, [rbp - 17]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -5255,9 +5255,9 @@ f_2019:
     add     r12, 16
     leave
     ret
-    jmp     .l_308
-.l_309:
-.l_308:
+    jmp     .l_2019_0
+.l_2019_1:
+.l_2019_0:
     mov     rax, 2
     mov     rax, [r12 + rax*8]
     mov     qword [r12 - 8], rax
@@ -5269,7 +5269,7 @@ f_2019:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_311
+    jz      .l_2019_3
     lea     rax, [rbp - 17]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -5308,9 +5308,9 @@ f_2019:
     add     r12, 16
     leave
     ret
-    jmp     .l_310
-.l_311:
-.l_310:
+    jmp     .l_2019_2
+.l_2019_3:
+.l_2019_2:
     lea     rax, [b_7731]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 33
@@ -5328,7 +5328,7 @@ f_2019:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_313
+    jz      .l_2019_5
     add     r12, 8
     call    f_6138
     lea     rax, [b_8280]
@@ -5347,9 +5347,9 @@ f_2019:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_312
-.l_313:
-.l_312:
+    jmp     .l_2019_4
+.l_2019_5:
+.l_2019_4:
     lea     rax, [b_3575]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -5358,15 +5358,15 @@ f_2019:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_315
+    jz      .l_2019_7
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     lea     rax, [b_4763]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_314
-.l_315:
-.l_314:
+    jmp     .l_2019_6
+.l_2019_7:
+.l_2019_6:
     mov     qword [r12 - 8], 1
     lea     rax, [b_3575]
     mov     rax, qword [rax]
@@ -5386,7 +5386,7 @@ f_2019:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_317
+    jz      .l_2019_9
     call    f_6138
     lea     rax, [b_8282]
     mov     qword [r12 - 8], rax
@@ -5402,9 +5402,9 @@ f_2019:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_316
-.l_317:
-.l_316:
+    jmp     .l_2019_8
+.l_2019_9:
+.l_2019_8:
     lea     rax, [rbp - 9]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -5412,12 +5412,12 @@ f_2019:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_319
+    jz      .l_2019_11
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_320:
+.l_2019_12:
     call    f_2175
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
@@ -5453,7 +5453,7 @@ f_2019:
     or 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_321
+    jz      .l_2019_13
     call    f_2175
     mov     rax, 28
     mov     rbx, qword [r12]
@@ -5462,7 +5462,7 @@ f_2019:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_323
+    jz      .l_2019_15
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
@@ -5473,8 +5473,8 @@ f_2019:
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_322
-.l_323:
+    jmp     .l_2019_14
+.l_2019_15:
     call    f_2175
     mov     rax, 29
     mov     rbx, qword [r12]
@@ -5483,7 +5483,7 @@ f_2019:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_324
+    jz      .l_2019_16
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
@@ -5496,12 +5496,12 @@ f_2019:
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_322
-.l_324:
-.l_322:
+    jmp     .l_2019_14
+.l_2019_16:
+.l_2019_14:
     call    f_2212
-    jmp     .l_320
-.l_321:
+    jmp     .l_2019_12
+.l_2019_13:
     mov     rax, qword [r12 + 8]
     mov     qword [r12 + 16], rax
     mov     rcx, 25
@@ -5523,9 +5523,9 @@ f_2019:
     add     r12, 16
     leave
     ret
-    jmp     .l_318
-.l_319:
-.l_318:
+    jmp     .l_2019_10
+.l_2019_11:
+.l_2019_10:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_261]
@@ -5555,7 +5555,7 @@ f_2019:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_326
+    jz      .l_2019_18
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -5572,7 +5572,7 @@ f_2019:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_328
+    jz      .l_2019_20
     call    f_6138
     lea     rax, [b_8284]
     mov     qword [r12 - 8], rax
@@ -5590,9 +5590,9 @@ f_2019:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_327
-.l_328:
-.l_327:
+    jmp     .l_2019_19
+.l_2019_20:
+.l_2019_19:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -5603,7 +5603,7 @@ f_2019:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_329:
+.l_2019_21:
     call    f_2175
     mov     rax, 29
     mov     rbx, qword [r12]
@@ -5616,7 +5616,7 @@ f_2019:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_330
+    jz      .l_2019_22
     call    f_6176
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
@@ -5716,7 +5716,7 @@ f_2019:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_332
+    jz      .l_2019_24
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     mov     rcx, 25
@@ -5733,7 +5733,7 @@ f_2019:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_334
+    jz      .l_2019_26
     call    f_6138
     lea     rax, [b_8286]
     mov     qword [r12 - 8], rax
@@ -5751,9 +5751,9 @@ f_2019:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_333
-.l_334:
-.l_333:
+    jmp     .l_2019_25
+.l_2019_26:
+.l_2019_25:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -5762,10 +5762,10 @@ f_2019:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_330
-    jmp     .l_331
-.l_332:
-.l_331:
+    jmp     .l_2019_22
+    jmp     .l_2019_23
+.l_2019_24:
+.l_2019_23:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -5775,14 +5775,14 @@ f_2019:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_336
+    jz      .l_2019_28
     mov     qword [r12 - 8], 15
     sub     r12, 8
-    jmp     .l_335
-.l_336:
+    jmp     .l_2019_27
+.l_2019_28:
     mov     qword [r12 - 8], 29
     sub     r12, 8
-.l_335:
+.l_2019_27:
     lea     rax, [rbp - 26]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -5796,19 +5796,19 @@ f_2019:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_338
+    jz      .l_2019_30
     mov     qword [r12 - 8], 29
     sub     r12, 8
-    jmp     .l_337
-.l_338:
+    jmp     .l_2019_29
+.l_2019_30:
     mov     qword [r12 - 8], 15
     sub     r12, 8
-.l_337:
+.l_2019_29:
     lea     rax, [rbp - 27]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3552
-.l_339:
+.l_2019_31:
     call    f_2175
     lea     rax, [rbp - 26]
     mov     qword [r12 - 8], rax
@@ -5825,7 +5825,7 @@ f_2019:
     xor 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_340
+    jz      .l_2019_32
     call    f_2175
     lea     rax, [rbp - 27]
     mov     qword [r12 - 8], rax
@@ -5838,7 +5838,7 @@ f_2019:
     movzx   rax, al
     add     r12, 16
     test    rax, rax
-    jz      .l_342
+    jz      .l_2019_34
     call    f_6138
     lea     rax, [b_8288]
     mov     qword [r12 - 8], rax
@@ -5856,9 +5856,9 @@ f_2019:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_341
-.l_342:
-.l_341:
+    jmp     .l_2019_33
+.l_2019_34:
+.l_2019_33:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -5867,10 +5867,10 @@ f_2019:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_344
+    jz      .l_2019_36
     call    f_4957
-    jmp     .l_343
-.l_344:
+    jmp     .l_2019_35
+.l_2019_36:
     call    f_2175
     mov     rax, 28
     mov     rbx, qword [r12]
@@ -5879,10 +5879,10 @@ f_2019:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_345
+    jz      .l_2019_37
     call    f_7058
-    jmp     .l_343
-.l_345:
+    jmp     .l_2019_35
+.l_2019_37:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -5891,17 +5891,17 @@ f_2019:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_346
+    jz      .l_2019_38
     call    f_1050
-    jmp     .l_343
-.l_346:
+    jmp     .l_2019_35
+.l_2019_38:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_343:
-    jmp     .l_339
-.l_340:
+.l_2019_35:
+    jmp     .l_2019_31
+.l_2019_32:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -5922,14 +5922,14 @@ f_2019:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_348
+    jz      .l_2019_40
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_347
-.l_348:
-.l_347:
+    jmp     .l_2019_39
+.l_2019_40:
+.l_2019_39:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -5946,16 +5946,16 @@ f_2019:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_350
+    jz      .l_2019_42
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_349
-.l_350:
-.l_349:
-    jmp     .l_329
-.l_330:
+    jmp     .l_2019_41
+.l_2019_42:
+.l_2019_41:
+    jmp     .l_2019_21
+.l_2019_22:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -5974,7 +5974,7 @@ f_2019:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_352
+    jz      .l_2019_44
     call    f_6138
     lea     rax, [b_8290]
     mov     qword [r12 - 8], rax
@@ -5992,18 +5992,18 @@ f_2019:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_351
-.l_352:
-.l_351:
+    jmp     .l_2019_43
+.l_2019_44:
+.l_2019_43:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_325
-.l_326:
-.l_325:
+    jmp     .l_2019_17
+.l_2019_18:
+.l_2019_17:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -6012,7 +6012,7 @@ f_2019:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_354
+    jz      .l_2019_46
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     rcx, qword [r12 + 16]
@@ -6021,9 +6021,9 @@ f_2019:
     add     r12, 8
     call    f_612
     add     r12, 8
-    jmp     .l_353
-.l_354:
-.l_353:
+    jmp     .l_2019_45
+.l_2019_46:
+.l_2019_45:
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -6067,7 +6067,7 @@ f_2020:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_525
+    jz      .l_2020_1
     call    f_6138
     lea     rax, [b_8378]
     mov     qword [r12 - 8], rax
@@ -6085,9 +6085,9 @@ f_2020:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_524
-.l_525:
-.l_524:
+    jmp     .l_2020_0
+.l_2020_1:
+.l_2020_0:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -6111,7 +6111,7 @@ f_2028:
     lea     rax, [b_196]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_1146
+    jz      .l_2028_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_196]
@@ -6121,13 +6121,13 @@ f_2028:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1148
-    lea     rax, [b_9126]
+    jz      .l_2028_3
+    lea     rax, [b_9127]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_6962
-    lea     rax, [b_9127]
+    lea     rax, [b_9128]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6135,34 +6135,34 @@ f_2028:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    lea     rax, [b_9128]
+    lea     rax, [b_9129]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1147
-.l_1148:
+    jmp     .l_2028_2
+.l_2028_3:
     add     r12, 8
-.l_1147:
+.l_2028_2:
     mov     qword [r12 - 8], 0
     lea     rax, [b_196]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
     leave
     ret
-    jmp     .l_1145
-.l_1146:
-.l_1145:
-    lea     rax, [b_9129]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    call    f_6962
+    jmp     .l_2028_0
+.l_2028_1:
+.l_2028_0:
     lea     rax, [b_9130]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_6753
+    call    f_6962
     lea     rax, [b_9131]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_6753
+    lea     rax, [b_9132]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6195,11 +6195,11 @@ f_2060:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_280
+    jz      .l_2060_1
     mov     qword [r12 - 8], 0
     sub     r12, 8
-    jmp     .l_279
-.l_280:
+    jmp     .l_2060_0
+.l_2060_1:
     mov     rax, [r12]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -6213,7 +6213,7 @@ f_2060:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_281
+    jz      .l_2060_2
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     mov     rcx, 8
@@ -6233,11 +6233,11 @@ f_2060:
     mov     rax, qword [r12]
     xor 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_279
-.l_281:
+    jmp     .l_2060_0
+.l_2060_2:
     mov     qword [r12 - 8], 1
     sub     r12, 8
-.l_279:
+.l_2060_0:
     leave
     ret
 f_2077:
@@ -6266,8 +6266,8 @@ f_2126:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1094
-    lea     rax, [b_8873]
+    jz      .l_2126_1
+    lea     rax, [b_8874]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -6285,16 +6285,16 @@ f_2126:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    lea     rax, [b_8874]
+    lea     rax, [b_8875]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1093
-.l_1094:
-.l_1093:
+    jmp     .l_2126_0
+.l_2126_1:
+.l_2126_0:
     lea     rax, [b_2442]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -6302,7 +6302,7 @@ f_2126:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1096
+    jz      .l_2126_3
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -6316,15 +6316,20 @@ f_2126:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1098
+    jz      .l_2126_5
     leave
     ret
-    jmp     .l_1097
-.l_1098:
-.l_1097:
-    jmp     .l_1095
-.l_1096:
-.l_1095:
+    jmp     .l_2126_4
+.l_2126_5:
+.l_2126_4:
+    jmp     .l_2126_2
+.l_2126_3:
+.l_2126_2:
+    mov     rax, [r12]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_1195]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
     lea     rax, [b_4816]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -6332,8 +6337,8 @@ f_2126:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1100
-    lea     rax, [b_8875]
+    jz      .l_2126_7
+    lea     rax, [b_8876]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6351,14 +6356,14 @@ f_2126:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    lea     rax, [b_8876]
+    lea     rax, [b_8877]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1099
-.l_1100:
-.l_1099:
-    lea     rax, [b_8877]
+    jmp     .l_2126_6
+.l_2126_7:
+.l_2126_6:
+    lea     rax, [b_8878]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6366,15 +6371,15 @@ f_2126:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_8878]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8879]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     lea     rax, [b_8880]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8881]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6409,8 +6414,8 @@ f_2127:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1121
-    lea     rax, [b_9086]
+    jz      .l_2127_1
+    lea     rax, [b_9087]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -6428,16 +6433,16 @@ f_2127:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    lea     rax, [b_9087]
+    lea     rax, [b_9088]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1120
-.l_1121:
-.l_1120:
+    jmp     .l_2127_0
+.l_2127_1:
+.l_2127_0:
     lea     rax, [b_2442]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -6445,7 +6450,7 @@ f_2127:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1123
+    jz      .l_2127_3
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -6459,15 +6464,20 @@ f_2127:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1125
+    jz      .l_2127_5
     leave
     ret
-    jmp     .l_1124
-.l_1125:
-.l_1124:
-    jmp     .l_1122
-.l_1123:
-.l_1122:
+    jmp     .l_2127_4
+.l_2127_5:
+.l_2127_4:
+    jmp     .l_2127_2
+.l_2127_3:
+.l_2127_2:
+    mov     rax, [r12]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_1195]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
     lea     rax, [b_4816]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -6475,8 +6485,8 @@ f_2127:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1127
-    lea     rax, [b_9088]
+    jz      .l_2127_7
+    lea     rax, [b_9089]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6494,14 +6504,14 @@ f_2127:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    lea     rax, [b_9089]
+    lea     rax, [b_9090]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1126
-.l_1127:
-.l_1126:
-    lea     rax, [b_9090]
+    jmp     .l_2127_6
+.l_2127_7:
+.l_2127_6:
+    lea     rax, [b_9091]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6509,15 +6519,15 @@ f_2127:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9091]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9092]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     lea     rax, [b_9093]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9094]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6561,7 +6571,7 @@ f_2128:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_195
+    jz      .l_2128_1
     call    f_6871
     lea     rax, [b_8262]
     mov     qword [r12 - 8], rax
@@ -6579,9 +6589,9 @@ f_2128:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_194
-.l_195:
-.l_194:
+    jmp     .l_2128_0
+.l_2128_1:
+.l_2128_0:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -6609,8 +6619,8 @@ f_2129:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1204
-    lea     rax, [b_9394]
+    jz      .l_2129_1
+    lea     rax, [b_9395]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -6628,16 +6638,16 @@ f_2129:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    lea     rax, [b_9395]
+    lea     rax, [b_9396]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1203
-.l_1204:
-.l_1203:
+    jmp     .l_2129_0
+.l_2129_1:
+.l_2129_0:
     lea     rax, [b_2442]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -6645,7 +6655,7 @@ f_2129:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1206
+    jz      .l_2129_3
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -6659,15 +6669,20 @@ f_2129:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1208
+    jz      .l_2129_5
     leave
     ret
-    jmp     .l_1207
-.l_1208:
-.l_1207:
-    jmp     .l_1205
-.l_1206:
-.l_1205:
+    jmp     .l_2129_4
+.l_2129_5:
+.l_2129_4:
+    jmp     .l_2129_2
+.l_2129_3:
+.l_2129_2:
+    mov     rax, [r12]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_1195]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
     lea     rax, [b_4816]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -6675,8 +6690,8 @@ f_2129:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1210
-    lea     rax, [b_9396]
+    jz      .l_2129_7
+    lea     rax, [b_9397]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6694,14 +6709,14 @@ f_2129:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    lea     rax, [b_9397]
+    lea     rax, [b_9398]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1209
-.l_1210:
-.l_1209:
-    lea     rax, [b_9398]
+    jmp     .l_2129_6
+.l_2129_7:
+.l_2129_6:
+    lea     rax, [b_9399]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6709,15 +6724,15 @@ f_2129:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9399]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9400]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     lea     rax, [b_9401]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9402]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -6736,23 +6751,23 @@ f_2129:
 f_2148:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_8784]
+    lea     rax, [b_8785]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2550
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1070
-    lea     rax, [b_8785]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    jmp     .l_1069
-.l_1070:
+    jz      .l_2148_1
     lea     rax, [b_8786]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_1069:
+    jmp     .l_2148_0
+.l_2148_1:
+    lea     rax, [b_8787]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+.l_2148_0:
     call    f_6962
     leave
     ret
@@ -6793,10 +6808,10 @@ f_2212:
     or 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_456
+    jz      .l_2212_1
     call    f_2420
-    jmp     .l_455
-.l_456:
+    jmp     .l_2212_0
+.l_2212_1:
     call    f_2175
     mov     rax, 14
     mov     rbx, qword [r12]
@@ -6805,10 +6820,10 @@ f_2212:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_457
+    jz      .l_2212_2
     call    f_7479
-    jmp     .l_455
-.l_457:
+    jmp     .l_2212_0
+.l_2212_2:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -6817,7 +6832,7 @@ f_2212:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_459
+    jz      .l_2212_4
     mov     qword [r12 - 8], 1
     lea     rax, [b_847]
     mov     rax, qword [rax]
@@ -6839,8 +6854,8 @@ f_2212:
     mov     rcx, qword [r12 + 8]
     mov     [rax], rcx
     add     r12, 16
-    jmp     .l_458
-.l_459:
+    jmp     .l_2212_3
+.l_2212_4:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -6849,7 +6864,7 @@ f_2212:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_460
+    jz      .l_2212_5
     mov     qword [r12 - 8], 1
     lea     rax, [b_847]
     mov     rax, qword [rax]
@@ -6866,9 +6881,9 @@ f_2212:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6555
-    jmp     .l_458
-.l_460:
-.l_458:
+    jmp     .l_2212_3
+.l_2212_5:
+.l_2212_3:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8065]
@@ -6879,7 +6894,7 @@ f_2212:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_455:
+.l_2212_0:
     leave
     ret
 f_2227:
@@ -6910,7 +6925,7 @@ f_2227:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_16
+    jz      .l_2227_1
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -6921,14 +6936,14 @@ f_2227:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_15
-.l_16:
-.l_15:
+    jmp     .l_2227_0
+.l_2227_1:
+.l_2227_0:
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 17]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_17:
+.l_2227_2:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -6937,7 +6952,7 @@ f_2227:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_18
+    jz      .l_2227_3
     lea     rax, [rbp - 17]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -6971,8 +6986,8 @@ f_2227:
     mov     rcx, qword [r12 + 8]
     mov     [rax], rcx
     add     r12, 16
-    jmp     .l_17
-.l_18:
+    jmp     .l_2227_2
+.l_2227_3:
     lea     rax, [rbp - 17]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -6983,14 +6998,14 @@ f_2227:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_20
+    jz      .l_2227_5
     mov     rcx, -1
     mov     rax, qword [r12]
     imul 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_19
-.l_20:
-.l_19:
+    jmp     .l_2227_4
+.l_2227_5:
+.l_2227_4:
     leave
     ret
 f_2230:
@@ -7003,7 +7018,7 @@ f_2230:
     add 	rax, rcx
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_973:
+.l_2230_0:
     call    f_2175
     mov     rax, 0
     mov     rbx, qword [r12]
@@ -7016,14 +7031,14 @@ f_2230:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_974
+    jz      .l_2230_1
     call    f_2175
     call    f_6282
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_976
+    jz      .l_2230_3
     call    f_6138
     lea     rax, [b_8570]
     mov     qword [r12 - 8], rax
@@ -7038,33 +7053,33 @@ f_2230:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_975
-.l_976:
-.l_975:
+    jmp     .l_2230_2
+.l_2230_3:
+.l_2230_2:
     mov     rax, 0
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_973
-.l_974:
+    jmp     .l_2230_0
+.l_2230_1:
     lea     rax, [b_8572]
     mov     qword [r12], rax
     call    f_2550
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_978
+    jz      .l_2230_5
     lea     rax, [b_1627]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8573]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3597
-    jmp     .l_977
-.l_978:
-.l_977:
+    jmp     .l_2230_4
+.l_2230_5:
+.l_2230_4:
     lea     rax, [b_1627]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8574]
@@ -7078,16 +7093,16 @@ f_2230:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_980
+    jz      .l_2230_7
     mov     qword [r12 - 8], 8
     mov     qword [r12 - 16], 21
     lea     rax, [b_1627]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_934
-    jmp     .l_979
-.l_980:
-.l_979:
+    jmp     .l_2230_6
+.l_2230_7:
+.l_2230_6:
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 6
     lea     rax, [b_1627]
@@ -7147,10 +7162,10 @@ f_2420:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_356
+    jz      .l_2420_1
     call    f_2019
-    jmp     .l_355
-.l_356:
+    jmp     .l_2420_0
+.l_2420_1:
     mov     rax, qword [r12 + 8]
     mov     qword [r12 + 16], rax
     add     r12, 16
@@ -7164,7 +7179,7 @@ f_2420:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_355:
+.l_2420_0:
     leave
     ret
 f_2448:
@@ -7179,9 +7194,9 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1008
-    jmp     .l_1007
-.l_1008:
+    jz      .l_2448_1
+    jmp     .l_2448_0
+.l_2448_1:
     call    f_8184
     mov     rax, 2
     mov     rbx, qword [r12]
@@ -7190,22 +7205,22 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1009
-    lea     rax, [b_8602]
+    jz      .l_2448_2
+    lea     rax, [b_8603]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8603]
+    lea     rax, [b_8604]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
     call    f_798
-    lea     rax, [b_8604]
+    lea     rax, [b_8605]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1007
-.l_1009:
+    jmp     .l_2448_0
+.l_2448_2:
     call    f_8184
     mov     rax, 3
     mov     rbx, qword [r12]
@@ -7214,27 +7229,27 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1010
-    lea     rax, [b_8605]
+    jz      .l_2448_3
+    lea     rax, [b_8606]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8606]
+    lea     rax, [b_8607]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_8607]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8608]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8609]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1010:
+    jmp     .l_2448_0
+.l_2448_3:
     call    f_8184
     mov     rax, 4
     mov     rbx, qword [r12]
@@ -7243,25 +7258,25 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1011
+    jz      .l_2448_4
     call    f_692
     call    f_798
-    lea     rax, [b_8609]
+    lea     rax, [b_8610]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8610]
+    lea     rax, [b_8611]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_8611]
+    lea     rax, [b_8612]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1007
-.l_1011:
+    jmp     .l_2448_0
+.l_2448_4:
     call    f_8184
     mov     rax, 5
     mov     rbx, qword [r12]
@@ -7270,23 +7285,23 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1012
+    jz      .l_2448_5
     call    f_692
     call    f_798
-    lea     rax, [b_8612]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
     lea     rax, [b_8613]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6412
     lea     rax, [b_8614]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1007
-.l_1012:
+    lea     rax, [b_8615]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_2448_0
+.l_2448_5:
     call    f_8184
     mov     rax, 6
     mov     rbx, qword [r12]
@@ -7295,8 +7310,8 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1013
-    lea     rax, [b_8615]
+    jz      .l_2448_6
+    lea     rax, [b_8616]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
@@ -7335,24 +7350,24 @@ f_2448:
     or 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_1015
+    jz      .l_2448_8
     call    f_692
-    lea     rax, [b_8616]
+    lea     rax, [b_8617]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_8617]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8618]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8619]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1014
-.l_1015:
+    jmp     .l_2448_7
+.l_2448_8:
     call    f_7283
     lea     rax, [rbp - 32]
     mov     qword [r12 - 8], rax
@@ -7362,9 +7377,9 @@ f_2448:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7161
-.l_1014:
-    jmp     .l_1007
-.l_1013:
+.l_2448_7:
+    jmp     .l_2448_0
+.l_2448_6:
     call    f_8184
     mov     rax, 7
     mov     rbx, qword [r12]
@@ -7373,14 +7388,14 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1016
-    lea     rax, [b_8619]
+    jz      .l_2448_9
+    lea     rax, [b_8620]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
     call    f_610
-    jmp     .l_1007
-.l_1016:
+    jmp     .l_2448_0
+.l_2448_9:
     call    f_8184
     mov     rax, 8
     mov     rbx, qword [r12]
@@ -7389,26 +7404,26 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1017
-    lea     rax, [b_8620]
+    jz      .l_2448_10
+    lea     rax, [b_8621]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8621]
+    lea     rax, [b_8622]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
     call    f_798
-    lea     rax, [b_8622]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8623]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8624]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1017:
+    jmp     .l_2448_0
+.l_2448_10:
     call    f_8184
     mov     rax, 9
     mov     rbx, qword [r12]
@@ -7417,21 +7432,17 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1018
-    lea     rax, [b_8624]
+    jz      .l_2448_11
+    lea     rax, [b_8625]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8625]
+    lea     rax, [b_8626]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
     call    f_692
     call    f_798
-    lea     rax, [b_8626]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8627]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -7440,12 +7451,12 @@ f_2448:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8629]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8630]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -7454,12 +7465,12 @@ f_2448:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8632]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8633]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -7476,28 +7487,32 @@ f_2448:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8637]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8638]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8639]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8640]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1007
-.l_1018:
+    lea     rax, [b_8641]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_2448_0
+.l_2448_11:
     call    f_8184
     mov     rax, 10
     mov     rbx, qword [r12]
@@ -7506,23 +7521,23 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1019
-    lea     rax, [b_8641]
+    jz      .l_2448_12
+    lea     rax, [b_8642]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
     call    f_692
     call    f_798
-    lea     rax, [b_8642]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8643]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8644]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1019:
+    jmp     .l_2448_0
+.l_2448_12:
     call    f_8184
     mov     rax, 11
     mov     rbx, qword [r12]
@@ -7531,23 +7546,23 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1020
-    lea     rax, [b_8644]
+    jz      .l_2448_13
+    lea     rax, [b_8645]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
     call    f_692
     call    f_798
-    lea     rax, [b_8645]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8646]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8647]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1020:
+    jmp     .l_2448_0
+.l_2448_13:
     call    f_8184
     mov     rax, 12
     mov     rbx, qword [r12]
@@ -7556,15 +7571,11 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1021
-    lea     rax, [b_8647]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_2448_14
     lea     rax, [b_8648]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8649]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -7572,13 +7583,17 @@ f_2448:
     lea     rax, [b_8650]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_7161
+    call    f_3567
     lea     rax, [b_8651]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1021:
+    lea     rax, [b_8652]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_7161
+    jmp     .l_2448_0
+.l_2448_14:
     call    f_8184
     mov     rax, 13
     mov     rbx, qword [r12]
@@ -7587,15 +7602,11 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1022
-    lea     rax, [b_8652]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_2448_15
     lea     rax, [b_8653]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8654]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -7607,7 +7618,7 @@ f_2448:
     lea     rax, [b_8656]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_7161
+    call    f_3567
     lea     rax, [b_8657]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -7616,8 +7627,12 @@ f_2448:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1022:
+    lea     rax, [b_8659]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_7161
+    jmp     .l_2448_0
+.l_2448_15:
     call    f_8184
     mov     rax, 14
     mov     rbx, qword [r12]
@@ -7626,22 +7641,22 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1023
-    lea     rax, [b_8659]
+    jz      .l_2448_16
+    lea     rax, [b_8660]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8660]
+    lea     rax, [b_8661]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
     call    f_610
-    lea     rax, [b_8661]
+    lea     rax, [b_8662]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1023:
+    jmp     .l_2448_0
+.l_2448_16:
     call    f_8184
     mov     rax, 15
     mov     rbx, qword [r12]
@@ -7650,24 +7665,20 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1024
+    jz      .l_2448_17
     call    f_692
     call    f_798
-    lea     rax, [b_8662]
+    lea     rax, [b_8663]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8663]
+    lea     rax, [b_8664]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     mov     qword [r12 - 8], 65536
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_8664]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8665]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -7679,9 +7690,13 @@ f_2448:
     lea     rax, [b_8667]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8668]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1024:
+    jmp     .l_2448_0
+.l_2448_17:
     call    f_8184
     mov     rax, 16
     mov     rbx, qword [r12]
@@ -7690,33 +7705,33 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1025
+    jz      .l_2448_18
     call    f_692
-    lea     rax, [b_8668]
+    lea     rax, [b_8669]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8669]
+    lea     rax, [b_8670]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_2759
-    lea     rax, [b_8670]
+    lea     rax, [b_8671]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_8671]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8672]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8673]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1025:
+    jmp     .l_2448_0
+.l_2448_18:
     call    f_8184
     mov     rax, 17
     mov     rbx, qword [r12]
@@ -7725,15 +7740,11 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1026
-    lea     rax, [b_8673]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_2448_19
     lea     rax, [b_8674]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8675]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -7741,9 +7752,13 @@ f_2448:
     lea     rax, [b_8676]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_3567
+    lea     rax, [b_8677]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_6962
-    jmp     .l_1007
-.l_1026:
+    jmp     .l_2448_0
+.l_2448_19:
     call    f_8184
     mov     rax, 18
     mov     rbx, qword [r12]
@@ -7752,25 +7767,25 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1027
-    lea     rax, [b_8677]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_2448_20
     lea     rax, [b_8678]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8679]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
     lea     rax, [b_8680]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8681]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1027:
+    jmp     .l_2448_0
+.l_2448_20:
     call    f_8184
     mov     rax, 19
     mov     rbx, qword [r12]
@@ -7779,15 +7794,11 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1028
-    lea     rax, [b_8681]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_2448_21
     lea     rax, [b_8682]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8683]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -7799,13 +7810,17 @@ f_2448:
     lea     rax, [b_8685]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
     lea     rax, [b_8686]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1007
-.l_1028:
+    lea     rax, [b_8687]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_2448_0
+.l_2448_21:
     call    f_8184
     mov     rax, 20
     mov     rbx, qword [r12]
@@ -7814,28 +7829,28 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1029
+    jz      .l_2448_22
     call    f_692
-    lea     rax, [b_8687]
+    lea     rax, [b_8688]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8688]
+    lea     rax, [b_8689]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_8689]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8690]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8691]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1029:
+    jmp     .l_2448_0
+.l_2448_22:
     call    f_8184
     mov     rax, 21
     mov     rbx, qword [r12]
@@ -7844,23 +7859,23 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1030
-    lea     rax, [b_8691]
+    jz      .l_2448_23
+    lea     rax, [b_8692]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8692]
+    lea     rax, [b_8693]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_8693]
+    lea     rax, [b_8694]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1007
-.l_1030:
+    jmp     .l_2448_0
+.l_2448_23:
     call    f_8184
     mov     rax, 22
     mov     rbx, qword [r12]
@@ -7869,17 +7884,17 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1031
-    lea     rax, [b_8694]
-    mov     qword [r12 - 8], rax
+    jz      .l_2448_24
     lea     rax, [b_8695]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_8696]
+    mov     qword [r12 - 16], rax
+    lea     rax, [b_8697]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_3330
-    jmp     .l_1007
-.l_1031:
+    jmp     .l_2448_0
+.l_2448_24:
     call    f_8184
     mov     rax, 23
     mov     rbx, qword [r12]
@@ -7888,17 +7903,17 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1032
-    lea     rax, [b_8697]
-    mov     qword [r12 - 8], rax
+    jz      .l_2448_25
     lea     rax, [b_8698]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_8699]
+    mov     qword [r12 - 16], rax
+    lea     rax, [b_8700]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_3330
-    jmp     .l_1007
-.l_1032:
+    jmp     .l_2448_0
+.l_2448_25:
     call    f_8184
     mov     rax, 24
     mov     rbx, qword [r12]
@@ -7907,17 +7922,17 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1033
-    lea     rax, [b_8700]
-    mov     qword [r12 - 8], rax
+    jz      .l_2448_26
     lea     rax, [b_8701]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_8702]
+    mov     qword [r12 - 16], rax
+    lea     rax, [b_8703]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_3330
-    jmp     .l_1007
-.l_1033:
+    jmp     .l_2448_0
+.l_2448_26:
     call    f_8184
     mov     rax, 25
     mov     rbx, qword [r12]
@@ -7926,17 +7941,17 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1034
-    lea     rax, [b_8703]
-    mov     qword [r12 - 8], rax
+    jz      .l_2448_27
     lea     rax, [b_8704]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_8705]
+    mov     qword [r12 - 16], rax
+    lea     rax, [b_8706]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_3330
-    jmp     .l_1007
-.l_1034:
+    jmp     .l_2448_0
+.l_2448_27:
     call    f_8184
     mov     rax, 26
     mov     rbx, qword [r12]
@@ -7945,17 +7960,17 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1035
-    lea     rax, [b_8706]
-    mov     qword [r12 - 8], rax
+    jz      .l_2448_28
     lea     rax, [b_8707]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_8708]
+    mov     qword [r12 - 16], rax
+    lea     rax, [b_8709]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_3330
-    jmp     .l_1007
-.l_1035:
+    jmp     .l_2448_0
+.l_2448_28:
     call    f_8184
     mov     rax, 27
     mov     rbx, qword [r12]
@@ -7964,17 +7979,17 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1036
-    lea     rax, [b_8709]
-    mov     qword [r12 - 8], rax
+    jz      .l_2448_29
     lea     rax, [b_8710]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_8711]
+    mov     qword [r12 - 16], rax
+    lea     rax, [b_8712]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_3330
-    jmp     .l_1007
-.l_1036:
+    jmp     .l_2448_0
+.l_2448_29:
     call    f_8184
     mov     rax, 28
     mov     rbx, qword [r12]
@@ -7983,17 +7998,17 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1037
-    lea     rax, [b_8712]
-    mov     qword [r12 - 8], rax
+    jz      .l_2448_30
     lea     rax, [b_8713]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_8714]
+    mov     qword [r12 - 16], rax
+    lea     rax, [b_8715]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_3330
-    jmp     .l_1007
-.l_1037:
+    jmp     .l_2448_0
+.l_2448_30:
     call    f_8184
     mov     rax, 29
     mov     rbx, qword [r12]
@@ -8002,17 +8017,17 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1038
-    lea     rax, [b_8715]
-    mov     qword [r12 - 8], rax
+    jz      .l_2448_31
     lea     rax, [b_8716]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_8717]
+    mov     qword [r12 - 16], rax
+    lea     rax, [b_8718]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_3330
-    jmp     .l_1007
-.l_1038:
+    jmp     .l_2448_0
+.l_2448_31:
     call    f_8184
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -8021,17 +8036,17 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1039
-    lea     rax, [b_8718]
-    mov     qword [r12 - 8], rax
+    jz      .l_2448_32
     lea     rax, [b_8719]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_8720]
+    mov     qword [r12 - 16], rax
+    lea     rax, [b_8721]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_3330
-    jmp     .l_1007
-.l_1039:
+    jmp     .l_2448_0
+.l_2448_32:
     call    f_8184
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -8040,25 +8055,25 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1040
-    lea     rax, [b_8721]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_2448_33
     lea     rax, [b_8722]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8723]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
     lea     rax, [b_8724]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8725]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1040:
+    jmp     .l_2448_0
+.l_2448_33:
     call    f_8184
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -8067,15 +8082,11 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1041
-    lea     rax, [b_8725]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_2448_34
     lea     rax, [b_8726]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8727]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8083,7 +8094,7 @@ f_2448:
     lea     rax, [b_8728]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
     lea     rax, [b_8729]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8095,9 +8106,13 @@ f_2448:
     lea     rax, [b_8731]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8732]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1041:
+    jmp     .l_2448_0
+.l_2448_34:
     call    f_8184
     mov     rax, 33
     mov     rbx, qword [r12]
@@ -8106,15 +8121,11 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1042
-    lea     rax, [b_8732]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_2448_35
     lea     rax, [b_8733]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8734]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8122,7 +8133,7 @@ f_2448:
     lea     rax, [b_8735]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
     lea     rax, [b_8736]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8134,9 +8145,13 @@ f_2448:
     lea     rax, [b_8738]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8739]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1042:
+    jmp     .l_2448_0
+.l_2448_35:
     call    f_8184
     mov     rax, 34
     mov     rbx, qword [r12]
@@ -8145,15 +8160,11 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1043
-    lea     rax, [b_8739]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_2448_36
     lea     rax, [b_8740]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8741]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8161,7 +8172,7 @@ f_2448:
     lea     rax, [b_8742]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
     lea     rax, [b_8743]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8173,9 +8184,13 @@ f_2448:
     lea     rax, [b_8745]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8746]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1043:
+    jmp     .l_2448_0
+.l_2448_36:
     call    f_8184
     mov     rax, 35
     mov     rbx, qword [r12]
@@ -8184,15 +8199,11 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1044
-    lea     rax, [b_8746]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_2448_37
     lea     rax, [b_8747]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8748]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8200,7 +8211,7 @@ f_2448:
     lea     rax, [b_8749]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
     lea     rax, [b_8750]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8208,13 +8219,17 @@ f_2448:
     lea     rax, [b_8751]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_7161
+    call    f_6962
     lea     rax, [b_8752]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7161
-    jmp     .l_1007
-.l_1044:
+    lea     rax, [b_8753]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_7161
+    jmp     .l_2448_0
+.l_2448_37:
     call    f_8184
     mov     rax, 36
     mov     rbx, qword [r12]
@@ -8223,21 +8238,21 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1045
+    jz      .l_2448_38
     call    f_692
     call    f_798
-    lea     rax, [b_8753]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8754]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1007
-.l_1045:
+    call    f_7283
+    call    f_4748
+    lea     rax, [b_8755]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_2448_0
+.l_2448_38:
     call    f_8184
     mov     rax, 37
     mov     rbx, qword [r12]
@@ -8246,25 +8261,25 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1046
+    jz      .l_2448_39
     call    f_692
     call    f_798
-    lea     rax, [b_8755]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
     lea     rax, [b_8756]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
+    call    f_6412
     lea     rax, [b_8757]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1007
-.l_1046:
+    call    f_7283
+    call    f_4748
+    lea     rax, [b_8758]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_2448_0
+.l_2448_39:
     call    f_8184
     mov     rax, 38
     mov     rbx, qword [r12]
@@ -8273,57 +8288,53 @@ f_2448:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1047
-    lea     rax, [b_8758]
+    jz      .l_2448_40
+    lea     rax, [b_8759]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8759]
+    lea     rax, [b_8760]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
     call    f_692
     call    f_798
-    lea     rax, [b_8760]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8761]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8762]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1007
-.l_1047:
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8763]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_2448_0
+.l_2448_40:
+    lea     rax, [b_8764]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     call    f_8184
     call    f_7036
-    lea     rax, [b_8764]
+    lea     rax, [b_8765]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_1007:
+.l_2448_0:
     leave
     ret
 f_2520:
     push    rbp
     mov     rbp, rsp
     sub     rsp, 8
-    lea     rax, [b_9433]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9434]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8332,15 +8343,15 @@ f_2520:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_1103
     lea     rax, [b_9436]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6412
+    call    f_6962
+    call    f_1103
     lea     rax, [b_9437]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6412
     lea     rax, [b_9438]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8353,6 +8364,10 @@ f_2520:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    lea     rax, [b_9441]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
     mov     qword [r12 - 8], 65536
     mov     rbx, 4096
     mov     rax, qword [r12 - 8]
@@ -8361,10 +8376,6 @@ f_2520:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9441]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9442]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8372,12 +8383,16 @@ f_2520:
     lea     rax, [b_9443]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_358
+    call    f_6962
     lea     rax, [b_9444]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_358
     lea     rax, [b_9445]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9446]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_358
@@ -8389,7 +8404,7 @@ f_2520:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_1042
-    lea     rax, [b_9446]
+    lea     rax, [b_9447]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -8397,7 +8412,7 @@ f_2520:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_1248:
+.l_2520_2:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -8407,7 +8422,7 @@ f_2520:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1247
+    jz      .l_2520_1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -8432,16 +8447,16 @@ f_2520:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_1250
+    jz      .l_2520_4
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3705
-    jmp     .l_1249
-.l_1250:
-.l_1249:
-.l_1246:
+    jmp     .l_2520_3
+.l_2520_4:
+.l_2520_3:
+.l_2520_0:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -8452,10 +8467,10 @@ f_2520:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_1248
-.l_1247:
+    jmp     .l_2520_2
+.l_2520_1:
     call    f_3271
-    lea     rax, [b_9447]
+    lea     rax, [b_9448]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -8463,7 +8478,7 @@ f_2520:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_1253:
+.l_2520_7:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -8473,7 +8488,7 @@ f_2520:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1252
+    jz      .l_2520_6
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -8498,16 +8513,16 @@ f_2520:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_1255
+    jz      .l_2520_9
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_4740
-    jmp     .l_1254
-.l_1255:
-.l_1254:
-.l_1251:
+    jmp     .l_2520_8
+.l_2520_9:
+.l_2520_8:
+.l_2520_5:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -8518,16 +8533,16 @@ f_2520:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_1253
-.l_1252:
-    lea     rax, [b_9448]
+    jmp     .l_2520_7
+.l_2520_6:
+    lea     rax, [b_9449]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     mov     qword [r12 - 8], 65536
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9449]
+    lea     rax, [b_9450]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -8552,12 +8567,12 @@ f_2539:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1216
-    lea     rax, [b_9402]
+    jz      .l_2539_1
+    lea     rax, [b_9403]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_1215
-.l_1216:
+    jmp     .l_2539_0
+.l_2539_1:
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8569,12 +8584,12 @@ f_2539:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1217
-    lea     rax, [b_9403]
+    jz      .l_2539_2
+    lea     rax, [b_9404]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_1215
-.l_1217:
+    jmp     .l_2539_0
+.l_2539_2:
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8586,12 +8601,12 @@ f_2539:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1218
-    lea     rax, [b_9404]
+    jz      .l_2539_3
+    lea     rax, [b_9405]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_1215
-.l_1218:
+    jmp     .l_2539_0
+.l_2539_3:
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8603,12 +8618,12 @@ f_2539:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1219
-    lea     rax, [b_9405]
+    jz      .l_2539_4
+    lea     rax, [b_9406]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_1215
-.l_1219:
+    jmp     .l_2539_0
+.l_2539_4:
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8620,12 +8635,12 @@ f_2539:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1220
-    lea     rax, [b_9406]
+    jz      .l_2539_5
+    lea     rax, [b_9407]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_1215
-.l_1220:
+    jmp     .l_2539_0
+.l_2539_5:
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8637,12 +8652,12 @@ f_2539:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1221
-    lea     rax, [b_9407]
+    jz      .l_2539_6
+    lea     rax, [b_9408]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_1215
-.l_1221:
+    jmp     .l_2539_0
+.l_2539_6:
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8654,12 +8669,12 @@ f_2539:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1222
-    lea     rax, [b_9408]
+    jz      .l_2539_7
+    lea     rax, [b_9409]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_1215
-.l_1222:
+    jmp     .l_2539_0
+.l_2539_7:
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8671,12 +8686,12 @@ f_2539:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1223
-    lea     rax, [b_9409]
+    jz      .l_2539_8
+    lea     rax, [b_9410]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_1215
-.l_1223:
+    jmp     .l_2539_0
+.l_2539_8:
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8688,12 +8703,12 @@ f_2539:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1224
-    lea     rax, [b_9410]
+    jz      .l_2539_9
+    lea     rax, [b_9411]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_1215
-.l_1224:
+    jmp     .l_2539_0
+.l_2539_9:
     lea     rax, [rbp - 1]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8701,7 +8716,7 @@ f_2539:
     call    f_5223
     leave
     ret
-.l_1215:
+.l_2539_0:
     call    f_6962
     leave
     ret
@@ -8716,19 +8731,6 @@ f_2550:
     call    f_2382
     leave
     ret
-f_2556:
-    push    rbp
-    mov     rbp, rsp
-    mov     qword [r12 - 8], 0
-    lea     rax, [b_1210]
-    mov     rcx, qword [r12 - 8]
-    mov     [rax], rcx
-    mov     qword [r12 - 8], 0
-    lea     rax, [b_3364]
-    mov     rcx, qword [r12 - 8]
-    mov     [rax], rcx
-    leave
-    ret
 f_2592:
     push    rbp
     mov     rbp, rsp
@@ -8740,14 +8742,14 @@ f_2592:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_464
+    jz      .l_2592_1
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_463
-.l_464:
-.l_463:
+    jmp     .l_2592_0
+.l_2592_1:
+.l_2592_0:
     call    f_2175
     mov     rax, 4
     mov     rbx, qword [r12]
@@ -8760,13 +8762,13 @@ f_2592:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_466
+    jz      .l_2592_3
     mov     qword [r12], 0
     leave
     ret
-    jmp     .l_465
-.l_466:
-.l_465:
+    jmp     .l_2592_2
+.l_2592_3:
+.l_2592_2:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -8817,7 +8819,7 @@ f_2603:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_698
+    jz      .l_2603_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8851,7 +8853,7 @@ f_2603:
     and 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_700
+    jz      .l_2603_3
     add     r12, 8
     call    f_6138
     lea     rax, [b_8448]
@@ -8861,9 +8863,9 @@ f_2603:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_699
-.l_700:
-.l_699:
+    jmp     .l_2603_2
+.l_2603_3:
+.l_2603_2:
     mov     rcx, 0
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -8879,9 +8881,9 @@ f_2603:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3552
-    jmp     .l_697
-.l_698:
-.l_697:
+    jmp     .l_2603_0
+.l_2603_1:
+.l_2603_0:
     lea     rax, [rbp - 9]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -8889,14 +8891,14 @@ f_2603:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_702
+    jz      .l_2603_5
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_701
-.l_702:
-.l_701:
+    jmp     .l_2603_4
+.l_2603_5:
+.l_2603_4:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -8915,7 +8917,7 @@ f_2603:
     lea     rax, [rbp - 17]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_703:
+.l_2603_6:
     call    f_2175
     mov     rax, 15
     mov     rbx, qword [r12]
@@ -8928,13 +8930,13 @@ f_2603:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_704
+    jz      .l_2603_7
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_706
+    jz      .l_2603_9
     lea     rax, [rbp - 17]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -8960,17 +8962,17 @@ f_2603:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_705
-.l_706:
-.l_705:
+    jmp     .l_2603_8
+.l_2603_9:
+.l_2603_8:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_703
-.l_704:
+    jmp     .l_2603_6
+.l_2603_7:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -8994,7 +8996,7 @@ f_2603:
     lea     rax, [rbp - 17]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_707:
+.l_2603_10:
     call    f_2175
     mov     rax, 15
     mov     rbx, qword [r12]
@@ -9007,13 +9009,13 @@ f_2603:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_708
+    jz      .l_2603_11
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_710
+    jz      .l_2603_13
     lea     rax, [rbp - 17]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -9039,17 +9041,17 @@ f_2603:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_709
-.l_710:
-.l_709:
+    jmp     .l_2603_12
+.l_2603_13:
+.l_2603_12:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_707
-.l_708:
+    jmp     .l_2603_10
+.l_2603_11:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -9066,11 +9068,11 @@ f_2603:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_712
+    jz      .l_2603_15
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_713:
+.l_2603_16:
     call    f_2175
     mov     rax, 29
     mov     rbx, qword [r12]
@@ -9083,13 +9085,13 @@ f_2603:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_714
+    jz      .l_2603_17
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_716
+    jz      .l_2603_19
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -9115,8 +9117,8 @@ f_2603:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_715
-.l_716:
+    jmp     .l_2603_18
+.l_2603_19:
     call    f_2175
     mov     rax, 28
     mov     rbx, qword [r12]
@@ -9125,10 +9127,10 @@ f_2603:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_717
+    jz      .l_2603_20
     call    f_7058
-    jmp     .l_715
-.l_717:
+    jmp     .l_2603_18
+.l_2603_20:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -9137,10 +9139,10 @@ f_2603:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_718
+    jz      .l_2603_21
     call    f_4957
-    jmp     .l_715
-.l_718:
+    jmp     .l_2603_18
+.l_2603_21:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -9149,17 +9151,17 @@ f_2603:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_719
+    jz      .l_2603_22
     call    f_1050
-    jmp     .l_715
-.l_719:
+    jmp     .l_2603_18
+.l_2603_22:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_715:
-    jmp     .l_713
-.l_714:
+.l_2603_18:
+    jmp     .l_2603_16
+.l_2603_17:
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     mov     rcx, 25
@@ -9171,12 +9173,12 @@ f_2603:
     add 	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_711
-.l_712:
+    jmp     .l_2603_14
+.l_2603_15:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_720:
+.l_2603_23:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -9189,13 +9191,13 @@ f_2603:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_721
+    jz      .l_2603_24
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_723
+    jz      .l_2603_26
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -9221,8 +9223,8 @@ f_2603:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_722
-.l_723:
+    jmp     .l_2603_25
+.l_2603_26:
     call    f_2175
     mov     rax, 28
     mov     rbx, qword [r12]
@@ -9231,10 +9233,10 @@ f_2603:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_724
+    jz      .l_2603_27
     call    f_7058
-    jmp     .l_722
-.l_724:
+    jmp     .l_2603_25
+.l_2603_27:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -9243,10 +9245,10 @@ f_2603:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_725
+    jz      .l_2603_28
     call    f_4957
-    jmp     .l_722
-.l_725:
+    jmp     .l_2603_25
+.l_2603_28:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -9255,17 +9257,17 @@ f_2603:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_726
+    jz      .l_2603_29
     call    f_1050
-    jmp     .l_722
-.l_726:
+    jmp     .l_2603_25
+.l_2603_29:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_722:
-    jmp     .l_720
-.l_721:
+.l_2603_25:
+    jmp     .l_2603_23
+.l_2603_24:
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     mov     rcx, 25
@@ -9273,7 +9275,7 @@ f_2603:
     add 	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
-.l_711:
+.l_2603_14:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -9293,7 +9295,7 @@ f_2603:
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_727:
+.l_2603_30:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -9306,13 +9308,13 @@ f_2603:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_728
+    jz      .l_2603_31
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_730
+    jz      .l_2603_33
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -9338,17 +9340,17 @@ f_2603:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_729
-.l_730:
-.l_729:
+    jmp     .l_2603_32
+.l_2603_33:
+.l_2603_32:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_727
-.l_728:
+    jmp     .l_2603_30
+.l_2603_31:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -9377,13 +9379,13 @@ f_2603:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_732
+    jz      .l_2603_35
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_733:
+.l_2603_36:
     call    f_2175
     mov     rax, 29
     mov     rbx, qword [r12]
@@ -9396,13 +9398,13 @@ f_2603:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_734
+    jz      .l_2603_37
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_736
+    jz      .l_2603_39
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -9428,29 +9430,29 @@ f_2603:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_735
-.l_736:
-.l_735:
+    jmp     .l_2603_38
+.l_2603_39:
+.l_2603_38:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_733
-.l_734:
+    jmp     .l_2603_36
+.l_2603_37:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_731
-.l_732:
+    jmp     .l_2603_34
+.l_2603_35:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [rbp - 25]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_737:
+.l_2603_40:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -9463,13 +9465,13 @@ f_2603:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_738
+    jz      .l_2603_41
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_740
+    jz      .l_2603_43
     lea     rax, [rbp - 25]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -9495,22 +9497,22 @@ f_2603:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_739
-.l_740:
-.l_739:
+    jmp     .l_2603_42
+.l_2603_43:
+.l_2603_42:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_737
-.l_738:
+    jmp     .l_2603_40
+.l_2603_41:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_731:
+.l_2603_34:
     mov     rax, qword [r12 + 8]
     mov     rbx, qword [r12 + 16]
     mov     qword [r12 + 16], rax
@@ -9545,14 +9547,14 @@ f_2603:
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_741:
+    .ral_2603_44:
     cmp     rbx, r12
-    je      .rbl_741
+    je      .rbl_2603_44
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_741
-    .rbl_741:
+    jmp     .ral_2603_44
+    .rbl_2603_44:
     mov     [r12], rcx
     call    f_934
     leave
@@ -9588,14 +9590,14 @@ f_2654:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_528:
+    .ral_2654_0:
     cmp     rbx, r12
-    je      .rbl_528
+    je      .rbl_2654_0
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_528
-    .rbl_528:
+    jmp     .ral_2654_0
+    .rbl_2654_0:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -9624,7 +9626,7 @@ f_2695:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_909
+    jz      .l_2695_1
     call    f_6138
     lea     rax, [b_8547]
     mov     qword [r12 - 8], rax
@@ -9633,16 +9635,16 @@ f_2695:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_908
-.l_909:
-.l_908:
+    jmp     .l_2695_0
+.l_2695_1:
+.l_2695_0:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     rax, rbx
     add     r12, 8
     test    rax, rax
-    jz      .l_911
+    jz      .l_2695_3
     call    f_6138
     lea     rax, [b_8548]
     mov     qword [r12 - 8], rax
@@ -9657,9 +9659,9 @@ f_2695:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_910
-.l_911:
-.l_910:
+    jmp     .l_2695_2
+.l_2695_3:
+.l_2695_2:
     lea     rax, [b_5800]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -9667,11 +9669,11 @@ f_2695:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_913
+    jz      .l_2695_5
     mov     qword [r12 - 8], 0
     sub     r12, 8
-    jmp     .l_912
-.l_913:
+    jmp     .l_2695_4
+.l_2695_5:
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
@@ -9680,7 +9682,7 @@ f_2695:
     mov     rax, qword [r12]
     mov     rax, qword [rax]
     mov     qword [r12], rax
-.l_912:
+.l_2695_4:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -9721,7 +9723,7 @@ f_2695:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_915
+    jz      .l_2695_7
     call    f_6138
     lea     rax, [b_8550]
     mov     qword [r12 - 8], rax
@@ -9730,9 +9732,9 @@ f_2695:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_914
-.l_915:
-.l_914:
+    jmp     .l_2695_6
+.l_2695_7:
+.l_2695_6:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -9741,7 +9743,7 @@ f_2695:
     lea     rax, [rbp - 32]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_916:
+.l_2695_8:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -9754,7 +9756,7 @@ f_2695:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_917
+    jz      .l_2695_9
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 48]
     mov     rcx, qword [r12 - 8]
@@ -9774,7 +9776,7 @@ f_2695:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_919
+    jz      .l_2695_11
     call    f_1023
     lea     rax, [rbp - 40]
     mov     rcx, qword [r12]
@@ -9789,8 +9791,8 @@ f_2695:
     mov     rcx, qword [r12 + 24]
     mov     [rax], rcx
     add     r12, 32
-    jmp     .l_918
-.l_919:
+    jmp     .l_2695_10
+.l_2695_11:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -9799,14 +9801,14 @@ f_2695:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_920
+    jz      .l_2695_12
     call    f_5600
     lea     rax, [rbp - 40]
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-    jmp     .l_918
-.l_920:
+    jmp     .l_2695_10
+.l_2695_12:
     call    f_6138
     lea     rax, [b_8551]
     mov     qword [r12 - 8], rax
@@ -9815,7 +9817,7 @@ f_2695:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_918:
+.l_2695_10:
     lea     rax, [rbp - 40]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -9839,7 +9841,7 @@ f_2695:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_922
+    jz      .l_2695_14
     add     r12, 8
     call    f_6138
     lea     rax, [b_8552]
@@ -9858,9 +9860,9 @@ f_2695:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_921
-.l_922:
-.l_921:
+    jmp     .l_2695_13
+.l_2695_14:
+.l_2695_13:
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     mov     rcx, 1
@@ -9872,7 +9874,7 @@ f_2695:
     mov     rax, qword [rax]
     mov     qword [r12 - 16], rax
     sub     r12, 16
-.l_923:
+.l_2695_15:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -9880,7 +9882,7 @@ f_2695:
     add 	rax, rcx
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_924
+    jz      .l_2695_16
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -9897,7 +9899,7 @@ f_2695:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_926
+    jz      .l_2695_18
     mov     rax, qword [r12 + 8]
     mov     rbx, qword [r12 + 24]
     mov     qword [r12 + 24], rax
@@ -9928,15 +9930,15 @@ f_2695:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_925
-.l_926:
-.l_925:
+    jmp     .l_2695_17
+.l_2695_18:
+.l_2695_17:
     mov     rcx, 40
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_923
-.l_924:
+    jmp     .l_2695_15
+.l_2695_16:
     mov     rax, 2
     mov     rax, [r12 + rax*8]
     mov     qword [r12 - 8], rax
@@ -10023,8 +10025,8 @@ f_2695:
     add 	rax, rcx
     mov     qword [r12 + 24], rax
     add     r12, 24
-    jmp     .l_916
-.l_917:
+    jmp     .l_2695_8
+.l_2695_9:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -10120,7 +10122,7 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_181
+    jz      .l_2739_1
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -10133,11 +10135,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_183
+    jz      .l_2739_3
     mov     qword [r12 - 8], 0
     sub     r12, 8
-    jmp     .l_182
-.l_183:
+    jmp     .l_2739_2
+.l_2739_3:
     call    f_3838
     mov     rax, 97
     mov     rbx, qword [r12]
@@ -10146,11 +10148,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_184
+    jz      .l_2739_4
     mov     qword [r12 - 8], 7
     sub     r12, 8
-    jmp     .l_182
-.l_184:
+    jmp     .l_2739_2
+.l_2739_4:
     call    f_3838
     mov     rax, 98
     mov     rbx, qword [r12]
@@ -10159,11 +10161,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_185
+    jz      .l_2739_5
     mov     qword [r12 - 8], 8
     sub     r12, 8
-    jmp     .l_182
-.l_185:
+    jmp     .l_2739_2
+.l_2739_5:
     call    f_3838
     mov     rax, 116
     mov     rbx, qword [r12]
@@ -10172,11 +10174,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_186
+    jz      .l_2739_6
     mov     qword [r12 - 8], 9
     sub     r12, 8
-    jmp     .l_182
-.l_186:
+    jmp     .l_2739_2
+.l_2739_6:
     call    f_3838
     mov     rax, 110
     mov     rbx, qword [r12]
@@ -10185,11 +10187,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_187
+    jz      .l_2739_7
     mov     qword [r12 - 8], 10
     sub     r12, 8
-    jmp     .l_182
-.l_187:
+    jmp     .l_2739_2
+.l_2739_7:
     call    f_3838
     mov     rax, 118
     mov     rbx, qword [r12]
@@ -10198,11 +10200,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_188
+    jz      .l_2739_8
     mov     qword [r12 - 8], 11
     sub     r12, 8
-    jmp     .l_182
-.l_188:
+    jmp     .l_2739_2
+.l_2739_8:
     call    f_3838
     mov     rax, 102
     mov     rbx, qword [r12]
@@ -10211,11 +10213,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_189
+    jz      .l_2739_9
     mov     qword [r12 - 8], 12
     sub     r12, 8
-    jmp     .l_182
-.l_189:
+    jmp     .l_2739_2
+.l_2739_9:
     call    f_3838
     mov     rax, 114
     mov     rbx, qword [r12]
@@ -10224,11 +10226,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_190
+    jz      .l_2739_10
     mov     qword [r12 - 8], 13
     sub     r12, 8
-    jmp     .l_182
-.l_190:
+    jmp     .l_2739_2
+.l_2739_10:
     call    f_3838
     mov     rax, 39
     mov     rbx, qword [r12]
@@ -10237,11 +10239,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_191
+    jz      .l_2739_11
     mov     qword [r12 - 8], 39
     sub     r12, 8
-    jmp     .l_182
-.l_191:
+    jmp     .l_2739_2
+.l_2739_11:
     call    f_3838
     mov     rax, 34
     mov     rbx, qword [r12]
@@ -10250,11 +10252,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_192
+    jz      .l_2739_12
     mov     qword [r12 - 8], 34
     sub     r12, 8
-    jmp     .l_182
-.l_192:
+    jmp     .l_2739_2
+.l_2739_12:
     call    f_3838
     mov     rax, 92
     mov     rbx, qword [r12]
@@ -10263,11 +10265,11 @@ f_2739:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_193
+    jz      .l_2739_13
     mov     qword [r12 - 8], 92
     sub     r12, 8
-    jmp     .l_182
-.l_193:
+    jmp     .l_2739_2
+.l_2739_13:
     call    f_6871
     lea     rax, [b_8260]
     mov     qword [r12 - 8], rax
@@ -10282,11 +10284,11 @@ f_2739:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_182:
-    jmp     .l_180
-.l_181:
+.l_2739_2:
+    jmp     .l_2739_0
+.l_2739_1:
     call    f_3838
-.l_180:
+.l_2739_0:
     leave
     ret
 f_2751:
@@ -10306,7 +10308,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_864
+    jz      .l_2751_1
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -10329,7 +10331,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_866
+    jz      .l_2751_3
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 12
     mov     rax, 3
@@ -10354,8 +10356,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_866:
+    jmp     .l_2751_2
+.l_2751_3:
     call    f_6176
     lea     rax, [b_8517]
     mov     qword [r12 - 8], rax
@@ -10365,7 +10367,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_867
+    jz      .l_2751_4
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 12
     mov     rax, 3
@@ -10390,8 +10392,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_867:
+    jmp     .l_2751_2
+.l_2751_4:
     call    f_6176
     lea     rax, [b_8518]
     mov     qword [r12 - 8], rax
@@ -10401,7 +10403,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_868
+    jz      .l_2751_5
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 22
     mov     rax, 3
@@ -10410,8 +10412,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_868:
+    jmp     .l_2751_2
+.l_2751_5:
     call    f_6176
     lea     rax, [b_8519]
     mov     qword [r12 - 8], rax
@@ -10421,7 +10423,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_869
+    jz      .l_2751_6
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 12
     mov     rax, 3
@@ -10438,8 +10440,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_869:
+    jmp     .l_2751_2
+.l_2751_6:
     call    f_6176
     lea     rax, [b_8520]
     mov     qword [r12 - 8], rax
@@ -10449,7 +10451,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_870
+    jz      .l_2751_7
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 24
     mov     rax, 3
@@ -10458,8 +10460,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_870:
+    jmp     .l_2751_2
+.l_2751_7:
     call    f_6176
     lea     rax, [b_8521]
     mov     qword [r12 - 8], rax
@@ -10469,7 +10471,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_871
+    jz      .l_2751_8
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 25
     mov     rax, 3
@@ -10478,8 +10480,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_871:
+    jmp     .l_2751_2
+.l_2751_8:
     call    f_6176
     lea     rax, [b_8522]
     mov     qword [r12 - 8], rax
@@ -10489,7 +10491,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_872
+    jz      .l_2751_9
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 26
     mov     rax, 3
@@ -10498,8 +10500,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_872:
+    jmp     .l_2751_2
+.l_2751_9:
     call    f_6176
     lea     rax, [b_8523]
     mov     qword [r12 - 8], rax
@@ -10509,7 +10511,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_873
+    jz      .l_2751_10
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 27
     mov     rax, 3
@@ -10518,8 +10520,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_873:
+    jmp     .l_2751_2
+.l_2751_10:
     call    f_6176
     lea     rax, [b_8524]
     mov     qword [r12 - 8], rax
@@ -10529,7 +10531,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_874
+    jz      .l_2751_11
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 12
     mov     rax, 3
@@ -10546,8 +10548,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_874:
+    jmp     .l_2751_2
+.l_2751_11:
     call    f_6176
     lea     rax, [b_8525]
     mov     qword [r12 - 8], rax
@@ -10557,7 +10559,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_875
+    jz      .l_2751_12
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 12
     mov     rax, 3
@@ -10574,8 +10576,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_875:
+    jmp     .l_2751_2
+.l_2751_12:
     call    f_6176
     lea     rax, [b_8526]
     mov     qword [r12 - 8], rax
@@ -10585,7 +10587,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_876
+    jz      .l_2751_13
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 12
     mov     rax, 3
@@ -10602,8 +10604,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_876:
+    jmp     .l_2751_2
+.l_2751_13:
     call    f_6176
     lea     rax, [b_8527]
     mov     qword [r12 - 8], rax
@@ -10613,7 +10615,7 @@ f_2751:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_877
+    jz      .l_2751_14
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 12
     mov     rax, 3
@@ -10630,8 +10632,8 @@ f_2751:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_865
-.l_877:
+    jmp     .l_2751_2
+.l_2751_14:
     call    f_6138
     lea     rax, [b_8528]
     mov     qword [r12 - 8], rax
@@ -10646,10 +10648,10 @@ f_2751:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_865:
-    jmp     .l_863
-.l_864:
-.l_863:
+.l_2751_2:
+    jmp     .l_2751_0
+.l_2751_1:
+.l_2751_0:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -10673,25 +10675,25 @@ f_2751:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_879
+    jz      .l_2751_16
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 17
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_880:
+    .ral_2751_17:
     cmp     rbx, r12
-    je      .rbl_880
+    je      .rbl_2751_17
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_880
-    .rbl_880:
+    jmp     .ral_2751_17
+    .rbl_2751_17:
     mov     [r12], rcx
     call    f_934
-    jmp     .l_878
-.l_879:
+    jmp     .l_2751_15
+.l_2751_16:
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -10701,7 +10703,7 @@ f_2751:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_881
+    jz      .l_2751_18
     lea     rax, [b_8530]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -10709,8 +10711,8 @@ f_2751:
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_878
-.l_881:
+    jmp     .l_2751_15
+.l_2751_18:
     call    f_6138
     lea     rax, [b_8531]
     mov     qword [r12 - 8], rax
@@ -10737,27 +10739,27 @@ f_2751:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_878:
+.l_2751_15:
     leave
     ret
 f_2759:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_8600]
+    lea     rax, [b_8601]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2550
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1006
-    lea     rax, [b_8601]
+    jz      .l_2759_1
+    lea     rax, [b_8602]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1005
-.l_1006:
-.l_1005:
+    jmp     .l_2759_0
+.l_2759_1:
+.l_2759_0:
     leave
     ret
 f_2785:
@@ -10799,7 +10801,7 @@ f_2870:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_749
+    jz      .l_2870_1
     call    f_6138
     lea     rax, [b_8472]
     mov     qword [r12 - 8], rax
@@ -10808,16 +10810,16 @@ f_2870:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_748
-.l_749:
-.l_748:
+    jmp     .l_2870_0
+.l_2870_1:
+.l_2870_0:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     rax, rbx
     add     r12, 8
     test    rax, rax
-    jz      .l_751
+    jz      .l_2870_3
     call    f_6138
     lea     rax, [b_8473]
     mov     qword [r12 - 8], rax
@@ -10832,9 +10834,9 @@ f_2870:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_750
-.l_751:
-.l_750:
+    jmp     .l_2870_2
+.l_2870_3:
+.l_2870_2:
     lea     rax, [b_5800]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -10842,11 +10844,11 @@ f_2870:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_753
+    jz      .l_2870_5
     mov     qword [r12 - 8], 0
     sub     r12, 8
-    jmp     .l_752
-.l_753:
+    jmp     .l_2870_4
+.l_2870_5:
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
@@ -10855,7 +10857,7 @@ f_2870:
     mov     rax, qword [r12]
     mov     rax, qword [rax]
     mov     qword [r12], rax
-.l_752:
+.l_2870_4:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -10897,7 +10899,7 @@ f_2870:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_755
+    jz      .l_2870_7
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
@@ -10908,9 +10910,9 @@ f_2870:
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-    jmp     .l_754
-.l_755:
-.l_754:
+    jmp     .l_2870_6
+.l_2870_7:
+.l_2870_6:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -10953,7 +10955,7 @@ f_2870:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_757
+    jz      .l_2870_9
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
@@ -10965,9 +10967,9 @@ f_2870:
     mov     [rax], rcx
     leave
     ret
-    jmp     .l_756
-.l_757:
-.l_756:
+    jmp     .l_2870_8
+.l_2870_9:
+.l_2870_8:
     lea     rax, [b_7064]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 9
@@ -10991,16 +10993,26 @@ f_2870:
     mov     rax, qword [r12 + 8]
     add 	rax, rcx
     mov     qword [r12 + 8], rax
-    add     r12, 8
-    call    f_2556
-    mov     qword [r12 - 8], 0
-    mov     qword [r12 - 16], 21
+    mov     qword [r12], 0
+    lea     rax, [b_6266]
+    mov     rcx, qword [r12]
+    mov     [rax], rcx
+    mov     qword [r12], 0
+    lea     rax, [b_1210]
+    mov     rcx, qword [r12]
+    mov     [rax], rcx
+    mov     qword [r12], 0
+    lea     rax, [b_3364]
+    mov     rcx, qword [r12]
+    mov     [rax], rcx
+    mov     qword [r12], 0
+    mov     qword [r12 - 8], 21
     lea     rax, [b_7064]
-    mov     qword [r12 - 24], rax
-    sub     r12, 24
+    mov     qword [r12 - 16], rax
+    sub     r12, 16
     call    f_934
     call    f_4051
-.l_758:
+.l_2870_10:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -11013,15 +11025,15 @@ f_2870:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_759
+    jz      .l_2870_11
     lea     rax, [b_7064]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_758
-.l_759:
+    jmp     .l_2870_10
+.l_2870_11:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -11047,16 +11059,16 @@ f_2870:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_761
+    jz      .l_2870_13
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 5
     lea     rax, [b_7064]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_934
-    jmp     .l_760
-.l_761:
-.l_760:
+    jmp     .l_2870_12
+.l_2870_13:
+.l_2870_12:
     lea     rax, [b_8475]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -11064,7 +11076,7 @@ f_2870:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_763
+    jz      .l_2870_15
     mov     qword [r12 - 8], 16
     lea     rax, [b_1210]
     mov     rax, qword [rax]
@@ -11099,14 +11111,14 @@ f_2870:
     lea     rax, [b_1210]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_762
-.l_763:
-.l_762:
+    jmp     .l_2870_14
+.l_2870_15:
+.l_2870_14:
     call    f_3073
     lea     rax, [b_1210]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_765
+    jz      .l_2870_17
     lea     rax, [b_1210]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -11118,8 +11130,8 @@ f_2870:
     add 	rax, rcx
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_764
-.l_765:
+    jmp     .l_2870_16
+.l_2870_17:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 32]
     mov     rax, qword [rax]
@@ -11130,7 +11142,7 @@ f_2870:
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-.l_764:
+.l_2870_16:
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 0
     lea     rax, [b_7064]
@@ -11147,7 +11159,7 @@ f_2875:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_1080:
+.l_2875_2:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -11157,7 +11169,7 @@ f_2875:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1079
+    jz      .l_2875_1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -11182,16 +11194,16 @@ f_2875:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_1082
+    jz      .l_2875_4
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7952
-    jmp     .l_1081
-.l_1082:
-.l_1081:
-.l_1078:
+    jmp     .l_2875_3
+.l_2875_4:
+.l_2875_3:
+.l_2875_0:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -11202,21 +11214,21 @@ f_2875:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_1080
-.l_1079:
+    jmp     .l_2875_2
+.l_2875_1:
     leave
     ret
 f_2930:
     push    rbp
     mov     rbp, rsp
-.l_59:
+.l_2930_0:
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2002
     mov     rax, [r12]
     test    rax, rax
-    jz      .l_60
+    jz      .l_2930_1
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     cmp     rbx, rax
@@ -11224,13 +11236,13 @@ f_2930:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_62
+    jz      .l_2930_3
     add     r12, 8
     leave
     ret
-    jmp     .l_61
-.l_62:
-.l_61:
+    jmp     .l_2930_2
+.l_2930_3:
+.l_2930_2:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -11241,8 +11253,8 @@ f_2930:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_59
-.l_60:
+    jmp     .l_2930_0
+.l_2930_1:
     mov     qword [r12 + 16], 0
     add     r12, 16
     leave
@@ -11276,7 +11288,7 @@ f_3027:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_196:
+.l_3027_0:
     call    f_3838
     mov     rax, 34
     mov     rbx, qword [r12]
@@ -11289,7 +11301,7 @@ f_3027:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_197
+    jz      .l_3027_1
     call    f_3838
     mov     rax, 10
     mov     rbx, qword [r12]
@@ -11298,7 +11310,7 @@ f_3027:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_199
+    jz      .l_3027_3
     mov     qword [r12 - 8], 1
     lea     rax, [b_1082]
     mov     rax, qword [rax]
@@ -11309,9 +11321,9 @@ f_3027:
     lea     rax, [b_1082]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_198
-.l_199:
-.l_198:
+    jmp     .l_3027_2
+.l_3027_3:
+.l_3027_2:
     call    f_2739
     lea     rax, [b_5194]
     mov     qword [r12 - 8], rax
@@ -11323,8 +11335,8 @@ f_3027:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_196
-.l_197:
+    jmp     .l_3027_0
+.l_3027_1:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -11354,19 +11366,19 @@ f_3028:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-.l_236:
+.l_3028_0:
     call    f_3838
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_237
-.l_238:
+    jz      .l_3028_1
+.l_3028_2:
     call    f_3838
     call    f_7927
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_239
+    jz      .l_3028_3
     call    f_3838
     mov     rax, 10
     mov     rbx, qword [r12]
@@ -11375,7 +11387,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_241
+    jz      .l_3028_5
     mov     qword [r12 - 8], 1
     lea     rax, [b_1082]
     mov     rax, qword [rax]
@@ -11386,21 +11398,21 @@ f_3028:
     lea     rax, [b_1082]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_240
-.l_241:
-.l_240:
+    jmp     .l_3028_4
+.l_3028_5:
+.l_3028_4:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_238
-.l_239:
+    jmp     .l_3028_2
+.l_3028_3:
     call    f_3838
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_243
+    jz      .l_3028_7
     mov     qword [r12], 0
     mov     qword [r12 - 8], 0
     lea     rax, [b_4722]
@@ -11415,8 +11427,8 @@ f_3028:
     call    f_5120
     leave
     ret
-    jmp     .l_242
-.l_243:
+    jmp     .l_3028_6
+.l_3028_7:
     call    f_3838
     mov     rax, 45
     mov     rbx, qword [r12]
@@ -11448,7 +11460,7 @@ f_3028:
     or 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_244
+    jz      .l_3028_8
     call    f_7214
     mov     qword [r12 - 8], 1
     lea     rax, [b_4722]
@@ -11461,8 +11473,8 @@ f_3028:
     mov     qword [r12 - 32], rax
     sub     r12, 32
     call    f_5120
-    jmp     .l_242
-.l_244:
+    jmp     .l_3028_6
+.l_3028_8:
     call    f_3838
     mov     rax, 39
     mov     rbx, qword [r12]
@@ -11471,7 +11483,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_245
+    jz      .l_3028_9
     call    f_2128
     mov     qword [r12 - 8], 2
     lea     rax, [b_4722]
@@ -11484,8 +11496,8 @@ f_3028:
     mov     qword [r12 - 32], rax
     sub     r12, 32
     call    f_5120
-    jmp     .l_242
-.l_245:
+    jmp     .l_3028_6
+.l_3028_9:
     call    f_3838
     mov     rax, 34
     mov     rbx, qword [r12]
@@ -11494,7 +11506,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_246
+    jz      .l_3028_10
     call    f_3027
     mov     qword [r12 - 8], 3
     lea     rax, [b_4722]
@@ -11507,8 +11519,8 @@ f_3028:
     mov     qword [r12 - 32], rax
     sub     r12, 32
     call    f_5120
-    jmp     .l_242
-.l_246:
+    jmp     .l_3028_6
+.l_3028_10:
     call    f_3838
     mov     rax, 58
     mov     rbx, qword [r12]
@@ -11530,7 +11542,7 @@ f_3028:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_247
+    jz      .l_3028_11
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 6
     lea     rax, [b_4722]
@@ -11547,8 +11559,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_247:
+    jmp     .l_3028_6
+.l_3028_11:
     call    f_3838
     mov     rax, 46
     mov     rbx, qword [r12]
@@ -11570,7 +11582,7 @@ f_3028:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_248
+    jz      .l_3028_12
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 23
     lea     rax, [b_4722]
@@ -11587,8 +11599,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_248:
+    jmp     .l_3028_6
+.l_3028_12:
     call    f_3838
     mov     rax, 37
     mov     rbx, qword [r12]
@@ -11610,7 +11622,7 @@ f_3028:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_249
+    jz      .l_3028_13
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 25
     lea     rax, [b_4722]
@@ -11627,8 +11639,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_249:
+    jmp     .l_3028_6
+.l_3028_13:
     call    f_3838
     mov     rax, 47
     mov     rbx, qword [r12]
@@ -11654,8 +11666,8 @@ f_3028:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_250
-.l_251:
+    jz      .l_3028_14
+.l_3028_15:
     call    f_3838
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
@@ -11678,15 +11690,15 @@ f_3028:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_252
+    jz      .l_3028_16
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_251
-.l_252:
-    jmp     .l_242
-.l_250:
+    jmp     .l_3028_15
+.l_3028_16:
+    jmp     .l_3028_6
+.l_3028_14:
     call    f_3838
     mov     rax, 58
     mov     rbx, qword [r12]
@@ -11695,7 +11707,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_253
+    jz      .l_3028_17
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 13
     lea     rax, [b_4722]
@@ -11712,8 +11724,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_253:
+    jmp     .l_3028_6
+.l_3028_17:
     call    f_3838
     mov     rax, 35
     mov     rbx, qword [r12]
@@ -11722,7 +11734,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_254
+    jz      .l_3028_18
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 14
     lea     rax, [b_4722]
@@ -11739,8 +11751,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_254:
+    jmp     .l_3028_6
+.l_3028_18:
     call    f_3838
     mov     rax, 44
     mov     rbx, qword [r12]
@@ -11749,7 +11761,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_255
+    jz      .l_3028_19
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 15
     lea     rax, [b_4722]
@@ -11766,8 +11778,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_255:
+    jmp     .l_3028_6
+.l_3028_19:
     call    f_3838
     mov     rax, 40
     mov     rbx, qword [r12]
@@ -11776,7 +11788,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_256
+    jz      .l_3028_20
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 28
     lea     rax, [b_4722]
@@ -11793,8 +11805,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_256:
+    jmp     .l_3028_6
+.l_3028_20:
     call    f_3838
     mov     rax, 41
     mov     rbx, qword [r12]
@@ -11803,7 +11815,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_257
+    jz      .l_3028_21
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 29
     lea     rax, [b_4722]
@@ -11820,8 +11832,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_257:
+    jmp     .l_3028_6
+.l_3028_21:
     call    f_3838
     mov     rax, 123
     mov     rbx, qword [r12]
@@ -11830,7 +11842,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_258
+    jz      .l_3028_22
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 30
     lea     rax, [b_4722]
@@ -11847,8 +11859,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_258:
+    jmp     .l_3028_6
+.l_3028_22:
     call    f_3838
     mov     rax, 125
     mov     rbx, qword [r12]
@@ -11857,7 +11869,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_259
+    jz      .l_3028_23
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 31
     lea     rax, [b_4722]
@@ -11874,8 +11886,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_259:
+    jmp     .l_3028_6
+.l_3028_23:
     call    f_3838
     mov     rax, 91
     mov     rbx, qword [r12]
@@ -11884,7 +11896,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_260
+    jz      .l_3028_24
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 32
     lea     rax, [b_4722]
@@ -11901,8 +11913,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_260:
+    jmp     .l_3028_6
+.l_3028_24:
     call    f_3838
     mov     rax, 93
     mov     rbx, qword [r12]
@@ -11911,7 +11923,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_261
+    jz      .l_3028_25
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 33
     lea     rax, [b_4722]
@@ -11928,8 +11940,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_261:
+    jmp     .l_3028_6
+.l_3028_25:
     call    f_3838
     mov     rax, 45
     mov     rbx, qword [r12]
@@ -11955,7 +11967,7 @@ f_3028:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_262
+    jz      .l_3028_26
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 24
     lea     rax, [b_4722]
@@ -11972,18 +11984,18 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_242
-.l_262:
+    jmp     .l_3028_6
+.l_3028_26:
     call    f_730
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_263
+    jz      .l_3028_27
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_264:
+.l_3028_28:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -11995,7 +12007,7 @@ f_3028:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_265
+    jz      .l_3028_29
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -12010,8 +12022,8 @@ f_3028:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_264
-.l_265:
+    jmp     .l_3028_28
+.l_3028_29:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -12026,17 +12038,17 @@ f_3028:
     mov     qword [r12 - 40], rax
     sub     r12, 40
     call    f_5120
-    jmp     .l_242
-.l_263:
+    jmp     .l_3028_6
+.l_3028_27:
     call    f_3838
     call    f_7750
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_266
+    jz      .l_3028_30
     call    f_4099
-    jmp     .l_242
-.l_266:
+    jmp     .l_3028_6
+.l_3028_30:
     call    f_5819
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
@@ -12046,14 +12058,14 @@ f_3028:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_268
+    jz      .l_3028_32
     mov     qword [r12 - 8], 19
     sub     r12, 8
-    jmp     .l_267
-.l_268:
+    jmp     .l_3028_31
+.l_3028_32:
     mov     qword [r12 - 8], 5
     sub     r12, 8
-.l_267:
+.l_3028_31:
     lea     rax, [b_4722]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -12064,9 +12076,9 @@ f_3028:
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_5120
-.l_242:
-    jmp     .l_236
-.l_237:
+.l_3028_6:
+    jmp     .l_3028_0
+.l_3028_1:
     mov     qword [r12], 0
     mov     qword [r12 - 8], 0
     lea     rax, [b_4722]
@@ -12168,13 +12180,13 @@ f_3183:
 f_3271:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_9416]
+    lea     rax, [b_9417]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
     mov     qword [r12 - 8], 0
     sub     r12, 8
-.l_1233:
+.l_3271_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8159]
@@ -12188,8 +12200,8 @@ f_3271:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1234
-    lea     rax, [b_9417]
+    jz      .l_3271_1
+    lea     rax, [b_9418]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -12201,7 +12213,7 @@ f_3271:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9418]
+    lea     rax, [b_9419]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -12220,8 +12232,8 @@ f_3271:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_1233
-.l_1234:
+    jmp     .l_3271_0
+.l_3271_1:
     add     r12, 8
     leave
     ret
@@ -12277,7 +12289,7 @@ f_3273:
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_688:
+.l_3273_0:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -12290,13 +12302,13 @@ f_3273:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_689
+    jz      .l_3273_1
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_691
+    jz      .l_3273_3
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -12322,17 +12334,17 @@ f_3273:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_690
-.l_691:
-.l_690:
+    jmp     .l_3273_2
+.l_3273_3:
+.l_3273_2:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_688
-.l_689:
+    jmp     .l_3273_0
+.l_3273_1:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -12356,7 +12368,7 @@ f_3273:
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_692:
+.l_3273_4:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -12369,13 +12381,13 @@ f_3273:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_693
+    jz      .l_3273_5
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_695
+    jz      .l_3273_7
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -12401,17 +12413,17 @@ f_3273:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_694
-.l_695:
-.l_694:
+    jmp     .l_3273_6
+.l_3273_7:
+.l_3273_6:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_692
-.l_693:
+    jmp     .l_3273_4
+.l_3273_5:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -12443,14 +12455,14 @@ f_3273:
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_696:
+    .ral_3273_8:
     cmp     rbx, r12
-    je      .rbl_696
+    je      .rbl_3273_8
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_696
-    .rbl_696:
+    jmp     .ral_3273_8
+    .rbl_3273_8:
     mov     [r12], rcx
     call    f_934
     leave
@@ -12471,7 +12483,7 @@ f_3289:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-.l_357:
+.l_3289_0:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -12494,7 +12506,7 @@ f_3289:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_358
+    jz      .l_3289_1
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
@@ -12516,18 +12528,18 @@ f_3289:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_360
+    jz      .l_3289_3
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     lea     rax, [rbp - 24]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_359
-.l_360:
-.l_359:
-    jmp     .l_357
-.l_358:
+    jmp     .l_3289_2
+.l_3289_3:
+.l_3289_2:
+    jmp     .l_3289_0
+.l_3289_1:
     lea     rax, [b_5194]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 1
@@ -12574,7 +12586,7 @@ f_3289:
     lea     rax, [rbp - 40]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_363:
+.l_3289_6:
     lea     rax, [rbp - 40]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -12589,7 +12601,7 @@ f_3289:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_362
+    jz      .l_3289_5
     lea     rax, [rbp - 40]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -12610,13 +12622,13 @@ f_3289:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_365
+    jz      .l_3289_8
     leave
     ret
-    jmp     .l_364
-.l_365:
-.l_364:
-.l_361:
+    jmp     .l_3289_7
+.l_3289_8:
+.l_3289_7:
+.l_3289_4:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 40]
     mov     rax, qword [rax]
@@ -12627,8 +12639,8 @@ f_3289:
     lea     rax, [rbp - 40]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_363
-.l_362:
+    jmp     .l_3289_6
+.l_3289_5:
     lea     rax, [rbp - 32]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -12646,19 +12658,15 @@ f_3289:
 f_3330:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_8592]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
-    call    f_6412
     lea     rax, [b_8593]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
+    call    f_6412
     lea     rax, [b_8594]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8595]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -12666,8 +12674,7 @@ f_3330:
     lea     rax, [b_8596]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_6962
+    call    f_3567
     lea     rax, [b_8597]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -12677,7 +12684,12 @@ f_3330:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_6962
     lea     rax, [b_8599]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8600]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7161
@@ -12686,19 +12698,15 @@ f_3330:
 f_3331:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_9132]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
-    call    f_6412
     lea     rax, [b_9133]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
+    call    f_6412
     lea     rax, [b_9134]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9135]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -12706,13 +12714,17 @@ f_3331:
     lea     rax, [b_9136]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_6962
+    call    f_2028
     lea     rax, [b_9137]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_6962
     lea     rax, [b_9138]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9139]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_1009
@@ -12782,11 +12794,11 @@ f_3562:
     mov     qword [r12 + 16], rbx
     mov     qword [r12 + 8], rax
     mov     qword [r12], rcx
-.l_13:
+.l_3562_0:
     mov     rax, 2
     mov     rax, [r12 + rax*8]
     test    rax, rax
-    jz      .l_14
+    jz      .l_3562_1
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -12819,8 +12831,8 @@ f_3562:
     mov     qword [r12 + 16], rax
     mov     qword [r12 + 8], rcx
     add     r12, 8
-    jmp     .l_13
-.l_14:
+    jmp     .l_3562_0
+.l_3562_1:
     mov     rax, 0
     mov     rbx, qword [r12]
     mov     qword [r12], rax
@@ -12836,7 +12848,7 @@ f_3567:
     lea     rax, [b_195]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_1002
+    jz      .l_3567_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_195]
@@ -12846,13 +12858,13 @@ f_3567:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1004
-    lea     rax, [b_8586]
+    jz      .l_3567_3
+    lea     rax, [b_8587]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_6962
-    lea     rax, [b_8587]
+    lea     rax, [b_8588]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -12860,34 +12872,34 @@ f_3567:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    lea     rax, [b_8588]
+    lea     rax, [b_8589]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1003
-.l_1004:
+    jmp     .l_3567_2
+.l_3567_3:
     add     r12, 8
-.l_1003:
+.l_3567_2:
     mov     qword [r12 - 8], 0
     lea     rax, [b_195]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
     leave
     ret
-    jmp     .l_1001
-.l_1002:
-.l_1001:
-    lea     rax, [b_8589]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    call    f_6962
+    jmp     .l_3567_0
+.l_3567_1:
+.l_3567_0:
     lea     rax, [b_8590]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_6752
+    call    f_6962
     lea     rax, [b_8591]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_6752
+    lea     rax, [b_8592]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -12921,7 +12933,7 @@ f_3597:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_527
+    jz      .l_3597_1
     lea     rax, [b_8380]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -12938,9 +12950,9 @@ f_3597:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_526
-.l_527:
-.l_526:
+    jmp     .l_3597_0
+.l_3597_1:
+.l_3597_0:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -12969,14 +12981,14 @@ f_3700:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_30
+    jz      .l_3700_1
     mov     rcx, 32
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_29
-.l_30:
-.l_29:
+    jmp     .l_3700_0
+.l_3700_1:
+.l_3700_0:
     leave
     ret
 f_3705:
@@ -13014,8 +13026,8 @@ f_3705:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1236
-    lea     rax, [b_9419]
+    jz      .l_3705_1
+    lea     rax, [b_9420]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -13033,14 +13045,14 @@ f_3705:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    lea     rax, [b_9420]
+    lea     rax, [b_9421]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1235
-.l_1236:
-.l_1235:
-    lea     rax, [b_9421]
+    jmp     .l_3705_0
+.l_3705_1:
+.l_3705_0:
+    lea     rax, [b_9422]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -13049,7 +13061,7 @@ f_3705:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9422]
+    lea     rax, [b_9423]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -13065,7 +13077,7 @@ f_3705:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1238
+    jz      .l_3705_3
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -13075,8 +13087,8 @@ f_3705:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1240
-    lea     rax, [b_9423]
+    jz      .l_3705_5
+    lea     rax, [b_9424]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -13090,12 +13102,12 @@ f_3705:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9424]
+    lea     rax, [b_9425]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1239
-.l_1240:
+    jmp     .l_3705_4
+.l_3705_5:
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -13105,8 +13117,8 @@ f_3705:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1241
-    lea     rax, [b_9425]
+    jz      .l_3705_6
+    lea     rax, [b_9426]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -13120,15 +13132,15 @@ f_3705:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9426]
+    lea     rax, [b_9427]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1239
-.l_1241:
-.l_1239:
-    jmp     .l_1237
-.l_1238:
+    jmp     .l_3705_4
+.l_3705_6:
+.l_3705_4:
+    jmp     .l_3705_2
+.l_3705_3:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -13166,8 +13178,8 @@ f_3705:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1243
-    lea     rax, [b_9427]
+    jz      .l_3705_8
+    lea     rax, [b_9428]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -13182,14 +13194,14 @@ f_3705:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9428]
+    lea     rax, [b_9429]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1242
-.l_1243:
-.l_1242:
-.l_1237:
+    jmp     .l_3705_7
+.l_3705_8:
+.l_3705_7:
+.l_3705_2:
     leave
     ret
 f_3804:
@@ -13213,8 +13225,8 @@ f_3809:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1135
-    lea     rax, [b_9119]
+    jz      .l_3809_1
+    lea     rax, [b_9120]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -13223,12 +13235,12 @@ f_3809:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9120]
+    lea     rax, [b_9121]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1134
-.l_1135:
+    jmp     .l_3809_0
+.l_3809_1:
     lea     rax, [b_5844]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -13238,8 +13250,8 @@ f_3809:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1136
-    lea     rax, [b_9121]
+    jz      .l_3809_2
+    lea     rax, [b_9122]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -13252,13 +13264,13 @@ f_3809:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_9122]
+    lea     rax, [b_9123]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1134
-.l_1136:
-.l_1134:
+    jmp     .l_3809_0
+.l_3809_2:
+.l_3809_0:
     mov     qword [r12 - 8], 0
     lea     rax, [b_5844]
     mov     rcx, qword [r12 - 8]
@@ -13302,7 +13314,7 @@ f_3853:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_49
+    jz      .l_3853_1
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -13311,9 +13323,9 @@ f_3853:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-    jmp     .l_48
-.l_49:
-.l_48:
+    jmp     .l_3853_0
+.l_3853_1:
+.l_3853_0:
     mov     qword [r12 - 8], 0
     sub     r12, 8
     mov     rax, [r12 + 8]
@@ -13343,7 +13355,7 @@ f_3853:
 f_3887:
     push    rbp
     mov     rbp, rsp
-.l_51:
+.l_3887_0:
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -13357,7 +13369,7 @@ f_3887:
     or 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_52
+    jz      .l_3887_1
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -13373,7 +13385,7 @@ f_3887:
     add     r12, 8
     mov     rax, [r12]
     test    rax, rax
-    jz      .l_54
+    jz      .l_3887_3
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     rcx, qword [r12 + 16]
@@ -13387,9 +13399,9 @@ f_3887:
     add     r12, 16
     leave
     ret
-    jmp     .l_53
-.l_54:
-.l_53:
+    jmp     .l_3887_2
+.l_3887_3:
+.l_3887_2:
     mov     rcx, 1
     mov     rax, qword [r12 + 8]
     add 	rax, rcx
@@ -13403,8 +13415,8 @@ f_3887:
     mov     qword [r12 + 16], rax
     mov     qword [r12 + 8], rbx
     add     r12, 8
-    jmp     .l_51
-.l_52:
+    jmp     .l_3887_0
+.l_3887_1:
     mov     qword [r12 + 8], 0
     add     r12, 8
     leave
@@ -13412,10 +13424,6 @@ f_3887:
 f_3915:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_9466]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
     lea     rax, [b_9467]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -13425,6 +13433,10 @@ f_3915:
     sub     r12, 8
     call    f_6317
     lea     rax, [b_9469]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    lea     rax, [b_9470]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -13449,7 +13461,7 @@ f_3967:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_384
+    jz      .l_3967_1
     call    f_6138
     lea     rax, [b_8302]
     mov     qword [r12 - 8], rax
@@ -13458,9 +13470,9 @@ f_3967:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_383
-.l_384:
-.l_383:
+    jmp     .l_3967_0
+.l_3967_1:
+.l_3967_0:
     call    f_6176
     lea     rax, [b_8303]
     mov     qword [r12 - 8], rax
@@ -13469,7 +13481,7 @@ f_3967:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_386
+    jz      .l_3967_3
     call    f_6138
     lea     rax, [b_8304]
     mov     qword [r12 - 8], rax
@@ -13478,9 +13490,9 @@ f_3967:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_385
-.l_386:
-.l_385:
+    jmp     .l_3967_2
+.l_3967_3:
+.l_3967_2:
     call    f_6176
     lea     rax, [b_8305]
     mov     qword [r12 - 8], rax
@@ -13489,7 +13501,7 @@ f_3967:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_388
+    jz      .l_3967_5
     call    f_6138
     lea     rax, [b_8306]
     mov     qword [r12 - 8], rax
@@ -13498,16 +13510,16 @@ f_3967:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_387
-.l_388:
-.l_387:
+    jmp     .l_3967_4
+.l_3967_5:
+.l_3967_4:
     call    f_6176
     call    f_7777
     call    f_4481
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_390
+    jz      .l_3967_7
     call    f_6138
     lea     rax, [b_8307]
     mov     qword [r12 - 8], rax
@@ -13522,9 +13534,9 @@ f_3967:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_389
-.l_390:
-.l_389:
+    jmp     .l_3967_6
+.l_3967_7:
+.l_3967_6:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -13546,18 +13558,18 @@ f_3970:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_392
+    jz      .l_3970_1
     call    f_6138
     call    f_6176
     call    f_6317
-    jmp     .l_391
-.l_392:
+    jmp     .l_3970_0
+.l_3970_1:
     call    f_6138
     lea     rax, [b_8309]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-.l_391:
+.l_3970_0:
     mov     rdi, 1
     mov     eax, 60
     syscall
@@ -13577,7 +13589,7 @@ f_3972:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_286:
+.l_3972_0:
     lea     rax, [rbp - 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -13600,7 +13612,7 @@ f_3972:
     mov     rax, qword [r12 + 8]
     add     r12, 16
     test    rax, rax
-    jz      .l_287
+    jz      .l_3972_1
     mov     rax, 2
     mov     rax, [r12 + rax*8]
     mov     qword [r12 - 8], rax
@@ -13627,7 +13639,7 @@ f_3972:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_289
+    jz      .l_3972_3
     mov     rax, 2
     mov     rax, [r12 + rax*8]
     mov     qword [r12 - 8], rax
@@ -13656,11 +13668,11 @@ f_3972:
     add     r12, 24
     leave
     ret
-    jmp     .l_288
-.l_289:
-.l_288:
-    jmp     .l_286
-.l_287:
+    jmp     .l_3972_2
+.l_3972_3:
+.l_3972_2:
+    jmp     .l_3972_0
+.l_3972_1:
     mov     qword [r12 + 16], -1
     add     r12, 16
     leave
@@ -13783,7 +13795,7 @@ f_4062:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_785
+    jz      .l_4062_1
     call    f_6138
     lea     rax, [b_8481]
     mov     qword [r12 - 8], rax
@@ -13792,14 +13804,14 @@ f_4062:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_784
-.l_785:
-.l_784:
+    jmp     .l_4062_0
+.l_4062_1:
+.l_4062_0:
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_786:
+.l_4062_2:
     call    f_2175
     mov     rax, 33
     mov     rbx, qword [r12]
@@ -13812,7 +13824,7 @@ f_4062:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_787
+    jz      .l_4062_3
     call    f_2175
     mov     rax, 1
     mov     rbx, qword [r12]
@@ -13825,7 +13837,7 @@ f_4062:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_789
+    jz      .l_4062_5
     call    f_6138
     lea     rax, [b_8482]
     mov     qword [r12 - 8], rax
@@ -13834,9 +13846,9 @@ f_4062:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_788
-.l_789:
-.l_788:
+    jmp     .l_4062_4
+.l_4062_5:
+.l_4062_4:
     call    f_6176
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12]
@@ -13846,7 +13858,7 @@ f_4062:
     add 	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
-.l_790:
+.l_4062_6:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -13855,7 +13867,7 @@ f_4062:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_791
+    jz      .l_4062_7
     call    f_4062
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
@@ -13867,8 +13879,8 @@ f_4062:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-    jmp     .l_790
-.l_791:
+    jmp     .l_4062_6
+.l_4062_7:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -13881,8 +13893,8 @@ f_4062:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_786
-.l_787:
+    jmp     .l_4062_2
+.l_4062_3:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -13910,7 +13922,7 @@ f_4072:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_982
+    jz      .l_4072_1
     lea     rax, [b_8576]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -13918,9 +13930,9 @@ f_4072:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_981
-.l_982:
-.l_981:
+    jmp     .l_4072_0
+.l_4072_1:
+.l_4072_0:
     mov     qword [r12 - 8], 0
     lea     rax, [b_1144]
     mov     rcx, qword [r12 - 8]
@@ -13941,7 +13953,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_205
+    jz      .l_4099_1
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 7
     lea     rax, [b_4722]
@@ -13984,9 +13996,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_204
-.l_205:
-.l_204:
+    jmp     .l_4099_0
+.l_4099_1:
+.l_4099_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8265]
@@ -13997,7 +14009,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_207
+    jz      .l_4099_3
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 8
     lea     rax, [b_4722]
@@ -14040,9 +14052,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_206
-.l_207:
-.l_206:
+    jmp     .l_4099_2
+.l_4099_3:
+.l_4099_2:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8266]
@@ -14053,7 +14065,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_209
+    jz      .l_4099_5
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 9
     lea     rax, [b_4722]
@@ -14096,9 +14108,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_208
-.l_209:
-.l_208:
+    jmp     .l_4099_4
+.l_4099_5:
+.l_4099_4:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8267]
@@ -14109,7 +14121,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_211
+    jz      .l_4099_7
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 10
     lea     rax, [b_4722]
@@ -14152,9 +14164,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_210
-.l_211:
-.l_210:
+    jmp     .l_4099_6
+.l_4099_7:
+.l_4099_6:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8268]
@@ -14165,7 +14177,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_213
+    jz      .l_4099_9
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 11
     lea     rax, [b_4722]
@@ -14208,9 +14220,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_212
-.l_213:
-.l_212:
+    jmp     .l_4099_8
+.l_4099_9:
+.l_4099_8:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8269]
@@ -14221,7 +14233,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_215
+    jz      .l_4099_11
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 12
     lea     rax, [b_4722]
@@ -14264,9 +14276,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_214
-.l_215:
-.l_214:
+    jmp     .l_4099_10
+.l_4099_11:
+.l_4099_10:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8270]
@@ -14277,7 +14289,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_217
+    jz      .l_4099_13
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 16
     lea     rax, [b_4722]
@@ -14320,9 +14332,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_216
-.l_217:
-.l_216:
+    jmp     .l_4099_12
+.l_4099_13:
+.l_4099_12:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8271]
@@ -14333,7 +14345,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_219
+    jz      .l_4099_15
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 17
     lea     rax, [b_4722]
@@ -14376,9 +14388,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_218
-.l_219:
-.l_218:
+    jmp     .l_4099_14
+.l_4099_15:
+.l_4099_14:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8272]
@@ -14389,7 +14401,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_221
+    jz      .l_4099_17
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 20
     lea     rax, [b_4722]
@@ -14432,9 +14444,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_220
-.l_221:
-.l_220:
+    jmp     .l_4099_16
+.l_4099_17:
+.l_4099_16:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8273]
@@ -14445,7 +14457,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_223
+    jz      .l_4099_19
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 21
     lea     rax, [b_4722]
@@ -14488,9 +14500,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_222
-.l_223:
-.l_222:
+    jmp     .l_4099_18
+.l_4099_19:
+.l_4099_18:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8274]
@@ -14501,7 +14513,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_225
+    jz      .l_4099_21
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 22
     lea     rax, [b_4722]
@@ -14544,9 +14556,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_224
-.l_225:
-.l_224:
+    jmp     .l_4099_20
+.l_4099_21:
+.l_4099_20:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8275]
@@ -14557,7 +14569,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_227
+    jz      .l_4099_23
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 26
     lea     rax, [b_4722]
@@ -14600,9 +14612,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_226
-.l_227:
-.l_226:
+    jmp     .l_4099_22
+.l_4099_23:
+.l_4099_22:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_8276]
@@ -14613,7 +14625,7 @@ f_4099:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_229
+    jz      .l_4099_25
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 27
     lea     rax, [b_4722]
@@ -14656,9 +14668,9 @@ f_4099:
     add     r12, 16
     leave
     ret
-    jmp     .l_228
-.l_229:
-.l_228:
+    jmp     .l_4099_24
+.l_4099_25:
+.l_4099_24:
     mov     qword [r12 - 8], 4
     lea     rax, [b_4722]
     mov     rax, qword [rax]
@@ -14692,12 +14704,12 @@ f_4359:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1306
+    jz      .l_4359_1
     leave
     ret
-    jmp     .l_1305
-.l_1306:
-.l_1305:
+    jmp     .l_4359_0
+.l_4359_1:
+.l_4359_0:
     lea     rax, [b_5194]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -14719,11 +14731,7 @@ f_4359:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1308
-    lea     rax, [b_9519]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_4359_3
     lea     rax, [b_9520]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -14732,9 +14740,13 @@ f_4359:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_1307
-.l_1308:
-.l_1307:
+    lea     rax, [b_9522]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    jmp     .l_4359_2
+.l_4359_3:
+.l_4359_2:
     lea     rax, [b_2158]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -14756,11 +14768,7 @@ f_4359:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1310
-    lea     rax, [b_9522]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_4359_5
     lea     rax, [b_9523]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -14769,9 +14777,13 @@ f_4359:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_1309
-.l_1310:
-.l_1309:
+    lea     rax, [b_9525]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    jmp     .l_4359_4
+.l_4359_5:
+.l_4359_4:
     lea     rax, [b_8065]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -14793,11 +14805,7 @@ f_4359:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1312
-    lea     rax, [b_9525]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_4359_7
     lea     rax, [b_9526]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -14806,9 +14814,13 @@ f_4359:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_1311
-.l_1312:
-.l_1311:
+    lea     rax, [b_9528]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    jmp     .l_4359_6
+.l_4359_7:
+.l_4359_6:
     lea     rax, [b_7064]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -14830,11 +14842,7 @@ f_4359:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1314
-    lea     rax, [b_9528]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_4359_9
     lea     rax, [b_9529]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -14843,9 +14851,13 @@ f_4359:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_1313
-.l_1314:
-.l_1313:
+    lea     rax, [b_9531]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    jmp     .l_4359_8
+.l_4359_9:
+.l_4359_8:
     lea     rax, [b_8159]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -14867,11 +14879,7 @@ f_4359:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1316
-    lea     rax, [b_9531]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_4359_11
     lea     rax, [b_9532]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -14880,9 +14888,13 @@ f_4359:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_1315
-.l_1316:
-.l_1315:
+    lea     rax, [b_9534]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    jmp     .l_4359_10
+.l_4359_11:
+.l_4359_10:
     lea     rax, [b_3970]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -14904,11 +14916,7 @@ f_4359:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1318
-    lea     rax, [b_9534]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_4359_13
     lea     rax, [b_9535]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -14917,9 +14925,13 @@ f_4359:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_1317
-.l_1318:
-.l_1317:
+    lea     rax, [b_9537]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    jmp     .l_4359_12
+.l_4359_13:
+.l_4359_12:
     lea     rax, [b_7863]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -14941,11 +14953,7 @@ f_4359:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1320
-    lea     rax, [b_9537]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_4359_15
     lea     rax, [b_9538]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -14954,9 +14962,13 @@ f_4359:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_1319
-.l_1320:
-.l_1319:
+    lea     rax, [b_9540]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    jmp     .l_4359_14
+.l_4359_15:
+.l_4359_14:
     lea     rax, [b_4300]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -14978,11 +14990,7 @@ f_4359:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1322
-    lea     rax, [b_9540]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_4359_17
     lea     rax, [b_9541]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -14991,9 +14999,13 @@ f_4359:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_1321
-.l_1322:
-.l_1321:
+    lea     rax, [b_9543]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    jmp     .l_4359_16
+.l_4359_17:
+.l_4359_16:
     lea     rax, [b_6503]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -15015,11 +15027,7 @@ f_4359:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1324
-    lea     rax, [b_9543]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_4359_19
     lea     rax, [b_9544]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -15028,19 +15036,23 @@ f_4359:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_1323
-.l_1324:
-.l_1323:
+    lea     rax, [b_9546]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    jmp     .l_4359_18
+.l_4359_19:
+.l_4359_18:
     leave
     ret
 f_4443:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_9463]
+    lea     rax, [b_9464]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    lea     rax, [b_9464]
+    lea     rax, [b_9465]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -15048,7 +15060,7 @@ f_4443:
     sub     r12, 8
     call    f_3183
     call    f_6317
-    lea     rax, [b_9465]
+    lea     rax, [b_9466]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -15084,7 +15096,7 @@ f_4495:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_928
+    jz      .l_4495_1
     call    f_6138
     lea     rax, [b_8557]
     mov     qword [r12 - 8], rax
@@ -15093,9 +15105,9 @@ f_4495:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_927
-.l_928:
-.l_927:
+    jmp     .l_4495_0
+.l_4495_1:
+.l_4495_0:
     call    f_6176
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
@@ -15107,14 +15119,14 @@ f_4495:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-.l_929:
+.l_4495_2:
     call    f_1555
     mov     rax, qword [r12 + 8]
     add     r12, 16
     test    rax, rax
-    jz      .l_930
-    jmp     .l_929
-.l_930:
+    jz      .l_4495_3
+    jmp     .l_4495_2
+.l_4495_3:
     mov     rax, qword [r12 + 8]
     mov     qword [r12 + 16], rax
     add     r12, 16
@@ -15129,14 +15141,14 @@ f_4527:
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_935:
+    .ral_4527_0:
     cmp     rbx, r12
-    je      .rbl_935
+    je      .rbl_4527_0
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_935
-    .rbl_935:
+    jmp     .ral_4527_0
+    .rbl_4527_0:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -15148,7 +15160,7 @@ f_4527:
 f_4535:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_9139]
+    lea     rax, [b_9140]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -15158,11 +15170,11 @@ f_4535:
     and 	rax, rcx
     mov     qword [r12], rax
     call    f_3176
-    lea     rax, [b_9140]
+    lea     rax, [b_9141]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    lea     rax, [b_9141]
+    lea     rax, [b_9142]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -15172,7 +15184,7 @@ f_4535:
     shr 	rax, cl
     mov     qword [r12], rax
     call    f_3176
-    lea     rax, [b_9142]
+    lea     rax, [b_9143]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -15201,25 +15213,25 @@ f_4662:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_530
+    jz      .l_4662_1
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 18
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_531:
+    .ral_4662_2:
     cmp     rbx, r12
-    je      .rbl_531
+    je      .rbl_4662_2
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_531
-    .rbl_531:
+    jmp     .ral_4662_2
+    .rbl_4662_2:
     mov     [r12], rcx
     call    f_934
-    jmp     .l_529
-.l_530:
+    jmp     .l_4662_0
+.l_4662_1:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -15229,7 +15241,7 @@ f_4662:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_532
+    jz      .l_4662_3
     lea     rax, [b_8382]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -15237,8 +15249,8 @@ f_4662:
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_529
-.l_532:
+    jmp     .l_4662_0
+.l_4662_3:
     call    f_6138
     lea     rax, [b_8383]
     mov     qword [r12 - 8], rax
@@ -15265,7 +15277,7 @@ f_4662:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_529:
+.l_4662_0:
     leave
     ret
 f_4740:
@@ -15282,11 +15294,11 @@ f_4740:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12]
     mov     [rax], rcx
-    lea     rax, [b_9429]
+    lea     rax, [b_9430]
     mov     qword [r12], rax
     call    f_6962
     call    f_3176
-    lea     rax, [b_9430]
+    lea     rax, [b_9431]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -15307,8 +15319,8 @@ f_4740:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1245
-    lea     rax, [b_9431]
+    jz      .l_4740_1
+    lea     rax, [b_9432]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -15326,13 +15338,28 @@ f_4740:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1244
-.l_1245:
-.l_1244:
-    lea     rax, [b_9432]
+    jmp     .l_4740_0
+.l_4740_1:
+.l_4740_0:
+    lea     rax, [b_9433]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    leave
+    ret
+f_4748:
+    push    rbp
+    mov     rbp, rsp
+    lea     rax, [b_1195]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_3176
+    lea     rax, [b_8577]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_3176
     leave
     ret
 f_4957:
@@ -15349,20 +15376,20 @@ f_4957:
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
-.l_124:
+.l_4957_0:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
     mov     rax, [r12 + 8]
     test    rax, rax
-    jz      .l_125
+    jz      .l_4957_1
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_127
+    jz      .l_4957_3
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -15388,9 +15415,9 @@ f_4957:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_126
-.l_127:
-.l_126:
+    jmp     .l_4957_2
+.l_4957_3:
+.l_4957_2:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -15399,7 +15426,7 @@ f_4957:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_129
+    jz      .l_4957_5
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -15410,8 +15437,8 @@ f_4957:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_128
-.l_129:
+    jmp     .l_4957_4
+.l_4957_5:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -15420,7 +15447,7 @@ f_4957:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_130
+    jz      .l_4957_6
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -15431,11 +15458,11 @@ f_4957:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_128
-.l_130:
-.l_128:
-    jmp     .l_124
-.l_125:
+    jmp     .l_4957_4
+.l_4957_6:
+.l_4957_4:
+    jmp     .l_4957_0
+.l_4957_1:
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     add     r12, 8
@@ -15447,14 +15474,14 @@ f_5070:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1
+    jz      .l_5070_1
     mov     qword [r12 - 8], 1
     sub     r12, 8
-    jmp     .l_0
-.l_1:
+    jmp     .l_5070_0
+.l_5070_1:
     mov     qword [r12 - 8], 0
     sub     r12, 8
-.l_0:
+.l_5070_0:
     leave
     ret
 f_5096:
@@ -15472,7 +15499,7 @@ f_5096:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_746
+    jz      .l_5096_1
     call    f_6138
     lea     rax, [b_8471]
     mov     qword [r12 - 8], rax
@@ -15481,9 +15508,9 @@ f_5096:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_745
-.l_746:
-.l_745:
+    jmp     .l_5096_0
+.l_5096_1:
+.l_5096_0:
     lea     rax, [b_3547]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
@@ -15501,14 +15528,14 @@ f_5096:
     sub     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_747:
+    .ral_5096_2:
     cmp     rbx, r12
-    je      .rbl_747
+    je      .rbl_5096_2
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_747
-    .rbl_747:
+    jmp     .ral_5096_2
+    .rbl_5096_2:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -15578,12 +15605,12 @@ f_5135:
     mov     qword [r12], rax
     mov     rax, rdx
     mov     qword [r12], rax
-.l_275:
+.l_5135_0:
     call    f_5606
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_276
+    jz      .l_5135_1
     mov     rcx, 1
     mov     rax, qword [r12 + 8]
     add 	rax, rcx
@@ -15596,8 +15623,8 @@ f_5135:
     mov     rax, rdx
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_275
-.l_276:
+    jmp     .l_5135_0
+.l_5135_1:
     mov     rax, qword [r12]
     mov     qword [r12 + 32], rax
     add     r12, 32
@@ -15736,7 +15763,7 @@ f_5282:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12], rax
-    lea     rax, [b_9505]
+    lea     rax, [b_9506]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 2
     sub     r12, 16
@@ -15745,14 +15772,14 @@ f_5282:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1293
+    jz      .l_5282_1
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6267
-    jmp     .l_1292
-.l_1293:
+    jmp     .l_5282_0
+.l_5282_1:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -15767,7 +15794,7 @@ f_5282:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
-    lea     rax, [b_9506]
+    lea     rax, [b_9507]
     mov     qword [r12 - 16], rax
     mov     qword [r12 - 24], 2
     sub     r12, 24
@@ -15778,18 +15805,18 @@ f_5282:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_1294
+    jz      .l_5282_2
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7396
-    jmp     .l_1292
-.l_1294:
+    jmp     .l_5282_0
+.l_5282_2:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
-    lea     rax, [b_9507]
+    lea     rax, [b_9508]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3887
@@ -15797,7 +15824,7 @@ f_5282:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1295
+    jz      .l_5282_3
     lea     rax, [b_4816]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -15805,11 +15832,7 @@ f_5282:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1297
-    lea     rax, [b_9508]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_5282_5
     lea     rax, [b_9509]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -15818,23 +15841,27 @@ f_5282:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
+    lea     rax, [b_9511]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1296
-.l_1297:
-.l_1296:
+    jmp     .l_5282_4
+.l_5282_5:
+.l_5282_4:
     mov     qword [r12 - 8], 1
     lea     rax, [b_4816]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-    jmp     .l_1292
-.l_1295:
+    jmp     .l_5282_0
+.l_5282_3:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
-    lea     rax, [b_9511]
+    lea     rax, [b_9512]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3887
@@ -15842,7 +15869,7 @@ f_5282:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1298
+    jz      .l_5282_6
     lea     rax, [b_2442]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -15850,11 +15877,7 @@ f_5282:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1300
-    lea     rax, [b_9512]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_5282_8
     lea     rax, [b_9513]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -15863,20 +15886,24 @@ f_5282:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
+    lea     rax, [b_9515]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1299
-.l_1300:
-.l_1299:
+    jmp     .l_5282_7
+.l_5282_8:
+.l_5282_7:
     mov     qword [r12 - 8], 1
     lea     rax, [b_2442]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-    jmp     .l_1292
-.l_1298:
-    lea     rax, [b_9515]
+    jmp     .l_5282_0
+.l_5282_6:
+    lea     rax, [b_9516]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -15885,7 +15912,7 @@ f_5282:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    lea     rax, [b_9516]
+    lea     rax, [b_9517]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -15893,7 +15920,7 @@ f_5282:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_1292:
+.l_5282_0:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -15961,7 +15988,7 @@ f_5600:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_793
+    jz      .l_5600_1
     call    f_6138
     lea     rax, [b_8483]
     mov     qword [r12 - 8], rax
@@ -15970,14 +15997,14 @@ f_5600:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_792
-.l_793:
-.l_792:
+    jmp     .l_5600_0
+.l_5600_1:
+.l_5600_0:
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_794:
+.l_5600_2:
     call    f_2175
     mov     rax, 33
     mov     rbx, qword [r12]
@@ -15990,7 +16017,7 @@ f_5600:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_795
+    jz      .l_5600_3
     call    f_2175
     mov     rax, 1
     mov     rbx, qword [r12]
@@ -15999,14 +16026,14 @@ f_5600:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_797
+    jz      .l_5600_5
     call    f_6176
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-    jmp     .l_796
-.l_797:
+    jmp     .l_5600_4
+.l_5600_5:
     call    f_2175
     mov     rax, 4
     mov     rbx, qword [r12]
@@ -16015,14 +16042,14 @@ f_5600:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_798
+    jz      .l_5600_6
     call    f_5809
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-    jmp     .l_796
-.l_798:
+    jmp     .l_5600_4
+.l_5600_6:
     call    f_2175
     mov     rax, 18
     mov     rbx, qword [r12]
@@ -16031,7 +16058,7 @@ f_5600:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_799
+    jz      .l_5600_7
     mov     qword [r12 - 8], 8
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12 - 8]
@@ -16052,7 +16079,7 @@ f_5600:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_801
+    jz      .l_5600_9
     call    f_6138
     lea     rax, [b_8484]
     mov     qword [r12 - 8], rax
@@ -16061,11 +16088,11 @@ f_5600:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_800
-.l_801:
-.l_800:
-    jmp     .l_796
-.l_799:
+    jmp     .l_5600_8
+.l_5600_9:
+.l_5600_8:
+    jmp     .l_5600_4
+.l_5600_7:
     call    f_6138
     lea     rax, [b_8485]
     mov     qword [r12 - 8], rax
@@ -16074,12 +16101,12 @@ f_5600:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_796:
+.l_5600_4:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_802:
+.l_5600_10:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -16088,7 +16115,7 @@ f_5600:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_803
+    jz      .l_5600_11
     call    f_4062
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
@@ -16100,8 +16127,8 @@ f_5600:
     mov     rcx, qword [r12]
     mov     [rax], rcx
     add     r12, 8
-    jmp     .l_802
-.l_803:
+    jmp     .l_5600_10
+.l_5600_11:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -16114,8 +16141,8 @@ f_5600:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_794
-.l_795:
+    jmp     .l_5600_2
+.l_5600_3:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -16150,11 +16177,11 @@ f_5606:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_274
+    jz      .l_5606_1
     mov     qword [r12 - 8], 0
     sub     r12, 8
-    jmp     .l_273
-.l_274:
+    jmp     .l_5606_0
+.l_5606_1:
     mov     rax, [r12]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -16165,7 +16192,7 @@ f_5606:
     sub     r12, 8
     call    f_3887
     call    f_5070
-.l_273:
+.l_5606_0:
     leave
     ret
 f_5614:
@@ -16185,10 +16212,10 @@ f_5614:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_932
+    jz      .l_5614_1
     call    f_5809
-    jmp     .l_931
-.l_932:
+    jmp     .l_5614_0
+.l_5614_1:
     call    f_6176
     lea     rax, [b_2010]
     mov     qword [r12 - 8], rax
@@ -16202,7 +16229,7 @@ f_5614:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_933
+    jz      .l_5614_2
     lea     rax, [b_2010]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 66
@@ -16213,8 +16240,8 @@ f_5614:
     add 	rax, rcx
     mov     rax, qword [rax]
     mov     qword [r12], rax
-    jmp     .l_931
-.l_933:
+    jmp     .l_5614_0
+.l_5614_2:
     add     r12, 8
     call    f_6138
     lea     rax, [b_8558]
@@ -16230,20 +16257,20 @@ f_5614:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_931:
+.l_5614_0:
     mov     qword [r12 - 8], 6
     mov     rax, 3
     sub     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_934:
+    .ral_5614_3:
     cmp     rbx, r12
-    je      .rbl_934
+    je      .rbl_5614_3
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_934
-    .rbl_934:
+    jmp     .ral_5614_3
+    .rbl_5614_3:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -16255,10 +16282,6 @@ f_5614:
 f_5617:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_8896]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8897]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -16267,18 +16290,22 @@ f_5617:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_367
     lea     rax, [b_8899]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7813
+    call    f_367
     lea     rax, [b_8900]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_2875
+    call    f_7813
     lea     rax, [b_8901]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_2875
+    lea     rax, [b_8902]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -16286,7 +16313,7 @@ f_5617:
     mov     qword [r12 - 8], 65536
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_8902]
+    lea     rax, [b_8903]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -16315,8 +16342,8 @@ f_5761:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1262
-    lea     rax, [b_9470]
+    jz      .l_5761_1
+    lea     rax, [b_9471]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -16324,7 +16351,7 @@ f_5761:
     sub     r12, 8
     call    f_3183
     call    f_6317
-    lea     rax, [b_9471]
+    lea     rax, [b_9472]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -16332,9 +16359,9 @@ f_5761:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1261
-.l_1262:
-.l_1261:
+    jmp     .l_5761_0
+.l_5761_1:
+.l_5761_0:
     mov     qword [r12 - 8], 0
     sub     r12, 8
     mov     rax, [r12 + 8]
@@ -16361,8 +16388,8 @@ f_5761:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1264
-    lea     rax, [b_9472]
+    jz      .l_5761_3
+    lea     rax, [b_9473]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -16370,7 +16397,7 @@ f_5761:
     sub     r12, 8
     call    f_3183
     call    f_6317
-    lea     rax, [b_9473]
+    lea     rax, [b_9474]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -16378,9 +16405,9 @@ f_5761:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1263
-.l_1264:
-.l_1263:
+    jmp     .l_5761_2
+.l_5761_3:
+.l_5761_2:
     mov     qword [r12 - 8], 0
     sub     r12, 8
     mov     rax, [r12 + 8]
@@ -16397,7 +16424,7 @@ f_5761:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12], rax
-    lea     rax, [b_9474]
+    lea     rax, [b_9475]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3887
@@ -16405,7 +16432,7 @@ f_5761:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
-    lea     rax, [b_9475]
+    lea     rax, [b_9476]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3887
@@ -16415,17 +16442,17 @@ f_5761:
     or 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_1266
-    lea     rax, [b_9476]
+    jz      .l_5761_5
+    lea     rax, [b_9477]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_4000
-    jmp     .l_1265
-.l_1266:
+    jmp     .l_5761_4
+.l_5761_5:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
-    lea     rax, [b_9477]
+    lea     rax, [b_9478]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3887
@@ -16433,52 +16460,34 @@ f_5761:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1267
-    lea     rax, [b_9478]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_4000
-    jmp     .l_1265
-.l_1267:
+    jz      .l_5761_6
     lea     rax, [b_9479]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6317
-    lea     rax, [rbp - 8]
-    mov     rax, qword [rax]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    call    f_4000
+    jmp     .l_5761_4
+.l_5761_6:
     lea     rax, [b_9480]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
+    lea     rax, [rbp - 8]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    lea     rax, [b_9481]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_1265:
+.l_5761_4:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
-    lea     rax, [b_9481]
-    mov     qword [r12 - 16], rax
-    sub     r12, 16
-    call    f_3887
-    call    f_6709
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz      .l_1269
     lea     rax, [b_9482]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_4000
-    jmp     .l_1268
-.l_1269:
-    lea     rax, [rbp - 16]
-    mov     rax, qword [rax]
-    mov     qword [r12 - 8], rax
-    lea     rax, [b_9483]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3887
@@ -16486,70 +16495,70 @@ f_5761:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1270
-    lea     rax, [b_9484]
+    jz      .l_5761_8
+    lea     rax, [b_9483]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_4000
-    jmp     .l_1268
-.l_1270:
+    jmp     .l_5761_7
+.l_5761_8:
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9484]
+    mov     qword [r12 - 16], rax
+    sub     r12, 16
+    call    f_3887
+    call    f_6709
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz      .l_5761_9
     lea     rax, [b_9485]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6317
-    lea     rax, [rbp - 16]
-    mov     rax, qword [rax]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    call    f_4000
+    jmp     .l_5761_7
+.l_5761_9:
     lea     rax, [b_9486]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    lea     rax, [b_9487]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_1268:
+.l_5761_7:
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
-    lea     rax, [b_9487]
-    mov     qword [r12 - 16], rax
-    sub     r12, 16
-    call    f_3887
-    call    f_6709
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz      .l_1272
     lea     rax, [b_9488]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_4000
-    jmp     .l_1271
-.l_1272:
-    lea     rax, [rbp - 24]
-    mov     rax, qword [rax]
-    mov     qword [r12 - 8], rax
+    mov     qword [r12 - 16], rax
+    sub     r12, 16
+    call    f_3887
+    call    f_6709
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz      .l_5761_11
     lea     rax, [b_9489]
-    mov     qword [r12 - 16], rax
-    sub     r12, 16
-    call    f_3887
-    call    f_6709
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz      .l_1273
-    lea     rax, [b_9490]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_4000
-    jmp     .l_1271
-.l_1273:
+    jmp     .l_5761_10
+.l_5761_11:
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
-    lea     rax, [b_9491]
+    lea     rax, [b_9490]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3887
@@ -16557,30 +16566,48 @@ f_5761:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1274
-    lea     rax, [b_9492]
+    jz      .l_5761_12
+    lea     rax, [b_9491]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_4000
-    jmp     .l_1271
-.l_1274:
+    jmp     .l_5761_10
+.l_5761_12:
+    lea     rax, [rbp - 24]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9492]
+    mov     qword [r12 - 16], rax
+    sub     r12, 16
+    call    f_3887
+    call    f_6709
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz      .l_5761_13
     lea     rax, [b_9493]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6317
-    lea     rax, [rbp - 24]
-    mov     rax, qword [rax]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    call    f_4000
+    jmp     .l_5761_10
+.l_5761_13:
     lea     rax, [b_9494]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
+    lea     rax, [rbp - 24]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
+    lea     rax, [b_9495]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_1271:
+.l_5761_10:
     leave
     ret
 f_5809:
@@ -16599,7 +16626,7 @@ f_5809:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_767
+    jz      .l_5809_1
     add     r12, 8
     call    f_6138
     lea     rax, [b_8476]
@@ -16615,9 +16642,9 @@ f_5809:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_766
-.l_767:
-.l_766:
+    jmp     .l_5809_0
+.l_5809_1:
+.l_5809_0:
     mov     rcx, 16
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -16662,7 +16689,7 @@ f_5818:
     and 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_398
+    jz      .l_5818_1
     call    f_6138
     lea     rax, [b_8311]
     mov     qword [r12 - 8], rax
@@ -16671,9 +16698,9 @@ f_5818:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_397
-.l_398:
-.l_397:
+    jmp     .l_5818_0
+.l_5818_1:
+.l_5818_0:
     call    f_6176
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
@@ -16691,7 +16718,7 @@ f_5818:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_400
+    jz      .l_5818_3
     call    f_6138
     lea     rax, [b_8312]
     mov     qword [r12 - 8], rax
@@ -16706,9 +16733,9 @@ f_5818:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_399
-.l_400:
-.l_399:
+    jmp     .l_5818_2
+.l_5818_3:
+.l_5818_2:
     call    f_6176
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12]
@@ -16730,11 +16757,11 @@ f_5818:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_402
+    jz      .l_5818_5
     mov     qword [r12 - 8], 0
     sub     r12, 8
-    jmp     .l_401
-.l_402:
+    jmp     .l_5818_4
+.l_5818_5:
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
@@ -16743,7 +16770,7 @@ f_5818:
     mov     rax, qword [r12]
     mov     rax, qword [rax]
     mov     qword [r12], rax
-.l_401:
+.l_5818_4:
     lea     rax, [rbp - 24]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -16760,12 +16787,12 @@ f_5818:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_404
+    jz      .l_5818_7
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-.l_405:
+.l_5818_8:
     call    f_2175
     mov     rax, 29
     mov     rbx, qword [r12]
@@ -16778,7 +16805,7 @@ f_5818:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_406
+    jz      .l_5818_9
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 32]
     mov     rax, qword [rax]
@@ -16801,7 +16828,7 @@ f_5818:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_408
+    jz      .l_5818_11
     call    f_6138
     lea     rax, [b_8314]
     mov     qword [r12 - 8], rax
@@ -16819,9 +16846,9 @@ f_5818:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_407
-.l_408:
-.l_407:
+    jmp     .l_5818_10
+.l_5818_11:
+.l_5818_10:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -16838,7 +16865,7 @@ f_5818:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_410
+    jz      .l_5818_13
     call    f_2175
     mov     rax, 15
     mov     rbx, qword [r12]
@@ -16851,7 +16878,7 @@ f_5818:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_412
+    jz      .l_5818_15
     call    f_6138
     lea     rax, [b_8316]
     mov     qword [r12 - 8], rax
@@ -16869,25 +16896,25 @@ f_5818:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_411
-.l_412:
-.l_411:
+    jmp     .l_5818_14
+.l_5818_15:
+.l_5818_14:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_409
-.l_410:
-.l_409:
-    jmp     .l_405
-.l_406:
+    jmp     .l_5818_12
+.l_5818_13:
+.l_5818_12:
+    jmp     .l_5818_8
+.l_5818_9:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_403
-.l_404:
-.l_403:
+    jmp     .l_5818_6
+.l_5818_7:
+.l_5818_6:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -16976,7 +17003,7 @@ f_5818:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_414
+    jz      .l_5818_17
     call    f_6138
     lea     rax, [b_8318]
     mov     qword [r12 - 8], rax
@@ -16994,9 +17021,9 @@ f_5818:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_413
-.l_414:
-.l_413:
+    jmp     .l_5818_16
+.l_5818_17:
+.l_5818_16:
     call    f_4957
     leave
     ret
@@ -17013,12 +17040,12 @@ f_5819:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-.l_230:
+.l_5819_0:
     call    f_5160
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_231
+    jz      .l_5819_1
     call    f_3838
     lea     rax, [b_5194]
     mov     qword [r12 - 8], rax
@@ -17030,8 +17057,8 @@ f_5819:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_230
-.l_231:
+    jmp     .l_5819_0
+.l_5819_1:
     mov     qword [r12 - 8], 0
     lea     rax, [b_5194]
     mov     qword [r12 - 16], rax
@@ -17064,8 +17091,8 @@ f_5822:
     movzx   rax, al
     add     r12, 16
     test    rax, rax
-    jz      .l_1302
-    lea     rax, [b_9517]
+    jz      .l_5822_1
+    lea     rax, [b_9518]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -17073,7 +17100,7 @@ f_5822:
     sub     r12, 8
     call    f_3183
     call    f_6317
-    lea     rax, [b_9518]
+    lea     rax, [b_9519]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -17082,13 +17109,13 @@ f_5822:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1301
-.l_1302:
-.l_1301:
+    jmp     .l_5822_0
+.l_5822_1:
+.l_5822_0:
     call    f_5761
     mov     qword [r12 - 8], 4
     sub     r12, 8
-.l_1303:
+.l_5822_2:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_5161]
@@ -17098,10 +17125,10 @@ f_5822:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1304
+    jz      .l_5822_3
     call    f_5282
-    jmp     .l_1303
-.l_1304:
+    jmp     .l_5822_2
+.l_5822_3:
     add     r12, 8
     call    f_3814
     call    f_3289
@@ -17195,21 +17222,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_534
+    jz      .l_5916_1
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 1
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_535:
+    .ral_5916_2:
     cmp     rbx, r12
-    je      .rbl_535
+    je      .rbl_5916_2
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_535
-    .rbl_535:
+    jmp     .ral_5916_2
+    .rbl_5916_2:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17218,9 +17245,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_533
-.l_534:
-.l_533:
+    jmp     .l_5916_0
+.l_5916_1:
+.l_5916_0:
     call    f_6176
     lea     rax, [b_8387]
     mov     qword [r12 - 8], rax
@@ -17230,21 +17257,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_537
+    jz      .l_5916_4
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 5
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_538:
+    .ral_5916_5:
     cmp     rbx, r12
-    je      .rbl_538
+    je      .rbl_5916_5
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_538
-    .rbl_538:
+    jmp     .ral_5916_5
+    .rbl_5916_5:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17253,9 +17280,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_536
-.l_537:
-.l_536:
+    jmp     .l_5916_3
+.l_5916_4:
+.l_5916_3:
     call    f_6176
     lea     rax, [b_8388]
     mov     qword [r12 - 8], rax
@@ -17265,21 +17292,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_540
+    jz      .l_5916_7
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 7
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_541:
+    .ral_5916_8:
     cmp     rbx, r12
-    je      .rbl_541
+    je      .rbl_5916_8
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_541
-    .rbl_541:
+    jmp     .ral_5916_8
+    .rbl_5916_8:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17288,9 +17315,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_539
-.l_540:
-.l_539:
+    jmp     .l_5916_6
+.l_5916_7:
+.l_5916_6:
     call    f_6176
     lea     rax, [b_8389]
     mov     qword [r12 - 8], rax
@@ -17300,21 +17327,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_543
+    jz      .l_5916_10
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 8
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_544:
+    .ral_5916_11:
     cmp     rbx, r12
-    je      .rbl_544
+    je      .rbl_5916_11
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_544
-    .rbl_544:
+    jmp     .ral_5916_11
+    .rbl_5916_11:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17323,9 +17350,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_542
-.l_543:
-.l_542:
+    jmp     .l_5916_9
+.l_5916_10:
+.l_5916_9:
     call    f_6176
     lea     rax, [b_8390]
     mov     qword [r12 - 8], rax
@@ -17335,7 +17362,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_546
+    jz      .l_5916_13
     lea     rax, [b_6266]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -17359,14 +17386,14 @@ f_5916:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_547:
+    .ral_5916_14:
     cmp     rbx, r12
-    je      .rbl_547
+    je      .rbl_5916_14
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_547
-    .rbl_547:
+    jmp     .ral_5916_14
+    .rbl_5916_14:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17375,9 +17402,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_545
-.l_546:
-.l_545:
+    jmp     .l_5916_12
+.l_5916_13:
+.l_5916_12:
     call    f_6176
     lea     rax, [b_8391]
     mov     qword [r12 - 8], rax
@@ -17387,21 +17414,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_549
+    jz      .l_5916_16
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 10
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_550:
+    .ral_5916_17:
     cmp     rbx, r12
-    je      .rbl_550
+    je      .rbl_5916_17
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_550
-    .rbl_550:
+    jmp     .ral_5916_17
+    .rbl_5916_17:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17410,9 +17437,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_548
-.l_549:
-.l_548:
+    jmp     .l_5916_15
+.l_5916_16:
+.l_5916_15:
     call    f_6176
     lea     rax, [b_8392]
     mov     qword [r12 - 8], rax
@@ -17422,21 +17449,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_552
+    jz      .l_5916_19
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 11
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_553:
+    .ral_5916_20:
     cmp     rbx, r12
-    je      .rbl_553
+    je      .rbl_5916_20
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_553
-    .rbl_553:
+    jmp     .ral_5916_20
+    .rbl_5916_20:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17445,9 +17472,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_551
-.l_552:
-.l_551:
+    jmp     .l_5916_18
+.l_5916_19:
+.l_5916_18:
     call    f_6176
     lea     rax, [b_8393]
     mov     qword [r12 - 8], rax
@@ -17457,21 +17484,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_555
+    jz      .l_5916_22
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 12
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_556:
+    .ral_5916_23:
     cmp     rbx, r12
-    je      .rbl_556
+    je      .rbl_5916_23
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_556
-    .rbl_556:
+    jmp     .ral_5916_23
+    .rbl_5916_23:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17480,9 +17507,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_554
-.l_555:
-.l_554:
+    jmp     .l_5916_21
+.l_5916_22:
+.l_5916_21:
     call    f_6176
     lea     rax, [b_8394]
     mov     qword [r12 - 8], rax
@@ -17492,21 +17519,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_558
+    jz      .l_5916_25
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 13
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_559:
+    .ral_5916_26:
     cmp     rbx, r12
-    je      .rbl_559
+    je      .rbl_5916_26
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_559
-    .rbl_559:
+    jmp     .ral_5916_26
+    .rbl_5916_26:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17515,9 +17542,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_557
-.l_558:
-.l_557:
+    jmp     .l_5916_24
+.l_5916_25:
+.l_5916_24:
     call    f_6176
     lea     rax, [b_8395]
     mov     qword [r12 - 8], rax
@@ -17527,21 +17554,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_561
+    jz      .l_5916_28
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 14
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_562:
+    .ral_5916_29:
     cmp     rbx, r12
-    je      .rbl_562
+    je      .rbl_5916_29
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_562
-    .rbl_562:
+    jmp     .ral_5916_29
+    .rbl_5916_29:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17550,9 +17577,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_560
-.l_561:
-.l_560:
+    jmp     .l_5916_27
+.l_5916_28:
+.l_5916_27:
     call    f_6176
     lea     rax, [b_8396]
     mov     qword [r12 - 8], rax
@@ -17562,21 +17589,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_564
+    jz      .l_5916_31
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 15
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_565:
+    .ral_5916_32:
     cmp     rbx, r12
-    je      .rbl_565
+    je      .rbl_5916_32
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_565
-    .rbl_565:
+    jmp     .ral_5916_32
+    .rbl_5916_32:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17585,9 +17612,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_563
-.l_564:
-.l_563:
+    jmp     .l_5916_30
+.l_5916_31:
+.l_5916_30:
     call    f_6176
     lea     rax, [b_8397]
     mov     qword [r12 - 8], rax
@@ -17597,21 +17624,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_567
+    jz      .l_5916_34
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 17
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_568:
+    .ral_5916_35:
     cmp     rbx, r12
-    je      .rbl_568
+    je      .rbl_5916_35
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_568
-    .rbl_568:
+    jmp     .ral_5916_35
+    .rbl_5916_35:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17620,9 +17647,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_566
-.l_567:
-.l_566:
+    jmp     .l_5916_33
+.l_5916_34:
+.l_5916_33:
     call    f_6176
     lea     rax, [b_8398]
     mov     qword [r12 - 8], rax
@@ -17632,21 +17659,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_570
+    jz      .l_5916_37
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 18
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_571:
+    .ral_5916_38:
     cmp     rbx, r12
-    je      .rbl_571
+    je      .rbl_5916_38
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_571
-    .rbl_571:
+    jmp     .ral_5916_38
+    .rbl_5916_38:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17655,9 +17682,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_569
-.l_570:
-.l_569:
+    jmp     .l_5916_36
+.l_5916_37:
+.l_5916_36:
     call    f_6176
     lea     rax, [b_8399]
     mov     qword [r12 - 8], rax
@@ -17667,7 +17694,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_573
+    jz      .l_5916_40
     lea     rax, [b_6266]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -17691,14 +17718,14 @@ f_5916:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_574:
+    .ral_5916_41:
     cmp     rbx, r12
-    je      .rbl_574
+    je      .rbl_5916_41
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_574
-    .rbl_574:
+    jmp     .ral_5916_41
+    .rbl_5916_41:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17707,9 +17734,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_572
-.l_573:
-.l_572:
+    jmp     .l_5916_39
+.l_5916_40:
+.l_5916_39:
     call    f_6176
     lea     rax, [b_8400]
     mov     qword [r12 - 8], rax
@@ -17719,21 +17746,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_576
+    jz      .l_5916_43
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 22
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_577:
+    .ral_5916_44:
     cmp     rbx, r12
-    je      .rbl_577
+    je      .rbl_5916_44
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_577
-    .rbl_577:
+    jmp     .ral_5916_44
+    .rbl_5916_44:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17742,9 +17769,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_575
-.l_576:
-.l_575:
+    jmp     .l_5916_42
+.l_5916_43:
+.l_5916_42:
     call    f_6176
     lea     rax, [b_8401]
     mov     qword [r12 - 8], rax
@@ -17754,21 +17781,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_579
+    jz      .l_5916_46
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 23
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_580:
+    .ral_5916_47:
     cmp     rbx, r12
-    je      .rbl_580
+    je      .rbl_5916_47
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_580
-    .rbl_580:
+    jmp     .ral_5916_47
+    .rbl_5916_47:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17777,9 +17804,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_578
-.l_579:
-.l_578:
+    jmp     .l_5916_45
+.l_5916_46:
+.l_5916_45:
     call    f_6176
     lea     rax, [b_8402]
     mov     qword [r12 - 8], rax
@@ -17789,21 +17816,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_582
+    jz      .l_5916_49
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 24
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_583:
+    .ral_5916_50:
     cmp     rbx, r12
-    je      .rbl_583
+    je      .rbl_5916_50
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_583
-    .rbl_583:
+    jmp     .ral_5916_50
+    .rbl_5916_50:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17812,9 +17839,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_581
-.l_582:
-.l_581:
+    jmp     .l_5916_48
+.l_5916_49:
+.l_5916_48:
     call    f_6176
     lea     rax, [b_8403]
     mov     qword [r12 - 8], rax
@@ -17824,21 +17851,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_585
+    jz      .l_5916_52
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 25
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_586:
+    .ral_5916_53:
     cmp     rbx, r12
-    je      .rbl_586
+    je      .rbl_5916_53
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_586
-    .rbl_586:
+    jmp     .ral_5916_53
+    .rbl_5916_53:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17847,9 +17874,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_584
-.l_585:
-.l_584:
+    jmp     .l_5916_51
+.l_5916_52:
+.l_5916_51:
     call    f_6176
     lea     rax, [b_8404]
     mov     qword [r12 - 8], rax
@@ -17859,21 +17886,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_588
+    jz      .l_5916_55
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 26
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_589:
+    .ral_5916_56:
     cmp     rbx, r12
-    je      .rbl_589
+    je      .rbl_5916_56
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_589
-    .rbl_589:
+    jmp     .ral_5916_56
+    .rbl_5916_56:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17882,9 +17909,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_587
-.l_588:
-.l_587:
+    jmp     .l_5916_54
+.l_5916_55:
+.l_5916_54:
     call    f_6176
     lea     rax, [b_8405]
     mov     qword [r12 - 8], rax
@@ -17894,21 +17921,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_591
+    jz      .l_5916_58
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 27
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_592:
+    .ral_5916_59:
     cmp     rbx, r12
-    je      .rbl_592
+    je      .rbl_5916_59
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_592
-    .rbl_592:
+    jmp     .ral_5916_59
+    .rbl_5916_59:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17917,9 +17944,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_590
-.l_591:
-.l_590:
+    jmp     .l_5916_57
+.l_5916_58:
+.l_5916_57:
     call    f_6176
     lea     rax, [b_8406]
     mov     qword [r12 - 8], rax
@@ -17929,21 +17956,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_594
+    jz      .l_5916_61
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 28
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_595:
+    .ral_5916_62:
     cmp     rbx, r12
-    je      .rbl_595
+    je      .rbl_5916_62
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_595
-    .rbl_595:
+    jmp     .ral_5916_62
+    .rbl_5916_62:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17952,9 +17979,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_593
-.l_594:
-.l_593:
+    jmp     .l_5916_60
+.l_5916_61:
+.l_5916_60:
     call    f_6176
     lea     rax, [b_8407]
     mov     qword [r12 - 8], rax
@@ -17964,21 +17991,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_597
+    jz      .l_5916_64
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 29
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_598:
+    .ral_5916_65:
     cmp     rbx, r12
-    je      .rbl_598
+    je      .rbl_5916_65
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_598
-    .rbl_598:
+    jmp     .ral_5916_65
+    .rbl_5916_65:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -17987,9 +18014,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_596
-.l_597:
-.l_596:
+    jmp     .l_5916_63
+.l_5916_64:
+.l_5916_63:
     call    f_6176
     lea     rax, [b_8408]
     mov     qword [r12 - 8], rax
@@ -17999,21 +18026,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_600
+    jz      .l_5916_67
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 30
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_601:
+    .ral_5916_68:
     cmp     rbx, r12
-    je      .rbl_601
+    je      .rbl_5916_68
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_601
-    .rbl_601:
+    jmp     .ral_5916_68
+    .rbl_5916_68:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18022,9 +18049,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_599
-.l_600:
-.l_599:
+    jmp     .l_5916_66
+.l_5916_67:
+.l_5916_66:
     call    f_6176
     lea     rax, [b_8409]
     mov     qword [r12 - 8], rax
@@ -18034,21 +18061,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_603
+    jz      .l_5916_70
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 31
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_604:
+    .ral_5916_71:
     cmp     rbx, r12
-    je      .rbl_604
+    je      .rbl_5916_71
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_604
-    .rbl_604:
+    jmp     .ral_5916_71
+    .rbl_5916_71:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18057,9 +18084,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_602
-.l_603:
-.l_602:
+    jmp     .l_5916_69
+.l_5916_70:
+.l_5916_69:
     call    f_6176
     lea     rax, [b_8410]
     mov     qword [r12 - 8], rax
@@ -18069,21 +18096,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_606
+    jz      .l_5916_73
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 32
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_607:
+    .ral_5916_74:
     cmp     rbx, r12
-    je      .rbl_607
+    je      .rbl_5916_74
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_607
-    .rbl_607:
+    jmp     .ral_5916_74
+    .rbl_5916_74:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18092,9 +18119,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_605
-.l_606:
-.l_605:
+    jmp     .l_5916_72
+.l_5916_73:
+.l_5916_72:
     call    f_6176
     lea     rax, [b_8411]
     mov     qword [r12 - 8], rax
@@ -18104,21 +18131,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_609
+    jz      .l_5916_76
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 33
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_610:
+    .ral_5916_77:
     cmp     rbx, r12
-    je      .rbl_610
+    je      .rbl_5916_77
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_610
-    .rbl_610:
+    jmp     .ral_5916_77
+    .rbl_5916_77:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18127,9 +18154,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_608
-.l_609:
-.l_608:
+    jmp     .l_5916_75
+.l_5916_76:
+.l_5916_75:
     call    f_6176
     lea     rax, [b_8412]
     mov     qword [r12 - 8], rax
@@ -18139,21 +18166,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_612
+    jz      .l_5916_79
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 34
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_613:
+    .ral_5916_80:
     cmp     rbx, r12
-    je      .rbl_613
+    je      .rbl_5916_80
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_613
-    .rbl_613:
+    jmp     .ral_5916_80
+    .rbl_5916_80:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18162,9 +18189,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_611
-.l_612:
-.l_611:
+    jmp     .l_5916_78
+.l_5916_79:
+.l_5916_78:
     call    f_6176
     lea     rax, [b_8413]
     mov     qword [r12 - 8], rax
@@ -18174,21 +18201,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_615
+    jz      .l_5916_82
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 35
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_616:
+    .ral_5916_83:
     cmp     rbx, r12
-    je      .rbl_616
+    je      .rbl_5916_83
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_616
-    .rbl_616:
+    jmp     .ral_5916_83
+    .rbl_5916_83:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18197,9 +18224,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_614
-.l_615:
-.l_614:
+    jmp     .l_5916_81
+.l_5916_82:
+.l_5916_81:
     call    f_6176
     lea     rax, [b_8414]
     mov     qword [r12 - 8], rax
@@ -18209,21 +18236,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_618
+    jz      .l_5916_85
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 39
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_619:
+    .ral_5916_86:
     cmp     rbx, r12
-    je      .rbl_619
+    je      .rbl_5916_86
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_619
-    .rbl_619:
+    jmp     .ral_5916_86
+    .rbl_5916_86:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18232,9 +18259,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_617
-.l_618:
-.l_617:
+    jmp     .l_5916_84
+.l_5916_85:
+.l_5916_84:
     call    f_6176
     lea     rax, [b_8415]
     mov     qword [r12 - 8], rax
@@ -18244,7 +18271,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_621
+    jz      .l_5916_88
     lea     rax, [b_6266]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -18268,14 +18295,14 @@ f_5916:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_622:
+    .ral_5916_89:
     cmp     rbx, r12
-    je      .rbl_622
+    je      .rbl_5916_89
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_622
-    .rbl_622:
+    jmp     .ral_5916_89
+    .rbl_5916_89:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18284,9 +18311,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_620
-.l_621:
-.l_620:
+    jmp     .l_5916_87
+.l_5916_88:
+.l_5916_87:
     call    f_6176
     lea     rax, [b_8416]
     mov     qword [r12 - 8], rax
@@ -18296,7 +18323,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_624
+    jz      .l_5916_91
     lea     rax, [b_6266]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -18320,14 +18347,14 @@ f_5916:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_625:
+    .ral_5916_92:
     cmp     rbx, r12
-    je      .rbl_625
+    je      .rbl_5916_92
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_625
-    .rbl_625:
+    jmp     .ral_5916_92
+    .rbl_5916_92:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18336,9 +18363,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_623
-.l_624:
-.l_623:
+    jmp     .l_5916_90
+.l_5916_91:
+.l_5916_90:
     call    f_6176
     lea     rax, [b_8417]
     mov     qword [r12 - 8], rax
@@ -18348,7 +18375,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_627
+    jz      .l_5916_94
     lea     rax, [b_6266]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -18372,14 +18399,14 @@ f_5916:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_628:
+    .ral_5916_95:
     cmp     rbx, r12
-    je      .rbl_628
+    je      .rbl_5916_95
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_628
-    .rbl_628:
+    jmp     .ral_5916_95
+    .rbl_5916_95:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18388,9 +18415,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_626
-.l_627:
-.l_626:
+    jmp     .l_5916_93
+.l_5916_94:
+.l_5916_93:
     call    f_6176
     lea     rax, [b_8418]
     mov     qword [r12 - 8], rax
@@ -18400,21 +18427,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_630
+    jz      .l_5916_97
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 43
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_631:
+    .ral_5916_98:
     cmp     rbx, r12
-    je      .rbl_631
+    je      .rbl_5916_98
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_631
-    .rbl_631:
+    jmp     .ral_5916_98
+    .rbl_5916_98:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18423,9 +18450,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_629
-.l_630:
-.l_629:
+    jmp     .l_5916_96
+.l_5916_97:
+.l_5916_96:
     call    f_6176
     lea     rax, [b_8419]
     mov     qword [r12 - 8], rax
@@ -18435,7 +18462,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_633
+    jz      .l_5916_100
     lea     rax, [b_6266]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -18459,14 +18486,14 @@ f_5916:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_634:
+    .ral_5916_101:
     cmp     rbx, r12
-    je      .rbl_634
+    je      .rbl_5916_101
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_634
-    .rbl_634:
+    jmp     .ral_5916_101
+    .rbl_5916_101:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18475,9 +18502,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_632
-.l_633:
-.l_632:
+    jmp     .l_5916_99
+.l_5916_100:
+.l_5916_99:
     call    f_6176
     lea     rax, [b_8420]
     mov     qword [r12 - 8], rax
@@ -18487,21 +18514,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_636
+    jz      .l_5916_103
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 45
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_637:
+    .ral_5916_104:
     cmp     rbx, r12
-    je      .rbl_637
+    je      .rbl_5916_104
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_637
-    .rbl_637:
+    jmp     .ral_5916_104
+    .rbl_5916_104:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18510,9 +18537,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_635
-.l_636:
-.l_635:
+    jmp     .l_5916_102
+.l_5916_103:
+.l_5916_102:
     call    f_6176
     lea     rax, [b_8421]
     mov     qword [r12 - 8], rax
@@ -18522,21 +18549,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_639
+    jz      .l_5916_106
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 46
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_640:
+    .ral_5916_107:
     cmp     rbx, r12
-    je      .rbl_640
+    je      .rbl_5916_107
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_640
-    .rbl_640:
+    jmp     .ral_5916_107
+    .rbl_5916_107:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18545,9 +18572,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_638
-.l_639:
-.l_638:
+    jmp     .l_5916_105
+.l_5916_106:
+.l_5916_105:
     call    f_6176
     lea     rax, [b_8422]
     mov     qword [r12 - 8], rax
@@ -18557,7 +18584,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_642
+    jz      .l_5916_109
     lea     rax, [b_6266]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -18581,14 +18608,14 @@ f_5916:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_643:
+    .ral_5916_110:
     cmp     rbx, r12
-    je      .rbl_643
+    je      .rbl_5916_110
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_643
-    .rbl_643:
+    jmp     .ral_5916_110
+    .rbl_5916_110:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18597,9 +18624,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_641
-.l_642:
-.l_641:
+    jmp     .l_5916_108
+.l_5916_109:
+.l_5916_108:
     call    f_6176
     lea     rax, [b_8423]
     mov     qword [r12 - 8], rax
@@ -18609,7 +18636,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_645
+    jz      .l_5916_112
     lea     rax, [b_6266]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -18633,14 +18660,14 @@ f_5916:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_646:
+    .ral_5916_113:
     cmp     rbx, r12
-    je      .rbl_646
+    je      .rbl_5916_113
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_646
-    .rbl_646:
+    jmp     .ral_5916_113
+    .rbl_5916_113:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18649,9 +18676,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_644
-.l_645:
-.l_644:
+    jmp     .l_5916_111
+.l_5916_112:
+.l_5916_111:
     call    f_6176
     lea     rax, [b_8424]
     mov     qword [r12 - 8], rax
@@ -18661,7 +18688,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_648
+    jz      .l_5916_115
     lea     rax, [b_6266]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -18685,14 +18712,14 @@ f_5916:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_649:
+    .ral_5916_116:
     cmp     rbx, r12
-    je      .rbl_649
+    je      .rbl_5916_116
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_649
-    .rbl_649:
+    jmp     .ral_5916_116
+    .rbl_5916_116:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18701,9 +18728,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_647
-.l_648:
-.l_647:
+    jmp     .l_5916_114
+.l_5916_115:
+.l_5916_114:
     call    f_6176
     lea     rax, [b_8425]
     mov     qword [r12 - 8], rax
@@ -18713,21 +18740,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_651
+    jz      .l_5916_118
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 50
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_652:
+    .ral_5916_119:
     cmp     rbx, r12
-    je      .rbl_652
+    je      .rbl_5916_119
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_652
-    .rbl_652:
+    jmp     .ral_5916_119
+    .rbl_5916_119:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18736,9 +18763,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_650
-.l_651:
-.l_650:
+    jmp     .l_5916_117
+.l_5916_118:
+.l_5916_117:
     call    f_6176
     lea     rax, [b_8426]
     mov     qword [r12 - 8], rax
@@ -18748,21 +18775,21 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_654
+    jz      .l_5916_121
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 51
     mov     rax, 3
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_655:
+    .ral_5916_122:
     cmp     rbx, r12
-    je      .rbl_655
+    je      .rbl_5916_122
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_655
-    .rbl_655:
+    jmp     .ral_5916_122
+    .rbl_5916_122:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18771,9 +18798,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_653
-.l_654:
-.l_653:
+    jmp     .l_5916_120
+.l_5916_121:
+.l_5916_120:
     call    f_6176
     lea     rax, [b_300]
     mov     qword [r12 - 8], rax
@@ -18790,7 +18817,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_657
+    jz      .l_5916_124
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -18799,14 +18826,14 @@ f_5916:
     sub     r12, 16
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_658:
+    .ral_5916_125:
     cmp     rbx, r12
-    je      .rbl_658
+    je      .rbl_5916_125
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_658
-    .rbl_658:
+    jmp     .ral_5916_125
+    .rbl_5916_125:
     mov     [r12], rcx
     call    f_934
     lea     rax, [rbp - 8]
@@ -18820,9 +18847,9 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_656
-.l_657:
-.l_656:
+    jmp     .l_5916_123
+.l_5916_124:
+.l_5916_123:
     call    f_6176
     lea     rax, [b_359]
     mov     qword [r12 - 8], rax
@@ -18833,7 +18860,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_660
+    jz      .l_5916_127
     call    f_6176
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12]
@@ -18869,7 +18896,7 @@ f_5916:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_662
+    jz      .l_5916_129
     call    f_6138
     lea     rax, [b_8427]
     mov     qword [r12 - 8], rax
@@ -18887,9 +18914,9 @@ f_5916:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_661
-.l_662:
-.l_661:
+    jmp     .l_5916_128
+.l_5916_129:
+.l_5916_128:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -18901,7 +18928,7 @@ f_5916:
     mov     qword [r12 + 16], rbx
     mov     qword [r12 + 8], rax
     mov     qword [r12], rcx
-.l_663:
+.l_5916_130:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -18909,7 +18936,7 @@ f_5916:
     add 	rax, rcx
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_664
+    jz      .l_5916_131
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -18926,7 +18953,7 @@ f_5916:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_666
+    jz      .l_5916_133
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     mov     rcx, 8
@@ -18938,14 +18965,14 @@ f_5916:
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_667:
+    .ral_5916_134:
     cmp     rbx, r12
-    je      .rbl_667
+    je      .rbl_5916_134
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_667
-    .rbl_667:
+    jmp     .ral_5916_134
+    .rbl_5916_134:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
@@ -18954,15 +18981,15 @@ f_5916:
     mov     qword [r12], rax
     leave
     ret
-    jmp     .l_665
-.l_666:
-.l_665:
+    jmp     .l_5916_132
+.l_5916_133:
+.l_5916_132:
     mov     rcx, 16
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_663
-.l_664:
+    jmp     .l_5916_130
+.l_5916_131:
     mov     rax, qword [r12 + 8]
     mov     rbx, qword [r12 + 16]
     mov     qword [r12 + 16], rax
@@ -18994,9 +19021,9 @@ f_5916:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_659
-.l_660:
-.l_659:
+    jmp     .l_5916_126
+.l_5916_127:
+.l_5916_126:
     call    f_4662
     leave
     ret
@@ -19053,25 +19080,25 @@ f_6218:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1084
-    lea     rax, [b_8790]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6218_1
     lea     rax, [b_8791]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8792]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
     lea     rax, [b_8793]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1083
-.l_1084:
+    lea     rax, [b_8794]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6218_0
+.l_6218_1:
     call    f_8184
     mov     rax, 40
     mov     rbx, qword [r12]
@@ -19080,34 +19107,30 @@ f_6218:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1085
-    lea     rax, [b_8794]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6218_2
     lea     rax, [b_8795]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8796]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_8797]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
+    call    f_692
     lea     rax, [b_8798]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8799]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8800]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19116,12 +19139,12 @@ f_6218:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8802]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8803]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19130,32 +19153,32 @@ f_6218:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8805]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8806]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8807]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8808]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8809]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8810]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19164,22 +19187,22 @@ f_6218:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8812]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8813]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8814]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8815]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19188,22 +19211,22 @@ f_6218:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8817]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8818]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8819]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8820]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19212,22 +19235,22 @@ f_6218:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8822]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8823]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8824]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8825]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19247,28 +19270,28 @@ f_6218:
     lea     rax, [b_8829]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_983
-    call    f_798
+    call    f_6962
     lea     rax, [b_8830]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
+    call    f_983
+    call    f_798
     lea     rax, [b_8831]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8832]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8833]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8834]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19276,20 +19299,24 @@ f_6218:
     lea     rax, [b_8835]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_983
-    call    f_798
+    call    f_6962
     lea     rax, [b_8836]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
+    call    f_983
+    call    f_798
     lea     rax, [b_8837]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1083
-.l_1085:
+    call    f_7283
+    call    f_4748
+    lea     rax, [b_8838]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6218_0
+.l_6218_2:
     call    f_8184
     mov     rax, 41
     mov     rbx, qword [r12]
@@ -19298,15 +19325,11 @@ f_6218:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1086
-    lea     rax, [b_8838]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6218_3
     lea     rax, [b_8839]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8840]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19315,11 +19338,11 @@ f_6218:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_8842]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
+    call    f_692
     lea     rax, [b_8843]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19327,9 +19350,13 @@ f_6218:
     lea     rax, [b_8844]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8845]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1083
-.l_1086:
+    jmp     .l_6218_0
+.l_6218_3:
     call    f_8184
     mov     rax, 42
     mov     rbx, qword [r12]
@@ -19338,15 +19365,11 @@ f_6218:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1087
-    lea     rax, [b_8845]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6218_4
     lea     rax, [b_8846]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8847]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19355,11 +19378,11 @@ f_6218:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_8849]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
+    call    f_692
     lea     rax, [b_8850]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19367,9 +19390,13 @@ f_6218:
     lea     rax, [b_8851]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8852]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1083
-.l_1087:
+    jmp     .l_6218_0
+.l_6218_4:
     call    f_8184
     mov     rax, 43
     mov     rbx, qword [r12]
@@ -19378,20 +19405,16 @@ f_6218:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1088
-    lea     rax, [b_8852]
+    jz      .l_6218_5
+    lea     rax, [b_8853]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_8853]
+    lea     rax, [b_8854]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
     call    f_692
-    lea     rax, [b_8854]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8855]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19399,9 +19422,13 @@ f_6218:
     lea     rax, [b_8856]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8857]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1083
-.l_1088:
+    jmp     .l_6218_0
+.l_6218_5:
     call    f_8184
     mov     rax, 44
     mov     rbx, qword [r12]
@@ -19410,24 +19437,20 @@ f_6218:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1089
-    lea     rax, [b_8857]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6218_6
     lea     rax, [b_8858]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8859]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_8860]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
+    call    f_692
     lea     rax, [b_8861]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19435,9 +19458,13 @@ f_6218:
     lea     rax, [b_8862]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8863]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1083
-.l_1089:
+    jmp     .l_6218_0
+.l_6218_6:
     call    f_8184
     mov     rax, 45
     mov     rbx, qword [r12]
@@ -19446,15 +19473,11 @@ f_6218:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1090
-    lea     rax, [b_8863]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6218_7
     lea     rax, [b_8864]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8865]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19479,19 +19502,23 @@ f_6218:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_8871]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
+    call    f_692
     lea     rax, [b_8872]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8873]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1083
-.l_1090:
+    jmp     .l_6218_0
+.l_6218_7:
     call    f_2448
-.l_1083:
+.l_6218_0:
     mov     rcx, 9
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -19509,21 +19536,21 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1106
-    lea     rax, [b_8907]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6219_1
     lea     rax, [b_8908]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8909]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_3567
+    lea     rax, [b_8910]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_6918
-    jmp     .l_1105
-.l_1106:
+    jmp     .l_6219_0
+.l_6219_1:
     call    f_8184
     mov     rax, 40
     mov     rbx, qword [r12]
@@ -19532,24 +19559,20 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1107
-    lea     rax, [b_8910]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6219_2
     lea     rax, [b_8911]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8912]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_8913]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
+    call    f_692
     lea     rax, [b_8914]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19558,12 +19581,12 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8916]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8917]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19572,12 +19595,12 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8919]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8920]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19586,32 +19609,32 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8922]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8923]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8924]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8925]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8926]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8927]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19624,22 +19647,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8930]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8931]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8932]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8933]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19652,22 +19675,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8936]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8937]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8938]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8939]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19680,22 +19703,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8942]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8943]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8944]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8945]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19719,28 +19742,28 @@ f_6219:
     lea     rax, [b_8950]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_983
-    call    f_798
+    call    f_6962
     lea     rax, [b_8951]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
+    call    f_983
+    call    f_798
     lea     rax, [b_8952]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8953]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8954]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8955]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19748,24 +19771,28 @@ f_6219:
     lea     rax, [b_8956]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_983
-    call    f_798
+    call    f_6962
     lea     rax, [b_8957]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
+    call    f_983
+    call    f_798
     lea     rax, [b_8958]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8959]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1105
-.l_1107:
+    lea     rax, [b_8960]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6219_0
+.l_6219_2:
     call    f_8184
     mov     rax, 41
     mov     rbx, qword [r12]
@@ -19774,15 +19801,11 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1108
-    lea     rax, [b_8960]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6219_3
     lea     rax, [b_8961]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8962]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19791,11 +19814,11 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_8964]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
+    call    f_692
     lea     rax, [b_8965]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19820,12 +19843,12 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8971]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8972]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19834,22 +19857,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8974]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8975]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8976]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8977]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19858,18 +19881,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8979]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8980]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8981]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1105
-.l_1108:
+    jmp     .l_6219_0
+.l_6219_3:
     call    f_8184
     mov     rax, 42
     mov     rbx, qword [r12]
@@ -19878,15 +19905,11 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1109
-    lea     rax, [b_8981]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6219_4
     lea     rax, [b_8982]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_8983]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19895,11 +19918,11 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_8985]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
+    call    f_692
     lea     rax, [b_8986]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19924,12 +19947,12 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8992]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8993]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19938,22 +19961,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8995]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8996]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_8997]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_8998]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -19962,18 +19985,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9000]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9001]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9002]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1105
-.l_1109:
+    jmp     .l_6219_0
+.l_6219_4:
     call    f_8184
     mov     rax, 43
     mov     rbx, qword [r12]
@@ -19982,30 +20009,30 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1110
-    lea     rax, [b_9002]
+    jz      .l_6219_5
+    lea     rax, [b_9003]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9003]
+    lea     rax, [b_9004]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
     call    f_692
-    lea     rax, [b_9004]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6918
     lea     rax, [b_9005]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6918
     lea     rax, [b_9006]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9007]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1105
-.l_1110:
+    jmp     .l_6219_0
+.l_6219_5:
     call    f_8184
     mov     rax, 44
     mov     rbx, qword [r12]
@@ -20014,42 +20041,38 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1111
-    lea     rax, [b_9007]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6219_6
     lea     rax, [b_9008]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_9009]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_9010]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
+    call    f_692
     lea     rax, [b_9011]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6918
+    call    f_6962
     lea     rax, [b_9012]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6918
     lea     rax, [b_9013]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9014]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9015]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20058,32 +20081,32 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9017]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9018]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9019]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9020]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9021]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9022]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20092,22 +20115,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9024]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9025]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9026]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9027]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20116,18 +20139,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9029]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9030]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9031]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1105
-.l_1111:
+    jmp     .l_6219_0
+.l_6219_6:
     call    f_8184
     mov     rax, 46
     mov     rbx, qword [r12]
@@ -20136,22 +20163,22 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1112
-    lea     rax, [b_9031]
+    jz      .l_6219_7
+    lea     rax, [b_9032]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
     call    f_692
-    lea     rax, [b_9032]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6918
     lea     rax, [b_9033]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6918
+    lea     rax, [b_9034]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1105
-.l_1112:
+    jmp     .l_6219_0
+.l_6219_7:
     call    f_8184
     mov     rax, 47
     mov     rbx, qword [r12]
@@ -20160,38 +20187,34 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1113
-    lea     rax, [b_9034]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6219_8
     lea     rax, [b_9035]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_9036]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_9037]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6918
+    call    f_3567
+    call    f_692
     lea     rax, [b_9038]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6918
     lea     rax, [b_9039]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9040]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9041]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20200,18 +20223,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9043]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9044]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9045]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1105
-.l_1113:
+    jmp     .l_6219_0
+.l_6219_8:
     call    f_8184
     mov     rax, 48
     mov     rbx, qword [r12]
@@ -20220,15 +20247,11 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1114
-    lea     rax, [b_9045]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6219_9
     lea     rax, [b_9046]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_3567
+    call    f_6412
     lea     rax, [b_9047]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20237,11 +20260,11 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
-    call    f_692
     lea     rax, [b_9049]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_3567
+    call    f_692
     lea     rax, [b_9050]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20286,12 +20309,12 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9061]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9062]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20300,18 +20323,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9064]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9065]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9066]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1105
-.l_1114:
+    jmp     .l_6219_0
+.l_6219_9:
     call    f_8184
     mov     rax, 49
     mov     rbx, qword [r12]
@@ -20320,38 +20347,34 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1115
-    lea     rax, [b_9066]
+    jz      .l_6219_10
+    lea     rax, [b_9067]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9067]
+    lea     rax, [b_9068]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
     call    f_692
-    lea     rax, [b_9068]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9069]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6918
+    call    f_6962
     lea     rax, [b_9070]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6918
     lea     rax, [b_9071]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9072]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9073]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20360,18 +20383,22 @@ f_6219:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9075]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9076]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9077]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1105
-.l_1115:
+    jmp     .l_6219_0
+.l_6219_10:
     call    f_8184
     mov     rax, 50
     mov     rbx, qword [r12]
@@ -20380,30 +20407,30 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1116
-    lea     rax, [b_9077]
+    jz      .l_6219_11
+    lea     rax, [b_9078]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9078]
+    lea     rax, [b_9079]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
     call    f_692
-    lea     rax, [b_9079]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6918
     lea     rax, [b_9080]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6918
     lea     rax, [b_9081]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9082]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1105
-.l_1116:
+    jmp     .l_6219_0
+.l_6219_11:
     call    f_8184
     mov     rax, 51
     mov     rbx, qword [r12]
@@ -20412,28 +20439,28 @@ f_6219:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1117
-    lea     rax, [b_9082]
+    jz      .l_6219_12
+    lea     rax, [b_9083]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9083]
+    lea     rax, [b_9084]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3567
     call    f_692
-    lea     rax, [b_9084]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6918
     lea     rax, [b_9085]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6918
+    lea     rax, [b_9086]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_7161
-    jmp     .l_1105
-.l_1117:
+    jmp     .l_6219_0
+.l_6219_12:
     call    f_2448
-.l_1105:
+.l_6219_0:
     mov     rcx, 9
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -20452,9 +20479,9 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1150
-    jmp     .l_1149
-.l_1150:
+    jz      .l_6220_1
+    jmp     .l_6220_0
+.l_6220_1:
     call    f_8184
     mov     rax, 2
     mov     rbx, qword [r12]
@@ -20463,22 +20490,22 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1151
-    lea     rax, [b_9143]
+    jz      .l_6220_2
+    lea     rax, [b_9144]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9144]
+    lea     rax, [b_9145]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
     call    f_3809
-    lea     rax, [b_9145]
+    lea     rax, [b_9146]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1151:
+    jmp     .l_6220_0
+.l_6220_2:
     call    f_8184
     mov     rax, 3
     mov     rbx, qword [r12]
@@ -20487,38 +20514,38 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1152
+    jz      .l_6220_3
     call    f_1612
-    lea     rax, [b_9146]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
     lea     rax, [b_9147]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
+    call    f_6412
     lea     rax, [b_9148]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_3176
     lea     rax, [b_9149]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9150]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_9150]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9151]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9152]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1152:
+    jmp     .l_6220_0
+.l_6220_3:
     call    f_8184
     mov     rax, 4
     mov     rbx, qword [r12]
@@ -20527,25 +20554,25 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1153
+    jz      .l_6220_4
     call    f_1612
     call    f_3809
-    lea     rax, [b_9152]
+    lea     rax, [b_9153]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9153]
+    lea     rax, [b_9154]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_9154]
+    lea     rax, [b_9155]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1153:
+    jmp     .l_6220_0
+.l_6220_4:
     call    f_8184
     mov     rax, 5
     mov     rbx, qword [r12]
@@ -20554,17 +20581,13 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1154
+    jz      .l_6220_5
     call    f_1612
     call    f_3809
-    lea     rax, [b_9155]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
     lea     rax, [b_9156]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6412
     lea     rax, [b_9157]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20573,8 +20596,12 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1154:
+    lea     rax, [b_9159]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6220_0
+.l_6220_5:
     call    f_8184
     mov     rax, 6
     mov     rbx, qword [r12]
@@ -20583,9 +20610,9 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1155
+    jz      .l_6220_6
     call    f_1612
-    lea     rax, [b_9159]
+    lea     rax, [b_9160]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
@@ -20597,27 +20624,27 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1157
+    jz      .l_6220_8
     call    f_4535
-    jmp     .l_1156
-.l_1157:
-    lea     rax, [b_9160]
+    jmp     .l_6220_7
+.l_6220_8:
+    lea     rax, [b_9161]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_9161]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-.l_1156:
     lea     rax, [b_9162]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+.l_6220_7:
+    lea     rax, [b_9163]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1155:
+    jmp     .l_6220_0
+.l_6220_6:
     call    f_8184
     mov     rax, 7
     mov     rbx, qword [r12]
@@ -20626,14 +20653,14 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1158
-    lea     rax, [b_9163]
+    jz      .l_6220_9
+    lea     rax, [b_9164]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
     call    f_611
-    jmp     .l_1149
-.l_1158:
+    jmp     .l_6220_0
+.l_6220_9:
     call    f_8184
     mov     rax, 8
     mov     rbx, qword [r12]
@@ -20642,20 +20669,16 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1159
-    lea     rax, [b_9164]
+    jz      .l_6220_10
+    lea     rax, [b_9165]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9165]
+    lea     rax, [b_9166]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
     call    f_3809
-    lea     rax, [b_9166]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9167]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20667,9 +20690,13 @@ f_6220:
     lea     rax, [b_9169]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9170]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1159:
+    jmp     .l_6220_0
+.l_6220_10:
     call    f_8184
     mov     rax, 9
     mov     rbx, qword [r12]
@@ -20678,21 +20705,17 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1160
-    lea     rax, [b_9170]
+    jz      .l_6220_11
+    lea     rax, [b_9171]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9171]
+    lea     rax, [b_9172]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
     call    f_1612
     call    f_3809
-    lea     rax, [b_9172]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9173]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20705,12 +20728,12 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9176]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9177]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20719,12 +20742,12 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9179]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9180]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20741,28 +20764,32 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9184]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9185]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9186]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9187]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1160:
+    lea     rax, [b_9188]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6220_0
+.l_6220_11:
     call    f_8184
     mov     rax, 10
     mov     rbx, qword [r12]
@@ -20771,23 +20798,23 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1161
-    lea     rax, [b_9188]
+    jz      .l_6220_12
+    lea     rax, [b_9189]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
     call    f_1612
     call    f_3809
-    lea     rax, [b_9189]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9190]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9191]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1161:
+    jmp     .l_6220_0
+.l_6220_12:
     call    f_8184
     mov     rax, 11
     mov     rbx, qword [r12]
@@ -20796,17 +20823,13 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1162
-    lea     rax, [b_9191]
+    jz      .l_6220_13
+    lea     rax, [b_9192]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
     call    f_1612
     call    f_3809
-    lea     rax, [b_9192]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9193]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20814,9 +20837,13 @@ f_6220:
     lea     rax, [b_9194]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9195]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1162:
+    jmp     .l_6220_0
+.l_6220_13:
     call    f_8184
     mov     rax, 12
     mov     rbx, qword [r12]
@@ -20825,15 +20852,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1163
-    lea     rax, [b_9195]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_14
     lea     rax, [b_9196]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9197]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20841,13 +20864,17 @@ f_6220:
     lea     rax, [b_9198]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_1009
+    call    f_2028
     lea     rax, [b_9199]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1163:
+    lea     rax, [b_9200]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_1009
+    jmp     .l_6220_0
+.l_6220_14:
     call    f_8184
     mov     rax, 13
     mov     rbx, qword [r12]
@@ -20856,15 +20883,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1164
-    lea     rax, [b_9200]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_15
     lea     rax, [b_9201]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9202]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20876,7 +20899,7 @@ f_6220:
     lea     rax, [b_9204]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_1009
+    call    f_2028
     lea     rax, [b_9205]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20885,8 +20908,12 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1164:
+    lea     rax, [b_9207]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_1009
+    jmp     .l_6220_0
+.l_6220_15:
     call    f_8184
     mov     rax, 14
     mov     rbx, qword [r12]
@@ -20895,22 +20922,22 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1165
-    lea     rax, [b_9207]
+    jz      .l_6220_16
+    lea     rax, [b_9208]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9208]
+    lea     rax, [b_9209]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
     call    f_611
-    lea     rax, [b_9209]
+    lea     rax, [b_9210]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1165:
+    jmp     .l_6220_0
+.l_6220_16:
     call    f_8184
     mov     rax, 15
     mov     rbx, qword [r12]
@@ -20919,17 +20946,13 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1166
+    jz      .l_6220_17
     call    f_1612
     call    f_3809
-    lea     rax, [b_9210]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
     lea     rax, [b_9211]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_6412
     lea     rax, [b_9212]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20938,13 +20961,13 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    mov     qword [r12 - 8], 65536
-    sub     r12, 8
-    call    f_3176
     lea     rax, [b_9214]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    mov     qword [r12 - 8], 65536
+    sub     r12, 8
+    call    f_3176
     lea     rax, [b_9215]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -20956,9 +20979,13 @@ f_6220:
     lea     rax, [b_9217]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9218]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1166:
+    jmp     .l_6220_0
+.l_6220_17:
     call    f_8184
     mov     rax, 16
     mov     rbx, qword [r12]
@@ -20967,8 +20994,8 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1167
-    lea     rax, [b_9218]
+    jz      .l_6220_18
+    lea     rax, [b_9219]
     mov     qword [r12 - 8], rax
     lea     rax, [rbp - 32]
     mov     qword [r12 - 16], rax
@@ -20984,19 +21011,15 @@ f_6220:
     sub     r12, 8
     call    f_3562
     call    f_1612
-    lea     rax, [b_9219]
+    lea     rax, [b_9220]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9220]
+    lea     rax, [b_9221]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     lea     rax, [rbp - 32]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    lea     rax, [b_9221]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -21004,20 +21027,24 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    lea     rax, [rbp - 32]
+    lea     rax, [b_9223]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    lea     rax, [b_9223]
+    lea     rax, [rbp - 32]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     lea     rax, [b_9224]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9225]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1167:
+    jmp     .l_6220_0
+.l_6220_18:
     call    f_8184
     mov     rax, 17
     mov     rbx, qword [r12]
@@ -21026,15 +21053,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1168
-    lea     rax, [b_9225]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_19
     lea     rax, [b_9226]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9227]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21042,9 +21065,13 @@ f_6220:
     lea     rax, [b_9228]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_2028
+    lea     rax, [b_9229]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1168:
+    jmp     .l_6220_0
+.l_6220_19:
     call    f_8184
     mov     rax, 18
     mov     rbx, qword [r12]
@@ -21053,25 +21080,25 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1169
-    lea     rax, [b_9229]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_20
     lea     rax, [b_9230]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9231]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
     lea     rax, [b_9232]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9233]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1169:
+    jmp     .l_6220_0
+.l_6220_20:
     call    f_8184
     mov     rax, 19
     mov     rbx, qword [r12]
@@ -21080,15 +21107,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1170
-    lea     rax, [b_9233]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_21
     lea     rax, [b_9234]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9235]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21097,17 +21120,17 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
-    call    f_1612
     lea     rax, [b_9237]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
+    call    f_2028
+    call    f_1612
     lea     rax, [b_9238]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9239]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21124,14 +21147,18 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9243]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1170:
+    call    f_7283
+    call    f_4748
+    lea     rax, [b_9244]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6220_0
+.l_6220_21:
     call    f_8184
     mov     rax, 20
     mov     rbx, qword [r12]
@@ -21140,9 +21167,9 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1171
+    jz      .l_6220_22
     call    f_1612
-    lea     rax, [b_9244]
+    lea     rax, [b_9245]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
@@ -21154,31 +21181,31 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1173
+    jz      .l_6220_24
     call    f_4535
-    lea     rax, [b_9245]
+    lea     rax, [b_9246]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1172
-.l_1173:
-    lea     rax, [b_9246]
+    jmp     .l_6220_23
+.l_6220_24:
+    lea     rax, [b_9247]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_9247]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-.l_1172:
     lea     rax, [b_9248]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+.l_6220_23:
+    lea     rax, [b_9249]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1171:
+    jmp     .l_6220_0
+.l_6220_22:
     call    f_8184
     mov     rax, 21
     mov     rbx, qword [r12]
@@ -21187,8 +21214,8 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1174
-    lea     rax, [b_9249]
+    jz      .l_6220_25
+    lea     rax, [b_9250]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
@@ -21200,28 +21227,28 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1176
+    jz      .l_6220_27
     call    f_1612
     call    f_4535
-    lea     rax, [b_9250]
+    lea     rax, [b_9251]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1175
-.l_1176:
-    lea     rax, [b_9251]
+    jmp     .l_6220_26
+.l_6220_27:
+    lea     rax, [b_9252]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
     call    f_7283
     call    f_3176
-    lea     rax, [b_9252]
+    lea     rax, [b_9253]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-.l_1175:
-    jmp     .l_1149
-.l_1174:
+.l_6220_26:
+    jmp     .l_6220_0
+.l_6220_25:
     call    f_8184
     mov     rax, 22
     mov     rbx, qword [r12]
@@ -21230,15 +21257,15 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1177
-    lea     rax, [b_9253]
-    mov     qword [r12 - 8], rax
+    jz      .l_6220_28
     lea     rax, [b_9254]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9255]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3331
-    jmp     .l_1149
-.l_1177:
+    jmp     .l_6220_0
+.l_6220_28:
     call    f_8184
     mov     rax, 23
     mov     rbx, qword [r12]
@@ -21247,15 +21274,15 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1178
-    lea     rax, [b_9255]
-    mov     qword [r12 - 8], rax
+    jz      .l_6220_29
     lea     rax, [b_9256]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9257]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3331
-    jmp     .l_1149
-.l_1178:
+    jmp     .l_6220_0
+.l_6220_29:
     call    f_8184
     mov     rax, 24
     mov     rbx, qword [r12]
@@ -21264,15 +21291,15 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1179
-    lea     rax, [b_9257]
-    mov     qword [r12 - 8], rax
+    jz      .l_6220_30
     lea     rax, [b_9258]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9259]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3331
-    jmp     .l_1149
-.l_1179:
+    jmp     .l_6220_0
+.l_6220_30:
     call    f_8184
     mov     rax, 25
     mov     rbx, qword [r12]
@@ -21281,15 +21308,15 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1180
-    lea     rax, [b_9259]
-    mov     qword [r12 - 8], rax
+    jz      .l_6220_31
     lea     rax, [b_9260]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9261]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3331
-    jmp     .l_1149
-.l_1180:
+    jmp     .l_6220_0
+.l_6220_31:
     call    f_8184
     mov     rax, 26
     mov     rbx, qword [r12]
@@ -21298,15 +21325,15 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1181
-    lea     rax, [b_9261]
-    mov     qword [r12 - 8], rax
+    jz      .l_6220_32
     lea     rax, [b_9262]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9263]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3331
-    jmp     .l_1149
-.l_1181:
+    jmp     .l_6220_0
+.l_6220_32:
     call    f_8184
     mov     rax, 27
     mov     rbx, qword [r12]
@@ -21315,15 +21342,15 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1182
-    lea     rax, [b_9263]
-    mov     qword [r12 - 8], rax
+    jz      .l_6220_33
     lea     rax, [b_9264]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9265]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3331
-    jmp     .l_1149
-.l_1182:
+    jmp     .l_6220_0
+.l_6220_33:
     call    f_8184
     mov     rax, 28
     mov     rbx, qword [r12]
@@ -21332,15 +21359,15 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1183
-    lea     rax, [b_9265]
-    mov     qword [r12 - 8], rax
+    jz      .l_6220_34
     lea     rax, [b_9266]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9267]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3331
-    jmp     .l_1149
-.l_1183:
+    jmp     .l_6220_0
+.l_6220_34:
     call    f_8184
     mov     rax, 29
     mov     rbx, qword [r12]
@@ -21349,15 +21376,15 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1184
-    lea     rax, [b_9267]
-    mov     qword [r12 - 8], rax
+    jz      .l_6220_35
     lea     rax, [b_9268]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9269]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3331
-    jmp     .l_1149
-.l_1184:
+    jmp     .l_6220_0
+.l_6220_35:
     call    f_8184
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -21366,15 +21393,15 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1185
-    lea     rax, [b_9269]
-    mov     qword [r12 - 8], rax
+    jz      .l_6220_36
     lea     rax, [b_9270]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9271]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3331
-    jmp     .l_1149
-.l_1185:
+    jmp     .l_6220_0
+.l_6220_36:
     call    f_8184
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -21383,25 +21410,25 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1186
-    lea     rax, [b_9271]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_37
     lea     rax, [b_9272]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9273]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
     lea     rax, [b_9274]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9275]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1186:
+    jmp     .l_6220_0
+.l_6220_37:
     call    f_8184
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -21410,15 +21437,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1187
-    lea     rax, [b_9275]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_38
     lea     rax, [b_9276]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9277]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21426,7 +21449,7 @@ f_6220:
     lea     rax, [b_9278]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
     lea     rax, [b_9279]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21434,9 +21457,13 @@ f_6220:
     lea     rax, [b_9280]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9281]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1187:
+    jmp     .l_6220_0
+.l_6220_38:
     call    f_8184
     mov     rax, 33
     mov     rbx, qword [r12]
@@ -21445,15 +21472,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1188
-    lea     rax, [b_9281]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_39
     lea     rax, [b_9282]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9283]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21461,7 +21484,7 @@ f_6220:
     lea     rax, [b_9284]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
     lea     rax, [b_9285]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21469,9 +21492,13 @@ f_6220:
     lea     rax, [b_9286]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9287]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1188:
+    jmp     .l_6220_0
+.l_6220_39:
     call    f_8184
     mov     rax, 34
     mov     rbx, qword [r12]
@@ -21480,15 +21507,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1189
-    lea     rax, [b_9287]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_40
     lea     rax, [b_9288]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9289]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21496,7 +21519,7 @@ f_6220:
     lea     rax, [b_9290]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
     lea     rax, [b_9291]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21504,9 +21527,13 @@ f_6220:
     lea     rax, [b_9292]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9293]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1189:
+    jmp     .l_6220_0
+.l_6220_40:
     call    f_8184
     mov     rax, 35
     mov     rbx, qword [r12]
@@ -21515,15 +21542,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1190
-    lea     rax, [b_9293]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_41
     lea     rax, [b_9294]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9295]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21531,7 +21554,7 @@ f_6220:
     lea     rax, [b_9296]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
     lea     rax, [b_9297]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21539,13 +21562,17 @@ f_6220:
     lea     rax, [b_9298]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_1009
+    call    f_6962
     lea     rax, [b_9299]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1190:
+    lea     rax, [b_9300]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_1009
+    jmp     .l_6220_0
+.l_6220_41:
     call    f_8184
     mov     rax, 36
     mov     rbx, qword [r12]
@@ -21554,21 +21581,21 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1191
+    jz      .l_6220_42
     call    f_1612
     call    f_3809
-    lea     rax, [b_9300]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9301]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1191:
+    call    f_7283
+    call    f_4748
+    lea     rax, [b_9302]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6220_0
+.l_6220_42:
     call    f_8184
     mov     rax, 37
     mov     rbx, qword [r12]
@@ -21577,25 +21604,25 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1192
+    jz      .l_6220_43
     call    f_1612
     call    f_3809
-    lea     rax, [b_9302]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
     lea     rax, [b_9303]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
+    call    f_6412
     lea     rax, [b_9304]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1192:
+    call    f_7283
+    call    f_4748
+    lea     rax, [b_9305]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6220_0
+.l_6220_43:
     call    f_8184
     mov     rax, 38
     mov     rbx, qword [r12]
@@ -21604,28 +21631,28 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1193
-    lea     rax, [b_9305]
+    jz      .l_6220_44
+    lea     rax, [b_9306]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9306]
+    lea     rax, [b_9307]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
     call    f_3809
-    lea     rax, [b_9307]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9308]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1193:
+    call    f_7283
+    call    f_4748
+    lea     rax, [b_9309]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6220_0
+.l_6220_44:
     call    f_8184
     mov     rax, 39
     mov     rbx, qword [r12]
@@ -21634,25 +21661,25 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1194
-    lea     rax, [b_9309]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_45
     lea     rax, [b_9310]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9311]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
     lea     rax, [b_9312]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1194:
+    lea     rax, [b_9313]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6220_0
+.l_6220_45:
     call    f_8184
     mov     rax, 40
     mov     rbx, qword [r12]
@@ -21661,34 +21688,30 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1195
-    lea     rax, [b_9313]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_46
     lea     rax, [b_9314]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9315]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
-    call    f_1612
     lea     rax, [b_9316]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
+    call    f_1612
     lea     rax, [b_9317]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9318]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9319]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21697,12 +21720,12 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9321]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9322]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21711,32 +21734,32 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9324]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9325]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9326]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9327]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9328]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9329]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21745,22 +21768,22 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9331]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9332]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9333]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9334]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21769,22 +21792,22 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9336]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9337]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9338]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9339]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21793,22 +21816,22 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9341]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9342]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9343]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9344]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21828,28 +21851,28 @@ f_6220:
     lea     rax, [b_9348]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_358
-    call    f_3809
+    call    f_6962
     lea     rax, [b_9349]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
+    call    f_358
+    call    f_3809
     lea     rax, [b_9350]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9351]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7283
-    call    f_3176
     lea     rax, [b_9352]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_7283
+    call    f_4748
     lea     rax, [b_9353]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21857,20 +21880,24 @@ f_6220:
     lea     rax, [b_9354]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_358
-    call    f_3809
+    call    f_6962
     lea     rax, [b_9355]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
-    call    f_7283
-    call    f_3176
+    call    f_358
+    call    f_3809
     lea     rax, [b_9356]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1149
-.l_1195:
+    call    f_7283
+    call    f_4748
+    lea     rax, [b_9357]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    jmp     .l_6220_0
+.l_6220_46:
     call    f_8184
     mov     rax, 41
     mov     rbx, qword [r12]
@@ -21879,15 +21906,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1196
-    lea     rax, [b_9357]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_47
     lea     rax, [b_9358]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9359]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21896,11 +21919,11 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
-    call    f_1612
     lea     rax, [b_9361]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
+    call    f_1612
     lea     rax, [b_9362]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21908,9 +21931,13 @@ f_6220:
     lea     rax, [b_9363]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9364]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1196:
+    jmp     .l_6220_0
+.l_6220_47:
     call    f_8184
     mov     rax, 42
     mov     rbx, qword [r12]
@@ -21919,15 +21946,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1197
-    lea     rax, [b_9364]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_48
     lea     rax, [b_9365]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9366]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21936,11 +21959,11 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
-    call    f_1612
     lea     rax, [b_9368]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
+    call    f_1612
     lea     rax, [b_9369]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21948,9 +21971,13 @@ f_6220:
     lea     rax, [b_9370]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9371]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1197:
+    jmp     .l_6220_0
+.l_6220_48:
     call    f_8184
     mov     rax, 43
     mov     rbx, qword [r12]
@@ -21959,20 +21986,16 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1198
-    lea     rax, [b_9371]
+    jz      .l_6220_49
+    lea     rax, [b_9372]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6412
-    lea     rax, [b_9372]
+    lea     rax, [b_9373]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
     call    f_1612
-    lea     rax, [b_9373]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_9374]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -21980,9 +22003,13 @@ f_6220:
     lea     rax, [b_9375]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9376]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1198:
+    jmp     .l_6220_0
+.l_6220_49:
     call    f_8184
     mov     rax, 44
     mov     rbx, qword [r12]
@@ -21991,24 +22018,20 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1199
-    lea     rax, [b_9376]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_50
     lea     rax, [b_9377]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9378]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
-    call    f_1612
     lea     rax, [b_9379]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
+    call    f_1612
     lea     rax, [b_9380]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -22016,9 +22039,13 @@ f_6220:
     lea     rax, [b_9381]
     mov     qword [r12 - 8], rax
     sub     r12, 8
+    call    f_6962
+    lea     rax, [b_9382]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     call    f_1009
-    jmp     .l_1149
-.l_1199:
+    jmp     .l_6220_0
+.l_6220_50:
     call    f_8184
     mov     rax, 45
     mov     rbx, qword [r12]
@@ -22027,15 +22054,11 @@ f_6220:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1200
-    lea     rax, [b_9382]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
+    jz      .l_6220_51
     lea     rax, [b_9383]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_2028
+    call    f_6412
     lea     rax, [b_9384]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -22060,31 +22083,35 @@ f_6220:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2028
-    call    f_1612
     lea     rax, [b_9390]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
+    call    f_2028
+    call    f_1612
     lea     rax, [b_9391]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_1009
-    jmp     .l_1149
-.l_1200:
+    call    f_6962
     lea     rax, [b_9392]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_1009
+    jmp     .l_6220_0
+.l_6220_51:
+    lea     rax, [b_9393]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     call    f_8184
     call    f_7036
-    lea     rax, [b_9393]
+    lea     rax, [b_9394]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_1149:
+.l_6220_0:
     mov     rcx, 9
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -22125,7 +22152,7 @@ f_6267:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_1285
+    jz      .l_6267_1
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -22142,21 +22169,21 @@ f_6267:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1287
-    lea     rax, [b_9503]
+    jz      .l_6267_3
+    lea     rax, [b_9504]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1286
-.l_1287:
-.l_1286:
+    jmp     .l_6267_2
+.l_6267_3:
+.l_6267_2:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
-    lea     rax, [b_9504]
+    lea     rax, [b_9505]
     mov     qword [r12 - 16], rax
     mov     qword [r12 - 24], 2
     sub     r12, 24
@@ -22165,7 +22192,7 @@ f_6267:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1289
+    jz      .l_6267_5
     mov     qword [r12 - 8], 2
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -22176,9 +22203,9 @@ f_6267:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_1288
-.l_1289:
-.l_1288:
+    jmp     .l_6267_4
+.l_6267_5:
+.l_6267_4:
     lea     rax, [b_5194]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -22202,9 +22229,9 @@ f_6267:
     sub     r12, 24
     call    f_1729
     call    f_3552
-    jmp     .l_1284
-.l_1285:
-.l_1284:
+    jmp     .l_6267_0
+.l_6267_1:
+.l_6267_0:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -22245,7 +22272,7 @@ f_6267:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_1291
+    jz      .l_6267_7
     mov     qword [r12 - 8], 47
     lea     rax, [b_5194]
     mov     qword [r12 - 16], rax
@@ -22253,9 +22280,9 @@ f_6267:
     sub     r12, 24
     call    f_1729
     call    f_3552
-    jmp     .l_1290
-.l_1291:
-.l_1290:
+    jmp     .l_6267_6
+.l_6267_7:
+.l_6267_6:
     mov     qword [r12 - 8], 0
     lea     rax, [b_5194]
     mov     qword [r12 - 16], rax
@@ -22379,21 +22406,21 @@ f_6282:
 f_6317:
     push    rbp
     mov     rbp, rsp
-.l_25:
+.l_6317_0:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_2002
     mov     rax, [r12]
     test    rax, rax
-    jz      .l_26
+    jz      .l_6317_1
     call    f_8056
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_25
-.l_26:
+    jmp     .l_6317_0
+.l_6317_1:
     add     r12, 16
     leave
     ret
@@ -22490,18 +22517,18 @@ f_6379:
     add 	rax, rcx
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_153:
+.l_6379_0:
     call    f_3838
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_154
+    jz      .l_6379_1
     call    f_3838
     call    f_5489
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_156
+    jz      .l_6379_3
     call    f_3838
     mov     rax, 55
     mov     rbx, qword [r12]
@@ -22510,7 +22537,7 @@ f_6379:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_158
+    jz      .l_6379_5
     call    f_6871
     lea     rax, [b_8256]
     mov     qword [r12 - 8], rax
@@ -22519,9 +22546,9 @@ f_6379:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_157
-.l_158:
-.l_157:
+    jmp     .l_6379_4
+.l_6379_5:
+.l_6379_4:
     call    f_3838
     mov     rcx, 48
     mov     rax, qword [r12]
@@ -22541,14 +22568,14 @@ f_6379:
     mov     qword [r12 + 16], rax
     mov     qword [r12 + 8], rbx
     add     r12, 8
-    jmp     .l_155
-.l_156:
+    jmp     .l_6379_2
+.l_6379_3:
     call    f_3838
     call    f_2785
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_159
+    jz      .l_6379_6
     call    f_6871
     lea     rax, [b_8257]
     mov     qword [r12 - 8], rax
@@ -22557,8 +22584,8 @@ f_6379:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_155
-.l_159:
+    jmp     .l_6379_2
+.l_6379_6:
     call    f_3838
     mov     rax, 95
     mov     rbx, qword [r12]
@@ -22571,22 +22598,22 @@ f_6379:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_160
+    jz      .l_6379_7
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
     leave
     ret
-    jmp     .l_155
-.l_160:
-.l_155:
+    jmp     .l_6379_2
+.l_6379_7:
+.l_6379_2:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_153
-.l_154:
+    jmp     .l_6379_0
+.l_6379_1:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -22610,10 +22637,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_937
+    jz      .l_6380_1
     mov     rax, [r12 + 8]
     test    rax, rax
-    jz      .l_939
+    jz      .l_6380_3
     call    f_6138
     lea     rax, [b_8560]
     mov     qword [r12 - 8], rax
@@ -22622,9 +22649,9 @@ f_6380:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_938
-.l_939:
-.l_938:
+    jmp     .l_6380_2
+.l_6380_3:
+.l_6380_2:
     mov     qword [r12 - 8], 1
     lea     rax, [b_5800]
     mov     qword [r12 - 16], rax
@@ -22642,10 +22669,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_941
+    jz      .l_6380_5
     call    f_2870
-    jmp     .l_940
-.l_941:
+    jmp     .l_6380_4
+.l_6380_5:
     call    f_2175
     mov     rax, 16
     mov     rbx, qword [r12]
@@ -22654,10 +22681,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_942
+    jz      .l_6380_6
     call    f_1431
-    jmp     .l_940
-.l_942:
+    jmp     .l_6380_4
+.l_6380_6:
     call    f_2175
     mov     rax, 17
     mov     rbx, qword [r12]
@@ -22666,10 +22693,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_943
+    jz      .l_6380_7
     call    f_1431
-    jmp     .l_940
-.l_943:
+    jmp     .l_6380_4
+.l_6380_7:
     call    f_2175
     mov     rax, 20
     mov     rbx, qword [r12]
@@ -22678,10 +22705,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_944
+    jz      .l_6380_8
     call    f_229
-    jmp     .l_940
-.l_944:
+    jmp     .l_6380_4
+.l_6380_8:
     call    f_2175
     mov     rax, 21
     mov     rbx, qword [r12]
@@ -22690,10 +22717,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_945
+    jz      .l_6380_9
     call    f_2695
-    jmp     .l_940
-.l_945:
+    jmp     .l_6380_4
+.l_6380_9:
     call    f_6138
     lea     rax, [b_8561]
     mov     qword [r12 - 8], rax
@@ -22708,9 +22735,9 @@ f_6380:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_940:
-    jmp     .l_936
-.l_937:
+.l_6380_4:
+    jmp     .l_6380_0
+.l_6380_1:
     call    f_2175
     mov     rax, 5
     mov     rbx, qword [r12]
@@ -22719,7 +22746,7 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_946
+    jz      .l_6380_10
     call    f_6138
     lea     rax, [b_8563]
     mov     qword [r12 - 8], rax
@@ -22734,8 +22761,8 @@ f_6380:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_936
-.l_946:
+    jmp     .l_6380_0
+.l_6380_10:
     call    f_2175
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
@@ -22757,29 +22784,29 @@ f_6380:
     or 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_947
+    jz      .l_6380_11
     call    f_6176
     mov     qword [r12 - 8], 6
     mov     rax, 3
     sub     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_948:
+    .ral_6380_12:
     cmp     rbx, r12
-    je      .rbl_948
+    je      .rbl_6380_12
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_948
-    .rbl_948:
+    jmp     .ral_6380_12
+    .rbl_6380_12:
     mov     [r12], rcx
     call    f_934
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_936
-.l_947:
+    jmp     .l_6380_0
+.l_6380_11:
     call    f_2175
     mov     rax, 28
     mov     rbx, qword [r12]
@@ -22788,7 +22815,7 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_949
+    jz      .l_6380_13
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -22799,7 +22826,7 @@ f_6380:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_950:
+.l_6380_14:
     call    f_2175
     mov     rax, 29
     mov     rbx, qword [r12]
@@ -22812,13 +22839,13 @@ f_6380:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_951
+    jz      .l_6380_15
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_953
+    jz      .l_6380_17
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -22844,17 +22871,17 @@ f_6380:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_952
-.l_953:
-.l_952:
+    jmp     .l_6380_16
+.l_6380_17:
+.l_6380_16:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_950
-.l_951:
+    jmp     .l_6380_14
+.l_6380_15:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -22863,8 +22890,8 @@ f_6380:
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_936
-.l_949:
+    jmp     .l_6380_0
+.l_6380_13:
     call    f_2175
     mov     rax, 3
     mov     rbx, qword [r12]
@@ -22873,10 +22900,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_954
+    jz      .l_6380_18
     call    f_2654
-    jmp     .l_936
-.l_954:
+    jmp     .l_6380_0
+.l_6380_18:
     call    f_2175
     mov     rax, 4
     mov     rbx, qword [r12]
@@ -22885,10 +22912,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_955
+    jz      .l_6380_19
     call    f_5916
-    jmp     .l_936
-.l_955:
+    jmp     .l_6380_0
+.l_6380_19:
     call    f_2175
     mov     rax, 7
     mov     rbx, qword [r12]
@@ -22897,10 +22924,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_956
+    jz      .l_6380_20
     call    f_7498
-    jmp     .l_936
-.l_956:
+    jmp     .l_6380_0
+.l_6380_20:
     call    f_2175
     mov     rax, 9
     mov     rbx, qword [r12]
@@ -22909,10 +22936,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_957
+    jz      .l_6380_21
     call    f_3273
-    jmp     .l_936
-.l_957:
+    jmp     .l_6380_0
+.l_6380_21:
     call    f_2175
     mov     rax, 10
     mov     rbx, qword [r12]
@@ -22921,10 +22948,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_958
+    jz      .l_6380_22
     call    f_2603
-    jmp     .l_936
-.l_958:
+    jmp     .l_6380_0
+.l_6380_22:
     call    f_2175
     mov     rax, 11
     mov     rbx, qword [r12]
@@ -22933,10 +22960,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_959
+    jz      .l_6380_23
     call    f_242
-    jmp     .l_936
-.l_959:
+    jmp     .l_6380_0
+.l_6380_23:
     call    f_2175
     mov     rax, 12
     mov     rbx, qword [r12]
@@ -22945,10 +22972,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_960
+    jz      .l_6380_24
     call    f_5096
-    jmp     .l_936
-.l_960:
+    jmp     .l_6380_0
+.l_6380_24:
     call    f_2175
     mov     rax, 6
     mov     rbx, qword [r12]
@@ -22957,10 +22984,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_961
+    jz      .l_6380_25
     call    f_2870
-    jmp     .l_936
-.l_961:
+    jmp     .l_6380_0
+.l_6380_25:
     call    f_2175
     mov     rax, 16
     mov     rbx, qword [r12]
@@ -22969,10 +22996,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_962
+    jz      .l_6380_26
     call    f_1431
-    jmp     .l_936
-.l_962:
+    jmp     .l_6380_0
+.l_6380_26:
     call    f_2175
     mov     rax, 17
     mov     rbx, qword [r12]
@@ -22981,10 +23008,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_963
+    jz      .l_6380_27
     call    f_1431
-    jmp     .l_936
-.l_963:
+    jmp     .l_6380_0
+.l_6380_27:
     call    f_2175
     mov     rax, 18
     mov     rbx, qword [r12]
@@ -22993,10 +23020,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_964
+    jz      .l_6380_28
     call    f_1339
-    jmp     .l_936
-.l_964:
+    jmp     .l_6380_0
+.l_6380_28:
     call    f_2175
     mov     rax, 19
     mov     rbx, qword [r12]
@@ -23005,10 +23032,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_965
+    jz      .l_6380_29
     call    f_2751
-    jmp     .l_936
-.l_965:
+    jmp     .l_6380_0
+.l_6380_29:
     call    f_2175
     mov     rax, 20
     mov     rbx, qword [r12]
@@ -23017,10 +23044,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_966
+    jz      .l_6380_30
     call    f_229
-    jmp     .l_936
-.l_966:
+    jmp     .l_6380_0
+.l_6380_30:
     call    f_2175
     mov     rax, 21
     mov     rbx, qword [r12]
@@ -23029,10 +23056,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_967
+    jz      .l_6380_31
     call    f_2695
-    jmp     .l_936
-.l_967:
+    jmp     .l_6380_0
+.l_6380_31:
     call    f_2175
     mov     rax, 22
     mov     rbx, qword [r12]
@@ -23041,10 +23068,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_968
+    jz      .l_6380_32
     call    f_4495
-    jmp     .l_936
-.l_968:
+    jmp     .l_6380_0
+.l_6380_32:
     call    f_2175
     mov     rax, 25
     mov     rbx, qword [r12]
@@ -23053,10 +23080,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_969
+    jz      .l_6380_33
     call    f_5614
-    jmp     .l_936
-.l_969:
+    jmp     .l_6380_0
+.l_6380_33:
     call    f_2175
     mov     rax, 26
     mov     rbx, qword [r12]
@@ -23065,10 +23092,10 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_970
+    jz      .l_6380_34
     call    f_4527
-    jmp     .l_936
-.l_970:
+    jmp     .l_6380_0
+.l_6380_34:
     call    f_2175
     mov     rax, 34
     mov     rbx, qword [r12]
@@ -23077,7 +23104,7 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_971
+    jz      .l_6380_35
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_261]
@@ -23095,8 +23122,8 @@ f_6380:
     add 	rax, rcx
     mov     qword [r12 + 24], rax
     add     r12, 24
-    jmp     .l_936
-.l_971:
+    jmp     .l_6380_0
+.l_6380_35:
     call    f_2175
     mov     rax, 35
     mov     rbx, qword [r12]
@@ -23105,7 +23132,7 @@ f_6380:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_972
+    jz      .l_6380_36
     lea     rax, [b_261]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -23117,8 +23144,8 @@ f_6380:
     add 	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_936
-.l_972:
+    jmp     .l_6380_0
+.l_6380_36:
     call    f_6138
     lea     rax, [b_8568]
     mov     qword [r12 - 8], rax
@@ -23133,7 +23160,7 @@ f_6380:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_936:
+.l_6380_0:
     leave
     ret
 f_6412:
@@ -23146,12 +23173,12 @@ f_6412:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_986
+    jz      .l_6412_1
     call    f_6962
-    jmp     .l_985
-.l_986:
+    jmp     .l_6412_0
+.l_6412_1:
     add     r12, 8
-.l_985:
+.l_6412_0:
     leave
     ret
 f_6555:
@@ -23192,18 +23219,18 @@ f_6639:
     add 	rax, rcx
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_145:
+.l_6639_0:
     call    f_3838
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_146
+    jz      .l_6639_1
     call    f_3838
     call    f_5489
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_148
+    jz      .l_6639_3
     call    f_3838
     mov     rax, 49
     mov     rbx, qword [r12]
@@ -23212,7 +23239,7 @@ f_6639:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_150
+    jz      .l_6639_5
     call    f_6871
     lea     rax, [b_8254]
     mov     qword [r12 - 8], rax
@@ -23221,9 +23248,9 @@ f_6639:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_149
-.l_150:
-.l_149:
+    jmp     .l_6639_4
+.l_6639_5:
+.l_6639_4:
     call    f_3838
     mov     rcx, 48
     mov     rax, qword [r12]
@@ -23243,14 +23270,14 @@ f_6639:
     mov     qword [r12 + 16], rax
     mov     qword [r12 + 8], rbx
     add     r12, 8
-    jmp     .l_147
-.l_148:
+    jmp     .l_6639_2
+.l_6639_3:
     call    f_3838
     call    f_1750
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_151
+    jz      .l_6639_6
     call    f_6871
     lea     rax, [b_8255]
     mov     qword [r12 - 8], rax
@@ -23259,8 +23286,8 @@ f_6639:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_147
-.l_151:
+    jmp     .l_6639_2
+.l_6639_6:
     call    f_3838
     mov     rax, 95
     mov     rbx, qword [r12]
@@ -23273,22 +23300,22 @@ f_6639:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_152
+    jz      .l_6639_7
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
     leave
     ret
-    jmp     .l_147
-.l_152:
-.l_147:
+    jmp     .l_6639_2
+.l_6639_7:
+.l_6639_2:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_145
-.l_146:
+    jmp     .l_6639_0
+.l_6639_1:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -23301,14 +23328,14 @@ f_6709:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_3
+    jz      .l_6709_1
     mov     qword [r12 - 8], 0
     sub     r12, 8
-    jmp     .l_2
-.l_3:
+    jmp     .l_6709_0
+.l_6709_1:
     mov     qword [r12 - 8], 1
     sub     r12, 8
-.l_2:
+.l_6709_0:
     leave
     ret
 f_6737:
@@ -23323,18 +23350,18 @@ f_6737:
     add 	rax, rcx
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_161:
+.l_6737_0:
     call    f_3838
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_162
+    jz      .l_6737_1
     call    f_3838
     call    f_5489
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_164
+    jz      .l_6737_3
     call    f_3838
     mov     rcx, 48
     mov     rax, qword [r12]
@@ -23354,8 +23381,8 @@ f_6737:
     mov     qword [r12 + 16], rax
     mov     qword [r12 + 8], rbx
     add     r12, 8
-    jmp     .l_163
-.l_164:
+    jmp     .l_6737_2
+.l_6737_3:
     call    f_3838
     call    f_3700
     mov     rax, [r12]
@@ -23386,7 +23413,7 @@ f_6737:
     and 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_165
+    jz      .l_6737_4
     call    f_3838
     call    f_3700
     mov     rcx, 97
@@ -23411,14 +23438,14 @@ f_6737:
     mov     qword [r12 + 16], rax
     mov     qword [r12 + 8], rbx
     add     r12, 8
-    jmp     .l_163
-.l_165:
+    jmp     .l_6737_2
+.l_6737_4:
     call    f_3838
     call    f_2785
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_166
+    jz      .l_6737_5
     call    f_6871
     lea     rax, [b_8258]
     mov     qword [r12 - 8], rax
@@ -23427,8 +23454,8 @@ f_6737:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_163
-.l_166:
+    jmp     .l_6737_2
+.l_6737_5:
     call    f_3838
     mov     rax, 95
     mov     rbx, qword [r12]
@@ -23441,22 +23468,22 @@ f_6737:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_167
+    jz      .l_6737_6
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
     leave
     ret
-    jmp     .l_163
-.l_167:
-.l_163:
+    jmp     .l_6737_2
+.l_6737_6:
+.l_6737_2:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_161
-.l_162:
+    jmp     .l_6737_0
+.l_6737_1:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -23475,8 +23502,8 @@ f_6752:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_988
-    lea     rax, [b_8577]
+    jz      .l_6752_1
+    lea     rax, [b_8578]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -23485,8 +23512,8 @@ f_6752:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    jmp     .l_987
-.l_988:
+    jmp     .l_6752_0
+.l_6752_1:
     lea     rax, [b_5843]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -23496,8 +23523,8 @@ f_6752:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_989
-    lea     rax, [b_8578]
+    jz      .l_6752_2
+    lea     rax, [b_8579]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -23510,9 +23537,9 @@ f_6752:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    jmp     .l_987
-.l_989:
-.l_987:
+    jmp     .l_6752_0
+.l_6752_2:
+.l_6752_0:
     leave
     ret
 f_6753:
@@ -23521,8 +23548,8 @@ f_6753:
     lea     rax, [b_5844]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_1133
-    lea     rax, [b_9118]
+    jz      .l_6753_1
+    lea     rax, [b_9119]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -23531,9 +23558,9 @@ f_6753:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    jmp     .l_1132
-.l_1133:
-.l_1132:
+    jmp     .l_6753_0
+.l_6753_1:
+.l_6753_0:
     leave
     ret
 f_6797:
@@ -23551,31 +23578,31 @@ f_6797:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_394
+    jz      .l_6797_1
     lea     rax, [b_3575]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_396
+    jz      .l_6797_3
     lea     rax, [b_4763]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6138
     add     r12, 8
-    jmp     .l_395
-.l_396:
+    jmp     .l_6797_2
+.l_6797_3:
     call    f_6138
-.l_395:
+.l_6797_2:
     call    f_6176
     call    f_6317
-    jmp     .l_393
-.l_394:
+    jmp     .l_6797_0
+.l_6797_1:
     call    f_6138
     lea     rax, [b_8310]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-.l_393:
+.l_6797_0:
     mov     rdi, 1
     mov     eax, 60
     syscall
@@ -23601,16 +23628,16 @@ f_6823:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_24
+    jz      .l_6823_1
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     leave
     ret
-    jmp     .l_23
-.l_24:
-.l_23:
+    jmp     .l_6823_0
+.l_6823_1:
+.l_6823_0:
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -23663,7 +23690,7 @@ f_6850:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_501
+    jz      .l_6850_1
     call    f_6138
     lea     rax, [b_8369]
     mov     qword [r12 - 8], rax
@@ -23681,9 +23708,9 @@ f_6850:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_500
-.l_501:
-.l_500:
+    jmp     .l_6850_0
+.l_6850_1:
+.l_6850_0:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -23735,7 +23762,7 @@ f_6850:
     or 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_503
+    jz      .l_6850_3
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -23749,7 +23776,7 @@ f_6850:
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_504:
+.l_6850_4:
     call    f_1555
     lea     rax, [rbp - 32]
     mov     rcx, qword [r12]
@@ -23757,14 +23784,14 @@ f_6850:
     mov     rax, qword [r12 + 8]
     add     r12, 16
     test    rax, rax
-    jz      .l_505
-    jmp     .l_504
-.l_505:
+    jz      .l_6850_5
+    jmp     .l_6850_4
+.l_6850_5:
     add     r12, 8
-    jmp     .l_502
-.l_503:
-.l_502:
-.l_506:
+    jmp     .l_6850_2
+.l_6850_3:
+.l_6850_2:
+.l_6850_6:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -23773,7 +23800,7 @@ f_6850:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_507
+    jz      .l_6850_7
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -23791,7 +23818,7 @@ f_6850:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_509
+    jz      .l_6850_9
     call    f_6138
     lea     rax, [b_8371]
     mov     qword [r12 - 8], rax
@@ -23809,9 +23836,9 @@ f_6850:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_508
-.l_509:
-.l_508:
+    jmp     .l_6850_8
+.l_6850_9:
+.l_6850_8:
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -23827,7 +23854,7 @@ f_6850:
     lea     rax, [rbp - 40]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_510:
+.l_6850_10:
     call    f_2175
     mov     rax, 32
     mov     rbx, qword [r12]
@@ -23836,7 +23863,7 @@ f_6850:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_511
+    jz      .l_6850_11
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -23846,7 +23873,7 @@ f_6850:
     lea     rax, [rbp - 48]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_512:
+.l_6850_12:
     call    f_2175
     mov     rax, 33
     mov     rbx, qword [r12]
@@ -23859,13 +23886,13 @@ f_6850:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_513
+    jz      .l_6850_13
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_515
+    jz      .l_6850_15
     lea     rax, [rbp - 48]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -23891,17 +23918,17 @@ f_6850:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_514
-.l_515:
-.l_514:
+    jmp     .l_6850_14
+.l_6850_15:
+.l_6850_14:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_512
-.l_513:
+    jmp     .l_6850_12
+.l_6850_13:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -23909,22 +23936,22 @@ f_6850:
     lea     rax, [rbp - 40]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_519
+    jz      .l_6850_19
     lea     rax, [rbp - 40]
     mov     rax, qword [rax]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6709
-    jmp     .l_518
-.l_519:
+    jmp     .l_6850_18
+.l_6850_19:
     mov     qword [r12 - 8], 1
     sub     r12, 8
-.l_518:
+.l_6850_18:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_517
+    jz      .l_6850_17
     call    f_6138
     lea     rax, [b_8376]
     mov     qword [r12 - 8], rax
@@ -23942,9 +23969,9 @@ f_6850:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_516
-.l_517:
-.l_516:
+    jmp     .l_6850_16
+.l_6850_17:
+.l_6850_16:
     lea     rax, [rbp - 40]
     mov     rax, qword [rax]
     mov     rax, qword [rax]
@@ -23996,8 +24023,8 @@ f_6850:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_510
-.l_511:
+    jmp     .l_6850_10
+.l_6850_11:
     call    f_2175
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
@@ -24019,7 +24046,7 @@ f_6850:
     or 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_521
+    jz      .l_6850_21
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -24033,7 +24060,7 @@ f_6850:
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-.l_522:
+.l_6850_22:
     call    f_1555
     lea     rax, [rbp - 32]
     mov     rcx, qword [r12]
@@ -24041,15 +24068,15 @@ f_6850:
     mov     rax, qword [r12 + 8]
     add     r12, 16
     test    rax, rax
-    jz      .l_523
-    jmp     .l_522
-.l_523:
+    jz      .l_6850_23
+    jmp     .l_6850_22
+.l_6850_23:
     add     r12, 8
-    jmp     .l_520
-.l_521:
-.l_520:
-    jmp     .l_506
-.l_507:
+    jmp     .l_6850_20
+.l_6850_21:
+.l_6850_20:
+    jmp     .l_6850_6
+.l_6850_7:
     lea     rax, [rbp - 32]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -24083,26 +24110,26 @@ f_6852:
     add     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_668:
+    .ral_6852_0:
     cmp     rbx, r12
-    je      .rbl_668
+    je      .rbl_6852_0
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_668
-    .rbl_668:
+    jmp     .ral_6852_0
+    .rbl_6852_0:
     mov     [r12], rcx
     mov     rax, 3
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_669:
+    .ral_6852_1:
     cmp     rbx, r12
-    je      .rbl_669
+    je      .rbl_6852_1
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_669
-    .rbl_669:
+    jmp     .ral_6852_1
+    .rbl_6852_1:
     mov     [r12], rcx
     mov     rcx, 25
     mov     rax, qword [r12]
@@ -24114,7 +24141,7 @@ f_6852:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_670:
+.l_6852_2:
     call    f_2175
     mov     rax, 30
     mov     rbx, qword [r12]
@@ -24127,13 +24154,13 @@ f_6852:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_671
+    jz      .l_6852_3
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_673
+    jz      .l_6852_5
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -24159,17 +24186,17 @@ f_6852:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_672
-.l_673:
-.l_672:
+    jmp     .l_6852_4
+.l_6852_5:
+.l_6852_4:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_670
-.l_671:
+    jmp     .l_6852_2
+.l_6852_3:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -24191,7 +24218,7 @@ f_6852:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_674:
+.l_6852_6:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -24204,13 +24231,13 @@ f_6852:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_675
+    jz      .l_6852_7
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_677
+    jz      .l_6852_9
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -24236,17 +24263,17 @@ f_6852:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_676
-.l_677:
-.l_676:
+    jmp     .l_6852_8
+.l_6852_9:
+.l_6852_8:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_674
-.l_675:
+    jmp     .l_6852_6
+.l_6852_7:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -24290,15 +24317,15 @@ f_6852:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_679
+    jz      .l_6852_11
     mov     rax, qword [r12]
     mov     qword [r12 + 16], rax
     add     r12, 16
     leave
     ret
-    jmp     .l_678
-.l_679:
-.l_678:
+    jmp     .l_6852_10
+.l_6852_11:
+.l_6852_10:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -24311,7 +24338,7 @@ f_6852:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_681
+    jz      .l_6852_13
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -24322,7 +24349,7 @@ f_6852:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_682:
+.l_6852_14:
     call    f_2175
     mov     rax, 31
     mov     rbx, qword [r12]
@@ -24335,13 +24362,13 @@ f_6852:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_683
+    jz      .l_6852_15
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_685
+    jz      .l_6852_17
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -24367,17 +24394,17 @@ f_6852:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_684
-.l_685:
-.l_684:
+    jmp     .l_6852_16
+.l_6852_17:
+.l_6852_16:
     mov     rax, [r12 + 8]
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
     call    f_6380
-    jmp     .l_682
-.l_683:
+    jmp     .l_6852_14
+.l_6852_15:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -24386,8 +24413,8 @@ f_6852:
     mov     rax, qword [r12]
     mov     qword [r12 + 16], rax
     add     r12, 16
-    jmp     .l_680
-.l_681:
+    jmp     .l_6852_12
+.l_6852_13:
     call    f_2175
     mov     rax, 7
     mov     rbx, qword [r12]
@@ -24396,7 +24423,7 @@ f_6852:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_686
+    jz      .l_6852_18
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     rcx, qword [r12 + 16]
@@ -24404,8 +24431,8 @@ f_6852:
     mov     qword [r12 + 8], rax
     mov     qword [r12], rcx
     call    f_6852
-    jmp     .l_680
-.l_686:
+    jmp     .l_6852_12
+.l_6852_18:
     call    f_6138
     lea     rax, [b_8441]
     mov     qword [r12 - 8], rax
@@ -24414,7 +24441,7 @@ f_6852:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_680:
+.l_6852_12:
     leave
     ret
 f_6871:
@@ -24443,20 +24470,20 @@ f_6871:
 f_6918:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_8903]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8904]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_6962
     call    f_6962
     lea     rax, [b_8905]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
+    call    f_6962
     lea     rax, [b_8906]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    lea     rax, [b_8907]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -24491,7 +24518,7 @@ f_6927:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_468
+    jz      .l_6927_1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -24502,8 +24529,8 @@ f_6927:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-    jmp     .l_467
-.l_468:
+    jmp     .l_6927_0
+.l_6927_1:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -24530,7 +24557,7 @@ f_6927:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_934
-.l_467:
+.l_6927_0:
     leave
     ret
 f_6962:
@@ -24564,11 +24591,11 @@ f_6962:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_984
+    jz      .l_6962_1
     call    f_4072
-    jmp     .l_983
-.l_984:
-.l_983:
+    jmp     .l_6962_0
+.l_6962_1:
+.l_6962_0:
     lea     rax, [b_3232]
     mov     qword [r12 - 8], rax
     lea     rax, [b_1144]
@@ -24618,16 +24645,16 @@ f_7001:
     setg    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_462
+    jz      .l_7001_1
     lea     rax, [b_3364]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     lea     rax, [b_1210]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_461
-.l_462:
-.l_461:
+    jmp     .l_7001_0
+.l_7001_1:
+.l_7001_0:
     lea     rax, [b_2452]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
@@ -24665,18 +24692,18 @@ f_7054:
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
-.l_168:
+.l_7054_0:
     call    f_3838
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_169
+    jz      .l_7054_1
     call    f_3838
     call    f_5489
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_171
+    jz      .l_7054_3
     call    f_3838
     mov     rcx, 48
     mov     rax, qword [r12]
@@ -24696,14 +24723,14 @@ f_7054:
     mov     qword [r12 + 16], rax
     mov     qword [r12 + 8], rbx
     add     r12, 8
-    jmp     .l_170
-.l_171:
+    jmp     .l_7054_2
+.l_7054_3:
     call    f_3838
     call    f_2785
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_172
+    jz      .l_7054_4
     call    f_6871
     lea     rax, [b_8259]
     mov     qword [r12 - 8], rax
@@ -24712,8 +24739,8 @@ f_7054:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_170
-.l_172:
+    jmp     .l_7054_2
+.l_7054_4:
     call    f_3838
     mov     rax, 95
     mov     rbx, qword [r12]
@@ -24726,22 +24753,22 @@ f_7054:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_173
+    jz      .l_7054_5
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
     leave
     ret
-    jmp     .l_170
-.l_173:
-.l_170:
+    jmp     .l_7054_2
+.l_7054_5:
+.l_7054_2:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_168
-.l_169:
+    jmp     .l_7054_0
+.l_7054_1:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -24762,20 +24789,20 @@ f_7058:
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
-.l_131:
+.l_7058_0:
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
     mov     rax, [r12 + 8]
     test    rax, rax
-    jz      .l_132
+    jz      .l_7058_1
     call    f_2175
     call    f_6709
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_134
+    jz      .l_7058_3
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -24801,9 +24828,9 @@ f_7058:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_133
-.l_134:
-.l_133:
+    jmp     .l_7058_2
+.l_7058_3:
+.l_7058_2:
     call    f_2175
     mov     rax, 28
     mov     rbx, qword [r12]
@@ -24812,7 +24839,7 @@ f_7058:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_136
+    jz      .l_7058_5
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -24823,8 +24850,8 @@ f_7058:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_135
-.l_136:
+    jmp     .l_7058_4
+.l_7058_5:
     call    f_2175
     mov     rax, 29
     mov     rbx, qword [r12]
@@ -24833,7 +24860,7 @@ f_7058:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_137
+    jz      .l_7058_6
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -24844,11 +24871,11 @@ f_7058:
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
     mov     qword [r12], rbx
-    jmp     .l_135
-.l_137:
-.l_135:
-    jmp     .l_131
-.l_132:
+    jmp     .l_7058_4
+.l_7058_6:
+.l_7058_4:
+    jmp     .l_7058_0
+.l_7058_1:
     mov     rax, qword [r12]
     mov     qword [r12 + 8], rax
     add     r12, 8
@@ -24871,7 +24898,7 @@ f_7138:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_478
+    jz      .l_7138_1
     call    f_6138
     lea     rax, [b_8354]
     mov     qword [r12 - 8], rax
@@ -24888,9 +24915,9 @@ f_7138:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_477
-.l_478:
-.l_477:
+    jmp     .l_7138_0
+.l_7138_1:
+.l_7138_0:
     call    f_1851
     leave
     ret
@@ -24904,7 +24931,7 @@ f_7161:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_998
+    jz      .l_7161_1
     call    f_692
     lea     rax, [b_195]
     mov     qword [r12 - 8], rax
@@ -24912,9 +24939,9 @@ f_7161:
     call    f_7518
     leave
     ret
-    jmp     .l_997
-.l_998:
-.l_997:
+    jmp     .l_7161_0
+.l_7161_1:
+.l_7161_0:
     call    f_983
     leave
     ret
@@ -24953,74 +24980,74 @@ f_7167:
 f_7175:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_9450]
-    mov     qword [r12 - 8], rax
     lea     rax, [b_9451]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_9452]
-    mov     qword [r12 - 24], rax
-    sub     r12, 24
-    call    f_15
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz      .l_1257
-    call    f_7315
-    jmp     .l_1256
-.l_1257:
+    mov     qword [r12 - 16], rax
     lea     rax, [b_9453]
-    mov     qword [r12 - 8], rax
+    mov     qword [r12 - 24], rax
+    sub     r12, 24
+    call    f_15
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz      .l_7175_1
+    call    f_7315
+    jmp     .l_7175_0
+.l_7175_1:
     lea     rax, [b_9454]
-    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 8], rax
     lea     rax, [b_9455]
-    mov     qword [r12 - 24], rax
-    sub     r12, 24
-    call    f_15
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz      .l_1258
-    call    f_5617
-    jmp     .l_1256
-.l_1258:
+    mov     qword [r12 - 16], rax
     lea     rax, [b_9456]
-    mov     qword [r12 - 8], rax
+    mov     qword [r12 - 24], rax
+    sub     r12, 24
+    call    f_15
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz      .l_7175_2
+    call    f_5617
+    jmp     .l_7175_0
+.l_7175_2:
     lea     rax, [b_9457]
-    mov     qword [r12 - 16], rax
-    lea     rax, [b_9458]
-    mov     qword [r12 - 24], rax
-    sub     r12, 24
-    call    f_15
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz      .l_1259
-    call    f_2520
-    jmp     .l_1256
-.l_1259:
-    lea     rax, [b_9459]
     mov     qword [r12 - 8], rax
-    lea     rax, [b_9460]
+    lea     rax, [b_9458]
     mov     qword [r12 - 16], rax
-    lea     rax, [b_9461]
+    lea     rax, [b_9459]
     mov     qword [r12 - 24], rax
     sub     r12, 24
     call    f_15
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1260
-    call    f_90
-    jmp     .l_1256
-.l_1260:
+    jz      .l_7175_3
+    call    f_2520
+    jmp     .l_7175_0
+.l_7175_3:
+    lea     rax, [b_9460]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_9461]
+    mov     qword [r12 - 16], rax
     lea     rax, [b_9462]
+    mov     qword [r12 - 24], rax
+    sub     r12, 24
+    call    f_15
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz      .l_7175_4
+    call    f_90
+    jmp     .l_7175_0
+.l_7175_4:
+    lea     rax, [b_9463]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_1256:
+.l_7175_0:
     call    f_4072
     leave
     ret
@@ -25035,7 +25062,7 @@ f_7214:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_175
+    jz      .l_7214_1
     mov     rax, -1
     mov     rbx, qword [r12]
     mov     qword [r12], rax
@@ -25045,14 +25072,14 @@ f_7214:
     add 	rax, rcx
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_174
-.l_175:
+    jmp     .l_7214_0
+.l_7214_1:
     mov     rax, 1
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
     sub     r12, 8
-.l_174:
+.l_7214_0:
     call    f_3838
     mov     rax, 48
     mov     rbx, qword [r12]
@@ -25078,10 +25105,10 @@ f_7214:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_177
+    jz      .l_7214_3
     call    f_6639
-    jmp     .l_176
-.l_177:
+    jmp     .l_7214_2
+.l_7214_3:
     call    f_3838
     mov     rax, 48
     mov     rbx, qword [r12]
@@ -25107,10 +25134,10 @@ f_7214:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_178
+    jz      .l_7214_4
     call    f_6379
-    jmp     .l_176
-.l_178:
+    jmp     .l_7214_2
+.l_7214_4:
     call    f_3838
     mov     rax, 48
     mov     rbx, qword [r12]
@@ -25136,12 +25163,12 @@ f_7214:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_179
+    jz      .l_7214_5
     call    f_6737
-    jmp     .l_176
-.l_179:
+    jmp     .l_7214_2
+.l_7214_5:
     call    f_7054
-.l_176:
+.l_7214_2:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     rcx, qword [r12 + 16]
@@ -25169,10 +25196,6 @@ f_7283:
 f_7315:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_8889]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
     lea     rax, [b_8890]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -25181,18 +25204,22 @@ f_7315:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_367
     lea     rax, [b_8892]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_7813
+    call    f_367
     lea     rax, [b_8893]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    call    f_2875
+    call    f_7813
     lea     rax, [b_8894]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_2875
+    lea     rax, [b_8895]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -25200,7 +25227,7 @@ f_7315:
     mov     qword [r12 - 8], 65536
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_8895]
+    lea     rax, [b_8896]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -25209,7 +25236,7 @@ f_7315:
 f_7396:
     push    rbp
     mov     rbp, rsp
-.l_1275:
+.l_7396_0:
     mov     rcx, 1
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -25221,7 +25248,7 @@ f_7396:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1276
+    jz      .l_7396_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -25233,7 +25260,7 @@ f_7396:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1278
+    jz      .l_7396_3
     lea     rax, [b_4816]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -25241,11 +25268,7 @@ f_7396:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1280
-    lea     rax, [b_9495]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_7396_5
     lea     rax, [b_9496]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -25254,19 +25277,23 @@ f_7396:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
+    lea     rax, [b_9498]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1279
-.l_1280:
-.l_1279:
+    jmp     .l_7396_4
+.l_7396_5:
+.l_7396_4:
     mov     qword [r12 - 8], 1
     lea     rax, [b_4816]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-    jmp     .l_1277
-.l_1278:
+    jmp     .l_7396_2
+.l_7396_3:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -25278,7 +25305,7 @@ f_7396:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1281
+    jz      .l_7396_6
     lea     rax, [b_2442]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -25286,11 +25313,7 @@ f_7396:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1283
-    lea     rax, [b_9498]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
+    jz      .l_7396_8
     lea     rax, [b_9499]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -25299,20 +25322,24 @@ f_7396:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
+    lea     rax, [b_9501]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6317
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_1282
-.l_1283:
-.l_1282:
+    jmp     .l_7396_7
+.l_7396_8:
+.l_7396_7:
     mov     qword [r12 - 8], 1
     lea     rax, [b_2442]
     mov     qword [r12 - 16], rax
     sub     r12, 16
     call    f_3552
-    jmp     .l_1277
-.l_1281:
-    lea     rax, [b_9501]
+    jmp     .l_7396_2
+.l_7396_6:
+    lea     rax, [b_9502]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -25321,7 +25348,7 @@ f_7396:
     sub     r12, 8
     call    f_2002
     call    f_8056
-    lea     rax, [b_9502]
+    lea     rax, [b_9503]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -25329,9 +25356,9 @@ f_7396:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_1277:
-    jmp     .l_1275
-.l_1276:
+.l_7396_2:
+    jmp     .l_7396_0
+.l_7396_1:
     add     r12, 8
     leave
     ret
@@ -25371,11 +25398,11 @@ f_7479:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_426
+    jz      .l_7479_1
     lea     rax, [b_847]
     mov     rax, qword [rax]
     test    rax, rax
-    jz      .l_428
+    jz      .l_7479_3
     call    f_6138
     lea     rax, [b_8326]
     mov     qword [r12 - 8], rax
@@ -25384,9 +25411,9 @@ f_7479:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_427
-.l_428:
-.l_427:
+    jmp     .l_7479_2
+.l_7479_3:
+.l_7479_2:
     mov     qword [r12 - 8], 1
     lea     rax, [b_5800]
     mov     qword [r12 - 16], rax
@@ -25405,10 +25432,10 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_430
+    jz      .l_7479_5
     call    f_5818
-    jmp     .l_429
-.l_430:
+    jmp     .l_7479_4
+.l_7479_5:
     call    f_6176
     lea     rax, [b_8328]
     mov     qword [r12 - 8], rax
@@ -25418,10 +25445,10 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_431
+    jz      .l_7479_6
     call    f_1085
-    jmp     .l_429
-.l_431:
+    jmp     .l_7479_4
+.l_7479_6:
     call    f_6138
     lea     rax, [b_8329]
     mov     qword [r12 - 8], rax
@@ -25436,7 +25463,7 @@ f_7479:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_429:
+.l_7479_4:
     mov     qword [r12 - 8], 0
     lea     rax, [b_5800]
     mov     qword [r12 - 16], rax
@@ -25444,9 +25471,9 @@ f_7479:
     call    f_3552
     leave
     ret
-    jmp     .l_425
-.l_426:
-.l_425:
+    jmp     .l_7479_0
+.l_7479_1:
+.l_7479_0:
     call    f_2175
     mov     rax, 4
     mov     rbx, qword [r12]
@@ -25459,7 +25486,7 @@ f_7479:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_433
+    jz      .l_7479_8
     call    f_6138
     lea     rax, [b_8331]
     mov     qword [r12 - 8], rax
@@ -25468,9 +25495,9 @@ f_7479:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_432
-.l_433:
-.l_432:
+    jmp     .l_7479_7
+.l_7479_8:
+.l_7479_7:
     call    f_6176
     lea     rax, [b_8332]
     mov     qword [r12 - 8], rax
@@ -25480,10 +25507,10 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_435
+    jz      .l_7479_10
     call    f_3967
-    jmp     .l_434
-.l_435:
+    jmp     .l_7479_9
+.l_7479_10:
     call    f_6176
     lea     rax, [b_8333]
     mov     qword [r12 - 8], rax
@@ -25493,10 +25520,10 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_436
+    jz      .l_7479_11
     call    f_3970
-    jmp     .l_434
-.l_436:
+    jmp     .l_7479_9
+.l_7479_11:
     call    f_6176
     lea     rax, [b_8334]
     mov     qword [r12 - 8], rax
@@ -25506,10 +25533,10 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_437
+    jz      .l_7479_12
     call    f_6797
-    jmp     .l_434
-.l_437:
+    jmp     .l_7479_9
+.l_7479_12:
     call    f_6176
     lea     rax, [b_8335]
     mov     qword [r12 - 8], rax
@@ -25519,10 +25546,10 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_438
+    jz      .l_7479_13
     call    f_5818
-    jmp     .l_434
-.l_438:
+    jmp     .l_7479_9
+.l_7479_13:
     call    f_6176
     lea     rax, [b_8336]
     mov     qword [r12 - 8], rax
@@ -25532,10 +25559,10 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_439
+    jz      .l_7479_14
     call    f_1085
-    jmp     .l_434
-.l_439:
+    jmp     .l_7479_9
+.l_7479_14:
     call    f_6176
     lea     rax, [b_8337]
     mov     qword [r12 - 8], rax
@@ -25545,10 +25572,10 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_440
+    jz      .l_7479_15
     call    f_803
-    jmp     .l_434
-.l_440:
+    jmp     .l_7479_9
+.l_7479_15:
     call    f_6176
     lea     rax, [b_8338]
     mov     qword [r12 - 8], rax
@@ -25558,7 +25585,7 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_441
+    jz      .l_7479_16
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -25592,7 +25619,7 @@ f_7479:
     and 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_443
+    jz      .l_7479_18
     call    f_6138
     lea     rax, [b_8339]
     mov     qword [r12 - 8], rax
@@ -25601,9 +25628,9 @@ f_7479:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_442
-.l_443:
-.l_442:
+    jmp     .l_7479_17
+.l_7479_18:
+.l_7479_17:
     call    f_6176
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
@@ -25625,7 +25652,7 @@ f_7479:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_445
+    jz      .l_7479_20
     call    f_6138
     lea     rax, [b_8340]
     mov     qword [r12 - 8], rax
@@ -25634,9 +25661,9 @@ f_7479:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_444
-.l_445:
-.l_444:
+    jmp     .l_7479_19
+.l_7479_20:
+.l_7479_19:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -25650,14 +25677,14 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_447
+    jz      .l_7479_22
     call    f_612
-    jmp     .l_446
-.l_447:
+    jmp     .l_7479_21
+.l_7479_22:
     call    f_4957
-.l_446:
-    jmp     .l_434
-.l_441:
+.l_7479_21:
+    jmp     .l_7479_9
+.l_7479_16:
     call    f_6176
     lea     rax, [b_8341]
     mov     qword [r12 - 8], rax
@@ -25667,7 +25694,7 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_448
+    jz      .l_7479_23
     mov     rcx, 25
     mov     rax, qword [r12]
     add 	rax, rcx
@@ -25701,7 +25728,7 @@ f_7479:
     and 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_450
+    jz      .l_7479_25
     call    f_6138
     lea     rax, [b_8342]
     mov     qword [r12 - 8], rax
@@ -25710,9 +25737,9 @@ f_7479:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_449
-.l_450:
-.l_449:
+    jmp     .l_7479_24
+.l_7479_25:
+.l_7479_24:
     call    f_6176
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
@@ -25734,7 +25761,7 @@ f_7479:
     xor 	rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_452
+    jz      .l_7479_27
     call    f_6138
     lea     rax, [b_8343]
     mov     qword [r12 - 8], rax
@@ -25743,9 +25770,9 @@ f_7479:
     mov     rdi, 1
     mov     eax, 60
     syscall
-    jmp     .l_451
-.l_452:
-.l_451:
+    jmp     .l_7479_26
+.l_7479_27:
+.l_7479_26:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     qword [r12 + 8], rax
@@ -25759,14 +25786,14 @@ f_7479:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_454
+    jz      .l_7479_29
     call    f_4957
-    jmp     .l_453
-.l_454:
+    jmp     .l_7479_28
+.l_7479_29:
     call    f_612
-.l_453:
-    jmp     .l_434
-.l_448:
+.l_7479_28:
+    jmp     .l_7479_9
+.l_7479_23:
     call    f_6138
     lea     rax, [b_8344]
     mov     qword [r12 - 8], rax
@@ -25781,7 +25808,7 @@ f_7479:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_434:
+.l_7479_9:
     leave
     ret
 f_7498:
@@ -25831,14 +25858,14 @@ f_7498:
     sub     r12, 8
     mov     rcx, [r12 + rax*8]
     lea     rbx, [r12 + rax*8]
-    .ral_687:
+    .ral_7498_0:
     cmp     rbx, r12
-    je      .rbl_687
+    je      .rbl_7498_0
     mov     rdx, [rbx - 8]
     mov     [rbx], rdx
     sub     rbx, 8
-    jmp     .ral_687
-    .rbl_687:
+    jmp     .ral_7498_0
+    .rbl_7498_0:
     mov     [r12], rcx
     call    f_934
     leave
@@ -25888,12 +25915,12 @@ f_7608:
     mov     qword [r12], rax
     mov     rax, rdx
     mov     qword [r12], rax
-.l_284:
+.l_7608_0:
     call    f_2060
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_285
+    jz      .l_7608_1
     mov     rcx, 1
     mov     rax, qword [r12 + 8]
     add 	rax, rcx
@@ -25906,8 +25933,8 @@ f_7608:
     mov     rax, rdx
     mov     qword [r12 + 8], rax
     add     r12, 8
-    jmp     .l_284
-.l_285:
+    jmp     .l_7608_0
+.l_7608_1:
     mov     rax, qword [r12 + 8]
     mov     qword [r12 + 40], rax
     add     r12, 40
@@ -25974,7 +26001,7 @@ f_7777:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_372
+    jz      .l_7777_1
     lea     rax, [b_8292]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -25992,9 +26019,9 @@ f_7777:
     sub     r12, 8
     leave
     ret
-    jmp     .l_371
-.l_372:
-.l_371:
+    jmp     .l_7777_0
+.l_7777_1:
+.l_7777_0:
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -26006,7 +26033,7 @@ f_7777:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_374
+    jz      .l_7777_3
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     rdi, rax
@@ -26018,7 +26045,7 @@ f_7777:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_376
+    jz      .l_7777_5
     lea     rax, [b_8294]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -26036,16 +26063,16 @@ f_7777:
     sub     r12, 8
     leave
     ret
-    jmp     .l_375
-.l_376:
-.l_375:
+    jmp     .l_7777_4
+.l_7777_5:
+.l_7777_4:
     mov     qword [r12 - 8], 0
     sub     r12, 8
     leave
     ret
-    jmp     .l_373
-.l_374:
-.l_373:
+    jmp     .l_7777_2
+.l_7777_3:
+.l_7777_2:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -26054,7 +26081,7 @@ f_7777:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_378
+    jz      .l_7777_7
     lea     rax, [b_8296]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -26072,9 +26099,9 @@ f_7777:
     sub     r12, 8
     leave
     ret
-    jmp     .l_377
-.l_378:
-.l_377:
+    jmp     .l_7777_6
+.l_7777_7:
+.l_7777_6:
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -26107,7 +26134,7 @@ f_7777:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_380
+    jz      .l_7777_9
     lea     rax, [b_8298]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -26125,9 +26152,9 @@ f_7777:
     sub     r12, 8
     leave
     ret
-    jmp     .l_379
-.l_380:
-.l_379:
+    jmp     .l_7777_8
+.l_7777_9:
+.l_7777_8:
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 32]
     mov     rax, qword [rax]
@@ -26150,7 +26177,7 @@ f_7777:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_382
+    jz      .l_7777_11
     lea     rax, [b_8300]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -26168,9 +26195,9 @@ f_7777:
     sub     r12, 8
     leave
     ret
-    jmp     .l_381
-.l_382:
-.l_381:
+    jmp     .l_7777_10
+.l_7777_11:
+.l_7777_10:
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
     lea     rax, [b_261]
@@ -26229,7 +26256,7 @@ f_7813:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_1075:
+.l_7813_2:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -26239,7 +26266,7 @@ f_7813:
     setl    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1074
+    jz      .l_7813_1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -26264,16 +26291,16 @@ f_7813:
     and 	rax, rcx
     add     r12, 16
     test    rax, rax
-    jz      .l_1077
+    jz      .l_7813_4
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_8089
-    jmp     .l_1076
-.l_1077:
-.l_1076:
-.l_1073:
+    jmp     .l_7813_3
+.l_7813_4:
+.l_7813_3:
+.l_7813_0:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -26284,8 +26311,8 @@ f_7813:
     lea     rax, [rbp - 8]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_1075
-.l_1074:
+    jmp     .l_7813_2
+.l_7813_1:
     call    f_756
     leave
     ret
@@ -26300,16 +26327,16 @@ f_7900:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_6
+    jz      .l_7900_1
     lea     rax, [b_774]
     mov     qword [r12], rax
     mov     qword [r12 - 8], 20
     sub     r12, 8
     leave
     ret
-    jmp     .l_5
-.l_6:
-.l_5:
+    jmp     .l_7900_0
+.l_7900_1:
+.l_7900_0:
     mov     qword [r12 - 8], 0
     lea     rax, [b_7336]
     mov     qword [r12 - 16], rax
@@ -26331,22 +26358,22 @@ f_7900:
     sub     r12, 8
     mov     rax, [r12 + 8]
     test    rax, rax
-    jz      .l_8
+    jz      .l_7900_3
     mov     rcx, -1
     mov     rax, qword [r12]
     imul 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_7
-.l_8:
-.l_7:
+    jmp     .l_7900_2
+.l_7900_3:
+.l_7900_2:
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 1
     sub     r12, 16
-.l_9:
+.l_7900_4:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_10
+    jz      .l_7900_5
     lea     rax, [b_7336]
     mov     qword [r12 - 8], rax
     mov     rcx, 22
@@ -26398,8 +26425,8 @@ f_7900:
     mov     rax, [r12 + 8]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    jmp     .l_9
-.l_10:
+    jmp     .l_7900_4
+.l_7900_5:
     mov     rax, qword [r12]
     mov     rbx, qword [r12 + 8]
     mov     rcx, qword [r12 + 16]
@@ -26408,7 +26435,7 @@ f_7900:
     mov     rax, rcx
     add     r12, 8
     test    rax, rax
-    jz      .l_12
+    jz      .l_7900_7
     mov     qword [r12 - 8], 45
     lea     rax, [b_7336]
     mov     qword [r12 - 16], rax
@@ -26428,9 +26455,9 @@ f_7900:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    jmp     .l_11
-.l_12:
-.l_11:
+    jmp     .l_7900_6
+.l_7900_7:
+.l_7900_6:
     lea     rax, [b_7336]
     mov     qword [r12 - 8], rax
     mov     rcx, 23
@@ -26551,7 +26578,7 @@ f_7952:
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12]
     mov     [rax], rcx
-    lea     rax, [b_8787]
+    lea     rax, [b_8788]
     mov     qword [r12], rax
     call    f_6962
     lea     rax, [rbp - 8]
@@ -26577,8 +26604,8 @@ f_7952:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1072
-    lea     rax, [b_8788]
+    jz      .l_7952_1
+    lea     rax, [b_8789]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -26596,10 +26623,10 @@ f_7952:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1071
-.l_1072:
-.l_1071:
-    lea     rax, [b_8789]
+    jmp     .l_7952_0
+.l_7952_1:
+.l_7952_0:
+    lea     rax, [b_8790]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -26643,8 +26670,8 @@ f_8089:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1061
-    lea     rax, [b_8773]
+    jz      .l_8089_1
+    lea     rax, [b_8774]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -26665,14 +26692,14 @@ f_8089:
     mov     rax, qword [rax]
     mov     qword [r12], rax
     call    f_6962
-    lea     rax, [b_8774]
+    lea     rax, [b_8775]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1060
-.l_1061:
-.l_1060:
-    lea     rax, [b_8775]
+    jmp     .l_8089_0
+.l_8089_1:
+.l_8089_0:
+    lea     rax, [b_8776]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -26695,7 +26722,7 @@ f_8089:
     mov     rax, qword [r12]
     add     r12, 8
     test    rax, rax
-    jz      .l_1063
+    jz      .l_8089_3
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -26705,8 +26732,8 @@ f_8089:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1065
-    lea     rax, [b_8776]
+    jz      .l_8089_5
+    lea     rax, [b_8777]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -26721,12 +26748,12 @@ f_8089:
     mov     rax, qword [rax]
     mov     qword [r12], rax
     call    f_3176
-    lea     rax, [b_8777]
+    lea     rax, [b_8778]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1064
-.l_1065:
+    jmp     .l_8089_4
+.l_8089_5:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -26736,8 +26763,8 @@ f_8089:
     sete    al
     movzx   rax, al
     test    rax, rax
-    jz      .l_1066
-    lea     rax, [b_8778]
+    jz      .l_8089_6
+    lea     rax, [b_8779]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -26752,16 +26779,16 @@ f_8089:
     mov     rax, qword [rax]
     mov     qword [r12], rax
     call    f_3176
-    lea     rax, [b_8779]
+    lea     rax, [b_8780]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1064
-.l_1066:
-.l_1064:
-    jmp     .l_1062
-.l_1063:
-    lea     rax, [b_8780]
+    jmp     .l_8089_4
+.l_8089_6:
+.l_8089_4:
+    jmp     .l_8089_2
+.l_8089_3:
+    lea     rax, [b_8781]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -26803,8 +26830,8 @@ f_8089:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_1068
-    lea     rax, [b_8781]
+    jz      .l_8089_8
+    lea     rax, [b_8782]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -26813,7 +26840,7 @@ f_8089:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_8782]
+    lea     rax, [b_8783]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
@@ -26821,15 +26848,15 @@ f_8089:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3176
-    lea     rax, [b_8783]
+    lea     rax, [b_8784]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    jmp     .l_1067
-.l_1068:
-.l_1067:
+    jmp     .l_8089_7
+.l_8089_8:
+.l_8089_7:
     add     r12, 8
-.l_1062:
+.l_8089_2:
     leave
     ret
 f_8163:
@@ -27269,981 +27296,982 @@ section '.data' writeable
     b_8574 db "main",0
     b_8575 db "OS_WINDOWS",0
     b_8576 db "ERROR: Failed to write string to output file",10,0
-    b_8577 db " + ",0
-    b_8578 db " - ",0
-    b_8579 db "    add     r12, ",0
-    b_8580 db 10,0
-    b_8581 db "    sub     r12, ",0
-    b_8582 db 10,0
-    b_8583 db "    mov     qword [r12",0
-    b_8584 db "], ",0
-    b_8585 db 10,0
-    b_8586 db "    mov     ",0
-    b_8587 db ", ",0
-    b_8588 db 10,0
-    b_8589 db "    mov     ",0
-    b_8590 db ", qword [r12",0
-    b_8591 db "]",10,0
-    b_8592 db "    ; ",0
-    b_8593 db 10,0
-    b_8594 db "rcx",0
-    b_8595 db "rax",0
-    b_8596 db "    ",0
-    b_8597 db " ",9,"rax, ",0
-    b_8598 db 10,0
-    b_8599 db "rax",0
-    b_8600 db "TOOLCHAIN_NASM",0
-    b_8601 db "rel ",0
-    b_8602 db "    ; OP_CALL",10,0
-    b_8603 db "rax",0
-    b_8604 db "    call    rax",10,0
-    b_8605 db "    ; OP_PUSH_FN",10,0
-    b_8606 db "    lea     rax, [f_",0
-    b_8607 db "]",10,0
-    b_8608 db "rax",0
-    b_8609 db "    ; OP_CALL_FN",10,0
-    b_8610 db "    call    f_",0
-    b_8611 db 10,0
-    b_8612 db "    ; OP_RET",10,0
-    b_8613 db "    leave",10,0
-    b_8614 db "    ret",10,0
-    b_8615 db "    ; OP_PUSH_INT",10,0
-    b_8616 db "    mov     rax, ",0
-    b_8617 db 10,0
-    b_8618 db "rax",0
-    b_8619 db "    ; OP_DROP",10,0
-    b_8620 db "    ; OP_PICK",10,0
-    b_8621 db "rax",0
-    b_8622 db "    mov     rax, [r12 + rax*8]",10,0
-    b_8623 db "rax",0
-    b_8624 db "    ; OP_ROLL",10,0
-    b_8625 db "rax",0
-    b_8626 db "    mov     rcx, [r12 + rax*8]",10,0
-    b_8627 db "    lea     rbx, [r12 + rax*8]",10,0
-    b_8628 db "    .ral_",0
-    b_8629 db ":",10,0
-    b_8630 db "    cmp     rbx, r12",10,0
-    b_8631 db "    je      .rbl_",0
-    b_8632 db 10,0
-    b_8633 db "    mov     rdx, [rbx - 8]",10,0
-    b_8634 db "    mov     [rbx], rdx",10,0
-    b_8635 db "    sub     rbx, 8",10,0
-    b_8636 db "    jmp     .ral_",0
-    b_8637 db 10,0
-    b_8638 db "    .rbl_",0
-    b_8639 db ":",10,0
-    b_8640 db "    mov     [r12], rcx",10,0
-    b_8641 db "    ; OP_DUP",10,0
-    b_8642 db "    mov     rax, [r12]",10,0
-    b_8643 db "rax",0
-    b_8644 db "    ; OP_OVER",10,0
-    b_8645 db "    mov     rax, [r12 + 8]",10,0
-    b_8646 db "rax",0
-    b_8647 db "    ; OP_SWAP",10,0
-    b_8648 db "rax",0
-    b_8649 db "rbx",0
-    b_8650 db "rax",0
-    b_8651 db "rbx",0
-    b_8652 db "    ; OP_ROT",10,0
-    b_8653 db "rax",0
-    b_8654 db "rbx",0
-    b_8655 db "rcx",0
-    b_8656 db "rbx",0
-    b_8657 db "rax",0
-    b_8658 db "rcx",0
-    b_8659 db "    ; OP_NIP",10,0
-    b_8660 db "rax",0
+    b_8577 db "_",0
+    b_8578 db " + ",0
+    b_8579 db " - ",0
+    b_8580 db "    add     r12, ",0
+    b_8581 db 10,0
+    b_8582 db "    sub     r12, ",0
+    b_8583 db 10,0
+    b_8584 db "    mov     qword [r12",0
+    b_8585 db "], ",0
+    b_8586 db 10,0
+    b_8587 db "    mov     ",0
+    b_8588 db ", ",0
+    b_8589 db 10,0
+    b_8590 db "    mov     ",0
+    b_8591 db ", qword [r12",0
+    b_8592 db "]",10,0
+    b_8593 db "    ; ",0
+    b_8594 db 10,0
+    b_8595 db "rcx",0
+    b_8596 db "rax",0
+    b_8597 db "    ",0
+    b_8598 db " ",9,"rax, ",0
+    b_8599 db 10,0
+    b_8600 db "rax",0
+    b_8601 db "TOOLCHAIN_NASM",0
+    b_8602 db "rel ",0
+    b_8603 db "    ; OP_CALL",10,0
+    b_8604 db "rax",0
+    b_8605 db "    call    rax",10,0
+    b_8606 db "    ; OP_PUSH_FN",10,0
+    b_8607 db "    lea     rax, [f_",0
+    b_8608 db "]",10,0
+    b_8609 db "rax",0
+    b_8610 db "    ; OP_CALL_FN",10,0
+    b_8611 db "    call    f_",0
+    b_8612 db 10,0
+    b_8613 db "    ; OP_RET",10,0
+    b_8614 db "    leave",10,0
+    b_8615 db "    ret",10,0
+    b_8616 db "    ; OP_PUSH_INT",10,0
+    b_8617 db "    mov     rax, ",0
+    b_8618 db 10,0
+    b_8619 db "rax",0
+    b_8620 db "    ; OP_DROP",10,0
+    b_8621 db "    ; OP_PICK",10,0
+    b_8622 db "rax",0
+    b_8623 db "    mov     rax, [r12 + rax*8]",10,0
+    b_8624 db "rax",0
+    b_8625 db "    ; OP_ROLL",10,0
+    b_8626 db "rax",0
+    b_8627 db "    mov     rcx, [r12 + rax*8]",10,0
+    b_8628 db "    lea     rbx, [r12 + rax*8]",10,0
+    b_8629 db "    .ral_",0
+    b_8630 db ":",10,0
+    b_8631 db "    cmp     rbx, r12",10,0
+    b_8632 db "    je      .rbl_",0
+    b_8633 db 10,0
+    b_8634 db "    mov     rdx, [rbx - 8]",10,0
+    b_8635 db "    mov     [rbx], rdx",10,0
+    b_8636 db "    sub     rbx, 8",10,0
+    b_8637 db "    jmp     .ral_",0
+    b_8638 db 10,0
+    b_8639 db "    .rbl_",0
+    b_8640 db ":",10,0
+    b_8641 db "    mov     [r12], rcx",10,0
+    b_8642 db "    ; OP_DUP",10,0
+    b_8643 db "    mov     rax, [r12]",10,0
+    b_8644 db "rax",0
+    b_8645 db "    ; OP_OVER",10,0
+    b_8646 db "    mov     rax, [r12 + 8]",10,0
+    b_8647 db "rax",0
+    b_8648 db "    ; OP_SWAP",10,0
+    b_8649 db "rax",0
+    b_8650 db "rbx",0
+    b_8651 db "rax",0
+    b_8652 db "rbx",0
+    b_8653 db "    ; OP_ROT",10,0
+    b_8654 db "rax",0
+    b_8655 db "rbx",0
+    b_8656 db "rcx",0
+    b_8657 db "rbx",0
+    b_8658 db "rax",0
+    b_8659 db "rcx",0
+    b_8660 db "    ; OP_NIP",10,0
     b_8661 db "rax",0
-    b_8662 db "    ; OP_DEPTH",10,0
-    b_8663 db "    mov     rax, bsp + ",0
-    b_8664 db 10,0
-    b_8665 db "    sub     rax, r12",10,0
-    b_8666 db "    shr     rax, 3",10,0
-    b_8667 db "rax",0
-    b_8668 db "    ; OP_PUSH_BUF",10,0
-    b_8669 db "    lea     rax, [",0
-    b_8670 db "b_",0
-    b_8671 db "]",10,0
-    b_8672 db "rax",0
-    b_8673 db "    ; OP_STORE",10,0
-    b_8674 db "rax",0
-    b_8675 db "rcx",0
-    b_8676 db "    mov     [rax], rcx",10,0
-    b_8677 db "    ; OP_FETCH",10,0
-    b_8678 db "rax",0
-    b_8679 db "    mov     rax, qword [rax]",10,0
-    b_8680 db "rax",0
-    b_8681 db "    ; OP_MEMCPY",10,0
-    b_8682 db "rcx",0
-    b_8683 db "rdi",0
-    b_8684 db "rsi",0
-    b_8685 db "    cld",10,0
-    b_8686 db "    rep     movsb",10,0
-    b_8687 db "    ; OP_PUSH_VAR",10,0
-    b_8688 db "    lea     rax, [rbp - ",0
-    b_8689 db "]",10,0
-    b_8690 db "rax",0
-    b_8691 db "    ; OP_ALLOC",10,0
-    b_8692 db "    sub     rsp, ",0
-    b_8693 db 10,0
-    b_8694 db "rcx",0
-    b_8695 db "add",0
-    b_8696 db "OP_ADD",0
-    b_8697 db "rcx",0
-    b_8698 db "sub",0
-    b_8699 db "OP_SUB",0
-    b_8700 db "rcx",0
-    b_8701 db "imul",0
-    b_8702 db "OP_MUL",0
-    b_8703 db "rcx",0
-    b_8704 db "and",0
-    b_8705 db "OP_AND",0
-    b_8706 db "rcx",0
-    b_8707 db "or",0
-    b_8708 db "OP_OR",0
-    b_8709 db "rcx",0
-    b_8710 db "xor",0
-    b_8711 db "OP_XOR",0
-    b_8712 db "cl",0
-    b_8713 db "shl",0
-    b_8714 db "OP_SHL",0
-    b_8715 db "cl",0
-    b_8716 db "shr",0
-    b_8717 db "OP_SHR",0
-    b_8718 db "cl",0
-    b_8719 db "sar",0
-    b_8720 db "OP_SAR",0
-    b_8721 db "    ; OP_NOT",10,0
-    b_8722 db "rax",0
-    b_8723 db "    not     rax",10,0
-    b_8724 db "rax",0
-    b_8725 db "    ; OP_EQ",10,0
-    b_8726 db "rax",0
-    b_8727 db "rbx",0
-    b_8728 db "    cmp     rbx, rax",10,0
-    b_8729 db "    sete    al",10,0
-    b_8730 db "    movzx   rax, al",10,0
-    b_8731 db "rax",0
-    b_8732 db "    ; OP_GT",10,0
-    b_8733 db "rax",0
-    b_8734 db "rbx",0
-    b_8735 db "    cmp     rbx, rax",10,0
-    b_8736 db "    setg    al",10,0
-    b_8737 db "    movzx   rax, al",10,0
-    b_8738 db "rax",0
-    b_8739 db "    ; OP_LT",10,0
-    b_8740 db "rax",0
-    b_8741 db "rbx",0
-    b_8742 db "    cmp     rbx, rax",10,0
-    b_8743 db "    setl    al",10,0
-    b_8744 db "    movzx   rax, al",10,0
-    b_8745 db "rax",0
-    b_8746 db "    ; OP_DIVMOD",10,0
-    b_8747 db "rbx",0
-    b_8748 db "rax",0
-    b_8749 db "    cqo",10,0
-    b_8750 db "    idiv    rbx",10,0
-    b_8751 db "rax",0
-    b_8752 db "rdx",0
-    b_8753 db ".l_",0
-    b_8754 db ":",10,0
-    b_8755 db "    ; OP_JMP",10,0
-    b_8756 db "    jmp     .l_",0
-    b_8757 db 10,0
-    b_8758 db "    ; OP_JZ",10,0
-    b_8759 db "rax",0
-    b_8760 db "    test    rax, rax",10,0
-    b_8761 db "    jz      .l_",0
-    b_8762 db 10,0
-    b_8763 db "ERROR: Invalid opcode (#",0
-    b_8764 db ")",10,0
-    b_8765 db 34,0
-    b_8766 db 34,",",0
-    b_8767 db ",",0
-    b_8768 db 34,",",0
-    b_8769 db "0",10,0
-    b_8770 db "    ; Inline Buffers",10,0
-    b_8771 db "    b_",0
-    b_8772 db " db ",0
-    b_8773 db "    ; ",0
-    b_8774 db 10,0
-    b_8775 db "    b_",0
-    b_8776 db " db ",0
-    b_8777 db 10,0
-    b_8778 db " dq ",0
-    b_8779 db 10,0
-    b_8780 db " db ",0
-    b_8781 db "        times ",0
-    b_8782 db " - ($ - b_",0
-    b_8783 db ") db 0",10,0
-    b_8784 db "TOOLCHAIN_NASM",0
-    b_8785 db " resb ",0
-    b_8786 db " rb ",0
-    b_8787 db "    b_",0
-    b_8788 db " ; ",0
-    b_8789 db 10,0
-    b_8790 db "    ; OP_EXIT",10,0
-    b_8791 db "rdi",0
-    b_8792 db "    mov     eax, 60",10,0
-    b_8793 db "    syscall",10,0
-    b_8794 db "    ; OP_FOPEN",10,0
-    b_8795 db "rax",0
-    b_8796 db "rsi",0
-    b_8797 db "    cmp     rax, 0",10,0
-    b_8798 db "    je      .frl_",0
-    b_8799 db 10,0
-    b_8800 db "    cmp     rax, 1",10,0
-    b_8801 db "    je      .fwl_",0
-    b_8802 db 10,0
-    b_8803 db "    cmp     rax, 2",10,0
-    b_8804 db "    je      .fal_",0
-    b_8805 db 10,0
-    b_8806 db "    jmp     .ffl_",0
-    b_8807 db 10,0
-    b_8808 db "    .frl_",0
-    b_8809 db ":",10,0
-    b_8810 db "    mov     rdx, 0",10,0
-    b_8811 db "    jmp     .fdl_",0
-    b_8812 db 10,0
-    b_8813 db "    .fwl_",0
-    b_8814 db ":",10,0
-    b_8815 db "    mov     rdx, 577",10,0
-    b_8816 db "    jmp     .fdl_",0
-    b_8817 db 10,0
-    b_8818 db "    .fal_",0
-    b_8819 db ":",10,0
-    b_8820 db "    mov     rdx, 1089",10,0
-    b_8821 db "    jmp     .fdl_",0
-    b_8822 db 10,0
-    b_8823 db "    .fdl_",0
-    b_8824 db ":",10,0
-    b_8825 db "    mov     rax, 257",10,0
-    b_8826 db "    mov     rdi, -100",10,0
-    b_8827 db "    mov     r10, 420",10,0
-    b_8828 db "    syscall",10,0
-    b_8829 db "rax",0
-    b_8830 db "    jmp     .fel_",0
-    b_8831 db 10,0
-    b_8832 db "    .ffl_",0
-    b_8833 db ":",10,0
-    b_8834 db "    mov     rax, -1",10,0
-    b_8835 db "rax",0
-    b_8836 db "    .fel_",0
-    b_8837 db ":",10,0
-    b_8838 db "    ; OP_FREAD",10,0
-    b_8839 db "rdi",0
-    b_8840 db "rdx",0
-    b_8841 db "rsi",0
-    b_8842 db "    mov     rax, 0",10,0
-    b_8843 db "    syscall",10,0
-    b_8844 db "rax",0
-    b_8845 db "    ; OP_FWRITE",10,0
-    b_8846 db "rdi",0
-    b_8847 db "rdx",0
-    b_8848 db "rsi",0
-    b_8849 db "    mov     rax, 1",10,0
-    b_8850 db "    syscall",10,0
-    b_8851 db "rax",0
-    b_8852 db "    ; OP_FCLOSE",10,0
-    b_8853 db "rdi",0
-    b_8854 db "    mov     rax, 3",10,0
-    b_8855 db "    syscall",10,0
-    b_8856 db "rax",0
-    b_8857 db "    ; OP_GETCWD",10,0
-    b_8858 db "rsi",0
-    b_8859 db "rdi",0
-    b_8860 db "    mov     rax, 79",10,0
-    b_8861 db "    syscall",10,0
-    b_8862 db "rax",0
-    b_8863 db "    ; LIN_syscall",10,0
-    b_8864 db "rax",0
-    b_8865 db "r9",0
-    b_8866 db "r8",0
-    b_8867 db "r10",0
-    b_8868 db "rdx",0
-    b_8869 db "rsi",0
-    b_8870 db "rdi",0
-    b_8871 db "    syscall",10,0
-    b_8872 db "rax",0
-    b_8873 db "ERROR: Function '",0
-    b_8874 db "' was never defined",10,0
-    b_8875 db "; ",0
-    b_8876 db 10,0
-    b_8877 db "f_",0
-    b_8878 db ":",10,0
-    b_8879 db "    push    rbp",10,0
-    b_8880 db "    mov     rbp, rsp",10,0
-    b_8881 db "; start",10,0
-    b_8882 db "_start:",10,0
-    b_8883 db "    lea     r12, [bsp + ",0
-    b_8884 db "]",10,0
-    b_8885 db "    lea     rax, [rsp + 8]",10,0
-    b_8886 db "rax",0
-    b_8887 db "    mov     rax, [rsp]",10,0
-    b_8888 db "rax",0
-    b_8889 db "BITS 64",10,0
-    b_8890 db "global _start",10,0
-    b_8891 db "section .text",10,0
-    b_8892 db "section .data",10,0
-    b_8893 db "section .bss",10,0
-    b_8894 db "    bsp:",0
-    b_8895 db 10,0
-    b_8896 db "format ELF64",10,0
-    b_8897 db "public _start",10,0
-    b_8898 db "section '.text' executable",10,0
-    b_8899 db "section '.data' writeable",10,0
-    b_8900 db "section '.bss' writeable",10,0
-    b_8901 db "    bsp:",0
-    b_8902 db 10,0
-    b_8903 db "    sub     rsp, 32",10,0
-    b_8904 db "    call    ",0
-    b_8905 db 10,0
-    b_8906 db "    add     rsp, 32",10,0
-    b_8907 db "    ; OP_EXIT",10,0
-    b_8908 db "rcx",0
-    b_8909 db "ExitProcess",0
-    b_8910 db "    ; OP_FOPEN",10,0
-    b_8911 db "rax",0
-    b_8912 db "rcx",0
-    b_8913 db "    sub     rsp, 32+24",10,0
-    b_8914 db "    cmp     rax, 0",10,0
-    b_8915 db "    je      .frl_",0
-    b_8916 db 10,0
-    b_8917 db "    cmp     rax, 1",10,0
-    b_8918 db "    je      .fwl_",0
-    b_8919 db 10,0
-    b_8920 db "    cmp     rax, 2",10,0
-    b_8921 db "    je      .fal_",0
-    b_8922 db 10,0
-    b_8923 db "    jmp     .ffl_",0
-    b_8924 db 10,0
-    b_8925 db "    .frl_",0
-    b_8926 db ":",10,0
-    b_8927 db "    mov     rdx, 80000000h",10,0
-    b_8928 db "    mov     qword [rsp+32], 3",10,0
-    b_8929 db "    jmp     .fdl_",0
-    b_8930 db 10,0
-    b_8931 db "    .fwl_",0
-    b_8932 db ":",10,0
-    b_8933 db "    mov     rdx, 40000000h",10,0
-    b_8934 db "    mov     qword [rsp+32], 2",10,0
-    b_8935 db "    jmp     .fdl_",0
-    b_8936 db 10,0
-    b_8937 db "    .fal_",0
-    b_8938 db ":",10,0
-    b_8939 db "    mov     rdx, 00000004h",10,0
-    b_8940 db "    mov     qword [rsp+32], 4",10,0
-    b_8941 db "    jmp     .fdl_",0
-    b_8942 db 10,0
-    b_8943 db "    .fdl_",0
-    b_8944 db ":",10,0
-    b_8945 db "    mov     r8, 0",10,0
-    b_8946 db "    mov     r9, 0",10,0
-    b_8947 db "    mov     qword [rsp+40], 80h",10,0
-    b_8948 db "    mov     qword [rsp+48], 0",10,0
-    b_8949 db "    call    CreateFileA",10,0
-    b_8950 db "rax",0
-    b_8951 db "    jmp     .fel_",0
-    b_8952 db 10,0
-    b_8953 db "    .ffl_",0
-    b_8954 db ":",10,0
-    b_8955 db "    mov     rax, -1",10,0
-    b_8956 db "rax",0
-    b_8957 db "    .fel_",0
-    b_8958 db ":",10,0
-    b_8959 db "    add     rsp, 32+24",10,0
-    b_8960 db "    ; OP_FREAD",10,0
-    b_8961 db "rcx",0
-    b_8962 db "r8",0
-    b_8963 db "rdx",0
-    b_8964 db "    lea     r9, [rel windata]",10,0
-    b_8965 db "    sub     rsp, 32+8",10,0
-    b_8966 db "    mov     qword [rsp+32], 0",10,0
-    b_8967 db "    call    ReadFile",10,0
-    b_8968 db "    add     rsp, 32+8",10,0
-    b_8969 db "    cmp     eax, 0",10,0
-    b_8970 db "    jne     .frl_",0
-    b_8971 db 10,0
-    b_8972 db "    mov     rax, -1",10,0
-    b_8973 db "    jmp     .ffl_",0
-    b_8974 db 10,0
-    b_8975 db "    .frl_",0
-    b_8976 db ":",10,0
-    b_8977 db "    mov     rax, [rel windata]",10,0
-    b_8978 db "    .ffl_",0
-    b_8979 db ":",10,0
-    b_8980 db "rax",0
-    b_8981 db "    ; OP_FWRITE",10,0
-    b_8982 db "rcx",0
-    b_8983 db "r8",0
-    b_8984 db "rdx",0
-    b_8985 db "    lea     r9, [rel windata]",10,0
-    b_8986 db "    sub     rsp, 32+8",10,0
-    b_8987 db "    mov     qword [rsp+32], 0",10,0
-    b_8988 db "    call    WriteFile",10,0
-    b_8989 db "    add     rsp, 32+8",10,0
-    b_8990 db "    cmp     eax, 0",10,0
-    b_8991 db "    jne     .fwl_",0
-    b_8992 db 10,0
-    b_8993 db "    mov     rax, -1",10,0
-    b_8994 db "    jmp     .ffl_",0
-    b_8995 db 10,0
-    b_8996 db "    .fwl_",0
-    b_8997 db ":",10,0
-    b_8998 db "    mov     rax, [rel windata]",10,0
-    b_8999 db "    .ffl_",0
-    b_9000 db ":",10,0
-    b_9001 db "rax",0
-    b_9002 db "    ; OP_FCLOSE",10,0
-    b_9003 db "rcx",0
-    b_9004 db "CloseHandle",0
-    b_9005 db "    sub     rax, 1",10,0
-    b_9006 db "rax",0
-    b_9007 db "    ; OP_GETCWD",10,0
-    b_9008 db "rcx",0
-    b_9009 db "rdx",0
-    b_9010 db "    mov     rbx, rcx",10,0
-    b_9011 db "GetCurrentDirectoryA",0
-    b_9012 db "    cmp     rax, rbx",10,0
-    b_9013 db "    jg      .csl_",0
-    b_9014 db 10,0
-    b_9015 db "    test    rax, rax",10,0
-    b_9016 db "    jz      .czl_",0
-    b_9017 db 10,0
-    b_9018 db "    jmp     .cfl_",0
-    b_9019 db 10,0
-    b_9020 db "    .csl_",0
-    b_9021 db ":",10,0
-    b_9022 db "    neg     rax",10,0
-    b_9023 db "    jmp     .cfl_",0
-    b_9024 db 10,0
-    b_9025 db "    .czl_",0
-    b_9026 db ":",10,0
-    b_9027 db "    mov     rax, -1",10,0
-    b_9028 db "    .cfl_",0
-    b_9029 db ":",10,0
-    b_9030 db "rax",0
-    b_9031 db "    ; WIN_GetCommandLineW",10,0
-    b_9032 db "GetCommandLineW",0
-    b_9033 db "rax",0
-    b_9034 db "    ; WIN_CommandLineToArgvW",10,0
-    b_9035 db "rdx",0
-    b_9036 db "rcx",0
-    b_9037 db "CommandLineToArgvW",0
-    b_9038 db "    test    rax, rax",10,0
-    b_9039 db "    jnz     .cll_",0
-    b_9040 db 10,0
-    b_9041 db "    mov     rax, -1",10,0
-    b_9042 db "    .cll_",0
-    b_9043 db ":",10,0
-    b_9044 db "rax",0
-    b_9045 db "    ; WIN_WideCharToMultiByte",10,0
-    b_9046 db "rax",0
-    b_9047 db "rbx",0
-    b_9048 db "r8",0
-    b_9049 db "    mov     r9, -1",10,0
-    b_9050 db "    mov     rcx, 65001",10,0
-    b_9051 db "    mov     rdx, 0",10,0
-    b_9052 db "    sub     rsp, 32+32",10,0
-    b_9053 db "    mov     qword [rsp+32], rbx",10,0
-    b_9054 db "    mov     qword [rsp+40], rax",10,0
-    b_9055 db "    mov     qword [rsp+48], 0",10,0
-    b_9056 db "    mov     qword [rsp+56], 0",10,0
-    b_9057 db "    call    WideCharToMultiByte",10,0
-    b_9058 db "    add     rsp, 32+32",10,0
-    b_9059 db "    test    rax, rax",10,0
-    b_9060 db "    jnz     .wcl_",0
-    b_9061 db 10,0
-    b_9062 db "    mov     rax, -1",10,0
-    b_9063 db "    .wcl_",0
-    b_9064 db ":",10,0
-    b_9065 db "rax",0
-    b_9066 db "    ; WIN_LocalAlloc",10,0
-    b_9067 db "rdx",0
-    b_9068 db "    mov     rcx, 64",10,0
-    b_9069 db "LocalAlloc",0
-    b_9070 db "    test    rax, rax",10,0
-    b_9071 db "    jnz     .lal_",0
-    b_9072 db 10,0
-    b_9073 db "    mov     rax, -1",10,0
-    b_9074 db "    .lal_",0
-    b_9075 db ":",10,0
-    b_9076 db "rax",0
-    b_9077 db "    ; WIN_LocalFree",10,0
-    b_9078 db "rcx",0
-    b_9079 db "LocalFree",0
-    b_9080 db "    neg     rax",10,0
-    b_9081 db "rax",0
-    b_9082 db "    ; WIN_GetStdHandle",10,0
-    b_9083 db "rcx",0
-    b_9084 db "GetStdHandle",0
-    b_9085 db "rax",0
-    b_9086 db "ERROR: Function '",0
-    b_9087 db "' was never defined",10,0
-    b_9088 db "; ",0
-    b_9089 db 10,0
-    b_9090 db "f_",0
-    b_9091 db ":",10,0
-    b_9092 db "    push    rbp",10,0
-    b_9093 db "    mov     rbp, rsp",10,0
-    b_9094 db "BITS 64",10,0
-    b_9095 db "extern ExitProcess",10,0
-    b_9096 db "extern CreateFileA",10,0
-    b_9097 db "extern ReadFile",10,0
-    b_9098 db "extern WriteFile",10,0
-    b_9099 db "extern CloseHandle",10,0
-    b_9100 db "extern GetCurrentDirectoryA",10,0
-    b_9101 db "extern GetCommandLineW",10,0
-    b_9102 db "extern CommandLineToArgvW",10,0
-    b_9103 db "extern WideCharToMultiByte",10,0
-    b_9104 db "extern LocalAlloc",10,0
-    b_9105 db "extern LocalFree",10,0
-    b_9106 db "extern GetStdHandle",10,0
-    b_9107 db "global _start",10,0
-    b_9108 db "section .text",10,0
-    b_9109 db "; start",10,0
-    b_9110 db "_start:",10,0
-    b_9111 db "    lea     r12, [rel bsp + ",0
-    b_9112 db "]",10,0
-    b_9113 db "section .data",10,0
-    b_9114 db "section .bss",10,0
-    b_9115 db "    windata resd 1",10,0
-    b_9116 db "    bsp:",0
-    b_9117 db 10,0
-    b_9118 db ", #",0
-    b_9119 db "    add     x12, x12, ",0
-    b_9120 db 10,0
-    b_9121 db "    sub     x12, x12, ",0
-    b_9122 db 10,0
-    b_9123 db "    str     ",0
-    b_9124 db ", [x12",0
-    b_9125 db "]",10,0
-    b_9126 db "    mov     ",0
-    b_9127 db ", ",0
-    b_9128 db 10,0
-    b_9129 db "    ldr     ",0
-    b_9130 db ", [x12",0
-    b_9131 db "]",10,0
-    b_9132 db "    // ",0
-    b_9133 db 10,0
-    b_9134 db "x0",0
-    b_9135 db "x1",0
-    b_9136 db "    ",0
-    b_9137 db " ",9,"x0, x1, x0",10,0
-    b_9138 db "x0",0
-    b_9139 db "    movz    x0, #",0
-    b_9140 db 10,0
-    b_9141 db "    movk    x0, #",0
-    b_9142 db ", lsl 16",10,0
-    b_9143 db "    // OP_CALL",10,0
-    b_9144 db "x0",0
-    b_9145 db "    blr     x0",10,0
-    b_9146 db "    // OP_PUSH_FN",10,0
-    b_9147 db "    adrp    x0, f_",0
-    b_9148 db "@PAGE",10,0
-    b_9149 db "    add     x0, x0, f_",0
-    b_9150 db "@PAGEOFF",10,0
-    b_9151 db "x0",0
-    b_9152 db "    // OP_CALL_FN",10,0
-    b_9153 db "    bl      f_",0
-    b_9154 db 10,0
-    b_9155 db "    // OP_RET",10,0
-    b_9156 db "    mov     sp, x29",10,0
-    b_9157 db "    ldp     x29, x30, [sp], #16",10,0
-    b_9158 db "    ret",10,0
-    b_9159 db "    // OP_PUSH_INT",10,0
-    b_9160 db "    mov     x0, #",0
-    b_9161 db 10,0
-    b_9162 db "x0",0
-    b_9163 db "    // OP_DROP",10,0
-    b_9164 db "    // OP_PICK",10,0
-    b_9165 db "x0",0
-    b_9166 db "    lsl     x0, x0, #3",10,0
-    b_9167 db "    add     x0, x12, x0",10,0
-    b_9168 db "    ldr     x0, [x0]",10,0
-    b_9169 db "x0",0
-    b_9170 db "    // OP_ROLL",10,0
-    b_9171 db "x0",0
-    b_9172 db "    lsl     x0, x0, #3",10,0
-    b_9173 db "    add     x0, x12, x0",10,0
-    b_9174 db "    ldr     x1, [x0]",10,0
-    b_9175 db "    .ral_",0
-    b_9176 db ":",10,0
-    b_9177 db "    cmp     x0, x12",10,0
-    b_9178 db "    beq     .rbl_",0
-    b_9179 db 10,0
-    b_9180 db "    ldr     x2, [x0, #-8]",10,0
-    b_9181 db "    str     x2, [x0]",10,0
-    b_9182 db "    sub     x0, x0, #8",10,0
-    b_9183 db "    b       .ral_",0
-    b_9184 db 10,0
-    b_9185 db "    .rbl_",0
-    b_9186 db ":",10,0
-    b_9187 db "    str     x1, [x12]",10,0
-    b_9188 db "    // OP_DUP",10,0
-    b_9189 db "    ldr     x0, [x12]",10,0
-    b_9190 db "x0",0
-    b_9191 db "    // OP_OVER",10,0
-    b_9192 db "    add     x0, x12, #8",10,0
-    b_9193 db "    ldr     x0, [x0]",10,0
-    b_9194 db "x0",0
-    b_9195 db "    // OP_SWAP",10,0
-    b_9196 db "x0",0
-    b_9197 db "x1",0
-    b_9198 db "x0",0
-    b_9199 db "x1",0
-    b_9200 db "    // OP_ROT",10,0
-    b_9201 db "x0",0
-    b_9202 db "x1",0
-    b_9203 db "x2",0
-    b_9204 db "x1",0
-    b_9205 db "x0",0
-    b_9206 db "x2",0
-    b_9207 db "    // OP_NIP",10,0
-    b_9208 db "x0",0
+    b_8662 db "rax",0
+    b_8663 db "    ; OP_DEPTH",10,0
+    b_8664 db "    mov     rax, bsp + ",0
+    b_8665 db 10,0
+    b_8666 db "    sub     rax, r12",10,0
+    b_8667 db "    shr     rax, 3",10,0
+    b_8668 db "rax",0
+    b_8669 db "    ; OP_PUSH_BUF",10,0
+    b_8670 db "    lea     rax, [",0
+    b_8671 db "b_",0
+    b_8672 db "]",10,0
+    b_8673 db "rax",0
+    b_8674 db "    ; OP_STORE",10,0
+    b_8675 db "rax",0
+    b_8676 db "rcx",0
+    b_8677 db "    mov     [rax], rcx",10,0
+    b_8678 db "    ; OP_FETCH",10,0
+    b_8679 db "rax",0
+    b_8680 db "    mov     rax, qword [rax]",10,0
+    b_8681 db "rax",0
+    b_8682 db "    ; OP_MEMCPY",10,0
+    b_8683 db "rcx",0
+    b_8684 db "rdi",0
+    b_8685 db "rsi",0
+    b_8686 db "    cld",10,0
+    b_8687 db "    rep     movsb",10,0
+    b_8688 db "    ; OP_PUSH_VAR",10,0
+    b_8689 db "    lea     rax, [rbp - ",0
+    b_8690 db "]",10,0
+    b_8691 db "rax",0
+    b_8692 db "    ; OP_ALLOC",10,0
+    b_8693 db "    sub     rsp, ",0
+    b_8694 db 10,0
+    b_8695 db "rcx",0
+    b_8696 db "add",0
+    b_8697 db "OP_ADD",0
+    b_8698 db "rcx",0
+    b_8699 db "sub",0
+    b_8700 db "OP_SUB",0
+    b_8701 db "rcx",0
+    b_8702 db "imul",0
+    b_8703 db "OP_MUL",0
+    b_8704 db "rcx",0
+    b_8705 db "and",0
+    b_8706 db "OP_AND",0
+    b_8707 db "rcx",0
+    b_8708 db "or",0
+    b_8709 db "OP_OR",0
+    b_8710 db "rcx",0
+    b_8711 db "xor",0
+    b_8712 db "OP_XOR",0
+    b_8713 db "cl",0
+    b_8714 db "shl",0
+    b_8715 db "OP_SHL",0
+    b_8716 db "cl",0
+    b_8717 db "shr",0
+    b_8718 db "OP_SHR",0
+    b_8719 db "cl",0
+    b_8720 db "sar",0
+    b_8721 db "OP_SAR",0
+    b_8722 db "    ; OP_NOT",10,0
+    b_8723 db "rax",0
+    b_8724 db "    not     rax",10,0
+    b_8725 db "rax",0
+    b_8726 db "    ; OP_EQ",10,0
+    b_8727 db "rax",0
+    b_8728 db "rbx",0
+    b_8729 db "    cmp     rbx, rax",10,0
+    b_8730 db "    sete    al",10,0
+    b_8731 db "    movzx   rax, al",10,0
+    b_8732 db "rax",0
+    b_8733 db "    ; OP_GT",10,0
+    b_8734 db "rax",0
+    b_8735 db "rbx",0
+    b_8736 db "    cmp     rbx, rax",10,0
+    b_8737 db "    setg    al",10,0
+    b_8738 db "    movzx   rax, al",10,0
+    b_8739 db "rax",0
+    b_8740 db "    ; OP_LT",10,0
+    b_8741 db "rax",0
+    b_8742 db "rbx",0
+    b_8743 db "    cmp     rbx, rax",10,0
+    b_8744 db "    setl    al",10,0
+    b_8745 db "    movzx   rax, al",10,0
+    b_8746 db "rax",0
+    b_8747 db "    ; OP_DIVMOD",10,0
+    b_8748 db "rbx",0
+    b_8749 db "rax",0
+    b_8750 db "    cqo",10,0
+    b_8751 db "    idiv    rbx",10,0
+    b_8752 db "rax",0
+    b_8753 db "rdx",0
+    b_8754 db ".l_",0
+    b_8755 db ":",10,0
+    b_8756 db "    ; OP_JMP",10,0
+    b_8757 db "    jmp     .l_",0
+    b_8758 db 10,0
+    b_8759 db "    ; OP_JZ",10,0
+    b_8760 db "rax",0
+    b_8761 db "    test    rax, rax",10,0
+    b_8762 db "    jz      .l_",0
+    b_8763 db 10,0
+    b_8764 db "ERROR: Invalid opcode (#",0
+    b_8765 db ")",10,0
+    b_8766 db 34,0
+    b_8767 db 34,",",0
+    b_8768 db ",",0
+    b_8769 db 34,",",0
+    b_8770 db "0",10,0
+    b_8771 db "    ; Inline Buffers",10,0
+    b_8772 db "    b_",0
+    b_8773 db " db ",0
+    b_8774 db "    ; ",0
+    b_8775 db 10,0
+    b_8776 db "    b_",0
+    b_8777 db " db ",0
+    b_8778 db 10,0
+    b_8779 db " dq ",0
+    b_8780 db 10,0
+    b_8781 db " db ",0
+    b_8782 db "        times ",0
+    b_8783 db " - ($ - b_",0
+    b_8784 db ") db 0",10,0
+    b_8785 db "TOOLCHAIN_NASM",0
+    b_8786 db " resb ",0
+    b_8787 db " rb ",0
+    b_8788 db "    b_",0
+    b_8789 db " ; ",0
+    b_8790 db 10,0
+    b_8791 db "    ; OP_EXIT",10,0
+    b_8792 db "rdi",0
+    b_8793 db "    mov     eax, 60",10,0
+    b_8794 db "    syscall",10,0
+    b_8795 db "    ; OP_FOPEN",10,0
+    b_8796 db "rax",0
+    b_8797 db "rsi",0
+    b_8798 db "    cmp     rax, 0",10,0
+    b_8799 db "    je      .frl_",0
+    b_8800 db 10,0
+    b_8801 db "    cmp     rax, 1",10,0
+    b_8802 db "    je      .fwl_",0
+    b_8803 db 10,0
+    b_8804 db "    cmp     rax, 2",10,0
+    b_8805 db "    je      .fal_",0
+    b_8806 db 10,0
+    b_8807 db "    jmp     .ffl_",0
+    b_8808 db 10,0
+    b_8809 db "    .frl_",0
+    b_8810 db ":",10,0
+    b_8811 db "    mov     rdx, 0",10,0
+    b_8812 db "    jmp     .fdl_",0
+    b_8813 db 10,0
+    b_8814 db "    .fwl_",0
+    b_8815 db ":",10,0
+    b_8816 db "    mov     rdx, 577",10,0
+    b_8817 db "    jmp     .fdl_",0
+    b_8818 db 10,0
+    b_8819 db "    .fal_",0
+    b_8820 db ":",10,0
+    b_8821 db "    mov     rdx, 1089",10,0
+    b_8822 db "    jmp     .fdl_",0
+    b_8823 db 10,0
+    b_8824 db "    .fdl_",0
+    b_8825 db ":",10,0
+    b_8826 db "    mov     rax, 257",10,0
+    b_8827 db "    mov     rdi, -100",10,0
+    b_8828 db "    mov     r10, 420",10,0
+    b_8829 db "    syscall",10,0
+    b_8830 db "rax",0
+    b_8831 db "    jmp     .fel_",0
+    b_8832 db 10,0
+    b_8833 db "    .ffl_",0
+    b_8834 db ":",10,0
+    b_8835 db "    mov     rax, -1",10,0
+    b_8836 db "rax",0
+    b_8837 db "    .fel_",0
+    b_8838 db ":",10,0
+    b_8839 db "    ; OP_FREAD",10,0
+    b_8840 db "rdi",0
+    b_8841 db "rdx",0
+    b_8842 db "rsi",0
+    b_8843 db "    mov     rax, 0",10,0
+    b_8844 db "    syscall",10,0
+    b_8845 db "rax",0
+    b_8846 db "    ; OP_FWRITE",10,0
+    b_8847 db "rdi",0
+    b_8848 db "rdx",0
+    b_8849 db "rsi",0
+    b_8850 db "    mov     rax, 1",10,0
+    b_8851 db "    syscall",10,0
+    b_8852 db "rax",0
+    b_8853 db "    ; OP_FCLOSE",10,0
+    b_8854 db "rdi",0
+    b_8855 db "    mov     rax, 3",10,0
+    b_8856 db "    syscall",10,0
+    b_8857 db "rax",0
+    b_8858 db "    ; OP_GETCWD",10,0
+    b_8859 db "rsi",0
+    b_8860 db "rdi",0
+    b_8861 db "    mov     rax, 79",10,0
+    b_8862 db "    syscall",10,0
+    b_8863 db "rax",0
+    b_8864 db "    ; LIN_syscall",10,0
+    b_8865 db "rax",0
+    b_8866 db "r9",0
+    b_8867 db "r8",0
+    b_8868 db "r10",0
+    b_8869 db "rdx",0
+    b_8870 db "rsi",0
+    b_8871 db "rdi",0
+    b_8872 db "    syscall",10,0
+    b_8873 db "rax",0
+    b_8874 db "ERROR: Function '",0
+    b_8875 db "' was never defined",10,0
+    b_8876 db "; ",0
+    b_8877 db 10,0
+    b_8878 db "f_",0
+    b_8879 db ":",10,0
+    b_8880 db "    push    rbp",10,0
+    b_8881 db "    mov     rbp, rsp",10,0
+    b_8882 db "; start",10,0
+    b_8883 db "_start:",10,0
+    b_8884 db "    lea     r12, [bsp + ",0
+    b_8885 db "]",10,0
+    b_8886 db "    lea     rax, [rsp + 8]",10,0
+    b_8887 db "rax",0
+    b_8888 db "    mov     rax, [rsp]",10,0
+    b_8889 db "rax",0
+    b_8890 db "BITS 64",10,0
+    b_8891 db "global _start",10,0
+    b_8892 db "section .text",10,0
+    b_8893 db "section .data",10,0
+    b_8894 db "section .bss",10,0
+    b_8895 db "    bsp:",0
+    b_8896 db 10,0
+    b_8897 db "format ELF64",10,0
+    b_8898 db "public _start",10,0
+    b_8899 db "section '.text' executable",10,0
+    b_8900 db "section '.data' writeable",10,0
+    b_8901 db "section '.bss' writeable",10,0
+    b_8902 db "    bsp:",0
+    b_8903 db 10,0
+    b_8904 db "    sub     rsp, 32",10,0
+    b_8905 db "    call    ",0
+    b_8906 db 10,0
+    b_8907 db "    add     rsp, 32",10,0
+    b_8908 db "    ; OP_EXIT",10,0
+    b_8909 db "rcx",0
+    b_8910 db "ExitProcess",0
+    b_8911 db "    ; OP_FOPEN",10,0
+    b_8912 db "rax",0
+    b_8913 db "rcx",0
+    b_8914 db "    sub     rsp, 32+24",10,0
+    b_8915 db "    cmp     rax, 0",10,0
+    b_8916 db "    je      .frl_",0
+    b_8917 db 10,0
+    b_8918 db "    cmp     rax, 1",10,0
+    b_8919 db "    je      .fwl_",0
+    b_8920 db 10,0
+    b_8921 db "    cmp     rax, 2",10,0
+    b_8922 db "    je      .fal_",0
+    b_8923 db 10,0
+    b_8924 db "    jmp     .ffl_",0
+    b_8925 db 10,0
+    b_8926 db "    .frl_",0
+    b_8927 db ":",10,0
+    b_8928 db "    mov     rdx, 80000000h",10,0
+    b_8929 db "    mov     qword [rsp+32], 3",10,0
+    b_8930 db "    jmp     .fdl_",0
+    b_8931 db 10,0
+    b_8932 db "    .fwl_",0
+    b_8933 db ":",10,0
+    b_8934 db "    mov     rdx, 40000000h",10,0
+    b_8935 db "    mov     qword [rsp+32], 2",10,0
+    b_8936 db "    jmp     .fdl_",0
+    b_8937 db 10,0
+    b_8938 db "    .fal_",0
+    b_8939 db ":",10,0
+    b_8940 db "    mov     rdx, 00000004h",10,0
+    b_8941 db "    mov     qword [rsp+32], 4",10,0
+    b_8942 db "    jmp     .fdl_",0
+    b_8943 db 10,0
+    b_8944 db "    .fdl_",0
+    b_8945 db ":",10,0
+    b_8946 db "    mov     r8, 0",10,0
+    b_8947 db "    mov     r9, 0",10,0
+    b_8948 db "    mov     qword [rsp+40], 80h",10,0
+    b_8949 db "    mov     qword [rsp+48], 0",10,0
+    b_8950 db "    call    CreateFileA",10,0
+    b_8951 db "rax",0
+    b_8952 db "    jmp     .fel_",0
+    b_8953 db 10,0
+    b_8954 db "    .ffl_",0
+    b_8955 db ":",10,0
+    b_8956 db "    mov     rax, -1",10,0
+    b_8957 db "rax",0
+    b_8958 db "    .fel_",0
+    b_8959 db ":",10,0
+    b_8960 db "    add     rsp, 32+24",10,0
+    b_8961 db "    ; OP_FREAD",10,0
+    b_8962 db "rcx",0
+    b_8963 db "r8",0
+    b_8964 db "rdx",0
+    b_8965 db "    lea     r9, [rel windata]",10,0
+    b_8966 db "    sub     rsp, 32+8",10,0
+    b_8967 db "    mov     qword [rsp+32], 0",10,0
+    b_8968 db "    call    ReadFile",10,0
+    b_8969 db "    add     rsp, 32+8",10,0
+    b_8970 db "    cmp     eax, 0",10,0
+    b_8971 db "    jne     .frl_",0
+    b_8972 db 10,0
+    b_8973 db "    mov     rax, -1",10,0
+    b_8974 db "    jmp     .ffl_",0
+    b_8975 db 10,0
+    b_8976 db "    .frl_",0
+    b_8977 db ":",10,0
+    b_8978 db "    mov     rax, [rel windata]",10,0
+    b_8979 db "    .ffl_",0
+    b_8980 db ":",10,0
+    b_8981 db "rax",0
+    b_8982 db "    ; OP_FWRITE",10,0
+    b_8983 db "rcx",0
+    b_8984 db "r8",0
+    b_8985 db "rdx",0
+    b_8986 db "    lea     r9, [rel windata]",10,0
+    b_8987 db "    sub     rsp, 32+8",10,0
+    b_8988 db "    mov     qword [rsp+32], 0",10,0
+    b_8989 db "    call    WriteFile",10,0
+    b_8990 db "    add     rsp, 32+8",10,0
+    b_8991 db "    cmp     eax, 0",10,0
+    b_8992 db "    jne     .fwl_",0
+    b_8993 db 10,0
+    b_8994 db "    mov     rax, -1",10,0
+    b_8995 db "    jmp     .ffl_",0
+    b_8996 db 10,0
+    b_8997 db "    .fwl_",0
+    b_8998 db ":",10,0
+    b_8999 db "    mov     rax, [rel windata]",10,0
+    b_9000 db "    .ffl_",0
+    b_9001 db ":",10,0
+    b_9002 db "rax",0
+    b_9003 db "    ; OP_FCLOSE",10,0
+    b_9004 db "rcx",0
+    b_9005 db "CloseHandle",0
+    b_9006 db "    sub     rax, 1",10,0
+    b_9007 db "rax",0
+    b_9008 db "    ; OP_GETCWD",10,0
+    b_9009 db "rcx",0
+    b_9010 db "rdx",0
+    b_9011 db "    mov     rbx, rcx",10,0
+    b_9012 db "GetCurrentDirectoryA",0
+    b_9013 db "    cmp     rax, rbx",10,0
+    b_9014 db "    jg      .csl_",0
+    b_9015 db 10,0
+    b_9016 db "    test    rax, rax",10,0
+    b_9017 db "    jz      .czl_",0
+    b_9018 db 10,0
+    b_9019 db "    jmp     .cfl_",0
+    b_9020 db 10,0
+    b_9021 db "    .csl_",0
+    b_9022 db ":",10,0
+    b_9023 db "    neg     rax",10,0
+    b_9024 db "    jmp     .cfl_",0
+    b_9025 db 10,0
+    b_9026 db "    .czl_",0
+    b_9027 db ":",10,0
+    b_9028 db "    mov     rax, -1",10,0
+    b_9029 db "    .cfl_",0
+    b_9030 db ":",10,0
+    b_9031 db "rax",0
+    b_9032 db "    ; WIN_GetCommandLineW",10,0
+    b_9033 db "GetCommandLineW",0
+    b_9034 db "rax",0
+    b_9035 db "    ; WIN_CommandLineToArgvW",10,0
+    b_9036 db "rdx",0
+    b_9037 db "rcx",0
+    b_9038 db "CommandLineToArgvW",0
+    b_9039 db "    test    rax, rax",10,0
+    b_9040 db "    jnz     .cll_",0
+    b_9041 db 10,0
+    b_9042 db "    mov     rax, -1",10,0
+    b_9043 db "    .cll_",0
+    b_9044 db ":",10,0
+    b_9045 db "rax",0
+    b_9046 db "    ; WIN_WideCharToMultiByte",10,0
+    b_9047 db "rax",0
+    b_9048 db "rbx",0
+    b_9049 db "r8",0
+    b_9050 db "    mov     r9, -1",10,0
+    b_9051 db "    mov     rcx, 65001",10,0
+    b_9052 db "    mov     rdx, 0",10,0
+    b_9053 db "    sub     rsp, 32+32",10,0
+    b_9054 db "    mov     qword [rsp+32], rbx",10,0
+    b_9055 db "    mov     qword [rsp+40], rax",10,0
+    b_9056 db "    mov     qword [rsp+48], 0",10,0
+    b_9057 db "    mov     qword [rsp+56], 0",10,0
+    b_9058 db "    call    WideCharToMultiByte",10,0
+    b_9059 db "    add     rsp, 32+32",10,0
+    b_9060 db "    test    rax, rax",10,0
+    b_9061 db "    jnz     .wcl_",0
+    b_9062 db 10,0
+    b_9063 db "    mov     rax, -1",10,0
+    b_9064 db "    .wcl_",0
+    b_9065 db ":",10,0
+    b_9066 db "rax",0
+    b_9067 db "    ; WIN_LocalAlloc",10,0
+    b_9068 db "rdx",0
+    b_9069 db "    mov     rcx, 64",10,0
+    b_9070 db "LocalAlloc",0
+    b_9071 db "    test    rax, rax",10,0
+    b_9072 db "    jnz     .lal_",0
+    b_9073 db 10,0
+    b_9074 db "    mov     rax, -1",10,0
+    b_9075 db "    .lal_",0
+    b_9076 db ":",10,0
+    b_9077 db "rax",0
+    b_9078 db "    ; WIN_LocalFree",10,0
+    b_9079 db "rcx",0
+    b_9080 db "LocalFree",0
+    b_9081 db "    neg     rax",10,0
+    b_9082 db "rax",0
+    b_9083 db "    ; WIN_GetStdHandle",10,0
+    b_9084 db "rcx",0
+    b_9085 db "GetStdHandle",0
+    b_9086 db "rax",0
+    b_9087 db "ERROR: Function '",0
+    b_9088 db "' was never defined",10,0
+    b_9089 db "; ",0
+    b_9090 db 10,0
+    b_9091 db "f_",0
+    b_9092 db ":",10,0
+    b_9093 db "    push    rbp",10,0
+    b_9094 db "    mov     rbp, rsp",10,0
+    b_9095 db "BITS 64",10,0
+    b_9096 db "extern ExitProcess",10,0
+    b_9097 db "extern CreateFileA",10,0
+    b_9098 db "extern ReadFile",10,0
+    b_9099 db "extern WriteFile",10,0
+    b_9100 db "extern CloseHandle",10,0
+    b_9101 db "extern GetCurrentDirectoryA",10,0
+    b_9102 db "extern GetCommandLineW",10,0
+    b_9103 db "extern CommandLineToArgvW",10,0
+    b_9104 db "extern WideCharToMultiByte",10,0
+    b_9105 db "extern LocalAlloc",10,0
+    b_9106 db "extern LocalFree",10,0
+    b_9107 db "extern GetStdHandle",10,0
+    b_9108 db "global _start",10,0
+    b_9109 db "section .text",10,0
+    b_9110 db "; start",10,0
+    b_9111 db "_start:",10,0
+    b_9112 db "    lea     r12, [rel bsp + ",0
+    b_9113 db "]",10,0
+    b_9114 db "section .data",10,0
+    b_9115 db "section .bss",10,0
+    b_9116 db "    windata resd 1",10,0
+    b_9117 db "    bsp:",0
+    b_9118 db 10,0
+    b_9119 db ", #",0
+    b_9120 db "    add     x12, x12, ",0
+    b_9121 db 10,0
+    b_9122 db "    sub     x12, x12, ",0
+    b_9123 db 10,0
+    b_9124 db "    str     ",0
+    b_9125 db ", [x12",0
+    b_9126 db "]",10,0
+    b_9127 db "    mov     ",0
+    b_9128 db ", ",0
+    b_9129 db 10,0
+    b_9130 db "    ldr     ",0
+    b_9131 db ", [x12",0
+    b_9132 db "]",10,0
+    b_9133 db "    // ",0
+    b_9134 db 10,0
+    b_9135 db "x0",0
+    b_9136 db "x1",0
+    b_9137 db "    ",0
+    b_9138 db " ",9,"x0, x1, x0",10,0
+    b_9139 db "x0",0
+    b_9140 db "    movz    x0, #",0
+    b_9141 db 10,0
+    b_9142 db "    movk    x0, #",0
+    b_9143 db ", lsl 16",10,0
+    b_9144 db "    // OP_CALL",10,0
+    b_9145 db "x0",0
+    b_9146 db "    blr     x0",10,0
+    b_9147 db "    // OP_PUSH_FN",10,0
+    b_9148 db "    adrp    x0, f_",0
+    b_9149 db "@PAGE",10,0
+    b_9150 db "    add     x0, x0, f_",0
+    b_9151 db "@PAGEOFF",10,0
+    b_9152 db "x0",0
+    b_9153 db "    // OP_CALL_FN",10,0
+    b_9154 db "    bl      f_",0
+    b_9155 db 10,0
+    b_9156 db "    // OP_RET",10,0
+    b_9157 db "    mov     sp, x29",10,0
+    b_9158 db "    ldp     x29, x30, [sp], #16",10,0
+    b_9159 db "    ret",10,0
+    b_9160 db "    // OP_PUSH_INT",10,0
+    b_9161 db "    mov     x0, #",0
+    b_9162 db 10,0
+    b_9163 db "x0",0
+    b_9164 db "    // OP_DROP",10,0
+    b_9165 db "    // OP_PICK",10,0
+    b_9166 db "x0",0
+    b_9167 db "    lsl     x0, x0, #3",10,0
+    b_9168 db "    add     x0, x12, x0",10,0
+    b_9169 db "    ldr     x0, [x0]",10,0
+    b_9170 db "x0",0
+    b_9171 db "    // OP_ROLL",10,0
+    b_9172 db "x0",0
+    b_9173 db "    lsl     x0, x0, #3",10,0
+    b_9174 db "    add     x0, x12, x0",10,0
+    b_9175 db "    ldr     x1, [x0]",10,0
+    b_9176 db "    .ral_",0
+    b_9177 db ":",10,0
+    b_9178 db "    cmp     x0, x12",10,0
+    b_9179 db "    beq     .rbl_",0
+    b_9180 db 10,0
+    b_9181 db "    ldr     x2, [x0, #-8]",10,0
+    b_9182 db "    str     x2, [x0]",10,0
+    b_9183 db "    sub     x0, x0, #8",10,0
+    b_9184 db "    b       .ral_",0
+    b_9185 db 10,0
+    b_9186 db "    .rbl_",0
+    b_9187 db ":",10,0
+    b_9188 db "    str     x1, [x12]",10,0
+    b_9189 db "    // OP_DUP",10,0
+    b_9190 db "    ldr     x0, [x12]",10,0
+    b_9191 db "x0",0
+    b_9192 db "    // OP_OVER",10,0
+    b_9193 db "    add     x0, x12, #8",10,0
+    b_9194 db "    ldr     x0, [x0]",10,0
+    b_9195 db "x0",0
+    b_9196 db "    // OP_SWAP",10,0
+    b_9197 db "x0",0
+    b_9198 db "x1",0
+    b_9199 db "x0",0
+    b_9200 db "x1",0
+    b_9201 db "    // OP_ROT",10,0
+    b_9202 db "x0",0
+    b_9203 db "x1",0
+    b_9204 db "x2",0
+    b_9205 db "x1",0
+    b_9206 db "x0",0
+    b_9207 db "x2",0
+    b_9208 db "    // OP_NIP",10,0
     b_9209 db "x0",0
-    b_9210 db "    // OP_DEPTH",10,0
-    b_9211 db "    adrp    x0, bsp",10,0
-    b_9212 db "    add     x0, x0, :lo12:bsp",10,0
-    b_9213 db "    add     x0, x0, #",0
-    b_9214 db 10,0
-    b_9215 db "    sub     x0, x0, x12",10,0
-    b_9216 db "    lsr     x0, x0, #3",10,0
-    b_9217 db "x0",0
-    b_9218 db "b_",0
-    b_9219 db "    // OP_PUSH_BUF",10,0
-    b_9220 db "    adrp    x0, ",0
-    b_9221 db 10,0
-    b_9222 db "    add     x0, x0, :lo12:",0
-    b_9223 db 10,0
-    b_9224 db "x0",0
-    b_9225 db "    // OP_STORE",10,0
-    b_9226 db "x0",0
-    b_9227 db "x1",0
-    b_9228 db "    str     x1, [x0]",10,0
-    b_9229 db "    // OP_FETCH",10,0
-    b_9230 db "x0",0
-    b_9231 db "    ldr     x0, [x0]",10,0
-    b_9232 db "x0",0
-    b_9233 db "    // OP_MEMCPY",10,0
-    b_9234 db "x0",0
-    b_9235 db "x1",0
-    b_9236 db "x2",0
-    b_9237 db "    .cpyl_",0
-    b_9238 db ":",10,0
-    b_9239 db "    ldrb    w3, [x2], #1",10,0
-    b_9240 db "    strb    w3, [x1], #1",10,0
-    b_9241 db "    subs    x0, x0, #1",10,0
-    b_9242 db "    b.ne    .cpyl_",0
-    b_9243 db 10,0
-    b_9244 db "    // OP_PUSH_VAR",10,0
-    b_9245 db "    sub     x0, x29, x0",10,0
-    b_9246 db "    sub     x0, x29, #",0
-    b_9247 db 10,0
-    b_9248 db "x0",0
-    b_9249 db "    // OP_ALLOC",10,0
-    b_9250 db "    sub     sp, sp, x0",10,0
-    b_9251 db "    sub     sp, sp, #",0
-    b_9252 db 10,0
-    b_9253 db "add",0
-    b_9254 db "OP_ADD",0
-    b_9255 db "sub",0
-    b_9256 db "OP_SUB",0
-    b_9257 db "mul",0
-    b_9258 db "OP_MUL",0
-    b_9259 db "and",0
-    b_9260 db "OP_AND",0
-    b_9261 db "orr",0
-    b_9262 db "OP_OR",0
-    b_9263 db "eor",0
-    b_9264 db "OP_XOR",0
-    b_9265 db "lsl",0
-    b_9266 db "OP_SHL",0
-    b_9267 db "lsr",0
-    b_9268 db "OP_SHR",0
-    b_9269 db "asr",0
-    b_9270 db "OP_SAR",0
-    b_9271 db "    // OP_NOT",10,0
-    b_9272 db "x0",0
-    b_9273 db "    mvn     x0, x0",10,0
-    b_9274 db "x0",0
-    b_9275 db "    // OP_EQ",10,0
-    b_9276 db "x0",0
-    b_9277 db "x1",0
-    b_9278 db "    cmp     x1, x0",10,0
-    b_9279 db "    cset    w0, eq",10,0
-    b_9280 db "x0",0
-    b_9281 db "    // OP_GT",10,0
-    b_9282 db "x0",0
-    b_9283 db "x1",0
-    b_9284 db "    cmp     x1, x0",10,0
-    b_9285 db "    cset    w0, gt",10,0
-    b_9286 db "x0",0
-    b_9287 db "    // OP_LT",10,0
-    b_9288 db "x0",0
-    b_9289 db "x1",0
-    b_9290 db "    cmp     x1, x0",10,0
-    b_9291 db "    cset    w0, lt",10,0
-    b_9292 db "x0",0
-    b_9293 db "    // OP_DIVMOD",10,0
-    b_9294 db "x1",0
-    b_9295 db "x0",0
-    b_9296 db "    sdiv    x2, x0, x1",10,0
-    b_9297 db "    msub    x3, x2, x1, x0",10,0
-    b_9298 db "x2",0
-    b_9299 db "x3",0
-    b_9300 db ".l_",0
-    b_9301 db ":",10,0
-    b_9302 db "    // OP_JMP",10,0
-    b_9303 db "    b       .l_",0
-    b_9304 db 10,0
-    b_9305 db "    // OP_JZ",10,0
-    b_9306 db "x0",0
-    b_9307 db "    cbz     x0, .l_",0
-    b_9308 db 10,0
-    b_9309 db "    // OP_EXIT",10,0
-    b_9310 db "x0",0
-    b_9311 db "    mov     x8, 93",10,0
-    b_9312 db "    svc     #0",10,0
-    b_9313 db "    // OP_FOPEN",10,0
-    b_9314 db "x0",0
-    b_9315 db "x1",0
-    b_9316 db "    cmp     x0, #0",10,0
-    b_9317 db "    beq     .frl_",0
-    b_9318 db 10,0
-    b_9319 db "    cmp     x0, #1",10,0
-    b_9320 db "    beq     .fwl_",0
-    b_9321 db 10,0
-    b_9322 db "    cmp     x0, #2",10,0
-    b_9323 db "    beq     .fal_",0
-    b_9324 db 10,0
-    b_9325 db "    b       .ffl_",0
-    b_9326 db 10,0
-    b_9327 db "    .frl_",0
-    b_9328 db ":",10,0
-    b_9329 db "    mov     x2, #0",10,0
-    b_9330 db "    b       .fdl_",0
-    b_9331 db 10,0
-    b_9332 db "    .fwl_",0
-    b_9333 db ":",10,0
-    b_9334 db "    mov     x2, #577",10,0
-    b_9335 db "    b       .fdl_",0
-    b_9336 db 10,0
-    b_9337 db "    .fal_",0
-    b_9338 db ":",10,0
-    b_9339 db "    mov     x2, #1089",10,0
-    b_9340 db "    b       .fdl_",0
-    b_9341 db 10,0
-    b_9342 db "    .fdl_",0
-    b_9343 db ":",10,0
-    b_9344 db "    mov     x8, #56",10,0
-    b_9345 db "    mov     x0, #-100",10,0
-    b_9346 db "    mov     x3, #420",10,0
-    b_9347 db "    svc     #0",10,0
-    b_9348 db "x0",0
-    b_9349 db "    b       .fel_",0
-    b_9350 db 10,0
-    b_9351 db "    .ffl_",0
-    b_9352 db ":",10,0
-    b_9353 db "    mov     x0, #-1",10,0
-    b_9354 db "x0",0
-    b_9355 db "    .fel_",0
-    b_9356 db ":",10,0
-    b_9357 db "    // OP_FREAD",10,0
-    b_9358 db "x0",0
-    b_9359 db "x2",0
-    b_9360 db "x1",0
-    b_9361 db "    mov     x8, #63",10,0
-    b_9362 db "    svc     #0",10,0
-    b_9363 db "x0",0
-    b_9364 db "    // OP_FWRITE",10,0
-    b_9365 db "x0",0
-    b_9366 db "x2",0
-    b_9367 db "x1",0
-    b_9368 db "    mov     x8, #64",10,0
-    b_9369 db "    svc     #0",10,0
-    b_9370 db "x0",0
-    b_9371 db "    // OP_FCLOSE",10,0
-    b_9372 db "x0",0
-    b_9373 db "    mov     x8, #57",10,0
-    b_9374 db "    svc     #0",10,0
-    b_9375 db "x0",0
-    b_9376 db "    // OP_GETCWD",10,0
-    b_9377 db "x1",0
-    b_9378 db "x0",0
-    b_9379 db "    mov     x8, #17",10,0
-    b_9380 db "    svc     #0",10,0
-    b_9381 db "x0",0
-    b_9382 db "    // LIN_syscall",10,0
-    b_9383 db "x8",0
-    b_9384 db "x5",0
-    b_9385 db "x4",0
-    b_9386 db "x3",0
-    b_9387 db "x2",0
-    b_9388 db "x1",0
-    b_9389 db "x0",0
-    b_9390 db "    svc     #0",10,0
-    b_9391 db "x0",0
-    b_9392 db "ERROR: Invalid opcode (#",0
-    b_9393 db ")",10,0
-    b_9394 db "ERROR: Function '",0
-    b_9395 db "' was never defined",10,0
-    b_9396 db "// ",0
-    b_9397 db 10,0
-    b_9398 db "f_",0
-    b_9399 db ":",10,0
-    b_9400 db "    stp     x29, x30, [sp, #-16]!",10,0
-    b_9401 db "    mov     x29, sp",10,0
-    b_9402 db 92,"0",0
-    b_9403 db 92,"n",0
-    b_9404 db 92,"t",0
-    b_9405 db 92,"v",0
-    b_9406 db 92,"f",0
-    b_9407 db 92,"r",0
-    b_9408 db "'",0
-    b_9409 db 92,34,0
-    b_9410 db 92,92,0
-    b_9411 db ".ascii ",34,0
-    b_9412 db ".byte ",0
-    b_9413 db ",",0
-    b_9414 db 92,"0",34,10,0
-    b_9415 db "0",10,0
-    b_9416 db "    // Inline Buffers",10,0
-    b_9417 db "    b_",0
-    b_9418 db ": ",0
-    b_9419 db "    // ",0
-    b_9420 db 10,0
-    b_9421 db "    b_",0
-    b_9422 db ": ",0
-    b_9423 db ".byte ",0
-    b_9424 db 10,0
-    b_9425 db ".quad ",0
-    b_9426 db 10,0
-    b_9427 db "        .skip ",0
-    b_9428 db 10,0
-    b_9429 db "    b_",0
-    b_9430 db ": .skip ",0
-    b_9431 db " // ",0
-    b_9432 db 10,0
-    b_9433 db ".section .text",10,0
-    b_9434 db ".global _start",10,0
-    b_9435 db ".align  2",10,0
-    b_9436 db "// start",10,0
-    b_9437 db "_start:",10,0
-    b_9438 db "    adrp    x0, bsp",10,0
-    b_9439 db "    add     x0, x0, :lo12:bsp",10,0
-    b_9440 db "    add     x12, x0, #",0
-    b_9441 db ", lsl #12",10,0
-    b_9442 db "    add     x0, sp,  #8",10,0
-    b_9443 db "x0",0
-    b_9444 db "    ldr     x0, [sp]",10,0
-    b_9445 db "x0",0
-    b_9446 db ".section .data",10,0
-    b_9447 db ".section .bss",10,0
-    b_9448 db "    bsp: .skip ",0
-    b_9449 db 10,0
-    b_9450 db "ARCH_X86_64",0
-    b_9451 db "OS_LINUX",0
-    b_9452 db "TOOLCHAIN_NASM",0
-    b_9453 db "ARCH_X86_64",0
-    b_9454 db "OS_LINUX",0
-    b_9455 db "TOOLCHAIN_FASM",0
-    b_9456 db "ARCH_AARCH64",0
-    b_9457 db "OS_LINUX",0
-    b_9458 db "TOOLCHAIN_GCC",0
-    b_9459 db "ARCH_X86_64",0
-    b_9460 db "OS_WINDOWS",0
-    b_9461 db "TOOLCHAIN_NASM",0
-    b_9462 db "ERROR: Unsupported platform",10,0
-    b_9463 db "Example:",10,0
-    b_9464 db 9,0
-    b_9465 db " ./src/main.4c ./target/output.asm x86_64-linux-nasm -Istd -O",10,0
-    b_9466 db "Options:",10,0
-    b_9467 db 9,"-I<dir>    ",9,9,"allow files from `dir` to be included during compilation",10,0
-    b_9468 db 9,"-d, --debug",9,9,"compile with debug information",10,0
-    b_9469 db 9,"-O, --optimize",9,9,"enable optimizations",10,0
-    b_9470 db "ERROR: Invalid target '",0
-    b_9471 db "', expected <architecture>-<OS>-<toolchain>",10,0
-    b_9472 db "ERROR: Invalid target '",0
-    b_9473 db "', expected <architecture>-<OS>-<toolchain>",10,0
-    b_9474 db "x86_64",0
-    b_9475 db "x64",0
-    b_9476 db "ARCH_X86_64",0
-    b_9477 db "aarch64",0
-    b_9478 db "ARCH_AARCH64",0
-    b_9479 db "ERROR: Unsupported architecture '",0
-    b_9480 db "'",10,0
-    b_9481 db "linux",0
-    b_9482 db "OS_LINUX",0
-    b_9483 db "windows",0
-    b_9484 db "OS_WINDOWS",0
-    b_9485 db "ERROR: Unsupported OS '",0
-    b_9486 db "'",10,0
-    b_9487 db "nasm",0
-    b_9488 db "TOOLCHAIN_NASM",0
-    b_9489 db "fasm",0
-    b_9490 db "TOOLCHAIN_FASM",0
-    b_9491 db "gcc",0
-    b_9492 db "TOOLCHAIN_GCC",0
-    b_9493 db "ERROR: Unsupported toolchain '",0
-    b_9494 db "'",10,0
-    b_9495 db "ERROR: flag '",0
-    b_9496 db "debug",0
-    b_9497 db "' already set",10,0
-    b_9498 db "ERROR: flag '",0
-    b_9499 db "optimize",0
-    b_9500 db "' already set",10,0
-    b_9501 db "ERROR: Unrecognized switch '-",0
-    b_9502 db "'",10,0
-    b_9503 db "ERROR: Failed to obtain current working directory",10,0
-    b_9504 db "./",0
-    b_9505 db "-I",0
-    b_9506 db "--",0
-    b_9507 db "--debug",0
-    b_9508 db "ERROR: flag '",0
-    b_9509 db "debug",0
-    b_9510 db "' already set",10,0
-    b_9511 db "--optimize",0
-    b_9512 db "ERROR: flag '",0
-    b_9513 db "optimize",0
-    b_9514 db "' already set",10,0
-    b_9515 db "ERROR: Unrecognized option '",0
-    b_9516 db "'",10,0
-    b_9517 db "Usage: ",0
-    b_9518 db " <source_file> <output_file> <platform> [options]",10,0
-    b_9519 db "WARNING: ",0
-    b_9520 db "strs_mem",0
-    b_9521 db " is more than 25% full",10,0
-    b_9522 db "WARNING: ",0
-    b_9523 db "toks_mem",0
-    b_9524 db " is more than 25% full",10,0
-    b_9525 db "WARNING: ",0
-    b_9526 db "out_toks_mem",0
-    b_9527 db " is more than 25% full",10,0
-    b_9528 db "WARNING: ",0
-    b_9529 db "fn_ops_mem",0
-    b_9530 db " is more than 25% full",10,0
-    b_9531 db "WARNING: ",0
-    b_9532 db "inline_bufs",0
-    b_9533 db " is more than 25% full",10,0
-    b_9534 db "WARNING: ",0
-    b_9535 db "enum_variants_mem",0
-    b_9536 db " is more than 25% full",10,0
-    b_9537 db "WARNING: ",0
-    b_9538 db "struct_fields_mem",0
-    b_9539 db " is more than 25% full",10,0
-    b_9540 db "WARNING: ",0
-    b_9541 db "dims_mem",0
-    b_9542 db " is more than 25% full",10,0
-    b_9543 db "WARNING: ",0
-    b_9544 db "dirs_mem",0
-    b_9545 db " is more than 25% full",10,0
-    b_9546 db "ERROR: File '",0
-    b_9547 db "' not found",10,0
-    b_9548 db "__core.4c",0
-    b_9549 db "ERROR: standard library not found",10,0
-    b_9550 db "WARNING: Compilation completed with a stack depth of ",0
-    b_9551 db 10,0
+    b_9210 db "x0",0
+    b_9211 db "    // OP_DEPTH",10,0
+    b_9212 db "    adrp    x0, bsp",10,0
+    b_9213 db "    add     x0, x0, :lo12:bsp",10,0
+    b_9214 db "    add     x0, x0, #",0
+    b_9215 db 10,0
+    b_9216 db "    sub     x0, x0, x12",10,0
+    b_9217 db "    lsr     x0, x0, #3",10,0
+    b_9218 db "x0",0
+    b_9219 db "b_",0
+    b_9220 db "    // OP_PUSH_BUF",10,0
+    b_9221 db "    adrp    x0, ",0
+    b_9222 db 10,0
+    b_9223 db "    add     x0, x0, :lo12:",0
+    b_9224 db 10,0
+    b_9225 db "x0",0
+    b_9226 db "    // OP_STORE",10,0
+    b_9227 db "x0",0
+    b_9228 db "x1",0
+    b_9229 db "    str     x1, [x0]",10,0
+    b_9230 db "    // OP_FETCH",10,0
+    b_9231 db "x0",0
+    b_9232 db "    ldr     x0, [x0]",10,0
+    b_9233 db "x0",0
+    b_9234 db "    // OP_MEMCPY",10,0
+    b_9235 db "x0",0
+    b_9236 db "x1",0
+    b_9237 db "x2",0
+    b_9238 db "    .cpyl_",0
+    b_9239 db ":",10,0
+    b_9240 db "    ldrb    w3, [x2], #1",10,0
+    b_9241 db "    strb    w3, [x1], #1",10,0
+    b_9242 db "    subs    x0, x0, #1",10,0
+    b_9243 db "    b.ne    .cpyl_",0
+    b_9244 db 10,0
+    b_9245 db "    // OP_PUSH_VAR",10,0
+    b_9246 db "    sub     x0, x29, x0",10,0
+    b_9247 db "    sub     x0, x29, #",0
+    b_9248 db 10,0
+    b_9249 db "x0",0
+    b_9250 db "    // OP_ALLOC",10,0
+    b_9251 db "    sub     sp, sp, x0",10,0
+    b_9252 db "    sub     sp, sp, #",0
+    b_9253 db 10,0
+    b_9254 db "add",0
+    b_9255 db "OP_ADD",0
+    b_9256 db "sub",0
+    b_9257 db "OP_SUB",0
+    b_9258 db "mul",0
+    b_9259 db "OP_MUL",0
+    b_9260 db "and",0
+    b_9261 db "OP_AND",0
+    b_9262 db "orr",0
+    b_9263 db "OP_OR",0
+    b_9264 db "eor",0
+    b_9265 db "OP_XOR",0
+    b_9266 db "lsl",0
+    b_9267 db "OP_SHL",0
+    b_9268 db "lsr",0
+    b_9269 db "OP_SHR",0
+    b_9270 db "asr",0
+    b_9271 db "OP_SAR",0
+    b_9272 db "    // OP_NOT",10,0
+    b_9273 db "x0",0
+    b_9274 db "    mvn     x0, x0",10,0
+    b_9275 db "x0",0
+    b_9276 db "    // OP_EQ",10,0
+    b_9277 db "x0",0
+    b_9278 db "x1",0
+    b_9279 db "    cmp     x1, x0",10,0
+    b_9280 db "    cset    w0, eq",10,0
+    b_9281 db "x0",0
+    b_9282 db "    // OP_GT",10,0
+    b_9283 db "x0",0
+    b_9284 db "x1",0
+    b_9285 db "    cmp     x1, x0",10,0
+    b_9286 db "    cset    w0, gt",10,0
+    b_9287 db "x0",0
+    b_9288 db "    // OP_LT",10,0
+    b_9289 db "x0",0
+    b_9290 db "x1",0
+    b_9291 db "    cmp     x1, x0",10,0
+    b_9292 db "    cset    w0, lt",10,0
+    b_9293 db "x0",0
+    b_9294 db "    // OP_DIVMOD",10,0
+    b_9295 db "x1",0
+    b_9296 db "x0",0
+    b_9297 db "    sdiv    x2, x0, x1",10,0
+    b_9298 db "    msub    x3, x2, x1, x0",10,0
+    b_9299 db "x2",0
+    b_9300 db "x3",0
+    b_9301 db ".l_",0
+    b_9302 db ":",10,0
+    b_9303 db "    // OP_JMP",10,0
+    b_9304 db "    b       .l_",0
+    b_9305 db 10,0
+    b_9306 db "    // OP_JZ",10,0
+    b_9307 db "x0",0
+    b_9308 db "    cbz     x0, .l_",0
+    b_9309 db 10,0
+    b_9310 db "    // OP_EXIT",10,0
+    b_9311 db "x0",0
+    b_9312 db "    mov     x8, 93",10,0
+    b_9313 db "    svc     #0",10,0
+    b_9314 db "    // OP_FOPEN",10,0
+    b_9315 db "x0",0
+    b_9316 db "x1",0
+    b_9317 db "    cmp     x0, #0",10,0
+    b_9318 db "    beq     .frl_",0
+    b_9319 db 10,0
+    b_9320 db "    cmp     x0, #1",10,0
+    b_9321 db "    beq     .fwl_",0
+    b_9322 db 10,0
+    b_9323 db "    cmp     x0, #2",10,0
+    b_9324 db "    beq     .fal_",0
+    b_9325 db 10,0
+    b_9326 db "    b       .ffl_",0
+    b_9327 db 10,0
+    b_9328 db "    .frl_",0
+    b_9329 db ":",10,0
+    b_9330 db "    mov     x2, #0",10,0
+    b_9331 db "    b       .fdl_",0
+    b_9332 db 10,0
+    b_9333 db "    .fwl_",0
+    b_9334 db ":",10,0
+    b_9335 db "    mov     x2, #577",10,0
+    b_9336 db "    b       .fdl_",0
+    b_9337 db 10,0
+    b_9338 db "    .fal_",0
+    b_9339 db ":",10,0
+    b_9340 db "    mov     x2, #1089",10,0
+    b_9341 db "    b       .fdl_",0
+    b_9342 db 10,0
+    b_9343 db "    .fdl_",0
+    b_9344 db ":",10,0
+    b_9345 db "    mov     x8, #56",10,0
+    b_9346 db "    mov     x0, #-100",10,0
+    b_9347 db "    mov     x3, #420",10,0
+    b_9348 db "    svc     #0",10,0
+    b_9349 db "x0",0
+    b_9350 db "    b       .fel_",0
+    b_9351 db 10,0
+    b_9352 db "    .ffl_",0
+    b_9353 db ":",10,0
+    b_9354 db "    mov     x0, #-1",10,0
+    b_9355 db "x0",0
+    b_9356 db "    .fel_",0
+    b_9357 db ":",10,0
+    b_9358 db "    // OP_FREAD",10,0
+    b_9359 db "x0",0
+    b_9360 db "x2",0
+    b_9361 db "x1",0
+    b_9362 db "    mov     x8, #63",10,0
+    b_9363 db "    svc     #0",10,0
+    b_9364 db "x0",0
+    b_9365 db "    // OP_FWRITE",10,0
+    b_9366 db "x0",0
+    b_9367 db "x2",0
+    b_9368 db "x1",0
+    b_9369 db "    mov     x8, #64",10,0
+    b_9370 db "    svc     #0",10,0
+    b_9371 db "x0",0
+    b_9372 db "    // OP_FCLOSE",10,0
+    b_9373 db "x0",0
+    b_9374 db "    mov     x8, #57",10,0
+    b_9375 db "    svc     #0",10,0
+    b_9376 db "x0",0
+    b_9377 db "    // OP_GETCWD",10,0
+    b_9378 db "x1",0
+    b_9379 db "x0",0
+    b_9380 db "    mov     x8, #17",10,0
+    b_9381 db "    svc     #0",10,0
+    b_9382 db "x0",0
+    b_9383 db "    // LIN_syscall",10,0
+    b_9384 db "x8",0
+    b_9385 db "x5",0
+    b_9386 db "x4",0
+    b_9387 db "x3",0
+    b_9388 db "x2",0
+    b_9389 db "x1",0
+    b_9390 db "x0",0
+    b_9391 db "    svc     #0",10,0
+    b_9392 db "x0",0
+    b_9393 db "ERROR: Invalid opcode (#",0
+    b_9394 db ")",10,0
+    b_9395 db "ERROR: Function '",0
+    b_9396 db "' was never defined",10,0
+    b_9397 db "// ",0
+    b_9398 db 10,0
+    b_9399 db "f_",0
+    b_9400 db ":",10,0
+    b_9401 db "    stp     x29, x30, [sp, #-16]!",10,0
+    b_9402 db "    mov     x29, sp",10,0
+    b_9403 db 92,"0",0
+    b_9404 db 92,"n",0
+    b_9405 db 92,"t",0
+    b_9406 db 92,"v",0
+    b_9407 db 92,"f",0
+    b_9408 db 92,"r",0
+    b_9409 db "'",0
+    b_9410 db 92,34,0
+    b_9411 db 92,92,0
+    b_9412 db ".ascii ",34,0
+    b_9413 db ".byte ",0
+    b_9414 db ",",0
+    b_9415 db 92,"0",34,10,0
+    b_9416 db "0",10,0
+    b_9417 db "    // Inline Buffers",10,0
+    b_9418 db "    b_",0
+    b_9419 db ": ",0
+    b_9420 db "    // ",0
+    b_9421 db 10,0
+    b_9422 db "    b_",0
+    b_9423 db ": ",0
+    b_9424 db ".byte ",0
+    b_9425 db 10,0
+    b_9426 db ".quad ",0
+    b_9427 db 10,0
+    b_9428 db "        .skip ",0
+    b_9429 db 10,0
+    b_9430 db "    b_",0
+    b_9431 db ": .skip ",0
+    b_9432 db " // ",0
+    b_9433 db 10,0
+    b_9434 db ".section .text",10,0
+    b_9435 db ".global _start",10,0
+    b_9436 db ".align  2",10,0
+    b_9437 db "// start",10,0
+    b_9438 db "_start:",10,0
+    b_9439 db "    adrp    x0, bsp",10,0
+    b_9440 db "    add     x0, x0, :lo12:bsp",10,0
+    b_9441 db "    add     x12, x0, #",0
+    b_9442 db ", lsl #12",10,0
+    b_9443 db "    add     x0, sp,  #8",10,0
+    b_9444 db "x0",0
+    b_9445 db "    ldr     x0, [sp]",10,0
+    b_9446 db "x0",0
+    b_9447 db ".section .data",10,0
+    b_9448 db ".section .bss",10,0
+    b_9449 db "    bsp: .skip ",0
+    b_9450 db 10,0
+    b_9451 db "ARCH_X86_64",0
+    b_9452 db "OS_LINUX",0
+    b_9453 db "TOOLCHAIN_NASM",0
+    b_9454 db "ARCH_X86_64",0
+    b_9455 db "OS_LINUX",0
+    b_9456 db "TOOLCHAIN_FASM",0
+    b_9457 db "ARCH_AARCH64",0
+    b_9458 db "OS_LINUX",0
+    b_9459 db "TOOLCHAIN_GCC",0
+    b_9460 db "ARCH_X86_64",0
+    b_9461 db "OS_WINDOWS",0
+    b_9462 db "TOOLCHAIN_NASM",0
+    b_9463 db "ERROR: Unsupported platform",10,0
+    b_9464 db "Example:",10,0
+    b_9465 db 9,0
+    b_9466 db " ./src/main.4c ./target/output.asm x86_64-linux-nasm -Istd -O",10,0
+    b_9467 db "Options:",10,0
+    b_9468 db 9,"-I<dir>    ",9,9,"allow files from `dir` to be included during compilation",10,0
+    b_9469 db 9,"-d, --debug",9,9,"compile with debug information",10,0
+    b_9470 db 9,"-O, --optimize",9,9,"enable optimizations",10,0
+    b_9471 db "ERROR: Invalid target '",0
+    b_9472 db "', expected <architecture>-<OS>-<toolchain>",10,0
+    b_9473 db "ERROR: Invalid target '",0
+    b_9474 db "', expected <architecture>-<OS>-<toolchain>",10,0
+    b_9475 db "x86_64",0
+    b_9476 db "x64",0
+    b_9477 db "ARCH_X86_64",0
+    b_9478 db "aarch64",0
+    b_9479 db "ARCH_AARCH64",0
+    b_9480 db "ERROR: Unsupported architecture '",0
+    b_9481 db "'",10,0
+    b_9482 db "linux",0
+    b_9483 db "OS_LINUX",0
+    b_9484 db "windows",0
+    b_9485 db "OS_WINDOWS",0
+    b_9486 db "ERROR: Unsupported OS '",0
+    b_9487 db "'",10,0
+    b_9488 db "nasm",0
+    b_9489 db "TOOLCHAIN_NASM",0
+    b_9490 db "fasm",0
+    b_9491 db "TOOLCHAIN_FASM",0
+    b_9492 db "gcc",0
+    b_9493 db "TOOLCHAIN_GCC",0
+    b_9494 db "ERROR: Unsupported toolchain '",0
+    b_9495 db "'",10,0
+    b_9496 db "ERROR: flag '",0
+    b_9497 db "debug",0
+    b_9498 db "' already set",10,0
+    b_9499 db "ERROR: flag '",0
+    b_9500 db "optimize",0
+    b_9501 db "' already set",10,0
+    b_9502 db "ERROR: Unrecognized switch '-",0
+    b_9503 db "'",10,0
+    b_9504 db "ERROR: Failed to obtain current working directory",10,0
+    b_9505 db "./",0
+    b_9506 db "-I",0
+    b_9507 db "--",0
+    b_9508 db "--debug",0
+    b_9509 db "ERROR: flag '",0
+    b_9510 db "debug",0
+    b_9511 db "' already set",10,0
+    b_9512 db "--optimize",0
+    b_9513 db "ERROR: flag '",0
+    b_9514 db "optimize",0
+    b_9515 db "' already set",10,0
+    b_9516 db "ERROR: Unrecognized option '",0
+    b_9517 db "'",10,0
+    b_9518 db "Usage: ",0
+    b_9519 db " <source_file> <output_file> <platform> [options]",10,0
+    b_9520 db "WARNING: ",0
+    b_9521 db "strs_mem",0
+    b_9522 db " is more than 25% full",10,0
+    b_9523 db "WARNING: ",0
+    b_9524 db "toks_mem",0
+    b_9525 db " is more than 25% full",10,0
+    b_9526 db "WARNING: ",0
+    b_9527 db "out_toks_mem",0
+    b_9528 db " is more than 25% full",10,0
+    b_9529 db "WARNING: ",0
+    b_9530 db "fn_ops_mem",0
+    b_9531 db " is more than 25% full",10,0
+    b_9532 db "WARNING: ",0
+    b_9533 db "inline_bufs",0
+    b_9534 db " is more than 25% full",10,0
+    b_9535 db "WARNING: ",0
+    b_9536 db "enum_variants_mem",0
+    b_9537 db " is more than 25% full",10,0
+    b_9538 db "WARNING: ",0
+    b_9539 db "struct_fields_mem",0
+    b_9540 db " is more than 25% full",10,0
+    b_9541 db "WARNING: ",0
+    b_9542 db "dims_mem",0
+    b_9543 db " is more than 25% full",10,0
+    b_9544 db "WARNING: ",0
+    b_9545 db "dirs_mem",0
+    b_9546 db " is more than 25% full",10,0
+    b_9547 db "ERROR: File '",0
+    b_9548 db "' not found",10,0
+    b_9549 db "__core.4c",0
+    b_9550 db "ERROR: standard library not found",10,0
+    b_9551 db "WARNING: Compilation completed with a stack depth of ",0
+    b_9552 db 10,0
 section '.bss' writeable
     b_195 rb 32
     b_196 rb 32
@@ -28253,6 +28281,7 @@ section '.bss' writeable
     b_847 rb 8
     b_1082 rb 8
     b_1144 rb 8
+    b_1195 rb 8
     b_1210 rb 8
     b_1211 rb 8
     b_1627 rb 152

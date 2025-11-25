@@ -153,14 +153,14 @@ static char[32] push_cache
         "    lsl     x0, x0, #3\n"coms
         "    add     x0, x12, x0\n"coms
         "    ldr     x1, [x0]\n"coms
-        "    .ral_"coms viewod com ":\n"coms
+        "    .ral_"coms viewod com_label ":\n"coms
         "    cmp     x0, x12\n"coms
-        "    beq     .rbl_"coms viewod com "\n"coms
+        "    beq     .rbl_"coms viewod com_label "\n"coms
         "    ldr     x2, [x0, #-8]\n"coms
         "    str     x2, [x0]\n"coms
         "    sub     x0, x0, #8\n"coms
-        "    b       .ral_"coms viewod com "\n"coms
-        "    .rbl_"coms viewod com ":\n"coms
+        "    b       .ral_"coms viewod com_label "\n"coms
+        "    .rbl_"coms viewod com_label ":\n"coms
         "    str     x1, [x12]\n"coms
     }
     else if viewok OKind.DUP == {
@@ -238,11 +238,11 @@ static char[32] push_cache
         "x1" compile_pop
         "x2" compile_pop
         flush_push_cache
-        "    .cpyl_"coms viewod com ":\n"coms
+        "    .cpyl_"coms viewod com_label ":\n"coms
         "    ldrb    w3, [x2], #1\n"coms
         "    strb    w3, [x1], #1\n"coms
         "    subs    x0, x0, #1\n"coms
-        "    b.ne    .cpyl_"coms viewod com "\n"coms
+        "    b.ne    .cpyl_"coms viewod com_label "\n"coms
     }
     else if viewok OKind.PUSH_VAR == {
         flush_push_cache
@@ -334,19 +334,19 @@ static char[32] push_cache
     else if viewok OKind.LABEL == {
         flush_push_cache
         flush_stack_ptr_delta
-        ".l_"coms viewod com ":\n"coms
+        ".l_"coms viewod com_label ":\n"coms
     }
     else if viewok OKind.JMP == {
         flush_push_cache
         flush_stack_ptr_delta
         "    // OP_JMP\n"coms_dbg
-        "    b       .l_"coms viewod com "\n"coms
+        "    b       .l_"coms viewod com_label "\n"coms
     }
     else if viewok OKind.JZ == {
         "    // OP_JZ\n"coms_dbg
         "x0" compile_pop
         flush_stack_ptr_delta
-        "    cbz     x0, .l_"coms viewod com "\n"coms
+        "    cbz     x0, .l_"coms viewod com_label "\n"coms
     }
     else if viewok OKind.EXIT == {
         "    // OP_EXIT\n"coms_dbg
@@ -360,34 +360,34 @@ static char[32] push_cache
         "x1" compile_pop           // filename pointer
         flush_push_cache
         "    cmp     x0, #0\n"coms
-        "    beq     .frl_"coms viewod com "\n"coms
+        "    beq     .frl_"coms viewod com_label "\n"coms
         "    cmp     x0, #1\n"coms
-        "    beq     .fwl_"coms viewod com "\n"coms
+        "    beq     .fwl_"coms viewod com_label "\n"coms
         "    cmp     x0, #2\n"coms
-        "    beq     .fal_"coms viewod com "\n"coms
-        "    b       .ffl_"coms viewod com "\n"coms
-        "    .frl_"coms viewod com ":\n"coms
+        "    beq     .fal_"coms viewod com_label "\n"coms
+        "    b       .ffl_"coms viewod com_label "\n"coms
+        "    .frl_"coms viewod com_label ":\n"coms
         "    mov     x2, #0\n"coms
-        "    b       .fdl_"coms viewod com "\n"coms
-        "    .fwl_"coms viewod com ":\n"coms
+        "    b       .fdl_"coms viewod com_label "\n"coms
+        "    .fwl_"coms viewod com_label ":\n"coms
         "    mov     x2, #577\n"coms
-        "    b       .fdl_"coms viewod com "\n"coms
-        "    .fal_"coms viewod com ":\n"coms
+        "    b       .fdl_"coms viewod com_label "\n"coms
+        "    .fal_"coms viewod com_label ":\n"coms
         "    mov     x2, #1089\n"coms
-        "    b       .fdl_"coms viewod com "\n"coms
-        "    .fdl_"coms viewod com ":\n"coms
+        "    b       .fdl_"coms viewod com_label "\n"coms
+        "    .fdl_"coms viewod com_label ":\n"coms
         "    mov     x8, #56\n"coms
         "    mov     x0, #-100\n"coms
         "    mov     x3, #420\n"coms
         "    svc     #0\n"coms
         "x0" force_compile_push    // push FD (or -1 on error)
         flush_stack_ptr_delta
-        "    b       .fel_"coms viewod com "\n"coms
-        "    .ffl_"coms viewod com ":\n"coms
+        "    b       .fel_"coms viewod com_label "\n"coms
+        "    .ffl_"coms viewod com_label ":\n"coms
         "    mov     x0, #-1\n"coms
         "x0" force_compile_push
         flush_stack_ptr_delta
-        "    .fel_"coms viewod com ":\n"coms
+        "    .fel_"coms viewod com_label ":\n"coms
     }
     else if viewok OKind.FREAD == {
         "    // OP_FREAD\n"coms_dbg
@@ -463,6 +463,7 @@ static char[32] push_cache
     if optimize_mode {
         if f->is_used not { return }
     }
+    dup =FN_IDX
     if debug_mode {
         "// "coms f->key.name coms "\n"coms
     }

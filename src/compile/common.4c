@@ -1,3 +1,4 @@
+pub static int FN_IDX
 pub static ptr out_fd
 static int out_fd_buffer_len
 
@@ -38,4 +39,9 @@ pub :comc {
     var char[2] buf
     &buf!c
     &buf coms
+}
+
+// id --
+pub :com_label {
+    FN_IDX com "_" coms com
 }
