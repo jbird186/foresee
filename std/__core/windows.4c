@@ -1,6 +1,6 @@
-pub :STDIN_FD {-10 win_GetStdHandle}
-pub :STDOUT_FD {-11 win_GetStdHandle}
-pub :STDERR_FD {-12 win_GetStdHandle}
+#pub macro STDIN_FD {-10 win_GetStdHandle}
+#pub macro STDOUT_FD {-11 win_GetStdHandle}
+#pub macro STDERR_FD {-12 win_GetStdHandle}
 
 // -- &argv argc
 pub :__parse_args {

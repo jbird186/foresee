@@ -455,13 +455,21 @@ static char[32] push_cache
 
 // idx map_slot_ptr -- idx
 :compile_function {
-    if debug_mode {
-        "// "coms dup as Function.key.name@ coms "\n"coms
+    var &Function f: {}
+    if f->def not {
+        "ERROR: Function '"puts f->key.name puts "' was never defined\n"puts
+        1 exit
     }
-    "f_"coms over com ":\n"coms
+    if optimize_mode {
+        if f->is_used not { return }
+    }
+    if debug_mode {
+        "// "coms f->key.name coms "\n"coms
+    }
+    "f_"coms dup com ":\n"coms
     "    stp     x29, x30, [sp, #-16]!\n"coms
     "    mov     x29, sp\n"coms
-    as Function.def@ compile_ops
+    f->def compile_ops
 }
 
 :compile_functions {

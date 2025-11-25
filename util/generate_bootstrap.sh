@@ -1,11 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
+rebuild() {
+    ./target/compiler ./src/main.4c ./target/compiler.asm x86_64-linux-fasm -Istd/ -O
+    fasm ./target/compiler.asm ./target/compiler.o > /dev/null && ld ./target/compiler.o -o ./target/compiler
+}
+rebuild
+
 before=$(sha256sum "./target/compiler.asm" | awk '{print $1}')
-
-./target/compiler ./src/main.4c ./target/compiler.asm x86_64-linux-fasm -Istd/ -O
-fasm ./target/compiler.asm ./target/compiler.o && ld ./target/compiler.o -o ./target/compiler
-
+rebuild
 after=$(sha256sum "./target/compiler.asm" | awk '{print $1}')
 
 if [[ "$before" != "$after" ]]; then

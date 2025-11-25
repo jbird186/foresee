@@ -45,6 +45,7 @@ pub struct Macro {
 pub struct Function {
     ScopedKey key
     &Op def
+    bool is_used
 }
 
 pub struct EnumVariant {

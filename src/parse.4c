@@ -230,13 +230,34 @@ static int TOTAL_DATA_SIZE
     size
 }
 
+// idx --
+:set_used_fn {
+    var &Function f: { FN_MAP map_idx }
+    true =f->is_used
+}
+
 // ops_dest tok_ptr name -- ops_dest tok_ptr
 :call_fn {
-    if dup FN_MAP scoped_map_find_idx is_failure {
-        swap error swap "Function '"puts puts "' not defined\n"puts
+    var &char name: {}
+    var int idx: { name FN_MAP scoped_map_find_idx }
+    if idx is_failure {
+        error "Function '"puts name puts "' not defined\n"puts
         1 exit
     }
-    FN_MAP scoped_map_find_idx OKind.CALL_FN 3 pick op_push
+    idx set_used_fn
+    idx OKind.CALL_FN 3 pick op_push
+}
+
+// ops_dest name --
+:call_fn_no_tok {
+    var &char name: {}
+    var int idx: { name FN_MAP scoped_map_find_idx }
+    if idx is_failure {
+        "ERROR: Function '"puts name puts "' not defined\n"puts
+        1 exit
+    }
+    idx set_used_fn
+    idx OKind.CALL_FN rot op_push
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -324,8 +345,10 @@ static int TOTAL_DATA_SIZE
     define_intrinsic_opcode(0, OKind.WIN_GetStdHandle, "__WIN_GetStdHandle")
 
     ////////// Functions //////////
-    if viewtd FN_MAP scoped_map_find_idx is_success {
-        viewtd FN_MAP scoped_map_find_idx OKind.CALL_FN 3 roll op_push
+    var int fn_idx: { viewtd FN_MAP scoped_map_find_idx }
+    if fn_idx is_success {
+        fn_idx OKind.CALL_FN 3 roll op_push
+        fn_idx set_used_fn
         %Token+
         return
     }
@@ -535,12 +558,11 @@ static int TOTAL_DATA_SIZE
     %Token+
 
     name scope check_name_availability_fn
-    if name scope FN_MAP scoped_map_get as Function.def@ {
-        error "Function '"puts name puts "' already defined in this scope\n"puts
-        1 exit
-    }
 
     var &Function entry: {name scope FN_MAP scoped_map_get}
+    if entry slot_is_empty {
+        false =entry->is_used
+    }
     name =entry->key.name
     scope =entry->key.scope
 
@@ -866,9 +888,10 @@ static int TOTAL_DATA_SIZE
     }
 
     %Token+
-    // -- ops_dest tok_ptr
-    if viewtd FN_MAP scoped_map_find_idx is_success {
-        viewtd FN_MAP scoped_map_find_idx OKind.PUSH_FN 3 roll op_push
+    var int fn_idx: { viewtd FN_MAP scoped_map_find_idx }
+    if fn_idx is_success {
+        fn_idx OKind.PUSH_FN 3 roll op_push
+        fn_idx set_used_fn
         %Token+
         return
     }
@@ -1221,9 +1244,10 @@ pub :parse_out_toks {
     drop
 
     if "OS_WINDOWS" has_builtin_flag {
-        &start_ops_mem swap "__parse_args" call_fn nip
+        &start_ops_mem "__parse_args" call_fn_no_tok
     }
-    &start_ops_mem swap "main" call_fn nip
+    &start_ops_mem "main" call_fn_no_tok
+
     if "OS_WINDOWS" has_builtin_flag {
         8 OKind.ALLOC &start_ops_mem op_push
     }

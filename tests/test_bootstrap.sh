@@ -14,7 +14,7 @@ nasm -f elf64 ./bootstrap/x86_64-linux-nasm.asm -o target/compiler.o && ld targe
 target/compiler ./src/main.4c target/compiler.s x86_64-linux-nasm -Istd/ -O
 check_build "x86_64-linux-nasm" "asm"
 
-fasm ./bootstrap/x86_64-linux-fasm.asm target/compiler.o && ld target/compiler.o -o target/compiler
+fasm ./bootstrap/x86_64-linux-fasm.asm target/compiler.o > /dev/null && ld target/compiler.o -o target/compiler
 target/compiler ./src/main.4c target/compiler.s x86_64-linux-fasm -Istd/ -O
 check_build "x86_64-linux-fasm" "asm"
 

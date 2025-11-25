@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-fasm ./bootstrap/x86_64-linux-fasm.asm target/compiler.o && ld target/compiler.o -o target/compiler
+fasm ./bootstrap/x86_64-linux-fasm.asm target/compiler.o > /dev/null && ld target/compiler.o -o target/compiler
 
-fail=0
 for src in ./examples/*.4c; do
     name=$(basename "$src")
     base="${src%.4c}"
@@ -12,23 +11,17 @@ for src in ./examples/*.4c; do
     in_file="./tests/examples/in/${name}.in"
     expected_out="./tests/examples/out/${name}.out"
 
-    echo "Testing $name..."
-
     if ! ./target/compiler "$src" "$asm_out" x86_64-linux-fasm -Istd/ -O; then
         echo "Failed to compile $name!"
-        fail=$((fail + 1))
-        continue
+        exit 1
     fi
-
-    if ! fasm "$asm_out" "${base}.o"; then
+    if ! fasm "$asm_out" "${base}.o" > /dev/null; then
         echo "fasm failed for $name!"
-        fail=$((fail + 1))
-        continue
+        exit 1
     fi
     if ! ld "${base}.o" -o "$exe"; then
         echo "ld failed for $name!"
-        fail=$((fail + 1))
-        continue
+        exit 1
     fi
 
     actual_out=$(mktemp)
@@ -42,26 +35,24 @@ for src in ./examples/*.4c; do
         last_actual=$(tail -n1 "$actual_out")
         last_expected=$(tail -n1 "$expected_out")
         if [[ "$last_actual" == "$last_expected" ]]; then
-            echo "Passed $name."
+            echo "PASSED $name."
         else
-            echo "Mismatch for $name:"
+            echo "FAILED $name:"
             echo "  Expected: $last_expected"
             echo "  Actual:   $last_actual"
-            fail=$((fail + 1))
+            exit 1
         fi
     else
         if diff -u "$expected_out" "$actual_out" > /dev/null; then
-            echo "Passed $name."
+            echo "PASSED $name."
         else
-            echo "Mismatch for $name:"
+            echo "FAILED $name:"
             echo "---- diff ----"
             diff -u "$expected_out" "$actual_out"
             echo "--------------"
-            fail=$((fail + 1))
+            exit 1
         fi
     fi
 
     rm -f "$actual_out" "${base}.o" "$exe" "$asm_out"
 done
-
-exit $fail
