@@ -257,9 +257,12 @@ static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_string {
-    viewtd &inline_bufs %ptr stack_push!
-    // -- tok_ptr
-    &inline_bufs stack_len 1- MAP_SIZE+ OKind.PUSH_BUF 3 roll op_push
+    var int idx: { viewtd INLINE_STR_MAP map_get_idx }
+    var &InlineStr s: { idx INLINE_STR_MAP map_idx }
+    if s slot_is_empty {
+        viewtd =s->value
+    }
+    (idx MAP_SIZE+) OKind.PUSH_BUF 3 roll op_push
     %Token+
 }
 

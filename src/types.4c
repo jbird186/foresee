@@ -25,6 +25,10 @@ pub struct Token {
     int line
 }
 
+pub struct InlineStr {
+    &char value
+}
+
 pub struct Buffer {
     ScopedKey key
     int size

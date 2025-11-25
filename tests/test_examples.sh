@@ -32,14 +32,12 @@ for src in ./examples/*.4c; do
     fi
 
     if [[ -f "$in_file" ]]; then
-        last_actual=$(tail -n1 "$actual_out")
-        last_expected=$(tail -n1 "$expected_out")
+        last_actual=$(tail -n8 "$actual_out")
+        last_expected=$(tail -n8 "$expected_out")
         if [[ "$last_actual" == "$last_expected" ]]; then
             echo "PASSED $name."
         else
-            echo "FAILED $name:"
-            echo "  Expected: $last_expected"
-            echo "  Actual:   $last_actual"
+            echo "FAILED $name."
             exit 1
         fi
     else

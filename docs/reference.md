@@ -104,9 +104,11 @@ var int year
 * `fetch`/`@` (`&buffer -- value`): Reads an 8-byte `value` from `&buffer`.
 * `store`/`!` (`value &buffer --`): Writes an 8-byte `value` to `&buffer`.
 
-Attempting to read to, or write from, an invalid memory address may cause an error.
-
 `fetchc`/`@c` (`&buffer -- value`) and `storec`/`!c` (`value &buffer --`) can be used to read and write 1-byte `value`s to and from memory, respectively.
+
+Attempting to read from, or write to, an invalid memory address may cause an error.
+
+Note that modifying inline strings is undefined behavior. For example, `100 "Hello World!\n" store` would result in undefined behavior. Treat pointers to inline strings as strictly read-only.
 
 ### Variables Example
 

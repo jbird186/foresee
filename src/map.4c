@@ -4,7 +4,7 @@
 // FNV-1a
 // str_ptr -- int
 :hash {
-    var int res: {2166136261}
+    var int res: 2166136261
     while dup@c {
         dup@c res^ 16777619* =res
         1+

@@ -411,9 +411,11 @@ pub :x64n_compile_generic_op {
 pub :x64n_compile_inline_bufs {
     "    ; Inline Buffers\n"coms_dbg
     // -- idx
-    0 while dup &inline_bufs stack_len < {
-        "    b_"coms dup MAP_SIZE+ com " db "coms
-        dup &inline_bufs %ptr stack_get@ compile_buf_str
+    0 while dup MAP_SIZE < {
+        if dup INLINE_STR_MAP map_idx slot_is_used {
+            "    b_"coms dup MAP_SIZE+ com " db "coms
+            dup INLINE_STR_MAP map_idx as InlineStr.value@ compile_buf_str
+        }
         1+
     } drop
 }

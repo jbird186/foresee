@@ -16,7 +16,6 @@
     check_buf(toks_mem, %Token, "toks_mem")
     check_buf(out_toks_mem, %Token, "out_toks_mem")
     check_buf(fn_ops_mem, %Op, "fn_ops_mem")
-    check_buf(inline_bufs, %ptr, "inline_bufs")
     check_buf(enum_variants_mem, %EnumVariant, "enum_variants_mem")
     check_buf(struct_fields_mem, %StructField, "struct_fields_mem")
     check_buf(dims_mem, %int, "dims_mem")
