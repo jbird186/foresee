@@ -110,6 +110,10 @@ Attempting to read from, or write to, an invalid memory address may cause an err
 
 Note that modifying inline strings is undefined behavior. For example, `100 "Hello World!\n" store` would result in undefined behavior. Treat pointers to inline strings as strictly read-only.
 
+### Multiple Declarators
+
+Multiple variables of the same type can be declared at once by using braces. For example, `var int {a b:1 c}` is equivalent to (C) `int a, b=1, c;`.
+
 ### Variables Example
 
 ```

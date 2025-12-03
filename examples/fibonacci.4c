@@ -1,0 +1,8 @@
+#use "stdio.4c"
+
+:main {
+    0 1 while (over 100_000 <) {
+        over put cr
+        swap over +
+    } drop drop
+}

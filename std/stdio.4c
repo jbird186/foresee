@@ -28,8 +28,7 @@ pub :fwrite {
         var int len: {}
         var &char buf: {}
 
-        var int n_newlines: 0
-        var int i: 0
+        var int {n_newlines: 0 i: 0}
         for , (i len <) (buf i+ @c flag) &, 1 +=i {
             if (buf i+ @c) ('\n') == {
                 1 +=n_newlines

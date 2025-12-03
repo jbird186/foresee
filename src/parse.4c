@@ -797,43 +797,20 @@ static int TOTAL_DATA_SIZE
     %Token+
 }
 
-// ops_dest tok_ptr -- new_tok_ptr
-:parse_buffer_def {
-    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
-    var char is_static
-    var int alloc_offset
-    if viewtk TKind.STATIC == {
-        true =is_static
-        0 =alloc_offset
-    } else if over {
-        false =is_static
-        CURRENT_ALLOC_SIZE =alloc_offset
-    } else {
-        error "Buffers defined at global scope must be static\n"puts
-        1 exit
-    }
-    %Token+
-
-    var int size
-    var int type_indir: 0
-    var &char type_name: {NULL}
-    var &int type_dims: {NULL}
-    if dup tok_is_simple_type {
-        view_simple_type =size =type_dims =type_indir =type_name
-    } else if viewtk TKind.BRACKET_START == {
-        view_complex_type =size
-    } else {
-        -1 =size
-    }
-
-    if is_static not {
-        size alloc_bytes
-    }
-
+#macro _parse_next_buffer {
     if viewtk TKind.IDENT != {
         error "Invalid buffer name\n"puts
         1 exit
     }
+
+    var int alloc_offset
+    if is_static {
+        0 =alloc_offset
+    } else {
+        CURRENT_ALLOC_SIZE =alloc_offset
+        size alloc_bytes
+    }
+
     var &char name: {viewtd}
     name scope check_name_availability
 
@@ -866,7 +843,6 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
 
-    nip
     var &Buffer entry: {name scope BUF_MAP scoped_map_get}
     name =entry->key.name
     scope =entry->key.scope
@@ -874,10 +850,48 @@ static int TOTAL_DATA_SIZE
     type_name =entry->type.name
     type_dims =entry->type.dims
     type_indir =entry->type.indir
-    init =entry->init
     alloc_offset =entry->alloc_offset
+    init =entry->init
     init_int =entry->init_int
     is_static =entry->is_static
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_buffer_def {
+    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var char is_static
+    if viewtk TKind.STATIC == {
+        true =is_static
+    } else if over {
+        false =is_static
+    } else {
+        error "Buffers defined at global scope must be static\n"puts
+        1 exit
+    }
+    %Token+
+
+    var int size
+    var int type_indir: 0
+    var &char type_name: NULL
+    var &int type_dims: NULL
+    if dup tok_is_simple_type {
+        view_simple_type =size =type_dims =type_indir =type_name
+    } else if viewtk TKind.BRACKET_START == {
+        view_complex_type =size
+    } else {
+        -1 =size
+    }
+
+    if viewtk TKind.BRACE_START == {
+        %Token+
+        while viewtk TKind.BRACE_END != {
+            _parse_next_buffer
+        }
+        %Token+
+    } else {
+        _parse_next_buffer
+    }
+    nip
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -1062,8 +1076,8 @@ static int TOTAL_DATA_SIZE
     while viewtk TKind.BRACE_END != {
         var int size
         var int type_indir: 0
-        var &char type_name: {NULL}
-        var int type_dims: {NULL}
+        var &char type_name: NULL
+        var int type_dims: NULL
         if dup tok_is_simple_type {
             view_simple_type =size =type_dims =type_indir =type_name
         } else if viewtk TKind.BRACKET_START == {

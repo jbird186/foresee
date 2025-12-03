@@ -21,9 +21,7 @@ pub :get_argv {
 }
 
 :parse_platform {
-    var ptr arch: {3 get_argv}
-    var ptr os
-    var ptr tool
+    var ptr {arch: {3 get_argv} os tool}
 
     arch '-' strchr
     if dup not {

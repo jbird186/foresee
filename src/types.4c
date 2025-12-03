@@ -33,8 +33,8 @@ pub struct Buffer {
     ScopedKey key
     int size
     Type type
-    [8] init
     int alloc_offset
+    [8] init
     bool init_int
     bool is_static
 }

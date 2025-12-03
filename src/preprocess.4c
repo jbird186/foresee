@@ -182,8 +182,7 @@ static int scope_depth
 // file_path --
 pub :add_file_dir {
     var &char name: {}
-    var int n: 0
-    var int size: 0
+    var int { n: 0 size: 0 }
 
     while var char c: {name n+ @c} c {
         1 +=n
