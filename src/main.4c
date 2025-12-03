@@ -1,6 +1,7 @@
 #use "lex.4c"
 #use "preprocess.4c"
 #use "parse.4c"
+#use "optimize.4c"
 #use "compile.4c"
 #use "cli.4c"
 
@@ -29,6 +30,7 @@
     var &char out_file: {get_out_file}
 
     0 SCOPE_STACK stack_push!
+    1 SCOPE_STACK stack_push!
 
     var ptr src_fd: {src_file 0 fopen}
     if src_fd is_failure {
@@ -47,6 +49,7 @@
 
     preprocess_src
     parse_out_toks
+    optimize_ops
 
     out_file 1 fopen =out_fd
     compile_program

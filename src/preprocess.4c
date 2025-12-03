@@ -37,11 +37,6 @@ static int scope_depth
     preprocess_delim(BRACE_START, BRACE_END)
 }
 
-// tok_ptr -- tok_ptr
-:preprocess_paren_block {
-    preprocess_delim(PAREN_START, PAREN_END)
-}
-
 // name tok_ptr macro_idx -- new_tok_ptr
 :preprocess_macro_call {
     dup MACRO_MAP map_idx

@@ -225,12 +225,6 @@ static int TOTAL_DATA_SIZE
     size
 }
 
-// idx --
-:set_used_fn {
-    var &Function f: { FN_MAP map_idx }
-    true =f->is_used
-}
-
 // ops_dest tok_ptr name -- ops_dest tok_ptr
 :call_fn {
     var &char name: {}
@@ -239,19 +233,18 @@ static int TOTAL_DATA_SIZE
         error "Function '"puts name puts "' not defined\n"puts
         1 exit
     }
-    idx set_used_fn
     idx OKind.CALL_FN 3 pick op_push
 }
 
 // ops_dest name --
-:call_fn_no_tok {
+:call_fn_injected {
     var &char name: {}
     var int idx: { name FN_MAP scoped_map_find_idx }
     if idx is_failure {
         "ERROR: Function '"puts name puts "' not defined\n"puts
         1 exit
     }
-    idx set_used_fn
+    true idx FN_MAP map_idx as Function.is_used!c
     idx OKind.CALL_FN rot op_push
 }
 
@@ -346,7 +339,6 @@ static int TOTAL_DATA_SIZE
     var int fn_idx: { viewtd FN_MAP scoped_map_find_idx }
     if fn_idx is_success {
         fn_idx OKind.CALL_FN 3 roll op_push
-        fn_idx set_used_fn
         %Token+
         return
     }
@@ -558,11 +550,10 @@ static int TOTAL_DATA_SIZE
     name scope check_name_availability_fn
 
     var &Function entry: {name scope FN_MAP scoped_map_get}
-    if entry slot_is_empty {
-        false =entry->is_used
-    }
     name =entry->key.name
     scope =entry->key.scope
+    false =entry->is_used
+    viewtf =entry->file
 
     // Function prototype
     if viewtk TKind.BRACE_START != {
@@ -905,7 +896,6 @@ static int TOTAL_DATA_SIZE
     var int fn_idx: { viewtd FN_MAP scoped_map_find_idx }
     if fn_idx is_success {
         fn_idx OKind.PUSH_FN 3 roll op_push
-        fn_idx set_used_fn
         %Token+
         return
     }
@@ -1258,9 +1248,9 @@ pub :parse_out_toks {
     drop
 
     if "OS_WINDOWS" has_builtin_flag {
-        &start_ops_mem "__parse_args" call_fn_no_tok
+        &start_ops_mem "__parse_args" call_fn_injected
     }
-    &start_ops_mem "main" call_fn_no_tok
+    &start_ops_mem "main" call_fn_injected
 
     if "OS_WINDOWS" has_builtin_flag {
         8 OKind.ALLOC &start_ops_mem op_push

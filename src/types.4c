@@ -50,6 +50,7 @@ pub struct Function {
     ScopedKey key
     &Op def
     bool is_used
+    &char file
 }
 
 pub struct EnumVariant {

@@ -460,8 +460,11 @@ static char[32] push_cache
         "ERROR: Function '"puts f->key.name puts "' was never defined\n"puts
         1 exit
     }
-    if optimize_mode {
-        if f->is_used not { return }
+    if f->is_used not {
+        if f->key.scope {
+            "WARNING: Function '"puts f->key.name puts "' is never used\n"puts
+        }
+        if optimize_mode { return }
     }
     dup =FN_IDX
     if debug_mode {

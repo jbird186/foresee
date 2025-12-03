@@ -346,11 +346,14 @@ pub :x64n_compile_generic_op {
     :compile_function {
         var &Function f: {}
         if f->def not {
-            "ERROR: Function '"puts f->key.name puts "' was never defined\n"puts
+            f->file puts ": ERROR: Function '"puts f->key.name puts "' was never defined\n"puts
             1 exit
         }
-        if optimize_mode {
-            if f->is_used not { return }
+        if f->is_used not {
+            if f->key.scope {
+                f->file puts ": WARNING: Private function '" puts f->key.name puts "' is never used\n" puts
+            }
+            if optimize_mode { return }
         }
         dup =FN_IDX
         if debug_mode {

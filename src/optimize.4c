@@ -1,0 +1,23 @@
+#use "types.4c"
+#use "map.4c"
+
+// &fn_ptr --
+:mark_fn_tree_as_used {
+    var &Function root: {}
+    true =root->is_used
+
+    var &Op op: {root->def}
+    while (op->kind) {
+        if (op->kind OKind.CALL_FN ==) (op->kind OKind.PUSH_FN ==) | {
+            var &Function fn: {op->data FN_MAP map_idx}
+            if fn->is_used not {
+                fn mark_fn_tree_as_used
+            }
+        }
+        %Op+=op
+    }
+}
+
+pub :optimize_ops {
+    "main" FN_MAP map_get mark_fn_tree_as_used
+}
