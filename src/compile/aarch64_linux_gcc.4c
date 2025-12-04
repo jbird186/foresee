@@ -531,7 +531,6 @@ static char[32] push_cache
 }
 
 :compile_inline_bufs {
-    "    // Inline Buffers\n"coms_dbg
     // -- idx
     0 while dup MAP_SIZE < {
         if dup INLINE_STR_MAP map_idx slot_is_used {
@@ -603,13 +602,15 @@ pub :compile_program_aarch64_linux_gcc {
     "x0" force_compile_push
     &start_ops_mem as StackHead.data compile_ops
 
+    ".section .rodata\n"coms
+    compile_inline_bufs
+
     ".section .data\n"coms
     for (var int i: 0, i MAP_SIZE <, 1 +=i) {
         if (i is_valid_static_buffer) (i BUF_MAP map_idx as Buffer.init@ flag) & {
             i compile_buf_data
         }
     }
-    compile_inline_bufs
 
     ".section .bss\n"coms
     for (var int i: 0, i MAP_SIZE <, 1 +=i) {

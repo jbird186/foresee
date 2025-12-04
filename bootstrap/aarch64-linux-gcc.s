@@ -140,6 +140,12 @@ f_90:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_1041
+    adrp    x0, b_10424
+    add     x0, x0, :lo12:b_10424
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_4688
     adrp    x0, b_15786
     add     x0, x0, :lo12:b_15786
     str     x0, [x12, #-8]
@@ -2005,84 +2011,6 @@ f_742:
     str     x0, [x12, #16]
     add     x12, x12, 16
 .l_742_0:
-    mov     sp, x29
-    ldp     x29, x30, [sp], #16
-    ret
-f_756:
-    stp     x29, x30, [sp, #-16]!
-    mov     x29, sp
-    adrp    x0, b_8295
-    add     x0, x0, :lo12:b_8295
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
-    mov     x0, #0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-.l_756_0:
-    ldr     x0, [x12]
-    str     x0, [x12, #-8]
-    mov     x0, #8191
-    ldr     x1, [x12, #-8]
-    cmp     x1, x0
-    cset    w0, lt
-    cbz     x0, .l_756_1
-    ldr     x0, [x12]
-    str     x0, [x12, #-8]
-    adrp    x0, b_5239
-    add     x0, x0, :lo12:b_5239
-    str     x0, [x12, #-16]
-    mov     x0, #8
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3545
-    bl      f_275
-    ldr     x0, [x12]
-    add     x12, x12, 8
-    cbz     x0, .l_756_3
-    adrp    x0, b_11996
-    add     x0, x0, :lo12:b_11996
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    ldr     x0, [x12]
-    str     x0, [x12, #-8]
-    mov     x0, #8191
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_3176
-    adrp    x0, b_15437
-    add     x0, x0, :lo12:b_15437
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6962
-    ldr     x0, [x12]
-    str     x0, [x12, #-8]
-    adrp    x0, b_5239
-    add     x0, x0, :lo12:b_5239
-    str     x0, [x12, #-16]
-    mov     x0, #8
-    str     x0, [x12, #-24]
-    sub     x12, x12, 24
-    bl      f_3545
-    mov     x0, #0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    ldr     x0, [x0]
-    str     x0, [x12]
-    bl      f_332
-    b       .l_756_2
-.l_756_3:
-.l_756_2:
-    mov     x0, #1
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    b       .l_756_0
-.l_756_1:
-    add     x12, x12, 8
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -9913,6 +9841,12 @@ f_2520:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_1042
+    adrp    x0, b_10669
+    add     x0, x0, :lo12:b_10669
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_3271
     adrp    x0, b_15504
     add     x0, x0, :lo12:b_15504
     str     x0, [x12, #-8]
@@ -9979,7 +9913,6 @@ f_2520:
     str     x1, [x0]
     b       .l_2520_2
 .l_2520_1:
-    bl      f_3271
     adrp    x0, b_13413
     add     x0, x0, :lo12:b_13413
     str     x0, [x12, #-8]
@@ -13950,11 +13883,6 @@ f_3183:
 f_3271:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
-    adrp    x0, b_11207
-    add     x0, x0, :lo12:b_11207
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6412
     mov     x0, #0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -17272,6 +17200,79 @@ f_4662:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
+f_4688:
+    stp     x29, x30, [sp, #-16]!
+    mov     x29, sp
+    mov     x0, #0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+.l_4688_0:
+    ldr     x0, [x12]
+    str     x0, [x12, #-8]
+    mov     x0, #8191
+    ldr     x1, [x12, #-8]
+    cmp     x1, x0
+    cset    w0, lt
+    cbz     x0, .l_4688_1
+    ldr     x0, [x12]
+    str     x0, [x12, #-8]
+    adrp    x0, b_5239
+    add     x0, x0, :lo12:b_5239
+    str     x0, [x12, #-16]
+    mov     x0, #8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3545
+    bl      f_275
+    ldr     x0, [x12]
+    add     x12, x12, 8
+    cbz     x0, .l_4688_3
+    adrp    x0, b_11996
+    add     x0, x0, :lo12:b_11996
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    ldr     x0, [x12]
+    str     x0, [x12, #-8]
+    mov     x0, #8191
+    ldr     x1, [x12, #-8]
+    add 	x0, x1, x0
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_3176
+    adrp    x0, b_15437
+    add     x0, x0, :lo12:b_15437
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    ldr     x0, [x12]
+    str     x0, [x12, #-8]
+    adrp    x0, b_5239
+    add     x0, x0, :lo12:b_5239
+    str     x0, [x12, #-16]
+    mov     x0, #8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_3545
+    mov     x0, #0
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    ldr     x0, [x0]
+    str     x0, [x12]
+    bl      f_332
+    b       .l_4688_2
+.l_4688_3:
+.l_4688_2:
+    mov     x0, #1
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    str     x0, [x12]
+    b       .l_4688_0
+.l_4688_1:
+    add     x12, x12, 8
+    mov     sp, x29
+    ldp     x29, x30, [sp], #16
+    ret
 f_4740:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
@@ -18331,6 +18332,12 @@ f_5617:
     sub     x12, x12, 8
     bl      f_6962
     bl      f_367
+    adrp    x0, b_9162
+    add     x0, x0, :lo12:b_9162
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_4688
     adrp    x0, b_14971
     add     x0, x0, :lo12:b_14971
     str     x0, [x12, #-8]
@@ -27925,6 +27932,12 @@ f_7315:
     sub     x12, x12, 8
     bl      f_6962
     bl      f_367
+    adrp    x0, b_10424
+    add     x0, x0, :lo12:b_10424
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6962
+    bl      f_4688
     adrp    x0, b_15786
     add     x0, x0, :lo12:b_15786
     str     x0, [x12, #-8]
@@ -29217,7 +29230,6 @@ f_7813:
     str     x1, [x0]
     b       .l_7813_2
 .l_7813_1:
-    bl      f_756
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -29855,15 +29867,13 @@ _start:
     mov     x0, #0
     mov     x8, 93
     svc     #0
-.section .data
-    b_774: .ascii "-9223372036854775808\0"
+.section .rodata
     b_8222: .ascii "    ; WIN_GetStdHandle\n\0"
     b_8225: .ascii "__WIN_GetCommandLineW\0"
     b_8249: .ascii "Attempted to expand preprocessor flag '\0"
     b_8256: .ascii "Buffers defined at global scope must be static\n\0"
     b_8264: .ascii "    sub     x12, x12, \0"
     b_8271: .ascii "    mov     qword [rsp+40], 80h\n\0"
-    b_8295: .ascii "    ; Inline Buffers\n\0"
     b_8325: .ascii "    jg      .csl_\0"
     b_8410: .ascii "    // OP_RET\n\0"
     b_8420: .ascii "Macro expansion cannot exceed depth \0"
@@ -29940,6 +29950,7 @@ _start:
     b_9145: .ascii "GetStdHandle\0"
     b_9146: .ascii "    lsl     x0, x0, #3\n\0"
     b_9161: .ascii "Invalid field for struct '\0"
+    b_9162: .ascii "section '.rodata'\n\0"
     b_9177: .ascii "    ldp     x29, x30, [sp], #16\n\0"
     b_9186: .ascii "    sub     rsp, \0"
     b_9188: .ascii "    jne     .fwl_\0"
@@ -30049,6 +30060,7 @@ _start:
     b_10398: .ascii "Expected token of type \0"
     b_10403: .ascii "    call    f_\0"
     b_10410: .ascii ") db 0\n\0"
+    b_10424: .ascii "section .rodata\n\0"
     b_10432: .ascii "    test    rax, rax\n\0"
     b_10443: .ascii "    je      .rbl_\0"
     b_10446: .ascii "extern LocalAlloc\n\0"
@@ -30070,6 +30082,7 @@ _start:
     b_10639: .ascii "rdx\0"
     b_10657: .ascii "    .rbl_\0"
     b_10666: .ascii "    setg    al\n\0"
+    b_10669: .ascii ".section .rodata\n\0"
     b_10676: .ascii "Expected message for 'fail' directive\n\0"
     b_10678: .ascii "WARNING: Compilation completed with a stack depth of \0"
     b_10679: .ascii " bytes) cannot be automatically assigned to\n\0"
@@ -30106,7 +30119,6 @@ _start:
     b_11149: .ascii "    // OP_NOT\n\0"
     b_11167: .ascii "    ; OP_FCLOSE\n\0"
     b_11168: .ascii "nasm\0"
-    b_11207: .ascii "    // Inline Buffers\n\0"
     b_11211: .ascii "    // OP_DEPTH\n\0"
     b_11224: .ascii "    cmp     rbx, rax\n\0"
     b_11235: .ascii "format ELF64\n\0"
@@ -30546,6 +30558,8 @@ _start:
     b_16282: .ascii "    cmp     rax, 2\n\0"
     b_16289: .ascii "Failed to use file '\0"
     b_16311: .ascii "    ; OP_JMP\n\0"
+.section .data
+    b_774: .ascii "-9223372036854775808\0"
 .section .bss
     b_195: .skip 32
     b_196: .skip 32

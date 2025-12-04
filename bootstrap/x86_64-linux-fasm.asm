@@ -118,6 +118,11 @@ f_90:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_1041
+    lea     rax, [b_10424]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_4688
     lea     rax, [b_15786]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1870,78 +1875,6 @@ f_742:
     mov     qword [r12 + 16], 0
     add     r12, 16
 .l_742_0:
-    leave
-    ret
-f_756:
-    push    rbp
-    mov     rbp, rsp
-    lea     rax, [b_8295]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
-    mov     qword [r12 - 8], 0
-    sub     r12, 8
-.l_756_0:
-    mov     rax, [r12]
-    mov     qword [r12 - 8], rax
-    mov     rax, 8191
-    mov     rbx, qword [r12 - 8]
-    cmp     rbx, rax
-    setl    al
-    movzx   rax, al
-    test    rax, rax
-    jz      .l_756_1
-    mov     rax, [r12]
-    mov     qword [r12 - 8], rax
-    lea     rax, [b_5239]
-    mov     qword [r12 - 16], rax
-    mov     qword [r12 - 24], 8
-    sub     r12, 24
-    call    f_3545
-    call    f_275
-    mov     rax, qword [r12]
-    add     r12, 8
-    test    rax, rax
-    jz      .l_756_3
-    lea     rax, [b_11996]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    mov     rax, [r12]
-    mov     qword [r12 - 8], rax
-    mov     rcx, 8191
-    mov     rax, qword [r12 - 8]
-    add 	rax, rcx
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_3176
-    lea     rax, [b_15437]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6962
-    mov     rax, [r12]
-    mov     qword [r12 - 8], rax
-    lea     rax, [b_5239]
-    mov     qword [r12 - 16], rax
-    mov     qword [r12 - 24], 8
-    sub     r12, 24
-    call    f_3545
-    mov     rcx, 0
-    mov     rax, qword [r12]
-    add 	rax, rcx
-    mov     rax, qword [rax]
-    mov     qword [r12], rax
-    call    f_332
-    jmp     .l_756_2
-.l_756_3:
-.l_756_2:
-    mov     rcx, 1
-    mov     rax, qword [r12]
-    add 	rax, rcx
-    mov     qword [r12], rax
-    jmp     .l_756_0
-.l_756_1:
-    add     r12, 8
     leave
     ret
 f_798:
@@ -9443,6 +9376,11 @@ f_2520:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_1042
+    lea     rax, [b_10669]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_3271
     lea     rax, [b_15504]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -9508,7 +9446,6 @@ f_2520:
     mov     [rax], rcx
     jmp     .l_2520_2
 .l_2520_1:
-    call    f_3271
     lea     rax, [b_13413]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -13244,10 +13181,6 @@ f_3183:
 f_3271:
     push    rbp
     mov     rbp, rsp
-    lea     rax, [b_11207]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6412
     mov     qword [r12 - 8], 0
     sub     r12, 8
 .l_3271_0:
@@ -16247,6 +16180,74 @@ f_4662:
 .l_4662_0:
     leave
     ret
+f_4688:
+    push    rbp
+    mov     rbp, rsp
+    mov     qword [r12 - 8], 0
+    sub     r12, 8
+.l_4688_0:
+    mov     rax, [r12]
+    mov     qword [r12 - 8], rax
+    mov     rax, 8191
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_4688_1
+    mov     rax, [r12]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_5239]
+    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 24], 8
+    sub     r12, 24
+    call    f_3545
+    call    f_275
+    mov     rax, qword [r12]
+    add     r12, 8
+    test    rax, rax
+    jz      .l_4688_3
+    lea     rax, [b_11996]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    mov     rax, [r12]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 8191
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_3176
+    lea     rax, [b_15437]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    mov     rax, [r12]
+    mov     qword [r12 - 8], rax
+    lea     rax, [b_5239]
+    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 24], 8
+    sub     r12, 24
+    call    f_3545
+    mov     rcx, 0
+    mov     rax, qword [r12]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12], rax
+    call    f_332
+    jmp     .l_4688_2
+.l_4688_3:
+.l_4688_2:
+    mov     rcx, 1
+    mov     rax, qword [r12]
+    add 	rax, rcx
+    mov     qword [r12], rax
+    jmp     .l_4688_0
+.l_4688_1:
+    add     r12, 8
+    leave
+    ret
 f_4740:
     push    rbp
     mov     rbp, rsp
@@ -17262,6 +17263,11 @@ f_5617:
     sub     r12, 8
     call    f_6962
     call    f_367
+    lea     rax, [b_9162]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_4688
     lea     rax, [b_14971]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -26200,6 +26206,11 @@ f_7315:
     sub     r12, 8
     call    f_6962
     call    f_367
+    lea     rax, [b_10424]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6962
+    call    f_4688
     lea     rax, [b_15786]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -27422,7 +27433,6 @@ f_7813:
     mov     [rax], rcx
     jmp     .l_7813_2
 .l_7813_1:
-    call    f_756
     leave
     ret
 f_7900:
@@ -28017,15 +28027,13 @@ _start:
     mov     rdi, 0
     mov     eax, 60
     syscall
-section '.data' writeable
-    b_774 db "-9223372036854775808",0
+section '.rodata'
     b_8222 db "    ; WIN_GetStdHandle",10,0
     b_8225 db "__WIN_GetCommandLineW",0
     b_8249 db "Attempted to expand preprocessor flag '",0
     b_8256 db "Buffers defined at global scope must be static",10,0
     b_8264 db "    sub     x12, x12, ",0
     b_8271 db "    mov     qword [rsp+40], 80h",10,0
-    b_8295 db "    ; Inline Buffers",10,0
     b_8325 db "    jg      .csl_",0
     b_8410 db "    // OP_RET",10,0
     b_8420 db "Macro expansion cannot exceed depth ",0
@@ -28102,6 +28110,7 @@ section '.data' writeable
     b_9145 db "GetStdHandle",0
     b_9146 db "    lsl     x0, x0, #3",10,0
     b_9161 db "Invalid field for struct '",0
+    b_9162 db "section '.rodata'",10,0
     b_9177 db "    ldp     x29, x30, [sp], #16",10,0
     b_9186 db "    sub     rsp, ",0
     b_9188 db "    jne     .fwl_",0
@@ -28211,6 +28220,7 @@ section '.data' writeable
     b_10398 db "Expected token of type ",0
     b_10403 db "    call    f_",0
     b_10410 db ") db 0",10,0
+    b_10424 db "section .rodata",10,0
     b_10432 db "    test    rax, rax",10,0
     b_10443 db "    je      .rbl_",0
     b_10446 db "extern LocalAlloc",10,0
@@ -28232,6 +28242,7 @@ section '.data' writeable
     b_10639 db "rdx",0
     b_10657 db "    .rbl_",0
     b_10666 db "    setg    al",10,0
+    b_10669 db ".section .rodata",10,0
     b_10676 db "Expected message for 'fail' directive",10,0
     b_10678 db "WARNING: Compilation completed with a stack depth of ",0
     b_10679 db " bytes) cannot be automatically assigned to",10,0
@@ -28268,7 +28279,6 @@ section '.data' writeable
     b_11149 db "    // OP_NOT",10,0
     b_11167 db "    ; OP_FCLOSE",10,0
     b_11168 db "nasm",0
-    b_11207 db "    // Inline Buffers",10,0
     b_11211 db "    // OP_DEPTH",10,0
     b_11224 db "    cmp     rbx, rax",10,0
     b_11235 db "format ELF64",10,0
@@ -28708,6 +28718,8 @@ section '.data' writeable
     b_16282 db "    cmp     rax, 2",10,0
     b_16289 db "Failed to use file '",0
     b_16311 db "    ; OP_JMP",10,0
+section '.data' writeable
+    b_774 db "-9223372036854775808",0
 section '.bss' writeable
     b_195 rb 32
     b_196 rb 32

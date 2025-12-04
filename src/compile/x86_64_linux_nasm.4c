@@ -118,6 +118,8 @@ pub :compile_program_x86_64_linux_nasm {
     "global _start\n"coms
     "section .text\n"coms
     text_x86_64_linux_nasm_generic
+    "section .rodata\n"coms
+    rodata_x86_64_nasm_generic
     "section .data\n"coms
     data_x86_64_nasm_generic
     "section .bss\n"coms
@@ -130,6 +132,8 @@ pub :compile_program_x86_64_linux_fasm {
     "public _start\n"coms
     "section '.text' executable\n"coms
     text_x86_64_linux_nasm_generic
+    "section '.rodata'\n"coms
+    rodata_x86_64_nasm_generic
     "section '.data' writeable\n"coms
     data_x86_64_nasm_generic
     "section '.bss' writeable\n"coms

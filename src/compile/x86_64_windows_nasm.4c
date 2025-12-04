@@ -223,6 +223,9 @@ pub :compile_program_x86_64_windows_nasm {
     "    lea     r12, [rel bsp + "coms ASM_STACK_SIZE com "]\n"coms
     &start_ops_mem as StackHead.data compile_ops
 
+    "section .rodata\n"coms
+    rodata_x86_64_nasm_generic
+
     "section .data\n"coms
     data_x86_64_nasm_generic
 

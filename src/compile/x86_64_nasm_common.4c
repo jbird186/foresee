@@ -411,8 +411,7 @@ pub :x64n_compile_generic_op {
     "0\n" coms
 }
 
-pub :x64n_compile_inline_bufs {
-    "    ; Inline Buffers\n"coms_dbg
+pub :rodata_x86_64_nasm_generic {
     // -- idx
     0 while dup MAP_SIZE < {
         if dup INLINE_STR_MAP map_idx slot_is_used {
@@ -482,7 +481,6 @@ pub :data_x86_64_nasm_generic {
             i x64n_compile_buf_data
         }
     }
-    x64n_compile_inline_bufs
 }
 
 pub :bss_x86_64_nasm_generic {
