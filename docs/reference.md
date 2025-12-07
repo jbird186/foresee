@@ -263,6 +263,74 @@ Output:
 0 1 2 3 4
 ```
 
+### Switch Statements
+
+Switch statements are defined as follows:
+
+```
+switch thing_to_match {
+    case a { ... }
+    case b { ... }
+    case c { ... }
+    ...
+    default { ... }
+}
+```
+
+The top stack item after executing `thing_to_match` is popped off the stack, and is used for matching. `default` is optional. Each `case` keyword must be followed by a literal integer, literal character, or an enum variant to be matched.
+
+Unlike C's switch statements, Foresee's switch statements do *not* fall through to the next case by default, and are very similar in functionality to a set of if-else statements.
+
+#### Example
+
+```
+#use "stdio.4c"
+
+enum Color {
+    Red
+    Blue
+    Green
+}
+
+:main {
+    switch Color.Blue {
+        case Color.Red {
+            "Red!\n" puts
+        }
+        case Color.Blue {
+            "Blue!\n" puts
+        }
+        case Color.Green {
+            "Green!\n" puts
+        }
+        default {
+            "Invalid color!\n" puts
+        }
+    }
+
+    switch 2 2 + {
+        case 1 {
+            "Wrong!\n" puts
+        }
+        case 100 {
+            "Wrong!\n" puts
+        }
+        case 8 {
+            "Wrong!\n" puts
+        }
+        default {
+            "None of the above.\n" puts
+        }
+    }
+}
+```
+
+Output:
+```
+Blue!
+None of the above.
+```
+
 ## Custom Data Types
 
 ### Structs
