@@ -35,6 +35,7 @@ static int TOTAL_DATA_SIZE
 :parse_tok
 
 // ops_dest tok_ptr -- ops_dest tok_ptr
+// Does *not* parse the until_tok_kind token
 #macro parse_until(until_tok_kind) {(
     var &Token original_tok_ptr: {dup}
     while viewtk until_tok_kind != {
@@ -76,7 +77,7 @@ static int TOTAL_DATA_SIZE
     var int scope: {}
     var &char name: {}
     if name "__OP_" 5 strncmp not {
-        %Token- error "Item cannot overwrite intrinsic opcode.\n"puts
+        %Token- error "Item cannot overwrite intrinsic opcode\n"puts
         1 exit
     }
     if name scope BUF_MAP scoped_map_get slot_is_used {
@@ -273,6 +274,37 @@ static int TOTAL_DATA_SIZE
     }
 }
 
+// tok_ptr -- new_tok_ptr int
+:_view_enum_as_int {
+    var int enum_name: {viewtd}
+    var &EnumVariant variant: {
+        enum_name ENUM_MAP scoped_map_find as Enum.variants@
+    }
+
+    %Token+
+    if viewtk TKind.FIELD != {
+        error "Expected variant after '"puts enum_name puts "'\n"puts
+        1 exit
+    }
+    %Token+
+    if viewtk TKind.IDENT != {
+        error "Expected variant after '"puts enum_name puts ".'\n"puts
+        1 exit
+    }
+    var int variant_name: {viewtd}
+
+    while variant->name {
+        if variant_name variant->name strcmp not {
+            %Token+
+            variant->value return
+        }
+        %EnumVariant +=variant
+    }
+
+    error "Variant '"puts variant_name puts "' not found for enum '"puts enum_name puts "'\n"puts
+    1 exit
+}
+
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_ident {
     ////////// Intrinsics //////////
@@ -345,30 +377,8 @@ static int TOTAL_DATA_SIZE
 
     ////////// Enums //////////
     if viewtd ENUM_MAP scoped_map_find_idx is_success {
-        var int name: {viewtd}
-
-        // -- ops_dest tok_ptr variants
-        name ENUM_MAP scoped_map_find as Enum.variants@
-        // -- ops_dest variants tok_ptr
-        swap %Token+
-        if viewtk TKind.FIELD != {
-            error "Expected variant after '"puts name puts "'\n"puts
-            1 exit
-        }
-        %Token+
-        // -- ops_dest tok_ptr name variants
-        viewtd rot
-        while dup as EnumVariant.name@ {
-            if over over as EnumVariant.name@ strcmp not {
-                nip as EnumVariant.value@ OKind.PUSH_INT 3 roll op_push
-                %Token+
-                return
-            }
-            %EnumVariant+
-        }
-        drop
-        swap error swap "Variant '"puts puts "' not found for enum '"puts name puts "'\n"puts
-        1 exit
+        _view_enum_as_int OKind.PUSH_INT 3 roll op_push
+        return
     }
 
     ////////// Buffers //////////
@@ -433,6 +443,162 @@ static int TOTAL_DATA_SIZE
     2 pick swap 2 pick _parse_if_with_id
     // -- tok_ptr
     swap OKind.LABEL 3 roll op_push
+}
+
+// ops_dest tok_ptr &cases n_cases switch_id id_offset -- ops_dest new_tok_ptr
+:_parse_switch_tree {
+    var int id_offset: {}
+    var int switch_id: {}
+    var int n_cases: {}
+    var &SwitchCase cases: {}
+
+    // default case
+    if n_cases not {
+        switch_id 1+ OKind.JMP 3 pick op_push
+        return
+    }
+
+    var int mid: {n_cases 2/}
+    var int label: {ASM_LABEL_ID}
+    2+=ASM_LABEL_ID
+
+    (cases mid %SwitchCase* +)@ OKind.CMP 3 pick op_push
+    label OKind.JCMP 3 pick op_push
+    switch_id id_offset+ mid+ OKind.JMP 3 pick op_push
+
+    // less than case
+    label OKind.LABEL 3 pick op_push
+    cases mid switch_id id_offset _parse_switch_tree
+
+    // greater than case
+    label 1+ OKind.LABEL 3 pick op_push
+    (cases mid 1+ %SwitchCase* +) (n_cases mid- 1-) switch_id (id_offset mid+ 1+) _parse_switch_tree
+}
+
+// &arr low high --
+:_sort_switch_tree {
+    var int { high: {} low: {} }
+    var &SwitchCase arr: {}
+    var SwitchCase temp
+
+    if low high < {
+        var &SwitchCase pivot: {arr high %SwitchCase* +}
+        var int i: {low 1-}
+
+        for (var int j: {low}, j high <, 1 +=j) {
+            var &SwitchCase arr_j: {arr j %SwitchCase* +}
+            if arr_j->value pivot->value <= {
+                1 +=i
+                var &SwitchCase arr_i: {arr i %SwitchCase* +}
+                arr_j &temp %SwitchCase memcpy
+                arr_i arr_j %SwitchCase memcpy
+                &temp arr_i %SwitchCase memcpy
+            }
+        }
+        var &SwitchCase arr_i: {arr i 1+ %SwitchCase* +}
+        pivot &temp %SwitchCase memcpy
+        arr_i pivot %SwitchCase memcpy
+        &temp arr_i %SwitchCase memcpy
+
+        arr low i _sort_switch_tree
+        arr i 2+ high _sort_switch_tree
+    }
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_switch {
+    var SwitchCase[MAX_SWITCH_CASES] cases
+    var &Token default_case: NULL
+    var int switch_id: {ASM_LABEL_ID}
+    var int n_cases: 0
+
+    %Token+
+    parse_until(TKind.BRACE_START)
+    0 OKind.PRE_CMP 3 pick op_push
+
+    var &Token original_tok_ptr: {dup}
+    while viewtk TKind.BRACE_END != {
+        if viewtk TKind.DEFAULT == {
+            %Token+
+            if default_case {
+                error "'default' case already defined\n"puts
+                1 exit
+            }
+            if viewtk TKind.BRACE_START != {
+                error "Expected braces for 'default' block\n"puts
+                1 exit
+            }
+            dup %Token+ =default_case
+            skip_braces
+            continue
+        }
+
+        if viewtk TKind.CASE != {
+            error "Expected 'case' block\n"puts
+            1 exit
+        }
+        %Token+
+
+        if viewtk dup (TKind.INT ==) swap (TKind.CHAR ==) | {
+            viewod =cases[n_cases].value
+            %Token+
+            dup %Token+ =cases[n_cases].def
+            if viewtk TKind.BRACE_START != {
+                error "Expected braces for 'case' block\n"puts
+                1 exit
+            }
+            skip_braces
+        } else if viewtk TKind.IDENT == {
+            if viewtd ENUM_MAP scoped_map_find_idx is_failure {
+                error "Expected literal integer, literal char, or enum variant for 'case' condition\n" puts
+                1 exit
+            }
+
+            _view_enum_as_int =cases[n_cases].value
+            dup %Token+ =cases[n_cases].def
+            if viewtk TKind.BRACE_START != {
+                error "Expected braces for 'case' block\n"puts
+                1 exit
+            }
+            skip_braces
+        } else {
+            error "Invalid 'case' condition\n"puts
+            1 exit
+        }
+        1 +=n_cases
+    }
+    %Token+
+
+    &cases 0 n_cases 1- _sort_switch_tree
+
+    n_cases 2+ +=ASM_LABEL_ID
+    &cases n_cases switch_id 2 _parse_switch_tree
+
+    if default_case {
+        switch_id 1+ OKind.LABEL 3 pick op_push
+        swap default_case parse_until(TKind.BRACE_END) drop swap
+        switch_id OKind.JMP 3 pick op_push
+    }
+    var int prev: 0
+    for (var int i: 0, i n_cases <, 1 +=i) {
+        if i {
+            if prev cases[i].value == {
+                cases[i].def
+                error "Duplicate 'case' condition for "puts cases[i].value put "\n"puts
+                1 exit
+            }
+        }
+
+        switch_id 2+ i+ OKind.LABEL 3 pick op_push
+        swap cases[i].def parse_until(TKind.BRACE_END) drop swap
+        switch_id OKind.JMP 3 pick op_push
+
+        cases[i].value =prev
+    }
+    if default_case not {
+        switch_id 1+ OKind.LABEL 3 pick op_push
+    }
+    switch_id OKind.LABEL 3 roll op_push
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -1158,67 +1324,76 @@ static int TOTAL_DATA_SIZE
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_tok {
     false =IS_PUBLIC
-    if viewtk TKind.PUB == {
-        if over {
-            error "Public items must be defined at global scope\n"puts
-            1 exit
-        }
+    switch viewtk {
+        case TKind.PUB {
+            if over {
+                error "Public items must be defined at global scope\n"puts
+                1 exit
+            }
 
-        true =IS_PUBLIC
-        %Token+
-        if viewtk TKind.FN == { parse_fn }
-        else if viewtk TKind.STATIC == { parse_buffer_def }
-        else if viewtk TKind.VAR == { parse_buffer_def }
-        else if viewtk TKind.ENUM == { parse_enum }
-        else if viewtk TKind.STRUCT == { parse_struct }
-        else {
-            error "Unexpected token of type "puts viewtk put " after 'pub'\n"puts
+            true =IS_PUBLIC
+            %Token+
+            switch viewtk {
+                case TKind.FN { parse_fn }
+                case TKind.STATIC { parse_buffer_def }
+                case TKind.VAR { parse_buffer_def }
+                case TKind.ENUM { parse_enum }
+                case TKind.STRUCT { parse_struct }
+                default {
+                    error "Unexpected token of type "puts viewtk put " after 'pub' 1\n"puts
+                    1 exit
+                }
+            }
+        }
+        case TKind.WORD {
+            error "Macro '"puts viewtd puts "' not defined\n"puts
             1 exit
         }
-    }
-    else if viewtk TKind.WORD == {
-        error "Macro '"puts viewtd puts "' not defined\n"puts
-        1 exit
-    }
-    else if viewtk dup (TKind.INT ==) swap (TKind.CHAR ==) | {
-        viewtd OKind.PUSH_INT 3 roll op_push
-        %Token+
-    }
-    else if viewtk TKind.PAREN_START == {
-        %Token+
-        new_local_scope
-        parse_until(TKind.PAREN_END)
-        pop_local_scope
-        nip
-    }
-    else if viewtk TKind.STR == { parse_string }
-    else if viewtk TKind.IDENT == { parse_ident }
-    else if viewtk TKind.IF == { parse_if }
-    else if viewtk TKind.WHILE == { parse_while }
-    else if viewtk TKind.FOR == { parse_for }
-    else if viewtk TKind.CONTINUE == { parse_continue }
-    else if viewtk TKind.BREAK == { parse_break }
-    else if viewtk TKind.FN == { parse_fn }
-    else if viewtk TKind.STATIC == { parse_buffer_def }
-    else if viewtk TKind.VAR == { parse_buffer_def }
-    else if viewtk TKind.REF == { parse_ref }
-    else if viewtk TKind.EQ == { parse_eq }
-    else if viewtk TKind.ENUM == { parse_enum }
-    else if viewtk TKind.STRUCT == { parse_struct }
-    else if viewtk TKind.AS == { parse_as }
-    else if viewtk TKind.SIZE == { parse_size }
-    else if viewtk TKind.CALL == { parse_call }
-    else if viewtk TKind.FILE_START == {
-        dup SCOPE_STACK stack_push!
-        nip %Token+
-    }
-    else if viewtk TKind.FILE_END == {
-        &scope_stack stack_shrink
-        nip %Token+
-    }
-    else {
-        error "Unexpected token of type "puts viewtk put "\n"puts
-        1 exit
+        case TKind.INT {
+            viewtd OKind.PUSH_INT 3 roll op_push
+            %Token+
+        }
+        case TKind.CHAR {
+            viewtd OKind.PUSH_INT 3 roll op_push
+            %Token+
+        }
+        case TKind.PAREN_START {
+            %Token+
+            new_local_scope
+            parse_until(TKind.PAREN_END)
+            pop_local_scope
+            nip
+        }
+        case TKind.STR { parse_string }
+        case TKind.IDENT { parse_ident }
+        case TKind.IF { parse_if }
+        case TKind.SWITCH { parse_switch }
+        case TKind.WHILE { parse_while }
+        case TKind.FOR { parse_for }
+        case TKind.CONTINUE { parse_continue }
+        case TKind.BREAK { parse_break }
+        case TKind.FN { parse_fn }
+        case TKind.STATIC { parse_buffer_def }
+        case TKind.VAR { parse_buffer_def }
+        case TKind.REF { parse_ref }
+        case TKind.EQ { parse_eq }
+        case TKind.ENUM { parse_enum }
+        case TKind.STRUCT { parse_struct }
+        case TKind.AS { parse_as }
+        case TKind.SIZE { parse_size }
+        case TKind.CALL { parse_call }
+        case TKind.FILE_START {
+            dup SCOPE_STACK stack_push!
+            nip %Token+
+        }
+        case TKind.FILE_END {
+            &scope_stack stack_shrink
+            nip %Token+
+        }
+        default {
+            error "Unexpected token of type "puts viewtk put "\n"puts
+            1 exit
+        }
     }
 }
 

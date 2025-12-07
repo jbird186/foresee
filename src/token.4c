@@ -12,6 +12,9 @@ pub enum TKind {
     FN
     IF
     ELSE
+    SWITCH
+    CASE
+    DEFAULT
     WHILE
     FOR
     CONTINUE
@@ -103,6 +106,9 @@ pub :show_tok {
     else if viewtk TKind.FN == { ":fn" puts }
     else if viewtk TKind.IF == { "if" puts }
     else if viewtk TKind.ELSE == { "else" puts }
+    else if viewtk TKind.SWITCH == { "switch" puts }
+    else if viewtk TKind.DEFAULT == { "default" puts }
+    else if viewtk TKind.CASE == { "case" puts }
     else if viewtk TKind.WHILE == { "while" puts }
     else if viewtk TKind.FOR == { "for" puts }
     else if viewtk TKind.CONTINUE == { "continue" puts }

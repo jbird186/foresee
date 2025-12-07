@@ -96,6 +96,16 @@ pub :x64n_compile_pop {
 // op_ptr -- op_ptr
 pub :x64n_compile_generic_op {
     if viewok OKind.NOOP == {}
+    else if viewok OKind.PRE_CMP == {
+        "    ; OP_PRE_CMP\n"coms_dbg
+        "rax" x64n_compile_pop
+        x64n_flush_stack_ptr_delta
+        "    mov     [rsp-8], rax\n"coms
+    }
+    else if viewok OKind.CMP == {
+        "    ; OP_CMP\n"coms_dbg
+        "    cmp     qword [rsp-8], "coms viewod com "\n"coms
+    }
     else if viewok OKind.CALL == {
         "    ; OP_CALL\n"coms_dbg
         "rax" x64n_compile_pop
@@ -328,6 +338,13 @@ pub :x64n_compile_generic_op {
         x64n_flush_stack_ptr_delta
         "    test    rax, rax\n"coms
         "    jz      .l_"coms viewod com_label "\n"coms
+    }
+    else if viewok OKind.JCMP == {
+        "    ; OP_JCMP\n"coms_dbg
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
+        "    jl      .l_"coms viewod com_label "\n"coms
+        "    jg      .l_"coms viewod 1+ com_label "\n"coms
     }
     else {
         "ERROR: Invalid opcode (#"puts viewok put ")\n"puts

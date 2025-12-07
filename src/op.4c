@@ -4,6 +4,9 @@ pub enum OKind {
     // Misc / Special
     EOF
     NOOP
+    // CMP
+    PRE_CMP    // value --
+    CMP
     // Functions
     CALL
     PUSH_FN
@@ -47,6 +50,7 @@ pub enum OKind {
     LABEL
     JMP
     JZ      // value --
+    JCMP    // value --
     // Syscalls
     EXIT    // exit_code --
     FOPEN   // &filename_ptr [0=read, 1=write, 2=append] -- [fd, -1]
@@ -57,12 +61,12 @@ pub enum OKind {
     // Linux Only
     LIN_syscall // arg1 arg2 arg3 arg4 arg5 arg6 n -- result
     // Windows Only
-    WIN_GetCommandLineW // -- &ptr
-    WIN_CommandLineToArgvW // &src &argc_ptr -- [&argv_ptr, -1]
+    WIN_GetCommandLineW     // -- &ptr
+    WIN_CommandLineToArgvW  // &src &argc_ptr -- [&argv_ptr, -1]
     WIN_WideCharToMultiByte // &src &dest [len, 0=strlen] -- [size, -1];
-    WIN_LocalAlloc // size -- [&ptr, -1]
-    WIN_LocalFree // &ptr -- [0, -err]
-    WIN_GetStdHandle // n -- [fd, -1]
+    WIN_LocalAlloc          // size -- [&ptr, -1]
+    WIN_LocalFree           // &ptr -- [0, -err]
+    WIN_GetStdHandle        // n -- [fd, -1]
 }
 
 // data kind ref --

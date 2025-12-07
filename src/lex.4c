@@ -214,6 +214,9 @@ static &char file
     view_ident
     match_ident_token("if", TKind.IF)
     match_ident_token("else", TKind.ELSE)
+    match_ident_token("switch", TKind.SWITCH)
+    match_ident_token("case", TKind.CASE)
+    match_ident_token("default", TKind.DEFAULT)
     match_ident_token("while", TKind.WHILE)
     match_ident_token("for", TKind.FOR)
     match_ident_token("continue", TKind.CONTINUE)

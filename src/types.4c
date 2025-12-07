@@ -73,4 +73,9 @@ pub struct Struct {
     &StructField fields
 }
 
+pub struct SwitchCase {
+    int value
+    &Token def
+}
+
 pub static bool IS_PUBLIC

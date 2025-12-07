@@ -6,9 +6,9 @@ pub static char[SRC_STR_SIZE] src_str
 #pub macro out_fd_buffer { src_str }
 
 pub static [int char[1024][512]] strs_mem
-pub static [int Token[1024][72]] toks_mem
-pub static [int Token[1024][80]] out_toks_mem
-pub static [int Op[1024][64]] fn_ops_mem
+pub static [int Token[1024][80]] toks_mem
+pub static [int Token[1024][88]] out_toks_mem
+pub static [int Op[1024][72]] fn_ops_mem
 pub static [int Op[16]] start_ops_mem
 pub static [int EnumVariant[1024][8]] enum_variants_mem
 pub static [int StructField[1024][8]] struct_fields_mem
@@ -44,6 +44,7 @@ pub static Struct[MAP_SIZE] struct_map
 #pub macro STRUCT_MAP { &struct_map %Struct }
 
 #pub macro MACRO_DEPTH_LIMIT { 256 }
+#pub macro MAX_SWITCH_CASES { 1024 }
 #pub macro ASM_STACK_SIZE { 65536 } // MUST be >= 4096
 #pub macro USE_ASM_STRINGS { true }
 #pub macro BUFFER_SIZE_LIMIT { 100_000_000 } // Sanity check

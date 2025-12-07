@@ -2,7 +2,7 @@
 set -euo pipefail
 
 rebuild() {
-    ./target/compiler ./src/main.4c ./target/compiler.asm x86_64-linux-fasm -Istd/ -O
+    ./target/compiler ./src/main.4c ./target/compiler.asm x86_64-linux-fasm -Istd/ -Od
     fasm ./target/compiler.asm ./target/compiler.o > /dev/null && ld ./target/compiler.o -o ./target/compiler
 }
 rebuild

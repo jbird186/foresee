@@ -85,16 +85,22 @@ static char[32] push_cache
     "x0" compile_push
 }
 
-// op_ptr -- op_ptr
-:compile_mov_x0_large_int {
-    "    movz    x0, #"coms viewod 0xffff& com "\n"coms
-    "    movk    x0, #"coms viewod 16>> com ", lsl 16\n"coms
-}
-
 // op_ptr -- new_op_ptr
 :compile_op {
     var char[32] buf_name
     if viewok OKind.NOOP == {}
+    else if viewok OKind.PRE_CMP == {
+        "    // OP_PRE_CMP\n"coms_dbg
+        "x0" compile_pop
+        flush_stack_ptr_delta
+        "    str     x0, [sp, #-8]\n"coms
+    }
+    else if viewok OKind.CMP == {
+        "    // OP_CMP\n"coms_dbg
+        flush_push_cache
+        "    ldr     x0, [sp, #-8]\n"coms
+        "    cmp     x0, "coms viewod com "\n"coms
+    }
     else if viewok OKind.CALL == {
         "    // OP_CALL\n"coms_dbg
         "x0" compile_pop
@@ -125,11 +131,7 @@ static char[32] push_cache
     else if viewok OKind.PUSH_INT == {
         flush_push_cache
         "    // OP_PUSH_INT\n"coms_dbg
-        if viewod 0xffff > {
-            compile_mov_x0_large_int
-        } else {
-            "    mov     x0, #"coms viewod com "\n"coms
-        }
+        "    ldr     x0, ="coms viewod com "\n"coms
         "x0" compile_push
     }
     else if viewok OKind.DROP == {
@@ -155,7 +157,7 @@ static char[32] push_cache
         "    ldr     x1, [x0]\n"coms
         "    .ral_"coms viewod com_label ":\n"coms
         "    cmp     x0, x12\n"coms
-        "    beq     .rbl_"coms viewod com_label "\n"coms
+        "    b.eq    .rbl_"coms viewod com_label "\n"coms
         "    ldr     x2, [x0, #-8]\n"coms
         "    str     x2, [x0]\n"coms
         "    sub     x0, x0, #8\n"coms
@@ -247,8 +249,8 @@ static char[32] push_cache
     else if viewok OKind.PUSH_VAR == {
         flush_push_cache
         "    // OP_PUSH_VAR\n"coms_dbg
-        if viewod 0xffff > {
-            compile_mov_x0_large_int
+        if viewod 0xfff > {
+            "    ldr     x0, ="coms viewod com "\n"coms
             "    sub     x0, x29, x0\n"coms
         } else {
             "    sub     x0, x29, #"coms viewod com "\n"coms
@@ -257,13 +259,14 @@ static char[32] push_cache
     }
     else if viewok OKind.ALLOC == {
         "    // OP_ALLOC\n"coms_dbg
-        if viewod 0xffff > {
+        if viewod 0xfff > {
             flush_push_cache
-            compile_mov_x0_large_int
+            "    ldr     x0, ="coms viewod com "\n"coms
             "    sub     sp, sp, x0\n"coms
         } else {
             "    sub     sp, sp, #"coms viewod com "\n"coms
         }
+        flush_stack_ptr_delta
     }
     else if viewok OKind.ADD == {
         "add" "OP_ADD" compile_basic_binop
@@ -348,6 +351,13 @@ static char[32] push_cache
         flush_stack_ptr_delta
         "    cbz     x0, .l_"coms viewod com_label "\n"coms
     }
+    else if viewok OKind.JCMP == {
+        "    // OP_JCMP\n"coms_dbg
+        flush_push_cache
+        flush_stack_ptr_delta
+        "    b.lt    .l_"coms viewod com_label "\n"coms
+        "    b.gt    .l_"coms viewod 1+ com_label "\n"coms
+    }
     else if viewok OKind.EXIT == {
         "    // OP_EXIT\n"coms_dbg
         "x0" compile_pop
@@ -360,11 +370,11 @@ static char[32] push_cache
         "x1" compile_pop           // filename pointer
         flush_push_cache
         "    cmp     x0, #0\n"coms
-        "    beq     .frl_"coms viewod com_label "\n"coms
+        "    b.eq    .frl_"coms viewod com_label "\n"coms
         "    cmp     x0, #1\n"coms
-        "    beq     .fwl_"coms viewod com_label "\n"coms
+        "    b.eq    .fwl_"coms viewod com_label "\n"coms
         "    cmp     x0, #2\n"coms
-        "    beq     .fal_"coms viewod com_label "\n"coms
+        "    b.eq    .fal_"coms viewod com_label "\n"coms
         "    b       .ffl_"coms viewod com_label "\n"coms
         "    .frl_"coms viewod com_label ":\n"coms
         "    mov     x2, #0\n"coms
