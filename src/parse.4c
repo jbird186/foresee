@@ -463,16 +463,21 @@ static int TOTAL_DATA_SIZE
     2+=ASM_LABEL_ID
 
     (cases mid %SwitchCase* +)@ OKind.CMP 3 pick op_push
-    label OKind.JCMP 3 pick op_push
-    switch_id id_offset+ mid+ OKind.JMP 3 pick op_push
+    if n_cases 1 > {
+        label OKind.JCMP 3 pick op_push
+        switch_id id_offset+ mid+ OKind.JMP 3 pick op_push
 
-    // less than case
-    label OKind.LABEL 3 pick op_push
-    cases mid switch_id id_offset _parse_switch_tree
+        // less than case
+        label OKind.LABEL 3 pick op_push
+        cases mid switch_id id_offset _parse_switch_tree
 
-    // greater than case
-    label 1+ OKind.LABEL 3 pick op_push
-    (cases mid 1+ %SwitchCase* +) (n_cases mid- 1-) switch_id (id_offset mid+ 1+) _parse_switch_tree
+        // greater than case
+        label 1+ OKind.LABEL 3 pick op_push
+        (cases mid 1+ %SwitchCase* +) (n_cases mid- 1-) switch_id (id_offset mid+ 1+) _parse_switch_tree
+    } else {
+        switch_id 1+ OKind.JCMPNE 3 pick op_push
+        switch_id id_offset+ mid+ OKind.JMP 3 pick op_push
+    }
 }
 
 // &arr low high --
@@ -1340,7 +1345,7 @@ static int TOTAL_DATA_SIZE
                 case TKind.ENUM { parse_enum }
                 case TKind.STRUCT { parse_struct }
                 default {
-                    error "Unexpected token of type "puts viewtk put " after 'pub' 1\n"puts
+                    error "Unexpected token of type "puts viewtk put " after 'pub'\n"puts
                     1 exit
                 }
             }

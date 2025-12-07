@@ -4,9 +4,6 @@ pub enum OKind {
     // Misc / Special
     EOF
     NOOP
-    // CMP
-    PRE_CMP    // value --
-    CMP
     // Functions
     CALL
     PUSH_FN
@@ -50,7 +47,11 @@ pub enum OKind {
     LABEL
     JMP
     JZ      // value --
-    JCMP    // value --
+    // CMP
+    PRE_CMP    // value --
+    CMP
+    JCMP
+    JCMPNE
     // Syscalls
     EXIT    // exit_code --
     FOPEN   // &filename_ptr [0=read, 1=write, 2=append] -- [fd, -1]

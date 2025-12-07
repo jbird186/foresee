@@ -70,9 +70,10 @@ pub :viewtl { dup as Token.line@ }
 
 // tok_ptr -- tok_ptr
 pub :show_tok {
-    if viewtk TKind.EOF == { "EOF" puts }
-    else if viewtk TKind.INT == { viewtd put }
-    else if viewtk TKind.CHAR == {
+    switch viewtk {
+    case TKind.EOF { "EOF" puts }
+    case TKind.INT { viewtd put }
+    case TKind.CHAR {
         viewtd
         if dup isprint {
             "'" puts putc "'" puts
@@ -80,15 +81,15 @@ pub :show_tok {
             "char(" puts put ")" puts
         }
     }
-    else if viewtk TKind.STR == {
+    case TKind.STR {
         "\"" puts
         var &char c: {viewtd}
         while c@c {
             if c@c isprint { c@c putc }
             else if c@c '\0' == { "\\0" puts }     // null
-            else if c@c '\t' == { "\\t" puts }     // tab
             else if c@c '\a' == { "\\a" puts }     // bell
             else if c@c '\b' == { "\\b" puts }     // backspace
+            else if c@c '\t' == { "\\t" puts }     // tab
             else if c@c '\n' == { "\\n" puts }     // newline
             else if c@c '\v' == { "\\v" puts }     // vertical tab
             else if c@c '\f' == { "\\f" puts }     // form feed
@@ -101,42 +102,43 @@ pub :show_tok {
         }
         "\"" puts
     }
-    else if viewtk TKind.IDENT == { viewtd puts }
-    else if viewtk TKind.WORD == { viewtd puts }
-    else if viewtk TKind.FN == { ":fn" puts }
-    else if viewtk TKind.IF == { "if" puts }
-    else if viewtk TKind.ELSE == { "else" puts }
-    else if viewtk TKind.SWITCH == { "switch" puts }
-    else if viewtk TKind.DEFAULT == { "default" puts }
-    else if viewtk TKind.CASE == { "case" puts }
-    else if viewtk TKind.WHILE == { "while" puts }
-    else if viewtk TKind.FOR == { "for" puts }
-    else if viewtk TKind.CONTINUE == { "continue" puts }
-    else if viewtk TKind.BREAK == { "break" puts }
-    else if viewtk TKind.COLON == { ":" puts }
-    else if viewtk TKind.POUND == { "#" puts }
-    else if viewtk TKind.COMMA == { "," puts }
-    else if viewtk TKind.STATIC == { "static" puts }
-    else if viewtk TKind.VAR == { "$" puts }
-    else if viewtk TKind.REF == { for (var int i: 0, viewtd i >, 1 +=i) { "&" puts } }
-    else if viewtk TKind.EQ == { viewtd puts }
-    else if viewtk TKind.ENUM == { "enum" puts }
-    else if viewtk TKind.STRUCT == { "struct" puts }
-    else if viewtk TKind.AS == { "as" puts }
-    else if viewtk TKind.FIELD == { "." puts }
-    else if viewtk TKind.DEREF == { "->" puts }
-    else if viewtk TKind.SIZE == { "%" puts }
-    else if viewtk TKind.CALL == { "call" puts }
-    else if viewtk TKind.PUB == { "pub" puts }
-    else if viewtk TKind.PAREN_START == { "(" puts }
-    else if viewtk TKind.PAREN_END == { ")" puts }
-    else if viewtk TKind.BRACE_START == { "{" puts }
-    else if viewtk TKind.BRACE_END == { "}" puts }
-    else if viewtk TKind.BRACKET_START == { "[" puts }
-    else if viewtk TKind.BRACKET_END == { "]" puts }
-    else if viewtk TKind.FILE_START == { "FILE_START" puts }
-    else if viewtk TKind.FILE_END == { "FILE_END" puts }
-    else { "TKind(" puts viewtk put ")" puts }
+    case TKind.IDENT { viewtd puts }
+    case TKind.WORD { viewtd puts }
+    case TKind.FN { ":fn" puts }
+    case TKind.IF { "if" puts }
+    case TKind.ELSE { "else" puts }
+    case TKind.SWITCH { "switch" puts }
+    case TKind.DEFAULT { "default" puts }
+    case TKind.CASE { "case" puts }
+    case TKind.WHILE { "while" puts }
+    case TKind.FOR { "for" puts }
+    case TKind.CONTINUE { "continue" puts }
+    case TKind.BREAK { "break" puts }
+    case TKind.COLON { ":" puts }
+    case TKind.POUND { "#" puts }
+    case TKind.COMMA { "," puts }
+    case TKind.STATIC { "static" puts }
+    case TKind.VAR { "$" puts }
+    case TKind.REF { for (var int i: 0, viewtd i >, 1 +=i) { "&" puts } }
+    case TKind.EQ { viewtd puts }
+    case TKind.ENUM { "enum" puts }
+    case TKind.STRUCT { "struct" puts }
+    case TKind.AS { "as" puts }
+    case TKind.FIELD { "." puts }
+    case TKind.DEREF { "->" puts }
+    case TKind.SIZE { "%" puts }
+    case TKind.CALL { "call" puts }
+    case TKind.PUB { "pub" puts }
+    case TKind.PAREN_START { "(" puts }
+    case TKind.PAREN_END { ")" puts }
+    case TKind.BRACE_START { "{" puts }
+    case TKind.BRACE_END { "}" puts }
+    case TKind.BRACKET_START { "[" puts }
+    case TKind.BRACKET_END { "]" puts }
+    case TKind.FILE_START { "FILE_START" puts }
+    case TKind.FILE_END { "FILE_END" puts }
+    default { "TKind(" puts viewtk put ")" puts }
+    }
 }
 
 // tok_ptr -- tok_ptr

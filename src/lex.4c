@@ -129,20 +129,22 @@ static &char file
 :match_char {
     if viewc '\\' == {
         1+
-        if viewc '0' == { '\0' }       // null
-        else if viewc 'a' == { '\a' }  // bell
-        else if viewc 'b' == { '\b' }  // backspace
-        else if viewc 't' == { '\t' }  // tab
-        else if viewc 'n' == { '\n' }  // newline
-        else if viewc 'v' == { '\v' }  // vertical tab
-        else if viewc 'f' == { '\f' }  // form feed
-        else if viewc 'r' == { '\r' }  // return
-        else if viewc '\'' == { '\'' } // single quote
-        else if viewc '\"' == { '\"' } // double quote
-        else if viewc '\\' == { '\\' } // backslash
-        else {
-            lex_error "Invalid escape character '\\"puts viewc putc "'\n"puts
-            1 exit
+        switch viewc {
+            case '0' { '\0' }   // null
+            case 'a' { '\a' }   // bell
+            case 'b' { '\b' }   // backspace
+            case 't' { '\t' }   // tab
+            case 'n' { '\n' }   // newline
+            case 'v' { '\v' }   // vertical tab
+            case 'f' { '\f' }   // form feed
+            case 'r' { '\r' }   // return
+            case '\'' { '\'' }  // single quote
+            case '\"' { '\"' }  // double quote
+            case '\\' { '\\' }  // backslash
+            default {
+                lex_error "Invalid escape character '\\"puts viewc putc "'\n"puts
+                1 exit
+            }
         }
     } else { viewc }
 }
@@ -262,14 +264,14 @@ static &char file
 }
 
 #macro lex_tagged_ident(tag_char, token_id) {
-    else if (viewc tag_char ==) (over 1+ @c is_ident_first_char) & {
+    if (viewc tag_char ==) (over 1+ @c is_ident_first_char) & {
         0 token_id file line &toks_mem tok_push
         1+
     }
 }
 
 #macro lex_single(token_char, token_id) {
-    else if viewc token_char == {
+    case token_char {
         0 token_id file line &toks_mem tok_push
         1+
     }
@@ -285,52 +287,60 @@ pub :lex_src {
             1+
         }
 
-        if viewc not {
-            drop
-            0 TKind.EOF file line &toks_mem tok_push
-            return
-        } else if ((viewc '-' ==) (over 1+ @c isdigit) &) (over@c isdigit) | {
-            view_int TKind.INT file line &toks_mem tok_push
-        } else if viewc '\'' == {
-            view_char TKind.CHAR file line &toks_mem tok_push
-        } else if viewc '\"' == {
-            view_str TKind.STR file line &toks_mem tok_push
-        }
         lex_tagged_ident(':', TKind.FN)
-        lex_tagged_ident('.', TKind.FIELD)
-        lex_tagged_ident('%', TKind.SIZE)
-        else if (viewc '/' ==) (over 1+ @c '/' ==) & {
-            while viewc dup ('\n' !=) swap (flag) & { 1+ }
-        }
-        lex_single(':', TKind.COLON)
-        lex_single('#', TKind.POUND)
-        lex_single(',', TKind.COMMA)
-        lex_single('(', TKind.PAREN_START)
-        lex_single(')', TKind.PAREN_END)
-        lex_single('{', TKind.BRACE_START)
-        lex_single('}', TKind.BRACE_END)
-        lex_single('[', TKind.BRACKET_START)
-        lex_single(']', TKind.BRACKET_END)
-        else if (viewc '-' ==) (over 1+ @c '>' ==) & {
-            0 TKind.DEREF file line &toks_mem tok_push
-            2+
-        }
-        else if should_lex_ref {
-            var int indir: 0
-            while dup@c '&' == {
-                1 +=indir
-                1+
+
+        switch viewc {
+            case 0 {
+                drop
+                0 TKind.EOF file line &toks_mem tok_push
+                return
             }
-            indir TKind.REF file line &toks_mem tok_push
+            case '\'' {
+                view_char TKind.CHAR file line &toks_mem tok_push
+            }
+            case '\"' {
+                view_str TKind.STR file line &toks_mem tok_push
+            }
+            lex_single(':', TKind.COLON)
+            lex_single('#', TKind.POUND)
+            lex_single(',', TKind.COMMA)
+            lex_single('(', TKind.PAREN_START)
+            lex_single(')', TKind.PAREN_END)
+            lex_single('{', TKind.BRACE_START)
+            lex_single('}', TKind.BRACE_END)
+            lex_single('[', TKind.BRACKET_START)
+            lex_single(']', TKind.BRACKET_END)
+            default {
+                lex_tagged_ident('.', TKind.FIELD)
+                else lex_tagged_ident('%', TKind.SIZE)
+                else if (viewc '/' ==) (over 1+ @c '/' ==) & {
+                    while viewc dup ('\n' !=) swap (flag) & { 1+ }
+                } else if ((viewc '-' ==) (over 1+ @c isdigit) &) (over@c isdigit) | {
+                    view_int TKind.INT file line &toks_mem tok_push
+                }
+                else if (viewc '-' ==) (over 1+ @c '>' ==) & {
+                    0 TKind.DEREF file line &toks_mem tok_push
+                    2+
+                }
+                else if should_lex_ref {
+                    var int indir: 0
+                    while dup@c '&' == {
+                        1 +=indir
+                        1+
+                    }
+                    indir TKind.REF file line &toks_mem tok_push
+                }
+                else if viewc is_ident_first_char {
+                    lex_ident
+                }
+                else {
+                    view_word
+                    if over@c is_ident_first_char { TKind.EQ } else { TKind.WORD }
+                    file line &toks_mem tok_push
+                }
+            }
         }
-        else if viewc is_ident_first_char {
-            lex_ident
-        }
-        else {
-            view_word
-            if over@c is_ident_first_char { TKind.EQ } else { TKind.WORD }
-            file line &toks_mem tok_push
-        }
+
     }
     drop
     0 TKind.EOF file line &toks_mem tok_push
