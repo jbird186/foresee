@@ -459,11 +459,12 @@ static int TOTAL_DATA_SIZE
     }
 
     var int mid: {n_cases 2/}
-    var int label: {ASM_LABEL_ID}
-    2+=ASM_LABEL_ID
 
     (cases mid %SwitchCase* +)@ OKind.CMP 3 pick op_push
     if n_cases 1 > {
+        var int label: {ASM_LABEL_ID}
+        2+=ASM_LABEL_ID
+
         label OKind.JCMP 3 pick op_push
         switch_id id_offset+ mid+ OKind.JMP 3 pick op_push
 
