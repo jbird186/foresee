@@ -233,6 +233,18 @@ static char[32] push_cache
         "    ldr     x0, [x0]\n"coms
         "x0" compile_push
     }
+    case OKind.STOREC {
+        "    // OP_STORE\n"coms_dbg
+        "x0" compile_pop
+        "x1" compile_pop
+        "    strb    w1, [x0]\n"coms
+    }
+    case OKind.FETCHC {
+        "    // OP_FETCH\n"coms_dbg
+        "x0" compile_pop
+        "    ldrb    w0, [x0]\n"coms
+        "x0" compile_push
+    }
     case OKind.MEMCPY {
         "    // OP_MEMCPY\n"coms_dbg
         "x0" compile_pop
@@ -300,6 +312,15 @@ static char[32] push_cache
         "    mvn     x0, x0\n"coms
         "x0" compile_push
     }
+    case OKind.DIVMOD {
+        "    // OP_DIVMOD\n" coms_dbg
+        "x1" compile_pop
+        "x0" compile_pop
+        "    sdiv    x2, x0, x1\n" coms
+        "    msub    x3, x2, x1, x0\n" coms
+        "x2" compile_push
+        "x3" compile_push
+    }
     case OKind.EQ {
         "eq" "OP_EQ" compile_cmp_binop
     }
@@ -317,15 +338,6 @@ static char[32] push_cache
     }
     case OKind.LT {
         "lt" "OP_LT" compile_cmp_binop
-    }
-    case OKind.DIVMOD {
-        "    // OP_DIVMOD\n" coms_dbg
-        "x1" compile_pop
-        "x0" compile_pop
-        "    sdiv    x2, x0, x1\n" coms
-        "    msub    x3, x2, x1, x0\n" coms
-        "x2" compile_push
-        "x3" compile_push
     }
     case OKind.LABEL {
         flush_push_cache

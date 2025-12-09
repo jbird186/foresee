@@ -12,10 +12,10 @@ pub struct bool {[1] __inner}
 #pub macro NULL {0}
 #pub macro false {0}
 #pub macro true {1}
-pub :is_success {-1 >}
-pub :is_failure {0 <}
-pub :flag {if {true} else {false}}
-pub :not {if {false} else {true}}
+#pub macro is_success {-1 >}
+#pub macro is_failure {0 <}
+#pub macro flag {0 !=}
+#pub macro not {0 ==}
 
 #pub macro / {divmod drop}
 #pub macro % {divmod nip}
@@ -30,13 +30,7 @@ pub :not {if {false} else {true}}
 #pub macro @-- {dup@ dup 1- rot!}
 #pub macro --@ {dup@ 1- dup rot!}
 
-pub :storec {
-    dup fetch 0xff ~ &
-    rot 0xff & |
-    swap store
-}
 #pub macro !c {storec}
-pub :fetchc {fetch 0xff &}
 #pub macro @c {fetchc}
 #pub macro @@c {fetch fetchc}
 #pub macro @@@c {fetch fetch fetchc}

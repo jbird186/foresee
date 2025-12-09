@@ -24,6 +24,8 @@ pub enum OKind {
     PUSH_BUF
     STORE   // item &ptr --
     FETCH   // &ptr -- item
+    STOREC  // item &ptr --
+    FETCHC  // &ptr -- item
     MEMCPY  // &src &dest length --
     // Allocation
     PUSH_VAR
@@ -39,6 +41,7 @@ pub enum OKind {
     SHR
     SAR
     NOT
+    DIVMOD  // a b -- (a / b) (a % b)
     // Comparison
     EQ
     NE
@@ -46,7 +49,6 @@ pub enum OKind {
     GT
     LE
     LT
-    DIVMOD  // a b -- (a / b) (a % b)
     // Branching
     LABEL
     JMP

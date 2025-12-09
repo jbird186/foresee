@@ -14,6 +14,8 @@
 #pub macro depth { __OP_DEPTH }
 #pub macro store { __OP_STORE }
 #pub macro fetch { __OP_FETCH }
+#pub macro storec { __OP_STOREC }
+#pub macro fetchc { __OP_FETCHC }
 #pub macro memcpy { __OP_MEMCPY }
 #pub macro + { __OP_ADD }
 #pub macro - { __OP_SUB }
@@ -26,13 +28,13 @@
 #pub macro >> { __OP_SHR }
 #pub macro >>> { __OP_SAR }
 #pub macro ~ { __OP_NOT }
+#pub macro divmod { __OP_DIVMOD }
 #pub macro == { __OP_EQ }
 #pub macro != { __OP_NE }
 #pub macro >= { __OP_GE }
 #pub macro > { __OP_GT }
 #pub macro <= { __OP_LE }
 #pub macro < { __OP_LT }
-#pub macro divmod { __OP_DIVMOD }
 #pub macro fopen { __OP_FOPEN }
 #pub macro __fread { __OP_FREAD }
 #pub macro __fwrite { __OP_FWRITE }

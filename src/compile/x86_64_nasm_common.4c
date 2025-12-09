@@ -235,6 +235,18 @@ pub :x64n_compile_generic_op {
         "    mov     rax, qword [rax]\n"coms
         "rax" x64n_compile_push
     }
+    case OKind.STOREC {
+        "    ; OP_STOREC\n"coms_dbg
+        "rax" x64n_compile_pop
+        "rcx" x64n_compile_pop
+        "    mov     byte [rax], cl\n"coms
+    }
+    case OKind.FETCHC {
+        "    ; OP_FETCHC\n"coms_dbg
+        "rax" x64n_compile_pop
+        "    movzx   rax, byte [rax]\n"coms
+        "rax" x64n_compile_push
+    }
     case OKind.MEMCPY {
         "    ; OP_MEMCPY\n"coms_dbg
         "rcx" x64n_compile_pop
@@ -286,6 +298,15 @@ pub :x64n_compile_generic_op {
         "    not     rax\n"coms
         "rax" x64n_compile_push
     }
+    case OKind.DIVMOD {
+        "    ; OP_DIVMOD\n"coms_dbg
+        "rbx" x64n_compile_pop
+        "rax" x64n_compile_pop
+        "    cqo\n"coms
+        "    idiv    rbx\n"coms
+        "rax" x64n_compile_push
+        "rdx" x64n_compile_push
+    }
     case OKind.EQ {
         "sete    " "OP_EQ" compile_cmp_binop
     }
@@ -303,15 +324,6 @@ pub :x64n_compile_generic_op {
     }
     case OKind.LT {
         "setl    " "OP_LT" compile_cmp_binop
-    }
-    case OKind.DIVMOD {
-        "    ; OP_DIVMOD\n"coms_dbg
-        "rbx" x64n_compile_pop
-        "rax" x64n_compile_pop
-        "    cqo\n"coms
-        "    idiv    rbx\n"coms
-        "rax" x64n_compile_push
-        "rdx" x64n_compile_push
     }
     case OKind.LABEL {
         x64n_flush_push_cache

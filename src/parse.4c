@@ -226,17 +226,6 @@ static int TOTAL_DATA_SIZE
     size
 }
 
-// ops_dest tok_ptr name -- ops_dest tok_ptr
-:call_fn {
-    var &char name: {}
-    var int idx: { name FN_MAP scoped_map_find_idx }
-    if idx is_failure {
-        error "Function '"puts name puts "' not defined\n"puts
-        1 exit
-    }
-    idx OKind.CALL_FN 3 pick op_push
-}
-
 // ops_dest name --
 :call_fn_injected {
     var &char name: {}
@@ -267,7 +256,7 @@ static int TOTAL_DATA_SIZE
     if size 8 == {
         0 OKind.FETCH 3 roll op_push
     } else if size 1 == {
-        "fetchc" call_fn nip
+        0 OKind.FETCHC 3 roll op_push
     } else {
         error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically read from\n"puts
         1 exit
@@ -334,6 +323,8 @@ static int TOTAL_DATA_SIZE
     // Reference Primitives
     define_intrinsic_opcode(0, OKind.STORE, "__OP_STORE")
     define_intrinsic_opcode(0, OKind.FETCH, "__OP_FETCH")
+    define_intrinsic_opcode(0, OKind.STOREC, "__OP_STOREC")
+    define_intrinsic_opcode(0, OKind.FETCHC, "__OP_FETCHC")
     define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.MEMCPY, "__OP_MEMCPY")
     // Binary Operations
     define_intrinsic_opcode(0, OKind.ADD, "__OP_ADD")
@@ -346,13 +337,14 @@ static int TOTAL_DATA_SIZE
     define_intrinsic_opcode(0, OKind.SHR, "__OP_SHR")
     define_intrinsic_opcode(0, OKind.SAR, "__OP_SAR")
     define_intrinsic_opcode(0, OKind.NOT, "__OP_NOT")
+    define_intrinsic_opcode(0, OKind.DIVMOD, "__OP_DIVMOD")
+    // Comparison
     define_intrinsic_opcode(0, OKind.EQ, "__OP_EQ")
     define_intrinsic_opcode(0, OKind.NE, "__OP_NE")
     define_intrinsic_opcode(0, OKind.GE, "__OP_GE")
     define_intrinsic_opcode(0, OKind.GT, "__OP_GT")
     define_intrinsic_opcode(0, OKind.LE, "__OP_LE")
     define_intrinsic_opcode(0, OKind.LT, "__OP_LT")
-    define_intrinsic_opcode(0, OKind.DIVMOD, "__OP_DIVMOD")
     // Syscalls
     define_intrinsic_opcode(0, OKind.EXIT, "__OP_EXIT")
     define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.FOPEN, "__OP_FOPEN")
@@ -926,7 +918,7 @@ static int TOTAL_DATA_SIZE
 
     alloc_offset size+ OKind.PUSH_VAR 3 pick op_push
     if size 1 == {
-        "storec" call_fn
+        0 OKind.STOREC 3 pick op_push
     } else {
         0 OKind.STORE 3 pick op_push
     }
@@ -1134,7 +1126,7 @@ static int TOTAL_DATA_SIZE
     if size 8 == {
         0 OKind.STORE 3 roll op_push
     } else if size 1 == {
-        "storec" call_fn nip
+        0 OKind.STOREC 3 roll op_push
     } else {
         error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
         1 exit
