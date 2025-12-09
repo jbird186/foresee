@@ -87,6 +87,17 @@ pub :x64n_compile_pop {
     "rax" x64n_compile_push
 }
 
+// instruction name --
+:compile_cmp_binop {
+    "    ; "coms_dbg coms_dbg "\n"coms_dbg
+    "rax" x64n_compile_pop
+    "rbx" x64n_compile_pop
+    "    cmp     rbx, rax\n"coms
+    "    "coms coms "al\n"coms
+    "    movzx   rax, al\n"coms
+    "rax" x64n_compile_push
+}
+
 :compile_nasm_rel {
     if "TOOLCHAIN_NASM" has_builtin_flag {
         "rel "coms
@@ -276,31 +287,22 @@ pub :x64n_compile_generic_op {
         "rax" x64n_compile_push
     }
     case OKind.EQ {
-        "    ; OP_EQ\n"coms_dbg
-        "rax" x64n_compile_pop
-        "rbx" x64n_compile_pop
-        "    cmp     rbx, rax\n"coms
-        "    sete    al\n"coms
-        "    movzx   rax, al\n"coms
-        "rax" x64n_compile_push
+        "sete    " "OP_EQ" compile_cmp_binop
+    }
+    case OKind.NE {
+        "setne   " "OP_NE" compile_cmp_binop
+    }
+    case OKind.GE {
+        "setge   " "OP_GE" compile_cmp_binop
     }
     case OKind.GT {
-        "    ; OP_GT\n"coms_dbg
-        "rax" x64n_compile_pop
-        "rbx" x64n_compile_pop
-        "    cmp     rbx, rax\n"coms
-        "    setg    al\n"coms
-        "    movzx   rax, al\n"coms
-        "rax" x64n_compile_push
+        "setg    " "OP_GT" compile_cmp_binop
+    }
+    case OKind.LE {
+        "setle   " "OP_LE" compile_cmp_binop
     }
     case OKind.LT {
-        "    ; OP_LT\n"coms_dbg
-        "rax" x64n_compile_pop
-        "rbx" x64n_compile_pop
-        "    cmp     rbx, rax\n"coms
-        "    setl    al\n"coms
-        "    movzx   rax, al\n"coms
-        "rax" x64n_compile_push
+        "setl    " "OP_LT" compile_cmp_binop
     }
     case OKind.DIVMOD {
         "    ; OP_DIVMOD\n"coms_dbg

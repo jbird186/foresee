@@ -76,12 +76,22 @@ static char[32] push_cache
     8 update_stack_ptr_delta
 }
 
-// b_register instruction name --
+// instruction name --
 :compile_basic_binop {
     "    // "coms_dbg coms_dbg "\n"coms_dbg
     "x0" compile_pop
     "x1" compile_pop
     "    "coms coms " \tx0, x1, x0\n"coms
+    "x0" compile_push
+}
+
+// instruction name --
+:compile_cmp_binop {
+    "    // "coms_dbg coms_dbg "\n"coms_dbg
+    "x0" compile_pop
+    "x1" compile_pop
+    "    cmp     x1, x0\n"coms
+    "    cset    w0, "coms coms "\n"coms
     "x0" compile_push
 }
 
@@ -291,28 +301,22 @@ static char[32] push_cache
         "x0" compile_push
     }
     case OKind.EQ {
-        "    // OP_EQ\n"coms_dbg
-        "x0" compile_pop
-        "x1" compile_pop
-        "    cmp     x1, x0\n"coms
-        "    cset    w0, eq\n"coms
-        "x0" compile_push
+        "eq" "OP_EQ" compile_cmp_binop
+    }
+    case OKind.NE {
+        "ne" "OP_NE" compile_cmp_binop
+    }
+    case OKind.GE {
+        "ge" "OP_GE" compile_cmp_binop
     }
     case OKind.GT {
-        "    // OP_GT\n"coms_dbg
-        "x0" compile_pop
-        "x1" compile_pop
-        "    cmp     x1, x0\n"coms
-        "    cset    w0, gt\n"coms
-        "x0" compile_push
+        "gt" "OP_GT" compile_cmp_binop
+    }
+    case OKind.LE {
+        "le" "OP_LE" compile_cmp_binop
     }
     case OKind.LT {
-        "    // OP_LT\n"coms_dbg
-        "x0" compile_pop
-        "x1" compile_pop
-        "    cmp     x1, x0\n"coms
-        "    cset    w0, lt\n"coms
-        "x0" compile_push
+        "lt" "OP_LT" compile_cmp_binop
     }
     case OKind.DIVMOD {
         "    // OP_DIVMOD\n" coms_dbg

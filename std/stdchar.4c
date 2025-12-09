@@ -1,45 +1,57 @@
+// char -- bool
 pub :isdigit {
     dup ('0' >=) swap ('9' <=) &
 }
 
+// char -- bool
 pub :isupper {
     dup ('A' >=) swap ('Z' <=) &
 }
 
+// char -- bool
 pub :islower {
     dup ('a' >=) swap ('z' <=) &
 }
 
+// char -- bool
 pub :isalpha {
     dup isupper swap islower |
 }
 
+// char -- bool
 pub :isalnum {
     dup isalpha swap isdigit |
 }
 
+// char -- bool
 pub :isspace {
-    dup ' ' == swap
-    dup '\t' == swap
-    dup '\n' == swap
-    dup '\r' == swap
-    dup '\v' == swap
-    '\f' ==
-    | | | | |
+    switch {
+        case ' ' { true }
+        case '\t' { true }
+        case '\n' { true }
+        case '\r' { true }
+        case '\v' { true }
+        case '\f' { true }
+        default { false }
+    }
 }
 
+// char -- bool
 pub :isprint {
     dup (0x20 >=) swap (0x7e <=) &
 }
 
+// char -- bool
 pub :iscntrl {
     dup (0x20 <) swap (0x7f ==) |
 }
 
+// char -- lower_char
 pub :tolower {
     if dup isupper { 32+ }
 }
 
+// char -- upper_char
 pub :toupper {
     if dup islower { 32- }
 }

@@ -39,8 +39,12 @@ pub enum OKind {
     SHR
     SAR
     NOT
+    // Comparison
     EQ
+    NE
+    GE
     GT
+    LE
     LT
     DIVMOD  // a b -- (a / b) (a % b)
     // Branching

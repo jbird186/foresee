@@ -27,7 +27,10 @@
 #pub macro >>> { __OP_SAR }
 #pub macro ~ { __OP_NOT }
 #pub macro == { __OP_EQ }
+#pub macro != { __OP_NE }
+#pub macro >= { __OP_GE }
 #pub macro > { __OP_GT }
+#pub macro <= { __OP_LE }
 #pub macro < { __OP_LT }
 #pub macro divmod { __OP_DIVMOD }
 #pub macro fopen { __OP_FOPEN }

@@ -12,9 +12,6 @@ pub struct bool {[1] __inner}
 #pub macro NULL {0}
 #pub macro false {0}
 #pub macro true {1}
-#pub macro != {== 1 ^}
-#pub macro <= {> 1 ^}
-#pub macro >= {< 1 ^}
 pub :is_success {-1 >}
 pub :is_failure {0 <}
 pub :flag {if {true} else {false}}

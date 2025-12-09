@@ -347,7 +347,10 @@ static int TOTAL_DATA_SIZE
     define_intrinsic_opcode(0, OKind.SAR, "__OP_SAR")
     define_intrinsic_opcode(0, OKind.NOT, "__OP_NOT")
     define_intrinsic_opcode(0, OKind.EQ, "__OP_EQ")
+    define_intrinsic_opcode(0, OKind.NE, "__OP_NE")
+    define_intrinsic_opcode(0, OKind.GE, "__OP_GE")
     define_intrinsic_opcode(0, OKind.GT, "__OP_GT")
+    define_intrinsic_opcode(0, OKind.LE, "__OP_LE")
     define_intrinsic_opcode(0, OKind.LT, "__OP_LT")
     define_intrinsic_opcode(0, OKind.DIVMOD, "__OP_DIVMOD")
     // Syscalls
