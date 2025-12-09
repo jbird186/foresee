@@ -50,7 +50,8 @@ pub enum OKind {
     // CMP
     PRE_CMP    // value --
     CMP
-    JCMP
+    JCMPL
+    JCMPG
     JCMPNE
     // Syscalls
     EXIT    // exit_code --

@@ -340,12 +340,17 @@ pub :x64n_compile_generic_op {
         "    ; OP_CMP\n"coms_dbg
         "    cmp     qword [rsp-8], "coms viewod com "\n"coms
     }
-    case OKind.JCMP {
-        "    ; OP_JCMP\n"coms_dbg
+    case OKind.JCMPL {
+        "    ; OP_JCMPL\n"coms_dbg
         x64n_flush_push_cache
         x64n_flush_stack_ptr_delta
         "    jl      .l_"coms viewod com_label "\n"coms
-        "    jg      .l_"coms viewod 1+ com_label "\n"coms
+    }
+    case OKind.JCMPG {
+        "    ; OP_JCMPG\n"coms_dbg
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
+        "    jg      .l_"coms viewod com_label "\n"coms
     }
     case OKind.JCMPNE {
         "    ; OP_JCMPNE\n"coms_dbg

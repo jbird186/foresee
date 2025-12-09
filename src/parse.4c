@@ -462,19 +462,29 @@ static int TOTAL_DATA_SIZE
 
     (cases mid %SwitchCase* +)@ OKind.CMP 3 pick op_push
     if n_cases 1 > {
-        var int label: {ASM_LABEL_ID}
-        2+=ASM_LABEL_ID
+        var int gt_n_cases: {n_cases mid- 1-}
 
-        label OKind.JCMP 3 pick op_push
-        switch_id id_offset+ mid+ OKind.JMP 3 pick op_push
+        var int l_label: {ASM_LABEL_ID}
+        if mid { 1+=ASM_LABEL_ID l_label } else { switch_id 1+ }
+            OKind.JCMPL 3 pick op_push
+
+        var int g_label: {ASM_LABEL_ID}
+        if gt_n_cases { 1+=ASM_LABEL_ID g_label } else { switch_id 1+ }
+            OKind.JCMPG 3 pick op_push
+
+        (switch_id id_offset+) mid+ OKind.JMP 3 pick op_push
 
         // less than case
-        label OKind.LABEL 3 pick op_push
-        cases mid switch_id id_offset _parse_switch_tree
+        if mid {
+            l_label OKind.LABEL 3 pick op_push
+            cases mid switch_id id_offset _parse_switch_tree
+        }
 
         // greater than case
-        label 1+ OKind.LABEL 3 pick op_push
-        (cases mid 1+ %SwitchCase* +) (n_cases mid- 1-) switch_id (id_offset mid+ 1+) _parse_switch_tree
+        if gt_n_cases {
+            g_label OKind.LABEL 3 pick op_push
+            (cases mid 1+ %SwitchCase* +) gt_n_cases switch_id (id_offset mid+ 1+) _parse_switch_tree
+        }
     } else {
         switch_id 1+ OKind.JCMPNE 3 pick op_push
         switch_id id_offset+ mid+ OKind.JMP 3 pick op_push

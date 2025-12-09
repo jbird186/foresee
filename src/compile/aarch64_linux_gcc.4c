@@ -352,12 +352,17 @@ static char[32] push_cache
         "    ldr     x0, [sp, #-8]\n"coms
         "    cmp     x0, "coms viewod com "\n"coms
     }
-    case OKind.JCMP {
-        "    // OP_JCMP\n"coms_dbg
+    case OKind.JCMPL {
+        "    // OP_JCMPL\n"coms_dbg
         flush_push_cache
         flush_stack_ptr_delta
         "    b.lt    .l_"coms viewod com_label "\n"coms
-        "    b.gt    .l_"coms viewod 1+ com_label "\n"coms
+    }
+    case OKind.JCMPG {
+        "    // OP_JCMPG\n"coms_dbg
+        flush_push_cache
+        flush_stack_ptr_delta
+        "    b.gt    .l_"coms viewod com_label "\n"coms
     }
     case OKind.JCMPNE {
         "    // OP_JCMPNE\n"coms_dbg
