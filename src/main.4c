@@ -59,4 +59,7 @@
     if depth {
         "WARNING: Compilation completed with a stack depth of "puts depth put "\n"puts
     }
+    if &scope_stack stack_len 2 != {
+        "WARNING: Compilation completed with a scope depth of "puts &scope_stack stack_len put "\n"puts
+    }
 }

@@ -279,7 +279,7 @@ switch thing_to_match {
 
 The top stack item after executing `thing_to_match` is popped off the stack, and is used for matching. `default` is optional. Each `case` keyword must be followed by a literal integer, literal character, or an enum variant to be matched.
 
-Unlike C's switch statements, Foresee's switch statements do *not* fall through to the next case by default, and are very similar in functionality to a set of if-else statements.
+Unlike C's switch statements, Foresee's switch statements do *not* fall through to the next case by default, and are very similar in functionality to a set of if-else statements. Multiple cases can be made to execute the same block by separating each case by a comma: `case a, b, c, ... { ... }`.
 
 #### Example
 
@@ -309,14 +309,11 @@ enum Color {
     }
 
     switch 2 2 + {
-        case 1 {
-            "Wrong!\n" puts
+        case 8, 100, 12 {
+            "Wrong (too high)!\n" puts
         }
-        case 100 {
-            "Wrong!\n" puts
-        }
-        case 8 {
-            "Wrong!\n" puts
+        case -50, 3, 1 {
+            "Wrong (too low)!\n" puts
         }
         default {
             "None of the above.\n" puts

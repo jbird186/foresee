@@ -118,7 +118,7 @@ pub :show_tok {
     case TKind.POUND { "#" puts }
     case TKind.COMMA { "," puts }
     case TKind.STATIC { "static" puts }
-    case TKind.VAR { "$" puts }
+    case TKind.VAR { "var" puts }
     case TKind.REF { for (var int i: 0, viewtd i >, 1 +=i) { "&" puts } }
     case TKind.EQ { viewtd puts }
     case TKind.ENUM { "enum" puts }

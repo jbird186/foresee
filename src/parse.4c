@@ -454,8 +454,9 @@ static int TOTAL_DATA_SIZE
     }
 
     var int mid: {n_cases 2/}
+    var &SwitchCase switch_case: {cases mid %SwitchCase* +}
 
-    (cases mid %SwitchCase* +)@ OKind.CMP 3 pick op_push
+    switch_case@ OKind.CMP 3 pick op_push
     if n_cases 1 > {
         var int gt_n_cases: {n_cases mid- 1-}
 
@@ -467,7 +468,8 @@ static int TOTAL_DATA_SIZE
         if gt_n_cases { 1+=ASM_LABEL_ID g_label } else { switch_id 1+ }
             OKind.JCMPG 3 pick op_push
 
-        (switch_id id_offset+) mid+ OKind.JMP 3 pick op_push
+        if switch_case->is_merged { 2 switch_case->def+ } else { id_offset mid+ }
+            switch_id+ OKind.JMP 3 pick op_push
 
         // less than case
         if mid {
@@ -478,11 +480,12 @@ static int TOTAL_DATA_SIZE
         // greater than case
         if gt_n_cases {
             g_label OKind.LABEL 3 pick op_push
-            (cases mid 1+ %SwitchCase* +) gt_n_cases switch_id (id_offset mid+ 1+) _parse_switch_tree
+            (switch_case %SwitchCase+) gt_n_cases switch_id (id_offset mid+ 1+) _parse_switch_tree
         }
     } else {
         switch_id 1+ OKind.JCMPNE 3 pick op_push
-        switch_id id_offset+ mid+ OKind.JMP 3 pick op_push
+        if switch_case->is_merged { 2 switch_case->def+ } else { id_offset mid+ }
+            switch_id+ OKind.JMP 3 pick op_push
     }
 }
 
@@ -513,6 +516,27 @@ static int TOTAL_DATA_SIZE
 
         arr low i _sort_switch_tree
         arr i 2+ high _sort_switch_tree
+    }
+}
+
+// &cases n_cases value -- idx
+:_binary_search_known_switch_case {
+    var int value: {}
+    var int low: 0
+    var int high: {1-}
+    var &SwitchCase cases: {}
+
+    while low high <= {
+        var int mid: {low ((high low -) 2 /) +}
+        var &SwitchCase mid_case: { cases mid %SwitchCase* + }
+        if mid_case->value value == {
+            mid return
+        }
+        if mid_case->value value < {
+            mid 1+ =low
+        } else {
+            mid 1- =high
+        }
     }
 }
 
@@ -550,59 +574,81 @@ static int TOTAL_DATA_SIZE
         }
         %Token+
 
-        if viewtk dup (TKind.INT ==) swap (TKind.CHAR ==) | {
-            viewod =cases[n_cases].value
-            %Token+
-            dup %Token+ =cases[n_cases].def
-            if viewtk TKind.BRACE_START != {
-                error "Expected braces for 'case' block\n"puts
-                1 exit
-            }
-            skip_braces
-        } else if viewtk TKind.IDENT == {
-            if viewtd ENUM_MAP scoped_map_find_idx is_failure {
-                error "Expected literal integer, literal char, or enum variant for 'case' condition\n" puts
-                1 exit
+        var int label_id: { n_cases }
+        while true {
+            switch viewtk {
+                case TKind.INT, TKind.CHAR {
+                    viewod =cases[n_cases].value
+                    %Token+
+                }
+                case TKind.IDENT {
+                    if viewtd ENUM_MAP scoped_map_find_idx is_failure {
+                        error "Expected literal integer, literal char, or enum variant for 'case' condition\n" puts
+                        1 exit
+                    }
+                    _view_enum_as_int =cases[n_cases].value
+                }
+                default {
+                    error "Invalid 'case' condition\n"puts
+                    1 exit
+                }
             }
 
-            _view_enum_as_int =cases[n_cases].value
-            dup %Token+ =cases[n_cases].def
-            if viewtk TKind.BRACE_START != {
-                error "Expected braces for 'case' block\n"puts
-                1 exit
-            }
-            skip_braces
-        } else {
-            error "Invalid 'case' condition\n"puts
+            cases[label_id].value =cases[n_cases].def
+            true =cases[n_cases].is_merged
+            1 +=n_cases
+
+            if viewtk TKind.COMMA != { break }
+            %Token+
+        }
+        if viewtk TKind.BRACE_START != {
+            error "Expected braces for 'case' block\n"puts
             1 exit
         }
-        1 +=n_cases
+
+        dup %Token+ =cases[label_id].def
+        false =cases[label_id].is_merged
+        skip_braces
     }
     %Token+
 
     &cases 0 n_cases 1- _sort_switch_tree
+
+    for (var int i: 0, i n_cases <, 1 +=i) {
+        if cases[i].is_merged {
+            &cases n_cases cases[i].def _binary_search_known_switch_case
+            =cases[i].def
+        }
+    }
 
     n_cases 2+ +=ASM_LABEL_ID
     &cases n_cases switch_id 2 _parse_switch_tree
 
     if default_case {
         switch_id 1+ OKind.LABEL 3 pick op_push
-        swap default_case parse_until(TKind.BRACE_END) drop swap
+        swap default_case new_local_scope
+        parse_until(TKind.BRACE_END) drop swap
         switch_id OKind.JMP 3 pick op_push
+        pop_local_scope
     }
+
     var int prev: 0
     for (var int i: 0, i n_cases <, 1 +=i) {
         if i {
             if prev cases[i].value == {
-                cases[i].def
+                cases[ if cases[i].is_merged {cases[i].def} else {i} ].def
                 error "Duplicate 'case' condition for "puts cases[i].value put "\n"puts
                 1 exit
             }
         }
 
-        switch_id 2+ i+ OKind.LABEL 3 pick op_push
-        swap cases[i].def parse_until(TKind.BRACE_END) drop swap
-        switch_id OKind.JMP 3 pick op_push
+        if cases[i].is_merged not {
+            switch_id 2+ i+ OKind.LABEL 3 pick op_push
+            swap cases[i].def new_local_scope
+            parse_until(TKind.BRACE_END) drop swap
+            switch_id OKind.JMP 3 pick op_push
+            pop_local_scope
+        }
 
         cases[i].value =prev
     }
@@ -1360,11 +1406,7 @@ static int TOTAL_DATA_SIZE
             error "Macro '"puts viewtd puts "' not defined\n"puts
             1 exit
         }
-        case TKind.INT {
-            viewtd OKind.PUSH_INT 3 roll op_push
-            %Token+
-        }
-        case TKind.CHAR {
+        case TKind.INT, TKind.CHAR {
             viewtd OKind.PUSH_INT 3 roll op_push
             %Token+
         }
@@ -1410,15 +1452,17 @@ static int TOTAL_DATA_SIZE
 
 // kind -- bool
 :is_tok_allowed_outside_main {
-    var char kind: {}
-    (kind TKind.FN ==)
-    (kind TKind.STATIC ==)
-    (kind TKind.ENUM ==)
-    (kind TKind.STRUCT ==)
-    (kind TKind.PUB ==)
-    (kind TKind.FILE_START ==)
-    (kind TKind.FILE_END ==)
-    | | | | | |
+    switch {
+        case TKind.FN,
+            TKind.STATIC,
+            TKind.ENUM,
+            TKind.STRUCT,
+            TKind.PUB,
+            TKind.FILE_START,
+            TKind.FILE_END
+            { true }
+        default { false }
+    }
 }
 
 pub :parse_out_toks {

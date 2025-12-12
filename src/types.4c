@@ -76,6 +76,7 @@ pub struct Struct {
 pub struct SwitchCase {
     int value
     &Token def
+    bool is_merged
 }
 
 pub static bool IS_PUBLIC

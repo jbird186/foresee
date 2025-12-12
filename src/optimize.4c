@@ -8,10 +8,20 @@
 
     var &Op op: {root->def}
     while (op->kind) {
-        if (op->kind OKind.CALL_FN ==) (op->kind OKind.PUSH_FN ==) | {
-            var &Function fn: {op->data FN_MAP map_idx}
-            if fn->is_used not {
-                fn mark_fn_tree_as_used
+        switch op->kind {
+            case OKind.CALL_FN, OKind.PUSH_FN {
+                var &Function fn: {op->data FN_MAP map_idx}
+                if fn->is_used not {
+                    fn mark_fn_tree_as_used
+                }
+            }
+            case OKind.RET, OKind.EXIT {
+                %Op+=op
+                while (op->kind flag) (op->kind OKind.LABEL !=) & {
+                    OKind.NOOP =op->kind
+                    %Op+=op
+                }
+                continue
             }
         }
         %Op+=op
