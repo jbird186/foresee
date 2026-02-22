@@ -278,7 +278,7 @@ pub :x64n_compile_generic_op {
         "rcx" "and" "OP_AND" compile_basic_binop
     }
     case OKind.OR {
-        "rcx" "or" "OP_OR" compile_basic_binop
+        "rcx" "or " "OP_OR" compile_basic_binop
     }
     case OKind.XOR {
         "rcx" "xor" "OP_XOR" compile_basic_binop

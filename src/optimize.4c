@@ -1,5 +1,125 @@
 #use "types.4c"
 #use "map.4c"
+#use "stdstr.4c"
+
+// &op_ptr -- &new_op_ptr
+:fold_constant {
+    var &Op start_op: {dup}
+    var &Op op: {}
+
+    #macro STACK_MAX_SIZE {256}
+    var int[STACK_MAX_SIZE] stack
+    var int stack_depth: 0
+
+    #macro check_stack_access(stack_depth_reach, stack_depth_net_increase) {
+        if stack_depth (stack_depth_reach) < { break }
+        if stack_depth (stack_depth_net_increase)+ STACK_MAX_SIZE > { break }
+    }
+
+    #macro binop_case(okind, action) {
+        case okind {
+            check_stack_access(2, -1)
+            stack[stack_depth 2-] stack[stack_depth 1-] action =stack[stack_depth 2-]
+            1 -=stack_depth
+        }
+    }
+
+    while true {
+        switch op->kind {
+            case OKind.PUSH_INT {
+                check_stack_access(0, 1)
+                op->data =stack[stack_depth]
+                1 +=stack_depth
+            }
+            case OKind.DROP {
+                check_stack_access(1, -1)
+                1 -=stack_depth
+            }
+            case OKind.PICK {
+                var int n: {stack[stack_depth 1-]}
+                check_stack_access(n 2+, 0)
+                stack[stack_depth n- 2-] =stack[stack_depth 1-]
+            }
+            case OKind.ROLL {
+                var int n: {stack[stack_depth 1-]}
+                check_stack_access(n 2+, -1)
+                var int base_depth: {stack_depth 2-}
+                var int temp: {stack[base_depth n-]}
+                if n {
+                    &stack[base_depth n- 1+] &stack[base_depth n-] (n %int*) memcpy
+                }
+                temp =stack[stack_depth 2-]
+                1 -=stack_depth
+            }
+            case OKind.DUP {
+                check_stack_access(1, 1)
+                stack[stack_depth 1-] =stack[stack_depth]
+                1 +=stack_depth
+            }
+            case OKind.OVER {
+                check_stack_access(2, 1)
+                stack[stack_depth 2-] =stack[stack_depth]
+                1 +=stack_depth
+            }
+            case OKind.SWAP {
+                check_stack_access(2, 0)
+                var int temp: { stack[stack_depth 2-] }
+                stack[stack_depth 1-] =stack[stack_depth 2-]
+                temp =stack[stack_depth 1-]
+            }
+            case OKind.ROT {
+                check_stack_access(3, 0)
+                var int temp: { stack[stack_depth 3-] }
+                stack[stack_depth 2-] =stack[stack_depth 3-]
+                stack[stack_depth 1-] =stack[stack_depth 2-]
+                temp =stack[stack_depth 1-]
+            }
+            case OKind.NIP {
+                check_stack_access(2, -1)
+                stack[stack_depth 1-] =stack[stack_depth 2-]
+                1 -=stack_depth
+            }
+            binop_case(OKind.ADD, +)
+            binop_case(OKind.SUB, -)
+            binop_case(OKind.MUL, *)
+            binop_case(OKind.AND, &)
+            binop_case(OKind.OR, |)
+            binop_case(OKind.XOR, ^)
+            binop_case(OKind.SHL, <<)
+            binop_case(OKind.SHR, >>)
+            binop_case(OKind.SAR, >>>)
+            case OKind.NOT {
+                check_stack_access(1, 0)
+                stack[stack_depth 1-]~ =stack[stack_depth 1-]
+            }
+            case OKind.DIVMOD {
+                check_stack_access(2, 0)
+                stack[stack_depth 2-] stack[stack_depth 1-] divmod
+                =stack[stack_depth 1-] =stack[stack_depth 2-]
+            }
+            binop_case(OKind.EQ, ==)
+            binop_case(OKind.NE, !=)
+            binop_case(OKind.GE, >=)
+            binop_case(OKind.GT, >)
+            binop_case(OKind.LE, <=)
+            binop_case(OKind.LT, <)
+            default { break }
+        }
+        %Op +=op
+    }
+    var int i: 0
+    for (, i stack_depth <, 1 +=i) {
+        var &Op this_op: {%Op i* start_op+}
+        OKind.PUSH_INT =this_op->kind
+        stack[i] =this_op->data
+    }
+    var int n_folded: { op start_op- %Op/ }
+    for (, i n_folded <, 1 +=i) {
+        var &Op this_op: {%Op i* start_op+}
+        OKind.NOOP =this_op->kind
+    }
+    op
+}
 
 // &fn_ptr --
 :mark_fn_tree_as_used {
@@ -22,6 +142,12 @@
                     %Op+=op
                 }
                 continue
+            }
+            case OKind.PUSH_INT {
+                if optimize_mode {
+                    op fold_constant =op
+                    continue
+                }
             }
         }
         %Op+=op

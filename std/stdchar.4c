@@ -26,12 +26,7 @@ pub :isalnum {
 // char -- bool
 pub :isspace {
     switch {
-        case ' ' { true }
-        case '\t' { true }
-        case '\n' { true }
-        case '\r' { true }
-        case '\v' { true }
-        case '\f' { true }
+        case ' ', '\t', '\n', '\r', '\v', '\f' { true }
         default { false }
     }
 }

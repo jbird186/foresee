@@ -203,37 +203,9 @@ f_209:
     call    f_467
     lea     rax, [rbp - 272]
     mov     qword [r12 - 8], rax
-    mov     rax, 0
-    mov     rsi, qword [r12 - 8]
-    cmp     rax, 0
-    je      .frl_209_2
-    cmp     rax, 1
-    je      .fwl_209_2
-    cmp     rax, 2
-    je      .fal_209_2
-    jmp     .ffl_209_2
-    .frl_209_2:
-    mov     rdx, 0
-    jmp     .fdl_209_2
-    .fwl_209_2:
-    mov     rdx, 577
-    jmp     .fdl_209_2
-    .fal_209_2:
-    mov     rdx, 1089
-    jmp     .fdl_209_2
-    .fdl_209_2:
-    mov     rax, 257
-    mov     rdi, -100
-    mov     r10, 420
-    syscall
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    jmp     .fel_209_2
-    .ffl_209_2:
-    mov     rax, -1
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    .fel_209_2:
+    mov     qword [r12 - 16], 0
+    sub     r12, 16
+    call    f_7332
     lea     rax, [rbp - 280]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -247,7 +219,7 @@ f_209:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_209_4
+    jz      .l_209_3
     lea     rax, [rbp - 272]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -302,8 +274,8 @@ f_209:
     mov     qword [r12], rax
     leave
     ret
-.l_209_4:
 .l_209_3:
+.l_209_2:
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
@@ -904,37 +876,8 @@ f_288:
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 + 8], rax
-    mov     rax, 0
-    mov     rsi, qword [r12 + 8]
-    cmp     rax, 0
-    je      .frl_288_0
-    cmp     rax, 1
-    je      .fwl_288_0
-    cmp     rax, 2
-    je      .fal_288_0
-    jmp     .ffl_288_0
-    .frl_288_0:
-    mov     rdx, 0
-    jmp     .fdl_288_0
-    .fwl_288_0:
-    mov     rdx, 577
-    jmp     .fdl_288_0
-    .fal_288_0:
-    mov     rdx, 1089
-    jmp     .fdl_288_0
-    .fdl_288_0:
-    mov     rax, 257
-    mov     rdi, -100
-    mov     r10, 420
-    syscall
-    mov     qword [r12 + 8], rax
-    add     r12, 8
-    jmp     .fel_288_0
-    .ffl_288_0:
-    mov     rax, -1
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    .fel_288_0:
+    mov     qword [r12], 0
+    call    f_7332
     lea     rax, [rbp - 24]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -948,7 +891,7 @@ f_288:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_288_2
+    jz      .l_288_1
     lea     rax, [rel b_9446]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -965,8 +908,8 @@ f_288:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_288_2:
 .l_288_1:
+.l_288_0:
     lea     rax, [rel b_3232]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 300000
@@ -977,9 +920,8 @@ f_288:
     call    f_6042
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
-    mov     rdi, rax
-    mov     rax, 3
-    syscall
+    mov     qword [r12], rax
+    call    f_2890
     lea     rax, [rel b_3232]
     mov     qword [r12], rax
     lea     rax, [rbp - 8]
@@ -998,7 +940,7 @@ f_288:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_288_4
+    jz      .l_288_3
     lea     rax, [rel b_9521]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1006,45 +948,17 @@ f_288:
     mov     rdi, 1
     mov     eax, 60
     syscall
-.l_288_4:
 .l_288_3:
+.l_288_2:
     call    f_8163
     call    f_2230
     call    f_5977
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
-    mov     rax, 1
-    mov     rsi, qword [r12 - 8]
-    cmp     rax, 0
-    je      .frl_288_5
-    cmp     rax, 1
-    je      .fwl_288_5
-    cmp     rax, 2
-    je      .fal_288_5
-    jmp     .ffl_288_5
-    .frl_288_5:
-    mov     rdx, 0
-    jmp     .fdl_288_5
-    .fwl_288_5:
-    mov     rdx, 577
-    jmp     .fdl_288_5
-    .fal_288_5:
-    mov     rdx, 1089
-    jmp     .fdl_288_5
-    .fdl_288_5:
-    mov     rax, 257
-    mov     rdi, -100
-    mov     r10, 420
-    syscall
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    jmp     .fel_288_5
-    .ffl_288_5:
-    mov     rax, -1
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    .fel_288_5:
+    mov     qword [r12 - 16], 1
+    sub     r12, 16
+    call    f_7332
     lea     rax, [rel b_1949]
     mov     rcx, qword [r12]
     mov     [rax], rcx
@@ -1052,15 +966,16 @@ f_288:
     call    f_7175
     lea     rax, [rel b_1949]
     mov     rax, qword [rax]
-    mov     rdi, rax
-    mov     rax, 3
-    syscall
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_2890
+    add     r12, 8
     call    f_4359
     mov     rax, bsp + 65536
     sub     rax, r12
     shr     rax, 3
     test    rax, rax
-    jz      .l_288_7
+    jz      .l_288_5
     lea     rax, [rel b_10678]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1075,9 +990,9 @@ f_288:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_288_6
-.l_288_7:
-.l_288_6:
+    jmp     .l_288_4
+.l_288_5:
+.l_288_4:
     lea     rax, [rel b_261]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
@@ -1091,7 +1006,7 @@ f_288:
     setne   al
     movzx   rax, al
     test    rax, rax
-    jz      .l_288_9
+    jz      .l_288_7
     lea     rax, [rel b_15202]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -1109,9 +1024,9 @@ f_288:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_288_8
-.l_288_9:
-.l_288_8:
+    jmp     .l_288_6
+.l_288_7:
+.l_288_6:
     leave
     ret
 f_332:
@@ -1478,7 +1393,7 @@ f_509:
     movzx   rax, byte [rax]
     mov     rcx, rax
     mov     rax, qword [r12]
-    or 	rax, rcx
+    or  	rax, rcx
     mov     qword [r12], rax
     mov     rax, 0
     mov     rbx, qword [r12]
@@ -3067,7 +2982,7 @@ f_1310:
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12 + 8]
-    or 	rax, rcx
+    or  	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
     leave
@@ -3700,7 +3615,7 @@ f_1431:
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12 - 8]
-    or 	rax, rcx
+    or  	rax, rcx
     mov     qword [r12 - 8], rax
     mov     rax, 0
     mov     rbx, qword [r12 - 8]
@@ -4604,7 +4519,7 @@ f_1431:
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12 - 8]
-    or 	rax, rcx
+    or  	rax, rcx
     mov     qword [r12 - 8], rax
     mov     rax, 0
     mov     rbx, qword [r12 - 8]
@@ -5625,7 +5540,7 @@ f_1555:
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12]
-    or 	rax, rcx
+    or  	rax, rcx
     mov     qword [r12], rax
     lea     rax, [rbp - 40]
     mov     rax, qword [rax]
@@ -5799,7 +5714,7 @@ f_1750:
     call    f_5489
     mov     rcx, qword [r12]
     mov     rax, qword [r12 + 8]
-    or 	rax, rcx
+    or  	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
     leave
@@ -6223,7 +6138,7 @@ f_2019:
     mov     rax, qword [rax]
     mov     rcx, rax
     mov     rax, qword [r12]
-    or 	rax, rcx
+    or  	rax, rcx
     add     r12, 8
     test    rax, rax
     jz      .l_2019_13
@@ -7616,7 +7531,7 @@ f_2212:
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12]
-    or 	rax, rcx
+    or  	rax, rcx
     add     r12, 8
     test    rax, rax
     jz      .l_2212_1
@@ -8193,14 +8108,7 @@ f_2448:
     call    f_7283
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
-    mov     qword [r12 - 16], 1
-    mov     rcx, 31
-    mov     rax, qword [r12 - 16]
-    shl 	rax, cl
-    mov     qword [r12 - 16], rax
-    mov     rcx, 1
-    mov     rax, qword [r12 - 16]
-    sub 	rax, rcx
+    mov     rax, 2147483647
     mov     rbx, qword [r12 - 8]
     cmp     rbx, rax
     setg    al
@@ -8208,21 +8116,14 @@ f_2448:
     mov     rbx, qword [r12]
     mov     qword [r12], rax
     mov     qword [r12 - 8], rbx
-    mov     qword [r12 - 16], 1
-    mov     rcx, 31
-    mov     rax, qword [r12 - 16]
-    shl 	rax, cl
-    mov     qword [r12 - 16], rax
-    mov     rcx, -1
-    mov     rax, qword [r12 - 16]
-    imul 	rax, rcx
+    mov     rax, -2147483648
     mov     rbx, qword [r12 - 8]
     cmp     rbx, rax
     setl    al
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12]
-    or 	rax, rcx
+    or  	rax, rcx
     add     r12, 8
     test    rax, rax
     jz      .l_2448_98
@@ -8694,7 +8595,7 @@ f_2448:
 .l_2448_29:
     lea     rax, [rel b_8796]
     mov     qword [r12 - 8], rax
-    lea     rax, [rel b_9199]
+    lea     rax, [rel b_12224]
     mov     qword [r12 - 16], rax
     lea     rax, [rel b_13627]
     mov     qword [r12 - 24], rax
@@ -9020,12 +8921,7 @@ f_2520:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6962
-    mov     qword [r12 - 8], 65536
-    mov     rbx, 4096
-    mov     rax, qword [r12 - 8]
-    cqo
-    idiv    rbx
-    mov     qword [r12 - 8], rax
+    mov     qword [r12 - 8], 16
     sub     r12, 8
     call    f_3176
     lea     rax, [rel b_10326]
@@ -11369,7 +11265,7 @@ f_2785:
     call    f_5217
     mov     rcx, qword [r12]
     mov     rax, qword [r12 + 8]
-    or 	rax, rcx
+    or  	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
     leave
@@ -11788,6 +11684,15 @@ f_2875:
     mov     [rax], rcx
     jmp     .l_2875_2
 .l_2875_1:
+    leave
+    ret
+f_2890:
+    push    rbp
+    mov     rbp, rsp
+    mov     rdi, qword [r12]
+    mov     rax, 3
+    syscall
+    mov     qword [r12], rax
     leave
     ret
 f_2930:
@@ -12244,7 +12149,7 @@ f_3028:
     call    f_5489
     mov     rcx, qword [r12]
     mov     rax, qword [r12 + 8]
-    or 	rax, rcx
+    or  	rax, rcx
     add     r12, 16
     test    rax, rax
     jz      .l_3028_39
@@ -13973,7 +13878,7 @@ f_3887:
     movzx   rax, byte [rax]
     mov     rcx, rax
     mov     rax, qword [r12]
-    or 	rax, rcx
+    or  	rax, rcx
     add     r12, 8
     test    rax, rax
     jz      .l_3887_1
@@ -15613,7 +15518,7 @@ f_4359:
     mov     rax, qword [r12 - 8]
     imul 	rax, rcx
     mov     qword [r12 - 8], rax
-    mov     rax, 663560
+    mov     rax, 737288
     mov     rbx, qword [r12 - 8]
     cmp     rbx, rax
     setg    al
@@ -17057,7 +16962,7 @@ f_5160:
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12]
-    or 	rax, rcx
+    or  	rax, rcx
     mov     rcx, rax
     mov     rax, qword [r12 + 8]
     and 	rax, rcx
@@ -18849,7 +18754,7 @@ f_5761:
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12 + 8]
-    or 	rax, rcx
+    or  	rax, rcx
     add     r12, 16
     test    rax, rax
     jz      .l_5761_5
@@ -25961,7 +25866,7 @@ f_6850:
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12]
-    or 	rax, rcx
+    or  	rax, rcx
     add     r12, 8
     test    rax, rax
     jz      .l_6850_3
@@ -26247,7 +26152,7 @@ f_6850:
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12]
-    or 	rax, rcx
+    or  	rax, rcx
     add     r12, 8
     test    rax, rax
     jz      .l_6850_21
@@ -26749,6 +26654,2868 @@ f_6927:
     sub     r12, 8
     call    f_934
 .l_6927_0:
+    leave
+    ret
+f_6938:
+    push    rbp
+    mov     rbp, rsp
+    sub     rsp, 2096
+    mov     rax, [r12]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 8]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    lea     rax, [rbp - 16]
+    mov     rcx, qword [r12]
+    mov     [rax], rcx
+    mov     qword [r12], 0
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12]
+    mov     [rax], rcx
+    add     r12, 8
+.l_6938_0:
+    mov     rax, 1
+    test    rax, rax
+    jz      .l_6938_1
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 0
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    movzx   rax, byte [rax]
+    mov     [rsp-8], rax
+    cmp     qword [rsp-8], 28
+    jl      .l_6938_30
+    jg      .l_6938_31
+    jmp     .l_6938_17
+.l_6938_30:
+    cmp     qword [rsp-8], 12
+    jl      .l_6938_32
+    jg      .l_6938_33
+    jmp     .l_6938_10
+.l_6938_32:
+    cmp     qword [rsp-8], 9
+    jl      .l_6938_34
+    jg      .l_6938_35
+    jmp     .l_6938_7
+.l_6938_34:
+    cmp     qword [rsp-8], 7
+    jl      .l_6938_36
+    jg      .l_6938_37
+    jmp     .l_6938_5
+.l_6938_36:
+    cmp     qword [rsp-8], 6
+    jne     .l_6938_3
+    jmp     .l_6938_4
+.l_6938_37:
+    cmp     qword [rsp-8], 8
+    jne     .l_6938_3
+    jmp     .l_6938_6
+.l_6938_35:
+    cmp     qword [rsp-8], 11
+    jl      .l_6938_38
+    jg      .l_6938_3
+    jmp     .l_6938_9
+.l_6938_38:
+    cmp     qword [rsp-8], 10
+    jne     .l_6938_3
+    jmp     .l_6938_8
+.l_6938_33:
+    cmp     qword [rsp-8], 25
+    jl      .l_6938_39
+    jg      .l_6938_40
+    jmp     .l_6938_14
+.l_6938_39:
+    cmp     qword [rsp-8], 14
+    jl      .l_6938_41
+    jg      .l_6938_42
+    jmp     .l_6938_12
+.l_6938_41:
+    cmp     qword [rsp-8], 13
+    jne     .l_6938_3
+    jmp     .l_6938_11
+.l_6938_42:
+    cmp     qword [rsp-8], 24
+    jne     .l_6938_3
+    jmp     .l_6938_13
+.l_6938_40:
+    cmp     qword [rsp-8], 27
+    jl      .l_6938_43
+    jg      .l_6938_3
+    jmp     .l_6938_16
+.l_6938_43:
+    cmp     qword [rsp-8], 26
+    jne     .l_6938_3
+    jmp     .l_6938_15
+.l_6938_31:
+    cmp     qword [rsp-8], 35
+    jl      .l_6938_44
+    jg      .l_6938_45
+    jmp     .l_6938_24
+.l_6938_44:
+    cmp     qword [rsp-8], 32
+    jl      .l_6938_46
+    jg      .l_6938_47
+    jmp     .l_6938_21
+.l_6938_46:
+    cmp     qword [rsp-8], 30
+    jl      .l_6938_48
+    jg      .l_6938_49
+    jmp     .l_6938_19
+.l_6938_48:
+    cmp     qword [rsp-8], 29
+    jne     .l_6938_3
+    jmp     .l_6938_18
+.l_6938_49:
+    cmp     qword [rsp-8], 31
+    jne     .l_6938_3
+    jmp     .l_6938_20
+.l_6938_47:
+    cmp     qword [rsp-8], 34
+    jl      .l_6938_50
+    jg      .l_6938_3
+    jmp     .l_6938_23
+.l_6938_50:
+    cmp     qword [rsp-8], 33
+    jne     .l_6938_3
+    jmp     .l_6938_22
+.l_6938_45:
+    cmp     qword [rsp-8], 38
+    jl      .l_6938_51
+    jg      .l_6938_52
+    jmp     .l_6938_27
+.l_6938_51:
+    cmp     qword [rsp-8], 37
+    jl      .l_6938_53
+    jg      .l_6938_3
+    jmp     .l_6938_26
+.l_6938_53:
+    cmp     qword [rsp-8], 36
+    jne     .l_6938_3
+    jmp     .l_6938_25
+.l_6938_52:
+    cmp     qword [rsp-8], 40
+    jl      .l_6938_54
+    jg      .l_6938_3
+    jmp     .l_6938_29
+.l_6938_54:
+    cmp     qword [rsp-8], 39
+    jne     .l_6938_3
+    jmp     .l_6938_28
+.l_6938_3:
+    jmp     .l_6938_1
+    jmp     .l_6938_2
+.l_6938_4:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 0
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_56
+    jmp     .l_6938_1
+    jmp     .l_6938_55
+.l_6938_56:
+.l_6938_55:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_58
+    jmp     .l_6938_1
+    jmp     .l_6938_57
+.l_6938_58:
+.l_6938_57:
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_5:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 1
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_60
+    jmp     .l_6938_1
+    jmp     .l_6938_59
+.l_6938_60:
+.l_6938_59:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_62
+    jmp     .l_6938_1
+    jmp     .l_6938_61
+.l_6938_62:
+.l_6938_61:
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_6:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2080]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_64
+    jmp     .l_6938_1
+    jmp     .l_6938_63
+.l_6938_64:
+.l_6938_63:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 0
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_66
+    jmp     .l_6938_1
+    jmp     .l_6938_65
+.l_6938_66:
+.l_6938_65:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_7:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2080]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_68
+    jmp     .l_6938_1
+    jmp     .l_6938_67
+.l_6938_68:
+.l_6938_67:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_70
+    jmp     .l_6938_1
+    jmp     .l_6938_69
+.l_6938_70:
+.l_6938_69:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2088]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2088]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2096]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    test    rax, rax
+    jz      .l_6938_72
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2088]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2088]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rdi, qword [r12 - 16]
+    mov     rsi, qword [r12 - 8]
+    cld
+    rep     movsb
+    jmp     .l_6938_71
+.l_6938_72:
+.l_6938_71:
+    lea     rax, [rbp - 2096]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_8:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 1
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_75
+    jmp     .l_6938_1
+    jmp     .l_6938_74
+.l_6938_75:
+.l_6938_74:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_77
+    jmp     .l_6938_1
+    jmp     .l_6938_76
+.l_6938_77:
+.l_6938_76:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_9:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_79
+    jmp     .l_6938_1
+    jmp     .l_6938_78
+.l_6938_79:
+.l_6938_78:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_81
+    jmp     .l_6938_1
+    jmp     .l_6938_80
+.l_6938_81:
+.l_6938_80:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_10:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_83
+    jmp     .l_6938_1
+    jmp     .l_6938_82
+.l_6938_83:
+.l_6938_82:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 0
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_85
+    jmp     .l_6938_1
+    jmp     .l_6938_84
+.l_6938_85:
+.l_6938_84:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2080]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_11:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 3
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_87
+    jmp     .l_6938_1
+    jmp     .l_6938_86
+.l_6938_87:
+.l_6938_86:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 0
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_89
+    jmp     .l_6938_1
+    jmp     .l_6938_88
+.l_6938_89:
+.l_6938_88:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 3
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2080]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 3
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_12:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_91
+    jmp     .l_6938_1
+    jmp     .l_6938_90
+.l_6938_91:
+.l_6938_90:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_93
+    jmp     .l_6938_1
+    jmp     .l_6938_92
+.l_6938_93:
+.l_6938_92:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_13:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_95
+    jmp     .l_6938_1
+    jmp     .l_6938_94
+.l_6938_95:
+.l_6938_94:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_97
+    jmp     .l_6938_1
+    jmp     .l_6938_96
+.l_6938_97:
+.l_6938_96:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_14:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_99
+    jmp     .l_6938_1
+    jmp     .l_6938_98
+.l_6938_99:
+.l_6938_98:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_101
+    jmp     .l_6938_1
+    jmp     .l_6938_100
+.l_6938_101:
+.l_6938_100:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_15:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_103
+    jmp     .l_6938_1
+    jmp     .l_6938_102
+.l_6938_103:
+.l_6938_102:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_105
+    jmp     .l_6938_1
+    jmp     .l_6938_104
+.l_6938_105:
+.l_6938_104:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    imul 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_16:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_107
+    jmp     .l_6938_1
+    jmp     .l_6938_106
+.l_6938_107:
+.l_6938_106:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_109
+    jmp     .l_6938_1
+    jmp     .l_6938_108
+.l_6938_109:
+.l_6938_108:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    and 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_17:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_111
+    jmp     .l_6938_1
+    jmp     .l_6938_110
+.l_6938_111:
+.l_6938_110:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_113
+    jmp     .l_6938_1
+    jmp     .l_6938_112
+.l_6938_113:
+.l_6938_112:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    or  	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_18:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_115
+    jmp     .l_6938_1
+    jmp     .l_6938_114
+.l_6938_115:
+.l_6938_114:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_117
+    jmp     .l_6938_1
+    jmp     .l_6938_116
+.l_6938_117:
+.l_6938_116:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    xor 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_19:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_119
+    jmp     .l_6938_1
+    jmp     .l_6938_118
+.l_6938_119:
+.l_6938_118:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_121
+    jmp     .l_6938_1
+    jmp     .l_6938_120
+.l_6938_121:
+.l_6938_120:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    shl 	rax, cl
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_20:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_123
+    jmp     .l_6938_1
+    jmp     .l_6938_122
+.l_6938_123:
+.l_6938_122:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_125
+    jmp     .l_6938_1
+    jmp     .l_6938_124
+.l_6938_125:
+.l_6938_124:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    shr 	rax, cl
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_21:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_127
+    jmp     .l_6938_1
+    jmp     .l_6938_126
+.l_6938_127:
+.l_6938_126:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_129
+    jmp     .l_6938_1
+    jmp     .l_6938_128
+.l_6938_129:
+.l_6938_128:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    sar 	rax, cl
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_22:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 1
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_131
+    jmp     .l_6938_1
+    jmp     .l_6938_130
+.l_6938_131:
+.l_6938_130:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 0
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_133
+    jmp     .l_6938_1
+    jmp     .l_6938_132
+.l_6938_133:
+.l_6938_132:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    not     rax
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_23:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_135
+    jmp     .l_6938_1
+    jmp     .l_6938_134
+.l_6938_135:
+.l_6938_134:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 0
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_137
+    jmp     .l_6938_1
+    jmp     .l_6938_136
+.l_6938_137:
+.l_6938_136:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rbx, rax
+    mov     rax, qword [r12 - 8]
+    cqo
+    idiv    rbx
+    mov     qword [r12 - 8], rax
+    mov     qword [r12 - 16], rdx
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 24], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 32], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 32]
+    sub 	rax, rcx
+    mov     qword [r12 - 32], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 32]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 24]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 16]
+    mov     [rax], rcx
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_24:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_139
+    jmp     .l_6938_1
+    jmp     .l_6938_138
+.l_6938_139:
+.l_6938_138:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_141
+    jmp     .l_6938_1
+    jmp     .l_6938_140
+.l_6938_141:
+.l_6938_140:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    sete    al
+    movzx   rax, al
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_25:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_143
+    jmp     .l_6938_1
+    jmp     .l_6938_142
+.l_6938_143:
+.l_6938_142:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_145
+    jmp     .l_6938_1
+    jmp     .l_6938_144
+.l_6938_145:
+.l_6938_144:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setne   al
+    movzx   rax, al
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_26:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_147
+    jmp     .l_6938_1
+    jmp     .l_6938_146
+.l_6938_147:
+.l_6938_146:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_149
+    jmp     .l_6938_1
+    jmp     .l_6938_148
+.l_6938_149:
+.l_6938_148:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setge   al
+    movzx   rax, al
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_27:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_151
+    jmp     .l_6938_1
+    jmp     .l_6938_150
+.l_6938_151:
+.l_6938_150:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_153
+    jmp     .l_6938_1
+    jmp     .l_6938_152
+.l_6938_153:
+.l_6938_152:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_28:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_155
+    jmp     .l_6938_1
+    jmp     .l_6938_154
+.l_6938_155:
+.l_6938_154:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_157
+    jmp     .l_6938_1
+    jmp     .l_6938_156
+.l_6938_157:
+.l_6938_156:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setle   al
+    movzx   rax, al
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_29:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rax, 2
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_159
+    jmp     .l_6938_1
+    jmp     .l_6938_158
+.l_6938_159:
+.l_6938_158:
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, -1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rax, 256
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setg    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_161
+    jmp     .l_6938_1
+    jmp     .l_6938_160
+.l_6938_161:
+.l_6938_160:
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 16]
+    sub 	rax, rcx
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 16], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 24], rax
+    mov     rcx, 2
+    mov     rax, qword [r12 - 24]
+    sub 	rax, rcx
+    mov     qword [r12 - 24], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 24]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    mov     qword [r12 - 8], rax
+    mov     rcx, rbx
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_2
+.l_6938_2:
+    mov     qword [r12 - 8], 9
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 16]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_0
+.l_6938_1:
+    mov     qword [r12 - 8], 0
+    lea     rax, [rbp - 2080]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+.l_6938_164:
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2072]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_163
+    mov     qword [r12 - 8], 9
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    imul 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 8]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2088]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 6
+    lea     rax, [rbp - 2088]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 0
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     byte [rax], cl
+    lea     rax, [rbp - 2064]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 8
+    mov     rax, qword [r12 - 16]
+    imul 	rax, rcx
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2088]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+.l_6938_162:
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2080]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_164
+.l_6938_163:
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 8]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    sub 	rax, rcx
+    mov     qword [r12 - 8], rax
+    mov     rbx, 9
+    mov     rax, qword [r12 - 8]
+    cqo
+    idiv    rbx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2088]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+.l_6938_167:
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2088]
+    mov     rax, qword [rax]
+    mov     rbx, qword [r12 - 8]
+    cmp     rbx, rax
+    setl    al
+    movzx   rax, al
+    test    rax, rax
+    jz      .l_6938_166
+    mov     qword [r12 - 8], 9
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    imul 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 8]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2096]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2096]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 16], rax
+    mov     rcx, 0
+    mov     rax, qword [r12 - 16]
+    add 	rax, rcx
+    mov     rcx, qword [r12 - 8]
+    mov     byte [rax], cl
+.l_6938_165:
+    mov     qword [r12 - 8], 1
+    lea     rax, [rbp - 2080]
+    mov     rax, qword [rax]
+    mov     rcx, rax
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     qword [r12 - 8], rax
+    lea     rax, [rbp - 2080]
+    mov     rcx, qword [r12 - 8]
+    mov     [rax], rcx
+    jmp     .l_6938_167
+.l_6938_166:
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
     leave
     ret
 f_6962:
@@ -27712,22 +30479,27 @@ f_7326:
     movzx   rax, byte [rax]
     mov     [rsp-8], rax
     cmp     qword [rsp-8], 5
-    jl      .l_7326_8
-    jg      .l_7326_9
+    jl      .l_7326_9
+    jg      .l_7326_10
     jmp     .l_7326_6
-.l_7326_8:
+.l_7326_9:
     cmp     qword [rsp-8], 4
-    jl      .l_7326_10
+    jl      .l_7326_11
     jg      .l_7326_3
     jmp     .l_7326_5
-.l_7326_10:
+.l_7326_11:
     cmp     qword [rsp-8], 3
     jne     .l_7326_3
     jmp     .l_7326_5
-.l_7326_9:
+.l_7326_10:
     cmp     qword [rsp-8], 49
-    jne     .l_7326_3
+    jl      .l_7326_12
+    jg      .l_7326_3
     jmp     .l_7326_6
+.l_7326_12:
+    cmp     qword [rsp-8], 6
+    jne     .l_7326_3
+    jmp     .l_7326_7
 .l_7326_5:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
@@ -27760,15 +30532,15 @@ f_7326:
     movzx   rax, al
     add     r12, 8
     test    rax, rax
-    jz      .l_7326_12
+    jz      .l_7326_14
     lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_7326
-    jmp     .l_7326_11
-.l_7326_12:
-.l_7326_11:
+    jmp     .l_7326_13
+.l_7326_14:
+.l_7326_13:
     jmp     .l_7326_2
 .l_7326_6:
     mov     qword [r12 - 8], 9
@@ -27781,7 +30553,7 @@ f_7326:
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-.l_7326_13:
+.l_7326_15:
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -27813,7 +30585,7 @@ f_7326:
     mov     rax, qword [r12 - 8]
     and 	rax, rcx
     test    rax, rax
-    jz      .l_7326_14
+    jz      .l_7326_16
     mov     qword [r12 - 8], 1
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
@@ -27833,9 +30605,28 @@ f_7326:
     lea     rax, [rbp - 16]
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
-    jmp     .l_7326_13
-.l_7326_14:
+    jmp     .l_7326_15
+.l_7326_16:
     jmp     .l_7326_0
+    jmp     .l_7326_2
+.l_7326_7:
+    lea     rax, [rel b_2442]
+    movzx   rax, byte [rax]
+    test    rax, rax
+    jz      .l_7326_18
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_6938
+    lea     rax, [rbp - 16]
+    mov     rcx, qword [r12]
+    mov     [rax], rcx
+    add     r12, 8
+    jmp     .l_7326_0
+    jmp     .l_7326_17
+.l_7326_18:
+.l_7326_17:
     jmp     .l_7326_2
 .l_7326_3:
 .l_7326_2:
@@ -27851,6 +30642,42 @@ f_7326:
     mov     [rax], rcx
     jmp     .l_7326_0
 .l_7326_1:
+    leave
+    ret
+f_7332:
+    push    rbp
+    mov     rbp, rsp
+    mov     rax, qword [r12]
+    mov     rsi, qword [r12 + 8]
+    cmp     rax, 0
+    je      .frl_7332_0
+    cmp     rax, 1
+    je      .fwl_7332_0
+    cmp     rax, 2
+    je      .fal_7332_0
+    jmp     .ffl_7332_0
+    .frl_7332_0:
+    mov     rdx, 0
+    jmp     .fdl_7332_0
+    .fwl_7332_0:
+    mov     rdx, 577
+    jmp     .fdl_7332_0
+    .fal_7332_0:
+    mov     rdx, 1089
+    jmp     .fdl_7332_0
+    .fdl_7332_0:
+    mov     rax, 257
+    mov     rdi, -100
+    mov     r10, 420
+    syscall
+    mov     qword [r12 + 8], rax
+    add     r12, 8
+    jmp     .fel_7332_0
+    .ffl_7332_0:
+    mov     rax, -1
+    mov     qword [r12 - 8], rax
+    sub     r12, 8
+    .fel_7332_0:
     leave
     ret
 f_7396:
@@ -28557,7 +31384,7 @@ f_7750:
     movzx   rax, al
     mov     rcx, rax
     mov     rax, qword [r12 + 8]
-    or 	rax, rcx
+    or  	rax, rcx
     mov     qword [r12 + 8], rax
     add     r12, 8
     leave
@@ -28623,15 +31450,15 @@ f_7777:
     jz      .l_7777_3
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
-    mov     rdi, rax
-    mov     rax, 3
-    syscall
     mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_2890
     mov     rax, 0
-    mov     rbx, qword [r12 - 8]
+    mov     rbx, qword [r12]
     cmp     rbx, rax
     setl    al
     movzx   rax, al
+    add     r12, 8
     test    rax, rax
     jz      .l_7777_5
     lea     rax, [rel b_9601]
@@ -28755,15 +31582,15 @@ f_7777:
     mov     byte [rax], cl
     lea     rax, [rbp - 16]
     mov     rax, qword [rax]
-    mov     rdi, rax
-    mov     rax, 3
-    syscall
     mov     qword [r12 - 8], rax
+    sub     r12, 8
+    call    f_2890
     mov     rax, 0
-    mov     rbx, qword [r12 - 8]
+    mov     rbx, qword [r12]
     cmp     rbx, rax
     setl    al
     movzx   rax, al
+    add     r12, 8
     test    rax, rax
     jz      .l_7777_11
     lea     rax, [rel b_9601]
@@ -29079,20 +31906,20 @@ f_7927:
     cmp     qword [rsp-8], 12
     jl      .l_7927_8
     jg      .l_7927_9
-    jmp     .l_7927_5
+    jmp     .l_7927_7
 .l_7927_8:
     cmp     qword [rsp-8], 10
     jl      .l_7927_10
     jg      .l_7927_11
-    jmp     .l_7927_3
+    jmp     .l_7927_7
 .l_7927_10:
     cmp     qword [rsp-8], 9
     jne     .l_7927_1
-    jmp     .l_7927_2
+    jmp     .l_7927_7
 .l_7927_11:
     cmp     qword [rsp-8], 11
     jne     .l_7927_1
-    jmp     .l_7927_4
+    jmp     .l_7927_7
 .l_7927_9:
     cmp     qword [rsp-8], 32
     jl      .l_7927_12
@@ -29101,29 +31928,9 @@ f_7927:
 .l_7927_12:
     cmp     qword [rsp-8], 13
     jne     .l_7927_1
-    jmp     .l_7927_6
+    jmp     .l_7927_7
 .l_7927_1:
     mov     qword [r12 - 8], 0
-    sub     r12, 8
-    jmp     .l_7927_0
-.l_7927_2:
-    mov     qword [r12 - 8], 1
-    sub     r12, 8
-    jmp     .l_7927_0
-.l_7927_3:
-    mov     qword [r12 - 8], 1
-    sub     r12, 8
-    jmp     .l_7927_0
-.l_7927_4:
-    mov     qword [r12 - 8], 1
-    sub     r12, 8
-    jmp     .l_7927_0
-.l_7927_5:
-    mov     qword [r12 - 8], 1
-    sub     r12, 8
-    jmp     .l_7927_0
-.l_7927_6:
-    mov     qword [r12 - 8], 1
     sub     r12, 8
     jmp     .l_7927_0
 .l_7927_7:
@@ -29573,7 +32380,6 @@ section .rodata
     b_9186 db "    sub     rsp, ",0
     b_9188 db "    jne     .fwl_",0
     b_9192 db "    syscall",10,0
-    b_9199 db "or",0
     b_9205 db "Invalid size for buffer '",0
     b_9213 db 92,"0",34,10,0
     b_9241 db "    cqo",10,0
@@ -29831,6 +32637,7 @@ section .rodata
     b_12205 db "extern WriteFile",10,0
     b_12214 db "    mov     rax, [rsp]",10,0
     b_12218 db " dq ",0
+    b_12224 db "or ",0
     b_12226 db "Invalid function name",10,0
     b_12235 db ", ",0
     b_12251 db "    mov     rdx, 1089",10,0
@@ -30250,7 +33057,7 @@ section .bss
     b_6246 resb 65528
     b_6266 resb 8
     b_6503 resb 8200
-    b_7064 resb 663560
+    b_7064 resb 737288
     b_7336 resb 24
     b_7731 resb 270303
     b_7863 resb 327688

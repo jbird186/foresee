@@ -494,6 +494,7 @@ Foresee's standard library is a very trimmed-down port of C's standard libraries
 * `stdconv.4c`: No direct C analogue. Has functions for converting between data types.
 * `stdio.4c`: Analogue to C's `stdio.h`. Has functions for common I/O patterns.
 * `stdstr.4c`: Analogue to C's `string.h`. Has functions for string manipulation.
+* `stdsys.4c`: No direct C analogue. Has OS-related functions.
 
 Other important constructs are defined in `__core.4c`, which is imported automatically to all Foresee programs.
 

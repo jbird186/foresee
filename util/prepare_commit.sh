@@ -1,2 +1,2 @@
 ./util/generate_bootstrap.sh
-./util/generate_example_outs.sh
+./util/generate_test_outs.sh

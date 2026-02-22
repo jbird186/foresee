@@ -1,4 +1,4 @@
-name: Run Examples
+name: Run Tests
 
 on:
   push:
@@ -21,4 +21,7 @@ jobs:
             expect
 
       - name: Run examples
-        run: chmod +x ./tests/test_examples.sh && ./tests/test_examples.sh
+        run: chmod +x ./tests/test_outputs.sh && ./tests/test_outputs.sh "./examples/*.4c" "examples"
+
+      - name: Run other tests
+        run: chmod +x ./tests/test_outputs.sh && ./tests/test_outputs.sh "./tests/misc/*.4c" "misc"

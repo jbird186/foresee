@@ -35,17 +35,18 @@
 #pub macro > { __OP_GT }
 #pub macro <= { __OP_LE }
 #pub macro < { __OP_LT }
-#pub macro fopen { __OP_FOPEN }
+
+#pub macro __fopen { __OP_FOPEN }
 #pub macro __fread { __OP_FREAD }
 #pub macro __fwrite { __OP_FWRITE }
-#pub macro fclose { __OP_FCLOSE }
+#pub macro __fclose { __OP_FCLOSE }
 #pub macro __getcwd { __OP_GETCWD }
 
 #ifdef OS_LINUX {
-    #pub macro syscall { __LIN_syscall }
+    #pub macro lin_syscall { __LIN_syscall }
 }
 #ifndef OS_LINUX {
-    #pub macro syscall{ #raise "Syscalls can only be used on Linux\n" }
+    #pub macro lin_syscall { #raise "Syscalls can only be used on Linux\n" }
 }
 
 #ifdef OS_WINDOWS {

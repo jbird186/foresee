@@ -10,12 +10,13 @@ pub struct char {[1] __inner}
 pub struct bool {[1] __inner}
 
 #pub macro NULL {0}
+
 #pub macro false {0}
 #pub macro true {1}
-#pub macro is_success {-1 >}
-#pub macro is_failure {0 <}
 #pub macro flag {0 !=}
 #pub macro not {0 ==}
+#pub macro is_success {-1 >}
+#pub macro is_failure {0 <}
 
 #pub macro / {divmod drop}
 #pub macro % {divmod nip}
@@ -45,20 +46,4 @@ pub struct bool {[1] __inner}
 }
 #ifdef OS_WINDOWS {
     #use "__core/windows.4c"
-}
-
-// &buf len -- [bytes_written, -err]
-pub :getcwd {
-    #ifndef OS_WINDOWS { __getcwd }
-    #ifdef OS_WINDOWS {
-        var &char cwd: {over}
-        var int res: {__getcwd}
-        if res is_success {
-            '\\' cwd res+ !c
-            0 cwd res+ 1+ !c
-            res 1+
-        } else {
-            res
-        }
-    }
 }
