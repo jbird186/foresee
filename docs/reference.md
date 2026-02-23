@@ -104,7 +104,7 @@ var int year
 * `fetch`/`@` (`&buffer -- value`): Reads an 8-byte `value` from `&buffer`.
 * `store`/`!` (`value &buffer --`): Writes an 8-byte `value` to `&buffer`.
 
-`fetchc`/`@c` (`&buffer -- value`) and `storec`/`!c` (`value &buffer --`) can be used to read and write 1-byte `value`s to and from memory, respectively.
+Variants such as `fetch_u32`, `!c` ("store char"), and others can be used to read and write 1, 2, and 4 byte `value`s to and from memory.
 
 Attempting to read from, or write to, an invalid memory address may cause an error.
 
@@ -493,6 +493,7 @@ Foresee's standard library is a very trimmed-down port of C's standard libraries
 * `stdchar.4c`: Analogue to C's `ctype.h`. Has functions for character classification and manipulation.
 * `stdconv.4c`: No direct C analogue. Has functions for converting between data types.
 * `stdio.4c`: Analogue to C's `stdio.h`. Has functions for common I/O patterns.
+* `stdlimits.4c`: Analogue to C's `limits.h`. Has maximum and minimum values for various primitive types.
 * `stdstr.4c`: Analogue to C's `string.h`. Has functions for string manipulation.
 * `stdsys.4c`: No direct C analogue. Has OS-related functions.
 
