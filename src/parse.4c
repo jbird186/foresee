@@ -9,6 +9,12 @@ static int FN_ALLOC_SIZE
 static int CURRENT_ALLOC_SIZE
 static int TOTAL_DATA_SIZE
 
+// -- id
+:assign_label_id {
+    ASM_LABEL_ID
+    1+=ASM_LABEL_ID
+}
+
 // n --
 :alloc_bytes {
     dup +=CURRENT_ALLOC_SIZE
@@ -118,7 +124,7 @@ static int TOTAL_DATA_SIZE
 
     if viewtk TKind.DEREF == {
         while viewtk TKind.DEREF == {
-            0 OKind.FETCH 3 pick op_push
+            8 OKind.FETCH 3 pick op_push
             %Token+
         }
     } else if viewtk TKind.FIELD == {
@@ -253,13 +259,14 @@ static int TOTAL_DATA_SIZE
 :parse_buffer_ident {
     var &char name: {viewtd}
     var int size: {view_buffer_access}
-    if size 8 == {
-        0 OKind.FETCH 3 roll op_push
-    } else if size 1 == {
-        0 OKind.FETCHC 3 roll op_push
-    } else {
-        error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically read from\n"puts
-        1 exit
+    switch size {
+        case 8,4,2,1 {
+            size OKind.FETCH 3 roll op_push
+        }
+        default {
+            error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically read from\n"puts
+            1 exit
+        }
     }
 }
 
@@ -313,7 +320,7 @@ static int TOTAL_DATA_SIZE
     // Stack Primitives
     define_intrinsic_opcode(0, OKind.DROP, "__OP_DROP")
     define_intrinsic_opcode(0, OKind.PICK, "__OP_PICK")
-    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.ROLL, "__OP_ROLL")
+    define_intrinsic_opcode(assign_label_id, OKind.ROLL, "__OP_ROLL")
     define_intrinsic_opcode(0, OKind.DUP, "__OP_DUP")
     define_intrinsic_opcode(0, OKind.OVER, "__OP_OVER")
     define_intrinsic_opcode(0, OKind.SWAP, "__OP_SWAP")
@@ -321,11 +328,15 @@ static int TOTAL_DATA_SIZE
     define_intrinsic_opcode(0, OKind.NIP, "__OP_NIP")
     define_intrinsic_opcode(0, OKind.DEPTH, "__OP_DEPTH")
     // Reference Primitives
-    define_intrinsic_opcode(0, OKind.STORE, "__OP_STORE")
-    define_intrinsic_opcode(0, OKind.FETCH, "__OP_FETCH")
-    define_intrinsic_opcode(0, OKind.STOREC, "__OP_STOREC")
-    define_intrinsic_opcode(0, OKind.FETCHC, "__OP_FETCHC")
-    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.MEMCPY, "__OP_MEMCPY")
+    define_intrinsic_opcode(8, OKind.STORE, "__OP_STORE8")
+    define_intrinsic_opcode(8, OKind.FETCH, "__OP_FETCH8")
+    define_intrinsic_opcode(4, OKind.STORE, "__OP_STORE4")
+    define_intrinsic_opcode(4, OKind.FETCH, "__OP_FETCH4")
+    define_intrinsic_opcode(2, OKind.STORE, "__OP_STORE2")
+    define_intrinsic_opcode(2, OKind.FETCH, "__OP_FETCH2")
+    define_intrinsic_opcode(1, OKind.STORE, "__OP_STORE1")
+    define_intrinsic_opcode(1, OKind.FETCH, "__OP_FETCH1")
+    define_intrinsic_opcode(assign_label_id, OKind.MEMCPY, "__OP_MEMCPY")
     // Binary Operations
     define_intrinsic_opcode(0, OKind.ADD, "__OP_ADD")
     define_intrinsic_opcode(0, OKind.SUB, "__OP_SUB")
@@ -347,18 +358,18 @@ static int TOTAL_DATA_SIZE
     define_intrinsic_opcode(0, OKind.LT, "__OP_LT")
     // Syscalls
     define_intrinsic_opcode(0, OKind.EXIT, "__OP_EXIT")
-    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.FOPEN, "__OP_FOPEN")
-    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.FREAD, "__OP_FREAD")
-    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.FWRITE, "__OP_FWRITE")
+    define_intrinsic_opcode(assign_label_id, OKind.FOPEN, "__OP_FOPEN")
+    define_intrinsic_opcode(assign_label_id, OKind.FREAD, "__OP_FREAD")
+    define_intrinsic_opcode(assign_label_id, OKind.FWRITE, "__OP_FWRITE")
     define_intrinsic_opcode(0, OKind.FCLOSE, "__OP_FCLOSE")
-    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.GETCWD, "__OP_GETCWD")
+    define_intrinsic_opcode(assign_label_id, OKind.GETCWD, "__OP_GETCWD")
     // Linux Only
     define_intrinsic_opcode(0, OKind.LIN_syscall, "__LIN_syscall")
     // Windows Only
     define_intrinsic_opcode(0, OKind.WIN_GetCommandLineW, "__WIN_GetCommandLineW")
-    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.WIN_CommandLineToArgvW, "__WIN_CommandLineToArgvW")
-    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.WIN_WideCharToMultiByte, "__WIN_WideCharToMultiByte")
-    define_intrinsic_opcode(&ASM_LABEL_ID@++, OKind.WIN_LocalAlloc, "__WIN_LocalAlloc")
+    define_intrinsic_opcode(assign_label_id, OKind.WIN_CommandLineToArgvW, "__WIN_CommandLineToArgvW")
+    define_intrinsic_opcode(assign_label_id, OKind.WIN_WideCharToMultiByte, "__WIN_WideCharToMultiByte")
+    define_intrinsic_opcode(assign_label_id, OKind.WIN_LocalAlloc, "__WIN_LocalAlloc")
     define_intrinsic_opcode(0, OKind.WIN_LocalFree, "__WIN_LocalFree")
     define_intrinsic_opcode(0, OKind.WIN_GetStdHandle, "__WIN_GetStdHandle")
 
@@ -383,7 +394,7 @@ static int TOTAL_DATA_SIZE
 // ops_dest tok_ptr if_id -- new_tok_ptr
 :_parse_if_with_id {
     // -- ops_dest tok_ptr if_id else_id
-    &ASM_LABEL_ID@++
+    assign_label_id
     // -- if_id else_id ops_dest tok_ptr
     3 roll 3 roll
     %Token+
@@ -433,7 +444,7 @@ static int TOTAL_DATA_SIZE
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_if {
     // -- ops_dest if_id tok_ptr
-    &ASM_LABEL_ID@++ swap
+    assign_label_id swap
     // -- ops_dest if_id tok_ptr
     2 pick swap 2 pick _parse_if_with_id
     // -- tok_ptr
@@ -935,14 +946,22 @@ static int TOTAL_DATA_SIZE
 }
 
 #macro _parse_buffer_non_static_init {
-    if (size 1 ==) (size 8 ==) | not {
-        error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
-        1 exit
+    switch size {
+        case 8,4,2,1 {}
+        default {
+            error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
+            1 exit
+        }
     }
 
     if viewtk TKind.INT == {
-        if size 1 == {
-            if viewtd dup (0xff <=) swap (0 >=) & not {
+        if size 8 < {
+            var int limit: {switch size {
+                case 4 { 0xffff_ffff }
+                case 2 { 0xffff }
+                case 1 { 0xff }
+            }}
+            if viewtd dup (limit <=) swap (0 >=) & not {
                 error "Invalid size for buffer '"puts name puts "'\n"puts
                 1 exit
             }
@@ -963,10 +982,11 @@ static int TOTAL_DATA_SIZE
     }
 
     alloc_offset size+ OKind.PUSH_VAR 3 pick op_push
-    if size 1 == {
-        0 OKind.STOREC 3 pick op_push
-    } else {
-        0 OKind.STORE 3 pick op_push
+
+    switch size {
+        case 8,4,2,1 {
+            size OKind.STORE 3 pick op_push
+        }
     }
 }
 
@@ -986,7 +1006,17 @@ static int TOTAL_DATA_SIZE
             8 =size
         } else {
             if size 8 == {}
-            else if (viewtd dup (0xff <=) swap (0 >=) &) (size 1 ==) & {}
+            else if (size 8 <) (size 0 >) & {
+                var int limit: {switch size {
+                    case 4 { 0xffff_ffff }
+                    case 2 { 0xffff }
+                    case 1 { 0xff }
+                }}
+                if viewtd dup (limit <=) swap (0 >=) & not {
+                    error "Invalid size for buffer '"puts name puts "'\n"puts
+                    1 exit
+                }
+            }
             else {
                 error "Invalid size for buffer '"puts name puts "'\n"puts
                 1 exit
@@ -997,9 +1027,12 @@ static int TOTAL_DATA_SIZE
         if size 0 < {
             1 =size
         } else {
-            if (size 8 !=) (size 1 !=) & {
-                error "Invalid size for buffer '"puts name puts "'\n"puts
-                1 exit
+            switch size {
+                case 8,4,2,1 {}
+                default {
+                    error "Invalid size for buffer '"puts name puts "'\n"puts
+                    1 exit
+                }
             }
         }
         true =init_int
@@ -1169,13 +1202,14 @@ static int TOTAL_DATA_SIZE
     %Token+
     var &char name: {viewtd}
     var int size: {view_buffer_access}
-    if size 8 == {
-        0 OKind.STORE 3 roll op_push
-    } else if size 1 == {
-        0 OKind.STOREC 3 roll op_push
-    } else {
-        error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
-        1 exit
+    switch size {
+        case 8,4,2,1 {
+            size OKind.STORE 3 roll op_push
+        }
+        default {
+            error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
+            1 exit
+        }
     }
 }
 

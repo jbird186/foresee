@@ -1,0 +1,52 @@
+#use "stdio.4c"
+#use "stdlimits.4c"
+
+struct TestA {
+    u32 a
+    u16 b
+}
+
+struct TestB {
+    u16 a
+    u8 b
+    char c
+    u8 d
+}
+
+struct TestC {
+    int a
+    u32 b
+    u16 c
+    u8 d
+}
+
+:main {
+    var i64 test8: -1
+    var u32 test4: 3
+    var u16 test2: 8
+    var u8 test1: 'A'
+    test8 test4+ test2+ test1+ putc cr
+
+    -1 =test1
+    test1 put cr
+    -1 =test2
+    test2 put cr
+    -1 =test4
+    test4 put cr
+
+    %TestA put cr
+    %TestB put cr
+
+    var TestC testc
+    %testc put cr
+
+    -100 =testc.a
+    128 =testc.b
+    9 =testc.c
+    1 =testc.d
+
+    testc.a put cr
+    testc.b put cr
+    testc.c put cr
+    testc.d put cr
+}

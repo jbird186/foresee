@@ -225,24 +225,22 @@ static char[32] push_cache
         "    // OP_STORE\n"coms_dbg
         "x0" compile_pop
         "x1" compile_pop
-        "    str     x1, [x0]\n"coms
+        switch viewod {
+            case 8 { "    str     x1, [x0]\n"coms }
+            case 4 { "    str     w1, [x0]\n"coms }
+            case 2 { "    strh    w1, [x0]\n"coms }
+            case 1 { "    strb    w1, [x0]\n"coms }
+        }
     }
     case OKind.FETCH {
         "    // OP_FETCH\n"coms_dbg
         "x0" compile_pop
-        "    ldr     x0, [x0]\n"coms
-        "x0" compile_push
-    }
-    case OKind.STOREC {
-        "    // OP_STORE\n"coms_dbg
-        "x0" compile_pop
-        "x1" compile_pop
-        "    strb    w1, [x0]\n"coms
-    }
-    case OKind.FETCHC {
-        "    // OP_FETCH\n"coms_dbg
-        "x0" compile_pop
-        "    ldrb    w0, [x0]\n"coms
+        switch viewod {
+            case 8 { "    ldr     x0, [x0]\n"coms }
+            case 4 { "    ldr     w0, [x0]\n"coms }
+            case 2 { "    ldrh    w0, [x0]\n"coms }
+            case 1 { "    ldrb    w0, [x0]\n"coms }
+        }
         "x0" compile_push
     }
     case OKind.MEMCPY {

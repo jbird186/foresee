@@ -1,3 +1,5 @@
+#use "stdlimits.4c"
+
 pub static char[24] __std_buf
 static int_min_buf: "-9223372036854775808"
 

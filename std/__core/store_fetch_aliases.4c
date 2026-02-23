@@ -1,0 +1,59 @@
+#pub macro !i64 {store_i64}
+#pub macro @i64 {fetch_i64}
+#pub macro @@i64 {fetch_i64 fetch_i64}
+#pub macro @@@i64 {fetch_i64 fetch_i64 fetch_i64}
+#pub macro @@@@i64 {fetch_i64 fetch_i64 fetch_i64 fetch_i64}
+#pub macro @i64++ {dup fetch_i64 dup 1+ rot store_i64}
+#pub macro ++@i64 {dup fetch_i64 1+ dup rot store_i64}
+#pub macro @i64-- {dup fetch_i64 dup 1- rot store_i64}
+#pub macro --@i64 {dup fetch_i64 1- dup rot store_i64}
+
+#pub macro !u32 {store_u32}
+#pub macro @u32 {fetch_u32}
+#pub macro @@u32 {fetch_u32 fetch_u32}
+#pub macro @@@u32 {fetch_u32 fetch_u32 fetch_u32}
+#pub macro @@@@u32 {fetch_u32 fetch_u32 fetch_u32 fetch_u32}
+#pub macro @u32++ {dup fetch_u32 dup 1+ rot store_u32}
+#pub macro ++@u32 {dup fetch_u32 1+ dup rot store_u32}
+#pub macro @u32-- {dup fetch_u32 dup 1- rot store_u32}
+#pub macro --@u32 {dup fetch_u32 1- dup rot store_u32}
+
+#pub macro !u16 {store_u16}
+#pub macro @u16 {fetch_u16}
+#pub macro @@u16 {fetch_u16 fetch_u16}
+#pub macro @@@u16 {fetch_u16 fetch_u16 fetch_u16}
+#pub macro @@@@u16 {fetch_u16 fetch_u16 fetch_u16 fetch_u16}
+#pub macro @u16++ {dup fetch_u16 dup 1+ rot store_u16}
+#pub macro ++@u16 {dup fetch_u16 1+ dup rot store_u16}
+#pub macro @u16-- {dup fetch_u16 dup 1- rot store_u16}
+#pub macro --@u16 {dup fetch_u16 1- dup rot store_u16}
+
+#pub macro !u8 {store_u8}
+#pub macro @u8 {fetch_u8}
+#pub macro @@u8 {fetch_u8 fetch_u8}
+#pub macro @@@u8 {fetch_u8 fetch_u8 fetch_u8}
+#pub macro @@@@u8 {fetch_u8 fetch_u8 fetch_u8 fetch_u8}
+#pub macro @u8++ {dup fetch_u8 dup 1+ rot store_u8}
+#pub macro ++@u8 {dup fetch_u8 1+ dup rot store_u8}
+#pub macro @u8-- {dup fetch_u8 dup 1- rot store_u8}
+#pub macro --@u8 {dup fetch_u8 1- dup rot store_u8}
+
+#pub macro ! {!i64}
+#pub macro @ {@i64}
+#pub macro @@ {@@i64}
+#pub macro @@@ {@@@i64}
+#pub macro @@@@ {@@@@i64}
+#pub macro @++ {@i64++}
+#pub macro ++@ {++@i64}
+#pub macro @-- {@i64--}
+#pub macro --@ {--@i64}
+
+#pub macro !c {!u8}
+#pub macro @c {@u8}
+#pub macro @@c {@@u8}
+#pub macro @@@c {@@@u8}
+#pub macro @@@@c {@@@@u8}
+#pub macro @c++ {@u8++}
+#pub macro ++@c {++@u8}
+#pub macro @c-- {@u8--}
+#pub macro --@c {--@u8}

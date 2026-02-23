@@ -227,24 +227,22 @@ pub :x64n_compile_generic_op {
         "    ; OP_STORE\n"coms_dbg
         "rax" x64n_compile_pop
         "rcx" x64n_compile_pop
-        "    mov     [rax], rcx\n"coms
+        switch viewod {
+            case 8 { "    mov     [rax], rcx\n"coms }
+            case 4 { "    mov     dword [rax], ecx\n"coms }
+            case 2 { "    mov     word [rax], cx\n"coms }
+            case 1 { "    mov     byte [rax], cl\n"coms }
+        }
     }
     case OKind.FETCH {
         "    ; OP_FETCH\n"coms_dbg
         "rax" x64n_compile_pop
-        "    mov     rax, qword [rax]\n"coms
-        "rax" x64n_compile_push
-    }
-    case OKind.STOREC {
-        "    ; OP_STOREC\n"coms_dbg
-        "rax" x64n_compile_pop
-        "rcx" x64n_compile_pop
-        "    mov     byte [rax], cl\n"coms
-    }
-    case OKind.FETCHC {
-        "    ; OP_FETCHC\n"coms_dbg
-        "rax" x64n_compile_pop
-        "    movzx   rax, byte [rax]\n"coms
+        switch viewod {
+            case 8 { "    mov     rax, qword [rax]\n"coms }
+            case 4 { "    mov     eax, dword [rax]\n"coms }
+            case 2 { "    movzx   rax, word [rax]\n"coms }
+            case 1 { "    movzx   rax, byte [rax]\n"coms }
+        }
         "rax" x64n_compile_push
     }
     case OKind.MEMCPY {

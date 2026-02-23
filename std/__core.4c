@@ -1,12 +1,14 @@
 #use "__core/intrinsics.4c"
+#use "__core/store_fetch_aliases.4c"
 
-pub struct int {[8] __inner}
-#pub macro INT_MIN {-9223372036854775808}
-#pub macro INT_MAX {9223372036854775807}
+pub struct i64 {[8] __inner}
+pub struct u32 {[4] __inner}
+pub struct u16 {[2] __inner}
+pub struct u8 {[1] __inner}
+#pub macro int { i64 }
+#pub macro char { u8 }
+
 pub struct ptr {[8] __inner}
-pub struct char {[1] __inner}
-#pub macro CHAR_MIN {0}
-#pub macro CHAR_MAX {255}
 pub struct bool {[1] __inner}
 
 #pub macro NULL {0}
@@ -21,29 +23,9 @@ pub struct bool {[1] __inner}
 #pub macro / {divmod drop}
 #pub macro % {divmod nip}
 
-#pub macro ! {store}
-#pub macro @ {fetch}
-#pub macro @@ {fetch fetch}
-#pub macro @@@ {fetch fetch fetch}
-#pub macro @@@@ {fetch fetch fetch fetch}
-#pub macro @++ {dup@ dup 1+ rot!}
-#pub macro ++@ {dup@ 1+ dup rot!}
-#pub macro @-- {dup@ dup 1- rot!}
-#pub macro --@ {dup@ 1- dup rot!}
-
-#pub macro !c {storec}
-#pub macro @c {fetchc}
-#pub macro @@c {fetch fetchc}
-#pub macro @@@c {fetch fetch fetchc}
-#pub macro @@@@c {fetch fetch fetch fetchc}
-#pub macro @c++ {dup@c dup 1+ rot!c}
-#pub macro ++@c {dup@c 1+ dup rot!c}
-#pub macro @c-- {dup@c dup 1- rot!c}
-#pub macro --@c {dup@c 1- dup rot!c}
-
 #ifdef OS_LINUX {
-    #use "__core/linux.4c"
+    #use "__core/os/linux.4c"
 }
 #ifdef OS_WINDOWS {
-    #use "__core/windows.4c"
+    #use "__core/os/windows.4c"
 }
