@@ -830,13 +830,23 @@ static int TOTAL_DATA_SIZE
 }
 
 // tok_ptr -- tok_ptr size
-:view_type_size {
+:view_type_size_raw {
     if viewtd STRUCT_MAP scoped_map_find dup slot_is_empty {
         drop
         error "Type '"puts viewtd puts "' not found\n"puts
         1 exit
     }
     as Struct.size@
+}
+
+// tok_ptr -- tok_ptr size
+:view_type_size {
+    view_type_size_raw
+    if dup is_failure {
+        drop
+        error "Type not properly defined in this scope\n"puts
+        1 exit
+    }
 }
 
 // tok_ptr -- new_tok_ptr name indir dims size
@@ -852,7 +862,8 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
     var &char type_name: {viewtd}
-    var int total_size: {if indir { 8 } else { view_type_size }}
+    var int total_size: {if indir { 8 } else { view_type_size_raw }}
+
     %Token+
 
     var &int dims: 0
@@ -1311,11 +1322,16 @@ static int TOTAL_DATA_SIZE
     var &char struct_name: {viewtd}
     var &StructField fields_ptr: {STRUCT_MEM stack_top}
     struct_name scope check_name_availability
+    var &Struct entry: {struct_name scope STRUCT_MAP scoped_map_get}
+    struct_name =entry->key.name
+    scope =entry->key.scope
+    -1 =entry->size
 
     %Token+
+
+    // Forward declaration
     if viewtk TKind.BRACE_START != {
-        error "Invalid struct definition\n"puts
-        1 exit
+        return
     }
 
     %Token+
@@ -1334,32 +1350,25 @@ static int TOTAL_DATA_SIZE
             1 exit
         }
 
-        // -- tok_ptr size
-        size
-        if over as Token.kind@c TKind.IDENT != {
-            drop
+        if viewtk TKind.IDENT != {
             error "Invalid field for struct '"puts struct_name puts "'\n"puts
             1 exit
         }
 
-        // -- tok_ptr size name field
-        over as Token.data@ fields_ptr
-        while dup as StructField.name@ {
-            if over over as StructField.name@ strcmp not {
-                // -- name tok_ptr
-                drop nip swap
-                error "Field '"puts over puts "' already defined for struct '"puts struct_name puts "'\n"puts
+        var &char field_name: {viewtd}
+        var &StructField field_i: {fields_ptr}
+        while field_i->name {
+            if field_i->name field_name strcmp not {
+                error "Field '"puts field_name puts "' already defined for struct '"puts struct_name puts "'\n"puts
                 1 exit
             }
-            %StructField+
+            %StructField +=field_i
         }
-        2 pick +=struct_size
-        drop
+        size +=struct_size
 
-        // -- tok_ptr size name
         var &StructField entry: {STRUCT_MEM stack_push}
-        =entry->name
-        =entry->size
+        field_name =entry->name
+        size =entry->size
         type_name =entry->type.name
         type_dims =entry->type.dims
         type_indir =entry->type.indir
@@ -1367,10 +1376,6 @@ static int TOTAL_DATA_SIZE
     }
     %Token+
     NULL STRUCT_MEM stack_push as StructField.name!
-
-    var &Struct entry: {struct_name scope STRUCT_MAP scoped_map_get}
-    struct_name =entry->key.name
-    scope =entry->key.scope
     struct_size =entry->size
     fields_ptr =entry->fields
 }
