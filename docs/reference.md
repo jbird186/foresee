@@ -69,24 +69,35 @@ Accessing an uninitialized local variable leads to undefined behavior.
 * `/=item` divides `item` by the top stack item, and sets `item` to that value. This only works if `item` has an appropriate size. `+=item`, `*=item`, `&=item`, `>>=item`, etc behave similarly.
 * Variables are *only* accessible within the scope where they are defined.
 
-### Simple Types
+### Types
 
-Simple types are comprised of a base type, optionally followed by any number of array dimensions. Base types include any built-in type, such was `int`, `char`, etc, or any user-defined struct. Base types also include pointers to other base types. An array dimension is a pair of brackets containing the size of the array.
+Types are comprised of a base type, pointers to a base type, arrays of a base type, or some combination of these. Base types include any built-in type, such was `int`, `char`, `bool`, etc, or any user-defined struct. Pointers are indicated with an ampersand (`&`) character. An array dimension is a pair of brackets containing the size of the array.
 
-For example, `var char letter` would define `letter` to be a single character. `var &int number` would define `number` to be a pointer to an integer. `var ptr[4] items` would define `items` to be an array of 4 pointers. `var int[5][8] matrix` would define `matrix` to be a 5x8 matrix of integers.
+Examples:
+
+* `var char letter` would define `letter` to be a single character.
+* `var &int number` would define `number` to be a pointer to an integer.
+* `var (&int)[4] items` would define `items` to be an array of 4 pointers to integers.
+* `var &int[4] items` would define `items` to be a pointer to an array of 4 integers.
+* `var int[5][8] matrix` would define `matrix` to be a 5x8 matrix of integers.
 
 An array dimension can also be defined by a list of spaced integers, where the integers are summed up to obtain the total size. So `var int[5][8] matrix` behaves the exact same as `var int[1 4][2 2 4] matrix`.
 
-Simple types can be used intelligently by the compiler, such as for array indexing and to directly access struct fields without casting.
+#### Allocation Types
 
-### Complex Types
+A variable can alternatively be defined with an "allocation type" by surrounding an expression in brackets. Unlike normal types, allocation types do not describe structure. Rather, they evaluate to the total size in bytes that will be allocated for that variable. Adjacent values are summed to produce the final size.
 
-A variable can alternatively be defined with a complex type by surrounding the type in brackets. Complex types can contain any arrangement of simple types and integers. Adjacent values are summed together. Examples:
+* A base type (e.g. `int`, `char`) evaluates to its size in bytes.
+* A pointer type (e.g. `&int`) evaluates to the size of a pointer.
+* An array type (e.g. `int[8]`) evaluates to the total size of the array.
+* Integer literals represent raw byte counts.
+
+Examples:
 
 * `var [int] item` would allocate 8 bytes for `item`.
 * `var [40] item` would allocate 40 bytes for `item`.
 * `var [int (&int)[8]] item` would allocate 72 bytes for `item`.
-* `var [int[2] char[4] ptr] item` would allocate 28 bytes for `item`.
+* `var [int[2] char[4] &bool] item` would allocate 28 bytes for `item`.
 * `var [&int[50] 4] item` would allocate 12 bytes for `item`.
 
 ### Store and Fetch

@@ -838,11 +838,18 @@ static int TOTAL_DATA_SIZE
         }
         %Token+
     } else if viewtk TKind.BRACKET_START == {
-        %Token+
         TypeKind.none =t->kind
-        0 =t->size
+        1 =t->size
         NULL =t->data
         NULL =t->inner
+
+        var &Type arr_t: { TYPE_MEM stack_push }
+        TypeKind.array =arr_t->kind
+        0 =arr_t->size
+        NULL =arr_t->data
+        t =arr_t->inner
+
+        %Token+
         while viewtk TKind.BRACKET_END != {
             if viewtk not {
                 %Token-
@@ -850,15 +857,15 @@ static int TOTAL_DATA_SIZE
                 1 exit
             }
             if viewtk TKind.INT == {
-                viewtd +=t->size
+                viewtd +=arr_t->size
                 %Token+
             } else {
                 var &Type sub_t: { view_type }
-                sub_t->size +=t->size
+                sub_t->size +=arr_t->size
             }
         }
         %Token+
-        t return
+        arr_t return
     } else {
         error "Invalid type\n"puts
         1 exit

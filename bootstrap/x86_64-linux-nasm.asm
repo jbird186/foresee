@@ -1645,10 +1645,6 @@ f_515:
     add     r12, 8
     test    rax, rax
     jz      .l_515_6
-    mov     rcx, 25
-    mov     rax, qword [r12]
-    add 	rax, rcx
-    mov     qword [r12], rax
     mov     qword [r12 - 8], 0
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
@@ -1658,7 +1654,7 @@ f_515:
     add 	rax, rcx
     mov     rcx, qword [r12 - 8]
     mov     byte [rax], cl
-    mov     qword [r12 - 8], 0
+    mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
     mov     rax, qword [rax]
     mov     qword [r12 - 16], rax
@@ -1685,6 +1681,57 @@ f_515:
     add 	rax, rcx
     mov     rcx, qword [r12 - 8]
     mov     [rax], rcx
+    lea     rax, [rel b_3000]
+    mov     qword [r12 - 8], rax
+    mov     qword [r12 - 16], 25
+    sub     r12, 16
+    call    f_1729
+    lea     rax, [rbp - 16]
+    mov     rcx, qword [r12]
+    mov     [rax], rcx
+    mov     qword [r12], 3
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 0
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rcx, qword [r12]
+    mov     byte [rax], cl
+    mov     qword [r12], 0
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 17
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rcx, qword [r12]
+    mov     [rax], rcx
+    mov     qword [r12], 0
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 1
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rcx, qword [r12]
+    mov     [rax], rcx
+    lea     rax, [rbp - 8]
+    mov     rax, qword [rax]
+    mov     qword [r12], rax
+    lea     rax, [rbp - 16]
+    mov     rax, qword [rax]
+    mov     qword [r12 - 8], rax
+    mov     rcx, 9
+    mov     rax, qword [r12 - 8]
+    add 	rax, rcx
+    mov     rcx, qword [r12]
+    mov     [rax], rcx
+    mov     rcx, 25
+    mov     rax, qword [r12 + 8]
+    add 	rax, rcx
+    mov     qword [r12 + 8], rax
+    add     r12, 8
 .l_515_7:
     call    f_2175
     mov     rax, 36
@@ -1728,7 +1775,7 @@ f_515:
     test    rax, rax
     jz      .l_515_12
     call    f_6176
-    lea     rax, [rbp - 8]
+    lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     mov     rcx, 17
@@ -1739,7 +1786,7 @@ f_515:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    lea     rax, [rbp - 8]
+    lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     mov     rcx, 17
@@ -1755,10 +1802,10 @@ f_515:
     jmp     .l_515_11
 .l_515_12:
     call    f_515
-    lea     rax, [rbp - 16]
+    lea     rax, [rbp - 24]
     mov     rcx, qword [r12]
     mov     [rax], rcx
-    lea     rax, [rbp - 16]
+    lea     rax, [rbp - 24]
     mov     rax, qword [rax]
     mov     qword [r12], rax
     mov     rcx, 17
@@ -1766,7 +1813,7 @@ f_515:
     add 	rax, rcx
     mov     rax, qword [rax]
     mov     qword [r12], rax
-    lea     rax, [rbp - 8]
+    lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     mov     rcx, 17
@@ -1777,7 +1824,7 @@ f_515:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    lea     rax, [rbp - 8]
+    lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     mov     rcx, 17
@@ -1793,7 +1840,7 @@ f_515:
     mov     rax, qword [r12]
     add 	rax, rcx
     mov     qword [r12], rax
-    lea     rax, [rbp - 8]
+    lea     rax, [rbp - 16]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -15064,7 +15111,7 @@ f_4359:
     jmp     .l_4359_12
 .l_4359_13:
 .l_4359_12:
-    lea     rax, [rel b_4300]
+    lea     rax, [rel b_3000]
     mov     qword [r12 - 8], rax
     mov     rcx, 0
     mov     rax, qword [r12 - 8]
@@ -15079,7 +15126,7 @@ f_4359:
     mov     rax, qword [r12 - 8]
     imul 	rax, rcx
     mov     qword [r12 - 8], rax
-    mov     rax, 65544
+    mov     rax, 204808
     mov     rbx, qword [r12 - 8]
     cmp     rbx, rax
     setg    al
@@ -15090,7 +15137,7 @@ f_4359:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    lea     rax, [rel b_12491]
+    lea     rax, [rel b_11191]
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
@@ -31544,6 +31591,7 @@ section .rodata
     b_11159 db "Expected 'case' block",10,0
     b_11167 db "    ; OP_FCLOSE",10,0
     b_11168 db "nasm",0
+    b_11191 db "type_mem",0
     b_11207 db "    cmp     x0, ",0
     b_11211 db "    // OP_DEPTH",10,0
     b_11224 db "    cmp     rbx, rax",10,0
@@ -31661,7 +31709,6 @@ section .rodata
     b_12454 db "]",10,0
     b_12458 db "    // OP_JMP",10,0
     b_12471 db "    b       .ral_",0
-    b_12491 db "dims_mem",0
     b_12496 db "    jz      .l_",0
     b_12501 db "    mov     qword [rsp+32], 2",10,0
     b_12507 db "    lea     rax, [rsp + 8]",10,0
@@ -32040,13 +32087,12 @@ section .bss
     b_2375 resb 262112
     b_2442 resb 1
     b_2452 resb 8200
-    b_3000 resb 409608
+    b_3000 resb 204808
     b_3232 resb 300000
     b_3364 resb 8
     b_3547 resb 8200
     b_3575 resb 8
     b_3970 resb 131080
-    b_4300 resb 65544
     b_4722 resb 8
     b_4763 resb 8
     b_4816 resb 1
