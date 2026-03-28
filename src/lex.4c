@@ -227,6 +227,7 @@ static &char file
     match_ident_token("var", TKind.VAR)
     match_ident_token("enum", TKind.ENUM)
     match_ident_token("struct", TKind.STRUCT)
+    match_ident_token("union", TKind.UNION)
     match_ident_token("as", TKind.AS)
     match_ident_token("call", TKind.CALL)
     match_ident_token("pub", TKind.PUB)

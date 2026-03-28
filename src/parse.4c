@@ -139,7 +139,11 @@ static int TOTAL_DATA_SIZE
     var int total_offset: 0
     while fields_ptr->name {
         if fields_ptr->name field_name strcmp not {
-            total_offset fields_ptr->type return
+            if StructKind.uni struct_ptr->kind == {
+                0 fields_ptr->type return
+            } else {
+                total_offset fields_ptr->type return
+            }
         }
         fields_ptr->type->size +=total_offset
         %StructField +=fields_ptr
@@ -754,7 +758,6 @@ static int TOTAL_DATA_SIZE
 
     var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
     var &char name: {viewtd}
-    %Token+
 
     name scope check_name_availability_fn
 
@@ -762,7 +765,8 @@ static int TOTAL_DATA_SIZE
     name =entry->key.name
     scope =entry->key.scope
     false =entry->is_used
-    viewtf =entry->file
+    dup =entry->tok
+    %Token+
 
     // Function prototype
     if viewtk TKind.BRACE_START != {
@@ -1247,8 +1251,10 @@ static int TOTAL_DATA_SIZE
     }
 }
 
-// ops_dest tok_ptr -- new_tok_ptr
-:parse_struct {
+// ops_dest tok_ptr is_union -- new_tok_ptr
+:parse_data_type {
+    var bool is_union: {}
+
     %Token+
     if viewtk TKind.IDENT != {
         error "Invalid struct name\n"puts
@@ -1273,8 +1279,10 @@ static int TOTAL_DATA_SIZE
 
     // Forward declaration
     if viewtk TKind.BRACE_START != {
+        StructKind.null =entry->kind
         return
     }
+    if is_union { StructKind.uni } else { StructKind.normal } =entry->kind
 
     %Token+
     var int struct_size: 0
@@ -1295,7 +1303,12 @@ static int TOTAL_DATA_SIZE
             }
             %StructField +=field_i
         }
-        field_type->size +=struct_size
+
+        if is_union {
+            if field_type->size struct_size > { field_type->size =struct_size }
+        } else {
+            field_type->size +=struct_size
+        }
 
         var &StructField entry: {STRUCT_MEM stack_push}
         field_name =entry->name
@@ -1311,6 +1324,16 @@ static int TOTAL_DATA_SIZE
         fields_ptr->type update_type_size
         %StructField +=fields_ptr
     }
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_struct {
+    false parse_data_type
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_union {
+    true parse_data_type
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -1351,7 +1374,6 @@ static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_tok {
-    // viewtf puts sp viewtl put "   |   " puts viewtk put sp show_tok cr
     false =IS_PUBLIC
     switch viewtk {
         case TKind.PUB {
@@ -1368,6 +1390,7 @@ static int TOTAL_DATA_SIZE
                 case TKind.VAR { parse_var }
                 case TKind.ENUM { parse_enum }
                 case TKind.STRUCT { parse_struct }
+                case TKind.UNION { parse_union }
                 default {
                     error "Unexpected token of type "puts viewtk put " after 'pub'\n"puts
                     1 exit
@@ -1404,6 +1427,7 @@ static int TOTAL_DATA_SIZE
         case TKind.EQ { parse_eq }
         case TKind.ENUM { parse_enum }
         case TKind.STRUCT { parse_struct }
+        case TKind.UNION { parse_union }
         case TKind.AS { parse_as }
         case TKind.SIZE { parse_size }
         case TKind.CALL { parse_call }
@@ -1429,6 +1453,7 @@ static int TOTAL_DATA_SIZE
             TKind.STATIC,
             TKind.ENUM,
             TKind.STRUCT,
+            TKind.UNION,
             TKind.PUB,
             TKind.FILE_START,
             TKind.FILE_END

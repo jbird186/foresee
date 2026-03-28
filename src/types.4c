@@ -29,7 +29,7 @@ pub struct Token {
     char kind
     [8] data
     &char file
-    int line
+    u32 line
 }
 
 pub struct InlineStr {
@@ -41,7 +41,7 @@ pub struct Buffer {
     &Type type
     [8] init
     bool static_init_int
-    int alloc_offset
+    u32 alloc_offset
     bool is_static
 }
 
@@ -56,7 +56,7 @@ pub struct Function {
     ScopedKey key
     &Op def
     bool is_used
-    &char file
+    &Token tok
 }
 
 pub struct EnumVariant {
@@ -72,8 +72,14 @@ pub struct StructField {
     &char name
     &Type type
 }
+pub enum StructKind {
+    null
+    normal
+    uni
+}
 pub struct Struct {
     ScopedKey key
+    char kind
     int size
     &StructField fields
 }

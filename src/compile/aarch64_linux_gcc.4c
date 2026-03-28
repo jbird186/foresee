@@ -494,12 +494,12 @@ static char[32] push_cache
 :compile_function {
     var &Function f: {}
     if f->def not {
-        "ERROR: Function '"puts f->key.name puts "' was never defined\n"puts
+        f->tok error "Function '"puts f->key.name puts "' was never defined\n"puts
         1 exit
     }
     if f->is_used not {
         if f->key.scope {
-            "WARNING: Function '"puts f->key.name puts "' is never used\n"puts
+            f->tok warning "Function '"puts f->key.name puts "' is never used\n"puts
         }
         if optimize_mode { return }
     }

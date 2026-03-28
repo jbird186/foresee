@@ -403,6 +403,18 @@ Output:
 10
 ```
 
+### Unions
+
+A union can be defined as follows:
+
+```
+union StructName {
+    type1 variantname1
+    type2 variantname2
+    ...
+}
+```
+
 ### Enums
 
 Enums are a way to define a set of named integer constants. They can be defined as follows:

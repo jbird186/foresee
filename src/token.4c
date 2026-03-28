@@ -28,6 +28,7 @@ pub enum TKind {
     EQ
     ENUM
     STRUCT
+    UNION
     AS
     FIELD
     DEREF
@@ -123,6 +124,7 @@ pub :show_tok {
     case TKind.EQ { viewtd puts }
     case TKind.ENUM { "enum" puts }
     case TKind.STRUCT { "struct" puts }
+    case TKind.UNION { "union" puts }
     case TKind.AS { "as" puts }
     case TKind.FIELD { "." puts }
     case TKind.DEREF { "->" puts }
@@ -144,6 +146,11 @@ pub :show_tok {
 // tok_ptr -- tok_ptr
 pub :error {
     viewtf puts ":"puts viewtl put ": ERROR: "puts
+}
+
+// tok_ptr -- tok_ptr
+pub :warning {
+    viewtf puts ":"puts viewtl put ": WARNING: "puts
 }
 
 #macro skip_delim(start, end) {(
