@@ -1,0 +1,38 @@
+#use "stdio.4c"
+
+struct Point {
+    int x
+    int y
+}
+
+struct Points {
+    Point[4] points
+}
+
+// &point --
+:double_point {
+    var &Point p: {}
+    2 *=p->x
+    2 *=p->y
+}
+
+// &point --
+:show_point {
+    var &Point p: {}
+    "(" puts p->x put ", " puts p->y put ")\n" puts
+}
+
+:main {
+    var Point p
+    5 =p.x
+    3 =p.y
+    &p double_point
+    &p show_point
+
+    var Points ps
+    1 =ps.points[0].x
+    -4 =ps.points[0].y
+    &ps.points[0] show_point
+
+    &p as Point.x@ put cr
+}

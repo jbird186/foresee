@@ -587,14 +587,14 @@ static char[32] push_cache
 :compile_buf_data {
     var int idx: {}
     var &Buffer entry: {idx BUF_MAP map_idx}
-    var int buf_size: {entry->size}
+    var int buf_size: {entry->type->size}
 
     if debug_mode {
         "    // "coms entry->key.name coms "\n"coms
     }
     "    b_"coms idx com ": "coms
 
-    if entry->init_int {
+    if entry->static_init_int {
         if buf_size 1 == {
             ".byte "coms entry->init com "\n"coms
         } else if buf_size 8 == {
@@ -613,7 +613,7 @@ static char[32] push_cache
 // idx --
 :compile_buf_bss {
     var &Buffer entry: {dup BUF_MAP map_idx}
-    "    b_"coms com ": .skip "coms entry->size com
+    "    b_"coms com ": .skip "coms entry->type->size com
     if debug_mode {
         " // "coms entry->key.name coms
     }

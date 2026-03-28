@@ -77,7 +77,7 @@ pub enum OKind {
 
 // data kind ref --
 pub :op_push {
-    // -- data kind ptr
+    // -- data kind
     var &Op entry: {%Op stack_push}
     =entry->kind
     =entry->data

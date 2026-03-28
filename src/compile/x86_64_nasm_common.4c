@@ -466,14 +466,14 @@ pub :rodata_x86_64_nasm_generic {
 
 // idx --
 pub :x64n_compile_buf_data {
-    var int buf_size: {dup BUF_MAP map_idx as Buffer.size@}
+    var int buf_size: {dup BUF_MAP map_idx as Buffer.type->size@}
 
     if debug_mode {
         "    ; "coms dup BUF_MAP map_idx as Buffer.key.name@ coms "\n"coms
     }
     "    b_"coms dup com
 
-    if dup BUF_MAP map_idx as Buffer.init_int@c {
+    if dup BUF_MAP map_idx as Buffer.static_init_int@c {
         if buf_size 1 == {
             " db "coms BUF_MAP map_idx as Buffer.init@ com "\n"coms
         } else if buf_size 8 == {
@@ -502,7 +502,7 @@ pub :x64n_compile_resb {
 pub :x64n_compile_buf_bss {
     var int idx: {}
     var &Buffer buf: {idx BUF_MAP map_idx}
-    "    b_"coms idx com x64n_compile_resb buf->size com
+    "    b_"coms idx com x64n_compile_resb buf->type->size com
     if debug_mode {
         " ; "coms buf->key.name coms
     }

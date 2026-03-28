@@ -81,15 +81,13 @@ Simple types can be used intelligently by the compiler, such as for array indexi
 
 ### Complex Types
 
-A variable can alternatively be defined with a complex type by surrounding the type in brackets. Complex types can contain any arrangement of simple types and integers. Adjacent values are summed together, and brackets can be used to scale (multiply) a base value. Brackets can also recursively contain arrangements of integers and other brackets.
-
-Complex Types cannot be used intelligently by the compiler. Their purpose is only to specify how much memory to allocate for that variable. Examples:
+A variable can alternatively be defined with a complex type by surrounding the type in brackets. Complex types can contain any arrangement of simple types and integers. Adjacent values are summed together. Examples:
 
 * `var [int] item` would allocate 8 bytes for `item`.
 * `var [40] item` would allocate 40 bytes for `item`.
-* `var [int &int[8]] item` would allocate 72 bytes for `item`.
+* `var [int (&int)[8]] item` would allocate 72 bytes for `item`.
 * `var [int[2] char[4] ptr] item` would allocate 28 bytes for `item`.
-* `var [&int[2 8[12]] 50[2]] item` would allocate 884 bytes for `item`.
+* `var [&int[50] 4] item` would allocate 12 bytes for `item`.
 
 ### Store and Fetch
 
@@ -342,7 +340,7 @@ struct StructName {
 }
 ```
 
-Struct fields are generally defined like variables. Like in C, fields can be accessed directly by using the `.fieldname` or, if you have a pointer to a struct, with `->fieldname`. To cast a pointer to a given type, use the `as Type` syntax.
+Struct fields are generally defined like variables. Like in C, fields can be accessed directly by using the `.fieldname` or, if the field is a pointer, with `->fieldname`. To cast a pointer to a given type, use the `as Type` syntax.
 
 #### Example
 

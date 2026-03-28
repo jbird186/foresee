@@ -7,10 +7,17 @@ pub struct ScopedKey {
     int scope
 }
 
+pub enum TypeKind {
+    none
+    base
+    pointer
+    array
+}
 pub struct Type {
-    &char name
-    &int dims
-    int indir
+    char kind
+    [8] data
+    &Type inner
+    int size
 }
 
 pub struct Op {
@@ -31,11 +38,10 @@ pub struct InlineStr {
 
 pub struct Buffer {
     ScopedKey key
-    int size
-    Type type
-    int alloc_offset
+    &Type type
     [8] init
-    bool init_int
+    bool static_init_int
+    int alloc_offset
     bool is_static
 }
 
@@ -64,8 +70,7 @@ pub struct Enum {
 
 pub struct StructField {
     &char name
-    int size
-    Type type
+    &Type type
 }
 pub struct Struct {
     ScopedKey key

@@ -41,7 +41,7 @@ static int TOTAL_DATA_SIZE
 :parse_tok
 
 // ops_dest tok_ptr -- ops_dest tok_ptr
-// Does *not* parse the until_tok_kind token
+// Skips, and does *not* parse, the until_tok_kind token
 #macro parse_until(until_tok_kind) {(
     var &Token original_tok_ptr: {dup}
     while viewtk until_tok_kind != {
@@ -57,15 +57,6 @@ static int TOTAL_DATA_SIZE
     %Token+
 )}
 
-// tok_ptr -- bool
-:tok_is_simple_type {
-    if viewtk TKind.REF == { %Token+ }
-    if viewtk TKind.IDENT != {
-        drop false return
-    }
-    as Token.data@ STRUCT_MAP scoped_map_find_idx is_success
-}
-
 // ops_dest tok_ptr idx -- ops_dest tok_ptr
 :push_buf_ptr {
     var int idx: {}
@@ -73,7 +64,7 @@ static int TOTAL_DATA_SIZE
     if entry->is_static {
         idx OKind.PUSH_BUF 3 pick op_push
     } else {
-        entry->alloc_offset entry->size +
+        entry->alloc_offset entry->type->size +
         OKind.PUSH_VAR 3 pick op_push
     }
 }
@@ -109,129 +100,6 @@ static int TOTAL_DATA_SIZE
     check_name_availability_fn
 }
 
-// ops_dest tok_ptr struct_name -- ops_dest new_tok_ptr type_name should_chain field_size
-:view_field_access {
-    // -- ops_dest tok_ptr
-    var &char struct_name: {}
-    if struct_name STRUCT_MAP scoped_map_find_idx is_failure {
-        error "Unrecognized struct '"puts struct_name puts "'\n"puts
-        1 exit
-    }
-
-    var &StructField fields_ptr: {
-        struct_name STRUCT_MAP scoped_map_find as Struct.fields@
-    }
-
-    if viewtk TKind.DEREF == {
-        while viewtk TKind.DEREF == {
-            8 OKind.FETCH 3 pick op_push
-            %Token+
-        }
-    } else if viewtk TKind.FIELD == {
-        %Token+
-    } else {
-        error "Expected field access into '"puts struct_name puts "'\n"puts
-        1 exit
-    }
-
-    var &char field_name: {viewtd}
-    var int field_offset: 0
-    while fields_ptr->name {
-        var int field_size: {fields_ptr->size}
-        if field_name fields_ptr->name strcmp not {
-            %Token+
-
-            field_offset OKind.PUSH_INT 3 pick op_push
-            0 OKind.ADD 3 pick op_push
-
-            var &int dims: {fields_ptr->type.dims}
-            while viewtk TKind.BRACKET_START == {
-                %Token+
-                parse_until(TKind.BRACKET_END)
-
-                if (if dims {dims@ not} else {true}) {
-                    error
-                    "Field '"puts fields_ptr->name puts
-                    "' of struct '"puts struct_name puts
-                    "' cannot be indexed to this depth\n"puts
-                    1 exit
-                }
-                dims@ /=field_size
-                %ptr +=dims
-
-                field_size OKind.PUSH_INT 3 pick op_push
-                0 OKind.MUL 3 pick op_push
-                0 OKind.ADD 3 pick op_push
-            }
-
-            fields_ptr->type.name
-            over as Token.kind@c dup (TKind.FIELD ==) swap (TKind.DEREF ==) |
-            field_size
-            return
-        }
-        field_size +=field_offset
-        %StructField +=fields_ptr
-    }
-
-    error "Field '"puts field_name puts "' not found for struct '"puts struct_name puts "'\n"puts
-    1 exit
-}
-
-// ops_dest tok_ptr -- ops_dest new_tok_ptr size
-:view_buffer_access {
-    var &char name: {viewtd}
-    var int idx: {name BUF_MAP scoped_map_find_idx}
-    if idx is_failure {
-        error "Buffer '"puts name puts "' not defined in this scope\n"puts
-        1 exit
-    }
-
-    %Token+
-    var &Buffer buf: {idx BUF_MAP map_idx}
-    var int size: {buf->size}
-    idx push_buf_ptr
-
-    if viewtk dup (TKind.FIELD ==) swap (TKind.DEREF ==) | {
-        // -- ops_dest new_tok_ptr type_name
-        buf->type.name
-        while view_field_access =size {}
-        drop
-    }
-
-    while viewtk TKind.BRACKET_START == {
-        if (buf->type.name not) {
-            error "Buffer '"puts name puts "' cannot be indexed to this depth\n"puts
-            1 exit
-        }
-
-        var &int dims: {buf->type.dims}
-        while viewtk TKind.BRACKET_START == {
-            %Token+
-            parse_until(TKind.BRACKET_END)
-
-            if (if dims {dims@ not} else {true}) {
-                error "Buffer '"puts name puts "' cannot be indexed to this depth\n"puts
-                1 exit
-            }
-            dims@ /=size
-            %ptr +=dims
-
-            size OKind.PUSH_INT 3 pick op_push
-            0 OKind.MUL 3 pick op_push
-            0 OKind.ADD 3 pick op_push
-        }
-
-        if viewtk dup (TKind.FIELD ==) swap (TKind.DEREF ==) | {
-            // -- ops_dest new_tok_ptr type_name
-            buf->type.name
-            while view_field_access =size {}
-            drop
-        }
-    }
-
-    size
-}
-
 // ops_dest name --
 :call_fn_injected {
     var &char name: {}
@@ -255,6 +123,111 @@ static int TOTAL_DATA_SIZE
     %Token+
 }
 
+// tok_ptr field_name struct_name -- tok_ptr offset &type
+:get_field_offset {
+    var &char struct_name: {}
+    var &char field_name: {}
+
+    var int struct_idx: { struct_name STRUCT_MAP scoped_map_find_idx }
+    if struct_idx is_failure {
+        error "Unrecognized struct '"puts struct_name puts "'\n"puts
+        1 exit
+    }
+    var &Struct struct_ptr: { struct_idx STRUCT_MAP map_idx }
+    var &StructField fields_ptr: { struct_ptr->fields }
+
+    var int total_offset: 0
+    while fields_ptr->name {
+        if fields_ptr->name field_name strcmp not {
+            total_offset fields_ptr->type return
+        }
+        fields_ptr->type->size +=total_offset
+        %StructField +=fields_ptr
+    }
+
+    error "Field '"puts field_name puts "' not found for struct '"puts struct_name puts "'\n"puts
+    1 exit
+}
+
+// Given a type *with the base address already on the stack*,
+// navigate to the accessed address *without* fetching it.
+// ops_dest tok_ptr &type -- ops_dest new_tok_ptr has_changed &new_type
+:view_type_access {
+    var &Type t: {}
+    var &Op ops_dest: {over}
+
+    switch t->kind {
+        case TypeKind.none {
+            false t return
+        }
+        case TypeKind.array {
+            if viewtk TKind.BRACKET_START != {
+                false t return
+            }
+
+            %Token+
+            parse_until(TKind.BRACKET_END)
+
+            t->inner->size OKind.PUSH_INT ops_dest op_push
+            0 OKind.MUL ops_dest op_push
+            0 OKind.ADD ops_dest op_push
+
+            true t->inner return
+        }
+        case TypeKind.pointer {
+            if viewtk TKind.DEREF != {
+                false t return
+            }
+            %Token+
+
+            8 OKind.FETCH ops_dest op_push
+
+            true t->inner return
+        }
+        case TypeKind.base {
+            if viewtk TKind.FIELD != {
+                false t return
+            }
+            %Token+
+
+            if viewtk TKind.IDENT != {
+                error "Expected identifer for field name\n"puts
+                1 exit
+            }
+
+            var &Type new_t: {viewtd t->data get_field_offset}
+            OKind.PUSH_INT ops_dest op_push
+            0 OKind.ADD ops_dest op_push
+
+            %Token+
+            true new_t return
+        }
+    }
+    error "Illegal type\n"puts
+    1 exit
+}
+
+// Pushes the desired address to the stack *without* fetching it.
+// ops_dest tok_ptr -- ops_dest new_tok_ptr size
+:view_buffer_access {
+    var &Op ops_dest: {over}
+
+    var &char name: {viewtd}
+    var int idx: {name BUF_MAP scoped_map_find_idx}
+    if idx is_failure {
+        error "Buffer '"puts name puts "' not defined in this scope\n"puts
+        1 exit
+    }
+    idx push_buf_ptr
+    %Token+
+
+
+    var &Buffer buf: {idx BUF_MAP map_idx}
+    var &Type t: {buf->type}
+    while t view_type_access =t {}
+    t->size
+}
+
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_buffer_ident {
     var &char name: {viewtd}
@@ -264,6 +237,7 @@ static int TOTAL_DATA_SIZE
             size OKind.FETCH 3 roll op_push
         }
         default {
+            %Token-
             error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically read from\n"puts
             1 exit
         }
@@ -502,7 +476,8 @@ static int TOTAL_DATA_SIZE
 
 // &arr low high --
 :_sort_switch_tree {
-    var int { high: {} low: {} }
+    var int high: {}
+    var int low: {}
     var &SwitchCase arr: {}
     var SwitchCase temp
 
@@ -830,7 +805,7 @@ static int TOTAL_DATA_SIZE
 }
 
 // tok_ptr -- tok_ptr size
-:view_type_size_raw {
+:view_type_size {
     if viewtd STRUCT_MAP scoped_map_find dup slot_is_empty {
         drop
         error "Type '"puts viewtd puts "' not found\n"puts
@@ -839,223 +814,114 @@ static int TOTAL_DATA_SIZE
     as Struct.size@
 }
 
-// tok_ptr -- tok_ptr size
-:view_type_size {
-    view_type_size_raw
-    if dup is_failure {
-        drop
-        error "Type not properly defined in this scope\n"puts
-        1 exit
-    }
-}
-
-// tok_ptr -- new_tok_ptr name indir dims size
-:view_simple_type {
-    var int indir: 0
-    if viewtk TKind.REF == {
-        viewtd =indir
+// tok_ptr -- new_tok_ptr &type
+:view_type {
+    var &Type t: { TYPE_MEM stack_push }
+    if viewtk TKind.IDENT == {
+        TypeKind.base =t->kind
+        view_type_size =t->size
+        viewtd =t->data
+        NULL =t->inner
         %Token+
-    }
-
-    if viewtk TKind.IDENT != {
+    } else if viewtk TKind.REF == {
+        TypeKind.pointer =t->kind
+        8 =t->size
+        viewtd =t->data
+        %Token+
+        view_type =t->inner
+    } else if viewtk TKind.PAREN_START == {
+        %Token+
+        view_type =t
+        if viewtk TKind.PAREN_END != {
+            error "Invalid type\n"puts
+            1 exit
+        }
+        %Token+
+    } else if viewtk TKind.BRACKET_START == {
+        %Token+
+        TypeKind.none =t->kind
+        0 =t->size
+        NULL =t->data
+        NULL =t->inner
+        while viewtk TKind.BRACKET_END != {
+            if viewtk not {
+                %Token-
+                error "Complex type definition missing a ']'\n"puts
+                1 exit
+            }
+            if viewtk TKind.INT == {
+                viewtd +=t->size
+                %Token+
+            } else {
+                var &Type sub_t: { view_type }
+                sub_t->size +=t->size
+            }
+        }
+        %Token+
+        t return
+    } else {
         error "Invalid type\n"puts
         1 exit
     }
-    var &char type_name: {viewtd}
-    var int total_size: {if indir { 8 } else { view_type_size_raw }}
 
-    %Token+
-
-    var &int dims: 0
-    if viewtk TKind.BRACKET_START == {
-        DIMS_MEM stack_top =dims
-        while viewtk TKind.BRACKET_START == {
-            var int subtotal: 0
-
-            if %Token+ viewtk TKind.INT != {
-                error "Invalid array size\n"puts
-                1 exit
-            }
-            while viewtk TKind.INT == {
-                viewtd +=subtotal
-                %Token+
-            }
-            if viewtk TKind.BRACKET_END != {
-                error "Invalid buffer size\n"puts
-                1 exit
-            }
-            %Token+
-
-            subtotal DIMS_MEM stack_push!
-            subtotal *=total_size
-        }
-        0 DIMS_MEM stack_push!
-    }
-    type_name indir dims total_size
-}
-
-// tok_ptr -- new_tok_ptr size
-:view_complex_subtype {
-    if %Token+ viewtk TKind.BRACKET_END == {
-        error "Invalid array size\n"puts
-        1 exit
-    }
-
-    var int total: 0
-    while viewtk TKind.BRACKET_END != {
+    while viewtk TKind.BRACKET_START == {
+        %Token+
         if viewtk TKind.INT != {
-            error "Invalid buffer size\n"puts
+            error "Invalid array dimensions\n"puts
             1 exit
         }
-        var int subtotal: {viewtd}
+
+        var int total: 0
+        while viewtk TKind.INT == {
+            viewtd +=total
+            %Token+
+        }
+
+        if viewtk TKind.BRACKET_END != {
+            error "Invalid array dimensions\n"puts
+            1 exit
+        }
         %Token+
 
-        while viewtk TKind.BRACKET_START == {
-            view_complex_subtype *=subtotal
-        }
-        subtotal +=total
-    }
-    %Token+
+        var &Type arr: { TYPE_MEM stack_push }
+        TypeKind.array =arr->kind
+        t->size total* =arr->size
+        total =arr->data
+        t =arr->inner
 
-    total
+        arr =t
+    }
+
+    t
 }
 
-// tok_ptr -- new_tok_ptr size
-:view_complex_type {
-    if %Token+ viewtk TKind.BRACKET_END == {
-        error "Invalid array size\n"puts
+// ops_dest tok_ptr is_static -- new_tok_ptr
+:parse_buffer_def {
+    var bool is_static: {}
+    var int buf_scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    if over is_static | not {
+        error "Buffers defined at global scope must be static\n"puts
         1 exit
     }
 
-    var int total: 0
-    while viewtk TKind.BRACKET_END != {
-        var int subtotal
-        if viewtk TKind.INT == {
-            viewtd =subtotal
-        } else if viewtk TKind.IDENT == {
-            view_type_size =subtotal
-        } else if viewtk TKind.REF == {
-            8 =subtotal
-            if %Token+ viewtk TKind.IDENT != {
-                error "Invalid pointer type\n"puts
-                1 exit
-            }
-        } else {
-            error "Invalid buffer size\n"puts
-            1 exit
-        }
-        %Token+
+    var &Type t: NULL
 
-        while viewtk TKind.BRACKET_START == {
-            view_complex_subtype *=subtotal
-        }
-        subtotal +=total
-    }
-    %Token+
-
-    total
-}
-
-#macro _parse_buffer_non_static_init {
-    switch size {
-        case 8,4,2,1 {}
-        default {
-            error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
-            1 exit
-        }
+    var bool has_explicit_type: true
+    if viewtk TKind.IDENT == {
+        var &Struct slot: {viewtd STRUCT_MAP scoped_map_find}
+        if slot {slot slot_is_used} else {false} =has_explicit_type
     }
 
-    if viewtk TKind.INT == {
-        if size 8 < {
-            var int limit: {switch size {
-                case 4 { 0xffff_ffff }
-                case 2 { 0xffff }
-                case 1 { 0xff }
-            }}
-            if viewtd dup (limit <=) swap (0 >=) & not {
-                error "Invalid size for buffer '"puts name puts "'\n"puts
-                1 exit
-            }
-        }
-        viewtd OKind.PUSH_INT 3 pick op_push
-        %Token+
-    } else if viewtk TKind.CHAR == {
-        viewtd OKind.PUSH_INT 3 pick op_push
-        %Token+
-    } else if viewtk TKind.BRACE_START == {
-        %Token+
-        new_local_scope
-        parse_until(TKind.BRACE_END)
-        pop_local_scope
+    if has_explicit_type {
+        view_type =t
     } else {
-        error "Non-static buffers can only utilize block initialization\n"puts
-        1 exit
+        TYPE_MEM stack_push =t
+        TypeKind.base =t->kind
+        -1 =t->size
+        NULL =t->data
+        NULL =t->inner
     }
 
-    alloc_offset size+ OKind.PUSH_VAR 3 pick op_push
-
-    switch size {
-        case 8,4,2,1 {
-            size OKind.STORE 3 pick op_push
-        }
-    }
-}
-
-#macro _parse_buffer_static_init {
-    if viewtk TKind.STR == {
-        // -- tok_ptr str_size
-        viewtd strlen 1+
-        if size 0 < {
-            =size
-        } else if size > {
-            error "Invalid size for buffer '"puts name puts "'\n"puts
-            1 exit
-        }
-        false =init_int
-    } else if viewtk TKind.INT == {
-        if size 0 < {
-            8 =size
-        } else {
-            if size 8 == {}
-            else if (size 8 <) (size 0 >) & {
-                var int limit: {switch size {
-                    case 4 { 0xffff_ffff }
-                    case 2 { 0xffff }
-                    case 1 { 0xff }
-                }}
-                if viewtd dup (limit <=) swap (0 >=) & not {
-                    error "Invalid size for buffer '"puts name puts "'\n"puts
-                    1 exit
-                }
-            }
-            else {
-                error "Invalid size for buffer '"puts name puts "'\n"puts
-                1 exit
-            }
-        }
-        true =init_int
-    } else if viewtk TKind.CHAR == {
-        if size 0 < {
-            1 =size
-        } else {
-            switch size {
-                case 8,4,2,1 {}
-                default {
-                    error "Invalid size for buffer '"puts name puts "'\n"puts
-                    1 exit
-                }
-            }
-        }
-        true =init_int
-    } else {
-        error "Invalid initialization value for buffer '"puts name puts "'\n"puts
-        1 exit
-    }
-    viewtd =init
-    %Token+
-}
-
-#macro _parse_next_buffer {
     if viewtk TKind.IDENT != {
         error "Invalid buffer name\n"puts
         1 exit
@@ -1066,90 +932,147 @@ static int TOTAL_DATA_SIZE
         0 =alloc_offset
     } else {
         CURRENT_ALLOC_SIZE =alloc_offset
-        size alloc_bytes
+        t->size alloc_bytes
     }
 
-    var &char name: {viewtd}
-    name scope check_name_availability
-
+    var &char buf_name: {viewtd}
     %Token+
-    var [8] init
-    var bool init_int
+
+    buf_name buf_scope check_name_availability
+
+    var [8] init: NULL
+    var bool static_init_int: false
     if viewtk TKind.COLON == {
         %Token+
         if is_static {
-            _parse_buffer_static_init
+            if viewtk TKind.STR == {
+                // -- tok_ptr str_size
+                viewtd strlen 1+
+                if has_explicit_type not {
+                    =t->size
+                } else if t->size > {
+                    error "Invalid size for buffer '"puts buf_name puts "'\n"puts
+                    1 exit
+                }
+                false =static_init_int
+            } else if viewtk TKind.INT == {
+                if has_explicit_type not {
+                    8 =t->size
+                } else {
+                    if t->size 8 == {}
+                    else if (t->size 8 <) (t->size 0 >) & {
+                        var int limit: {switch t->size {
+                            case 4 { 0xffff_ffff }
+                            case 2 { 0xffff }
+                            case 1 { 0xff }
+                        }}
+                        if viewtd dup (limit <=) swap (0 >=) & not {
+                            error "Invalid size for buffer '"puts buf_name puts "'\n"puts
+                            1 exit
+                        }
+                    }
+                    else {
+                        error "Invalid size for buffer '"puts buf_name puts "'\n"puts
+                        1 exit
+                    }
+                }
+                true =static_init_int
+            } else if viewtk TKind.CHAR == {
+                if has_explicit_type not {
+                    1 =t->size
+                } else {
+                    switch t->size {
+                        case 8,4,2,1 {}
+                        default {
+                            error "Invalid size for buffer '"puts buf_name puts "'\n"puts
+                            1 exit
+                        }
+                    }
+                }
+                true =static_init_int
+            } else {
+                error "Invalid initialization value for buffer '"puts buf_name puts "'\n"puts
+                1 exit
+            }
+            viewtd =init
+            %Token+
         } else {
-            _parse_buffer_non_static_init
+            switch t->size {
+                case 8,4,2,1 {}
+                default {
+                    error "Buffer '"puts buf_name puts "' ("puts t->size put " bytes) cannot be automatically assigned to\n"puts
+                    1 exit
+                }
+            }
+
+            if viewtk TKind.INT == {
+                if t->size 8 < {
+                    var int limit: {switch t->size {
+                        case 4 { 0xffff_ffff }
+                        case 2 { 0xffff }
+                        case 1 { 0xff }
+                    }}
+                    if viewtd dup (limit <=) swap (0 >=) & not {
+                        error "Invalid size for buffer '"puts buf_name puts "'\n"puts
+                        1 exit
+                    }
+                }
+                viewtd OKind.PUSH_INT 3 pick op_push
+                %Token+
+            } else if viewtk TKind.CHAR == {
+                viewtd OKind.PUSH_INT 3 pick op_push
+                %Token+
+            } else if viewtk TKind.BRACE_START == {
+                %Token+
+                new_local_scope
+                parse_until(TKind.BRACE_END)
+                pop_local_scope
+            } else {
+                error "Invalid initialization value for non-static buffer '"puts buf_name puts "'\n"puts
+                1 exit
+            }
+
+            alloc_offset t->size+ OKind.PUSH_VAR 3 pick op_push
+            t->size OKind.STORE 3 pick op_push
         }
-    } else {
-        0 =init
-        false =init_int
     }
 
-    if size 0 < {
-        error "Invalid size for buffer '"puts name puts "'\n"puts
+    if t->size 0 < {
+        error "Invalid size for buffer '"puts buf_name puts "'\n"puts
         1 exit
     }
-    if size BUFFER_SIZE_LIMIT > {
-        error "Buffer '"puts name puts "' cannot exceed "puts BUFFER_SIZE_LIMIT put " bytes\n"puts
+    if t->size BUFFER_SIZE_LIMIT > {
+        error "Buffer '"puts buf_name puts "' cannot exceed "puts BUFFER_SIZE_LIMIT put " bytes\n"puts
         1 exit
     }
-    size +=TOTAL_DATA_SIZE
-    if size DATA_SIZE_LIMIT > {
+    t->size +=TOTAL_DATA_SIZE
+    if TOTAL_DATA_SIZE DATA_SIZE_LIMIT > {
         error "Total data usage cannot exceed "puts DATA_SIZE_LIMIT put " bytes\n"puts
         1 exit
     }
 
-    var &Buffer entry: {name scope BUF_MAP scoped_map_get}
-    name =entry->key.name
-    scope =entry->key.scope
-    size =entry->size
-    type_name =entry->type.name
-    type_dims =entry->type.dims
-    type_indir =entry->type.indir
-    alloc_offset =entry->alloc_offset
+    var &Buffer entry: {buf_name buf_scope BUF_MAP scoped_map_get}
+    buf_name =entry->key.name
+    buf_scope =entry->key.scope
+    t =entry->type
     init =entry->init
-    init_int =entry->init_int
+    static_init_int =entry->static_init_int
+    alloc_offset =entry->alloc_offset
     is_static =entry->is_static
+
+    nip
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
-:parse_buffer_def {
-    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
-    var char is_static
-    if viewtk TKind.STATIC == {
-        true =is_static
-    } else if over {
-        false =is_static
-    } else {
-        error "Buffers defined at global scope must be static\n"puts
-        1 exit
-    }
+:parse_static {
     %Token+
+    true parse_buffer_def
+}
 
-    var int size
-    var int type_indir: 0
-    var &char type_name: NULL
-    var &int type_dims: NULL
-    if dup tok_is_simple_type {
-        view_simple_type =size =type_dims =type_indir =type_name
-    } else if viewtk TKind.BRACKET_START == {
-        view_complex_type =size
-    } else {
-        -1 =size
-    }
-
-    if viewtk TKind.BRACE_START == {
-        %Token+
-        while viewtk TKind.BRACE_END != {
-            _parse_next_buffer
-        }
-        %Token+
-    } else {
-        _parse_next_buffer
-    }
-    nip
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_var {
+    %Token+
+    false parse_buffer_def
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -1305,6 +1228,18 @@ static int TOTAL_DATA_SIZE
     variants_ptr =entry->variants
 }
 
+// &type --
+:update_type_size {
+    var &Type t: {}
+    if t->kind TypeKind.base == {
+        var &Struct entry: {t->data STRUCT_MAP scoped_map_find}
+        entry->size =t->size
+    }
+    else if t->inner {
+        t->inner update_type_size
+    }
+}
+
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_struct {
     %Token+
@@ -1337,18 +1272,7 @@ static int TOTAL_DATA_SIZE
     %Token+
     var int struct_size: 0
     while viewtk TKind.BRACE_END != {
-        var int size
-        var int type_indir: 0
-        var &char type_name: NULL
-        var int type_dims: NULL
-        if dup tok_is_simple_type {
-            view_simple_type =size =type_dims =type_indir =type_name
-        } else if viewtk TKind.BRACKET_START == {
-            view_complex_type =size
-        } else {
-            error "Invalid field type\n"puts
-            1 exit
-        }
+        var &Type field_type: {view_type}
 
         if viewtk TKind.IDENT != {
             error "Invalid field for struct '"puts struct_name puts "'\n"puts
@@ -1364,34 +1288,30 @@ static int TOTAL_DATA_SIZE
             }
             %StructField +=field_i
         }
-        size +=struct_size
+        field_type->size +=struct_size
 
         var &StructField entry: {STRUCT_MEM stack_push}
         field_name =entry->name
-        size =entry->size
-        type_name =entry->type.name
-        type_dims =entry->type.dims
-        type_indir =entry->type.indir
+        field_type =entry->type
         %Token+
     }
     %Token+
     NULL STRUCT_MEM stack_push as StructField.name!
     struct_size =entry->size
     fields_ptr =entry->fields
+
+    while fields_ptr->name {
+        fields_ptr->type update_type_size
+        %StructField +=fields_ptr
+    }
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_as {
     %Token+
-    if viewtk TKind.IDENT != {
-        error "Invalid struct name after 'as'\n"puts
-        1 exit
-    }
-
-    // -- ops_dest new_tok_ptr type_name
-    viewtd swap %Token+ swap
-    while view_field_access drop {}
-    drop nip
+    var &Type t: {view_type}
+    while t view_type_access =t {}
+    nip
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -1399,9 +1319,14 @@ static int TOTAL_DATA_SIZE
     %Token+
     if viewtd STRUCT_MAP scoped_map_find_idx is_success {
         view_type_size
+        if dup is_failure {
+            drop
+            error "Type not properly defined in this scope\n"puts
+            1 exit
+        }
     // -- ops_dest tok_ptr idx
     } else if viewtd BUF_MAP scoped_map_find_idx dup is_success {
-        BUF_MAP map_idx as Buffer.size@
+        BUF_MAP map_idx as Buffer.type->size@
     } else {
         drop
         error "Buffer '"puts viewtd puts "' not defined\n"puts
@@ -1419,6 +1344,7 @@ static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_tok {
+    // viewtf puts sp viewtl put "   |   " puts viewtk put sp show_tok cr
     false =IS_PUBLIC
     switch viewtk {
         case TKind.PUB {
@@ -1431,8 +1357,8 @@ static int TOTAL_DATA_SIZE
             %Token+
             switch viewtk {
                 case TKind.FN { parse_fn }
-                case TKind.STATIC { parse_buffer_def }
-                case TKind.VAR { parse_buffer_def }
+                case TKind.STATIC { parse_static }
+                case TKind.VAR { parse_var }
                 case TKind.ENUM { parse_enum }
                 case TKind.STRUCT { parse_struct }
                 default {
@@ -1465,8 +1391,8 @@ static int TOTAL_DATA_SIZE
         case TKind.CONTINUE { parse_continue }
         case TKind.BREAK { parse_break }
         case TKind.FN { parse_fn }
-        case TKind.STATIC { parse_buffer_def }
-        case TKind.VAR { parse_buffer_def }
+        case TKind.STATIC { parse_static }
+        case TKind.VAR { parse_var }
         case TKind.REF { parse_ref }
         case TKind.EQ { parse_eq }
         case TKind.ENUM { parse_enum }
