@@ -38,9 +38,12 @@
         1 exit
     }
 
+    var int src_file_idx: {src_file FILE_SET map_get_idx}
+    src_file src_file_idx FILE_SET map_idx!
+
     &src_str SRC_STR_SIZE src_fd fread drop
     src_fd fclose drop
-    &src_str src_file lex_src
+    &src_str src_file_idx lex_src
 
     if "__core.4c" use_file is_failure {
         "ERROR: standard library not found\n"puts

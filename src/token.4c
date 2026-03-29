@@ -1,6 +1,7 @@
 #use "stdchar.4c"
 #use "types.4c"
 #use "stack.4c"
+#use "map.4c"
 
 pub enum TKind {
     EOF
@@ -44,11 +45,11 @@ pub enum TKind {
     FILE_END
 }
 
-// data kind file line ref --
+// data kind file_idx line ref --
 pub :tok_push {
     var &Token entry: {%Token stack_push}
     =entry->line
-    =entry->file
+    =entry->file_idx
     =entry->kind
     =entry->data
 }
@@ -59,13 +60,13 @@ pub :tok_push_clone {
     var &Token src: {}
     src->kind =entry->kind
     src->data =entry->data
-    src->file =entry->file
+    src->file_idx =entry->file_idx
     src->line =entry->line
 }
 
 pub :viewtk { dup (Token).kind }
 pub :viewtd { dup (Token).data }
-pub :viewtf { dup (Token).file }
+pub :viewtf { dup (Token).file_idx }
 pub :viewtl { dup (Token).line }
 
 // tok_ptr -- tok_ptr
@@ -143,12 +144,12 @@ pub :show_tok {
 
 // tok_ptr -- tok_ptr
 pub :error {
-    viewtf puts ":"puts viewtl put ": ERROR: "puts
+    viewtf FILE_SET map_idx@ puts ":"puts viewtl put ": ERROR: "puts
 }
 
 // tok_ptr -- tok_ptr
 pub :warning {
-    viewtf puts ":"puts viewtl put ": WARNING: "puts
+    viewtf FILE_SET map_idx@ puts ":"puts viewtl put ": WARNING: "puts
 }
 
 #macro skip_delim(start, end) {(

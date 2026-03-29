@@ -594,14 +594,14 @@ static char[32] push_cache
     }
     "    b_"coms idx com ": "coms
 
-    if entry->static_init_int {
+    var [8] init: {entry->data.stat.init}
+    if entry->data.stat.init_is_int {
         if buf_size 1 == {
-            ".byte "coms entry->init com "\n"coms
+            ".byte "coms init com "\n"coms
         } else if buf_size 8 == {
-            ".quad "coms entry->init com "\n"coms
+            ".quad "coms init com "\n"coms
         }
     } else {
-        var [8] init: {entry->init}
         var int init_size: {init strlen 1+}
         init compile_buf_str
         if init_size buf_size < {
@@ -648,14 +648,14 @@ pub :compile_program_aarch64_linux_gcc {
 
     ".section .data\n"coms
     for (var int i: 0, i MAP_SIZE <, 1 +=i) {
-        if (i is_valid_static_buffer) (i BUF_MAP map_idx (Buffer).init flag) & {
+        if (i is_valid_static_buffer) (i BUF_MAP map_idx (Buffer).data.stat.init flag) & {
             i compile_buf_data
         }
     }
 
     ".section .bss\n"coms
     for (var int i: 0, i MAP_SIZE <, 1 +=i) {
-        if (i is_valid_static_buffer) (i BUF_MAP map_idx (Buffer).init not) & {
+        if (i is_valid_static_buffer) (i BUF_MAP map_idx (Buffer).data.stat.init not) & {
             i compile_buf_bss
         }
     }

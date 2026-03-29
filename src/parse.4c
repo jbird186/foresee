@@ -64,7 +64,7 @@ static int TOTAL_DATA_SIZE
     if entry->is_static {
         idx OKind.PUSH_BUF 3 pick op_push
     } else {
-        entry->alloc_offset entry->type->size +
+        entry->data.loc.alloc_offset entry->type->size +
         OKind.PUSH_VAR 3 pick op_push
     }
 }
@@ -970,11 +970,9 @@ enum ViewTypeError {
         1 exit
     }
 
-    var int alloc_offset
-    if is_static {
-        0 =alloc_offset
-    } else {
-        CURRENT_ALLOC_SIZE =alloc_offset
+    var int local_alloc_offset
+    if is_static not {
+        CURRENT_ALLOC_SIZE =local_alloc_offset
         t->size alloc_bytes
     }
 
@@ -983,8 +981,8 @@ enum ViewTypeError {
 
     buf_name buf_scope check_name_availability
 
-    var [8] init: NULL
-    var bool static_init_int: false
+    var [8] static_init: NULL
+    var bool static_init_is_int: false
     if viewtk TKind.COLON == {
         %Token+
         if is_static {
@@ -997,7 +995,7 @@ enum ViewTypeError {
                     error "Invalid size for buffer '"puts buf_name puts "'\n"puts
                     1 exit
                 }
-                false =static_init_int
+                false =static_init_is_int
             } else if viewtk TKind.INT == {
                 if has_explicit_type not {
                     8 =t->size
@@ -1019,7 +1017,7 @@ enum ViewTypeError {
                         1 exit
                     }
                 }
-                true =static_init_int
+                true =static_init_is_int
             } else if viewtk TKind.CHAR == {
                 if has_explicit_type not {
                     1 =t->size
@@ -1032,12 +1030,12 @@ enum ViewTypeError {
                         }
                     }
                 }
-                true =static_init_int
+                true =static_init_is_int
             } else {
                 error "Invalid initialization value for buffer '"puts buf_name puts "'\n"puts
                 1 exit
             }
-            viewtd =init
+            viewtd =static_init
             %Token+
         } else {
             switch t->size {
@@ -1075,7 +1073,7 @@ enum ViewTypeError {
                 1 exit
             }
 
-            alloc_offset t->size+ OKind.PUSH_VAR 3 pick op_push
+            local_alloc_offset t->size+ OKind.PUSH_VAR 3 pick op_push
             t->size OKind.STORE 3 pick op_push
         }
     }
@@ -1098,10 +1096,14 @@ enum ViewTypeError {
     buf_name =entry->key.name
     buf_scope =entry->key.scope
     t =entry->type
-    init =entry->init
-    static_init_int =entry->static_init_int
-    alloc_offset =entry->alloc_offset
     is_static =entry->is_static
+
+    if is_static {
+        static_init =entry->data.stat.init
+        static_init_is_int =entry->data.stat.init_is_int
+    } else {
+        local_alloc_offset =entry->data.loc.alloc_offset
+    }
 
     nip
 }

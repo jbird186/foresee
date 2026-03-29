@@ -46,11 +46,11 @@ static int scope_depth
 
     #macro parse_here_macro(name, access, tkind) {
         if 2 pick name strcmp not {
-            (src->access) (TKind.tkind src->file) (src->line) &out_toks_mem tok_push
+            (src->access) (TKind.tkind src->file_idx) (src->line) &out_toks_mem tok_push
             drop nip %Token+ return
         }
     }
-    parse_here_macro("HERE_FILE", file, STR)
+    parse_here_macro("HERE_FILE", file_idx, STR)
     parse_here_macro("HERE_LINE", line, INT)
 
     // name tok_ptr macro_def
@@ -250,7 +250,8 @@ pub :use_file {
         "WARNING: 'use' directive failed to open file '"puts name puts "'\n"puts
         -1 return
     }
-    path dup FILE_SET map_get!
+    var int file_idx: {path FILE_SET map_get_idx}
+    path file_idx FILE_SET map_idx!
 
     var int read_res: {&src_str SRC_STR_SIZE fd fread }
     if read_res is_failure {
@@ -267,10 +268,10 @@ pub :use_file {
     dup SCOPE_STACK stack_push!
     // -- tok_ptr use_tok_ptr
     &toks_mem %Token stack_top
-    &src_str name lex_src
-    0 TKind.FILE_START name 0 &out_toks_mem tok_push
+    &src_str file_idx lex_src
+    0 TKind.FILE_START file_idx 0 &out_toks_mem tok_push
     preprocess
-    0 TKind.FILE_END name 0 &out_toks_mem tok_push
+    0 TKind.FILE_END file_idx 0 &out_toks_mem tok_push
     &scope_stack stack_shrink
 
     0 return

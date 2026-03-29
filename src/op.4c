@@ -83,5 +83,7 @@ pub :op_push {
     =entry->data
 }
 
+// &op -- kind
 pub :viewok { dup (Op).kind }
+// &op -- data
 pub :viewod { dup (Op).data }

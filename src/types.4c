@@ -28,21 +28,30 @@ pub struct Op {
 pub struct Token {
     char kind
     [8] data
-    &char file
-    int line
+    u16 file_idx
+    u32 line
 }
 
 pub struct InlineStr {
     &char value
 }
 
+pub struct StaticBufferData {
+    [8] init
+    bool init_is_int
+}
+pub struct LocalBufferData {
+    u32 alloc_offset
+}
+pub union BufferData {
+    StaticBufferData stat
+    LocalBufferData loc
+}
 pub struct Buffer {
     ScopedKey key
     &Type type
-    [8] init
-    bool static_init_int
-    int alloc_offset
     bool is_static
+    BufferData data
 }
 
 pub struct Macro {
