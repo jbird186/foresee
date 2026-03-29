@@ -29,7 +29,6 @@ pub enum TKind {
     ENUM
     STRUCT
     UNION
-    AS
     FIELD
     DEREF
     SIZE
@@ -64,10 +63,10 @@ pub :tok_push_clone {
     src->line =entry->line
 }
 
-pub :viewtk { dup as Token.kind@c }
-pub :viewtd { dup as Token.data@ }
-pub :viewtf { dup as Token.file@ }
-pub :viewtl { dup as Token.line@ }
+pub :viewtk { dup (Token).kind }
+pub :viewtd { dup (Token).data }
+pub :viewtf { dup (Token).file }
+pub :viewtl { dup (Token).line }
 
 // tok_ptr -- tok_ptr
 pub :show_tok {
@@ -125,9 +124,8 @@ pub :show_tok {
     case TKind.ENUM { "enum" puts }
     case TKind.STRUCT { "struct" puts }
     case TKind.UNION { "union" puts }
-    case TKind.AS { "as" puts }
     case TKind.FIELD { "." puts }
-    case TKind.DEREF { "->" puts }
+    case TKind.DEREF { "@" puts }
     case TKind.SIZE { "%" puts }
     case TKind.CALL { "call" puts }
     case TKind.PUB { "pub" puts }

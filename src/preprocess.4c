@@ -40,8 +40,8 @@ static int scope_depth
 // name tok_ptr macro_idx -- new_tok_ptr
 :preprocess_macro_call {
     dup MACRO_MAP map_idx
-    var int n_args: {dup as Macro.n_args@}
-    var bool is_arg: {as Macro.is_arg@c}
+    var int n_args: {dup (Macro).n_args}
+    var bool is_arg: {(Macro).is_arg}
     var &Token src: {over}
 
     #macro parse_here_macro(name, access, tkind) {
@@ -54,7 +54,7 @@ static int scope_depth
     parse_here_macro("HERE_LINE", line, INT)
 
     // name tok_ptr macro_def
-    MACRO_MAP map_idx as Macro.toks@
+    MACRO_MAP map_idx (Macro).toks
     if dup not {
         drop
         error "Attempted to expand preprocessor flag '"puts swap puts "'\n"puts
@@ -102,7 +102,7 @@ static int scope_depth
         while viewtk TKind.PAREN_END != {
             // -- name tok_ptr def_tok_ptr slot_ptr
             var &Macro entry: {viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get}
-            dup as Token.data@ =entry->key.name
+            dup (Token).data =entry->key.name
             SCOPE_STACK stack_last@ =entry->key.scope
             0 =entry->n_args
             over =entry->toks
@@ -111,7 +111,7 @@ static int scope_depth
             // -- name def_tok_ptr tok_ptr
             swap
             if viewtk TKind.PAREN_END == {
-                if dup %Token- as Token.kind TKind.COMMA == {
+                if dup %Token- (Token).kind TKind.COMMA == {
                     error "Invalid number of arguments supplied to macro '"puts 2 pick puts "'\n"puts
                     1 exit
                 }
@@ -500,6 +500,6 @@ pub :use_file {
 
 pub :preprocess_src {
     0 =scope_depth
-    &toks_mem as StackHead.data preprocess
+    &toks_mem %int+ preprocess
     0 TKind.EOF NULL 0 &out_toks_mem tok_push
 }

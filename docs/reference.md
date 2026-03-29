@@ -69,37 +69,6 @@ Accessing an uninitialized local variable leads to undefined behavior.
 * `/=item` divides `item` by the top stack item, and sets `item` to that value. This only works if `item` has an appropriate size. `+=item`, `*=item`, `&=item`, `>>=item`, etc behave similarly.
 * Variables are *only* accessible within the scope where they are defined.
 
-### Types
-
-Types are comprised of a base type, pointers to a base type, arrays of a base type, or some combination of these. Base types include any built-in type, such was `int`, `char`, `bool`, etc, or any user-defined struct. Pointers are indicated with an ampersand (`&`) character. An array dimension is a pair of brackets containing the size of the array.
-
-Examples:
-
-* `var char letter` would define `letter` to be a single character.
-* `var &int number` would define `number` to be a pointer to an integer.
-* `var (&int)[4] items` would define `items` to be an array of 4 pointers to integers.
-* `var &int[4] items` would define `items` to be a pointer to an array of 4 integers.
-* `var int[5][8] matrix` would define `matrix` to be a 5x8 matrix of integers.
-
-An array dimension can also be defined by a list of spaced integers, where the integers are summed up to obtain the total size. So `var int[5][8] matrix` behaves the exact same as `var int[1 4][2 2 4] matrix`.
-
-#### Allocation Types
-
-A variable can alternatively be defined with an "allocation type" by surrounding an expression in brackets. Unlike normal types, allocation types do not describe structure. Rather, they evaluate to the total size in bytes that will be allocated for that variable. Adjacent values are summed to produce the final size.
-
-* A base type (e.g. `int`, `char`) evaluates to its size in bytes.
-* A pointer type (e.g. `&int`) evaluates to the size of a pointer.
-* An array type (e.g. `int[8]`) evaluates to the total size of the array.
-* Integer literals represent raw byte counts.
-
-Examples:
-
-* `var [int] item` would allocate 8 bytes for `item`.
-* `var [40] item` would allocate 40 bytes for `item`.
-* `var [int (&int)[8]] item` would allocate 72 bytes for `item`.
-* `var [int[2] char[4] &bool] item` would allocate 28 bytes for `item`.
-* `var [&int[50] 4] item` would allocate 12 bytes for `item`.
-
 ### Store and Fetch
 
 Much like Forth, values can be manually stored and fetched from memory. Use `fetch`/`@` to read data from memory, and `store`/`!` to write data to memory. Example:
@@ -118,10 +87,6 @@ Variants such as `fetch_u32`, `!c` ("store char"), and others can be used to rea
 Attempting to read from, or write to, an invalid memory address may cause an error.
 
 Note that modifying inline strings is undefined behavior. For example, `100 "Hello World!\n" store` would result in undefined behavior. Treat pointers to inline strings as strictly read-only.
-
-### Multiple Declarators
-
-Multiple variables of the same type can be declared at once by using braces. For example, `var int {a b:1 c}` is equivalent to (C) `int a, b=1, c;`.
 
 ### Variables Example
 
@@ -162,6 +127,65 @@ Hello, World!
 hello
 7
 ```
+
+## Types
+
+Types are comprised of a base type, pointers to a base type, arrays of a base type, or some combination of these. Base types include any built-in type, such was `int`, `char`, `bool`, etc, or any user-defined struct. Pointers are indicated with an ampersand (`&`) character. An array dimension is a pair of brackets containing the size of the array.
+
+Examples:
+
+* `var char letter` would define `letter` to be a single character.
+* `var &int number` would define `number` to be a pointer to an integer.
+* `var (&int)[4] items` would define `items` to be an array of 4 pointers to integers.
+* `var &int[4] items` would define `items` to be a pointer to an array of 4 integers.
+* `var int[5][8] matrix` would define `matrix` to be a 5x8 matrix of integers.
+
+An array dimension can also be defined by a list of spaced integers, where the integers are summed up to obtain the total size. So `var int[5][8] matrix` behaves the exact same as `var int[1 4][2 2 4] matrix`.
+
+### Allocation Types
+
+Unlike normal types, allocation types do not describe structure. Rather, they evaluate to the total size in bytes that will be allocated for that variable. These are defined by surrounding an expression in brackets. Adjacent values are summed to produce the final size.
+
+* A base type (e.g. `int`, `char`) evaluates to its size in bytes.
+* A pointer type (e.g. `&int`) evaluates to the size of a pointer.
+* An array type (e.g. `int[8]`) evaluates to the total size of the array.
+* Integer literals represent raw byte counts.
+
+Examples:
+
+* `var [int] item` would allocate 8 bytes for `item`.
+* `var [40] item` would allocate 40 bytes for `item`.
+* `var [int (&int)[8]] item` would allocate 72 bytes for `item`.
+* `var [int[2] char[4] &bool] item` would allocate 28 bytes for `item`.
+* `var [&int[50] 4] item` would allocate 12 bytes for `item`.
+
+### Type Casting
+
+Type casting is done using C-style `(type)` syntax. In Foresee, this syntax means "interpret the top stack item as *the address of* a variable of this type". Example:
+
+```
+#use "stdio.4c"
+
+:main {
+    var int a
+    var int b
+
+    5 =a
+    9 &b =(int)
+
+    &a (int) put cr
+    b put cr
+}
+```
+
+Output:
+
+```
+5
+9
+```
+
+This feature is much more useful when used with custom data types. See later sections.
 
 ## Functions
 
@@ -351,7 +375,7 @@ struct StructName {
 }
 ```
 
-Struct fields are generally defined like variables. Like in C, fields can be accessed directly by using the `.fieldname` or, if the field is a pointer, with `->fieldname`. To cast a pointer to a given type, use the `as Type` syntax.
+Struct fields are generally defined like variables. Fields can be accessed directly by using the `.fieldname` or, if the field is a pointer, with `->fieldname`.
 
 #### Example
 
@@ -392,7 +416,7 @@ struct Points {
     -4 =ps.points[0].y
     &ps.points[0] show_point
 
-    &p as Point.x@ put cr
+    &p (Point).x put cr
 }
 ```
 
@@ -414,6 +438,8 @@ union StructName {
     ...
 }
 ```
+
+Union variants are generally defined like variables. Variants can be accessed directly by using the `.variantname` or, if the variant is a pointer, with `->variantname`.
 
 ### Enums
 

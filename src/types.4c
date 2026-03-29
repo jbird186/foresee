@@ -29,7 +29,7 @@ pub struct Token {
     char kind
     [8] data
     &char file
-    u32 line
+    int line
 }
 
 pub struct InlineStr {
@@ -41,7 +41,7 @@ pub struct Buffer {
     &Type type
     [8] init
     bool static_init_int
-    u32 alloc_offset
+    int alloc_offset
     bool is_static
 }
 

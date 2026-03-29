@@ -42,7 +42,7 @@ static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- ops_dest tok_ptr
 // Skips, and does *not* parse, the until_tok_kind token
-#macro parse_until(until_tok_kind) {(
+#macro parse_until(until_tok_kind) {{
     var &Token original_tok_ptr: {dup}
     while viewtk until_tok_kind != {
         if viewtk not {
@@ -55,7 +55,7 @@ static int TOTAL_DATA_SIZE
         over swap parse_tok
     }
     %Token+
-)}
+}}
 
 // ops_dest tok_ptr idx -- ops_dest tok_ptr
 :push_buf_ptr {
@@ -108,7 +108,7 @@ static int TOTAL_DATA_SIZE
         "ERROR: Function '"puts name puts "' not defined\n"puts
         1 exit
     }
-    true idx FN_MAP map_idx as Function.is_used!c
+    true idx FN_MAP map_idx =(Function).is_used
     idx OKind.CALL_FN rot op_push
 }
 
@@ -214,8 +214,6 @@ static int TOTAL_DATA_SIZE
 // Pushes the desired address to the stack *without* fetching it.
 // ops_dest tok_ptr -- ops_dest new_tok_ptr size
 :view_buffer_access {
-    var &Op ops_dest: {over}
-
     var &char name: {viewtd}
     var int idx: {name BUF_MAP scoped_map_find_idx}
     if idx is_failure {
@@ -224,7 +222,6 @@ static int TOTAL_DATA_SIZE
     }
     idx push_buf_ptr
     %Token+
-
 
     var &Buffer buf: {idx BUF_MAP map_idx}
     var &Type t: {buf->type}
@@ -252,7 +249,7 @@ static int TOTAL_DATA_SIZE
 :_view_enum_as_int {
     var int enum_name: {viewtd}
     var &EnumVariant variant: {
-        enum_name ENUM_MAP scoped_map_find as Enum.variants@
+        enum_name ENUM_MAP scoped_map_find (Enum).variants
     }
 
     %Token+
@@ -686,7 +683,7 @@ static int TOTAL_DATA_SIZE
             drop error "Invalid 'for' loop\n"puts
             1 exit
         }
-        as Token.kind@c TKind.BRACE_START == =has_paren
+        (Token).kind TKind.BRACE_START == =has_paren
     }
     if has_paren { %Token+ }
 
@@ -789,7 +786,7 @@ static int TOTAL_DATA_SIZE
     }
     %Token+
 
-    if &fn_ops_mem %Op stack_last as Token.kind@c OKind.RET != {
+    if &fn_ops_mem %Op stack_last (Token).kind OKind.RET != {
         0 OKind.RET &fn_ops_mem op_push
     }
 
@@ -815,15 +812,36 @@ static int TOTAL_DATA_SIZE
         error "Type '"puts viewtd puts "' not found\n"puts
         1 exit
     }
-    as Struct.size@
+    (Struct).size
 }
 
-// tok_ptr -- new_tok_ptr &type
-:view_type {
+enum ViewTypeError {
+    None: 0
+    Generic
+    UnclosedBracket
+    Dimensions
+}
+
+// tok_ptr -- new_tok_ptr &type error
+:try_view_type {
+    // tok_ptr -- new_tok_ptr &type
+    #macro _try_view_type {
+        if try_view_type dup { return } drop
+    }
+
     var &Type t: { TYPE_MEM stack_push }
     if viewtk TKind.IDENT == {
         TypeKind.base =t->kind
-        view_type_size =t->size
+
+        var &Struct slot: { viewtd STRUCT_MAP scoped_map_find }
+        if slot not {
+            NULL ViewTypeError.Generic return
+        }
+        if slot slot_is_empty {
+            NULL ViewTypeError.Generic return
+        }
+        slot->size =t->size
+
         viewtd =t->data
         NULL =t->inner
         %Token+
@@ -832,13 +850,12 @@ static int TOTAL_DATA_SIZE
         8 =t->size
         viewtd =t->data
         %Token+
-        view_type =t->inner
+        _try_view_type =t->inner
     } else if viewtk TKind.PAREN_START == {
         %Token+
-        view_type =t
+        _try_view_type =t
         if viewtk TKind.PAREN_END != {
-            error "Invalid type\n"puts
-            1 exit
+            NULL ViewTypeError.Generic return
         }
         %Token+
     } else if viewtk TKind.BRACKET_START == {
@@ -857,29 +874,26 @@ static int TOTAL_DATA_SIZE
         while viewtk TKind.BRACKET_END != {
             if viewtk not {
                 %Token-
-                error "Complex type definition missing a ']'\n"puts
-                1 exit
+                NULL ViewTypeError.UnclosedBracket return
             }
             if viewtk TKind.INT == {
                 viewtd +=arr_t->size
                 %Token+
             } else {
-                var &Type sub_t: { view_type }
+                var &Type sub_t: { _try_view_type }
                 sub_t->size +=arr_t->size
             }
         }
         %Token+
-        arr_t return
+        arr_t ViewTypeError.None return
     } else {
-        error "Invalid type\n"puts
-        1 exit
+        NULL ViewTypeError.Generic return
     }
 
     while viewtk TKind.BRACKET_START == {
         %Token+
         if viewtk TKind.INT != {
-            error "Invalid array dimensions\n"puts
-            1 exit
+            NULL ViewTypeError.Dimensions return
         }
 
         var int total: 0
@@ -889,8 +903,7 @@ static int TOTAL_DATA_SIZE
         }
 
         if viewtk TKind.BRACKET_END != {
-            error "Invalid array dimensions\n"puts
-            1 exit
+            NULL ViewTypeError.Dimensions return
         }
         %Token+
 
@@ -903,7 +916,26 @@ static int TOTAL_DATA_SIZE
         arr =t
     }
 
-    t
+    t ViewTypeError.None
+}
+
+// tok_ptr -- new_tok_ptr &type
+:view_type {
+    switch try_view_type {
+        case ViewTypeError.None {
+            return
+        }
+        case ViewTypeError.Generic {
+            drop error "Invalid type\n"puts
+        }
+        case ViewTypeError.UnclosedBracket {
+            drop error "Type definition missing a ']'\n"puts
+        }
+        case ViewTypeError.Dimensions {
+            drop error "Invalid array dimensions\n"puts
+        }
+    }
+    1 exit
 }
 
 // ops_dest tok_ptr is_static -- new_tok_ptr
@@ -1104,55 +1136,85 @@ static int TOTAL_DATA_SIZE
     view_buffer_access drop nip
 }
 
+// Navigates to the desired address *without* fetching it.
+// ops_dest tok_ptr -- ops_dest new_tok_ptr size
+:view_casted_access {
+    %Token+
+    var &Type t: {view_type}
+    if viewtk TKind.PAREN_END != {
+        error "Invalid type casting\n"puts
+        1 exit
+    }
+    %Token+
+
+    while t view_type_access =t {}
+    t->size
+}
+
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_eq {
     var &Token original_tok_ptr: {dup}
-    if viewtd "=" strcmp {
-        %Token+
-        over swap parse_buffer_ident
-        drop original_tok_ptr
+    var int size
 
-        #macro parse_simple_eq(string, opcode, preop) {
-            else if viewtd string strcmp not {
-                preop
+    %Token+
+    if viewtk TKind.PAREN_START == {
+        view_casted_access =size
+    } else {
+        view_buffer_access =size
+    }
+
+    if original_tok_ptr->data "=" strcmp {
+        0 OKind.DUP 3 pick op_push
+        switch size {
+            case 8,4,2,1 {
+                size OKind.FETCH 3 pick op_push
+            }
+            default {
+                %Token-
+                error "Buffer ("puts size put " bytes) cannot be automatically read from\n"puts
+                1 exit
+            }
+        }
+        0 OKind.ROT 3 pick op_push
+
+        #macro parse_simple_eq(string, opcode) {
+            else if original_tok_ptr->data string strcmp not {
                 0 opcode 3 pick op_push
             }
         }
-        if viewtd "/=" strcmp not {
+        if original_tok_ptr->data "/=" strcmp not {
             0 OKind.SWAP 3 pick op_push
             0 OKind.DIVMOD 3 pick op_push
             0 OKind.DROP 3 pick op_push
         }
-        else if viewtd "%=" strcmp not {
+        else if original_tok_ptr->data "%=" strcmp not {
             0 OKind.SWAP 3 pick op_push
             0 OKind.DIVMOD 3 pick op_push
             0 OKind.NIP 3 pick op_push
         }
-        parse_simple_eq("+=", OKind.ADD,)
-        parse_simple_eq("-=", OKind.SUB, 0 OKind.SWAP 3 pick op_push)
-        parse_simple_eq("*=", OKind.MUL,)
-        parse_simple_eq("&=", OKind.AND,)
-        parse_simple_eq("|=", OKind.OR,)
-        parse_simple_eq("^=", OKind.XOR,)
-        parse_simple_eq("<<=", OKind.SHL, 0 OKind.SWAP 3 pick op_push)
-        parse_simple_eq("<<<=", OKind.SHL, 0 OKind.SWAP 3 pick op_push)
-        parse_simple_eq(">>=", OKind.SHR, 0 OKind.SWAP 3 pick op_push)
-        parse_simple_eq(">>>=", OKind.SAR, 0 OKind.SWAP 3 pick op_push)
+        parse_simple_eq("+=", OKind.ADD)
+        parse_simple_eq("-=", OKind.SUB)
+        parse_simple_eq("*=", OKind.MUL)
+        parse_simple_eq("&=", OKind.AND)
+        parse_simple_eq("|=", OKind.OR)
+        parse_simple_eq("^=", OKind.XOR)
+        parse_simple_eq("<<=", OKind.SHL)
+        parse_simple_eq("<<<=", OKind.SHL)
+        parse_simple_eq(">>=", OKind.SHR)
+        parse_simple_eq(">>>=", OKind.SAR)
         else {
-            error "Unknown assignment operator '"puts viewtd puts "'\n"puts
+            error "Unknown assignment operator '"puts original_tok_ptr->data puts "'\n"puts
             1 exit
         }
+        0 OKind.SWAP 3 pick op_push
     }
 
-    %Token+
-    var &char name: {viewtd}
-    var int size: {view_buffer_access}
     switch size {
         case 8,4,2,1 {
             size OKind.STORE 3 roll op_push
         }
         default {
-            error "Buffer '"puts name puts "' ("puts size put " bytes) cannot be automatically assigned to\n"puts
+            error "Buffer ("puts size put " bytes) cannot be automatically assigned to\n"puts
             1 exit
         }
     }
@@ -1191,8 +1253,8 @@ static int TOTAL_DATA_SIZE
 
         // -- tok_ptr name variants
         viewtd variants_ptr
-        while dup as EnumVariant.name@ {
-            if over over as EnumVariant.name@ strcmp not {
+        while dup (EnumVariant).name {
+            if over over (EnumVariant).name strcmp not {
                 // -- name tok_ptr
                 drop swap
                 error "Variant '"puts over puts "' already defined for enum '"puts enum_name puts "'\n"puts
@@ -1211,8 +1273,8 @@ static int TOTAL_DATA_SIZE
             }
             // -- name tok_ptr value
             viewtd
-            if ENUM_MEM stack_last as EnumVariant.name@ {
-                if dup ENUM_MEM stack_last as EnumVariant.value@ <= {
+            if ENUM_MEM stack_last (EnumVariant).name {
+                if dup ENUM_MEM stack_last (EnumVariant).value <= {
                     drop
                     error "Enum '"puts enum_name puts "' must have values in ascending order\n"puts
                     1 exit
@@ -1220,18 +1282,18 @@ static int TOTAL_DATA_SIZE
             }
             swap %Token+ swap
         } else {
-            if ENUM_MEM stack_last as EnumVariant.name@ {
-                ENUM_MEM stack_last as EnumVariant.value@ 1+
+            if ENUM_MEM stack_last (EnumVariant).name {
+                ENUM_MEM stack_last (EnumVariant).value 1+
             } else { 0 }
             // -- name tok_ptr value
         }
         // -- tok_ptr value name slot_ptr
         rot ENUM_MEM stack_push
-        swap over as EnumVariant.name!  as EnumVariant.value!
+        swap over =(EnumVariant).name =(EnumVariant).value
     }
     %Token+
 
-    NULL ENUM_MEM stack_push as EnumVariant.name!
+    NULL ENUM_MEM stack_push =(EnumVariant).name
 
     var &Enum entry: {enum_name scope ENUM_MAP scoped_map_get}
     enum_name =entry->key.name
@@ -1316,7 +1378,7 @@ static int TOTAL_DATA_SIZE
         %Token+
     }
     %Token+
-    NULL STRUCT_MEM stack_push as StructField.name!
+    NULL STRUCT_MEM stack_push =(StructField).name
     struct_size =entry->size
     fields_ptr =entry->fields
 
@@ -1337,14 +1399,6 @@ static int TOTAL_DATA_SIZE
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
-:parse_as {
-    %Token+
-    var &Type t: {view_type}
-    while t view_type_access =t {}
-    nip
-}
-
-// ops_dest tok_ptr -- new_tok_ptr
 :parse_size {
     %Token+
     if viewtd STRUCT_MAP scoped_map_find_idx is_success {
@@ -1356,7 +1410,7 @@ static int TOTAL_DATA_SIZE
         }
     // -- ops_dest tok_ptr idx
     } else if viewtd BUF_MAP scoped_map_find_idx dup is_success {
-        BUF_MAP map_idx as Buffer.type->size@
+        BUF_MAP map_idx (Buffer).type->size
     } else {
         drop
         error "Buffer '"puts viewtd puts "' not defined\n"puts
@@ -1370,6 +1424,41 @@ static int TOTAL_DATA_SIZE
 :parse_call {
     0 OKind.CALL 3 roll op_push
     %Token+
+}
+
+// ops_dest tok_ptr -- new_tok_ptr
+:parse_paren {
+    %Token+
+
+    var &Token original_tok_ptr: {dup}
+
+    try_view_type
+    var char err: {}
+    var &Type t: {}
+
+    if err {
+        drop original_tok_ptr
+        parse_until(TKind.PAREN_END)
+    } else {
+        if viewtk TKind.PAREN_END != {
+            error "Invalid type casting\n"puts
+            1 exit
+        }
+        %Token+
+        while t view_type_access =t {}
+
+        switch t->size {
+            case 8,4,2,1 {
+                t->size OKind.FETCH 3 pick op_push
+            }
+            default {
+                %Token-
+                error "Buffer ("puts t->size put " bytes) cannot be automatically read from\n"puts
+                1 exit
+            }
+        }
+    }
+    nip
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -1405,13 +1494,14 @@ static int TOTAL_DATA_SIZE
             viewtd OKind.PUSH_INT 3 roll op_push
             %Token+
         }
-        case TKind.PAREN_START {
+        case TKind.BRACE_START {
             %Token+
             new_local_scope
-            parse_until(TKind.PAREN_END)
+            parse_until(TKind.BRACE_END)
             pop_local_scope
             nip
         }
+        case TKind.PAREN_START { parse_paren }
         case TKind.STR { parse_string }
         case TKind.IDENT { parse_ident }
         case TKind.IF { parse_if }
@@ -1428,7 +1518,6 @@ static int TOTAL_DATA_SIZE
         case TKind.ENUM { parse_enum }
         case TKind.STRUCT { parse_struct }
         case TKind.UNION { parse_union }
-        case TKind.AS { parse_as }
         case TKind.SIZE { parse_size }
         case TKind.CALL { parse_call }
         case TKind.FILE_START {
@@ -1464,7 +1553,8 @@ static int TOTAL_DATA_SIZE
 
 pub :parse_out_toks {
     // -- tok_ptr
-    &out_toks_mem as StackHead.data
+    &out_toks_mem %int+
+
     while viewtk TKind.EOF != {
         if viewtk is_tok_allowed_outside_main not {
             error "Unexpected token of type "puts viewtk put " outside of 'main'\n"puts

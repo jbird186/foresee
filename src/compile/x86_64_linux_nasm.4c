@@ -112,7 +112,7 @@ x64n_compile_text_fns
     "rax" x64n_force_compile_push
     "    mov     rax, [rsp]\n"coms
     "rax" x64n_force_compile_push
-    &start_ops_mem as StackHead.data compile_ops
+    &start_ops_mem %int+ compile_ops
 }
 
 pub :compile_program_x86_64_linux_nasm {

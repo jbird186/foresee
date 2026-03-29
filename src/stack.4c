@@ -3,24 +3,23 @@ pub struct StackHead {
     [0] data
 }
 
-// stack -- len
-#pub macro stack_len { as StackHead.len@ }
-// stack --
-pub :stack_shrink { as StackHead.len@-- drop }
-// stack slot_size -- slot_ptr
+// &stack -- len
+#pub macro stack_len { (StackHead).len }
+// &stack --
+pub :stack_shrink { 1 swap -=(StackHead).len }
+// &stack slot_size -- slot_ptr
 pub :stack_top {
-    over as StackHead.len@
-    * + %int+
+    over (StackHead).len * + %int+
 }
-// stack slot_size -- slot_ptr
+// &stack slot_size -- slot_ptr
 pub :stack_last {
-    over as StackHead.len@ 1-
-    * + %int+
+    over (StackHead).len 1- * + %int+
 }
-// stack slot_size -- slot_ptr
+// &stack slot_size -- slot_ptr
 pub :stack_push {
-    over as StackHead.len@++
-    * + %int+
+    var &StackHead s: {swap}
+    s->len* s %int+ +
+    1 +=s->len
 }
-// idx stack slot_size -- slot_ptr
+// idx &stack slot_size -- slot_ptr
 pub :stack_get { rot* + %int+ }

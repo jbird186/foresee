@@ -34,5 +34,5 @@ struct Points {
     -4 =ps.points[0].y
     &ps.points[0] show_point
 
-    &p as Point.x@ put cr
+    &p (Point).x put cr
 }
