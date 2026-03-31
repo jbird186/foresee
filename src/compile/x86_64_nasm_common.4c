@@ -104,6 +104,41 @@ pub :x64n_compile_pop {
     }
 }
 
+// &pre_op &fn size --
+:fetch_rax_generic {
+    switch {
+        case 8 { "    mov     rax, qword ["coms call "]\n"coms }
+        case 4 { "    mov     eax, dword ["coms call "]\n"coms }
+        case 2 { "    movzx   rax, word ["coms call "]\n"coms }
+        case 1 { "    movzx   rax, byte ["coms call "]\n"coms }
+        default {
+            "ERROR: Invalid fetch size\n"puts
+            1 exit
+        }
+    }
+}
+
+// &pre_op &fn size --
+:store_rcx_generic {
+    switch {
+        case 8 { "    mov     qword ["coms call "], rcx\n"coms }
+        case 4 { "    mov     dword ["coms call "], ecx\n"coms }
+        case 2 { "    mov     word ["coms call "], cx\n"coms }
+        case 1 { "    mov     byte ["coms call "], cl\n"coms }
+        default {
+            "ERROR: Invalid store size\n"puts
+            1 exit
+        }
+    }
+}
+
+// &op --
+:store_fn_rax { "rax"coms drop }
+// &op --
+:store_fn_buf { compile_nasm_rel "b_"coms (Op).data com }
+// &op --
+:store_fn_var { "rbp - "coms (Op).data com }
+
 // op_ptr -- op_ptr
 pub :x64n_compile_generic_op {
     switch viewok {
@@ -115,8 +150,10 @@ pub :x64n_compile_generic_op {
         "    call    rax\n"coms
     }
     case OKind.PUSH_FN {
+        x64n_flush_push_cache
+        x64n_flush_stack_ptr_delta
         "    ; OP_PUSH_FN\n"coms_dbg
-        "    lea     rax, [f_"coms viewod com "]\n"coms
+        "    lea     rax, ["coms compile_nasm_rel "f_"coms viewod com "]\n"coms
         "rax" x64n_compile_push
     }
     case OKind.CALL_FN {
@@ -219,6 +256,22 @@ pub :x64n_compile_generic_op {
     }
     case OKind.PUSH_BUF {
         x64n_flush_push_cache
+        if optimize_mode {
+            var &Op next_op: {dup %Op+}
+            if next_op->kind OKind.FETCH == {
+                "    ; OP_PUSH_BUF, OP_FETCH\n"coms_dbg
+                dup &store_fn_buf next_op->data fetch_rax_generic
+                "rax" x64n_compile_push
+                OKind.NOOP =next_op->kind
+                return
+            } else if next_op->kind OKind.STORE == {
+                "    ; OP_PUSH_BUF, OP_STORE\n"coms_dbg
+                "rcx" x64n_compile_pop
+                dup &store_fn_buf next_op->data store_rcx_generic
+                OKind.NOOP =next_op->kind
+                return
+            }
+        }
         "    ; OP_PUSH_BUF\n"coms_dbg
         "    lea     rax, ["coms compile_nasm_rel "b_"coms viewod com "]\n"coms
         "rax" x64n_compile_push
@@ -227,22 +280,12 @@ pub :x64n_compile_generic_op {
         "    ; OP_STORE\n"coms_dbg
         "rax" x64n_compile_pop
         "rcx" x64n_compile_pop
-        switch viewod {
-            case 8 { "    mov     [rax], rcx\n"coms }
-            case 4 { "    mov     dword [rax], ecx\n"coms }
-            case 2 { "    mov     word [rax], cx\n"coms }
-            case 1 { "    mov     byte [rax], cl\n"coms }
-        }
+        viewod NULL &store_fn_rax rot store_rcx_generic
     }
     case OKind.FETCH {
         "    ; OP_FETCH\n"coms_dbg
         "rax" x64n_compile_pop
-        switch viewod {
-            case 8 { "    mov     rax, qword [rax]\n"coms }
-            case 4 { "    mov     eax, dword [rax]\n"coms }
-            case 2 { "    movzx   rax, word [rax]\n"coms }
-            case 1 { "    movzx   rax, byte [rax]\n"coms }
-        }
+        viewod NULL &store_fn_rax rot fetch_rax_generic
         "rax" x64n_compile_push
     }
     case OKind.MEMCPY {
@@ -255,6 +298,22 @@ pub :x64n_compile_generic_op {
     }
     case OKind.PUSH_VAR {
         x64n_flush_push_cache
+        if optimize_mode {
+            var &Op next_op: {dup %Op+}
+            if next_op->kind OKind.FETCH == {
+                "    ; OP_PUSH_VAR, OP_FETCH\n"coms_dbg
+                dup &store_fn_var next_op->data fetch_rax_generic
+                "rax" x64n_compile_push
+                OKind.NOOP =next_op->kind
+                return
+            } else if next_op->kind OKind.STORE == {
+                "    ; OP_PUSH_VAR, OP_STORE\n"coms_dbg
+                "rcx" x64n_compile_pop
+                dup &store_fn_var next_op->data store_rcx_generic
+                OKind.NOOP =next_op->kind
+                return
+            }
+        }
         "    ; OP_PUSH_VAR\n"coms_dbg
         "    lea     rax, [rbp - "coms viewod com "]\n"coms
         "rax" x64n_compile_push

@@ -109,8 +109,8 @@ static char[32] push_cache
     case OKind.PUSH_FN {
         flush_push_cache
         "    // OP_PUSH_FN\n"coms_dbg
-        "    adrp    x0, f_"coms viewod com "@PAGE\n"coms
-        "    add     x0, x0, f_"coms viewod com "@PAGEOFF\n"coms
+        "    adrp    x0, f_"coms viewod com "\n"coms
+        "    add     x0, x0, :lo12:f_"coms viewod com "\n"coms
         "x0" compile_push
     }
     case OKind.CALL_FN {
