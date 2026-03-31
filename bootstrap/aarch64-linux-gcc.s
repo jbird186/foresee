@@ -199,10 +199,6 @@ f_209:
     str     x0, [x12, #-8]
     adrp    x0, b_6503
     add     x0, x0, :lo12:b_6503
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #-8]
     cmp     x1, x0
@@ -273,10 +269,6 @@ f_209:
     bl      f_7518
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x0, x29, #272
@@ -509,10 +501,6 @@ f_229:
     sub     x12, x12, 8
 .l_229_12:
     ldr     x0, [x12]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     cbz     x0, .l_229_13
     add     x0, x12, #8
@@ -521,10 +509,6 @@ f_229:
     sub     x12, x12, 8
     add     x0, x12, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -633,9 +617,7 @@ f_229:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
+    ldr     x0, [x12]
     ldr     x0, [x0]
     add     x12, x12, 8
     cbz     x0, .l_229_21
@@ -701,9 +683,7 @@ f_229:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
+    ldr     x0, [x12]
     ldr     x0, [x0]
     add     x12, x12, 8
     cbz     x0, .l_229_25
@@ -749,10 +729,6 @@ f_229:
     str     x1, [x12]
     add     x0, x12, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     ldr     x0, =8
@@ -776,9 +752,7 @@ f_229:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_1729
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
+    ldr     x0, [x12]
     ldr     x1, [x12, #8]
     str     x1, [x0]
     sub     x0, x29, #16
@@ -802,14 +776,6 @@ f_229:
     str     x0, [x12]
     sub     x0, x29, #32
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #8
@@ -817,10 +783,6 @@ f_229:
     str     x0, [x12]
     sub     x0, x29, #32
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
@@ -847,10 +809,6 @@ f_242:
     mov     x29, sp
     adrp    x0, b_3547
     add     x0, x0, :lo12:b_3547
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =0
@@ -1118,10 +1076,6 @@ f_288:
 .l_288_4:
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =2
@@ -1136,10 +1090,6 @@ f_288:
     bl      f_6317
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -2185,24 +2135,12 @@ f_803:
     str     x0, [x12]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     ldr     x0, =0
     str     x0, [x12]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
@@ -2326,10 +2264,6 @@ f_934:
     str     x1, [x0]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x1, [x12, #8]
     strb    w1, [x0]
     sub     x0, x29, #8
@@ -2728,14 +2662,6 @@ f_1085:
     bl      f_6176
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #8
@@ -2743,10 +2669,6 @@ f_1085:
     str     x0, [x12]
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
@@ -3041,10 +2963,6 @@ f_1180:
     str     x1, [x0]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     str     x0, [sp, #-8]
     ldr     x0, [sp, #-8]
@@ -3367,10 +3285,6 @@ f_1239:
     str     x1, [x0]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     str     x0, [x12]
     ldr     x0, =1
@@ -3608,14 +3522,6 @@ f_1351:
     str     x1, [x0]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12]
     ldr     x0, =0
@@ -3766,10 +3672,6 @@ f_1431:
     str     x0, [x12]
     sub     x0, x29, #17
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     strb    w1, [x0]
     ldr     x0, =-1
@@ -4787,14 +4689,6 @@ f_1431:
     str     x0, [x12]
     sub     x0, x29, #51
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #9
@@ -4802,10 +4696,6 @@ f_1431:
     str     x0, [x12]
     sub     x0, x29, #51
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
@@ -4847,14 +4737,6 @@ f_1431:
     ldr     x0, =25
     ldr     x1, [x12, #-16]
     add 	x0, x1, x0
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x1, [x12, #-8]
     str     x1, [x0]
     sub     x0, x29, #43
@@ -4864,10 +4746,6 @@ f_1431:
     ldr     x0, [x0]
     str     x0, [x12, #-16]
     ldr     x0, =25
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
-    str     x0, [x12, #-16]
-    ldr     x0, =0
     ldr     x1, [x12, #-16]
     add 	x0, x1, x0
     str     x0, [x12, #-16]
@@ -4885,14 +4763,6 @@ f_1431:
     ldr     x0, [x0]
     str     x0, [x12, #-16]
     ldr     x0, =25
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
-    str     x0, [x12, #-16]
-    ldr     x0, =0
     ldr     x1, [x12, #-16]
     add 	x0, x1, x0
     ldr     x1, [x12, #-8]
@@ -4925,14 +4795,6 @@ f_1531:
     sub     x12, x12, 16
     bl      f_3545
     ldr     x0, [x12]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =0
@@ -5082,18 +4944,10 @@ f_1610:
 .l_1610_2:
     sub     x0, x29, #40
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     cbz     x0, .l_1610_3
     sub     x0, x29, #40
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x0, x29, #16
@@ -5271,10 +5125,6 @@ f_1729:
     str     x1, [x0]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     mul 	x0, x1, x0
@@ -5292,10 +5142,6 @@ f_1729:
     str     x0, [x12]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     ldr     x0, [x12]
@@ -6029,14 +5875,6 @@ f_2019:
     str     x0, [x12, #-8]
     sub     x0, x29, #25
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x1, [x12, #-8]
     str     x1, [x0]
     adrp    x0, b_261
@@ -6051,10 +5889,6 @@ f_2019:
     str     x0, [x12]
     sub     x0, x29, #25
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
@@ -6109,10 +5943,6 @@ f_2019:
     ldr     x0, =15
     ldr     x1, [x12, #-8]
     sub 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =18
@@ -6650,14 +6480,6 @@ f_2126:
     bl      f_6317
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -6688,10 +6510,6 @@ f_2126:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
@@ -6714,14 +6532,6 @@ f_2126:
     bl      f_6317
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -6764,14 +6574,6 @@ f_2126:
     bl      f_6962
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -6859,14 +6661,6 @@ f_2127:
     bl      f_6317
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -6897,10 +6691,6 @@ f_2127:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
@@ -6923,14 +6713,6 @@ f_2127:
     bl      f_6317
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -6973,14 +6755,6 @@ f_2127:
     bl      f_6962
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7121,14 +6895,6 @@ f_2129:
     bl      f_6317
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7159,10 +6925,6 @@ f_2129:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
@@ -7185,14 +6947,6 @@ f_2129:
     bl      f_6317
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7234,14 +6988,6 @@ f_2129:
     bl      f_6962
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -7321,10 +7067,6 @@ f_2175:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     ldr     x0, [x12]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -9132,14 +8874,6 @@ f_2520:
     ldr     x0, =25
     ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12]
     ldr     x0, =0
@@ -9216,14 +8950,6 @@ f_2520:
     sub     x12, x12, 24
     bl      f_3545
     ldr     x0, =25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
     ldr     x1, [x12]
     add 	x0, x1, x0
     ldr     x0, [x0]
@@ -9550,9 +9276,7 @@ f_2603:
     svc     #0
 .l_2603_3:
 .l_2603_2:
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
+    ldr     x0, [x12]
     ldrb    w0, [x0]
     str     x0, [x12]
     ldr     x0, =33
@@ -10263,10 +9987,6 @@ f_2654:
     bl      f_6176
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
@@ -11313,14 +11033,6 @@ f_2870:
     str     x0, [x12]
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #8
@@ -11328,10 +11040,6 @@ f_2870:
     str     x0, [x12]
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
@@ -11466,9 +11174,7 @@ f_2870:
     str     x0, [x12, #-16]
     sub     x12, x12, 16
     bl      f_5825
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
+    ldr     x0, [x12]
     ldrb    w0, [x0]
     str     x0, [x12]
     ldr     x0, =5
@@ -11570,10 +11276,6 @@ f_2870:
     str     x0, [x12, #-8]
     sub     x0, x29, #32
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x1, [x12, #-8]
     strb    w1, [x0]
 .l_2870_14:
@@ -11623,14 +11325,6 @@ f_2875:
     sub     x12, x12, 24
     bl      f_3545
     ldr     x0, =25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
     ldr     x1, [x12]
     add 	x0, x1, x0
     ldr     x0, [x0]
@@ -12724,10 +12418,6 @@ f_3123:
     mov     x29, sp
     add     x0, x12, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12]
     mul 	x0, x1, x0
@@ -12873,10 +12563,6 @@ f_3223:
 .l_3223_4:
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     cbz     x0, .l_3223_5
     sub     x0, x29, #24
@@ -12884,10 +12570,6 @@ f_3223:
     str     x0, [x12, #-8]
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-16]
     sub     x12, x12, 16
@@ -13021,9 +12703,7 @@ f_3271:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_3545
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
+    ldr     x0, [x12]
     ldr     x0, [x0]
     str     x0, [x12]
     bl      f_333
@@ -13390,10 +13070,6 @@ f_3289:
     bl      f_3853
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x0, x29, #24
@@ -13429,10 +13105,6 @@ f_3289:
     str     x0, [x12, #-8]
     adrp    x0, b_6503
     add     x0, x0, :lo12:b_6503
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #-8]
     cmp     x1, x0
@@ -13625,10 +13297,6 @@ f_3397:
     str     x0, [x12, #-8]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x1, [x12, #-8]
     strb    w1, [x0]
     bl      f_6176
@@ -13732,10 +13400,6 @@ f_3397:
     str     x0, [x12, #-8]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x1, [x12, #-8]
     strb    w1, [x0]
     ldr     x0, =8
@@ -13838,10 +13502,6 @@ f_3397:
     str     x0, [x12, #-8]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x1, [x12, #-8]
     strb    w1, [x0]
     ldr     x0, =1
@@ -13888,10 +13548,6 @@ f_3397:
     str     x0, [x12]
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     strb    w1, [x0]
     ldr     x0, =0
@@ -14165,10 +13821,6 @@ f_3397:
     str     x0, [x12]
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     strb    w1, [x0]
     sub     x0, x29, #8
@@ -14464,14 +14116,6 @@ f_3705:
     bl      f_6962
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -14505,14 +14149,6 @@ f_3705:
     ldr     x0, =25
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x0, x29, #32
@@ -14522,10 +14158,6 @@ f_3705:
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =25
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
     str     x0, [x12, #-8]
@@ -15030,10 +14662,6 @@ f_3972:
     sub     sp, sp, #8
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x0, x29, #8
@@ -15171,10 +14799,6 @@ f_4000:
     add     x0, x12, #8
     ldr     x0, [x0]
     str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
@@ -15210,13 +14834,7 @@ f_4000:
     add 	x0, x1, x0
     ldr     x1, [x12]
     strb    w1, [x0]
-    ldr     x0, =0
-    ldr     x1, [x12, #8]
-    add 	x0, x1, x0
-    str     x0, [x12, #8]
-    ldr     x0, =0
-    ldr     x1, [x12, #8]
-    add 	x0, x1, x0
+    ldr     x0, [x12, #8]
     ldr     x1, [x12, #16]
     str     x1, [x0]
     add     x12, x12, 24
@@ -15356,10 +14974,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -15423,10 +15037,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -15490,10 +15100,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -15557,10 +15163,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -15624,10 +15226,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -15691,10 +15289,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -15758,10 +15352,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -15825,10 +15415,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -15892,10 +15478,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -15959,10 +15541,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -16026,10 +15604,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -16093,10 +15667,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -16160,10 +15730,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -16227,10 +15793,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -16294,10 +15856,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -16361,10 +15919,6 @@ f_4099:
     str     x0, [x12, #8]
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #8]
     str     x0, [x12, #8]
@@ -16419,15 +15973,7 @@ f_4359:
 .l_4359_0:
     adrp    x0, b_5194
     add     x0, x0, :lo12:b_5194
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =1
-    ldr     x1, [x12, #-8]
-    mul 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =4
     ldr     x1, [x12, #-8]
@@ -16458,10 +16004,6 @@ f_4359:
 .l_4359_2:
     adrp    x0, b_2158
     add     x0, x0, :lo12:b_2158
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =15
@@ -16497,10 +16039,6 @@ f_4359:
 .l_4359_4:
     adrp    x0, b_8065
     add     x0, x0, :lo12:b_8065
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =15
@@ -16536,10 +16074,6 @@ f_4359:
 .l_4359_6:
     adrp    x0, b_7064
     add     x0, x0, :lo12:b_7064
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =9
@@ -16575,10 +16109,6 @@ f_4359:
 .l_4359_8:
     adrp    x0, b_3970
     add     x0, x0, :lo12:b_3970
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =16
@@ -16614,10 +16144,6 @@ f_4359:
 .l_4359_10:
     adrp    x0, b_7863
     add     x0, x0, :lo12:b_7863
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =16
@@ -16653,10 +16179,6 @@ f_4359:
 .l_4359_12:
     adrp    x0, b_3000
     add     x0, x0, :lo12:b_3000
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =8
@@ -16692,10 +16214,6 @@ f_4359:
 .l_4359_14:
     adrp    x0, b_6503
     add     x0, x0, :lo12:b_6503
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =8
@@ -16939,9 +16457,7 @@ f_4688:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_3545
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
+    ldr     x0, [x12]
     ldr     x0, [x0]
     str     x0, [x12]
     bl      f_332
@@ -17010,14 +16526,6 @@ f_4740:
     bl      f_6962
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -17752,10 +17260,6 @@ f_5015:
     str     x1, [x0]
     sub     x0, x29, #48
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x0, x29, #8
@@ -17775,10 +17279,6 @@ f_5015:
 .l_5015_2:
     sub     x0, x29, #48
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x0, x29, #8
@@ -17820,10 +17320,6 @@ f_5096:
     mov     x29, sp
     adrp    x0, b_3547
     add     x0, x0, :lo12:b_3547
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =0
@@ -17909,10 +17405,6 @@ f_5120:
     strh    w1, [x0]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12, #16]
-    ldr     x0, =0
-    ldr     x1, [x12, #16]
-    add 	x0, x1, x0
     ldr     x1, [x12, #24]
     strb    w1, [x0]
     sub     x0, x29, #8
@@ -18301,10 +17793,6 @@ f_5181:
     mul 	x0, x1, x0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     ldr     x0, =15
@@ -18352,10 +17840,6 @@ f_5181:
     mul 	x0, x1, x0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     add     x12, x12, 8
@@ -18371,10 +17855,6 @@ f_5181:
     ldr     x0, =17
     ldr     x1, [x12, #-16]
     mul 	x0, x1, x0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
     ldr     x0, [x0]
@@ -18852,10 +18332,6 @@ f_5181:
     mul 	x0, x1, x0
     ldr     x1, [x12, #-16]
     add 	x0, x1, x0
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #-8]
     cmp     x1, x0
@@ -18938,10 +18414,6 @@ f_5181:
     ldr     x0, =17
     ldr     x1, [x12, #-16]
     mul 	x0, x1, x0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
     ldr     x0, [x0]
@@ -19129,10 +18601,6 @@ f_5181:
     ldr     x0, =17
     ldr     x1, [x12, #-16]
     mul 	x0, x1, x0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
     ldr     x0, [x0]
@@ -20557,14 +20025,6 @@ f_5818:
     str     x0, [x12]
     sub     x0, x29, #40
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #24
@@ -20572,10 +20032,6 @@ f_5818:
     str     x0, [x12]
     sub     x0, x29, #40
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
@@ -20776,10 +20232,6 @@ f_5825:
     mov     x29, sp
     add     x0, x12, #8
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =1
@@ -26974,18 +26426,10 @@ f_6343:
     str     x1, [x0]
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #8]
-    ldr     x0, =0
-    ldr     x1, [x12, #8]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     str     x0, [x12, #8]
     sub     x0, x29, #8
     ldr     x0, [x0]
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x1, [x12, #8]
     strb    w1, [x0]
     sub     x0, x29, #16
@@ -27651,10 +27095,6 @@ f_6555:
     ldr     x1, [x12]
     str     x0, [x12]
     str     x1, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
     sub     x12, x12, 8
     ldr     x0, [x12]
     ldr     x0, [x0]
@@ -28669,14 +28109,6 @@ f_6927:
     ldr     x0, =25
     ldr     x1, [x12, #-8]
     add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     w0, [x0]
     str     x0, [x12, #-8]
     sub     x0, x29, #16
@@ -28731,10 +28163,6 @@ f_6938:
     cbz     x0, .l_6938_1
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     str     x0, [sp, #-8]
     ldr     x0, [sp, #-8]
@@ -28885,6 +28313,193 @@ f_6938:
     b       .l_6938_1
     b       .l_6938_2
 .l_6938_4:
+    sub     x0, x29, #16
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    ldr     x0, =1
+    ldr     x1, [x12, #-8]
+    add 	x0, x1, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    ldr     x0, =0
+    ldr     x1, [x12, #-8]
+    cmp     x1, x0
+    cset    w0, eq
+    cbz     x0, .l_6938_56
+    sub     x0, x29, #16
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    ldr     x0, =9
+    ldr     x1, [x12, #-8]
+    add 	x0, x1, x0
+    str     x0, [x12, #-8]
+    sub     x0, x29, #2080
+    ldr     x1, [x12, #-8]
+    str     x1, [x0]
+    sub     x0, x29, #2080
+    ldr     x0, [x0]
+    ldrb    w0, [x0]
+    str     x0, [sp, #-8]
+    ldr     x0, [sp, #-8]
+    cmp     x0, 26
+    b.lt    .l_6938_68
+    b.gt    .l_6938_69
+    b       .l_6938_59
+.l_6938_68:
+    ldr     x0, [sp, #-8]
+    cmp     x0, 24
+    b.lt    .l_6938_70
+    b.gt    .l_6938_71
+    b       .l_6938_61
+.l_6938_70:
+    ldr     x0, [sp, #-8]
+    cmp     x0, 23
+    b.lt    .l_6938_72
+    b.gt    .l_6938_58
+    b       .l_6938_59
+.l_6938_72:
+    ldr     x0, [sp, #-8]
+    cmp     x0, 22
+    b.ne    .l_6938_58
+    b       .l_6938_59
+.l_6938_71:
+    ldr     x0, [sp, #-8]
+    cmp     x0, 25
+    b.ne    .l_6938_58
+    b       .l_6938_61
+.l_6938_69:
+    ldr     x0, [sp, #-8]
+    cmp     x0, 29
+    b.lt    .l_6938_73
+    b.gt    .l_6938_74
+    b       .l_6938_59
+.l_6938_73:
+    ldr     x0, [sp, #-8]
+    cmp     x0, 28
+    b.lt    .l_6938_75
+    b.gt    .l_6938_58
+    b       .l_6938_59
+.l_6938_75:
+    ldr     x0, [sp, #-8]
+    cmp     x0, 27
+    b.ne    .l_6938_58
+    b       .l_6938_59
+.l_6938_74:
+    ldr     x0, [sp, #-8]
+    cmp     x0, 30
+    b.ne    .l_6938_58
+    b       .l_6938_59
+.l_6938_59:
+    ldr     x0, =18
+    str     x0, [x12, #-8]
+    sub     x0, x29, #16
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    ldr     x0, [x12]
+    ldr     x0, [x0]
+    ldr     x1, [x12]
+    ldr     x2, [x12, #8]
+    str     x1, [x12, #8]
+    str     x0, [x12]
+    mov     x0, x2
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    ldr     x1, [x12, #8]
+    str     x0, [x12, #8]
+    mov     x0, x1
+    ldr     x1, [x12, #8]
+    str     x1, [x0]
+    add     x12, x12, 16
+    b       .l_6938_0
+    b       .l_6938_57
+.l_6938_61:
+    ldr     x0, =7
+    str     x0, [x12, #-8]
+    sub     x0, x29, #16
+    ldr     x0, [x0]
+    ldr     x1, [x12, #-8]
+    strb    w1, [x0]
+    ldr     x0, =6
+    str     x0, [x12, #-8]
+    sub     x0, x29, #2080
+    ldr     x0, [x0]
+    ldr     x1, [x12, #-8]
+    strb    w1, [x0]
+    ldr     x0, =0
+    str     x0, [x12, #-8]
+    sub     x0, x29, #2080
+    ldr     x0, [x0]
+    str     x0, [x12, #-16]
+    ldr     x0, =1
+    ldr     x1, [x12, #-16]
+    add 	x0, x1, x0
+    ldr     x1, [x12, #-8]
+    str     x1, [x0]
+    b       .l_6938_0
+    b       .l_6938_57
+.l_6938_58:
+.l_6938_57:
+    b       .l_6938_55
+.l_6938_56:
+    sub     x0, x29, #16
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    ldr     x0, =1
+    ldr     x1, [x12, #-8]
+    add 	x0, x1, x0
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    ldr     x0, =1
+    ldr     x1, [x12, #-8]
+    cmp     x1, x0
+    cset    w0, eq
+    cbz     x0, .l_6938_76
+    sub     x0, x29, #16
+    ldr     x0, [x0]
+    str     x0, [x12, #-8]
+    ldr     x0, =9
+    ldr     x1, [x12, #-8]
+    add 	x0, x1, x0
+    str     x0, [x12, #-8]
+    sub     x0, x29, #2080
+    ldr     x1, [x12, #-8]
+    str     x1, [x0]
+    sub     x0, x29, #2080
+    ldr     x0, [x0]
+    ldrb    w0, [x0]
+    str     x0, [x12, #-8]
+    ldr     x0, =24
+    ldr     x1, [x12, #-8]
+    cmp     x1, x0
+    cset    w0, eq
+    cbz     x0, .l_6938_78
+    ldr     x0, =18
+    str     x0, [x12, #-8]
+    sub     x0, x29, #16
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    ldr     x0, [x12]
+    ldr     x0, [x0]
+    ldr     x1, [x12]
+    ldr     x2, [x12, #8]
+    str     x1, [x12, #8]
+    str     x0, [x12]
+    mov     x0, x2
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    ldr     x1, [x12, #8]
+    str     x0, [x12, #8]
+    mov     x0, x1
+    ldr     x1, [x12, #8]
+    str     x1, [x0]
+    add     x12, x12, 16
+    b       .l_6938_0
+    b       .l_6938_77
+.l_6938_78:
+.l_6938_77:
+    b       .l_6938_55
+.l_6938_76:
+.l_6938_55:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -28892,11 +28507,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_56
+    cbz     x0, .l_6938_80
     b       .l_6938_1
-    b       .l_6938_55
-.l_6938_56:
-.l_6938_55:
+    b       .l_6938_79
+.l_6938_80:
+.l_6938_79:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -28908,11 +28523,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_58
+    cbz     x0, .l_6938_82
     b       .l_6938_1
-    b       .l_6938_57
-.l_6938_58:
-.l_6938_57:
+    b       .l_6938_81
+.l_6938_82:
+.l_6938_81:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -28962,11 +28577,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_60
+    cbz     x0, .l_6938_84
     b       .l_6938_1
-    b       .l_6938_59
-.l_6938_60:
-.l_6938_59:
+    b       .l_6938_83
+.l_6938_84:
+.l_6938_83:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -28978,11 +28593,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_62
+    cbz     x0, .l_6938_86
     b       .l_6938_1
-    b       .l_6938_61
-.l_6938_62:
-.l_6938_61:
+    b       .l_6938_85
+.l_6938_86:
+.l_6938_85:
     ldr     x0, =1
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -29036,27 +28651,23 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_64
+    cbz     x0, .l_6938_88
     b       .l_6938_1
-    b       .l_6938_63
-.l_6938_64:
-.l_6938_63:
+    b       .l_6938_87
+.l_6938_88:
+.l_6938_87:
     sub     x0, x29, #2072
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =256
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_66
+    cbz     x0, .l_6938_90
     b       .l_6938_1
-    b       .l_6938_65
-.l_6938_66:
-.l_6938_65:
+    b       .l_6938_89
+.l_6938_90:
+.l_6938_89:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -29127,11 +28738,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_68
+    cbz     x0, .l_6938_92
     b       .l_6938_1
-    b       .l_6938_67
-.l_6938_68:
-.l_6938_67:
+    b       .l_6938_91
+.l_6938_92:
+.l_6938_91:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -29143,11 +28754,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_70
+    cbz     x0, .l_6938_94
     b       .l_6938_1
-    b       .l_6938_69
-.l_6938_70:
-.l_6938_69:
+    b       .l_6938_93
+.l_6938_94:
+.l_6938_93:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -29180,7 +28791,7 @@ f_6938:
     str     x1, [x0]
     sub     x0, x29, #2080
     ldr     x0, [x0]
-    cbz     x0, .l_6938_72
+    cbz     x0, .l_6938_96
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2088
@@ -29225,14 +28836,14 @@ f_6938:
     mul 	x0, x1, x0
     ldr     x1, [x12, #-16]
     ldr     x2, [x12, #-8]
-    .cpyl_6938_73:
+    .cpyl_6938_97:
     ldrb    w3, [x2], #1
     strb    w3, [x1], #1
     subs    x0, x0, #1
-    b.ne    .cpyl_6938_73
-    b       .l_6938_71
-.l_6938_72:
-.l_6938_71:
+    b.ne    .cpyl_6938_97
+    b       .l_6938_95
+.l_6938_96:
+.l_6938_95:
     sub     x0, x29, #2096
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -29281,11 +28892,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_75
+    cbz     x0, .l_6938_99
     b       .l_6938_1
-    b       .l_6938_74
-.l_6938_75:
-.l_6938_74:
+    b       .l_6938_98
+.l_6938_99:
+.l_6938_98:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -29297,11 +28908,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_77
+    cbz     x0, .l_6938_101
     b       .l_6938_1
-    b       .l_6938_76
-.l_6938_77:
-.l_6938_76:
+    b       .l_6938_100
+.l_6938_101:
+.l_6938_100:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -29359,11 +28970,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_79
+    cbz     x0, .l_6938_103
     b       .l_6938_1
-    b       .l_6938_78
-.l_6938_79:
-.l_6938_78:
+    b       .l_6938_102
+.l_6938_103:
+.l_6938_102:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -29375,11 +28986,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_81
+    cbz     x0, .l_6938_105
     b       .l_6938_1
-    b       .l_6938_80
-.l_6938_81:
-.l_6938_80:
+    b       .l_6938_104
+.l_6938_105:
+.l_6938_104:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -29437,27 +29048,23 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_83
+    cbz     x0, .l_6938_107
     b       .l_6938_1
-    b       .l_6938_82
-.l_6938_83:
-.l_6938_82:
+    b       .l_6938_106
+.l_6938_107:
+.l_6938_106:
     sub     x0, x29, #2072
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =256
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_85
+    cbz     x0, .l_6938_109
     b       .l_6938_1
-    b       .l_6938_84
-.l_6938_85:
-.l_6938_84:
+    b       .l_6938_108
+.l_6938_109:
+.l_6938_108:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -29537,27 +29144,23 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_87
+    cbz     x0, .l_6938_111
     b       .l_6938_1
-    b       .l_6938_86
-.l_6938_87:
-.l_6938_86:
+    b       .l_6938_110
+.l_6938_111:
+.l_6938_110:
     sub     x0, x29, #2072
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =256
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_89
+    cbz     x0, .l_6938_113
     b       .l_6938_1
-    b       .l_6938_88
-.l_6938_89:
-.l_6938_88:
+    b       .l_6938_112
+.l_6938_113:
+.l_6938_112:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -29669,11 +29272,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_91
+    cbz     x0, .l_6938_115
     b       .l_6938_1
-    b       .l_6938_90
-.l_6938_91:
-.l_6938_90:
+    b       .l_6938_114
+.l_6938_115:
+.l_6938_114:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -29685,11 +29288,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_93
+    cbz     x0, .l_6938_117
     b       .l_6938_1
-    b       .l_6938_92
-.l_6938_93:
-.l_6938_92:
+    b       .l_6938_116
+.l_6938_117:
+.l_6938_116:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -29751,11 +29354,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_95
+    cbz     x0, .l_6938_119
     b       .l_6938_1
-    b       .l_6938_94
-.l_6938_95:
-.l_6938_94:
+    b       .l_6938_118
+.l_6938_119:
+.l_6938_118:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -29767,11 +29370,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_97
+    cbz     x0, .l_6938_121
     b       .l_6938_1
-    b       .l_6938_96
-.l_6938_97:
-.l_6938_96:
+    b       .l_6938_120
+.l_6938_121:
+.l_6938_120:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -29851,11 +29454,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_99
+    cbz     x0, .l_6938_123
     b       .l_6938_1
-    b       .l_6938_98
-.l_6938_99:
-.l_6938_98:
+    b       .l_6938_122
+.l_6938_123:
+.l_6938_122:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -29867,11 +29470,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_101
+    cbz     x0, .l_6938_125
     b       .l_6938_1
-    b       .l_6938_100
-.l_6938_101:
-.l_6938_100:
+    b       .l_6938_124
+.l_6938_125:
+.l_6938_124:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -29951,11 +29554,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_103
+    cbz     x0, .l_6938_127
     b       .l_6938_1
-    b       .l_6938_102
-.l_6938_103:
-.l_6938_102:
+    b       .l_6938_126
+.l_6938_127:
+.l_6938_126:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -29967,11 +29570,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_105
+    cbz     x0, .l_6938_129
     b       .l_6938_1
-    b       .l_6938_104
-.l_6938_105:
-.l_6938_104:
+    b       .l_6938_128
+.l_6938_129:
+.l_6938_128:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -30051,11 +29654,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_107
+    cbz     x0, .l_6938_131
     b       .l_6938_1
-    b       .l_6938_106
-.l_6938_107:
-.l_6938_106:
+    b       .l_6938_130
+.l_6938_131:
+.l_6938_130:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -30067,11 +29670,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_109
+    cbz     x0, .l_6938_133
     b       .l_6938_1
-    b       .l_6938_108
-.l_6938_109:
-.l_6938_108:
+    b       .l_6938_132
+.l_6938_133:
+.l_6938_132:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -30151,11 +29754,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_111
+    cbz     x0, .l_6938_135
     b       .l_6938_1
-    b       .l_6938_110
-.l_6938_111:
-.l_6938_110:
+    b       .l_6938_134
+.l_6938_135:
+.l_6938_134:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -30167,11 +29770,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_113
+    cbz     x0, .l_6938_137
     b       .l_6938_1
-    b       .l_6938_112
-.l_6938_113:
-.l_6938_112:
+    b       .l_6938_136
+.l_6938_137:
+.l_6938_136:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -30251,11 +29854,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_115
+    cbz     x0, .l_6938_139
     b       .l_6938_1
-    b       .l_6938_114
-.l_6938_115:
-.l_6938_114:
+    b       .l_6938_138
+.l_6938_139:
+.l_6938_138:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -30267,11 +29870,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_117
+    cbz     x0, .l_6938_141
     b       .l_6938_1
-    b       .l_6938_116
-.l_6938_117:
-.l_6938_116:
+    b       .l_6938_140
+.l_6938_141:
+.l_6938_140:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -30351,11 +29954,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_119
+    cbz     x0, .l_6938_143
     b       .l_6938_1
-    b       .l_6938_118
-.l_6938_119:
-.l_6938_118:
+    b       .l_6938_142
+.l_6938_143:
+.l_6938_142:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -30367,11 +29970,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_121
+    cbz     x0, .l_6938_145
     b       .l_6938_1
-    b       .l_6938_120
-.l_6938_121:
-.l_6938_120:
+    b       .l_6938_144
+.l_6938_145:
+.l_6938_144:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -30451,11 +30054,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_123
+    cbz     x0, .l_6938_147
     b       .l_6938_1
-    b       .l_6938_122
-.l_6938_123:
-.l_6938_122:
+    b       .l_6938_146
+.l_6938_147:
+.l_6938_146:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -30467,11 +30070,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_125
+    cbz     x0, .l_6938_149
     b       .l_6938_1
-    b       .l_6938_124
-.l_6938_125:
-.l_6938_124:
+    b       .l_6938_148
+.l_6938_149:
+.l_6938_148:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -30551,11 +30154,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_127
+    cbz     x0, .l_6938_151
     b       .l_6938_1
-    b       .l_6938_126
-.l_6938_127:
-.l_6938_126:
+    b       .l_6938_150
+.l_6938_151:
+.l_6938_150:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -30567,11 +30170,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_129
+    cbz     x0, .l_6938_153
     b       .l_6938_1
-    b       .l_6938_128
-.l_6938_129:
-.l_6938_128:
+    b       .l_6938_152
+.l_6938_153:
+.l_6938_152:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -30651,27 +30254,23 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_131
+    cbz     x0, .l_6938_155
     b       .l_6938_1
-    b       .l_6938_130
-.l_6938_131:
-.l_6938_130:
+    b       .l_6938_154
+.l_6938_155:
+.l_6938_154:
     sub     x0, x29, #2072
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =256
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_133
+    cbz     x0, .l_6938_157
     b       .l_6938_1
-    b       .l_6938_132
-.l_6938_133:
-.l_6938_132:
+    b       .l_6938_156
+.l_6938_157:
+.l_6938_156:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -30714,27 +30313,23 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_135
+    cbz     x0, .l_6938_159
     b       .l_6938_1
-    b       .l_6938_134
-.l_6938_135:
-.l_6938_134:
+    b       .l_6938_158
+.l_6938_159:
+.l_6938_158:
     sub     x0, x29, #2072
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =256
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_137
+    cbz     x0, .l_6938_161
     b       .l_6938_1
-    b       .l_6938_136
-.l_6938_137:
-.l_6938_136:
+    b       .l_6938_160
+.l_6938_161:
+.l_6938_160:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -30813,11 +30408,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_139
+    cbz     x0, .l_6938_163
     b       .l_6938_1
-    b       .l_6938_138
-.l_6938_139:
-.l_6938_138:
+    b       .l_6938_162
+.l_6938_163:
+.l_6938_162:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -30829,11 +30424,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_141
+    cbz     x0, .l_6938_165
     b       .l_6938_1
-    b       .l_6938_140
-.l_6938_141:
-.l_6938_140:
+    b       .l_6938_164
+.l_6938_165:
+.l_6938_164:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -30914,11 +30509,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_143
+    cbz     x0, .l_6938_167
     b       .l_6938_1
-    b       .l_6938_142
-.l_6938_143:
-.l_6938_142:
+    b       .l_6938_166
+.l_6938_167:
+.l_6938_166:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -30930,11 +30525,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_145
+    cbz     x0, .l_6938_169
     b       .l_6938_1
-    b       .l_6938_144
-.l_6938_145:
-.l_6938_144:
+    b       .l_6938_168
+.l_6938_169:
+.l_6938_168:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -31015,11 +30610,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_147
+    cbz     x0, .l_6938_171
     b       .l_6938_1
-    b       .l_6938_146
-.l_6938_147:
-.l_6938_146:
+    b       .l_6938_170
+.l_6938_171:
+.l_6938_170:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -31031,11 +30626,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_149
+    cbz     x0, .l_6938_173
     b       .l_6938_1
-    b       .l_6938_148
-.l_6938_149:
-.l_6938_148:
+    b       .l_6938_172
+.l_6938_173:
+.l_6938_172:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -31116,11 +30711,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_151
+    cbz     x0, .l_6938_175
     b       .l_6938_1
-    b       .l_6938_150
-.l_6938_151:
-.l_6938_150:
+    b       .l_6938_174
+.l_6938_175:
+.l_6938_174:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -31132,11 +30727,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_153
+    cbz     x0, .l_6938_177
     b       .l_6938_1
-    b       .l_6938_152
-.l_6938_153:
-.l_6938_152:
+    b       .l_6938_176
+.l_6938_177:
+.l_6938_176:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -31217,11 +30812,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_155
+    cbz     x0, .l_6938_179
     b       .l_6938_1
-    b       .l_6938_154
-.l_6938_155:
-.l_6938_154:
+    b       .l_6938_178
+.l_6938_179:
+.l_6938_178:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -31233,11 +30828,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_157
+    cbz     x0, .l_6938_181
     b       .l_6938_1
-    b       .l_6938_156
-.l_6938_157:
-.l_6938_156:
+    b       .l_6938_180
+.l_6938_181:
+.l_6938_180:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -31318,11 +30913,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_159
+    cbz     x0, .l_6938_183
     b       .l_6938_1
-    b       .l_6938_158
-.l_6938_159:
-.l_6938_158:
+    b       .l_6938_182
+.l_6938_183:
+.l_6938_182:
     sub     x0, x29, #2072
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -31334,11 +30929,11 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, gt
-    cbz     x0, .l_6938_161
+    cbz     x0, .l_6938_185
     b       .l_6938_1
-    b       .l_6938_160
-.l_6938_161:
-.l_6938_160:
+    b       .l_6938_184
+.l_6938_185:
+.l_6938_184:
     sub     x0, x29, #2064
     str     x0, [x12, #-8]
     sub     x0, x29, #2072
@@ -31439,7 +31034,7 @@ f_6938:
     sub     x0, x29, #2080
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-.l_6938_164:
+.l_6938_188:
     sub     x0, x29, #2080
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -31448,7 +31043,7 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_163
+    cbz     x0, .l_6938_187
     ldr     x0, =9
     str     x0, [x12, #-8]
     sub     x0, x29, #2080
@@ -31468,10 +31063,6 @@ f_6938:
     str     x0, [x12, #-8]
     sub     x0, x29, #2088
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x1, [x12, #-8]
     strb    w1, [x0]
     sub     x0, x29, #2064
@@ -31494,7 +31085,7 @@ f_6938:
     add 	x0, x1, x0
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-.l_6938_162:
+.l_6938_186:
     ldr     x0, =1
     str     x0, [x12, #-8]
     sub     x0, x29, #2080
@@ -31515,8 +31106,8 @@ f_6938:
     ldr     x1, [x12, #8]
     str     x1, [x0]
     add     x12, x12, 16
-    b       .l_6938_164
-.l_6938_163:
+    b       .l_6938_188
+.l_6938_187:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -31534,7 +31125,7 @@ f_6938:
     sub     x0, x29, #2088
     ldr     x1, [x12, #-8]
     str     x1, [x0]
-.l_6938_167:
+.l_6938_191:
     sub     x0, x29, #2080
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -31543,7 +31134,7 @@ f_6938:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, lt
-    cbz     x0, .l_6938_166
+    cbz     x0, .l_6938_190
     ldr     x0, =9
     str     x0, [x12, #-8]
     sub     x0, x29, #2080
@@ -31563,13 +31154,9 @@ f_6938:
     str     x0, [x12, #-8]
     sub     x0, x29, #2096
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x1, [x12, #-8]
     strb    w1, [x0]
-.l_6938_165:
+.l_6938_189:
     ldr     x0, =1
     str     x0, [x12, #-8]
     sub     x0, x29, #2080
@@ -31590,8 +31177,8 @@ f_6938:
     ldr     x1, [x12, #8]
     str     x1, [x0]
     add     x12, x12, 16
-    b       .l_6938_167
-.l_6938_166:
+    b       .l_6938_191
+.l_6938_190:
     sub     x0, x29, #16
     ldr     x0, [x0]
     str     x0, [x12, #-8]
@@ -32305,18 +31892,10 @@ f_7279:
     str     x1, [x0]
     sub     x0, x29, #73
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x0, x29, #49
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     ldr     x1, [x12, #-8]
     cmp     x1, x0
@@ -32615,18 +32194,10 @@ f_7326:
 .l_7326_0:
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     cbz     x0, .l_7326_1
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     str     x0, [sp, #-8]
     ldr     x0, [sp, #-8]
@@ -32722,10 +32293,6 @@ f_7326:
 .l_7326_15:
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     str     x0, [x12, #-8]
     ldr     x0, =0
@@ -32735,10 +32302,6 @@ f_7326:
     str     x0, [x12, #-8]
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     str     x0, [x12, #-16]
     ldr     x0, =39
@@ -32752,10 +32315,6 @@ f_7326:
     str     x0, [x12, #-8]
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-16]
-    ldr     x0, =0
-    ldr     x1, [x12, #-16]
-    add 	x0, x1, x0
     ldr     x1, [x12, #-8]
     strb    w1, [x0]
     ldr     x0, =9
@@ -33125,14 +32684,6 @@ f_7452:
     str     x0, [x12]
     sub     x0, x29, #33
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #9
@@ -33140,10 +32691,6 @@ f_7452:
     str     x0, [x12]
     sub     x0, x29, #33
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     str     x0, [x12, #-8]
     ldr     x0, =8
     ldr     x1, [x12, #-8]
@@ -33272,18 +32819,10 @@ f_7452:
 .l_7452_14:
     sub     x0, x29, #65
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     cbz     x0, .l_7452_15
     sub     x0, x29, #65
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x0, x29, #57
@@ -33425,10 +32964,6 @@ f_7452:
     str     x0, [x12]
     sub     x0, x29, #73
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x1, [x12]
     str     x1, [x0]
     sub     x0, x29, #49
@@ -33462,9 +32997,7 @@ f_7452:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_1729
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
+    ldr     x0, [x12]
     ldr     x1, [x12, #8]
     str     x1, [x0]
     sub     x0, x29, #41
@@ -33493,10 +33026,6 @@ f_7452:
 .l_7452_22:
     sub     x0, x29, #25
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     cbz     x0, .l_7452_23
     sub     x0, x29, #25
@@ -34455,14 +33984,6 @@ f_7813:
     ldr     x0, =25
     ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12]
     ldr     x0, =0
@@ -34790,14 +34311,6 @@ f_7952:
     bl      f_6962
     sub     x0, x29, #16
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8
@@ -34875,13 +34388,7 @@ f_8089:
     str     x0, [x12, #-24]
     sub     x12, x12, 24
     bl      f_3545
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
+    ldr     x0, [x12]
     ldr     x0, [x0]
     str     x0, [x12]
     bl      f_6962
@@ -34915,10 +34422,6 @@ f_8089:
     ldr     x1, [x12]
     add 	x0, x1, x0
     str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
     ldr     x0, =8
     ldr     x1, [x12]
     add 	x0, x1, x0
@@ -34946,14 +34449,6 @@ f_8089:
     sub     x12, x12, 16
     bl      f_3545
     ldr     x0, =25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
     ldr     x1, [x12]
     add 	x0, x1, x0
     ldr     x0, [x0]
@@ -34989,14 +34484,6 @@ f_8089:
     ldr     x0, =25
     ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12]
     bl      f_3176
@@ -35027,14 +34514,6 @@ f_8089:
     ldr     x0, =25
     ldr     x1, [x12]
     add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
     ldr     x0, [x0]
     str     x0, [x12]
     bl      f_332
@@ -35048,14 +34527,6 @@ f_8089:
     sub     x12, x12, 24
     bl      f_3545
     ldr     x0, =25
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
-    ldr     x1, [x12]
-    add 	x0, x1, x0
-    str     x0, [x12]
-    ldr     x0, =0
     ldr     x1, [x12]
     add 	x0, x1, x0
     ldr     x0, [x0]
@@ -35142,10 +34613,6 @@ f_8184:
     stp     x29, x30, [sp, #-16]!
     mov     x29, sp
     ldr     x0, [x12]
-    str     x0, [x12, #-8]
-    ldr     x0, =0
-    ldr     x1, [x12, #-8]
-    add 	x0, x1, x0
     ldrb    w0, [x0]
     str     x0, [x12, #-8]
     sub     x12, x12, 8

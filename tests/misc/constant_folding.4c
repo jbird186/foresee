@@ -1,5 +1,7 @@
 #use "stdio.4c"
 
+:push_50 { 50 }
+
 :main {
     4 3 4 over dup put put put put put cr
     1 2 3 rot put put put cr
@@ -17,4 +19,9 @@
     -1 2 < put cr
     3 -1* -3 >= put cr
     100 5 / put cr
+    push_50 0* put cr
+    push_50 0+ put cr
+    push_50 0^ put cr
+    push_50 1* put cr
+    depth put cr
 }

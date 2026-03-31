@@ -27,6 +27,39 @@
     while true {
         switch op->kind {
             case OKind.PUSH_INT {
+                if op->data 0 == {
+                    var &Op next_op: {op %Op+}
+                    switch next_op->kind {
+                        case
+                            OKind.ADD,
+                            OKind.SUB,
+                            OKind.OR,
+                            OKind.XOR,
+                            OKind.SHL,
+                            OKind.SHR,
+                            OKind.SAR
+                        {
+                            %Op 2* +=op
+                            continue
+                        }
+                        case
+                            OKind.MUL,
+                            OKind.AND
+                        {
+                            OKind.DROP =op->kind
+                            OKind.PUSH_INT =next_op->kind
+                            0 =next_op->data
+                            continue
+                        }
+                    }
+                } else if op->data 1 == {
+                    var &Op next_op: {op %Op+}
+                    if next_op->kind OKind.MUL == {
+                        %Op 2* +=op
+                        continue
+                    }
+                }
+
                 check_stack_access(0, 1)
                 op->data =stack[stack_depth]
                 1 +=stack_depth
