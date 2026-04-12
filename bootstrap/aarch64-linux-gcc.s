@@ -10600,18 +10600,6 @@ f_2751:
     cbz     x0, .l_2751_14
     ldr     x0, =0
     str     x0, [x12, #-8]
-    ldr     x0, =12
-    str     x0, [x12, #-16]
-    ldr     x0, =3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_934
-    ldr     x0, =0
-    str     x0, [x12, #-8]
     ldr     x0, =32
     str     x0, [x12, #-16]
     ldr     x0, =3
@@ -10655,18 +10643,6 @@ f_2751:
     cset    w0, eq
     add     x12, x12, 8
     cbz     x0, .l_2751_15
-    ldr     x0, =0
-    str     x0, [x12, #-8]
-    ldr     x0, =12
-    str     x0, [x12, #-16]
-    ldr     x0, =3
-    sub     x12, x12, 16
-    lsl     x0, x0, #3
-    add     x0, x12, x0
-    ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_934
     ldr     x0, =0
     str     x0, [x12, #-8]
     ldr     x0, =32

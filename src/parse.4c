@@ -1185,12 +1185,10 @@ enum ViewTypeError {
             }
         }
         if original_tok_ptr->data "/=" strcmp not {
-            0 OKind.SWAP 3 pick op_push
             0 OKind.DIVMOD 3 pick op_push
             0 OKind.DROP 3 pick op_push
         }
         else if original_tok_ptr->data "%=" strcmp not {
-            0 OKind.SWAP 3 pick op_push
             0 OKind.DIVMOD 3 pick op_push
             0 OKind.NIP 3 pick op_push
         }

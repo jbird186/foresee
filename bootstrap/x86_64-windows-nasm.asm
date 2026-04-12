@@ -9658,14 +9658,6 @@ f_2751:
     test    rax, rax
     jz      .l_2751_14
     mov     qword [r12 - 8], 0
-    mov     qword [r12 - 16], 12
-    mov     rax, 3
-    sub     r12, 16
-    mov     rax, [r12 + rax*8]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_934
-    mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 32
     mov     rax, 3
     sub     r12, 16
@@ -9702,14 +9694,6 @@ f_2751:
     add     r12, 8
     test    rax, rax
     jz      .l_2751_15
-    mov     qword [r12 - 8], 0
-    mov     qword [r12 - 16], 12
-    mov     rax, 3
-    sub     r12, 16
-    mov     rax, [r12 + rax*8]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_934
     mov     qword [r12 - 8], 0
     mov     qword [r12 - 16], 32
     mov     rax, 3
