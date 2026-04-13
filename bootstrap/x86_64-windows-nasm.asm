@@ -12774,7 +12774,7 @@ f_3562:
     sub     r12, 8
     mov     rax, [r12 + 8]
     mov     rcx, qword [r12]
-    mov     qword [rax], rcx
+    mov     byte [rax], cl
     mov     rcx, 1
     mov     rax, qword [r12 + 8]
     add 	rax, rcx

@@ -14170,7 +14170,7 @@ f_3562:
     add     x0, x12, #8
     ldr     x0, [x0]
     ldr     x1, [x12]
-    str     x1, [x0]
+    strb    w1, [x0]
     ldr     x0, =1
     ldr     x1, [x12, #8]
     add 	x0, x1, x0
