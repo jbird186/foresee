@@ -1,3 +1,5 @@
+#flag STD_IO
+
 #use "stdconv.4c"
 #use "stdsys.4c"
 

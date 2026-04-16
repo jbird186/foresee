@@ -1,3 +1,5 @@
+#flag STD_STR
+
 // &dest byte len --
 pub :memset {
     var int len: {}

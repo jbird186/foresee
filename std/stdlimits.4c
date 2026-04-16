@@ -1,3 +1,5 @@
+#flag STD_LIMITS
+
 #pub macro I64_MIN {-9223372036854775808}
 #pub macro I64_MAX {9223372036854775807}
 #pub macro INT_MIN { I64_MIN }

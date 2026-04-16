@@ -1,3 +1,5 @@
+#flag STD_CHAR
+
 // char -- bool
 pub :isdigit {
     dup ('0' >=) swap ('9' <=) &

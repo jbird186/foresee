@@ -1,3 +1,5 @@
+#flag STD_CONV
+
 #use "stdlimits.4c"
 
 pub static char[24] __std_buf

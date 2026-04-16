@@ -375,7 +375,7 @@ struct StructName {
 }
 ```
 
-Struct fields are generally defined like variables. Fields can be accessed directly by using the `.fieldname` or, if the field is a pointer, with `->fieldname`.
+Struct fields are generally defined like variables. Fields can be accessed directly by using the `.fieldname` or, if you have a pointer, with `->fieldname`.
 
 #### Example
 
@@ -439,7 +439,7 @@ union StructName {
 }
 ```
 
-Union variants are generally defined like variables. Variants can be accessed directly by using the `.variantname` or, if the variant is a pointer, with `->variantname`.
+Union variants are generally defined like variables. Variants can be accessed directly by using the `.variantname` or, if you have a pointer, with `->variantname`.
 
 ### Enums
 

@@ -169,12 +169,16 @@ static int TOTAL_DATA_SIZE
                 false t return
             }
 
-            %Token+
-            parse_until(TKind.BRACKET_END)
+            if ops_dest {
+                %Token+
+                parse_until(TKind.BRACKET_END)
 
-            t->inner->size OKind.PUSH_INT ops_dest op_push
-            0 OKind.MUL ops_dest op_push
-            0 OKind.ADD ops_dest op_push
+                t->inner->size OKind.PUSH_INT ops_dest op_push
+                0 OKind.MUL ops_dest op_push
+                0 OKind.ADD ops_dest op_push
+            } else {
+                skip_brackets
+            }
 
             true t->inner return
         }
@@ -184,7 +188,9 @@ static int TOTAL_DATA_SIZE
             }
             %Token+
 
-            8 OKind.FETCH ops_dest op_push
+            if ops_dest {
+                8 OKind.FETCH ops_dest op_push
+            }
 
             true t->inner return
         }
@@ -200,8 +206,11 @@ static int TOTAL_DATA_SIZE
             }
 
             var &Type new_t: {viewtd t->data get_field_offset}
-            OKind.PUSH_INT ops_dest op_push
-            0 OKind.ADD ops_dest op_push
+
+            if ops_dest {
+                OKind.PUSH_INT ops_dest op_push
+                0 OKind.ADD ops_dest op_push
+            } else { drop }
 
             %Token+
             true new_t return
@@ -1408,16 +1417,22 @@ enum ViewTypeError {
             error "Type not properly defined in this scope\n"puts
             1 exit
         }
-    // -- ops_dest tok_ptr idx
+        OKind.PUSH_INT 3 roll op_push
+        %Token+
     } else if viewtd BUF_MAP scoped_map_find_idx dup is_success {
-        BUF_MAP map_idx (Buffer).type->size
+        var &Type t: {BUF_MAP map_idx (Buffer).type}
+        %Token+
+
+        NULL swap
+        while t view_type_access =t {}
+        nip
+
+        t->size OKind.PUSH_INT 3 roll op_push
     } else {
         drop
         error "Buffer '"puts viewtd puts "' not defined\n"puts
         1 exit
     }
-    OKind.PUSH_INT 3 roll op_push
-    %Token+
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
