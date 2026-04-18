@@ -79,8 +79,8 @@ pub enum OKind {
 pub :op_push {
     // -- data kind
     var &Op entry: {%Op stack_push}
-    =entry->kind
-    =entry->data
+    =entry@.kind
+    =entry@.data
 }
 
 // &op -- kind

@@ -48,20 +48,20 @@ pub enum TKind {
 // data kind file_idx line ref --
 pub :tok_push {
     var &Token entry: {%Token stack_push}
-    =entry->line
-    =entry->file_idx
-    =entry->kind
-    =entry->data
+    =entry@.line
+    =entry@.file_idx
+    =entry@.kind
+    =entry@.data
 }
 
 // src dest --
 pub :tok_push_clone {
     var &Token entry: {%Token stack_push}
     var &Token src: {}
-    src->kind =entry->kind
-    src->data =entry->data
-    src->file_idx =entry->file_idx
-    src->line =entry->line
+    src@.kind =entry@.kind
+    src@.data =entry@.data
+    src@.file_idx =entry@.file_idx
+    src@.line =entry@.line
 }
 
 pub :viewtk { dup (Token).kind }

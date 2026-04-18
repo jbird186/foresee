@@ -18,8 +18,8 @@ pub :stack_last {
 // &stack slot_size -- slot_ptr
 pub :stack_push {
     var &StackHead s: {swap}
-    s->len* s %int+ +
-    1 +=s->len
+    s@.len* s %int+ +
+    1 +=s@.len
 }
 // idx &stack slot_size -- slot_ptr
 pub :stack_get { rot* + %int+ }

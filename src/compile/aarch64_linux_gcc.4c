@@ -493,24 +493,24 @@ static char[32] push_cache
 // idx map_slot_ptr -- idx
 :compile_function {
     var &Function f: {}
-    if f->def not {
-        f->tok error "Function '"puts f->key.name puts "' was never defined\n"puts
+    if f@.def not {
+        f@.tok error "Function '"puts f@.key.name puts "' was never defined\n"puts
         1 exit
     }
-    if f->is_used not {
-        if f->key.scope {
-            f->tok warning "Function '"puts f->key.name puts "' is never used\n"puts
+    if f@.is_used not {
+        if f@.key.scope {
+            f@.tok warning "Function '"puts f@.key.name puts "' is never used\n"puts
         }
         if optimize_mode { return }
     }
     dup =FN_IDX
     if debug_mode {
-        "// "coms f->key.name coms "\n"coms
+        "// "coms f@.key.name coms "\n"coms
     }
     "f_"coms dup com ":\n"coms
     "    stp     x29, x30, [sp, #-16]!\n"coms
     "    mov     x29, sp\n"coms
-    f->def compile_ops
+    f@.def compile_ops
 }
 
 :compile_functions {
@@ -587,15 +587,15 @@ static char[32] push_cache
 :compile_buf_data {
     var int idx: {}
     var &Buffer entry: {idx BUF_MAP map_idx}
-    var int buf_size: {entry->type->size}
+    var int buf_size: {entry@.type@.size}
 
     if debug_mode {
-        "    // "coms entry->key.name coms "\n"coms
+        "    // "coms entry@.key.name coms "\n"coms
     }
     "    b_"coms idx com ": "coms
 
-    var [8] init: {entry->data.stat.init}
-    if entry->data.stat.init_is_int {
+    var [8] init: {entry@.data.stat.init}
+    if entry@.data.stat.init_is_int {
         if buf_size 1 == {
             ".byte "coms init com "\n"coms
         } else if buf_size 8 == {
@@ -613,9 +613,9 @@ static char[32] push_cache
 // idx --
 :compile_buf_bss {
     var &Buffer entry: {dup BUF_MAP map_idx}
-    "    b_"coms com ": .skip "coms entry->type->size com
+    "    b_"coms com ": .skip "coms entry@.type@.size com
     if debug_mode {
-        " // "coms entry->key.name coms
+        " // "coms entry@.key.name coms
     }
     "\n"coms
 }
@@ -623,7 +623,7 @@ static char[32] push_cache
 // idx -- bool
 :is_valid_static_buffer {
     var &Buffer entry: {BUF_MAP map_idx}
-    (entry->key.name flag) (entry->is_static) &
+    (entry@.key.name flag) (entry@.is_static) &
 }
 
 pub :compile_program_aarch64_linux_gcc {

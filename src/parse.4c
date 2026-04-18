@@ -61,10 +61,10 @@ static int TOTAL_DATA_SIZE
 :push_buf_ptr {
     var int idx: {}
     var &Buffer entry: {idx BUF_MAP map_idx}
-    if entry->is_static {
+    if entry@.is_static {
         idx OKind.PUSH_BUF 3 pick op_push
     } else {
-        entry->data.loc.alloc_offset entry->type->size +
+        entry@.data.loc.alloc_offset entry@.type@.size +
         OKind.PUSH_VAR 3 pick op_push
     }
 }
@@ -117,7 +117,7 @@ static int TOTAL_DATA_SIZE
     var int idx: { viewtd INLINE_STR_MAP map_get_idx }
     var &InlineStr s: { idx INLINE_STR_MAP map_idx }
     if s slot_is_empty {
-        viewtd =s->value
+        viewtd =s@.value
     }
     (idx MAP_SIZE+) OKind.PUSH_BUF 3 roll op_push
     %Token+
@@ -134,18 +134,18 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
     var &Struct struct_ptr: { struct_idx STRUCT_MAP map_idx }
-    var &StructField fields_ptr: { struct_ptr->fields }
+    var &StructField fields_ptr: { struct_ptr@.fields }
 
     var int total_offset: 0
-    while fields_ptr->name {
-        if fields_ptr->name field_name strcmp not {
-            if StructKind.uni struct_ptr->kind == {
-                0 fields_ptr->type return
+    while fields_ptr@.name {
+        if fields_ptr@.name field_name strcmp not {
+            if StructKind.uni struct_ptr@.kind == {
+                0 fields_ptr@.type return
             } else {
-                total_offset fields_ptr->type return
+                total_offset fields_ptr@.type return
             }
         }
-        fields_ptr->type->size +=total_offset
+        fields_ptr@.type@.size +=total_offset
         %StructField +=fields_ptr
     }
 
@@ -160,7 +160,7 @@ static int TOTAL_DATA_SIZE
     var &Type t: {}
     var &Op ops_dest: {over}
 
-    switch t->kind {
+    switch t@.kind {
         case TypeKind.none {
             false t return
         }
@@ -173,14 +173,14 @@ static int TOTAL_DATA_SIZE
                 %Token+
                 parse_until(TKind.BRACKET_END)
 
-                t->inner->size OKind.PUSH_INT ops_dest op_push
+                t@.inner@.size OKind.PUSH_INT ops_dest op_push
                 0 OKind.MUL ops_dest op_push
                 0 OKind.ADD ops_dest op_push
             } else {
                 skip_brackets
             }
 
-            true t->inner return
+            true t@.inner return
         }
         case TypeKind.pointer {
             if viewtk TKind.DEREF != {
@@ -192,7 +192,7 @@ static int TOTAL_DATA_SIZE
                 8 OKind.FETCH ops_dest op_push
             }
 
-            true t->inner return
+            true t@.inner return
         }
         case TypeKind.base {
             if viewtk TKind.FIELD != {
@@ -205,7 +205,7 @@ static int TOTAL_DATA_SIZE
                 1 exit
             }
 
-            var &Type new_t: {viewtd t->data get_field_offset}
+            var &Type new_t: {viewtd t@.data get_field_offset}
 
             if ops_dest {
                 OKind.PUSH_INT ops_dest op_push
@@ -233,9 +233,9 @@ static int TOTAL_DATA_SIZE
     %Token+
 
     var &Buffer buf: {idx BUF_MAP map_idx}
-    var &Type t: {buf->type}
+    var &Type t: {buf@.type}
     while t view_type_access =t {}
-    t->size
+    t@.size
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -273,10 +273,10 @@ static int TOTAL_DATA_SIZE
     }
     var int variant_name: {viewtd}
 
-    while variant->name {
-        if variant_name variant->name strcmp not {
+    while variant@.name {
+        if variant_name variant@.name strcmp not {
             %Token+
-            variant->value return
+            variant@.value return
         }
         %EnumVariant +=variant
     }
@@ -463,7 +463,7 @@ static int TOTAL_DATA_SIZE
         if gt_n_cases { 1+=ASM_LABEL_ID g_label } else { switch_id 1+ }
             OKind.JCMPG 3 pick op_push
 
-        if switch_case->is_merged { 2 switch_case->def+ } else { id_offset mid+ }
+        if switch_case@.is_merged { 2 switch_case@.def+ } else { id_offset mid+ }
             switch_id+ OKind.JMP 3 pick op_push
 
         // less than case
@@ -479,7 +479,7 @@ static int TOTAL_DATA_SIZE
         }
     } else {
         switch_id 1+ OKind.JCMPNE 3 pick op_push
-        if switch_case->is_merged { 2 switch_case->def+ } else { id_offset mid+ }
+        if switch_case@.is_merged { 2 switch_case@.def+ } else { id_offset mid+ }
             switch_id+ OKind.JMP 3 pick op_push
     }
 }
@@ -497,7 +497,7 @@ static int TOTAL_DATA_SIZE
 
         for (var int j: {low}, j high <, 1 +=j) {
             var &SwitchCase arr_j: {arr j %SwitchCase* +}
-            if arr_j->value pivot->value <= {
+            if arr_j@.value pivot@.value <= {
                 1 +=i
                 var &SwitchCase arr_i: {arr i %SwitchCase* +}
                 arr_j &temp %SwitchCase memcpy
@@ -525,10 +525,10 @@ static int TOTAL_DATA_SIZE
     while low high <= {
         var int mid: {low ((high low -) 2 /) +}
         var &SwitchCase mid_case: { cases mid %SwitchCase* + }
-        if mid_case->value value == {
+        if mid_case@.value value == {
             mid return
         }
-        if mid_case->value value < {
+        if mid_case@.value value < {
             mid 1+ =low
         } else {
             mid 1- =high
@@ -768,20 +768,20 @@ static int TOTAL_DATA_SIZE
     name scope check_name_availability_fn
 
     var &Function entry: {name scope FN_MAP scoped_map_get}
-    name =entry->key.name
-    scope =entry->key.scope
-    false =entry->is_used
-    dup =entry->tok
+    name =entry@.key.name
+    scope =entry@.key.scope
+    false =entry@.is_used
+    dup =entry@.tok
     %Token+
 
     // Function prototype
     if viewtk TKind.BRACE_START != {
-        NULL =entry->def
+        NULL =entry@.def
         return
     }
 
     var &Op fn_ptr: {&fn_ops_mem %Op stack_top}
-    fn_ptr =entry->def
+    fn_ptr =entry@.def
     %Token+
 
     0 =ASM_LABEL_ID
@@ -807,9 +807,9 @@ static int TOTAL_DATA_SIZE
     // fn_ops tok_ptr
     pop_local_scope
     if FN_ALLOC_SIZE {
-        FN_ALLOC_SIZE =fn_ptr->data
+        FN_ALLOC_SIZE =fn_ptr@.data
     } else {
-        OKind.NOOP =fn_ptr->kind
+        OKind.NOOP =fn_ptr@.kind
     }
     0 OKind.EOF &fn_ops_mem op_push
 }
@@ -840,7 +840,7 @@ enum ViewTypeError {
 
     var &Type t: { TYPE_MEM stack_push }
     if viewtk TKind.IDENT == {
-        TypeKind.base =t->kind
+        TypeKind.base =t@.kind
 
         var &Struct slot: { viewtd STRUCT_MAP scoped_map_find }
         if slot not {
@@ -849,17 +849,17 @@ enum ViewTypeError {
         if slot slot_is_empty {
             NULL ViewTypeError.Generic return
         }
-        slot->size =t->size
+        slot@.size =t@.size
 
-        viewtd =t->data
-        NULL =t->inner
+        viewtd =t@.data
+        NULL =t@.inner
         %Token+
     } else if viewtk TKind.REF == {
-        TypeKind.pointer =t->kind
-        8 =t->size
-        viewtd =t->data
+        TypeKind.pointer =t@.kind
+        8 =t@.size
+        viewtd =t@.data
         %Token+
-        _try_view_type =t->inner
+        _try_view_type =t@.inner
     } else if viewtk TKind.PAREN_START == {
         %Token+
         _try_view_type =t
@@ -868,16 +868,16 @@ enum ViewTypeError {
         }
         %Token+
     } else if viewtk TKind.BRACKET_START == {
-        TypeKind.none =t->kind
-        1 =t->size
-        NULL =t->data
-        NULL =t->inner
+        TypeKind.none =t@.kind
+        1 =t@.size
+        NULL =t@.data
+        NULL =t@.inner
 
         var &Type arr_t: { TYPE_MEM stack_push }
-        TypeKind.array =arr_t->kind
-        0 =arr_t->size
-        NULL =arr_t->data
-        t =arr_t->inner
+        TypeKind.array =arr_t@.kind
+        0 =arr_t@.size
+        NULL =arr_t@.data
+        t =arr_t@.inner
 
         %Token+
         while viewtk TKind.BRACKET_END != {
@@ -886,11 +886,11 @@ enum ViewTypeError {
                 NULL ViewTypeError.UnclosedBracket return
             }
             if viewtk TKind.INT == {
-                viewtd +=arr_t->size
+                viewtd +=arr_t@.size
                 %Token+
             } else {
                 var &Type sub_t: { _try_view_type }
-                sub_t->size +=arr_t->size
+                sub_t@.size +=arr_t@.size
             }
         }
         %Token+
@@ -917,10 +917,10 @@ enum ViewTypeError {
         %Token+
 
         var &Type arr: { TYPE_MEM stack_push }
-        TypeKind.array =arr->kind
-        t->size total* =arr->size
-        total =arr->data
-        t =arr->inner
+        TypeKind.array =arr@.kind
+        t@.size total* =arr@.size
+        total =arr@.data
+        t =arr@.inner
 
         arr =t
     }
@@ -968,10 +968,10 @@ enum ViewTypeError {
         view_type =t
     } else {
         TYPE_MEM stack_push =t
-        TypeKind.base =t->kind
-        -1 =t->size
-        NULL =t->data
-        NULL =t->inner
+        TypeKind.base =t@.kind
+        -1 =t@.size
+        NULL =t@.data
+        NULL =t@.inner
     }
 
     if viewtk TKind.IDENT != {
@@ -982,7 +982,7 @@ enum ViewTypeError {
     var int local_alloc_offset
     if is_static not {
         CURRENT_ALLOC_SIZE =local_alloc_offset
-        t->size alloc_bytes
+        t@.size alloc_bytes
     }
 
     var &char buf_name: {viewtd}
@@ -999,19 +999,19 @@ enum ViewTypeError {
                 // -- tok_ptr str_size
                 viewtd strlen 1+
                 if has_explicit_type not {
-                    =t->size
-                } else if t->size > {
+                    =t@.size
+                } else if t@.size > {
                     error "Invalid size for buffer '"puts buf_name puts "'\n"puts
                     1 exit
                 }
                 false =static_init_is_int
             } else if viewtk TKind.INT == {
                 if has_explicit_type not {
-                    8 =t->size
+                    8 =t@.size
                 } else {
-                    if t->size 8 == {}
-                    else if (t->size 8 <) (t->size 0 >) & {
-                        var int limit: {switch t->size {
+                    if t@.size 8 == {}
+                    else if (t@.size 8 <) (t@.size 0 >) & {
+                        var int limit: {switch t@.size {
                             case 4 { 0xffff_ffff }
                             case 2 { 0xffff }
                             case 1 { 0xff }
@@ -1029,9 +1029,9 @@ enum ViewTypeError {
                 true =static_init_is_int
             } else if viewtk TKind.CHAR == {
                 if has_explicit_type not {
-                    1 =t->size
+                    1 =t@.size
                 } else {
-                    switch t->size {
+                    switch t@.size {
                         case 8,4,2,1 {}
                         default {
                             error "Invalid size for buffer '"puts buf_name puts "'\n"puts
@@ -1047,17 +1047,17 @@ enum ViewTypeError {
             viewtd =static_init
             %Token+
         } else {
-            switch t->size {
+            switch t@.size {
                 case 8,4,2,1 {}
                 default {
-                    error "Buffer '"puts buf_name puts "' ("puts t->size put " bytes) cannot be automatically assigned to\n"puts
+                    error "Buffer '"puts buf_name puts "' ("puts t@.size put " bytes) cannot be automatically assigned to\n"puts
                     1 exit
                 }
             }
 
             if viewtk TKind.INT == {
-                if t->size 8 < {
-                    var int limit: {switch t->size {
+                if t@.size 8 < {
+                    var int limit: {switch t@.size {
                         case 4 { 0xffff_ffff }
                         case 2 { 0xffff }
                         case 1 { 0xff }
@@ -1082,36 +1082,36 @@ enum ViewTypeError {
                 1 exit
             }
 
-            local_alloc_offset t->size+ OKind.PUSH_VAR 3 pick op_push
-            t->size OKind.STORE 3 pick op_push
+            local_alloc_offset t@.size+ OKind.PUSH_VAR 3 pick op_push
+            t@.size OKind.STORE 3 pick op_push
         }
     }
 
-    if t->size 0 < {
+    if t@.size 0 < {
         error "Invalid size for buffer '"puts buf_name puts "'\n"puts
         1 exit
     }
-    if t->size BUFFER_SIZE_LIMIT > {
+    if t@.size BUFFER_SIZE_LIMIT > {
         error "Buffer '"puts buf_name puts "' cannot exceed "puts BUFFER_SIZE_LIMIT put " bytes\n"puts
         1 exit
     }
-    t->size +=TOTAL_DATA_SIZE
+    t@.size +=TOTAL_DATA_SIZE
     if TOTAL_DATA_SIZE DATA_SIZE_LIMIT > {
         error "Total data usage cannot exceed "puts DATA_SIZE_LIMIT put " bytes\n"puts
         1 exit
     }
 
     var &Buffer entry: {buf_name buf_scope BUF_MAP scoped_map_get}
-    buf_name =entry->key.name
-    buf_scope =entry->key.scope
-    t =entry->type
-    is_static =entry->is_static
+    buf_name =entry@.key.name
+    buf_scope =entry@.key.scope
+    t =entry@.type
+    is_static =entry@.is_static
 
     if is_static {
-        static_init =entry->data.stat.init
-        static_init_is_int =entry->data.stat.init_is_int
+        static_init =entry@.data.stat.init
+        static_init_is_int =entry@.data.stat.init_is_int
     } else {
-        local_alloc_offset =entry->data.loc.alloc_offset
+        local_alloc_offset =entry@.data.loc.alloc_offset
     }
 
     nip
@@ -1159,7 +1159,7 @@ enum ViewTypeError {
     %Token+
 
     while t view_type_access =t {}
-    t->size
+    t@.size
 }
 
 // ops_dest tok_ptr -- new_tok_ptr
@@ -1174,7 +1174,7 @@ enum ViewTypeError {
         view_buffer_access =size
     }
 
-    if original_tok_ptr->data "=" strcmp {
+    if original_tok_ptr@.data "=" strcmp {
         0 OKind.DUP 3 pick op_push
         switch size {
             case 8,4,2,1 {
@@ -1189,15 +1189,15 @@ enum ViewTypeError {
         0 OKind.ROT 3 pick op_push
 
         #macro parse_simple_eq(string, opcode) {
-            else if original_tok_ptr->data string strcmp not {
+            else if original_tok_ptr@.data string strcmp not {
                 0 opcode 3 pick op_push
             }
         }
-        if original_tok_ptr->data "/=" strcmp not {
+        if original_tok_ptr@.data "/=" strcmp not {
             0 OKind.DIVMOD 3 pick op_push
             0 OKind.DROP 3 pick op_push
         }
-        else if original_tok_ptr->data "%=" strcmp not {
+        else if original_tok_ptr@.data "%=" strcmp not {
             0 OKind.DIVMOD 3 pick op_push
             0 OKind.NIP 3 pick op_push
         }
@@ -1212,7 +1212,7 @@ enum ViewTypeError {
         parse_simple_eq(">>=", OKind.SHR)
         parse_simple_eq(">>>=", OKind.SAR)
         else {
-            error "Unknown assignment operator '"puts original_tok_ptr->data puts "'\n"puts
+            error "Unknown assignment operator '"puts original_tok_ptr@.data puts "'\n"puts
             1 exit
         }
         0 OKind.SWAP 3 pick op_push
@@ -1305,20 +1305,20 @@ enum ViewTypeError {
     NULL ENUM_MEM stack_push =(EnumVariant).name
 
     var &Enum entry: {enum_name scope ENUM_MAP scoped_map_get}
-    enum_name =entry->key.name
-    scope =entry->key.scope
-    variants_ptr =entry->variants
+    enum_name =entry@.key.name
+    scope =entry@.key.scope
+    variants_ptr =entry@.variants
 }
 
 // &type --
 :update_type_size {
     var &Type t: {}
-    if t->kind TypeKind.base == {
-        var &Struct entry: {t->data STRUCT_MAP scoped_map_find}
-        entry->size =t->size
+    if t@.kind TypeKind.base == {
+        var &Struct entry: {t@.data STRUCT_MAP scoped_map_find}
+        entry@.size =t@.size
     }
-    else if t->inner {
-        t->inner update_type_size
+    else if t@.inner {
+        t@.inner update_type_size
     }
 }
 
@@ -1342,18 +1342,18 @@ enum ViewTypeError {
     var &StructField fields_ptr: {STRUCT_MEM stack_top}
     struct_name scope check_name_availability
     var &Struct entry: {struct_name scope STRUCT_MAP scoped_map_get}
-    struct_name =entry->key.name
-    scope =entry->key.scope
-    -1 =entry->size
+    struct_name =entry@.key.name
+    scope =entry@.key.scope
+    -1 =entry@.size
 
     %Token+
 
     // Forward declaration
     if viewtk TKind.BRACE_START != {
-        StructKind.null =entry->kind
+        StructKind.null =entry@.kind
         return
     }
-    if is_union { StructKind.uni } else { StructKind.normal } =entry->kind
+    if is_union { StructKind.uni } else { StructKind.normal } =entry@.kind
 
     %Token+
     var int struct_size: 0
@@ -1367,8 +1367,8 @@ enum ViewTypeError {
 
         var &char field_name: {viewtd}
         var &StructField field_i: {fields_ptr}
-        while field_i->name {
-            if field_i->name field_name strcmp not {
+        while field_i@.name {
+            if field_i@.name field_name strcmp not {
                 error "Field '"puts field_name puts "' already defined for struct '"puts struct_name puts "'\n"puts
                 1 exit
             }
@@ -1376,23 +1376,23 @@ enum ViewTypeError {
         }
 
         if is_union {
-            if field_type->size struct_size > { field_type->size =struct_size }
+            if field_type@.size struct_size > { field_type@.size =struct_size }
         } else {
-            field_type->size +=struct_size
+            field_type@.size +=struct_size
         }
 
         var &StructField entry: {STRUCT_MEM stack_push}
-        field_name =entry->name
-        field_type =entry->type
+        field_name =entry@.name
+        field_type =entry@.type
         %Token+
     }
     %Token+
     NULL STRUCT_MEM stack_push =(StructField).name
-    struct_size =entry->size
-    fields_ptr =entry->fields
+    struct_size =entry@.size
+    fields_ptr =entry@.fields
 
-    while fields_ptr->name {
-        fields_ptr->type update_type_size
+    while fields_ptr@.name {
+        fields_ptr@.type update_type_size
         %StructField +=fields_ptr
     }
 }
@@ -1427,7 +1427,7 @@ enum ViewTypeError {
         while t view_type_access =t {}
         nip
 
-        t->size OKind.PUSH_INT 3 roll op_push
+        t@.size OKind.PUSH_INT 3 roll op_push
     } else {
         drop
         error "Buffer '"puts viewtd puts "' not defined\n"puts
@@ -1462,13 +1462,13 @@ enum ViewTypeError {
         %Token+
         while t view_type_access =t {}
 
-        switch t->size {
+        switch t@.size {
             case 8,4,2,1 {
-                t->size OKind.FETCH 3 pick op_push
+                t@.size OKind.FETCH 3 pick op_push
             }
             default {
                 %Token-
-                error "Buffer ("puts t->size put " bytes) cannot be automatically read from\n"puts
+                error "Buffer ("puts t@.size put " bytes) cannot be automatically read from\n"puts
                 1 exit
             }
         }

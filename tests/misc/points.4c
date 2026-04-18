@@ -12,14 +12,14 @@ struct Points {
 // &point --
 :double_point {
     var &Point p: {}
-    2 *=p->x
-    2 *=p->y
+    2 *=p@.x
+    2 *=p@.y
 }
 
 // &point --
 :show_point {
     var &Point p: {}
-    "(" puts p->x put ", " puts p->y put ")\n" puts
+    "(" puts p@.x put ", " puts p@.y put ")\n" puts
 }
 
 :main {

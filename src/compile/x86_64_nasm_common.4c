@@ -258,17 +258,17 @@ pub :x64n_compile_generic_op {
         x64n_flush_push_cache
         if optimize_mode {
             var &Op next_op: {dup %Op+}
-            if next_op->kind OKind.FETCH == {
+            if next_op@.kind OKind.FETCH == {
                 "    ; OP_PUSH_BUF, OP_FETCH\n"coms_dbg
-                dup &store_fn_buf next_op->data fetch_rax_generic
+                dup &store_fn_buf next_op@.data fetch_rax_generic
                 "rax" x64n_compile_push
-                OKind.NOOP =next_op->kind
+                OKind.NOOP =next_op@.kind
                 return
-            } else if next_op->kind OKind.STORE == {
+            } else if next_op@.kind OKind.STORE == {
                 "    ; OP_PUSH_BUF, OP_STORE\n"coms_dbg
                 "rcx" x64n_compile_pop
-                dup &store_fn_buf next_op->data store_rcx_generic
-                OKind.NOOP =next_op->kind
+                dup &store_fn_buf next_op@.data store_rcx_generic
+                OKind.NOOP =next_op@.kind
                 return
             }
         }
@@ -300,17 +300,17 @@ pub :x64n_compile_generic_op {
         x64n_flush_push_cache
         if optimize_mode {
             var &Op next_op: {dup %Op+}
-            if next_op->kind OKind.FETCH == {
+            if next_op@.kind OKind.FETCH == {
                 "    ; OP_PUSH_VAR, OP_FETCH\n"coms_dbg
-                dup &store_fn_var next_op->data fetch_rax_generic
+                dup &store_fn_var next_op@.data fetch_rax_generic
                 "rax" x64n_compile_push
-                OKind.NOOP =next_op->kind
+                OKind.NOOP =next_op@.kind
                 return
-            } else if next_op->kind OKind.STORE == {
+            } else if next_op@.kind OKind.STORE == {
                 "    ; OP_PUSH_VAR, OP_STORE\n"coms_dbg
                 "rcx" x64n_compile_pop
-                dup &store_fn_var next_op->data store_rcx_generic
-                OKind.NOOP =next_op->kind
+                dup &store_fn_var next_op@.data store_rcx_generic
+                OKind.NOOP =next_op@.kind
                 return
             }
         }
@@ -446,25 +446,25 @@ pub :x64n_compile_generic_op {
     // idx map_slot_ptr -- idx
     :compile_function {
         var &Function f: {}
-        if f->def not {
-            f->tok error "Function '"puts f->key.name puts "' was never defined\n"puts
+        if f@.def not {
+            f@.tok error "Function '"puts f@.key.name puts "' was never defined\n"puts
             1 exit
         }
-        if f->is_used not {
-            if f->key.scope {
-                f->tok warning "Private function '" puts f->key.name puts "' is never used\n" puts
+        if f@.is_used not {
+            if f@.key.scope {
+                f@.tok warning "Private function '" puts f@.key.name puts "' is never used\n" puts
                 drop
             }
             if optimize_mode { return }
         }
         dup =FN_IDX
         if debug_mode {
-            "; "coms f->key.name coms "\n"coms
+            "; "coms f@.key.name coms "\n"coms
         }
         "f_"coms dup com ":\n"coms
         "    push    rbp\n"coms
         "    mov     rbp, rsp\n"coms
-        f->def compile_ops
+        f@.def compile_ops
     }
 
     :compile_functions {
@@ -526,7 +526,7 @@ pub :rodata_x86_64_nasm_generic {
 
 // idx --
 pub :x64n_compile_buf_data {
-    var int buf_size: {dup BUF_MAP map_idx (Buffer).type->size}
+    var int buf_size: {dup BUF_MAP map_idx (Buffer).type@.size}
 
     if debug_mode {
         "    ; "coms dup BUF_MAP map_idx (Buffer).key.name coms "\n"coms
@@ -562,9 +562,9 @@ pub :x64n_compile_resb {
 pub :x64n_compile_buf_bss {
     var int idx: {}
     var &Buffer buf: {idx BUF_MAP map_idx}
-    "    b_"coms idx com x64n_compile_resb buf->type->size com
+    "    b_"coms idx com x64n_compile_resb buf@.type@.size com
     if debug_mode {
-        " ; "coms buf->key.name coms
+        " ; "coms buf@.key.name coms
     }
     "\n"coms
 }

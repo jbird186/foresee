@@ -301,6 +301,7 @@ pub :lex_src {
             case '\"' {
                 view_str TKind.STR file line &toks_mem tok_push
             }
+            lex_single('@', TKind.DEREF)
             lex_single(':', TKind.COLON)
             lex_single('#', TKind.POUND)
             lex_single(',', TKind.COMMA)
@@ -317,11 +318,6 @@ pub :lex_src {
                     while viewc dup ('\n' !=) swap (flag) & { 1+ }
                 } else if ((viewc '-' ==) (over 1+ (char) isdigit) &) (over(char) isdigit) | {
                     view_int TKind.INT file line &toks_mem tok_push
-                }
-                else if (viewc '-' ==) (over 1+ (char) '>' ==) & {
-                    0 TKind.DEREF file line &toks_mem tok_push
-                    0 TKind.FIELD file line &toks_mem tok_push
-                    2+
                 }
                 else if should_lex_ref {
                     var int indir: 0

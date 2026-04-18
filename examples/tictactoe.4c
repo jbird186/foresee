@@ -23,11 +23,11 @@ struct Board {
 :show_board {
     #macro SHOW_ROW(a,b,c) {
         " " puts
-        board->squares[a] square_char putc
+        board@.squares[a] square_char putc
         " | " puts
-        board->squares[b] square_char putc
+        board@.squares[b] square_char putc
         " | " puts
-        board->squares[c] square_char putc
+        board@.squares[c] square_char putc
         cr
     }
 
@@ -42,9 +42,9 @@ struct Board {
 // &board -- winner
 :check_winner {
     #macro CHECK_CASE(a, b, c) {
-        if board->squares[a] {
-            if (board->squares[a] board->squares[b] ==) (board->squares[b] board->squares[c] ==) & {
-                board->squares[a] return
+        if board@.squares[a] {
+            if (board@.squares[a] board@.squares[b] ==) (board@.squares[b] board@.squares[c] ==) & {
+                board@.squares[a] return
             }
         }
     }
@@ -65,7 +65,7 @@ struct Board {
 :has_open_sqares {
     var &Board board: {}
     for (var int i: 0, i 9 <, 1+=i) {
-        if board->squares[i] not {
+        if board@.squares[i] not {
             true return
         }
     }
@@ -81,7 +81,7 @@ struct Board {
     var int best_move: -1
 
     for (var int i: 0, i 9 <, 1+=i) {
-        if board->squares[i] { continue }
+        if board@.squares[i] { continue }
 
         board &branch %Board memcpy
         branch.player_turn =branch.squares[i]

@@ -46,7 +46,7 @@ static int scope_depth
 
     #macro parse_here_macro(name, access, tkind) {
         if 2 pick name strcmp not {
-            (src->access) (TKind.tkind src->file_idx) (src->line) &out_toks_mem tok_push
+            (src@.access) (TKind.tkind src@.file_idx) (src@.line) &out_toks_mem tok_push
             drop nip %Token+ return
         }
     }
@@ -102,11 +102,11 @@ static int scope_depth
         while viewtk TKind.PAREN_END != {
             // -- name tok_ptr def_tok_ptr slot_ptr
             var &Macro entry: {viewtd SCOPE_STACK stack_last(int) MACRO_MAP scoped_map_get}
-            dup (Token).data =entry->key.name
-            SCOPE_STACK stack_last(int) =entry->key.scope
-            0 =entry->n_args
-            over =entry->toks
-            true =entry->is_arg
+            dup (Token).data =entry@.key.name
+            SCOPE_STACK stack_last(int) =entry@.key.scope
+            0 =entry@.n_args
+            over =entry@.toks
+            true =entry@.is_arg
 
             // -- name def_tok_ptr tok_ptr
             swap
@@ -365,11 +365,11 @@ pub :use_file {
     }
 
     var &Macro entry: {name scope MACRO_MAP scoped_map_get}
-    name =entry->key.name
-    scope =entry->key.scope
-    n_args =entry->n_args
-    macro_toks =entry->toks
-    false =entry->is_arg
+    name =entry@.key.name
+    scope =entry@.key.scope
+    n_args =entry@.n_args
+    macro_toks =entry@.toks
+    false =entry@.is_arg
 
     if viewtk TKind.BRACE_START != {
         error "Invalid body for macro '"puts name puts "'\n"puts
@@ -392,11 +392,11 @@ pub :use_file {
 
     var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last(int) }}
     var &Macro entry: {viewtd scope MACRO_MAP scoped_map_get}
-    viewtd =entry->key.name
-    scope =entry->key.scope
-    0 =entry->n_args
-    NULL =entry->toks
-    false =entry->is_arg
+    viewtd =entry@.key.name
+    scope =entry@.key.scope
+    0 =entry@.n_args
+    NULL =entry@.toks
+    false =entry@.is_arg
     %Token+
 }
 
@@ -413,9 +413,9 @@ pub :use_file {
     }
 
     var &Macro entry: {viewtd MACRO_MAP scoped_map_find_idx MACRO_MAP map_idx}
-    NULL =entry->key.name
-    NULL =entry->key.scope
-    NULL =entry->toks
+    NULL =entry@.key.name
+    NULL =entry@.key.scope
+    NULL =entry@.toks
     %Token+
 }
 

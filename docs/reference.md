@@ -142,7 +142,7 @@ Examples:
 
 ### Type Casting
 
-Type casting is done using C-style `(type)` syntax. In Foresee, this syntax means "interpret the top stack item as *the address of* a variable of this type". Example:
+Type casting is done using C-style `(type)` syntax. In Foresee, this syntax means "interpret the top stack item as *the address of* a variable of this type". Items can also be dereferenced with `@`. Example:
 
 ```
 #use "stdio.4c"
@@ -150,12 +150,14 @@ Type casting is done using C-style `(type)` syntax. In Foresee, this syntax mean
 :main {
     var int a
     var int b
+    var &int c: {&a}
 
     5 =a
     9 &b =(int)
 
     &a (int) put cr
     b put cr
+    c@ put cr
 }
 ```
 
@@ -164,6 +166,7 @@ Output:
 ```
 5
 9
+5
 ```
 
 This feature is much more useful when used with custom data types. See later sections.
@@ -356,7 +359,7 @@ struct StructName {
 }
 ```
 
-Struct fields are generally defined like variables. Fields can be accessed directly by using the `.fieldname` or, if you have a pointer, with `->fieldname`.
+Struct fields are generally defined like variables. Fields can be accessed directly by using the `.fieldname` or, if you have a pointer, with `@.fieldname`.
 
 #### Example
 
@@ -375,14 +378,14 @@ struct Points {
 // &point --
 :double_point {
     var &Point p: {}
-    2 *=p->x
-    2 *=p->y
+    2 *=p@.x
+    2 *=p@.y
 }
 
 // &point --
 :show_point {
     var &Point p: {}
-    "(" puts p->x put ", " puts p->y put ")\n" puts
+    "(" puts p@.x put ", " puts p@.y put ")\n" puts
 }
 
 :main {
@@ -420,7 +423,7 @@ union StructName {
 }
 ```
 
-Union variants are generally defined like variables. Variants can be accessed directly by using the `.variantname` or, if you have a pointer, with `->variantname`.
+Union variants are generally defined like variables. Variants can be accessed directly by using the `.variantname` or, if you have a pointer, with `@.variantname`.
 
 ### Enums
 
