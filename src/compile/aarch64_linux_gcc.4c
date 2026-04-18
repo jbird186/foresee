@@ -37,9 +37,9 @@ static int stack_ptr_delta
 
 static char[32] push_cache
 :flush_push_cache {
-    if &push_cache@ {
+    if &push_cache(&char) {
         &push_cache force_compile_push
-        NULL &push_cache!
+        NULL &push_cache=(&char)
     }
 }
 
@@ -54,8 +54,8 @@ static char[32] push_cache
 }
 
 :compile_stack_shrink {
-    if &push_cache@ {
-        NULL &push_cache!
+    if &push_cache(&char) {
+        NULL &push_cache=(&char)
         return
     }
     8 update_stack_ptr_delta
@@ -63,13 +63,13 @@ static char[32] push_cache
 
 // item --
 :compile_pop {
-    if &push_cache@ {
+    if &push_cache(&char) {
         if dup &push_cache strcmp {
             "    mov     "coms coms ", "coms &push_cache coms "\n"coms
         } else {
             drop
         }
-        NULL &push_cache!
+        NULL &push_cache=(&char)
         return
     }
     "    ldr     "coms coms ", [x12"coms com_stack_delta "]\n"coms
@@ -554,11 +554,11 @@ static char[32] push_cache
         ".byte "coms
     }
 
-    while dup@c {
+    while dup(char) {
         if USE_ASM_STRINGS {
-            dup@c com_char_literal
+            dup(char) com_char_literal
         } else {
-            dup@c com
+            dup(char) com
             ","coms
         }
         1+

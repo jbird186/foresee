@@ -10,7 +10,7 @@ pub :memset {
 
     var int fill_to: { MIN(len, USE_MEMCPY_MINIMUM) }
     for (var int i: 0, i fill_to <, 1+=i) {
-        value (dest i+) !c
+        value (dest i+) =(char)
     }
     if fill_to len == { return }
 
@@ -24,7 +24,7 @@ pub :memset {
 
 // &str -- len
 pub :strlen {
-    dup while dup@c { 1+ }
+    dup while dup(char) { 1+ }
     swap -
 }
 
@@ -37,7 +37,7 @@ pub :strcpy {
 pub :strncpy {
     var int n: {}
     if over strlen n < { over strlen =n }
-    0 over n+ 1+ !c
+    0 over n+ 1+ =(char)
     n memcpy
 }
 
@@ -48,8 +48,8 @@ pub :strcat {
 
 // &str1 &str2 -- diff
 pub :strcmp {
-    while over@c over@c | {
-        if over@c over@c - dup {
+    while over(char) over(char) | {
+        if over(char) over(char) - dup {
             rot rot drop drop
             return
         } drop
@@ -62,8 +62,8 @@ pub :strcmp {
 // &str1 &str2 n -- diff
 pub :strncmp {
     var int n: {}
-    while (over@c over@c | flag) (n flag) & {
-        if over@c over@c - dup {
+    while (over(char) over(char) | flag) (n flag) & {
+        if over(char) over(char) - dup {
             rot rot drop drop
             return
         } drop
@@ -76,7 +76,7 @@ pub :strncmp {
 
 // &str char -- [ptr, 0]
 pub :strchr {
-    while over@c dup {
+    while over(char) dup {
         if over == {
             drop return
         }
@@ -89,7 +89,7 @@ pub :strchr {
 pub :strstr {
     var &char src: {swap}
     var int sub_len: {dup strlen}
-    while src@c {
+    while src(char) {
         if src over sub_len strncmp not {
             drop src return
         }

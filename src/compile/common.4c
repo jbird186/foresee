@@ -37,7 +37,7 @@ pub :com {
 // char --
 pub :comc {
     var char[2] buf
-    &buf!c
+    &buf=(char)
     &buf coms
 }
 

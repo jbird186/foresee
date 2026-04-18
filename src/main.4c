@@ -29,8 +29,8 @@
     var &char src_file: {get_src_file}
     var &char out_file: {get_out_file}
 
-    0 SCOPE_STACK stack_push!
-    1 SCOPE_STACK stack_push!
+    0 SCOPE_STACK stack_push=(int)
+    1 SCOPE_STACK stack_push=(int)
 
     var ptr src_fd: {src_file 0 fopen}
     if src_fd is_failure {
@@ -39,7 +39,7 @@
     }
 
     var int src_file_idx: {src_file FILE_SET map_get_idx}
-    src_file src_file_idx FILE_SET map_idx!
+    src_file src_file_idx FILE_SET map_idx=(&char)
 
     &src_str SRC_STR_SIZE src_fd fread drop
     src_fd fclose drop

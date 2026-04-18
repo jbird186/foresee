@@ -1,5 +1,4 @@
 #use "__core/intrinsics.4c"
-#use "__core/store_fetch_aliases.4c"
 
 pub struct i64 {[8] __inner}
 pub struct u32 {[4] __inner}

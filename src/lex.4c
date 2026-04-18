@@ -13,7 +13,7 @@ static &char file
 }
 
 // src_ptr -- src_ptr char
-:viewc { dup@c }
+:viewc { dup(char) }
 
 // src_ptr -- new_src_ptr int
 :view_binary_int {
@@ -113,11 +113,11 @@ static &char file
         1 swap
     } // -- scalar src_ptr
 
-    if (viewc '0' ==) (over 1+ @c 'b' ==) & {
+    if (viewc '0' ==) (over 1+ (char) 'b' ==) & {
         view_binary_int
-    } else if (viewc '0' ==) (over 1+ @c 'o' ==) & {
+    } else if (viewc '0' ==) (over 1+ (char) 'o' ==) & {
         view_octal_int
-    } else if (viewc '0' ==) (over 1+ @c 'x' ==) & {
+    } else if (viewc '0' ==) (over 1+ (char) 'x' ==) & {
         view_hex_int
     } else {
         view_decimal_int
@@ -170,11 +170,11 @@ static &char file
     1+
     while viewc '\"' != {
         if viewc '\n' == { 1 +=line }
-        match_char STRS_MEM stack_push!c
+        match_char STRS_MEM stack_push=(char)
         1+
     }
     1+
-    0 STRS_MEM stack_push!c
+    0 STRS_MEM stack_push=(char)
     swap
 }
 
@@ -188,16 +188,16 @@ static &char file
 // src_ptr -- new_src_ptr ref
 :view_ident {
     STRS_MEM stack_top swap
-    viewc STRS_MEM stack_push!c
+    viewc STRS_MEM stack_push=(char)
     while 1+ viewc {
         if viewc is_ident_any_char not {
-            0 STRS_MEM stack_push!c
+            0 STRS_MEM stack_push=(char)
             swap
             return
         }
-        viewc STRS_MEM stack_push!c
+        viewc STRS_MEM stack_push=(char)
     }
-    0 STRS_MEM stack_push!c
+    0 STRS_MEM stack_push=(char)
     swap
 }
 
@@ -206,7 +206,7 @@ static &char file
         0 token_id file line &toks_mem tok_push
         // -- new_src_ptr n_chars
         STRS_MEM stack_top swap -
-        &strs_mem stack_len swap - &strs_mem!
+        &strs_mem stack_len swap - &strs_mem=(int)
         return
     }
 }
@@ -240,7 +240,7 @@ static &char file
     ("(){}[]," c strchr not)
     (c isspace not) &
     (c flag) &
-    ((STRS_MEM stack_last@c '=' !=) (c '=' ==) |) &
+    ((STRS_MEM stack_last(char) '=' !=) (c '=' ==) |) &
 }
 
 // src_ptr -- new_src_ptr ref
@@ -248,10 +248,10 @@ static &char file
     STRS_MEM stack_top swap
     var char c
     while continue_lexing_word {
-        viewc STRS_MEM stack_push!c
+        viewc STRS_MEM stack_push=(char)
         1+
     }
-    0 STRS_MEM stack_push!c
+    0 STRS_MEM stack_push=(char)
     swap
 }
 
@@ -259,12 +259,12 @@ static &char file
 :should_lex_ref {
     if viewc '&' != { false return }
     var &char src: {dup}
-    while src@c '&' == { 1 +=src }
-    (src@c is_ident_first_char) (src@c '(' ==) |
+    while src(char) '&' == { 1 +=src }
+    (src(char) is_ident_first_char) (src(char) '(' ==) |
 }
 
 #macro lex_tagged_ident(tag_char, token_id) {
-    if (viewc tag_char ==) (over 1+ @c is_ident_first_char) & {
+    if (viewc tag_char ==) (over 1+ (char) is_ident_first_char) & {
         0 token_id file line &toks_mem tok_push
         1+
     }
@@ -313,19 +313,19 @@ pub :lex_src {
             default {
                 lex_tagged_ident('.', TKind.FIELD)
                 else lex_tagged_ident('%', TKind.SIZE)
-                else if (viewc '/' ==) (over 1+ @c '/' ==) & {
+                else if (viewc '/' ==) (over 1+ (char) '/' ==) & {
                     while viewc dup ('\n' !=) swap (flag) & { 1+ }
-                } else if ((viewc '-' ==) (over 1+ @c isdigit) &) (over@c isdigit) | {
+                } else if ((viewc '-' ==) (over 1+ (char) isdigit) &) (over(char) isdigit) | {
                     view_int TKind.INT file line &toks_mem tok_push
                 }
-                else if (viewc '-' ==) (over 1+ @c '>' ==) & {
+                else if (viewc '-' ==) (over 1+ (char) '>' ==) & {
                     0 TKind.DEREF file line &toks_mem tok_push
                     0 TKind.FIELD file line &toks_mem tok_push
                     2+
                 }
                 else if should_lex_ref {
                     var int indir: 0
-                    while dup@c '&' == {
+                    while dup(char) '&' == {
                         1 +=indir
                         1+
                     }
@@ -336,7 +336,7 @@ pub :lex_src {
                 }
                 else {
                     view_word
-                    if over@c (dup is_ident_first_char) swap ('(' ==) | { TKind.EQ } else { TKind.WORD }
+                    if over(char) (dup is_ident_first_char) swap ('(' ==) | { TKind.EQ } else { TKind.WORD }
                     file line &toks_mem tok_push
                 }
             }

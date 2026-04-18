@@ -13,7 +13,7 @@ pub :__parse_args {
 
     var int total_size: {argc %ptr*}
     for var int i: 0, i argc <, 1+=i {
-        (argv_wide i ptr_idx@) wstrlen +=total_size
+        (argv_wide i ptr_idx(int)) wstrlen +=total_size
     }
 
     var ptr argv_char: {total_size win_LocalAlloc}
@@ -21,11 +21,11 @@ pub :__parse_args {
 
     var ptr str_ptr: {argv_char (argc %ptr*)+}
     for var int i: 0, i argc <, 1+=i {
-        var int len: {(argv_wide i ptr_idx@) wstrlen}
-        if (argv_wide i ptr_idx@) str_ptr len win_WideCharToMultiByte is_failure {
+        var int len: {(argv_wide i ptr_idx(int)) wstrlen}
+        if (argv_wide i ptr_idx(int)) str_ptr len win_WideCharToMultiByte is_failure {
             1 exit
         }
-        str_ptr (argv_char i ptr_idx)!
+        str_ptr (argv_char i ptr_idx)=(&char)
         len +=str_ptr
     }
 

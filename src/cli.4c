@@ -5,7 +5,7 @@ pub static ptr argv
 
 // idx -- &ptr
 pub :get_argv {
-    %ptr* argv+ @
+    %ptr* argv+ (int)
 }
 
 :put_example {
@@ -31,7 +31,7 @@ pub :get_argv {
         put_example
         1 exit
     }
-    0 over!c 1+ =os
+    0 over=(char) 1+ =os
 
     os '-' strchr
     if dup not {
@@ -39,7 +39,7 @@ pub :get_argv {
         put_example
         1 exit
     }
-    0 over!c 1+ =tool
+    0 over=(char) 1+ =tool
 
     if (arch "x86_64" strcmp not) (arch "x64" strcmp not) | {
         "ARCH_X86_64" define_builtin_flag
@@ -81,13 +81,13 @@ pub :get_argv {
 
 // &arg_ptr --
 :parse_switches {
-    while %char+ dup@c {
-        if dup@c 'd' == {
+    while %char+ dup(char) {
+        if dup(char) 'd' == {
             set_compiler_flag(debug_mode, "debug")
-        } else if dup@c 'O' == {
+        } else if dup(char) 'O' == {
             set_compiler_flag(optimize_mode, "optimize")
         } else {
-            "ERROR: Unrecognized switch '-"puts dup@c putc "'\n"puts
+            "ERROR: Unrecognized switch '-"puts dup(char) putc "'\n"puts
             put_options
             1 exit
         }
@@ -100,7 +100,7 @@ pub :get_argv {
     var ptr arg: {2+}
     var ptr path: {STRS_MEM stack_top}
 
-    if arg@c '/' != {
+    if arg(char) '/' != {
         var int cwd_res: {path 4096 getcwd}
         if cwd_res is_failure {
             "ERROR: Failed to obtain current working directory\n"puts
@@ -108,18 +108,18 @@ pub :get_argv {
         }
 
         if arg "./" 2 strncmp not { 2 +=arg }
-        &strs_mem@ cwd_res+ 1- &strs_mem!
-        '/' STRS_MEM stack_push!c
+        &strs_mem(int) cwd_res+ 1- &strs_mem=(int)
+        '/' STRS_MEM stack_push=(char)
     }
 
     arg STRS_MEM stack_top strcpy
-    &strs_mem@ arg strlen+ &strs_mem!
-    if STRS_MEM stack_last@c '/' != {
-        '/' STRS_MEM stack_push!c
+    &strs_mem(int) arg strlen+ &strs_mem=(int)
+    if STRS_MEM stack_last(char) '/' != {
+        '/' STRS_MEM stack_push=(char)
     }
-    0 STRS_MEM stack_push!c
+    0 STRS_MEM stack_push=(char)
 
-    path DIRS_MEM stack_push!
+    path DIRS_MEM stack_push=(&char)
 }
 
 // idx -- new_idx
@@ -129,7 +129,7 @@ pub :get_argv {
 
     if arg "-I" 2 strncmp not {
         arg parse_include_option
-    } else if (arg@c '-' ==) (arg "--" 2 strncmp flag) & {
+    } else if (arg(char) '-' ==) (arg "--" 2 strncmp flag) & {
         arg parse_switches
     } else if arg "--debug" strcmp not {
         set_compiler_flag(debug_mode, "debug")

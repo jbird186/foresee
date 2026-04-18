@@ -84,7 +84,7 @@ static int scope_depth
         return
     }
 
-    dup SCOPE_STACK stack_push!
+    dup SCOPE_STACK stack_push=(int)
     swap %Token+ swap
 
     // Arguments (optional)
@@ -101,9 +101,9 @@ static int scope_depth
         // -- name tok_ptr def_tok_ptr
         while viewtk TKind.PAREN_END != {
             // -- name tok_ptr def_tok_ptr slot_ptr
-            var &Macro entry: {viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get}
+            var &Macro entry: {viewtd SCOPE_STACK stack_last(int) MACRO_MAP scoped_map_get}
             dup (Token).data =entry->key.name
-            SCOPE_STACK stack_last@ =entry->key.scope
+            SCOPE_STACK stack_last(int) =entry->key.scope
             0 =entry->n_args
             over =entry->toks
             true =entry->is_arg
@@ -180,7 +180,7 @@ pub :add_file_dir {
     var int n: 0
     var int size: 0
 
-    while var char c: {name n+ @c} c {
+    while var char c: {name n+ (char)} c {
         1 +=n
         if c '/' == { n =size }
     }
@@ -188,15 +188,15 @@ pub :add_file_dir {
     var &char dir_ptr: {STRS_MEM stack_top}
 
     name dir_ptr size strncpy
-    &strs_mem stack_len size+ &strs_mem!
-    0 STRS_MEM stack_push!c
+    &strs_mem stack_len size+ &strs_mem=(int)
+    0 STRS_MEM stack_push =(char)
 
     for var int i: 0, i &dirs_mem stack_len <, 1 +=i {
-        if (i DIRS_MEM stack_get@) (dir_ptr) strcmp not {
+        if (i DIRS_MEM stack_get(&char)) (dir_ptr) strcmp not {
             return
         }
     }
-    dir_ptr DIRS_MEM stack_push!
+    dir_ptr DIRS_MEM stack_push=(&char)
 }
 
 // name -- file_path fd
@@ -205,7 +205,7 @@ pub :add_file_dir {
     var int idx: 0
     while idx &dirs_mem stack_len < {
         var char[256] file_path
-        idx DIRS_MEM stack_get@ &file_path strcpy
+        idx DIRS_MEM stack_get(&char) &file_path strcpy
         name &file_path strcat
 
         var ptr fd: {&file_path 0 fopen}
@@ -214,8 +214,8 @@ pub :add_file_dir {
 
             var &char path: {STRS_MEM stack_top}
             &file_path path strcpy
-            (&strs_mem stack_len) (&file_path strlen)+ &strs_mem!
-            0 STRS_MEM stack_push!c
+            (&strs_mem stack_len) (&file_path strlen)+ &strs_mem=(&char)
+            0 STRS_MEM stack_push =(char)
 
             path fd return
         }
@@ -251,21 +251,21 @@ pub :use_file {
         -1 return
     }
     var int file_idx: {path FILE_SET map_get_idx}
-    path file_idx FILE_SET map_idx!
+    path file_idx FILE_SET map_idx=(&char)
 
     var int read_res: {&src_str SRC_STR_SIZE fd fread }
     if read_res is_failure {
         "WARNING: 'use' directive failed to read file '"puts path puts "'\n"puts
         -1 return
     }
-    0 (read_res &src_str+)!c
+    0 (read_res &src_str+) =(char)
 
     if fd fclose is_failure {
         "WARNING: 'use' directive failed to close file '"puts path puts "'\n"puts
         -1 return
     }
 
-    dup SCOPE_STACK stack_push!
+    dup SCOPE_STACK stack_push=(int)
     // -- tok_ptr use_tok_ptr
     &toks_mem %Token stack_top
     &src_str file_idx lex_src
@@ -334,14 +334,14 @@ pub :use_file {
         error "Expected name for 'macro' directive\n"puts
         1 exit
     }
-    if viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_contains {
+    if viewtd SCOPE_STACK stack_last(int) MACRO_MAP scoped_map_contains {
         error "Macro '"puts viewtd puts "' already defined in this scope\n"puts
         1 exit
     }
 
     var &char name: {viewtd} %Token+
     var &Token macro_toks: {dup}
-    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last(int) }}
 
     // Arguments (optional)
     var int n_args: 0
@@ -385,12 +385,12 @@ pub :use_file {
         error "Expected identifier for 'flag' directive\n"puts
         1 exit
     }
-    if viewtd SCOPE_STACK stack_last@ MACRO_MAP scoped_map_contains {
+    if viewtd SCOPE_STACK stack_last(int) MACRO_MAP scoped_map_contains {
         error "Macro '"puts viewtd puts "' already defined in this scope\n"puts
         1 exit
     }
 
-    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last(int) }}
     var &Macro entry: {viewtd scope MACRO_MAP scoped_map_get}
     viewtd =entry->key.name
     scope =entry->key.scope
@@ -489,7 +489,7 @@ pub :use_file {
     } else {
         if viewtk TKind.BRACE_START == {
             1 +=scope_depth
-            dup SCOPE_STACK stack_push!
+            dup SCOPE_STACK stack_push=(int)
         } else if viewtk TKind.BRACE_END == {
             1 -=scope_depth
             &scope_stack stack_shrink

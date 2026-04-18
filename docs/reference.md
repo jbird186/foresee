@@ -69,25 +69,6 @@ Accessing an uninitialized local variable leads to undefined behavior.
 * `/=item` divides `item` by the top stack item, and sets `item` to that value. This only works if `item` has an appropriate size. `+=item`, `*=item`, `&=item`, `>>=item`, etc behave similarly.
 * Variables are *only* accessible within the scope where they are defined.
 
-### Store and Fetch
-
-Much like Forth, values can be manually stored and fetched from memory. Use `fetch`/`@` to read data from memory, and `store`/`!` to write data to memory. Example:
-
-```
-var int year
-2025 &year! // sets `year` to 2025
-&year@      // pushes the value of `year` to the stack
-```
-
-* `fetch`/`@` (`&buffer -- value`): Reads an 8-byte `value` from `&buffer`.
-* `store`/`!` (`value &buffer --`): Writes an 8-byte `value` to `&buffer`.
-
-Variants such as `fetch_u32`, `!c` ("store char"), and others can be used to read and write 1, 2, and 4 byte `value`s to and from memory.
-
-Attempting to read from, or write to, an invalid memory address may cause an error.
-
-Note that modifying inline strings is undefined behavior. For example, `100 "Hello World!\n" store` would result in undefined behavior. Treat pointers to inline strings as strictly read-only.
-
 ### Variables Example
 
 ```

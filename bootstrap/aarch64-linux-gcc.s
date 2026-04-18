@@ -14927,28 +14927,29 @@ f_3972:
     str     x1, [x0]
 .l_3972_0:
     sub     x0, x29, #8
+    ldr     x0, [x0]
+    cbz     x0, .l_3972_1
+    ldr     x0, =1
     str     x0, [x12, #-8]
-    sub     x12, x12, 8
+    sub     x0, x29, #8
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
     ldr     x0, [x12]
     ldr     x0, [x0]
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    ldr     x0, [x12]
-    str     x0, [x12, #-8]
-    ldr     x0, =1
-    ldr     x1, [x12, #-8]
-    sub 	x0, x1, x0
     ldr     x1, [x12]
     ldr     x2, [x12, #8]
     str     x1, [x12, #8]
     str     x0, [x12]
     mov     x0, x2
     ldr     x1, [x12]
+    sub 	x0, x1, x0
+    ldr     x1, [x12, #8]
+    str     x0, [x12, #8]
+    mov     x0, x1
+    ldr     x1, [x12, #8]
     str     x1, [x0]
-    ldr     x0, [x12, #8]
-    add     x12, x12, 16
-    cbz     x0, .l_3972_1
     ldr     x0, =2
+    add     x12, x12, 16
     lsl     x0, x0, #3
     add     x0, x12, x0
     ldr     x0, [x0]
@@ -34756,7 +34757,7 @@ f_8056:
     adrp    x0, b_7336
     add     x0, x0, :lo12:b_7336
     ldr     x1, [x12]
-    str     x1, [x0]
+    strb    w1, [x0]
     adrp    x0, b_7336
     add     x0, x0, :lo12:b_7336
     str     x0, [x12]

@@ -85,19 +85,19 @@ pub :show_tok {
     case TKind.STR {
         "\"" puts
         var &char c: {viewtd}
-        while c@c {
-            if c@c isprint { c@c putc }
-            else if c@c '\0' == { "\\0" puts }     // null
-            else if c@c '\a' == { "\\a" puts }     // bell
-            else if c@c '\b' == { "\\b" puts }     // backspace
-            else if c@c '\t' == { "\\t" puts }     // tab
-            else if c@c '\n' == { "\\n" puts }     // newline
-            else if c@c '\v' == { "\\v" puts }     // vertical tab
-            else if c@c '\f' == { "\\f" puts }     // form feed
-            else if c@c '\r' == { "\\r" puts }     // return
-            else if c@c '\'' == { "\'" puts }      // single quote
-            else if c@c '\"' == { "\\\"" puts }    // double quote
-            else if c@c '\\' == { "\\\\" puts }    // backslash
+        while c(char) {
+            if c(char) isprint { c(char) putc }
+            else if c(char) '\0' == { "\\0" puts }     // null
+            else if c(char) '\a' == { "\\a" puts }     // bell
+            else if c(char) '\b' == { "\\b" puts }     // backspace
+            else if c(char) '\t' == { "\\t" puts }     // tab
+            else if c(char) '\n' == { "\\n" puts }     // newline
+            else if c(char) '\v' == { "\\v" puts }     // vertical tab
+            else if c(char) '\f' == { "\\f" puts }     // form feed
+            else if c(char) '\r' == { "\\r" puts }     // return
+            else if c(char) '\'' == { "\'" puts }      // single quote
+            else if c(char) '\"' == { "\\\"" puts }    // double quote
+            else if c(char) '\\' == { "\\\\" puts }    // backslash
             else { "\\?" puts }
             1 +=c
         }
@@ -144,12 +144,12 @@ pub :show_tok {
 
 // tok_ptr -- tok_ptr
 pub :error {
-    viewtf FILE_SET map_idx@ puts ":"puts viewtl put ": ERROR: "puts
+    viewtf FILE_SET map_idx(&char) puts ":"puts viewtl put ": ERROR: "puts
 }
 
 // tok_ptr -- tok_ptr
 pub :warning {
-    viewtf FILE_SET map_idx@ puts ":"puts viewtl put ": WARNING: "puts
+    viewtf FILE_SET map_idx(&char) puts ":"puts viewtl put ": WARNING: "puts
 }
 
 #macro skip_delim(start, end) {(

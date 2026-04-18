@@ -11,7 +11,7 @@ pub :__write_int_to_temp {
         drop &int_min_buf 20 return
     }
 
-    0 &__std_buf 16+ !
+    0 &__std_buf 16+ =(int)
 
     // -- is_neg int
     dup 0 < swap
@@ -21,7 +21,7 @@ pub :__write_int_to_temp {
     0 true while {
         &__std_buf 22+ over -
         rot dup 10 % '0' +
-        rot !c
+        rot =(char)
         10 /
         swap 1 +
         over
@@ -29,7 +29,7 @@ pub :__write_int_to_temp {
 
     // -- int len
     if rot {
-        '-' &__std_buf 22+ 2 pick - !c
+        '-' &__std_buf 22+ 2 pick - =(char)
         1+
     }
 
@@ -45,22 +45,22 @@ pub :itoa {
     // -- len &buf buf
     swap rot
     while 2 pick {
-        over@c over!c
+        over(char) over=(char)
         1+ rot 1- rot 1+ rot
     }
-    0 swap !c
+    0 swap =(char)
     drop drop
 }
 
 // &buf -- int
 pub :atoi {
     var &char buf: {}
-    var bool is_neg: {buf@c '-' ==}
+    var bool is_neg: {buf(char) '-' ==}
     if is_neg { 1 +=buf }
 
     var int total: 0
-    while buf@c {
-        (total 10*) (buf@c '0' -)+ =total
+    while buf(char) {
+        (total 10*) (buf(char) '0' -)+ =total
         1 +=buf
     }
 

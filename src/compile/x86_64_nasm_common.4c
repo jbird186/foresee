@@ -39,9 +39,9 @@ pub :x64n_force_compile_push {
 
 static char[32] push_cache
 pub :x64n_flush_push_cache {
-    if &push_cache@ {
+    if &push_cache(&char) {
         &push_cache x64n_force_compile_push
-        NULL &push_cache!
+        NULL &push_cache=(&char)
     }
 }
 
@@ -56,8 +56,8 @@ pub :x64n_compile_push {
 }
 
 :compile_stack_shrink {
-    if &push_cache@ {
-        NULL &push_cache!
+    if &push_cache(&char) {
+        NULL &push_cache=(&char)
         return
     }
     8 update_stack_ptr_delta
@@ -65,13 +65,13 @@ pub :x64n_compile_push {
 
 // item --
 pub :x64n_compile_pop {
-    if &push_cache@ {
+    if &push_cache(&char) {
         if dup &push_cache strcmp {
             "    mov     "coms coms ", "coms &push_cache coms "\n"coms
         } else {
             drop
         }
-        NULL &push_cache!
+        NULL &push_cache=(&char)
         return
     }
     "    mov     "coms coms ", qword [r12"coms com_stack_delta "]\n"coms
@@ -489,19 +489,19 @@ pub :x64n_compile_generic_op {
 // init --
 :compile_buf_str {
     var char is_quote: {false}
-    while dup@c {
-        if dup@c should_print_char {
+    while dup(char) {
+        if dup(char) should_print_char {
             if is_quote not {
                 "\""coms
                 true =is_quote
             }
-            dup@c comc
+            dup(char) comc
         } else {
             if is_quote {
                 "\","coms
                 false =is_quote
             }
-            dup@c com
+            dup(char) com
             ","coms
         }
         1+

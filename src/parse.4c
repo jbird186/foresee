@@ -23,17 +23,17 @@ static int TOTAL_DATA_SIZE
     }
 
     var int scope: {ALLOC_STACK stack_last}
-    scope@ + scope!
+    scope(int) + scope=(int)
 }
 
 // tok_ptr -- tok_ptr
 :new_local_scope {
-    0 ALLOC_STACK stack_push!
-    dup SCOPE_STACK stack_push!
+    0 ALLOC_STACK stack_push=(int)
+    dup SCOPE_STACK stack_push=(int)
 }
 
 :pop_local_scope {
-    ALLOC_STACK stack_last@ -=CURRENT_ALLOC_SIZE
+    ALLOC_STACK stack_last(int) -=CURRENT_ALLOC_SIZE
     &alloc_stack stack_shrink
     &scope_stack stack_shrink
 }
@@ -451,7 +451,7 @@ static int TOTAL_DATA_SIZE
     var int mid: {n_cases 2/}
     var &SwitchCase switch_case: {cases mid %SwitchCase* +}
 
-    switch_case@ OKind.CMP 3 pick op_push
+    switch_case(int) OKind.CMP 3 pick op_push
     if n_cases 1 > {
         var int gt_n_cases: {n_cases mid- 1-}
 
@@ -660,7 +660,7 @@ static int TOTAL_DATA_SIZE
     var int label_id: {ASM_LABEL_ID}
     2 +=ASM_LABEL_ID
 
-    label_id LOOP_STACK stack_push!
+    label_id LOOP_STACK stack_push=(int)
     new_local_scope
 
     label_id OKind.LABEL 3 pick op_push
@@ -696,7 +696,7 @@ static int TOTAL_DATA_SIZE
     }
     if has_paren { %Token+ }
 
-    label_id LOOP_STACK stack_push!
+    label_id LOOP_STACK stack_push=(int)
     new_local_scope
 
     // Initialization
@@ -735,7 +735,7 @@ static int TOTAL_DATA_SIZE
         error "'continue' can only be used within loops\n"puts
         1 exit
     }
-    LOOP_STACK stack_last@ OKind.JMP 3 roll op_push
+    LOOP_STACK stack_last(int) OKind.JMP 3 roll op_push
     %Token+
 }
 
@@ -745,7 +745,7 @@ static int TOTAL_DATA_SIZE
         error "'break' can only be used within loops\n"puts
         1 exit
     }
-    LOOP_STACK stack_last@ 1+ OKind.JMP 3 roll op_push
+    LOOP_STACK stack_last(int) 1+ OKind.JMP 3 roll op_push
     %Token+
 }
 
@@ -762,7 +762,7 @@ static int TOTAL_DATA_SIZE
         1 exit
     }
 
-    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last(int) }}
     var &char name: {viewtd}
 
     name scope check_name_availability_fn
@@ -950,7 +950,7 @@ enum ViewTypeError {
 // ops_dest tok_ptr is_static -- new_tok_ptr
 :parse_buffer_def {
     var bool is_static: {}
-    var int buf_scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var int buf_scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last(int) }}
     if over is_static | not {
         error "Buffers defined at global scope must be static\n"puts
         1 exit
@@ -1242,7 +1242,7 @@ enum ViewTypeError {
         1 exit
     }
 
-    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last(int) }}
     var &char enum_name: {viewtd}
     var &EnumVariant variants_ptr: {ENUM_MEM stack_top}
     enum_name scope check_name_availability
@@ -1337,7 +1337,7 @@ enum ViewTypeError {
         1 exit
     }
 
-    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last@ }}
+    var int scope: {if IS_PUBLIC { NULL } else { SCOPE_STACK stack_last(int) }}
     var &char struct_name: {viewtd}
     var &StructField fields_ptr: {STRUCT_MEM stack_top}
     struct_name scope check_name_availability
@@ -1536,7 +1536,7 @@ enum ViewTypeError {
         case TKind.SIZE { parse_size }
         case TKind.CALL { parse_call }
         case TKind.FILE_START {
-            dup SCOPE_STACK stack_push!
+            dup SCOPE_STACK stack_push=(int)
             nip %Token+
         }
         case TKind.FILE_END {

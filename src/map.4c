@@ -5,8 +5,8 @@
 // str_ptr -- int
 :hash {
     var int res: 2166136261
-    while dup@c {
-        dup@c res^ 16777619* =res
+    while dup(char) {
+        dup(char) res^ 16777619* =res
         1+
     }
     drop
@@ -14,9 +14,9 @@
 }
 
 // slot_ptr -- bool
-pub :slot_is_empty { @ not }
+pub :slot_is_empty { (ptr) not }
 // slot_ptr -- bool
-pub :slot_is_used { @ flag }
+pub :slot_is_used { (ptr) flag }
 // idx map_ref slot_size -- slot_ptr
 pub :map_idx { rot* + }
 
@@ -27,7 +27,7 @@ pub :map_idx { rot* + }
     if dup slot_is_empty {
         false
     } else {
-        dup@ 5 pick strcmp flag
+        dup(ptr) 5 pick strcmp flag
     }
 }
 // key map_ref slot_size -- slot_ptr
@@ -61,7 +61,7 @@ pub :map_contains {
     over over* 3 pick +
     if dup slot_is_empty {
         false
-    } else if dup@ 6 pick strcmp not {
+    } else if dup(ptr) 6 pick strcmp not {
         dup (ScopedKey).scope 5 pick !=
     } else {
         true
@@ -94,9 +94,10 @@ pub :scoped_map_contains {
 // name map_ref slot_size -- [idx, -1]
 pub :scoped_map_find_idx {
     var int scope_idx: {&scope_stack stack_len}
-    while &scope_idx@-- {
+    while scope_idx {
+        1-=scope_idx
         #macro map_lookup {
-            2 pick scope_idx SCOPE_STACK stack_get@ 3 pick 3 pick
+            2 pick scope_idx SCOPE_STACK stack_get(int) 3 pick 3 pick
         }
         if map_lookup scoped_map_contains {
             map_lookup scoped_map_get_idx

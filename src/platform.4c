@@ -3,7 +3,7 @@
 
 // name --
 pub :define_builtin_flag {
-    dup SCOPE_STACK stack_last@ MACRO_MAP scoped_map_get
+    dup SCOPE_STACK stack_last(int) MACRO_MAP scoped_map_get
     NULL over =(Macro).key.scope
     0 over =(Macro).n_args
     NULL over =(Macro).toks

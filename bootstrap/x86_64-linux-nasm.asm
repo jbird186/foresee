@@ -13235,30 +13235,28 @@ f_3972:
     mov     rcx, qword [r12 - 8]
     mov     qword [rbp - 8], rcx
 .l_3972_0:
+    mov     rax, qword [rbp - 8]
+    test    rax, rax
+    jz      .l_3972_1
+    mov     qword [r12 - 8], 1
     lea     rax, [rbp - 8]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
+    mov     qword [r12 - 16], rax
+    sub     r12, 16
     mov     rax, [r12]
     mov     rax, qword [rax]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    mov     rax, [r12]
-    mov     qword [r12 - 8], rax
-    mov     rcx, 1
-    mov     rax, qword [r12 - 8]
-    sub 	rax, rcx
     mov     rbx, qword [r12]
     mov     rcx, qword [r12 + 8]
     mov     qword [r12 + 8], rbx
     mov     qword [r12], rax
-    mov     rax, rcx
-    mov     rcx, qword [r12]
+    mov     rax, qword [r12]
+    sub 	rax, rcx
+    mov     rbx, qword [r12 + 8]
+    mov     qword [r12 + 8], rax
+    mov     rax, rbx
+    mov     rcx, qword [r12 + 8]
     mov     qword [rax], rcx
-    mov     rax, qword [r12 + 8]
-    add     r12, 16
-    test    rax, rax
-    jz      .l_3972_1
     mov     rax, 2
+    add     r12, 16
     mov     rax, [r12 + rax*8]
     mov     qword [r12 - 8], rax
     mov     rax, qword [rbp - 8]
@@ -30985,7 +30983,7 @@ f_8056:
     push    rbp
     mov     rbp, rsp
     mov     rcx, qword [r12]
-    mov     qword [rel b_7336], rcx
+    mov     byte [rel b_7336], cl
     lea     rax, [rel b_7336]
     mov     qword [r12], rax
     mov     qword [r12 - 8], 1

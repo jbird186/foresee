@@ -15,7 +15,7 @@ pub :stdinln {
     var &char buf: {over}
     var int res: {stdin}
     if res is_failure { res return }
-    0 (buf res+ 1-)!c
+    0 (buf res+ 1-)=(char)
     res 1-
 }
 
@@ -26,7 +26,7 @@ pub :put { __write_int_to_temp stdout }
 #pub macro show{dup put}
 
 pub :putc {
-    &__std_buf!
+    &__std_buf =(char)
     &__std_buf 1 stdout
 }
 #pub macro showc{dup putc}
@@ -34,7 +34,7 @@ pub :putc {
 #pub macro sp{' ' putc}
 
 pub :puts {
-    while dup@c dup {
+    while dup(char) dup {
         putc 1+
     } drop drop
 }
@@ -42,11 +42,11 @@ pub :puts {
 
 pub :eput { __write_int_to_temp stderr }
 pub :eputc {
-    &__std_buf!
+    &__std_buf =(char)
     &__std_buf 1 stderr
 }
 pub :eputs {
-    while dup@c dup {
+    while dup(char) dup {
         eputc 1+
     } drop drop
 }
@@ -54,7 +54,7 @@ pub :eputs {
 // -- char
 pub :readc {
     &__std_buf 1 stdin drop
-    &__std_buf@c
+    &__std_buf(char)
 }
 
 // -- int
