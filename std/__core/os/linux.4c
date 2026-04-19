@@ -1,3 +1,0 @@
-#pub macro STDIN_FD {0}
-#pub macro STDOUT_FD {1}
-#pub macro STDERR_FD {2}

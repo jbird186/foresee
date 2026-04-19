@@ -4,6 +4,7 @@
 #use "optimize.4c"
 #use "compile.4c"
 #use "cli.4c"
+#use "core.4c"
 
 :warn_memory_usage {
     if debug_mode not { return }
@@ -26,6 +27,7 @@
 // &argv argc --
 :main {
     parse_args
+
     var &char src_file: {get_src_file}
     var &char out_file: {get_out_file}
 
@@ -40,15 +42,18 @@
 
     var int src_file_idx: {src_file FILE_SET map_get_idx}
     src_file src_file_idx FILE_SET map_idx=(&char)
-
-    &src_str SRC_STR_SIZE src_fd fread drop
+    0 (&src_str SRC_STR_SIZE src_fd fread &src_str+) =(char)
     src_fd fclose drop
     &src_str src_file_idx lex_src
 
-    if "__core.4c" use_file is_failure {
-        "ERROR: standard library not found\n"puts
-        1 exit
-    }
+    1 SCOPE_STACK stack_push=(int)
+    &core_src &src_str strcpy
+    &toks_mem %Token stack_top
+    &src_str NULL lex_src
+    0 TKind.FILE_START NULL 0 &out_toks_mem tok_push
+    preprocess
+    0 TKind.FILE_END NULL 0 &out_toks_mem tok_push
+    &scope_stack stack_shrink
 
     preprocess_src
     parse_out_toks

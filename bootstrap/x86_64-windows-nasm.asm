@@ -885,15 +885,23 @@ f_288:
     mov     rax, qword [r12]
     mov     rcx, qword [r12 + 8]
     mov     qword [rax], rcx
+    mov     qword [r12 + 8], 0
     lea     rax, [rel b_3232]
-    mov     qword [r12 + 8], rax
-    mov     qword [r12], 300000
-    mov     rax, qword [rbp - 24]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6042
-    mov     rax, qword [rbp - 24]
     mov     qword [r12], rax
+    mov     qword [r12 - 8], 300000
+    mov     rax, qword [rbp - 24]
+    mov     qword [r12 - 16], rax
+    sub     r12, 16
+    call    f_6042
+    lea     rax, [rel b_3232]
+    mov     rcx, rax
+    mov     rax, qword [r12]
+    add 	rax, rcx
+    mov     rcx, qword [r12 + 8]
+    mov     byte [rax], cl
+    mov     rax, qword [rbp - 24]
+    mov     qword [r12 + 8], rax
+    add     r12, 8
     call    f_2890
     lea     rax, [rel b_3232]
     mov     qword [r12], rax
@@ -901,28 +909,51 @@ f_288:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_3028
-    lea     rax, [rel b_9403]
+    mov     qword [r12 - 8], 1
+    lea     rax, [rel b_261]
+    mov     qword [r12 - 16], rax
+    mov     qword [r12 - 24], 8
+    sub     r12, 24
+    call    f_1729
+    mov     rax, qword [r12]
+    mov     rcx, qword [r12 + 8]
+    mov     qword [rax], rcx
+    lea     rax, [rel b_3045]
+    mov     qword [r12 + 8], rax
+    lea     rax, [rel b_3232]
+    mov     qword [r12], rax
+    call    f_7518
+    lea     rax, [rel b_2158]
+    mov     qword [r12 - 8], rax
+    mov     qword [r12 - 16], 15
+    sub     r12, 16
+    call    f_3123
+    lea     rax, [rel b_3232]
+    mov     qword [r12 - 8], rax
+    mov     qword [r12 - 16], 0
+    sub     r12, 16
+    call    f_3028
+    mov     qword [r12 - 8], 0
+    mov     qword [r12 - 16], 37
+    mov     qword [r12 - 24], 0
+    mov     qword [r12 - 32], 0
+    lea     rax, [rel b_8065]
+    mov     qword [r12 - 40], rax
+    sub     r12, 40
+    call    f_5120
+    call    f_624
+    mov     qword [r12 - 8], 0
+    mov     qword [r12 - 16], 38
+    mov     qword [r12 - 24], 0
+    mov     qword [r12 - 32], 0
+    lea     rax, [rel b_8065]
+    mov     qword [r12 - 40], rax
+    sub     r12, 40
+    call    f_5120
+    lea     rax, [rel b_261]
     mov     qword [r12 - 8], rax
     sub     r12, 8
-    call    f_7777
-    mov     rax, 0
-    mov     rbx, qword [r12]
-    cmp     rbx, rax
-    setl    al
-    movzx   rax, al
-    add     r12, 8
-    test    rax, rax
-    jz      .l_288_3
-    lea     rax, [rel b_9521]
-    mov     qword [r12 - 8], rax
-    sub     r12, 8
-    call    f_6317
-    mov     rcx, 1
-    sub     rsp, 32
-    call    ExitProcess
-    add     rsp, 32
-.l_288_3:
-.l_288_2:
+    call    f_6555
     call    f_8163
     call    f_2230
     call    f_5977
@@ -945,7 +976,7 @@ f_288:
     sub     rax, r12
     shr     rax, 3
     test    rax, rax
-    jz      .l_288_5
+    jz      .l_288_3
     lea     rax, [rel b_10678]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -960,9 +991,9 @@ f_288:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_288_4
-.l_288_5:
-.l_288_4:
+    jmp     .l_288_2
+.l_288_3:
+.l_288_2:
     lea     rax, [rel b_261]
     mov     rax, qword [rax]
     mov     qword [r12 - 8], rax
@@ -972,7 +1003,7 @@ f_288:
     setne   al
     movzx   rax, al
     test    rax, rax
-    jz      .l_288_7
+    jz      .l_288_5
     lea     rax, [rel b_15202]
     mov     qword [r12 - 8], rax
     sub     r12, 8
@@ -986,9 +1017,9 @@ f_288:
     mov     qword [r12 - 8], rax
     sub     r12, 8
     call    f_6317
-    jmp     .l_288_6
-.l_288_7:
-.l_288_6:
+    jmp     .l_288_4
+.l_288_5:
+.l_288_4:
     leave
     ret
 f_332:
@@ -9338,7 +9369,7 @@ f_2654:
     mov     rbp, rsp
     sub     rsp, 24
     call    f_6176
-    lea     rax, [rel b_5239]
+    lea     rax, [rel b_2510]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
     sub     r12, 16
@@ -9347,7 +9378,7 @@ f_2654:
     mov     qword [rbp - 8], rcx
     mov     rax, qword [rbp - 8]
     mov     qword [r12], rax
-    lea     rax, [rel b_5239]
+    lea     rax, [rel b_2510]
     mov     qword [r12 - 8], rax
     mov     qword [r12 - 16], 8
     sub     r12, 16
@@ -11645,7 +11676,7 @@ f_3271:
     jz      .l_3271_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
-    lea     rax, [rel b_5239]
+    lea     rax, [rel b_2510]
     mov     qword [r12 - 16], rax
     mov     qword [r12 - 24], 8
     sub     r12, 24
@@ -11673,7 +11704,7 @@ f_3271:
     call    f_6962
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
-    lea     rax, [rel b_5239]
+    lea     rax, [rel b_2510]
     mov     qword [r12 - 16], rax
     mov     qword [r12 - 24], 8
     sub     r12, 24
@@ -14908,7 +14939,7 @@ f_4688:
     jz      .l_4688_1
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
-    lea     rax, [rel b_5239]
+    lea     rax, [rel b_2510]
     mov     qword [r12 - 16], rax
     mov     qword [r12 - 24], 8
     sub     r12, 24
@@ -14936,7 +14967,7 @@ f_4688:
     call    f_6962
     mov     rax, [r12]
     mov     qword [r12 - 8], rax
-    lea     rax, [rel b_5239]
+    lea     rax, [rel b_2510]
     mov     qword [r12 - 16], rax
     mov     qword [r12 - 24], 8
     sub     r12, 24
@@ -32503,7 +32534,6 @@ section .rodata
     b_9368 db "    ; OP_CALL",10,0
     b_9378 db "' was never defined",10,0
     b_9391 db "|=",0
-    b_9403 db "__core.4c",0
     b_9414 db "        .skip ",0
     b_9426 db "' must be defined in global scope",10,0
     b_9441 db "    // LIN_syscall",10,0
@@ -32521,7 +32551,6 @@ section .rodata
     b_9501 db "    cld",10,0
     b_9506 db "    cset    w0, ",0
     b_9512 db ".align  2",10,0
-    b_9521 db "ERROR: standard library not found",10,0
     b_9524 db "Options:",10,0
     b_9527 db "    mov     x8, #64",10,0
     b_9534 db "    mov     qword [rsp+32], rbx",10,0
@@ -33140,6 +33169,7 @@ section .rodata
     b_16381 db "    // OP_JCMPL",10,0
 section .data
     b_774 db "-9223372036854775808",0
+    b_3045 db 10,"#pub flag HERE_FILE",10,"#pub flag HERE_LINE",10,"#pub macro exit { __OP_EXIT }",10,"#pub macro return { __OP_RET }",10,"#pub macro drop { __OP_DROP }",10,"#pub macro pick { __OP_PICK }",10,"#pub macro roll { __OP_ROLL }",10,"#pub macro dup { __OP_DUP }",10,"#pub macro over { __OP_OVER }",10,"#pub macro swap { __OP_SWAP }",10,"#pub macro rot { __OP_ROT }",10,"#pub macro nip { __OP_NIP }",10,"#pub macro depth { __OP_DEPTH }",10,"#pub macro store { __OP_STORE8 }",10,"#pub macro fetch { __OP_FETCH8 }",10,"#pub macro store8 { __OP_STORE8 }",10,"#pub macro fetch8 { __OP_FETCH8 }",10,"#pub macro store4 { __OP_STORE4 }",10,"#pub macro fetch4 { __OP_FETCH4 }",10,"#pub macro store2 { __OP_STORE2 }",10,"#pub macro fetch2 { __OP_FETCH2 }",10,"#pub macro store1 { __OP_STORE1 }",10,"#pub macro fetch1 { __OP_FETCH1 }",10,"#pub macro memcpy { __OP_MEMCPY }",10,"#pub macro + { __OP_ADD }",10,"#pub macro - { __OP_SUB }",10,"#pub macro * { __OP_MUL }",10,"#pub macro & { __OP_AND }",10,"#pub macro | { __OP_OR }",10,"#pub macro ^ { __OP_XOR }",10,"#pub macro << { __OP_SHL }",10,"#pub macro <<< { __OP_SHL }",10,"#pub macro >> { __OP_SHR }",10,"#pub macro >>> { __OP_SAR }",10,"#pub macro ~ { __OP_NOT }",10,"#pub macro divmod { __OP_DIVMOD }",10,"#pub macro == { __OP_EQ }",10,"#pub macro != { __OP_NE }",10,"#pub macro >= { __OP_GE }",10,"#pub macro > { __OP_GT }",10,"#pub macro <= { __OP_LE }",10,"#pub macro < { __OP_LT }",10,10,"#pub macro __fopen { __OP_FOPEN }",10,"#pub macro __fread { __OP_FREAD }",10,"#pub macro __fwrite { __OP_FWRITE }",10,"#pub macro __fclose { __OP_FCLOSE }",10,"#pub macro __getcwd { __OP_GETCWD }",10,10,"#ifdef OS_LINUX {",10,"    #pub macro lin_syscall { __LIN_syscall }",10,"}",10,"#ifndef OS_LINUX {",10,"    #pub macro lin_syscall { #raise ",34,"Syscalls can only be used on Linux",10,34," }",10,"}",10,10,"#ifdef OS_WINDOWS {",10,"    #pub macro win_GetCommandLineW { __WIN_GetCommandLineW }",10,"    #pub macro win_CommandLineToArgvW { __WIN_CommandLineToArgvW }",10,"    #pub macro win_WideCharToMultiByte { __WIN_WideCharToMultiByte }",10,"    #pub macro win_LocalAlloc { __WIN_LocalAlloc }",10,"    #pub macro win_LocalFree { __WIN_LocalFree }",10,"    #pub macro win_GetStdHandle { __WIN_GetStdHandle }",10,"}",10,"#ifndef OS_WINDOWS {",10,"    #pub macro win_GetCommandLineW { #raise ",34,"GetCommandLineW() can only be called on Window",92,"n",34," }",10,"    #pub macro win_CommandLineToArgvW { #raise ",34,"CommandLineToArgvW() can only be called on Window",92,"n",34," }",10,"    #pub macro win_WideCharToMultiByte { #raise ",34,"WideCharToMultiByte() can only be called on Window",92,"n",34," }",10,"    #pub macro win_LocalAlloc { #raise ",34,"LocalAlloc() can only be called on Window",92,"n",34," }",10,"    #pub macro win_LocalFree { #raise ",34,"LocalFree() can only be called on Window",92,"n",34," }",10,"    #pub macro win_GetStdHandle { #raise ",34,"GetStdHandle() can only be called on Window",92,"n",34," }",10,"}",10,10,"pub struct i64 {[8] __inner}",10,"pub struct u32 {[4] __inner}",10,"pub struct u16 {[2] __inner}",10,"pub struct u8 {[1] __inner}",10,"#pub macro int { i64 }",10,"#pub macro char { u8 }",10,10,"pub struct ptr {[8] __inner}",10,"pub struct bool {[1] __inner}",10,10,"#pub macro NULL {0}",10,10,"#pub macro false {0}",10,"#pub macro true {1}",10,"#pub macro flag {0 !=}",10,"#pub macro not {0 ==}",10,"#pub macro is_success {-1 >}",10,"#pub macro is_failure {0 <}",10,10,"#pub macro / {divmod drop}",10,"#pub macro % {divmod nip}",10,10,"#ifdef OS_LINUX {",10,"    #pub macro STDIN_FD {0}",10,"    #pub macro STDOUT_FD {1}",10,"    #pub macro STDERR_FD {2}",10,"}",10,"#ifdef OS_WINDOWS {",10,"    #pub macro STDIN_FD {-10 win_GetStdHandle}",10,"    #pub macro STDOUT_FD {-11 win_GetStdHandle}",10,"    #pub macro STDERR_FD {-12 win_GetStdHandle}",10,10,"    // -- &argv argc",10,"    pub :__parse_args {",10,"        #macro ptr_idx {%ptr* +}",10,"        #macro wstrlen {NULL 0 win_WideCharToMultiByte}",10,10,"        var int argc",10,"        var ptr argv_wide: {win_GetCommandLineW &argc win_CommandLineToArgvW}",10,"        if argv_wide is_failure { 1 exit }",10,10,"        var int total_size: {argc %ptr*}",10,"        for var int i: 0, i argc <, 1+=i {",10,"            (argv_wide i ptr_idx(int)) wstrlen +=total_size",10,"        }",10,10,"        var ptr argv_char: {total_size win_LocalAlloc}",10,"        if argv_char is_failure { 1 exit }",10,10,"        var ptr str_ptr: {argv_char (argc %ptr*)+}",10,"        for var int i: 0, i argc <, 1+=i {",10,"            var int len: {(argv_wide i ptr_idx(int)) wstrlen}",10,"            if (argv_wide i ptr_idx(int)) str_ptr len win_WideCharToMultiByte is_failure {",10,"                1 exit",10,"            }",10,"            str_ptr (argv_char i ptr_idx)=(&char)",10,"            len +=str_ptr",10,"        }",10,10,"        if argv_wide win_LocalFree is_failure { 1 exit }",10,"        argv_char argc",10,"    }",10,"}",10,0
 section .bss
     b_195 resb 32
     b_196 resb 32
@@ -33159,6 +33189,7 @@ section .bss
     b_2375 resb 270303
     b_2442 resb 1
     b_2452 resb 8200
+    b_2510 resb 65528
     b_3000 resb 204808
     b_3232 resb 300000
     b_3364 resb 8
@@ -33170,7 +33201,6 @@ section .bss
     b_4816 resb 1
     b_5162 resb 8
     b_5194 resb 524296
-    b_5239 resb 65528
     b_5800 resb 1
     b_5843 resb 8
     b_5844 resb 8

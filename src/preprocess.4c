@@ -10,7 +10,7 @@ static int scope_depth
 :preprocess_token
 
 // tok_ptr --
-:preprocess {
+pub :preprocess {
     while viewtk { preprocess_token }
     drop
 }

@@ -32,7 +32,7 @@ pub struct Token {
     u32 line
 }
 
-pub struct InlineStr {
+pub struct StringItem {
     &char value
 }
 

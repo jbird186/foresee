@@ -516,9 +516,9 @@ pub :x64n_compile_generic_op {
 pub :rodata_x86_64_nasm_generic {
     // -- idx
     0 while dup MAP_SIZE < {
-        if dup INLINE_STR_MAP map_idx slot_is_used {
+        if dup INLINE_STR_SET map_idx slot_is_used {
             "    b_"coms dup MAP_SIZE+ com " db "coms
-            dup INLINE_STR_MAP map_idx (InlineStr).value compile_buf_str
+            dup INLINE_STR_SET map_idx (StringItem).value compile_buf_str
         }
         1+
     } drop

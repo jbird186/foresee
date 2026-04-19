@@ -528,8 +528,6 @@ Foresee's standard library is a very trimmed-down port of C's standard libraries
 * `stdstr.4c`: Analogue to C's `string.h`. Has functions for string manipulation.
 * `stdsys.4c`: No direct C analogue. Has OS-related functions.
 
-Other important constructs are defined in `__core.4c`, which is imported automatically to all Foresee programs.
-
 ## I/O
 
 ### Terminal

@@ -29,14 +29,14 @@ pub static [int int[1024]] loop_stack
 
 #pub macro MAP_SIZE { 8191 }
 pub static File[MAP_SIZE] file_set
-pub static InlineStr[MAP_SIZE] inline_str_map
+pub static StringItem[MAP_SIZE] inline_str_set
 pub static Macro[MAP_SIZE] macro_map
 pub static Function[MAP_SIZE] fn_map
 pub static Buffer[MAP_SIZE] buf_map
 pub static Enum[MAP_SIZE] enum_map
 pub static Struct[MAP_SIZE] struct_map
 #pub macro FILE_SET { &file_set %File }
-#pub macro INLINE_STR_MAP { &inline_str_map %InlineStr }
+#pub macro INLINE_STR_SET { &inline_str_set %StringItem }
 #pub macro MACRO_MAP { &macro_map %Macro }
 #pub macro FN_MAP { &fn_map %Function }
 #pub macro BUF_MAP { &buf_map %Buffer }

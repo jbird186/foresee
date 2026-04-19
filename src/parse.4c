@@ -114,8 +114,8 @@ static int TOTAL_DATA_SIZE
 
 // ops_dest tok_ptr -- new_tok_ptr
 :parse_string {
-    var int idx: { viewtd INLINE_STR_MAP map_get_idx }
-    var &InlineStr s: { idx INLINE_STR_MAP map_idx }
+    var int idx: { viewtd INLINE_STR_SET map_get_idx }
+    var &StringItem s: { idx INLINE_STR_SET map_idx }
     if s slot_is_empty {
         viewtd =s@.value
     }

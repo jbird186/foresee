@@ -980,19 +980,28 @@ f_288:
     ldr     x0, [x12]
     ldr     x1, [x12, #8]
     str     x1, [x0]
+    ldr     x0, =0
+    str     x0, [x12, #8]
     adrp    x0, b_3232
     add     x0, x0, :lo12:b_3232
-    str     x0, [x12, #8]
+    str     x0, [x12]
     ldr     x0, =300000
-    str     x0, [x12]
-    sub     x0, x29, #24
-    ldr     x0, [x0]
     str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6042
     sub     x0, x29, #24
     ldr     x0, [x0]
-    str     x0, [x12]
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_6042
+    adrp    x0, b_3232
+    add     x0, x0, :lo12:b_3232
+    ldr     x1, [x12]
+    add 	x0, x1, x0
+    ldr     x1, [x12, #8]
+    strb    w1, [x0]
+    sub     x0, x29, #24
+    ldr     x0, [x0]
+    str     x0, [x12, #8]
+    add     x12, x12, 8
     bl      f_2890
     adrp    x0, b_3232
     add     x0, x0, :lo12:b_3232
@@ -1002,27 +1011,71 @@ f_288:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_3028
-    adrp    x0, b_9403
-    add     x0, x0, :lo12:b_9403
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_7777
-    ldr     x0, =0
-    ldr     x1, [x12]
-    cmp     x1, x0
-    cset    w0, lt
-    add     x12, x12, 8
-    cbz     x0, .l_288_3
-    adrp    x0, b_9521
-    add     x0, x0, :lo12:b_9521
-    str     x0, [x12, #-8]
-    sub     x12, x12, 8
-    bl      f_6317
     ldr     x0, =1
-    mov     x8, 93
-    svc     #0
-.l_288_3:
-.l_288_2:
+    str     x0, [x12, #-8]
+    adrp    x0, b_261
+    add     x0, x0, :lo12:b_261
+    str     x0, [x12, #-16]
+    ldr     x0, =8
+    str     x0, [x12, #-24]
+    sub     x12, x12, 24
+    bl      f_1729
+    ldr     x0, [x12]
+    ldr     x1, [x12, #8]
+    str     x1, [x0]
+    adrp    x0, b_3045
+    add     x0, x0, :lo12:b_3045
+    str     x0, [x12, #8]
+    adrp    x0, b_3232
+    add     x0, x0, :lo12:b_3232
+    str     x0, [x12]
+    bl      f_7518
+    adrp    x0, b_2158
+    add     x0, x0, :lo12:b_2158
+    str     x0, [x12, #-8]
+    ldr     x0, =15
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3123
+    adrp    x0, b_3232
+    add     x0, x0, :lo12:b_3232
+    str     x0, [x12, #-8]
+    ldr     x0, =0
+    str     x0, [x12, #-16]
+    sub     x12, x12, 16
+    bl      f_3028
+    ldr     x0, =0
+    str     x0, [x12, #-8]
+    ldr     x0, =37
+    str     x0, [x12, #-16]
+    ldr     x0, =0
+    str     x0, [x12, #-24]
+    ldr     x0, =0
+    str     x0, [x12, #-32]
+    adrp    x0, b_8065
+    add     x0, x0, :lo12:b_8065
+    str     x0, [x12, #-40]
+    sub     x12, x12, 40
+    bl      f_5120
+    bl      f_624
+    ldr     x0, =0
+    str     x0, [x12, #-8]
+    ldr     x0, =38
+    str     x0, [x12, #-16]
+    ldr     x0, =0
+    str     x0, [x12, #-24]
+    ldr     x0, =0
+    str     x0, [x12, #-32]
+    adrp    x0, b_8065
+    add     x0, x0, :lo12:b_8065
+    str     x0, [x12, #-40]
+    sub     x12, x12, 40
+    bl      f_5120
+    adrp    x0, b_261
+    add     x0, x0, :lo12:b_261
+    str     x0, [x12, #-8]
+    sub     x12, x12, 8
+    bl      f_6555
     bl      f_8163
     bl      f_2230
     bl      f_5977
@@ -1052,7 +1105,7 @@ f_288:
     add     x0, x0, #65536
     sub     x0, x0, x12
     lsr     x0, x0, #3
-    cbz     x0, .l_288_5
+    cbz     x0, .l_288_3
     adrp    x0, b_10678
     add     x0, x0, :lo12:b_10678
     str     x0, [x12, #-8]
@@ -1071,9 +1124,9 @@ f_288:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_288_4
-.l_288_5:
-.l_288_4:
+    b       .l_288_2
+.l_288_3:
+.l_288_2:
     adrp    x0, b_261
     add     x0, x0, :lo12:b_261
     ldr     x0, [x0]
@@ -1082,7 +1135,7 @@ f_288:
     ldr     x1, [x12, #-8]
     cmp     x1, x0
     cset    w0, ne
-    cbz     x0, .l_288_7
+    cbz     x0, .l_288_5
     adrp    x0, b_15202
     add     x0, x0, :lo12:b_15202
     str     x0, [x12, #-8]
@@ -1099,9 +1152,9 @@ f_288:
     str     x0, [x12, #-8]
     sub     x12, x12, 8
     bl      f_6317
-    b       .l_288_6
-.l_288_7:
-.l_288_6:
+    b       .l_288_4
+.l_288_5:
+.l_288_4:
     mov     sp, x29
     ldp     x29, x30, [sp], #16
     ret
@@ -10224,8 +10277,8 @@ f_2654:
     mov     x29, sp
     sub     sp, sp, #16
     bl      f_6176
-    adrp    x0, b_5239
-    add     x0, x0, :lo12:b_5239
+    adrp    x0, b_2510
+    add     x0, x0, :lo12:b_2510
     str     x0, [x12, #-8]
     ldr     x0, =8
     str     x0, [x12, #-16]
@@ -10237,8 +10290,8 @@ f_2654:
     sub     x0, x29, #8
     ldr     x0, [x0]
     str     x0, [x12]
-    adrp    x0, b_5239
-    add     x0, x0, :lo12:b_5239
+    adrp    x0, b_2510
+    add     x0, x0, :lo12:b_2510
     str     x0, [x12, #-8]
     ldr     x0, =8
     str     x0, [x12, #-16]
@@ -12889,8 +12942,8 @@ f_3271:
     cbz     x0, .l_3271_1
     ldr     x0, [x12]
     str     x0, [x12, #-8]
-    adrp    x0, b_5239
-    add     x0, x0, :lo12:b_5239
+    adrp    x0, b_2510
+    add     x0, x0, :lo12:b_2510
     str     x0, [x12, #-16]
     ldr     x0, =8
     str     x0, [x12, #-24]
@@ -12920,8 +12973,8 @@ f_3271:
     bl      f_6962
     ldr     x0, [x12]
     str     x0, [x12, #-8]
-    adrp    x0, b_5239
-    add     x0, x0, :lo12:b_5239
+    adrp    x0, b_2510
+    add     x0, x0, :lo12:b_2510
     str     x0, [x12, #-16]
     ldr     x0, =8
     str     x0, [x12, #-24]
@@ -16644,8 +16697,8 @@ f_4688:
     cbz     x0, .l_4688_1
     ldr     x0, [x12]
     str     x0, [x12, #-8]
-    adrp    x0, b_5239
-    add     x0, x0, :lo12:b_5239
+    adrp    x0, b_2510
+    add     x0, x0, :lo12:b_2510
     str     x0, [x12, #-16]
     ldr     x0, =8
     str     x0, [x12, #-24]
@@ -16675,8 +16728,8 @@ f_4688:
     bl      f_6962
     ldr     x0, [x12]
     str     x0, [x12, #-8]
-    adrp    x0, b_5239
-    add     x0, x0, :lo12:b_5239
+    adrp    x0, b_2510
+    add     x0, x0, :lo12:b_2510
     str     x0, [x12, #-16]
     ldr     x0, =8
     str     x0, [x12, #-24]
@@ -35140,7 +35193,6 @@ _start:
     b_9368: .ascii "    ; OP_CALL\n\0"
     b_9378: .ascii "' was never defined\n\0"
     b_9391: .ascii "|=\0"
-    b_9403: .ascii "__core.4c\0"
     b_9414: .ascii "        .skip \0"
     b_9426: .ascii "' must be defined in global scope\n\0"
     b_9441: .ascii "    // LIN_syscall\n\0"
@@ -35158,7 +35210,6 @@ _start:
     b_9501: .ascii "    cld\n\0"
     b_9506: .ascii "    cset    w0, \0"
     b_9512: .ascii ".align  2\n\0"
-    b_9521: .ascii "ERROR: standard library not found\n\0"
     b_9524: .ascii "Options:\n\0"
     b_9527: .ascii "    mov     x8, #64\n\0"
     b_9534: .ascii "    mov     qword [rsp+32], rbx\n\0"
@@ -35777,6 +35828,7 @@ _start:
     b_16381: .ascii "    // OP_JCMPL\n\0"
 .section .data
     b_774: .ascii "-9223372036854775808\0"
+    b_3045: .ascii "\n#pub flag HERE_FILE\n#pub flag HERE_LINE\n#pub macro exit { __OP_EXIT }\n#pub macro return { __OP_RET }\n#pub macro drop { __OP_DROP }\n#pub macro pick { __OP_PICK }\n#pub macro roll { __OP_ROLL }\n#pub macro dup { __OP_DUP }\n#pub macro over { __OP_OVER }\n#pub macro swap { __OP_SWAP }\n#pub macro rot { __OP_ROT }\n#pub macro nip { __OP_NIP }\n#pub macro depth { __OP_DEPTH }\n#pub macro store { __OP_STORE8 }\n#pub macro fetch { __OP_FETCH8 }\n#pub macro store8 { __OP_STORE8 }\n#pub macro fetch8 { __OP_FETCH8 }\n#pub macro store4 { __OP_STORE4 }\n#pub macro fetch4 { __OP_FETCH4 }\n#pub macro store2 { __OP_STORE2 }\n#pub macro fetch2 { __OP_FETCH2 }\n#pub macro store1 { __OP_STORE1 }\n#pub macro fetch1 { __OP_FETCH1 }\n#pub macro memcpy { __OP_MEMCPY }\n#pub macro + { __OP_ADD }\n#pub macro - { __OP_SUB }\n#pub macro * { __OP_MUL }\n#pub macro & { __OP_AND }\n#pub macro | { __OP_OR }\n#pub macro ^ { __OP_XOR }\n#pub macro << { __OP_SHL }\n#pub macro <<< { __OP_SHL }\n#pub macro >> { __OP_SHR }\n#pub macro >>> { __OP_SAR }\n#pub macro ~ { __OP_NOT }\n#pub macro divmod { __OP_DIVMOD }\n#pub macro == { __OP_EQ }\n#pub macro != { __OP_NE }\n#pub macro >= { __OP_GE }\n#pub macro > { __OP_GT }\n#pub macro <= { __OP_LE }\n#pub macro < { __OP_LT }\n\n#pub macro __fopen { __OP_FOPEN }\n#pub macro __fread { __OP_FREAD }\n#pub macro __fwrite { __OP_FWRITE }\n#pub macro __fclose { __OP_FCLOSE }\n#pub macro __getcwd { __OP_GETCWD }\n\n#ifdef OS_LINUX {\n    #pub macro lin_syscall { __LIN_syscall }\n}\n#ifndef OS_LINUX {\n    #pub macro lin_syscall { #raise \"Syscalls can only be used on Linux\n\" }\n}\n\n#ifdef OS_WINDOWS {\n    #pub macro win_GetCommandLineW { __WIN_GetCommandLineW }\n    #pub macro win_CommandLineToArgvW { __WIN_CommandLineToArgvW }\n    #pub macro win_WideCharToMultiByte { __WIN_WideCharToMultiByte }\n    #pub macro win_LocalAlloc { __WIN_LocalAlloc }\n    #pub macro win_LocalFree { __WIN_LocalFree }\n    #pub macro win_GetStdHandle { __WIN_GetStdHandle }\n}\n#ifndef OS_WINDOWS {\n    #pub macro win_GetCommandLineW { #raise \"GetCommandLineW() can only be called on Window\\n\" }\n    #pub macro win_CommandLineToArgvW { #raise \"CommandLineToArgvW() can only be called on Window\\n\" }\n    #pub macro win_WideCharToMultiByte { #raise \"WideCharToMultiByte() can only be called on Window\\n\" }\n    #pub macro win_LocalAlloc { #raise \"LocalAlloc() can only be called on Window\\n\" }\n    #pub macro win_LocalFree { #raise \"LocalFree() can only be called on Window\\n\" }\n    #pub macro win_GetStdHandle { #raise \"GetStdHandle() can only be called on Window\\n\" }\n}\n\npub struct i64 {[8] __inner}\npub struct u32 {[4] __inner}\npub struct u16 {[2] __inner}\npub struct u8 {[1] __inner}\n#pub macro int { i64 }\n#pub macro char { u8 }\n\npub struct ptr {[8] __inner}\npub struct bool {[1] __inner}\n\n#pub macro NULL {0}\n\n#pub macro false {0}\n#pub macro true {1}\n#pub macro flag {0 !=}\n#pub macro not {0 ==}\n#pub macro is_success {-1 >}\n#pub macro is_failure {0 <}\n\n#pub macro / {divmod drop}\n#pub macro % {divmod nip}\n\n#ifdef OS_LINUX {\n    #pub macro STDIN_FD {0}\n    #pub macro STDOUT_FD {1}\n    #pub macro STDERR_FD {2}\n}\n#ifdef OS_WINDOWS {\n    #pub macro STDIN_FD {-10 win_GetStdHandle}\n    #pub macro STDOUT_FD {-11 win_GetStdHandle}\n    #pub macro STDERR_FD {-12 win_GetStdHandle}\n\n    // -- &argv argc\n    pub :__parse_args {\n        #macro ptr_idx {%ptr* +}\n        #macro wstrlen {NULL 0 win_WideCharToMultiByte}\n\n        var int argc\n        var ptr argv_wide: {win_GetCommandLineW &argc win_CommandLineToArgvW}\n        if argv_wide is_failure { 1 exit }\n\n        var int total_size: {argc %ptr*}\n        for var int i: 0, i argc <, 1+=i {\n            (argv_wide i ptr_idx(int)) wstrlen +=total_size\n        }\n\n        var ptr argv_char: {total_size win_LocalAlloc}\n        if argv_char is_failure { 1 exit }\n\n        var ptr str_ptr: {argv_char (argc %ptr*)+}\n        for var int i: 0, i argc <, 1+=i {\n            var int len: {(argv_wide i ptr_idx(int)) wstrlen}\n            if (argv_wide i ptr_idx(int)) str_ptr len win_WideCharToMultiByte is_failure {\n                1 exit\n            }\n            str_ptr (argv_char i ptr_idx)=(&char)\n            len +=str_ptr\n        }\n\n        if argv_wide win_LocalFree is_failure { 1 exit }\n        argv_char argc\n    }\n}\n\0"
 .section .bss
     b_195: .skip 32
     b_196: .skip 32
@@ -35796,6 +35848,7 @@ _start:
     b_2375: .skip 270303
     b_2442: .skip 1
     b_2452: .skip 8200
+    b_2510: .skip 65528
     b_3000: .skip 204808
     b_3232: .skip 300000
     b_3364: .skip 8
@@ -35807,7 +35860,6 @@ _start:
     b_4816: .skip 1
     b_5161: .skip 8
     b_5194: .skip 524296
-    b_5239: .skip 65528
     b_5800: .skip 1
     b_5843: .skip 8
     b_5844: .skip 8
